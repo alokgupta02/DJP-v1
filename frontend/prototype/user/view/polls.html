@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CivicPortal | Digital Janta Polls Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#fddbd4",
+                        "on-primary-fixed": "#410002",
+                        "secondary-container": "#e2e2e2",
+                        "primary-fixed": "#ffdad6",
+                        "primary-container": "#e02a27",
+                        "surface": "#fff8f6",
+                        "outline": "#926f68",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "on-tertiary-fixed": "#111d26",
+                        "on-surface-variant": "#5d3f39",
+                        "on-background": "#291713",
+                        "on-surface": "#291713",
+                        "on-primary-container": "#fffbff",
+                        "inverse-surface": "#402b27",
+                        "tertiary-fixed": "#d7e4f0",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#ffb4ab",
+                        "surface-container-low": "#fff0ee",
+                        "surface-container-high": "#ffe2dc",
+                        "primary": "#bb0311",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary-container": "#fcfcff",
+                        "tertiary-container": "#697681",
+                        "surface-bright": "#fff8f6",
+                        "outline-variant": "#e7bdb4",
+                        "background": "#fff8f6",
+                        "surface-tint": "#bf0813",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#f4d3cc",
+                        "tertiary": "#515e68",
+                        "surface-container": "#ffe9e5",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#bbc8d4",
+                        "on-primary-fixed-variant": "#93000a",
+                        "on-tertiary-fixed-variant": "#3c4852",
+                        "secondary": "#5e5e5e",
+                        "surface-container-highest": "#fddbd4",
+                        "on-secondary-fixed-variant": "#474747",
+                        "on-secondary-container": "#646464",
+                        "inverse-on-surface": "#ffede9",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "primary-fixed-dim": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "baseline": "4px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "container-margin": "16px",
+                        "stack-lg": "24px",
+                        "section-gap": "32px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Hanken Grotesk"],
+                        "body-md": ["Noto Sans"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Noto Sans"],
+                        "label-md": ["Noto Sans"],
+                        "label-sm": ["Noto Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Noto Sans', sans-serif; background-color: #fff8f6; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        #sidebar { transition: width 0.3s ease; }
+        .sidebar-collapsed .nav-label, .sidebar-collapsed .sidebar-header-text { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface overflow-x-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside id="sidebar" class="fixed left-0 top-0 h-full w-64 border-r border-secondary dark:border-outline bg-surface flex flex-col z-[60]">
+<div class="p-6">
+    <div class="flex items-center gap-3 mb-8">
+      <div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+      </div>
+      <div class="sidebar-header-text min-w-0">
+        <h1 class="font-title-lg text-title-lg font-bold text-primary truncate">CivicPortal</h1>
+        <p class="font-label-sm text-label-sm text-on-surface-variant truncate">Ward 12 Administration</p>
+      </div>
+      <button class="shrink-0 p-1.5 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" id="sidebarToggle">
+        <span class="material-symbols-outlined transition-transform duration-300" id="toggleIcon">chevron_left</span>
+      </button>
+    </div>
+<nav class="space-y-1">
+<!-- Feed -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group" href="feed.html">
+<span class="material-symbols-outlined">dynamic_feed</span>
+      <span class="font-body-md nav-label">Feed</span>
+</a>
+<!-- Issues -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group" href="issues.html">
+<span class="material-symbols-outlined">report_problem</span>
+      <span class="font-body-md nav-label">Issues</span>
+</a>
+<!-- Discussions -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group" href="discussion.html">
+<span class="material-symbols-outlined">forum</span>
+      <span class="font-body-md nav-label">Discussions</span>
+</a>
+<!-- Polls (ACTIVE) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-r-full font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">ballot</span>
+      <span class="font-body-md nav-label">Polls</span>
+</a>
+<!-- Map -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group" href="#">
+<span class="material-symbols-outlined">map</span>
+      <span class="font-body-md nav-label">Map</span>
+</a>
+<!-- Insights -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group" href="insights.html">
+<span class="material-symbols-outlined">analytics</span>
+      <span class="font-body-md nav-label">Insights</span>
+</a>
+<!-- Profile -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group" href="profile.html">
+<span class="material-symbols-outlined">person</span>
+      <span class="font-body-md nav-label">Profile</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<button class="w-full py-4 px-4 bg-primary text-on-primary font-bold rounded-full flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-lg">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="nav-label">Report Issue</span>
+</button>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header id="main-content-header" class="fixed top-0 right-0 z-50 flex items-center justify-between px-6 h-16 bg-surface border-b border-secondary" style="width: calc(100% - 16rem);">
+<div class="flex-1 max-w-xl">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container border-none rounded-full font-body-md focus:ring-2 focus:ring-primary" placeholder="Search Polls..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 border-r border-outline-variant pr-6">
+<button class="relative w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-2">
+<span class="font-label-md font-bold text-primary">Ward 12</span>
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center overflow-hidden border border-outline">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a diverse woman in her late 30s, dressed in business casual attire with a soft-focus office background. The lighting is natural and bright, aligning with a high-contrast corporate aesthetic. Her expression is approachable and confident, conveying a sense of civic leadership and duty." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjGWcxqgfX7yxwmKcSs14P9HO5EWlFeRh-pZMQTCLL6qQ6lvLR3ag-VhdBC8pAYCX7wRx2STz5nhqW5CndWbnHH8Ac6sv7ZJAnde8rm2CyEibbfkzqYSK92k_L_lZB1j9FCtZJKswTHgMHFdWeXSsgJbQTeqIV3P0C_NcoxczeAjscT-KX-ZNdAftKjptjqCh7Q1_C75AkGcCYTHDRJ0l_EKgN-trj90Fswav-kJI1qOLYGF0Aozzb"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main id="main-content" class="ml-64 pt-16 flex min-h-screen">
+<!-- Center Column: Content -->
+<div class="flex-1 p-8 space-y-stack-lg border-r border-outline-variant">
+<!-- Header Section -->
+<div class="flex items-end justify-between">
+<div class="space-y-baseline">
+<h2 class="font-display-lg text-display-lg text-on-surface">Polls</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Vote on civic decisions that matter to your community. Your voice directly influences policy and administrative actions.</p>
+</div>
+<button class="px-8 py-3 bg-primary text-on-primary font-bold rounded-full flex items-center gap-2 hover:bg-primary/90 transition-all shadow-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+                    Create Poll
+                </button>
+</div>
+<!-- Filter Bar -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 overflow-x-auto pb-2 hide-scrollbar">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-full font-label-md whitespace-nowrap">Open</button>
+<button class="px-4 py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-high rounded-full font-label-md whitespace-nowrap">Closed</button>
+<button class="px-4 py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-high rounded-full font-label-md whitespace-nowrap">My Polls</button>
+<button class="px-4 py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-high rounded-full font-label-md whitespace-nowrap">Following</button>
+<button class="px-4 py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-high rounded-full font-label-md whitespace-nowrap flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+                        Needs Your Vote
+                    </button>
+<button class="px-4 py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-high rounded-full font-label-md whitespace-nowrap flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                        Near Me
+                    </button>
+</div>
+<div class="flex items-center gap-3">
+<select class="bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-1.5 font-label-md text-on-surface-variant focus:ring-primary min-w-[140px]">
+<option>Gov Level</option>
+</select>
+<select class="bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-1.5 font-label-md text-on-surface-variant focus:ring-primary min-w-[140px]">
+<option>Ward 12</option>
+</select>
+<select class="bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-1.5 font-label-md text-on-surface-variant focus:ring-primary min-w-[140px]">
+<option>Category</option>
+</select>
+<div class="ml-auto flex items-center gap-2 text-outline">
+<span class="font-label-sm">Sorted by: Recent</span>
+<span class="material-symbols-outlined text-[18px]">sort</span>
+</div>
+</div>
+</div>
+<!-- Poll Grid (Asymmetric layout) -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-stack-lg">
+<!-- Poll Card 1 (Featured) -->
+<div class="group bg-surface-container-low border border-outline-variant p-6 rounded-lg hover:shadow-xl transition-all duration-300 xl:col-span-2">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-sm font-bold uppercase tracking-wider">High Priority</span>
+<span class="text-on-surface-variant font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                                2 days remaining
+                            </span>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-3 group-hover:text-primary transition-colors">Should Ward 12 implement "No Car Sundays" on the Central Corridor?</h3>
+<p class="font-body-md text-on-surface-variant mb-6 line-clamp-2">This proposal aims to reduce local carbon emissions and promote pedestrian activity. The pilot would run for 6 months between 8 AM and 4 PM.</p>
+<!-- Results Visualization -->
+<div class="space-y-4 mb-6">
+<div class="space-y-2">
+<div class="flex justify-between font-label-md">
+<span class="font-bold">Yes, implement it</span>
+<span>64%</span>
+</div>
+<div class="h-3 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 64%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-md text-on-surface-variant">
+<span>No, maintain current traffic</span>
+<span>36%</span>
+</div>
+<div class="h-3 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 36%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant">
+<div class="flex items-center gap-4 text-on-surface-variant font-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">how_to_vote</span> 12,402 votes</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">forum</span> 482 comments</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-6 py-2 bg-primary text-on-primary font-bold rounded-full hover:scale-105 transition-transform">Vote Now</button>
+<button class="p-2 border border-outline-variant rounded-full text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Repeatable Poll Cards (Simulated Grid) -->
+<script>
+                    const pollData = [
+                        { q: "Increase funding for Ward 12 Community Gardens?", badge: "Environment", color: "bg-tertiary-container", pct: 82, votes: "4.1k", time: "5d" },
+                        { q: "Upgrade Street Lighting on North Avenue?", badge: "Infrastructure", color: "bg-secondary", pct: 45, votes: "2.8k", time: "12h" },
+                        { q: "Mandatory Solar Panels for New Developments?", badge: "Policy", color: "bg-primary-container", pct: 58, votes: "9.2k", time: "1w" },
+                        { q: "Expand Public Library Weekend Hours?", badge: "Services", color: "bg-tertiary-container", pct: 91, votes: "1.5k", time: "2d" }
+                    ];
+
+                    for(let i=0; i<4; i++) {
+                        const poll = pollData[i % pollData.length];
+                        document.write(`
+                        <div class="bg-surface border border-outline-variant p-6 rounded-lg hover:border-primary transition-colors flex flex-col">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="${poll.color} text-on-tertiary-container px-2 py-0.5 rounded-full font-label-sm text-[10px] uppercase font-bold tracking-tight">${poll.badge}</span>
+                                <span class="text-on-surface-variant font-label-sm ml-auto text-[11px]">${poll.time} left</span>
+                            </div>
+                            <h4 class="font-title-lg text-title-lg text-on-surface mb-4 line-clamp-2">${poll.q}</h4>
+                            <div class="mt-auto space-y-4">
+                                <div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary opacity-80" style="width: ${poll.pct}%"></div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="font-label-sm text-on-surface-variant">${poll.votes} votes</span>
+                                    <button class="text-primary font-bold font-label-md flex items-center gap-1 hover:underline">
+                                        Vote <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        `);
+                    }
+                </script>
+</div>
+</div>
+<!-- Right Sidebar: Widgets -->
+<aside class="w-80 p-8 space-y-section-gap bg-surface-container-lowest">
+<!-- Poll Statistics -->
+<section class="space-y-stack-md">
+<h3 class="font-label-md font-bold uppercase text-outline tracking-widest">Poll Statistics</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-primary-container/10 p-4 rounded-lg border border-primary-container/20">
+<p class="text-primary font-display-lg text-display-lg leading-tight">42k</p>
+<p class="font-label-sm text-on-surface-variant">Total Votes</p>
+</div>
+<div class="bg-surface-container-high p-4 rounded-lg border border-outline-variant">
+<p class="text-on-surface font-display-lg text-display-lg leading-tight">24</p>
+<p class="font-label-sm text-on-surface-variant">Active Polls</p>
+</div>
+</div>
+</section>
+<!-- Closing Soon -->
+<section class="space-y-stack-md">
+<h3 class="font-label-md font-bold uppercase text-outline tracking-widest">Closing Soon</h3>
+<div class="space-y-3">
+<div class="p-3 bg-surface border-l-4 border-error rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
+<p class="font-label-md font-bold text-on-surface line-clamp-1">Metro Expansion Plan B</p>
+<p class="font-label-sm text-error">Closing in 1h 45m</p>
+</div>
+<div class="p-3 bg-surface border-l-4 border-primary-container rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
+<p class="font-label-md font-bold text-on-surface line-clamp-1">Youth Center Grant Allocation</p>
+<p class="font-label-sm text-on-surface-variant">Closing in 4h</p>
+</div>
+</div>
+</section>
+<!-- Trending Polls -->
+<section class="space-y-stack-md">
+<div class="flex items-center justify-between">
+<h3 class="font-label-md font-bold uppercase text-outline tracking-widest">Trending</h3>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<div class="space-y-4">
+<div class="flex gap-3">
+<span class="text-primary-container font-title-lg font-bold">01</span>
+<div>
+<p class="font-body-md font-bold text-on-surface leading-snug">Property Tax Rebates for Green Energy</p>
+<p class="font-label-sm text-on-surface-variant">+1.2k today</p>
+</div>
+</div>
+<div class="flex gap-3">
+<span class="text-outline-variant font-title-lg font-bold">02</span>
+<div>
+<p class="font-body-md font-bold text-on-surface leading-snug">New Bypass Road Connectivity</p>
+<p class="font-label-sm text-on-surface-variant">+850 today</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Community Insights Visualization -->
+<section class="space-y-stack-md">
+<h3 class="font-label-md font-bold uppercase text-outline tracking-widest">Community Sentiment</h3>
+<div class="relative h-48 bg-surface border border-outline-variant rounded-lg overflow-hidden flex items-center justify-center p-4">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-tertiary/5"></div>
+<!-- Mock Radar Chart/Visualization -->
+<div class="relative w-full h-full flex items-center justify-center">
+<div class="w-32 h-32 rounded-full border-2 border-dashed border-outline-variant flex items-center justify-center">
+<div class="w-24 h-24 rounded-full border-2 border-primary/20 flex items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 animate-pulse"></div>
+</div>
+</div>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 bg-surface px-2 py-1 border border-outline-variant rounded font-label-sm">Urban Dev</div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 bg-surface px-2 py-1 border border-outline-variant rounded font-label-sm">Greenery</div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 bg-surface px-2 py-1 border border-outline-variant rounded font-label-sm">Safety</div>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 bg-surface px-2 py-1 border border-outline-variant rounded font-label-sm">Tech</div>
+</div>
+</div>
+<p class="font-label-sm text-on-surface-variant text-center px-4 italic">Insights gathered from last 30 days of voting activity.</p>
+</section>
+</aside>
+</main>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const toggleIcon = document.getElementById('toggleIcon');
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', () => {
+        if (sidebar.classList.contains('sidebar-collapsed')) {
+          sidebar.classList.remove('sidebar-collapsed');
+          sidebar.style.width = '16rem';
+          toggleIcon.style.transform = 'rotate(0deg)';
+        } else {
+          sidebar.classList.add('sidebar-collapsed');
+          sidebar.style.width = '80px';
+          toggleIcon.style.transform = 'rotate(180deg)';
+        }
+      });
+    }
+  });
+</script>
+<!-- Footer (Shared Component) -->
+<footer class="ml-64 py-6 px-8 border-t border-outline-variant bg-surface-container-low flex justify-between items-center">
+<div>
+<p class="font-label-sm text-on-surface-variant">© 2024 Civic Engagement Bureau. Transparency &amp; Duty.</p>
+</div>
+<div class="flex gap-6">
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Accessibility</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+<!-- FAB for Quick Actions -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-[70]">
+<span class="material-symbols-outlined text-[28px]">chat_bubble</span>
+</button>
+</body></html>

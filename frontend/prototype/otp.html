@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify OTP</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:#f5f6f8;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.card{
+width:430px;
+background:white;
+padding:40px;
+border-radius:8px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+text-align:center;
+}
+
+h1{
+font-size:30px;
+color:#333;
+margin-bottom:10px;
+}
+
+p{
+color:#777;
+margin-bottom:30px;
+}
+
+.otp{
+display:flex;
+justify-content:space-between;
+margin-bottom:30px;
+}
+
+.otp input{
+width:58px;
+height:58px;
+text-align:center;
+font-size:24px;
+border:1px solid #e8ecf1;
+border-radius:8px;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+background:#ff6b5b;
+color:white;
+font-size:15px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.resend{
+margin-top:20px;
+font-size:14px;
+color:#777;
+}
+
+a{
+color:#ff6b5b;
+text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Verify OTP</h1>
+
+<p>Enter the 6-digit verification code sent to your email.</p>
+
+<div class="otp">
+
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+<input maxlength="1">
+
+</div>
+
+<button>Verify</button>
+
+<div class="resend">
+Didn't receive the code?
+<a href="#">Resend OTP</a>
+</div>
+
+</div>
+
+</body>
+</html>

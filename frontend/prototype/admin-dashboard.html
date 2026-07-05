@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Janta | Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#bb0311",
+                        "primary-container": "#e02a27",
+                        "on-primary-container": "#fffbff",
+                        background: "#fff8f6",
+                        surface: "#fff8f6",
+                        "surface-container": "#ffe9e5",
+                        "surface-container-low": "#fff0ee",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#ffe2dc",
+                        "surface-container-highest": "#fddbd4",
+                        "outline-variant": "#e7bdb4",
+                        "on-surface": "#291713",
+                        "on-surface-variant": "#5d3f39",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#d7e4f0",
+                        "secondary-container": "#e2e2e2",
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        lg: "2rem",
+                        xl: "3rem",
+                        full: "9999px",
+                    },
+                    fontFamily: {
+                        headline: ["Hanken Grotesk"],
+                        body: ["Noto Sans"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body { font-family: 'Noto Sans', sans-serif; }
+        .font-headline { font-family: 'Hanken Grotesk', sans-serif; }
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.5s ease;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .task-row-enter {
+            animation: slideIn 0.3s ease forwards;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .pulse-dot {
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+        .progress-bar-fill {
+            transition: width 0.8s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+
+    <!-- ===== HEADER ===== -->
+    <header class="bg-surface-container-low border-b border-outline-variant/30 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl sm:text-3xl">📊</span>
+                    <div>
+                        <h1 class="font-headline font-bold text-lg sm:text-xl text-on-surface">Admin Dashboard</h1>
+                        <p class="text-xs sm:text-sm text-on-surface-variant">Documentation Progress Tracker</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 sm:gap-4">
+                    <span class="text-xs sm:text-sm text-on-surface-variant hidden sm:inline">Last updated: <span id="lastUpdated" class="font-medium text-on-surface"></span></span>
+                    <span class="text-xs sm:text-sm text-on-surface-variant sm:hidden" id="lastUpdatedShort"></span>
+                    <button onclick="location.reload()" class="p-2 rounded-xl hover:bg-surface-container transition-colors" title="Refresh">
+                        <span class="material-symbols-outlined text-on-surface-variant">refresh</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
+
+        <!-- ===== OVERALL PROGRESS CARD ===== -->
+        <section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/20 p-5 sm:p-8 shadow-sm">
+            <div class="flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
+                <!-- Ring Progress -->
+                <div class="relative shrink-0">
+                    <svg width="160" height="160" viewBox="0 0 160 160" class="sm:w-[180px] sm:h-[180px]">
+                        <circle cx="80" cy="80" r="68" fill="none" stroke="#fddbd4" stroke-width="10"/>
+                        <circle id="overallRing" cx="80" cy="80" r="68" fill="none" stroke="#bb0311" stroke-width="10"
+                            stroke-linecap="round" class="progress-ring-circle"
+                            stroke-dasharray="427.26" stroke-dashoffset="427.26"/>
+                    </svg>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <span id="overallPercent" class="font-headline font-black text-3xl sm:text-4xl text-on-surface">0%</span>
+                        <span class="text-xs text-on-surface-variant mt-0.5">complete</span>
+                    </div>
+                </div>
+                <!-- Stats -->
+                <div class="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full">
+                    <div class="bg-surface-container rounded-xl p-3 sm:p-4 text-center">
+                        <div class="text-2xl sm:text-3xl mb-1">📋</div>
+                        <div class="font-headline font-bold text-xl sm:text-2xl text-on-surface" id="totalTasks">0</div>
+                        <div class="text-xs text-on-surface-variant">Total Tasks</div>
+                    </div>
+                    <div class="bg-surface-container rounded-xl p-3 sm:p-4 text-center">
+                        <div class="text-2xl sm:text-3xl mb-1">✅</div>
+                        <div class="font-headline font-bold text-xl sm:text-2xl text-green-600" id="completedTasks">0</div>
+                        <div class="text-xs text-on-surface-variant">Completed</div>
+                    </div>
+                    <div class="bg-surface-container rounded-xl p-3 sm:p-4 text-center">
+                        <div class="text-2xl sm:text-3xl mb-1">🔄</div>
+                        <div class="font-headline font-bold text-xl sm:text-2xl text-amber-600" id="inProgressTasks">0</div>
+                        <div class="text-xs text-on-surface-variant">In Progress</div>
+                    </div>
+                    <div class="bg-surface-container rounded-xl p-3 sm:p-4 text-center">
+                        <div class="text-2xl sm:text-3xl mb-1">⏳</div>
+                        <div class="font-headline font-bold text-xl sm:text-2xl text-on-surface-variant" id="pendingTasks">0</div>
+                        <div class="text-xs text-on-surface-variant">Pending</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CATEGORY BREAKDOWN ===== -->
+        <section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/20 p-5 sm:p-8 shadow-sm">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="font-headline font-bold text-lg sm:text-xl text-on-surface">📂 Progress by Category</h2>
+                <span class="text-xs text-on-surface-variant bg-surface-container px-3 py-1 rounded-full" id="categorySummary">0/0 done</span>
+            </div>
+            <div class="space-y-5" id="categoryList">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ===== TIME ESTIMATION ===== -->
+        <section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/20 p-5 sm:p-8 shadow-sm">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="font-headline font-bold text-lg sm:text-xl text-on-surface">⏱️ Time Estimation</h2>
+                <span class="text-xs text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">Estimated remaining</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="timeEstimates">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ===== ALL TASKS DETAILED VIEW ===== -->
+        <section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/20 p-5 sm:p-8 shadow-sm">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="font-headline font-bold text-lg sm:text-xl text-on-surface">📝 All Tasks</h2>
+                <div class="flex gap-2">
+                    <select id="filterSelect" onchange="renderTasks()" class="text-xs sm:text-sm bg-surface-container border border-outline-variant/40 rounded-xl px-3 py-1.5 text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/30">
+                        <option value="all">All</option>
+                        <option value="completed">✅ Completed</option>
+                        <option value="in-progress">🔄 In Progress</option>
+                        <option value="pending">⏳ Pending</option>
+                    </select>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="text-left text-on-surface-variant text-xs uppercase tracking-wider border-b border-outline-variant/20">
+                            <th class="pb-3 pr-4 font-semibold">Status</th>
+                            <th class="pb-3 pr-4 font-semibold">ID</th>
+                            <th class="pb-3 pr-4 font-semibold">Task</th>
+                            <th class="pb-3 pr-4 font-semibold hidden sm:table-cell">Category</th>
+                            <th class="pb-3 font-semibold hidden md:table-cell">Est. Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 pt-4 border-t border-outline-variant/20 flex flex-wrap items-center justify-between gap-2 text-xs text-on-surface-variant">
+                <span id="taskCountDisplay">Showing 0 of 0 tasks</span>
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-green-500"></span> Completed</span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> In Progress</span>
+                    <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span> Pending</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== RECENT ACTIVITY ===== -->
+        <section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/20 p-5 sm:p-8 shadow-sm">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="font-headline font-bold text-lg sm:text-xl text-on-surface">📜 Recent Activity</h2>
+            </div>
+            <div class="space-y-3" id="activityLog">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // ============================================================
+        // DATA — sourced from docs/todo.md & actual progress
+        // ============================================================
+        const CATEGORIES = [
+            {
+                id: "structure",
+                name: "Documentation Structure & Organization",
+                emoji: "📂",
+                color: "#bb0311",
+                bgColor: "#ffe9e5",
+                tasks: [
+                    { id: "D-05", title: "Reorganize documentation folders", status: "in-progress", estTime: "30 min" },
+                    { id: "D-06", title: "Refactor README.md", status: "pending", estTime: "20 min" },
+                    { id: "D-07", title: "Refactor decisions.md", status: "pending", estTime: "15 min" },
+                    { id: "D-08", title: "Separate Vision / Roadmap / Philosophy", status: "completed", estTime: "25 min" },
+                ]
+            },
+            {
+                id: "content",
+                name: "Documentation Content Refactoring",
+                emoji: "✍️",
+                color: "#2563eb",
+                bgColor: "#dbeafe",
+                tasks: [
+                    { id: "D-09", title: "Refactor Issue documentation", status: "completed", estTime: "20 min" },
+                    { id: "D-10", title: "Refactor Discussion documentation", status: "completed", estTime: "20 min" },
+                    { id: "D-11", title: "Refactor Poll documentation", status: "completed", estTime: "20 min" },
+                    { id: "D-12", title: "Refactor AI Assistant documentation", status: "completed", estTime: "30 min" },
+                    { id: "D-13", title: "Refactor Conversational Onboarding", status: "completed", estTime: "25 min" },
+                    { id: "D-14", title: "Refactor Submission Model documentation", status: "completed", estTime: "25 min" },
+                    { id: "D-15", title: "Refactor Design Principles", status: "completed", estTime: "20 min" },
+                    { id: "D-16", title: "Create agent.md", status: "completed", estTime: "20 min" },
+                ]
+            },
+            {
+                id: "crosslink",
+                name: "Cross-Linking & Consistency",
+                emoji: "🔗",
+                color: "#7c3aed",
+                bgColor: "#ede9fe",
+                tasks: [
+                    { id: "D-17", title: "Cross-link every Markdown document", status: "pending", estTime: "40 min" },
+                    { id: "D-18", title: "Documentation consistency review", status: "pending", estTime: "30 min" },
+                    { id: "D-19", title: "Final cleanup and navigation audit", status: "pending", estTime: "25 min" },
+                ]
+            }
+        ];
+
+        // Also include the initial audit tasks (D-01 through D-04) as a "completed" category
+        const INITIAL_TASKS = [
+            { id: "D-01", title: "Audit repository documentation", status: "completed", estTime: "20 min", category: "Initial Audit" },
+            { id: "D-02", title: "Inventory every Markdown file", status: "completed", estTime: "15 min", category: "Initial Audit" },
+            { id: "D-03", title: "Design documentation architecture", status: "completed", estTime: "30 min", category: "Initial Audit" },
+            { id: "D-04", title: "Create documentation dependency graph", status: "completed", estTime: "20 min", category: "Initial Audit" },
+        ];
+
+        // Activity log
+        const ACTIVITY_LOG = [
+            { emoji: "✅", text: "D-04: Documentation dependency graph created", time: "2 days ago" },
+            { emoji: "✅", text: "D-03: Documentation architecture designed", time: "2 days ago" },
+            { emoji: "✅", text: "D-02: All Markdown files inventoried", time: "2 days ago" },
+            { emoji: "✅", text: "D-01: Repository documentation audited", time: "2 days ago" },
+            { emoji: "📂", text: "D-05: Documentation folders structure created", time: "1 day ago" },
+            { emoji: "✍️", text: "D-08: Vision / Roadmap / Philosophy separated", time: "1 day ago" },
+            { emoji: "✍️", text: "D-09 through D-16: Content files created", time: "1 day ago" },
+            { emoji: "🔄", text: "D-05: Reorganizing documentation folders (in progress)", time: "Today" },
+        ];
+
+        // Time estimation constants (minutes per task type)
+        const TIME_PER_TASK = {
+            completed: 0,
+            "in-progress": 15, // partial remaining
+            pending: 0 // calculated per task
+        };
+
+        // ============================================================
+        // HELPERS
+        // ============================================================
+        function getAllTasks() {
+            const all = [...INITIAL_TASKS];
+            CATEGORIES.forEach(cat => {
+                cat.tasks.forEach(t => all.push({ ...t, category: cat.name }));
+            });
+            return all;
+        }
+
+        function getStatusEmoji(status) {
+            switch (status) {
+                case "completed": return "✅";
+                case "in-progress": return "🔄";
+                default: return "⏳";
+            }
+        }
+
+        function getStatusBadge(status) {
+            switch (status) {
+                case "completed":
+                    return `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">✅ Done</span>`;
+                case "in-progress":
+                    return `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-700">🔄 In Progress</span>`;
+                default:
+                    return `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-500">⏳ Pending</span>`;
+            }
+        }
+
+        // ============================================================
+        // RENDER FUNCTIONS
+        // ============================================================
+
+        // --- Overall Progress ---
+        function renderOverallProgress() {
+            const all = getAllTasks();
+            const total = all.length;
+            const completed = all.filter(t => t.status === "completed").length;
+            const inProgress = all.filter(t => t.status === "in-progress").length;
+            const pending = all.filter(t => t.status === "pending").length;
+            const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+            document.getElementById("totalTasks").textContent = total;
+            document.getElementById("completedTasks").textContent = completed;
+            document.getElementById("inProgressTasks").textContent = inProgress;
+            document.getElementById("pendingTasks").textContent = pending;
+            document.getElementById("overallPercent").textContent = pct + "%";
+
+            // Ring animation
+            const ring = document.getElementById("overallRing");
+            const circumference = 2 * Math.PI * 68; // ~427.26
+            const offset = circumference - (pct / 100) * circumference;
+            setTimeout(() => {
+                ring.style.strokeDasharray = circumference;
+                ring.style.strokeDashoffset = offset;
+            }, 200);
+        }
+
+        // --- Category Breakdown ---
+        function renderCategories() {
+            const container = document.getElementById("categoryList");
+            let totalDone = 0;
+            let totalTasks = 0;
+
+            let html = "";
+            CATEGORIES.forEach(cat => {
+                const done = cat.tasks.filter(t => t.status === "completed").length;
+                const total = cat.tasks.length;
+                const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+                totalDone += done;
+                totalTasks += total;
+
+                html += `
+                    <div class="task-row-enter">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <span class="text-lg">${cat.emoji}</span>
+                                <span class="font-medium text-sm sm:text-base text-on-surface">${cat.name}</span>
+                            </div>
+                            <span class="text-xs sm:text-sm font-semibold text-on-surface-variant">${done}/${total} <span class="hidden sm:inline">done</span></span>
+                        </div>
+                        <div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden">
+                            <div class="progress-bar-fill h-full rounded-full" style="width:0%;background:${cat.color};"
+                                 data-target="${pct}"></div>
+                        </div>
+                        <div class="flex items-center justify-between mt-1.5">
+                            <span class="text-xs text-on-surface-variant">${pct}% complete</span>
+                            <span class="text-xs text-on-surface-variant">${total - done} remaining</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            document.getElementById("categorySummary").textContent = `${totalDone}/${totalTasks} done`;
+
+            // Animate bars
+            setTimeout(() => {
+                document.querySelectorAll(".progress-bar-fill").forEach(bar => {
+                    bar.style.width = bar.dataset.target + "%";
+                });
+            }, 400);
+        }
+
+        // --- Time Estimation ---
+        function renderTimeEstimates() {
+            const container = document.getElementById("timeEstimates");
+            const all = getAllTasks();
+
+            const pending = all.filter(t => t.status === "pending");
+            const inProgress = all.filter(t => t.status === "in-progress");
+
+            // Calculate total remaining time
+            let totalRemainingMin = 0;
+            pending.forEach(t => {
+                const match = t.estTime.match(/(\d+)/);
+                if (match) totalRemainingMin += parseInt(match[1]);
+            });
+            // In-progress tasks: assume ~50% remaining
+            inProgress.forEach(t => {
+                const match = t.estTime.match(/(\d+)/);
+                if (match) totalRemainingMin += Math.round(parseInt(match[1]) * 0.5);
+            });
+
+            const hours = Math.floor(totalRemainingMin / 60);
+            const mins = totalRemainingMin % 60;
+
+            // Per category
+            const catTimes = CATEGORIES.map(cat => {
+                let catRemaining = 0;
+                cat.tasks.forEach(t => {
+                    if (t.status === "pending") {
+                        const m = t.estTime.match(/(\d+)/);
+                        if (m) catRemaining += parseInt(m[1]);
+                    } else if (t.status === "in-progress") {
+                        const m = t.estTime.match(/(\d+)/);
+                        if (m) catRemaining += Math.round(parseInt(m[1]) * 0.5);
+                    }
+                });
+                return { ...cat, remaining: catRemaining };
+            });
+
+            const cards = [
+                {
+                    emoji: "⏳",
+                    label: "Total Remaining",
+                    value: hours > 0 ? `${hours}h ${mins}m` : `${mins}m`,
+                    sub: `${pending.length} pending + ${inProgress.length} in progress`,
+                    color: "#bb0311"
+                },
+                ...catTimes.map(cat => ({
+                    emoji: cat.emoji,
+                    label: cat.name.length > 25 ? cat.name.substring(0, 25) + "…" : cat.name,
+                    value: cat.remaining > 0 ? `${cat.remaining}m` : "✅ Done",
+                    sub: cat.remaining > 0 ? `~${Math.ceil(cat.remaining / 15)} sessions` : "All complete",
+                    color: cat.color
+                }))
+            ];
+
+            container.innerHTML = cards.map(c => `
+                <div class="bg-surface-container rounded-xl p-4 border border-outline-variant/10">
+                    <div class="text-2xl mb-2">${c.emoji}</div>
+                    <div class="font-headline font-bold text-xl sm:text-2xl text-on-surface" style="color:${c.value === '✅ Done' ? '#16a34a' : c.color}">${c.value}</div>
+                    <div class="text-xs text-on-surface-variant mt-0.5">${c.label}</div>
+                    <div class="text-xs text-on-surface-variant/70 mt-0.5">${c.sub}</div>
+                </div>
+            `).join("");
+        }
+
+        // --- Task Table ---
+        function renderTasks() {
+            const filter = document.getElementById("filterSelect").value;
+            const all = getAllTasks();
+            const tbody = document.getElementById("taskTableBody");
+
+            let filtered = all;
+            if (filter === "completed") filtered = all.filter(t => t.status === "completed");
+            else if (filter === "in-progress") filtered = all.filter(t => t.status === "in-progress");
+            else if (filter === "pending") filtered = all.filter(t => t.status === "pending");
+
+            // Sort: in-progress first, then pending, then completed
+            const sortOrder = { "in-progress": 0, "pending": 1, "completed": 2 };
+            filtered.sort((a, b) => sortOrder[a.status] - sortOrder[b.status]);
+
+            tbody.innerHTML = filtered.map(t => `
+                <tr class="border-b border-outline-variant/10 hover:bg-surface-container/50 transition-colors task-row-enter">
+                    <td class="py-3 pr-4">${getStatusBadge(t.status)}</td>
+                    <td class="py-3 pr-4 font-mono text-xs sm:text-sm font-semibold text-on-surface">${t.id}</td>
+                    <td class="py-3 pr-4 text-sm text-on-surface">${t.title}</td>
+                    <td class="py-3 pr-4 text-xs text-on-surface-variant hidden sm:table-cell">${t.category || "—"}</td>
+                    <td class="py-3 text-xs text-on-surface-variant hidden md:table-cell">${t.estTime || "—"}</td>
+                </tr>
+            `).join("");
+
+            document.getElementById("taskCountDisplay").textContent = `Showing ${filtered.length} of ${all.length} tasks`;
+        }
+
+        // --- Activity Log ---
+        function renderActivity() {
+            const container = document.getElementById("activityLog");
+            container.innerHTML = ACTIVITY_LOG.map(a => `
+                <div class="flex items-start gap-3 p-3 rounded-xl bg-surface-container/50 border border-outline-variant/10 task-row-enter">
+                    <span class="text-lg shrink-0 mt-0.5">${a.emoji}</span>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm text-on-surface">${a.text}</p>
+                        <p class="text-xs text-on-surface-variant mt-0.5">${a.time}</p>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        // --- Date ---
+        function renderDate() {
+            const now = new Date();
+            const opts = { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" };
+            const formatted = now.toLocaleDateString("en-IN", opts);
+            document.getElementById("lastUpdated").textContent = formatted;
+            document.getElementById("lastUpdatedShort").textContent = now.toLocaleDateString("en-IN", { day: "numeric", month: "short" });
+        }
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        renderDate();
+        renderOverallProgress();
+        renderCategories();
+        renderTimeEstimates();
+        renderTasks();
+        renderActivity();
+
+        // Auto-refresh every 60 seconds
+        setInterval(() => {
+            renderDate();
+        }, 60000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Janta | Representatives Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=Noto+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#e7bdb4",
+                    "on-tertiary-fixed": "#111d26",
+                    "tertiary-fixed": "#d7e4f0",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#ffe2dc",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#ffede9",
+                    "tertiary-container": "#697681",
+                    "surface-tint": "#bf0813",
+                    "surface-bright": "#fff8f6",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-surface": "#291713",
+                    "primary": "#bb0311",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#fff0ee",
+                    "on-primary-container": "#fffbff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#ffb4ab",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#93000a",
+                    "inverse-surface": "#402b27",
+                    "secondary": "#5e5e5e",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#5d3f39",
+                    "surface-container": "#ffe9e5",
+                    "secondary-container": "#e2e2e2",
+                    "outline": "#926f68",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "surface": "#fff8f6",
+                    "on-tertiary-container": "#fcfcff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#fddbd4",
+                    "primary-container": "#e02a27",
+                    "on-tertiary-fixed-variant": "#3c4852",
+                    "background": "#fff8f6",
+                    "on-secondary-container": "#646464",
+                    "surface-dim": "#f4d3cc",
+                    "tertiary-fixed-dim": "#bbc8d4",
+                    "on-secondary-fixed-variant": "#474747",
+                    "surface-container-highest": "#fddbd4",
+                    "tertiary": "#515e68",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#410002",
+                    "primary-fixed": "#ffdad6",
+                    "on-background": "#291713"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "baseline": "4px",
+                    "gutter": "16px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "container-margin": "16px",
+                    "stack-lg": "24px",
+                    "section-gap": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-md": ["Noto Sans"],
+                    "label-md": ["Noto Sans"],
+                    "title-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Noto Sans"],
+                    "body-lg": ["Noto Sans"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #fff8f6;
+            color: #291713;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e7bdb4;
+            border-radius: 10px;
+        }
+        
+        /* Sidebar Transition styles */
+        #sidebar {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #main-content {
+            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-label, .sidebar-header-text, .user-details, .index-header {
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+        .sidebar-collapsed .nav-label, 
+        .sidebar-collapsed .sidebar-header-text, 
+        .sidebar-collapsed .user-details, 
+        .sidebar-collapsed .index-header,
+        .sidebar-collapsed .live-badge {
+            opacity: 0;
+            visibility: hidden;
+            width: 0;
+            display: none;
+        }
+        .sidebar-collapsed .nav-item {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .sidebar-collapsed .nav-icon {
+            margin-right: 0;
+        }
+        .sidebar-collapsed .profile-card {
+            justify-content: center;
+            padding: 0.75rem;
+        }
+    </style>
+</head>
+<body class="overflow-hidden">
+<!-- Global Layout Shell -->
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Left Sidebar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-stack-lg z-50" id="sidebar">
+<div class="px-6 mb-8 flex items-center justify-between">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="shrink-0 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center font-black text-xl">DJ</div>
+<div class="sidebar-header-text whitespace-nowrap">
+<h1 class="font-headline-lg text-xl font-black text-primary">Digital Janta</h1>
+<p class="font-label-md text-[10px] text-on-surface-variant opacity-70 uppercase tracking-widest">Civic Platform</p>
+</div>
+</div>
+<button class="p-1 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" id="sidebarToggle">
+<span class="material-symbols-outlined transition-transform duration-300" id="toggleIcon">chevron_left</span>
+</button>
+</div>
+<nav class="flex-1 overflow-y-auto custom-scrollbar px-2 space-y-6">
+<ul class="space-y-1">
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="overview.html"><span class="nav-icon text-lg">📊</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Dashboard</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="judiciary.html"><span class="nav-icon text-lg">⚖️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Judiciary</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="legislatures.html"><span class="nav-icon text-lg">🏛️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Legislatures</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="governments.html"><span class="nav-icon text-lg">🏢</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Governments</span></a></li>
+<li><a class="nav-item bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="rep-index.html"><span class="nav-icon text-lg">👥</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Representatives</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="states.html"><span class="nav-icon text-lg">🗺️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">States</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="municipalities.html"><span class="nav-icon text-lg">🏙️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Municipalities</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="parties.html"><span class="nav-icon text-lg">🎯</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Parties</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="elections.html"><span class="nav-icon text-lg">🗳️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Elections</span></a></li>
+</ul>
+<div class="index-section">
+<div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Leadership Indices</div>
+<ul class="space-y-1">
+<li class="relative">
+<a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#senate-minister">
+<span class="nav-icon text-lg">⭐</span>
+<span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Senate Minister</span>
+<span class="live-badge absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-0.5 rounded-full text-[8px] font-black">LIVE</span>
+</a>
+</li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#chief-minister"><span class="nav-icon text-lg">⭐</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Chief Minister</span></a></li>
+</ul>
+</div>
+<div class="utility-section">
+<div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Utilities</div>
+<ul class="space-y-1">
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#support"><span class="nav-icon text-lg">💬</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Support</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#archive"><span class="nav-icon text-lg">📁</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Archive</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="px-4 mt-auto pt-4">
+<div class="profile-card flex items-center gap-3 p-3 bg-surface-container rounded-lg overflow-hidden">
+<div class="shrink-0 w-10 h-10 rounded-full bg-primary-fixed overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtXsHDIJ6hlFfaTYgczIwbYaEmeiAe2vvTlVOq_t6NRmtAM6QDUShuyCZYEn71ewvxvQIVuWPU-JyJ_OGk9kkKxlHYJ8rIdaigdCBZzBNHo3ByuLgmz-YFbTNlLp5K8bb_uw3jByE452J5wXeLOsNRgFwbY1m4dHeuJ0MppjcRHt-0UTBq4wzDnZOOf3qsYEFmpG4Caz1UJum6miL7OWN-YGd3tWlwUH-CyDBaGioIL9L7a0AiophT"/>
+</div>
+<div class="user-details flex-1 overflow-hidden whitespace-nowrap">
+<p class="font-label-md font-bold truncate">Arjun Sharma</p>
+<p class="text-[10px] text-on-surface-variant truncate">Ward Ambassador</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Workspace (Content + Right Sidebar) -->
+<main class="ml-64 flex flex-1 h-screen overflow-hidden" id="main-content">
+<!-- 2. Main Content Area -->
+<section class="flex-1 flex flex-col min-w-0 bg-surface">
+<!-- Top Nav Bar (Internal) -->
+<header class="flex justify-between items-center h-16 px-stack-lg sticky top-0 bg-surface/80 backdrop-blur-md z-40 border-b border-outline-variant">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary" placeholder="Search representatives..." type="text"/>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container rounded-full">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container rounded-full">help</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior government official in a modern office setting, wearing a tailored navy suit. The lighting is soft and corporate, highlighting a friendly yet authoritative expression. The background is slightly blurred, showing architectural details of a modern government building with warm wood and glass." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtNZDR02sc_B00cJST7tjh3tNk4G725XZYtyJJdOsMv4skqfmbxv89DGd_eFaqZ750ob62HjONiPMxV-BnBL_vx8at4j5n4SSsh7IlF2C0h5stskhaNkt6EjZzaq9uQsRDkw3yXcEPhYQkNbXNlET-KX71Q0DgI-hotNknCFQRthbENIxDRMa-sJu360by52g11SoIz_R3ADsW4bAvwxEevA-YI3tn_9kDiW4ErzZnHDENzg_nu8yc"/>
+</div>
+</div>
+</header>
+<!-- Content Container -->
+<div class="flex-1 overflow-y-auto p-stack-lg custom-scrollbar space-y-section-gap">
+<!-- Header Section -->
+<div class="space-y-baseline">
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary">Representatives</h2>
+<p class="font-body-md text-on-surface-variant">Track performance and engagement of your elected officials.</p>
+</div>
+<!-- Filter Bar -->
+<div class="flex flex-wrap items-center gap-stack-md bg-surface-container-lowest p-stack-md rounded-lg shadow-sm border border-outline-variant">
+<div class="flex items-center gap-stack-sm bg-surface-container p-1 rounded-full border border-outline-variant">
+<button class="px-4 py-1.5 rounded-full bg-primary text-on-primary text-label-md font-bold">All Roles</button>
+<button class="px-4 py-1.5 rounded-full text-on-surface-variant hover:bg-surface-container-high text-label-md">MP</button>
+<button class="px-4 py-1.5 rounded-full text-on-surface-variant hover:bg-surface-container-high text-label-md">MLA</button>
+<button class="px-4 py-1.5 rounded-full text-on-surface-variant hover:bg-surface-container-high text-label-md">Mayor</button>
+</div>
+<select class="bg-surface-container border-outline-variant rounded-full text-label-md py-2 px-4 focus:ring-primary focus:border-primary">
+<option>Ward: Select Ward</option>
+<option>Ward 42 - South</option>
+<option>Ward 18 - Central</option>
+</select>
+<select class="bg-surface-container border-outline-variant rounded-full text-label-md py-2 px-4 focus:ring-primary focus:border-primary">
+<option>Status: Active</option>
+<option>Status: Inactive</option>
+</select>
+<select class="bg-surface-container border-outline-variant rounded-full text-label-md py-2 px-4 focus:ring-primary focus:border-primary">
+<option>Tenure: Current</option>
+<option>Tenure: Historical</option>
+</select>
+</div>
+<!-- High-Density Leaderboard -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<div class="md:col-span-2 space-y-stack-md">
+<div class="flex justify-between items-end">
+<h3 class="font-title-lg text-title-lg font-bold">Representative Activity</h3>
+<button class="text-primary text-label-md font-bold flex items-center gap-1">View Full Report <span class="material-symbols-outlined text-sm">open_in_new</span></button>
+</div>
+<!-- Activity Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm">
+<table class="w-full text-left">
+<thead class="bg-surface-container text-on-surface-variant font-label-md text-xs uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4">Official</th>
+<th class="px-6 py-4">Role</th>
+<th class="px-6 py-4">Attendance</th>
+<th class="px-6 py-4">Dev Score</th>
+<th class="px-6 py-4">Budget Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 flex items-center gap-stack-md">
+<div class="h-10 w-10 rounded-full bg-secondary-fixed overflow-hidden ring-2 ring-transparent group-hover:ring-primary/20">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a middle-aged woman politician with a confident smile, wearing glasses and a formal charcoal blazer. The image has a clean, professional lighting setup typical of a high-end corporate photoshoot, against a neutral light-grey background that fits the design's bright minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5HUwY5lFfaQvlM8PAnZM445KvXMRzpdhEjiClVvZsXbL7QQUM24u6os0qqCSahCdp8LHNAVxyAvkbylXzhoVJZE9vvElaH3XfWAkbM35K5011MSFX-Dib9sniavR_yxfvNksJPateubGROPPTLD28DXiPDYSSGwiOONkcHwCPykMVVT3eC0wL_C0KQ9fk0fdSF1l3tjdmacG9EJ9GgmyDbogIYxv9aFioQ9KUsaZUoT8dbjMyZDKc"/>
+</div>
+<div>
+<div class="font-body-md font-bold">Anita R. Desai</div>
+<div class="text-label-sm text-on-surface-variant">INC • South Mumbai</div>
+</div>
+</td>
+<td class="px-6 py-4"><span class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-[10px] font-bold">MP</span></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 bg-outline-variant rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full" style="width: 94%"></div>
+</div>
+<span class="text-body-md font-medium">94%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-primary font-bold">8.4</span>
+</td>
+<td class="px-6 py-4">
+<span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-label-sm font-bold flex items-center w-fit gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Surplus</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 flex items-center gap-stack-md">
+<div class="h-10 w-10 rounded-full bg-secondary-fixed overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Sharp portrait of a charismatic male representative in his 40s, dressed in a traditional white kurta with a modern cut. His expression is engaged and visionary. The background is a brightly lit government assembly hall with clean lines and warm wooden panels, reinforcing a sense of transparency and institutional authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCPeyfFeC0G-ofaj8ihTzPW8sfgasIh9xX9ylCcvIReASp0cQuvV_z619l0RaoTEc0pXFnB-KcIRXxbn0g_NPtUCD6B8NCaEuf9K6K8x7iCmAGZpa30CoUYez3Mu3HwKwv1caHLdTX5zNnJCnG2p_iELDZlY3_w6E046Ggwx95zDLP47npPXRd5J_qQq3TV5JMFbTC1Oh0-OjdZTz0fpqXyQDXMiYuIO0I_il2IiWV49sbhGY7OUWG"/>
+</div>
+<div>
+<div class="font-body-md font-bold">Sanjay Khanna</div>
+<div class="text-label-sm text-on-surface-variant">BJP • Bandra East</div>
+</div>
+</td>
+<td class="px-6 py-4"><span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded text-[10px] font-bold">MLA</span></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 bg-outline-variant rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full" style="width: 78%"></div>
+</div>
+<span class="text-body-md font-medium">78%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-primary font-bold">7.1</span>
+</td>
+<td class="px-6 py-4">
+<span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full text-label-sm font-bold flex items-center w-fit gap-1"><span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span> Balanced</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 flex items-center gap-stack-md">
+<div class="h-10 w-10 rounded-full bg-secondary-fixed overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A dignified older male politician with salt-and-pepper hair, wearing a navy Nehru jacket over a light blue shirt. He has a stern but fair expression. The lighting highlights the fine textures of his clothing and skin, set against a backdrop of a high-tech civic operations center with soft glowing monitors in the distance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfPRvnNhyHCIu0V12N0-ycfoviWJM3xTq-W_9tL9aPnH1AULSKTEVTCyWrk4sKJnVGsaXefM2bk11yS8yazc1bD8grVkOEfojD5w9k5b82O4VhroqSUEyB97th_29nUAoQJDEDe0OEMitEXSpmZSMJ0JyesXIwkctwfzxEr4QAQA_ZP3Y9F31_ENh_7-NdSyDslhYSfQXGP-X6MYwcg5WvAgkzlAn5jbGkWfIJ-gUCyNC06g2A9bfh"/>
+</div>
+<div>
+<div class="font-body-md font-bold">Vikram Sethi</div>
+<div class="text-label-sm text-on-surface-variant">AAP • Andheri West</div>
+</div>
+</td>
+<td class="px-6 py-4"><span class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded text-[10px] font-bold">MAYOR</span></td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 bg-outline-variant rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full" style="width: 98%"></div>
+</div>
+<span class="text-body-md font-medium">98%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-primary font-bold">9.2</span>
+</td>
+<td class="px-6 py-4">
+<span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-label-sm font-bold flex items-center w-fit gap-1"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Deficit</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Top Performers Leaderboard Card -->
+<div class="space-y-stack-md">
+<h3 class="font-title-lg text-title-lg font-bold">Top Performers</h3>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-stack-md space-y-stack-md shadow-sm">
+<div class="flex items-center justify-between p-3 rounded-lg bg-primary-container/10 border border-primary/10">
+<div class="flex items-center gap-3">
+<div class="font-display-lg text-primary/20 font-black italic">01</div>
+<div>
+<p class="font-body-md font-bold">Vikram Sethi</p>
+<p class="text-label-sm text-on-surface-variant">Infrastructure Focus</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-primary font-bold">9.2</div>
+<div class="text-[8px] uppercase font-bold tracking-tighter">Score</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="font-display-lg text-on-surface-variant/10 font-black italic">02</div>
+<div>
+<p class="font-body-md font-bold">Anita R. Desai</p>
+<p class="text-label-sm text-on-surface-variant">Healthcare Reform</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-primary font-bold">8.4</div>
+<div class="text-[8px] uppercase font-bold tracking-tighter">Score</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="font-display-lg text-on-surface-variant/10 font-black italic">03</div>
+<div>
+<p class="font-body-md font-bold">Sanjay Khanna</p>
+<p class="text-label-sm text-on-surface-variant">Urban Planning</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-primary font-bold">7.1</div>
+<div class="text-[8px] uppercase font-bold tracking-tighter">Score</div>
+</div>
+</div>
+<button class="w-full py-2 border-2 border-primary text-primary font-bold rounded-lg text-label-md hover:bg-primary hover:text-on-primary transition-all">Download Full Rankings</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Right Sidebar: Contextual Analytics -->
+<aside class="w-80 bg-surface-container-low border-l border-outline-variant p-stack-lg flex flex-col gap-section-gap overflow-y-auto custom-scrollbar">
+<!-- Constituency Hotspots Widget -->
+<div class="space-y-stack-md">
+<div class="flex items-center justify-between">
+<h4 class="font-title-lg text-body-lg font-bold">Constituency Hotspots</h4>
+<span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+</div>
+<div class="relative h-48 rounded-lg overflow-hidden border border-outline-variant shadow-inner group">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist topographical map of a metropolitan area, styled with a high-contrast palette of cool greys and subtle tertiary blue-grey highlights. Small glowing red pulses indicate 'hotspots' of representative activity or civic issues. The visual style is modern, data-driven, and highly readable, perfectly integrated into a gov-tech dashboard aesthetic." data-location="Mumbai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMsWcdTqDMsaf3gDdm9eefQ1LNlcynEjCfJTQ6AvSy_cVA1tpVQL-Kep25Yzf-AFvRhEMz36Dzm4f8DgwV_FjlMD20tqePaOs5A7h5FRBAmsV5TDSgmWo5qiSSlrqCXa2wULErIJEUgKJRnsmZgc0FOuyJlQGv9uA8E0nOb3PO9SPIlSpZ8VUGuTyaizLJAAbmZdU0DZIVUg3tBRbxYdxX9274gSv1y2pdWUFOXF-HJ_uFbnxAiq-k"/>
+<div class="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute bottom-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold border border-outline-variant shadow-sm uppercase tracking-wide">Live Updates: 12m ago</div>
+</div>
+<p class="text-label-sm text-on-surface-variant italic">High citizen activity detected in South Mumbai (Ward 42). 4 new project proposals pending.</p>
+</div>
+<!-- Global Stats -->
+<div class="space-y-stack-md">
+<h4 class="font-title-lg text-body-lg font-bold">Global Performance</h4>
+<!-- Attendance Trend -->
+<div class="bg-surface-container-lowest p-stack-md rounded-lg border border-outline-variant shadow-sm space-y-stack-sm">
+<div class="flex justify-between items-center">
+<span class="text-label-md font-bold uppercase tracking-widest text-on-surface-variant">Attendance Trends</span>
+<span class="text-green-600 font-bold text-xs flex items-center">+4.2%</span>
+</div>
+<div class="h-16 flex items-end gap-1">
+<div class="flex-1 bg-primary/20 rounded-t h-[40%]"></div>
+<div class="flex-1 bg-primary/30 rounded-t h-[55%]"></div>
+<div class="flex-1 bg-primary/50 rounded-t h-[45%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t h-[70%]"></div>
+<div class="flex-1 bg-primary/60 rounded-t h-[65%]"></div>
+<div class="flex-1 bg-primary rounded-t h-[90%]"></div>
+<div class="flex-1 bg-primary rounded-t h-[85%]"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant font-bold uppercase">
+<span>Mon</span>
+<span>Sun</span>
+</div>
+</div>
+<!-- Approval Ratings -->
+<div class="bg-surface-container-lowest p-stack-md rounded-lg border border-outline-variant shadow-sm space-y-stack-md">
+<div class="flex justify-between items-center">
+<span class="text-label-md font-bold uppercase tracking-widest text-on-surface-variant">Approval Ratings</span>
+<span class="text-primary font-bold text-xs">Avg 68%</span>
+</div>
+<div class="space-y-stack-sm">
+<div class="flex justify-between text-label-sm">
+<span>High Impact (75%+)</span>
+<span class="font-bold">12 Reps</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-green-500 h-full rounded-full" style="width: 45%"></div>
+</div>
+<div class="flex justify-between text-label-sm">
+<span>Moderate (50-75%)</span>
+<span class="font-bold">24 Reps</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-yellow-500 h-full rounded-full" style="width: 70%"></div>
+</div>
+<div class="flex justify-between text-label-sm">
+<span>Low Impact (<50%)</span>
+<span class="font-bold">4 Reps</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary h-full rounded-full" style="width: 15%"></div>
+</div>
+</div>
+</div>
+<!-- Notification Banner -->
+<div class="p-stack-md bg-secondary-fixed-dim/30 border border-outline-variant rounded-lg relative overflow-hidden group cursor-pointer">
+<div class="relative z-10 flex gap-stack-sm">
+<span class="material-symbols-outlined text-primary">warning</span>
+<div>
+<p class="text-body-md font-bold">Upcoming Session</p>
+<p class="text-label-sm">Ward budget review starts tomorrow at 10:00 AM.</p>
+</div>
+</div>
+<div class="absolute right-[-10px] bottom-[-10px] opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-8xl">event</span>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Sidebar Toggle Logic
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const toggleIcon = document.getElementById('toggleIcon');
+        let isCollapsed = false;
+
+        sidebarToggle.addEventListener('click', () => {
+            isCollapsed = !isCollapsed;
+            
+            if (isCollapsed) {
+                sidebar.classList.add('sidebar-collapsed');
+                sidebar.style.width = '80px';
+                mainContent.style.marginLeft = '80px';
+                toggleIcon.style.transform = 'rotate(180deg)';
+            } else {
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.style.width = '16rem';
+                mainContent.style.marginLeft = '16rem';
+                toggleIcon.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        // Simple hover effect for table rows to simulate high-end UI focus
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(4px)';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0px)';
+            });
+        });
+
+        // Initialize active nav state indicator (already handled in static classes, but for live feel)
+        console.log("Representatives Dashboard Ready.");
+    </script>
+</body></html>

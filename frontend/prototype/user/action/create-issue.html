@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DJ - Create Issue</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--primary:#BB0311;--bg:#f5f6f8;--card:#fff;--border:#e5e7eb;--text:#222;
+}
+*{box-sizing:border-box;font-family:Inter,sans-serif}
+body{margin:0;background:var(--bg);padding:40px}
+.container{max-width:850px;margin:auto}
+.brand{text-align:center;margin-bottom:24px}
+.brand h1{color:var(--primary);margin:0}
+.card{background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.08);overflow:hidden}
+.top{height:8px;background:var(--primary)}
+.sec{padding:24px;border-bottom:1px solid var(--border)}
+.sec:last-child{border-bottom:none}
+h3{margin:0 0 8px}
+p{color:#666;margin:0 0 16px}
+label{display:block;font-weight:600;margin:10px 0 6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--border);border-radius:8px}
+textarea{min-height:120px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.radio label,.check label{display:block;font-weight:500;margin:8px 0}
+button{background:var(--primary);color:#fff;border:none;padding:14px 18px;border-radius:8px;font-weight:700;cursor:pointer}
+.note{padding:14px;background:#fff4f4;border-left:4px solid var(--primary);border-radius:6px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="brand">
+<h1>Digital Janata</h1>
+<p>Report a Civic Issue</p>
+</div>
+
+<div class="card">
+<div class="top"></div>
+
+<div class="sec">
+<h3>Issue Category</h3>
+<label>Category *</label>
+<select><option>Select Category</option><option>Garbage</option><option>Pothole</option><option>Water</option><option>Road</option><option>Street Light</option><option>Other</option></select>
+<label>Sub Category</label>
+<select><option>Optional</option></select>
+</div>
+
+<div class="sec">
+<h3>Issue Details</h3>
+<label>Title *</label>
+<input placeholder="Short descriptive title">
+<label>Description *</label>
+<textarea placeholder="Describe the issue..."></textarea>
+</div>
+
+<div class="sec">
+<h3>Location</h3>
+<div class="grid">
+<div><label>Address / Landmark</label><input></div>
+<div><label>PIN Code</label><input></div>
+</div>
+<p><button type="button">📍 Use Current Location</button></p>
+</div>
+
+<div class="sec">
+<h3>Timeline</h3>
+<label>Since when?</label>
+<select>
+<option>Today</option><option>Yesterday</option><option>2–3 Days</option><option>About a Week</option><option>2–4 Weeks</option><option>More than a Month</option><option>Not Sure</option>
+</select>
+<label>Is it still happening?</label>
+<select><option>Yes</option><option>No</option><option>Happens Occasionally</option></select>
+</div>
+
+<div class="sec">
+
+    <h3>Who is affected?</h3>
+
+    <p>
+        Estimate the scale of people impacted by this issue.
+    </p>
+
+    <label>Impact Scope *</label>
+
+    <select>
+
+        <option selected disabled>Select Impact Scope</option>
+
+        <option>👤 Just me</option>
+
+        <option>👨‍👩‍👧 My household / Family</option>
+
+        <option>🏘️ My neighborhood (10–50 people)</option>
+
+        <option>📍 My locality (50–500 people)</option>
+
+        <option>🏛️ Entire Ward</option>
+
+        <option>🌆 Entire City</option>
+
+        <option>🗺️ Multiple Cities</option>
+
+        <option>🏢 Entire District</option>
+
+        <option>🌐 Entire State</option>
+
+        <option>🇮🇳 Nationwide</option>
+
+        <option>❓ Not Sure</option>
+
+    </select>
+
+</div>
+
+<div class="sec">
+<h3>Priority / Impact</h3>
+<p>If this isn't fixed soon, what could happen?</p>
+<select>
+<option>Minor inconvenience</option>
+<option>Health & Hygiene Concern</option>
+<option>Safety Risk</option>
+<option>Environmental Damage</option>
+<option>Traffic Disruption</option>
+<option>Financial Loss</option>
+<option>Public Service Disruption</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="sec">
+<h3>Evidence</h3>
+<input type="file" multiple>
+</div>
+
+<div class="sec">
+<h3>Visibility</h3>
+<div class="radio">
+<label><input type="radio" name="vis"> Public</label>
+<label><input type="radio" name="vis"> Anonymous</label>
+</div>
+<div class="check">
+<label><input type="checkbox"> Allow officials to contact me</label>
+</div>
+</div>
+
+<div class="sec">
+<h3>Previous Complaint (Optional)</h3>
+<label>Already reported to any authority?</label>
+<select><option>No</option><option>Yes</option></select>
+<label>Complaint Number</label>
+<input>
+</div>
+
+<div class="sec">
+<h3>Similar Issues</h3>
+<div class="note">🤖 Similar issues will be checked automatically before submission.</div>
+</div>
+
+<div class="sec" style="text-align:right">
+<button>Submit Issue</button>
+</div>
+
+</div>
+</div>
+</body>
+</html>

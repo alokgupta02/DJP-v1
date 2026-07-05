@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Janta | Overview Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#bb0311",
+                        "primary-container": "#e02a27",
+                        "on-primary-container": "#fffbff",
+                        "background": "#fff8f6",
+                        "surface": "#fff8f6",
+                        "surface-container": "#ffe9e5",
+                        "surface-container-low": "#fff0ee",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#ffe2dc",
+                        "surface-container-highest": "#fddbd4",
+                        "outline-variant": "#e7bdb4",
+                        "on-surface": "#291713",
+                        "on-surface-variant": "#5d3f39",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#d7e4f0",
+                        "secondary-container": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "32px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-lg": ["Hanken Grotesk"],
+                        "body-md": ["Noto Sans"],
+                        "label-md": ["Noto Sans"],
+                        "label-sm": ["Noto Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        body {
+            background-color: #fff8f6;
+            color: #291713;
+            -webkit-font-smoothing: antialiased;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e7bdb4;
+            border-radius: 10px;
+        }
+        .chart-container {
+            position: relative;
+            height: 200px;
+            width: 100%;
+        }
+        
+        /* Sidebar Transition styles */
+        #sidebar {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #main-content {
+            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-label, .sidebar-header-text, .user-details, .index-header {
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+        .sidebar-collapsed .nav-label, 
+        .sidebar-collapsed .sidebar-header-text, 
+        .sidebar-collapsed .user-details, 
+        .sidebar-collapsed .index-header,
+        .sidebar-collapsed .live-badge {
+            opacity: 0;
+            visibility: hidden;
+            width: 0;
+            display: none;
+        }
+        .sidebar-collapsed .nav-item {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .sidebar-collapsed .nav-icon {
+            margin-right: 0;
+        }
+        .sidebar-collapsed .profile-card {
+            justify-content: center;
+            padding: 0.75rem;
+        }
+
+        /* Keep existing content styles */
+        .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+        .metric-card { background: white; padding: 24px; border-radius: 8px; border: 1px solid #e8ecf1; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .metric-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+        .metric-title { font-size: 13px; font-weight: 600; color: #999; text-transform: uppercase; }
+        .metric-change-indicator { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
+        .metric-change-indicator.positive { color: #52c41a; }
+        .metric-change-indicator.negative { color: #f5222d; }
+        .metric-value { font-size: 36px; font-weight: 700; color: #333; margin-bottom: 16px; }
+        .chart-info { font-size: 12px; color: #999; margin-top: 12px; display: flex; align-items: center; justify-content: space-between; }
+        .chart-info-text { flex: 1; }
+        .view-report { color: #bb0311; text-decoration: none; font-weight: 500; cursor: pointer; }
+        .view-report:hover { text-decoration: underline; }
+        .layout-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+        .section { background: white; padding: 24px; border-radius: 8px; border: 1px solid #e8ecf1; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .section-title { font-size: 16px; font-weight: 600; color: #333; text-transform: uppercase; }
+        .view-all-link { color: #bb0311; text-decoration: none; font-size: 12px; font-weight: 500; cursor: pointer; }
+        .insight-item { display: flex; gap: 12px; padding: 16px; border-radius: 6px; margin-bottom: 12px; background-color: #fafbfc; border-left: 4px solid #bb0311; }
+        .insight-item.success { border-left-color: #52c41a; background-color: #f6ffed; }
+        .insight-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; background-color: #ffe7e0; flex-shrink: 0; }
+        .insight-icon.success { background-color: #f6ffed; color: #52c41a; }
+        .insight-content { flex: 1; }
+        .insight-title { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 2px; }
+        .insight-description { font-size: 12px; color: #666; }
+        .generate-btn { background-color: #333; color: white; border: none; padding: 10px 24px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 12px; }
+        .generate-btn:hover { background-color: #1a1a1a; }
+        .table-container { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        thead { border-bottom: 2px solid #f0f0f0; }
+        th { padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 600; color: #999; text-transform: uppercase; background-color: #fafbfc; }
+        td { padding: 16px; border-bottom: 1px solid #f0f0f0; font-size: 13px; color: #333; }
+        tr:last-child td { border-bottom: none; }
+        .status-badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+        .status-optimal { background-color: #f6ffed; color: #52c41a; }
+        .status-critical { background-color: #fff1f0; color: #f5222d; }
+        .budget-bar { display: flex; align-items: center; gap: 8px; }
+        .budget-progress { width: 100px; height: 6px; background-color: #f0f0f0; border-radius: 3px; overflow: hidden; }
+        .budget-fill { height: 100%; background-color: #faad14; border-radius: 3px; }
+        .budget-fill.optimal { background-color: #52c41a; }
+        .budget-fill.critical { background-color: #f5222d; }
+        .user-profile { display: flex; align-items: center; gap: 12px; padding: 16px; background: white; border-radius: 8px; border: 1px solid #e8ecf1; margin-top: 32px; }
+        .user-avatar-large { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 18px; }
+        .user-info { flex: 1; }
+        .user-name { font-size: 14px; font-weight: 600; color: #333; }
+        .user-role { font-size: 12px; color: #999; }
+        .add-btn { width: 40px; height: 40px; border-radius: 50%; background-color: #bb0311; color: white; border: none; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .add-btn:hover { background-color: #93000a; }
+        .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+        .page-title-section h1 { font-size: 28px; font-weight: 700; color: #333; margin-bottom: 4px; }
+        .page-title-section p { font-size: 14px; color: #999; }
+        .page-controls { display: flex; align-items: center; gap: 16px; }
+        .date-range-btn { background: white; border: 1px solid #e8ecf1; padding: 8px 16px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 500; color: #666; }
+        .date-range-btn:hover { background-color: #f5f6f8; }
+        .date-range-btn.active { background-color: #bb0311; color: white; border-color: #bb0311; }
+        .notification-bell { width: 32px; height: 32px; border-radius: 50%; background-color: #f5f6f8; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; position: relative; }
+        .notification-bell::after { content: ''; position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background-color: #bb0311; border-radius: 50%; }
+    </style>
+</head>
+<body class="overflow-hidden h-screen flex">
+<!-- Left Sidebar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-stack-lg z-50" id="sidebar">
+<div class="px-6 mb-8 flex items-center justify-between">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="shrink-0 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center font-black text-xl">DJ</div>
+<div class="sidebar-header-text whitespace-nowrap">
+<h1 class="font-headline-lg text-xl font-black text-primary">Digital Janta</h1>
+<p class="font-label-md text-[10px] text-on-surface-variant opacity-70 uppercase tracking-widest">Civic Platform</p>
+</div>
+</div>
+<button class="p-1 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" id="sidebarToggle">
+<span class="material-symbols-outlined transition-transform duration-300" id="toggleIcon">chevron_left</span>
+</button>
+</div>
+<nav class="flex-1 overflow-y-auto custom-scrollbar px-2 space-y-6">
+<ul class="space-y-1">
+<li><a class="nav-item bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="overview.html"><span class="nav-icon text-lg">📊</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Dashboard</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="judiciary.html"><span class="nav-icon text-lg">⚖️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Judiciary</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="legislatures.html"><span class="nav-icon text-lg">🏛️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Legislatures</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="governments.html"><span class="nav-icon text-lg">🏢</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Governments</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="rep-index.html"><span class="nav-icon text-lg">👥</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Representatives</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="states.html"><span class="nav-icon text-lg">🗺️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">States</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="municipalities.html"><span class="nav-icon text-lg">🏙️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Municipalities</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="parties.html"><span class="nav-icon text-lg">🎯</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Parties</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="elections.html"><span class="nav-icon text-lg">🗳️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Elections</span></a></li>
+</ul>
+<div class="index-section">
+<div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Leadership Indices</div>
+<ul class="space-y-1">
+<li class="relative">
+<a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#senate-minister">
+<span class="nav-icon text-lg">⭐</span>
+<span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Senate Minister</span>
+<span class="live-badge absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-0.5 rounded-full text-[8px] font-black">LIVE</span>
+</a>
+</li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#chief-minister"><span class="nav-icon text-lg">⭐</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Chief Minister</span></a></li>
+</ul>
+</div>
+<div class="utility-section">
+<div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Utilities</div>
+<ul class="space-y-1">
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#support"><span class="nav-icon text-lg">💬</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Support</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#archive"><span class="nav-icon text-lg">📁</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Archive</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="px-4 mt-auto pt-4">
+<div class="profile-card flex items-center gap-3 p-3 bg-surface-container rounded-lg overflow-hidden">
+<div class="shrink-0 w-10 h-10 rounded-full bg-primary-fixed overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtXsHDIJ6hlFfaTYgczIwbYaEmeiAe2vvTlVOq_t6NRmtAM6QDUShuyCZYEn71ewvxvQIVuWPU-JyJ_OGk9kkKxlHYJ8rIdaigdCBZzBNHo3ByuLgmz-YFbTNlLp5K8bb_uw3jByE452J5wXeLOsNRgFwbY1m4dHeuJ0MppjcRHt-0UTBq4wzDnZOOf3qsYEFmpG4Caz1UJum6miL7OWN-YGd3tWlwUH-CyDBaGioIL9L7a0AiophT"/>
+</div>
+<div class="user-details flex-1 overflow-hidden whitespace-nowrap">
+<p class="font-label-md font-bold truncate">Arjun Sharma</p>
+<p class="text-[10px] text-on-surface-variant truncate">Ward Ambassador</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-64 flex flex-col h-screen" id="main-content">
+<!-- Top Header -->
+<header class="sticky top-0 z-40 flex items-center justify-between px-gutter w-full h-16 bg-surface/95 backdrop-blur-sm border-b border-outline-variant">
+<div class="flex items-center gap-stack-lg w-1/2">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-60">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-high rounded-full border-none focus:ring-2 focus:ring-primary text-body-md transition-all" placeholder="Search dashboard data..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest rounded-full border border-outline-variant hover:bg-surface-container-high transition-colors opacity-100">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="font-label-md font-bold text-sm">Ward 42 — South Delhi</span>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</button>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<div class="w-10 h-10 rounded-full bg-secondary-container overflow-hidden cursor-pointer hover:ring-2 hover:ring-primary/20 transition-all">
+<span class="material-symbols-outlined flex items-center justify-center h-full text-on-secondary-container">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-8">
+                <!-- PAGE HEADER -->
+                <div class="page-header">
+                    <div class="page-title-section">
+                        <h1>Overview Dashboard</h1>
+                        <p>Real-time governance performance metrics</p>
+                    </div>
+
+                    <div class="page-controls">
+                        <button class="date-range-btn active">Last 3 Months</button>
+                        <button class="date-range-btn">Year</button>
+                        <div class="notification-bell">🔔</div>
+                    </div>
+                </div>
+
+                <!-- METRICS GRID -->
+                <div class="metrics-grid">
+                    <!-- Total Case Filings -->
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Total Case Filings</span>
+                            <span class="metric-change-indicator negative">↓ 8%</span>
+                        </div>
+                        <div class="metric-value">$252,536.25</div>
+                        <div class="chart-container">
+                            <canvas id="chartCaseFilings"></canvas>
+                        </div>
+                        <div class="chart-info">
+                            <span class="chart-info-text">System operating within optimal efficiency</span>
+                            <a href="#" class="view-report">View report →</a>
+                        </div>
+                    </div>
+
+                    <!-- Active Proceedings -->
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Active Proceedings</span>
+                            <span class="metric-change-indicator positive">↑ 4%</span>
+                        </div>
+                        <div class="metric-value">28,192</div>
+                        <div class="chart-container">
+                            <canvas id="chartActiveProceedings"></canvas>
+                        </div>
+                        <div class="chart-info">
+                            <span class="chart-info-text">Consistent growth in case disposal</span>
+                            <a href="#" class="view-report">View report →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TWO COLUMN LAYOUT -->
+                <div class="layout-two-col">
+                    <!-- CRITICAL INSIGHTS -->
+                    <div class="section">
+                        <div class="section-header">
+                            <div class="section-title">Critical Insights</div>
+                        </div>
+
+                        <div class="insight-item">
+                            <div class="insight-icon">⚠️</div>
+                            <div class="insight-content">
+                                <div class="insight-title">Legislative Backlog</div>
+                                <div class="insight-description">Increased by 12% in the last fiscal quarter</div>
+                            </div>
+                        </div>
+
+                        <div class="insight-item success">
+                            <div class="insight-icon success">✓</div>
+                            <div class="insight-content">
+                                <div class="insight-title">Representative Attendance</div>
+                                <div class="insight-description">Reached record 94% across all states</div>
+                            </div>
+                        </div>
+
+                        <button class="generate-btn">Generate Summary</button>
+                    </div>
+
+                    <!-- RECENT DISBURSEMENTS -->
+                    <div class="section">
+                        <div class="section-header">
+                            <div class="section-title">Recent Disbursements</div>
+                            <div class="view-all-link">View All →</div>
+                        </div>
+
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>District</th>
+                                        <th>Budget</th>
+                                        <th>Utilization</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Maharashtra / Mumbai</td>
+                                        <td>$1.24M</td>
+                                        <td>
+                                            <div class="budget-bar">
+                                                <div class="budget-progress">
+                                                    <div class="budget-fill optimal" style="width: 85%;"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-badge status-optimal">Optimal</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Delhi / New Delhi</td>
+                                        <td>$0.98M</td>
+                                        <td>
+                                            <div class="budget-bar">
+                                                <div class="budget-progress">
+                                                    <div class="budget-fill optimal" style="width: 72%;"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-badge status-optimal">Optimal</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Karnataka / Bengaluru</td>
+                                        <td>$2.05M</td>
+                                        <td>
+                                            <div class="budget-bar">
+                                                <div class="budget-progress">
+                                                    <div class="budget-fill critical" style="width: 45%;"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-badge status-critical">Critical</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- USER PROFILE -->
+                <div class="user-profile">
+                    <div class="user-avatar-large">AA</div>
+                    <div class="user-info">
+                        <div class="user-name">A. Administrator</div>
+                        <div class="user-role">Admin Console</div>
+                    </div>
+                    <button class="add-btn">+</button>
+                </div>
+
+    </div>
+</main>
+
+    <script>
+        // Sidebar Toggle Logic
+        (function() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const toggleIcon = document.getElementById('toggleIcon');
+            let isCollapsed = false;
+
+            sidebarToggle.addEventListener('click', () => {
+                isCollapsed = !isCollapsed;
+                
+                if (isCollapsed) {
+                    sidebar.classList.add('sidebar-collapsed');
+                    sidebar.style.width = '80px';
+                    mainContent.style.marginLeft = '80px';
+                    toggleIcon.style.transform = 'rotate(180deg)';
+                } else {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.style.width = '16rem';
+                    mainContent.style.marginLeft = '16rem';
+                    toggleIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+        })();
+
+        // Chart 1: Total Case Filings
+        const ctx1 = document.getElementById('chartCaseFilings').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Jun', 'Jul', 'Aug'],
+                datasets: [{
+                    label: 'Case Filings',
+                    data: [65, 72, 58],
+                    borderColor: '#ff6b5b',
+                    backgroundColor: 'rgba(255, 107, 91, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        display: false,
+                        beginAtZero: true
+                    },
+                    x: {
+                        display: true,
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                size: 11
+                            },
+                            color: '#999'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 2: Active Proceedings
+        const ctx2 = document.getElementById('chartActiveProceedings').getContext('2d');
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Jun', 'Jul', 'Aug'],
+                datasets: [{
+                    label: 'Active Proceedings',
+                    data: [45, 50, 55],
+                    borderColor: '#ff6b5b',
+                    backgroundColor: 'rgba(255, 107, 91, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        display: false,
+                        beginAtZero: true
+                    },
+                    x: {
+                        display: true,
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                size: 11
+                            },
+                            color: '#999'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Date range button functionality
+        const dateRangeButtons = document.querySelectorAll('.date-range-btn');
+        dateRangeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                dateRangeButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+
+    </script>
+</body>
+</html>

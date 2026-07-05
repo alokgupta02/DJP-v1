@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DJ • Complete Profile</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Inter, sans-serif;
+      }
+
+      body {
+        background: #f5f6f8;
+        color: #333;
+      }
+
+      .wrapper {
+        max-width: 1400px;
+        margin: auto;
+        padding: 40px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 28px;
+      }
+
+      .logo {
+        font-size: 26px;
+        font-weight: 800;
+        color: #ff6b5b;
+      }
+
+      .step {
+        font-weight: 700;
+        letter-spacing: 2px;
+        font-size: 13px;
+        color: #999;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 32px;
+      }
+
+      .sidebar {
+        background: white;
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+      }
+
+      .small {
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #999;
+      }
+
+      .sidebar h2 {
+        margin: 12px 0 30px;
+        font-size: 34px;
+        line-height: 1.15;
+      }
+
+      .progress {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .item {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      .number {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        background: #ff6b5b;
+        color: white;
+      }
+
+      .gray {
+        background: #ececec;
+        color: #777;
+      }
+
+      .label {
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .sub {
+        font-size: 13px;
+        margin-top: 4px;
+        color: #777;
+      }
+
+      .btn {
+        margin-top: 40px;
+        width: 100%;
+        padding: 15px;
+        background: #ff6b5b;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .card {
+        background: white;
+        padding: 40px;
+        border-radius: 18px;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+      }
+
+      .section {
+        font-size: 13px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        color: #888;
+        margin-bottom: 30px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .field.full {
+        grid-column: 1/-1;
+      }
+
+      label {
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+        color: #666;
+      }
+
+      input,
+      select {
+        height: 54px;
+        padding: 0 16px;
+        border: 1px solid #e6e6e6;
+        border-radius: 10px;
+        font-size: 15px;
+        outline: none;
+      }
+
+      input:focus {
+        border-color: #ff6b5b;
+      }
+
+      .helper {
+        font-size: 13px;
+        margin-top: 8px;
+        color: #52c41a;
+        font-weight: 600;
+      }
+
+      .gender {
+        display: flex;
+        gap: 12px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+
+      .gender button {
+        padding: 14px 26px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        background: white;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .gender .active {
+        background: #ff6b5b;
+        border-color: #ff6b5b;
+        color: white;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="logo">Digital Janata</div>
+
+        <div class="step">STEP 01 / 03</div>
+      </div>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="small">Citizen Onboarding</div>
+
+          <h2>Complete your DJ Profile</h2>
+
+          <div class="progress">
+            <div class="item">
+              <div class="number">1</div>
+
+              <div>
+                <div class="label">Basic Information</div>
+
+                <div class="sub">Who are you?</div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="number gray">2</div>
+
+              <div>
+                <div class="label">Location</div>
+
+                <div class="sub">Where do you live?</div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="number gray">3</div>
+
+              <div>
+                <div class="label">About You</div>
+
+                <div class="sub">Interests & profile</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn">Continue →</button>
+        </aside>
+
+        <main class="card">
+          <div class="section">01 • BASIC INFORMATION</div>
+
+          <div class="grid">
+            <div class="field full">
+              <label>Username *</label>
+
+              <input type="text" placeholder="alokgupta" />
+
+              <div class="helper">✓ Username available</div>
+            </div>
+
+            <div class="field">
+              <label>Display Name *</label>
+
+              <input type="text" placeholder="Alok Gupta" />
+            </div>
+
+            <div class="field">
+              <label>Email *</label>
+
+              <input type="email" placeholder="alok@email.com" />
+            </div>
+
+            <div class="field">
+              <label>Date of Birth *</label>
+
+              <input type="date" />
+            </div>
+
+            <div class="field">
+              <label>Gender</label>
+
+              <div class="gender">
+                <button class="active">Male</button>
+
+                <button>Female</button>
+
+                <button>Non-Binary</button>
+
+                <button>Prefer not to say</button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

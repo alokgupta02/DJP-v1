@@ -1,0 +1,1858 @@
+<!doctype html>
+<html class="light" lang="en" style="">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Digital Janta | Citizen Feed</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#e02a27",
+              "on-secondary-fixed-variant": "#474747",
+              "inverse-primary": "#ffb4ab",
+              background: "#fff8f6",
+              "surface-container": "#ffe9e5",
+              "secondary-fixed": "#e2e2e2",
+              "surface-container-highest": "#fddbd4",
+              "on-secondary-container": "#646464",
+              tertiary: "#515e68",
+              "on-tertiary-fixed": "#111d26",
+              "on-surface": "#291713",
+              "primary-fixed": "#ffdad6",
+              "outline-variant": "#e7bdb4",
+              "on-tertiary-fixed-variant": "#3c4852",
+              "on-tertiary-container": "#fcfcff",
+              "on-background": "#291713",
+              primary: "#bb0311",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#ffe2dc",
+              "inverse-surface": "#402b27",
+              secondary: "#5e5e5e",
+              "primary-fixed-dim": "#ffb4ab",
+              "tertiary-fixed": "#d7e4f0",
+              "on-surface-variant": "#5d3f39",
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#410002",
+              "on-error": "#ffffff",
+              "on-primary-container": "#fffbff",
+              "tertiary-fixed-dim": "#bbc8d4",
+              outline: "#926f68",
+              "surface-bright": "#fff8f6",
+              "surface-tint": "#bf0813",
+              "secondary-container": "#e2e2e2",
+              "tertiary-container": "#697681",
+              "surface-container-low": "#fff0ee",
+              "on-primary-fixed-variant": "#93000a",
+              error: "#ba1a1a",
+              "inverse-on-surface": "#ffede9",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#fddbd4",
+              "secondary-fixed-dim": "#c6c6c6",
+              "surface-dim": "#f4d3cc",
+              surface: "#fff8f6",
+              "on-secondary-fixed": "#1b1b1b",
+              "on-tertiary": "#ffffff",
+              "on-primary": "#ffffff",
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "2rem",
+              xl: "3rem",
+              full: "9999px",
+            },
+            spacing: {
+              "section-gap": "32px",
+              "stack-lg": "24px",
+              "stack-sm": "8px",
+              "stack-md": "16px",
+              gutter: "16px",
+              baseline: "4px",
+              "container-margin": "16px",
+            },
+            fontFamily: {
+              "headline-lg": ["Hanken Grotesk"],
+              "label-sm": ["Noto Sans"],
+              "body-lg": ["Noto Sans"],
+              "title-lg": ["Hanken Grotesk"],
+              "display-lg": ["Hanken Grotesk"],
+              "body-md": ["Noto Sans"],
+              "label-md": ["Noto Sans"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+      }
+
+      body {
+        background-color: #fff8f6;
+        color: #291713;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #e7bdb4;
+        border-radius: 10px;
+      }
+
+      .fab-expand {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .glass-card {
+        background: rgba(255, 248, 246, 0.8);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(146, 111, 104, 0.1);
+      }
+
+      #sidebar {
+        transition: width 0.3s ease;
+      }
+
+      .sidebar-collapsed .nav-label,
+      .sidebar-collapsed .sidebar-header-text {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body class="font-body-md overflow-hidden h-screen flex">
+    <aside
+      class="fixed left-0 top-0 h-full w-64 border-r border-outline-variant bg-surface flex flex-col z-[60] transition-all duration-300"
+      id="sidebar"
+    >
+      <div class="p-6">
+        <div class="flex items-center gap-3 mb-8">
+          <div
+            class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center shrink-0"
+          >
+            <span
+              class="material-symbols-outlined text-on-primary-container"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >account_balance</span
+            >
+          </div>
+          <div class="sidebar-header-text min-w-0">
+            <h1 class="font-title-lg font-bold text-primary truncate">
+              Digital Janta
+            </h1>
+            <p class="font-label-sm text-on-surface-variant truncate">
+              Civic Platform
+            </p>
+          </div>
+          <button
+            class="shrink-0 p-1.5 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant"
+            id="sidebarToggle"
+          >
+            <span
+              class="material-symbols-outlined transition-transform duration-300"
+              id="toggleIcon"
+              >chevron_left</span
+            >
+          </button>
+        </div>
+        <nav class="space-y-1">
+          <!-- Feed (ACTIVE) -->
+          <a
+            class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-r-full font-bold nav-item"
+            href="#"
+          >
+            <span
+              class="material-symbols-outlined nav-icon"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >dynamic_feed</span
+            >
+            <span class="font-body-md nav-label">Home/Feed</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item"
+            href="issues.html"
+          >
+            <span class="material-symbols-outlined nav-icon"
+              >report_problem</span
+            >
+            <span class="font-body-md nav-label">Issues</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item"
+            href="discussion.html"
+          >
+            <span class="material-symbols-outlined nav-icon">forum</span>
+            <span class="font-body-md nav-label">Discussions</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item"
+            href="polls.html"
+          >
+            <span class="material-symbols-outlined nav-icon">ballot</span>
+            <span class="font-body-md nav-label">Polls</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item"
+            href="#"
+          >
+            <span class="material-symbols-outlined nav-icon">map</span>
+            <span class="font-body-md nav-label">Map</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item"
+            href="insights.html"
+          >
+            <span class="material-symbols-outlined nav-icon">analytics</span>
+            <span class="font-body-md nav-label">Insights</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item"
+            href="profile.html"
+          >
+            <span class="material-symbols-outlined nav-icon">person</span>
+            <span class="font-body-md nav-label">Profile</span>
+          </a>
+        </nav>
+      </div>
+      <div class="mt-auto p-6">
+        <button
+          class="w-full py-4 px-4 bg-primary text-on-primary font-bold rounded-full flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-lg"
+        >
+          <span class="material-symbols-outlined">add_circle</span>
+          <span class="nav-label">Report Issue</span>
+        </button>
+      </div>
+    </aside>
+    <!-- Main Content Area -->
+    <main class="flex-1 ml-64 flex flex-col h-screen" id="main-content">
+      <!-- TopNavBar (JSON Derived) -->
+      <!-- ========================================================= -->
+      <!-- DJ Unified Feed Toolbar -->
+      <!-- ========================================================= -->
+
+      <div
+        class="bg-surface-container-lowest border border-outline-variant p-4 mb-6"
+      >
+        <!-- Row 1 -->
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Search -->
+          <div class="flex-1 min-w-[260px]">
+            <div class="relative">
+              <span
+                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
+              >
+                search
+              </span>
+
+              <input
+                type="text"
+                placeholder="Search issues, discussions or polls..."
+                class="w-full h-11 rounded-full border border-outline-variant bg-surface-container pl-11 pr-4 outline-none focus:border-primary"
+              />
+            </div>
+          </div>
+
+          <!-- Scope -->
+
+          <button
+            class="flex items-center gap-2 h-11 px-4 rounded-full border border-outline-variant hover:bg-surface-container"
+          >
+            <span class="material-symbols-outlined text-primary">
+              location_on
+            </span>
+
+            <span class="font-medium"> My Area </span>
+
+            <span class="material-symbols-outlined"> expand_more </span>
+          </button>
+
+          <!-- Sort -->
+
+          <button
+            class="flex items-center gap-2 h-11 px-4 rounded-full border border-outline-variant hover:bg-surface-container"
+          >
+            <span class="material-symbols-outlined">
+              local_fire_department
+            </span>
+
+            Trending
+
+            <span class="material-symbols-outlined"> expand_more </span>
+          </button>
+        </div>
+        <!-- Row 3 -->
+
+        <div class="mt-3 flex flex-wrap gap-2">
+          <button
+            class="px-3 py-1.5 rounded-full bg-primary-container text-on-primary-container text-sm"
+          >
+            All Topics
+          </button>
+
+          <button
+            class="px-3 py-1.5 rounded-full border border-outline-variant text-sm"
+          >
+            🛣 Roads
+          </button>
+
+          <button
+            class="px-3 py-1.5 rounded-full border border-outline-variant text-sm"
+          >
+            🗑 Garbage
+          </button>
+
+          <button
+            class="px-3 py-1.5 rounded-full border border-outline-variant text-sm"
+          >
+            💧 Water
+          </button>
+
+          <button
+            class="px-3 py-1.5 rounded-full border border-outline-variant text-sm"
+          >
+            ⚡ Electricity
+          </button>
+
+          <button
+            class="px-3 py-1.5 rounded-full border border-outline-variant text-sm"
+          >
+            ⚖ Judiciary
+          </button>
+
+          <button
+            class="px-3 py-1.5 rounded-full border border-outline-variant text-sm"
+          >
+            📚 Education
+          </button>
+
+          <button
+            class="px-3 py-1.5 rounded-full border border-outline-variant text-sm"
+          >
+            🏥 Healthcare
+          </button>
+
+          <button
+            class="px-3 py-1.5 rounded-full border border-outline-variant text-sm"
+          >
+            🚔 Police
+          </button>
+
+          <button
+            class="px-3 py-1.5 rounded-full border border-outline-variant text-sm"
+          >
+            🌱 Environment
+          </button>
+
+          <button
+            class="px-3 py-1.5 rounded-full border border-outline-variant text-sm"
+          >
+            📈 Economy
+          </button>
+
+          <button
+            class="px-3 py-1.5 rounded-full border border-outline-variant text-sm"
+          >
+            ➕ More
+          </button>
+        </div>
+
+        <!-- Row 2 -->
+
+        <div class="mt-4 flex flex-wrap items-center gap-2">
+          <!-- Content -->
+
+          <button
+            class="px-4 py-2 rounded-full bg-primary text-on-primary font-semibold"
+          >
+            All
+          </button>
+
+          <button
+            class="px-4 py-2 rounded-full bg-surface-container hover:bg-surface-container-high"
+          >
+            Issues
+          </button>
+
+          <button
+            class="px-4 py-2 rounded-full bg-surface-container hover:bg-surface-container-high"
+          >
+            Discussions
+          </button>
+
+          <button
+            class="px-4 py-2 rounded-full bg-surface-container hover:bg-surface-container-high"
+          >
+            Polls
+          </button>
+
+          <button
+            class="px-4 py-2 rounded-full bg-surface-container hover:bg-surface-container-high"
+          >
+            Petitions
+          </button>
+        </div>
+
+        
+
+        <!-- Current Context -->
+
+        <div
+          class="mt-4 flex flex-wrap items-center gap-2 text-sm text-on-surface-variant border-t border-outline-variant pt-3"
+        >
+          <span class="font-medium"> Showing: </span>
+
+          <span
+            class="px-2 py-1 rounded bg-primary-container text-on-primary-container"
+          >
+            All
+          </span>
+
+          <span
+            class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container"
+          >
+            📍 My Area
+          </span>
+
+          <span
+            class="px-2 py-1 rounded bg-tertiary-container text-on-tertiary-container"
+          >
+            All Topics
+          </span>
+
+          <span class="px-2 py-1 rounded bg-surface-container">
+            🔥 Trending
+          </span>
+
+          <span class="ml-auto text-xs"> 124 results </span>
+        </div>
+      </div>
+      <!-- Scrollable Feed & Right Sidebar Layout -->
+      <div class="flex-1 flex overflow-hidden">
+        <!-- Center Column (Feed) -->
+        <div
+          class="flex-1 overflow-y-auto custom-scrollbar px-section-gap py-stack-lg"
+        >
+          <div class="max-w-3xl mx-auto space-y-stack-lg pb-32">
+            <!-- Feed Items -->
+            <!-- 1. Official Announcement -->
+
+            <!-- DJ Issue Card - Pothole -->
+            <a
+              href="../issues/issue-detail-pothole.html"
+              class="block bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg hover:border-primary transition-all duration-300"
+            >
+              <div class="flex gap-5">
+                <!-- ================= LEFT ================= -->
+                <div class="flex-1">
+                  <div class="flex items-start gap-4">
+                    <!-- Issue Icon -->
+                    <div class="relative shrink-0">
+                      <div
+                        class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center"
+                      >
+                        <span
+                          class="material-symbols-outlined text-on-primary-container"
+                        >
+                          landslide
+                        </span>
+                      </div>
+                      <!-- Verified -->
+                      <div
+                        class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-cyan-500 flex items-center justify-center"
+                      >
+                        <span
+                          class="material-symbols-outlined text-white text-[14px]"
+                        >
+                          check
+                        </span>
+                      </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="flex-1">
+                      <!-- Header -->
+                      <div class="flex items-start justify-between gap-4">
+                        <div>
+                          <div class="flex items-center gap-2 mb-1">
+                            <span
+                              class="text-xs uppercase tracking-wider font-semibold text-primary"
+                            >
+                              Road
+                            </span>
+                            <span
+                              class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-[10px] font-bold uppercase"
+                            >
+                              Critical
+                            </span>
+                          </div>
+                          <h3
+                            class="font-bold text-lg text-on-surface leading-snug"
+                          >
+                            Large Pothole Near Balewadi High Street Junction
+                          </h3>
+                        </div>
+                      </div>
+                      <!-- Metadata -->
+                      <div
+                        class="flex flex-wrap items-center gap-4 mt-2 text-sm text-on-surface-variant"
+                      >
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            location_on
+                          </span>
+                          Balewadi High Street • Ward 23
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            near_me
+                          </span>
+                          140 m
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            schedule
+                          </span>
+                          2h
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            task_alt
+                          </span>
+                          Open
+                        </div>
+                      </div>
+                      <!-- Engagement -->
+                      <div
+                        class="flex flex-wrap items-center gap-6 mt-2 text-sm"
+                      >
+                        <!-- Support -->
+                        <button
+                          class="flex items-center gap-1.5 text-primary hover:opacity-80 transition"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            thumb_up
+                          </span>
+                          <span class="font-semibold">96</span>
+                        </button>
+                        <!-- Comments -->
+                        <button
+                          class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            forum
+                          </span>
+                          <span>24</span>
+                        </button>
+                        <!-- Citizens Affected -->
+                        <div
+                          class="flex items-center gap-1.5 text-on-surface-variant"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            groups
+                          </span>
+                          <span>500+</span>
+                        </div>
+                        <!-- Government Level -->
+                        <div
+                          class="flex items-center gap-1.5 text-on-surface-variant"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            account_balance
+                          </span>
+                          <span>Ward</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ================= RIGHT ================= -->
+                <div class="relative shrink-0">
+                  <img
+                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=350&h=240&fit=crop"
+                    alt="Pothole evidence"
+                    class="w-48 h-36 rounded-xl object-cover border border-outline-variant"
+                  />
+                  <!-- Photo Count -->
+                  <div
+                    class="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded-full flex items-center gap-1 text-xs"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">
+                      photo_library
+                    </span>
+                    14
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- DJ Issue Card Garbage-->
+            <a
+              href="../issues/issue-detail-garbage.html"
+              class="block bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg hover:border-primary transition-all duration-300"
+            >
+              <div class="flex gap-5">
+                <!-- ================= LEFT ================= -->
+                <div class="flex-1">
+                  <div class="flex items-start gap-4">
+                    <!-- Issue Icon -->
+                    <div class="relative shrink-0">
+                      <div
+                        class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center"
+                      >
+                        <span
+                          class="material-symbols-outlined text-on-primary-container"
+                        >
+                          delete
+                        </span>
+                      </div>
+                      <!-- Verification -->
+                      <div
+                        class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-cyan-500 flex items-center justify-center"
+                      >
+                        <span
+                          class="material-symbols-outlined text-white text-[14px]"
+                        >
+                          check
+                        </span>
+                      </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="flex-1">
+                      <!-- Header -->
+                      <div class="flex items-start justify-between gap-4">
+                        <div>
+                          <div class="flex items-center gap-2 mb-1">
+                            <span
+                              class="text-xs uppercase tracking-wider font-semibold text-primary"
+                            >
+                              Garbage
+                            </span>
+                            <span
+                              class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-[10px] font-bold uppercase"
+                            >
+                              High
+                            </span>
+                          </div>
+                          <h3
+                            class="font-bold text-lg text-on-surface leading-snug"
+                          >
+                            Garbage Dump on Balewadi Street near Parke Serene
+                          </h3>
+                        </div>
+                      </div>
+                      <!-- Metadata -->
+                      <div
+                        class="flex flex-wrap items-center gap-4 mt-2 text-sm text-on-surface-variant"
+                      >
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            location_on
+                          </span>
+                          Balewadi • Ward 23
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            near_me
+                          </span>
+                          780 m
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            schedule
+                          </span>
+                          15h
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            task_alt
+                          </span>
+                          Open
+                        </div>
+                      </div>
+                      <!-- Engagement -->
+                      <div
+                        class="flex flex-wrap items-center gap-6 mt-2 text-sm"
+                      >
+                        <!-- Support -->
+                        <button
+                          class="flex items-center gap-1.5 text-primary hover:opacity-80 transition"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            thumb_up
+                          </span>
+                          <span class="font-semibold">42</span>
+                        </button>
+                        <!-- Comments -->
+                        <button
+                          class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            forum
+                          </span>
+                          <span>18</span>
+                        </button>
+                        <!-- Citizens Affected -->
+                        <div
+                          class="flex items-center gap-1.5 text-on-surface-variant"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            groups
+                          </span>
+                          <span>120–200</span>
+                        </div>
+                        <!-- Government Level -->
+                        <div
+                          class="flex items-center gap-1.5 text-on-surface-variant"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            account_balance
+                          </span>
+                          <span>Ward</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ================= RIGHT ================= -->
+                <div class="relative shrink-0">
+                  <img
+                    src="https://images.unsplash.com/photo-1503596476-1c12a8ba09a9?w=350&h=240&fit=crop"
+                    alt="Issue Evidence"
+                    class="w-48 h-36 rounded-xl object-cover border border-outline-variant"
+                  />
+                  <!-- Photo Count -->
+                  <div
+                    class="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded-full flex items-center gap-1 text-xs"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">
+                      photo_library
+                    </span>
+                    6
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- DJ Issue Card - Water Leakage -->
+            <a
+              href="../issues/issue-detail-water.html"
+              class="block bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg hover:border-primary transition-all duration-300"
+            >
+              <div class="flex gap-5">
+                <!-- ================= LEFT ================= -->
+                <div class="flex-1">
+                  <div class="flex items-start gap-4">
+                    <!-- Issue Icon -->
+                    <div class="relative shrink-0">
+                      <div
+                        class="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center"
+                      >
+                        <span class="material-symbols-outlined text-cyan-700">
+                          water_drop
+                        </span>
+                      </div>
+                      <!-- Verified -->
+                      <div
+                        class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-cyan-500 flex items-center justify-center"
+                      >
+                        <span
+                          class="material-symbols-outlined text-white text-[14px]"
+                        >
+                          check
+                        </span>
+                      </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="flex-1">
+                      <!-- Header -->
+                      <div class="flex items-start justify-between gap-4">
+                        <div>
+                          <div class="flex items-center gap-2 mb-1">
+                            <span
+                              class="text-xs uppercase tracking-wider font-semibold text-primary"
+                            >
+                              Water Supply
+                            </span>
+                            <span
+                              class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-[10px] font-bold uppercase"
+                            >
+                              High
+                            </span>
+                          </div>
+                          <h3
+                            class="font-bold text-lg text-on-surface leading-snug"
+                          >
+                            Water Main Leakage on Main Street
+                          </h3>
+                        </div>
+                      </div>
+                      <!-- Metadata -->
+                      <div
+                        class="flex flex-wrap items-center gap-4 mt-2 text-sm text-on-surface-variant"
+                      >
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            location_on
+                          </span>
+                          Main Street • Ward 12
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            near_me
+                          </span>
+                          320 m
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            schedule
+                          </span>
+                          5h
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[18px]">
+                            task_alt
+                          </span>
+                          Open
+                        </div>
+                      </div>
+                      <!-- Engagement -->
+                      <div
+                        class="flex flex-wrap items-center gap-6 mt-2 text-sm"
+                      >
+                        <!-- Support -->
+                        <button
+                          class="flex items-center gap-1.5 text-primary hover:opacity-80 transition"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            thumb_up
+                          </span>
+                          <span class="font-semibold">58</span>
+                        </button>
+                        <!-- Comments -->
+                        <button
+                          class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            forum
+                          </span>
+                          <span>11</span>
+                        </button>
+                        <!-- Citizens Affected -->
+                        <div
+                          class="flex items-center gap-1.5 text-on-surface-variant"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            groups
+                          </span>
+                          <span>300–500</span>
+                        </div>
+                        <!-- Government Level -->
+                        <div
+                          class="flex items-center gap-1.5 text-on-surface-variant"
+                        >
+                          <span class="material-symbols-outlined text-[18px]">
+                            account_balance
+                          </span>
+                          <span>Ward</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ================= RIGHT ================= -->
+                <div class="relative shrink-0">
+                  <img
+                    src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=350&h=240&fit=crop"
+                    alt="Water leakage evidence"
+                    class="w-48 h-36 rounded-xl object-cover border border-outline-variant"
+                  />
+                  <!-- Photo Count -->
+                  <div
+                    class="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded-full flex items-center gap-1 text-xs"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">
+                      photo_library
+                    </span>
+                    9
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- DJ Discussion Card -->
+            <a
+              href="discussion-detail-community-park.html"
+              class="block bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg hover:border-primary transition-all duration-300 cursor-pointer"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <!-- Left -->
+                <div class="flex-1">
+                  <!-- Tags -->
+                  <div class="flex items-center gap-2 mb-2">
+                    <span
+                      class="px-2 py-1 rounded-full bg-primary-container text-on-primary-container text-[11px] font-semibold"
+                    >
+                      💡 Proposal
+                    </span>
+
+                    <span
+                      class="px-2 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-semibold"
+                    >
+                      🏛 Ward
+                    </span>
+                  </div>
+
+                  <!-- Title -->
+                  <h3 class="font-bold text-xl text-on-surface leading-snug">
+                    Convert the Abandoned Plot Near 5th Cross into a Community
+                    Park
+                  </h3>
+
+                  <!-- Description -->
+                  <p class="text-on-surface-variant mt-3 line-clamp-3">
+                    The vacant municipal plot has become an informal dumping
+                    ground. This proposal suggests converting it into a
+                    low-maintenance public park with walking paths, native
+                    trees, children's play equipment and seating areas for
+                    senior citizens.
+                  </p>
+
+                  <!-- Author -->
+                  <div
+                    class="flex items-center gap-4 mt-4 text-sm text-on-surface-variant"
+                  >
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[18px]">
+                        person
+                      </span>
+
+                      Alok G.
+                    </div>
+
+                    <div class="flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[18px]">
+                        schedule
+                      </span>
+
+                      3h ago
+                    </div>
+                  </div>
+
+                  <!-- Bottom Row -->
+                  <div class="flex items-center justify-between mt-5">
+                    <!-- Active Participants -->
+                    <div class="flex items-center gap-3">
+                      <div class="flex -space-x-2">
+                        <div
+                          class="w-8 h-8 rounded-full border-2 border-white bg-tertiary-fixed flex items-center justify-center text-[10px] font-bold"
+                        >
+                          JD
+                        </div>
+
+                        <div
+                          class="w-8 h-8 rounded-full border-2 border-white bg-primary-fixed flex items-center justify-center text-[10px] font-bold"
+                        >
+                          MK
+                        </div>
+
+                        <div
+                          class="w-8 h-8 rounded-full border-2 border-white bg-secondary-fixed flex items-center justify-center text-[10px] font-bold"
+                        >
+                          +21
+                        </div>
+                      </div>
+
+                      <span class="text-sm text-on-surface-variant">
+                        discussing
+                      </span>
+                    </div>
+
+                    <!-- Engagement -->
+                    <div class="flex items-center gap-6 text-sm">
+                      <!-- Support -->
+                      <button
+                        class="flex items-center gap-1.5 text-primary hover:opacity-80 transition"
+                      >
+                        <span class="material-symbols-outlined text-[18px]">
+                          thumb_up
+                        </span>
+
+                        <span class="font-semibold"> 142 </span>
+                      </button>
+
+                      <!-- Comments -->
+                      <button
+                        class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition"
+                      >
+                        <span class="material-symbols-outlined text-[18px]">
+                          forum
+                        </span>
+
+                        <span> 56 </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a
+              href="discussion-detail-judicial-accountability.html"
+              class="block bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg hover:border-primary transition-all duration-300 cursor-pointer"
+            >
+              <!-- Tags -->
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="px-2 py-1 rounded-full bg-primary-container text-on-primary-container text-[11px] font-semibold"
+                >
+                  ❓ Question
+                </span>
+
+                <span
+                  class="px-2 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-semibold"
+                >
+                  ⚖ Judiciary
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="font-bold text-xl text-on-surface leading-snug">
+                To whom is the higher judiciary accountable?
+              </h3>
+
+              <!-- Description -->
+              <p class="text-on-surface-variant mt-3 line-clamp-4">
+                Research and public commentary have raised questions about
+                judicial appointments, the collegium system, and the prevalence
+                of family connections in India's higher judiciary. Unlike the
+                Legislature and Executive, which are politically accountable to
+                voters through elections, what mechanisms ensure accountability
+                of the Judiciary? What reforms, if any, should be considered
+                while preserving judicial independence?
+              </p>
+
+              <!-- Author -->
+              <div
+                class="flex items-center gap-4 mt-4 text-sm text-on-surface-variant"
+              >
+                <div class="flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[18px]">
+                    person
+                  </span>
+                  Alok G.
+                </div>
+
+                <div class="flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[18px]">
+                    schedule
+                  </span>
+                  2h ago
+                </div>
+              </div>
+
+              <!-- Bottom Row -->
+              <div class="flex items-center justify-between mt-5">
+                <!-- Participants -->
+                <div class="flex items-center gap-3">
+                  <div class="flex -space-x-2">
+                    <div
+                      class="w-8 h-8 rounded-full border-2 border-white bg-tertiary-fixed flex items-center justify-center text-[10px] font-bold"
+                    >
+                      RS
+                    </div>
+
+                    <div
+                      class="w-8 h-8 rounded-full border-2 border-white bg-primary-fixed flex items-center justify-center text-[10px] font-bold"
+                    >
+                      MK
+                    </div>
+
+                    <div
+                      class="w-8 h-8 rounded-full border-2 border-white bg-secondary-fixed flex items-center justify-center text-[10px] font-bold"
+                    >
+                      +37
+                    </div>
+                  </div>
+
+                  <span class="text-sm text-on-surface-variant">
+                    discussing
+                  </span>
+                </div>
+
+                <!-- Engagement -->
+                <div class="flex items-center gap-6 text-sm">
+                  <!-- Support -->
+                  <button
+                    onclick="
+                      event.preventDefault();
+                      event.stopPropagation();
+                    "
+                    class="flex items-center gap-1.5 text-primary hover:opacity-80 transition"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">
+                      thumb_up
+                    </span>
+
+                    <span class="font-semibold"> 184 </span>
+                  </button>
+
+                  <!-- Comments -->
+                  <button
+                    onclick="
+                      event.preventDefault();
+                      event.stopPropagation();
+                    "
+                    class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">
+                      forum
+                    </span>
+
+                    <span> 92 </span>
+                  </button>
+                </div>
+              </div>
+            </a>
+            <!-- DJ Discussion Feed Card -->
+            <a
+              href="../discussions/discussion-detail-ncert-judicial-corruption.html"
+              class="block bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg hover:border-primary transition-all duration-300 cursor-pointer"
+            >
+              <!-- Tags -->
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span
+                  class="px-2 py-1 rounded-full bg-error-container text-on-error-container text-[11px] font-semibold"
+                >
+                  ⚖ Debate
+                </span>
+
+                <span
+                  class="px-2 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-semibold"
+                >
+                  Judiciary
+                </span>
+
+                <span
+                  class="px-2 py-1 rounded-full bg-primary-container text-on-primary-container text-[11px] font-semibold"
+                >
+                  🇮🇳 India
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="font-bold text-xl text-on-surface leading-snug">
+                Did the Supreme Court's action against the NCERT chapter on
+                judicial corruption strike the right balance between protecting
+                judicial reputation and academic freedom?
+              </h3>
+
+              <!-- Preview -->
+              <p class="text-on-surface-variant mt-3 line-clamp-3">
+                The Supreme Court's intervention regarding an NCERT chapter
+                discussing judicial corruption has revived an important
+                constitutional debate. Should courts be able to restrict
+                educational material concerning the judiciary, or does doing so
+                risk limiting academic freedom and public discourse?
+              </p>
+
+              <!-- Author -->
+              <div
+                class="flex items-center gap-4 mt-5 text-sm text-on-surface-variant"
+              >
+                <div class="flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[18px]">
+                    person
+                  </span>
+
+                  Alok G.
+                </div>
+
+                <div class="flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[18px]">
+                    schedule
+                  </span>
+
+                  8h ago
+                </div>
+              </div>
+
+              <!-- Bottom Row -->
+              <div class="flex items-center justify-between mt-5">
+                <!-- Left -->
+                <div class="flex items-center gap-6 text-sm">
+                  <!-- Support -->
+                  <button
+                    onclick="
+                      event.preventDefault();
+                      event.stopPropagation();
+                    "
+                    class="flex items-center gap-1.5 text-primary hover:opacity-80 transition"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">
+                      thumb_up
+                    </span>
+
+                    <span class="font-semibold"> 624 </span>
+                  </button>
+
+                  <!-- Comments -->
+                  <button
+                    onclick="
+                      event.preventDefault();
+                      event.stopPropagation();
+                    "
+                    class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">
+                      forum
+                    </span>
+
+                    <span> 184 </span>
+                  </button>
+                </div>
+
+                <!-- Right -->
+                <div class="flex items-center">
+                  <div class="flex -space-x-2">
+                    <div
+                      class="w-8 h-8 rounded-full border-2 border-white bg-tertiary-fixed flex items-center justify-center text-[10px] font-bold"
+                    >
+                      RS
+                    </div>
+
+                    <div
+                      class="w-8 h-8 rounded-full border-2 border-white bg-primary-fixed flex items-center justify-center text-[10px] font-bold"
+                    >
+                      NP
+                    </div>
+
+                    <div
+                      class="w-8 h-8 rounded-full border-2 border-white bg-secondary-fixed flex items-center justify-center text-[10px] font-bold"
+                    >
+                      +52
+                    </div>
+                  </div>
+
+                  <span class="ml-3 text-sm text-on-surface-variant">
+                    discussing
+                  </span>
+                </div>
+              </div>
+            </a>
+            <!-- DJ Poll Card -->
+            <a
+              href="poll-detail-no-car-sunday.html"
+              class="block bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg hover:border-primary transition-all duration-300 cursor-pointer"
+            >
+              <!-- Tags -->
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="px-2 py-1 rounded-full bg-primary-container text-on-primary-container text-[11px] font-semibold"
+                >
+                  📊 Poll
+                </span>
+
+                <span
+                  class="px-2 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-semibold"
+                >
+                  🏛 Ward
+                </span>
+              </div>
+
+              <!-- Question -->
+              <h3 class="font-bold text-xl text-on-surface leading-snug">
+                Should Ward 42 implement No-Car Sundays in the Market Area?
+              </h3>
+
+              <!-- Description -->
+              <p class="text-on-surface-variant mt-3 line-clamp-3">
+                This poll seeks public opinion on introducing vehicle-free
+                Sundays in the market area to improve pedestrian safety, local
+                business activity and public spaces.
+              </p>
+
+              <!-- Poll Preview -->
+              <div class="mt-5 space-y-3">
+                <!-- Option 1 -->
+                <div class="relative">
+                  <div
+                    class="w-full h-11 rounded-lg bg-surface-container overflow-hidden relative"
+                  >
+                    <div
+                      class="absolute left-0 top-0 h-full bg-primary/15 w-[68%]"
+                    ></div>
+
+                    <div
+                      class="relative flex items-center justify-between h-full px-4"
+                    >
+                      <span class="font-medium"> Yes </span>
+
+                      <span class="font-semibold text-primary"> 68% </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Option 2 -->
+                <div class="relative">
+                  <div
+                    class="w-full h-11 rounded-lg bg-surface-container overflow-hidden relative"
+                  >
+                    <div
+                      class="absolute left-0 top-0 h-full bg-on-surface/5 w-[32%]"
+                    ></div>
+
+                    <div
+                      class="relative flex items-center justify-between h-full px-4"
+                    >
+                      <span class="font-medium"> No </span>
+
+                      <span> 32% </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Author -->
+              <div
+                class="flex items-center gap-4 mt-5 text-sm text-on-surface-variant"
+              >
+                <div class="flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[18px]">
+                    person
+                  </span>
+
+                  Alok G.
+                </div>
+
+                <div class="flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[18px]">
+                    schedule
+                  </span>
+
+                  Ends in 2 days
+                </div>
+              </div>
+
+              <!-- Bottom Row -->
+              <div class="flex items-center justify-between mt-5">
+                <!-- Metrics -->
+                <div class="flex items-center gap-6 text-sm">
+                  <div class="flex items-center gap-1.5 text-primary">
+                    <span class="material-symbols-outlined text-[18px]">
+                      how_to_vote
+                    </span>
+
+                    <span class="font-semibold"> 1,842 </span>
+                  </div>
+
+                  <button
+                    onclick="
+                      event.preventDefault();
+                      event.stopPropagation();
+                    "
+                    class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">
+                      forum
+                    </span>
+
+                    <span> 63 </span>
+                  </button>
+                </div>
+              </div>
+            </a>
+            <!-- DJ Poll Card -->
+            <a
+              href="poll-detail-public-transport.html"
+              class="block bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:shadow-lg hover:border-primary transition-all duration-300 cursor-pointer"
+            >
+              <!-- Tags -->
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="px-2 py-1 rounded-full bg-primary-container text-on-primary-container text-[11px] font-semibold"
+                >
+                  📊 Poll
+                </span>
+
+                <span
+                  class="px-2 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-semibold"
+                >
+                  🏛 State
+                </span>
+              </div>
+
+              <!-- Question -->
+              <h3 class="font-bold text-xl text-on-surface leading-snug">
+                How should Pune improve its public transport over the next five
+                years?
+              </h3>
+
+              <!-- Description -->
+              <p class="text-on-surface-variant mt-3 line-clamp-3">
+                The Maharashtra Government is seeking citizen feedback on which
+                transport initiative should receive the highest priority to
+                improve daily commuting in Pune.
+              </p>
+
+              <!-- Poll Preview -->
+              <div class="mt-5 space-y-3">
+                <!-- Option 1 -->
+                <div class="relative">
+                  <div
+                    class="w-full h-11 rounded-lg bg-surface-container overflow-hidden relative"
+                  >
+                    <div
+                      class="absolute left-0 top-0 h-full bg-primary/15 w-[41%]"
+                    ></div>
+
+                    <div
+                      class="relative flex items-center justify-between h-full px-4"
+                    >
+                      <span class="font-medium"> Expand Metro Network </span>
+
+                      <span class="font-semibold text-primary"> 41% </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Option 2 -->
+                <div class="relative">
+                  <div
+                    class="w-full h-11 rounded-lg bg-surface-container overflow-hidden relative"
+                  >
+                    <div
+                      class="absolute left-0 top-0 h-full bg-primary/10 w-[29%]"
+                    ></div>
+
+                    <div
+                      class="relative flex items-center justify-between h-full px-4"
+                    >
+                      <span class="font-medium">
+                        Increase PMPML Bus Fleet
+                      </span>
+
+                      <span> 29% </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Option 3 -->
+                <div class="relative">
+                  <div
+                    class="w-full h-11 rounded-lg bg-surface-container overflow-hidden relative"
+                  >
+                    <div
+                      class="absolute left-0 top-0 h-full bg-primary/5 w-[18%]"
+                    ></div>
+
+                    <div
+                      class="relative flex items-center justify-between h-full px-4"
+                    >
+                      <span class="font-medium">
+                        Build More Cycling Tracks
+                      </span>
+
+                      <span> 18% </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Option 4 -->
+                <div class="relative">
+                  <div
+                    class="w-full h-11 rounded-lg bg-surface-container overflow-hidden relative"
+                  >
+                    <div
+                      class="absolute left-0 top-0 h-full bg-on-surface/5 w-[12%]"
+                    ></div>
+
+                    <div
+                      class="relative flex items-center justify-between h-full px-4"
+                    >
+                      <span class="font-medium">
+                        Improve Existing Roads First
+                      </span>
+
+                      <span> 12% </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Author -->
+              <div
+                class="flex items-center gap-4 mt-5 text-sm text-on-surface-variant"
+              >
+                <div class="flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[18px]">
+                    person
+                  </span>
+                  Transport Action Forum
+                </div>
+
+                <div class="flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[18px]">
+                    schedule
+                  </span>
+                  Ends in 4 days
+                </div>
+              </div>
+
+              <!-- Bottom Row -->
+              <div class="flex items-center justify-between mt-5">
+                <!-- Metrics -->
+                <div class="flex items-center gap-6 text-sm">
+                  <!-- Votes -->
+                  <div class="flex items-center gap-1.5 text-primary">
+                    <span class="material-symbols-outlined text-[18px]">
+                      how_to_vote
+                    </span>
+
+                    <span class="font-semibold"> 5,284 </span>
+                  </div>
+
+                  <!-- Comments -->
+                  <button
+                    onclick="
+                      event.preventDefault();
+                      event.stopPropagation();
+                    "
+                    class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">
+                      forum
+                    </span>
+
+                    <span> 147 </span>
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- Right Sidebar -->
+        <div
+          class="w-80 overflow-y-auto custom-scrollbar p-5 space-y-5 hidden lg:block"
+        >
+          <!-- ===================================================== -->
+          <!-- 📍 YOUR AREA -->
+          <!-- ===================================================== -->
+          <div
+            class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5"
+          >
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h5
+                  class="text-sm font-black uppercase tracking-widest text-on-surface-variant"
+                >
+                  📍 Your Area
+                </h5>
+
+                <p class="text-sm text-on-surface-variant mt-1">
+                  Balewadi • Ward 23
+                </p>
+              </div>
+
+              <button
+                class="text-primary text-sm font-semibold hover:underline"
+              >
+                Explore
+              </button>
+            </div>
+
+            <!-- Total Active Issues -->
+            <div class="bg-surface-container rounded-xl p-4 mb-4">
+              <p
+                class="text-xs uppercase tracking-wide font-semibold text-on-surface-variant"
+              >
+                Active Issues
+              </p>
+
+              <p class="text-4xl font-black text-primary mt-1">124</p>
+            </div>
+
+            <!-- Top Categories -->
+            <div class="space-y-2">
+              <button
+                class="w-full flex items-center justify-between rounded-lg px-3 py-3 hover:bg-surface-container transition"
+              >
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary">
+                    delete
+                  </span>
+
+                  <span class="font-medium"> Garbage </span>
+                </div>
+
+                <span class="font-bold text-primary"> 91 </span>
+              </button>
+
+              <button
+                class="w-full flex items-center justify-between rounded-lg px-3 py-3 hover:bg-surface-container transition"
+              >
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary">
+                    landslide
+                  </span>
+
+                  <span class="font-medium"> Potholes </span>
+                </div>
+
+                <span class="font-bold text-primary"> 38 </span>
+              </button>
+
+              <button
+                class="w-full flex items-center justify-between rounded-lg px-3 py-3 hover:bg-surface-container transition"
+              >
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary">
+                    lightbulb
+                  </span>
+
+                  <span class="font-medium"> Streetlights </span>
+                </div>
+
+                <span class="font-bold text-primary"> 14 </span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ===================================================== -->
+          <!-- 🔥 TRENDING -->
+          <!-- ===================================================== -->
+          <div
+            class="mt-5 bg-surface-container-lowest border border-outline-variant rounded-xl p-5"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <h5
+                class="text-sm font-black uppercase tracking-widest text-on-surface-variant"
+              >
+                🔥 Trending
+              </h5>
+
+              <button
+                class="text-primary text-sm font-semibold hover:underline"
+              >
+                View All
+              </button>
+            </div>
+
+            <div class="space-y-3">
+              <!-- Trending Issue -->
+              <a
+                href="issue-detail-garbage.html"
+                class="block rounded-lg p-3 hover:bg-surface-container transition"
+              >
+                <div class="flex items-start justify-between">
+                  <div>
+                    <div class="flex items-center gap-2 mb-1">
+                      <span
+                        class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-[10px] font-semibold"
+                      >
+                        Issue
+                      </span>
+
+                      <span class="text-xs text-on-surface-variant">
+                        📍 Ward 23
+                      </span>
+                    </div>
+
+                    <p class="font-semibold leading-snug">
+                      Garbage Dump near Parke Serene
+                    </p>
+
+                    <p class="text-xs text-primary mt-1">
+                      ↑ +42 supports today
+                    </p>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Trending Discussion -->
+              <a
+                href="discussion-detail-judiciary.html"
+                class="block rounded-lg p-3 hover:bg-surface-container transition"
+              >
+                <div class="flex items-start justify-between">
+                  <div>
+                    <div class="flex items-center gap-2 mb-1">
+                      <span
+                        class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-semibold"
+                      >
+                        Discussion
+                      </span>
+
+                      <span class="text-xs text-on-surface-variant">
+                        🇮🇳 India
+                      </span>
+                    </div>
+
+                    <p class="font-semibold leading-snug">
+                      Who is Accountable for the Judiciary?
+                    </p>
+
+                    <p class="text-xs text-primary mt-1">
+                      ↑ +31 supports today
+                    </p>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Trending Poll -->
+              <a
+                href="poll-detail-public-transport.html"
+                class="block rounded-lg p-3 hover:bg-surface-container transition"
+              >
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span
+                      class="px-2 py-0.5 rounded-full bg-tertiary-container text-on-tertiary-container text-[10px] font-semibold"
+                    >
+                      Poll
+                    </span>
+
+                    <span class="text-xs text-on-surface-variant">
+                      🏙 Pune
+                    </span>
+                  </div>
+
+                  <p class="font-semibold leading-snug">
+                    How should Pune improve public transport?
+                  </p>
+
+                  <p class="text-xs text-primary mt-1">Ends in 4 days</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- FAB: Create (Material 3 Style) -->
+    <div
+      class="fixed bottom-8 right-8 z-[100] flex flex-col items-end gap-3 group"
+    >
+      <!-- Expanded Actions -->
+      <div
+        class="flex flex-col items-end gap-3 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto mb-4"
+      >
+        <button
+          class="flex items-center gap-3 px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-full hover:bg-surface-container-high transition-colors shadow-lg opacity-100"
+        >
+          <span class="text-label-md font-bold">Report Issue</span>
+          <span
+            class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary"
+          >
+            <span class="material-symbols-outlined text-[18px]"
+              >report_problem</span
+            >
+          </span>
+        </button>
+        <button
+          class="flex items-center gap-3 px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-full hover:bg-surface-container-high transition-colors shadow-lg opacity-100"
+        >
+          <span class="text-label-md font-bold">Start Discussion</span>
+          <span
+            class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary"
+          >
+            <span class="material-symbols-outlined text-[18px]">forum</span>
+          </span>
+        </button>
+        <button
+          class="flex items-center gap-3 px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-full hover:bg-surface-container-high transition-colors shadow-lg opacity-100"
+        >
+          <span class="text-label-md font-bold">Create Poll</span>
+          <span
+            class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed"
+          >
+            <span class="material-symbols-outlined text-[18px]">ballot</span>
+          </span>
+        </button>
+      </div>
+      <!-- Main FAB -->
+      <button
+        class="flex items-center gap-3 h-14 pl-4 pr-6 bg-primary text-on-primary rounded-[1.25rem] shadow-xl hover:shadow-2xl active:scale-95 transition-all duration-200"
+      >
+        <span class="material-symbols-outlined text-[24px]">add</span>
+        <span class="font-bold text-label-md tracking-wider">CREATE</span>
+      </button>
+    </div>
+    <script>
+      // Simple Interaction logic
+      document.addEventListener("DOMContentLoaded", () => {
+        // Add focus states to feed items on scroll entrance
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("opacity-100");
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+
+        document
+          .querySelectorAll(".bg-surface-container-lowest")
+          .forEach((el) => {
+            observer.observe(el);
+          });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.getElementById("sidebar");
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        const toggleIcon = document.getElementById("toggleIcon");
+        if (sidebarToggle) {
+          sidebarToggle.addEventListener("click", () => {
+            if (sidebar.classList.contains("sidebar-collapsed")) {
+              sidebar.classList.remove("sidebar-collapsed");
+              sidebar.style.width = "16rem";
+              toggleIcon.style.transform = "rotate(0deg)";
+            } else {
+              sidebar.classList.add("sidebar-collapsed");
+              sidebar.style.width = "80px";
+              toggleIcon.style.transform = "rotate(180deg)";
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

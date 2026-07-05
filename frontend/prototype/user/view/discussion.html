@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Janta - Discussions (Desktop)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#ffdad6",
+                    "primary-container": "#e02a27",
+                    "surface-dim": "#f4d3cc",
+                    "on-primary-fixed": "#410002",
+                    "on-tertiary-fixed": "#111d26",
+                    "surface-bright": "#fff8f6",
+                    "secondary-container": "#e2e2e2",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#3c4852",
+                    "inverse-on-surface": "#ffede9",
+                    "surface-container": "#ffe9e5",
+                    "tertiary": "#515e68",
+                    "on-primary-container": "#fffbff",
+                    "tertiary-fixed": "#d7e4f0",
+                    "inverse-primary": "#ffb4ab",
+                    "surface": "#fff8f6",
+                    "on-secondary-container": "#646464",
+                    "surface-container-high": "#ffe2dc",
+                    "surface-tint": "#bf0813",
+                    "inverse-surface": "#402b27",
+                    "tertiary-container": "#697681",
+                    "surface-container-low": "#fff0ee",
+                    "surface-container-highest": "#fddbd4",
+                    "primary": "#bb0311",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#e7bdb4",
+                    "on-primary-fixed-variant": "#93000a",
+                    "outline": "#926f68",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "on-surface": "#291713",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fff8f6",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#5d3f39",
+                    "on-secondary-fixed-variant": "#474747",
+                    "secondary": "#5e5e5e",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-background": "#291713",
+                    "tertiary-fixed-dim": "#bbc8d4",
+                    "surface-variant": "#fddbd4",
+                    "on-tertiary-container": "#fcfcff",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "32px",
+                    "gutter": "16px",
+                    "stack-md": "16px",
+                    "container-margin": "16px",
+                    "baseline": "4px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Hanken Grotesk"],
+                    "label-md": ["Noto Sans"],
+                    "label-sm": ["Noto Sans"],
+                    "body-lg": ["Noto Sans"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "body-md": ["Noto Sans"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.5px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        body { min-height: 100vh; background-color: #fff8f6; }
+        #sidebar { transition: width 0.3s ease; }
+        .sidebar-collapsed .nav-label, .sidebar-collapsed .sidebar-header-text { display: none; }
+    </style>
+</head>
+<body class="flex flex-col h-screen overflow-hidden">
+<!-- Top Header -->
+<header class="h-16 border-b border-outline-variant bg-surface-bright flex items-center justify-between px-6 shrink-0 z-30">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">account_balance</span>
+</div>
+<span class="font-headline-lg text-lg text-on-surface">Digital Janta</span>
+</div>
+<div class="h-10 w-[400px] bg-surface-container-low rounded-full px-4 flex items-center border border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-on-surface-variant/50" placeholder="Search discussions, issues, or polls..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-1.5 bg-surface-container-high rounded-full text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<span class="font-label-md text-sm font-semibold">Ward 42 — South Delhi</span>
+<span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center border border-outline-variant overflow-hidden cursor-pointer">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvkp0Ja3djavAz7FxU1gdqzq78Gcn1_uKBsgOPov5Yw2KO3UOh-jwHSEuUJSYR3dZ7EvJqRhXVqmVn3ctHkuSHsmRkchXtuoh_MnK_c2ixXIdmKPWSEAHCb9qfHPaH4SZqQ-uR8GzqrI3lhJMXsJzHEEz2INLw1rJu-nIhyWg6q387gYcKhzLjD0CVGwGL58XnvN4IvbixpytwF-OWtHDZzkM1GyXub4cuzoBG6XkthngcA6DqhebO"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Left Sidebar -->
+<aside class="w-64 border-r border-outline-variant bg-surface flex flex-col shrink-0 overflow-y-auto transition-all duration-300" id="sidebar">
+  <div class="p-4">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+      </div>
+      <div class="sidebar-header-text min-w-0">
+        <h1 class="font-title-lg font-bold text-primary truncate">Digital Janta</h1>
+        <p class="font-label-sm text-on-surface-variant truncate">Civic Platform</p>
+      </div>
+      <button class="shrink-0 p-1.5 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" id="sidebarToggle">
+        <span class="material-symbols-outlined transition-transform duration-300" id="toggleIcon">chevron_left</span>
+      </button>
+    </div>
+    <nav class="space-y-1">
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="feed.html">
+        <span class="material-symbols-outlined nav-icon">dynamic_feed</span>
+        <span class="font-body-md nav-label">Feed</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="issues.html">
+        <span class="material-symbols-outlined nav-icon">report_problem</span>
+        <span class="font-body-md nav-label">Issues</span>
+      </a>
+      <!-- Discussions (ACTIVE) -->
+      <a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-r-full font-bold nav-item" href="#">
+        <span class="material-symbols-outlined nav-icon" style="font-variation-settings: 'FILL' 1;">forum</span>
+        <span class="font-body-md nav-label">Discussions</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="polls.html">
+        <span class="material-symbols-outlined nav-icon">ballot</span>
+        <span class="font-body-md nav-label">Polls</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="#">
+        <span class="material-symbols-outlined nav-icon">map</span>
+        <span class="font-body-md nav-label">Map</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="insights.html">
+        <span class="material-symbols-outlined nav-icon">analytics</span>
+        <span class="font-body-md nav-label">Insights</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="profile.html">
+        <span class="material-symbols-outlined nav-icon">person</span>
+        <span class="font-body-md nav-label">Profile</span>
+      </a>
+    </nav>
+  </div>
+  <div class="mt-auto p-4">
+    <button class="w-full py-3 bg-primary text-on-primary font-bold rounded-full flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-lg">
+      <span class="material-symbols-outlined">add_circle</span>
+      <span class="nav-label">Report Issue</span>
+    </button>
+  </div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface-container-low overflow-y-auto relative" id="main-content">
+<!-- Main Content Header -->
+<div class="px-8 py-8 flex items-end justify-between max-w-7xl mx-auto w-full">
+<div>
+<h1 class="font-headline-lg text-on-surface">Discussions</h1>
+<p class="text-body-md text-on-surface-variant mt-1">Collaborate with your community to explore civic problems and solutions.</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md flex items-center gap-2 hover:bg-on-primary-fixed-variant transition-all shadow-md">
+<span class="material-symbols-outlined text-[20px]">add_comment</span>
+                    Start Discussion
+                </button>
+</div>
+<!-- Filter Bar -->
+<div class="px-8 py-4 border-y border-outline-variant bg-surface-bright sticky top-0 z-20">
+<div class="max-w-7xl mx-auto flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Filters:</span>
+<select class="bg-surface-container border border-outline-variant rounded-full px-4 py-1.5 font-label-md text-sm focus:ring-1 focus:ring-primary">
+<option>Category: All</option>
+<option>Infrastructure</option>
+<option>Environment</option>
+<option>Safety</option>
+</select>
+<select class="bg-surface-container border border-outline-variant rounded-full px-4 py-1.5 font-label-md text-sm focus:ring-1 focus:ring-primary">
+<option>Gov Level: All</option>
+<option>MCD</option>
+<option>Delhi Govt</option>
+<option>Central</option>
+</select>
+<select class="bg-surface-container border border-outline-variant rounded-full px-4 py-1.5 font-label-md text-sm focus:ring-1 focus:ring-primary">
+<option>Status: Open</option>
+<option>Resolved</option>
+<option>Drafting</option>
+</select>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Sort:</span>
+<select class="bg-transparent border-none font-label-md text-sm font-bold text-primary focus:ring-0 cursor-pointer">
+<option>Trending Now</option>
+<option>Newest First</option>
+<option>Most Proposals</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Discussion Grid -->
+<div class="px-8 py-6 max-w-7xl mx-auto w-full">
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-6 pb-20">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 hover:shadow-lg transition-shadow cursor-pointer flex flex-col gap-4 group">
+<div class="flex gap-4">
+<!-- Voting Score -->
+<div class="flex flex-col items-center bg-surface-container-low rounded-xl px-3 py-2 shrink-0 h-fit">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">keyboard_arrow_up</button>
+<span class="font-label-md font-bold text-on-surface">142</span>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">keyboard_arrow_down</button>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded text-[10px] font-bold uppercase">Infrastructure</span>
+<span class="text-label-sm text-on-surface-variant">Posted 2h ago</span>
+</div>
+<h3 class="font-title-lg text-on-surface group-hover:text-primary transition-colors leading-tight mb-2">Sustainable Multi-level Parking in Hauz Khas Village?</h3>
+<p class="text-body-md text-on-surface-variant line-clamp-2">The current congestion is killing local businesses. We need a solution that balances foot traffic with environmental concerns and heritage preservation.</p>
+<div class="mt-3 flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white bg-slate-300"></div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-slate-400"></div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-slate-500"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant">48 participants</span>
+</div>
+</div>
+</div>
+<!-- Proposal Snapshot -->
+<div class="bg-surface-container p-3 rounded-xl border-l-4 border-primary/40">
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-sm font-bold text-primary">3 Proposals</span>
+<span class="text-[10px] bg-primary/10 text-primary px-1.5 rounded uppercase font-bold">Top Draft</span>
+</div>
+<p class="text-body-md text-on-surface-variant italic line-clamp-2">"Implement an automated smart-stack parking system integrated with existing greenery to minimize concrete footprint..."</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 hover:shadow-lg transition-shadow cursor-pointer flex flex-col gap-4 group">
+<div class="flex gap-4">
+<div class="flex flex-col items-center bg-surface-container-low rounded-xl px-3 py-2 shrink-0 h-fit">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">keyboard_arrow_up</button>
+<span class="font-label-md font-bold text-on-surface">89</span>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">keyboard_arrow_down</button>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded text-[10px] font-bold uppercase">Public Health</span>
+<span class="text-label-sm text-on-surface-variant">Posted 5h ago</span>
+</div>
+<h3 class="font-title-lg text-on-surface group-hover:text-primary transition-colors leading-tight mb-2">Decentralized Waste Composting Units for Ward 42</h3>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Moving away from centralized landfills. Proposal for local RWA-managed composting zones to reduce trucking emissions.</p>
+<div class="mt-3 flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white bg-red-300"></div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-blue-300"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant">22 participants</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-3 rounded-xl border-l-4 border-primary/40">
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-sm font-bold text-primary">1 Proposal</span>
+<span class="text-[10px] bg-primary/10 text-primary px-1.5 rounded uppercase font-bold">New</span>
+</div>
+<p class="text-body-md text-on-surface-variant italic line-clamp-2">"Convert the derelict park corner into a modular biogas and composting facility with community education center..."</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 hover:shadow-lg transition-shadow cursor-pointer flex flex-col gap-4 group">
+<div class="flex gap-4">
+<div class="flex flex-col items-center bg-surface-container-low rounded-xl px-3 py-2 shrink-0 h-fit">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">keyboard_arrow_up</button>
+<span class="font-label-md font-bold text-on-surface">312</span>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">keyboard_arrow_down</button>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded text-[10px] font-bold uppercase">Traffic</span>
+<span class="text-label-sm text-on-surface-variant">Posted Yesterday</span>
+</div>
+<h3 class="font-title-lg text-on-surface group-hover:text-primary transition-colors leading-tight mb-2">Pedestrianization of Inner Circle: Community Impact</h3>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Debating the plan to make the market area vehicle-free on weekends. Need to discuss alternate parking and shuttle routes.</p>
+<div class="mt-3 flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white bg-green-300"></div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-orange-300"></div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-indigo-300"></div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-slate-300"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant">156 participants</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-3 rounded-xl border-l-4 border-primary/40">
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-sm font-bold text-primary">5 Proposals</span>
+<span class="text-[10px] bg-primary/10 text-primary px-1.5 rounded uppercase font-bold">Controversial</span>
+</div>
+<p class="text-body-md text-on-surface-variant italic line-clamp-2">"Implement an electric golf-cart shuttle system for senior citizens while strictly banning private SUVs..."</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 hover:shadow-lg transition-shadow cursor-pointer flex flex-col gap-4 group">
+<div class="flex gap-4">
+<div class="flex flex-col items-center bg-surface-container-low rounded-xl px-3 py-2 shrink-0 h-fit">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">keyboard_arrow_up</button>
+<span class="font-label-md font-bold text-on-surface">54</span>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">keyboard_arrow_down</button>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded text-[10px] font-bold uppercase">Environment</span>
+<span class="text-label-sm text-on-surface-variant">Posted 2d ago</span>
+</div>
+<h3 class="font-title-lg text-on-surface group-hover:text-primary transition-colors leading-tight mb-2">Solar Roof-top Mandate for Commercial Blocks</h3>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Incentivizing the shift to green energy. How can we make the initial cost manageable for small shop owners?</p>
+<div class="mt-3 flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white bg-yellow-300"></div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-slate-300"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant">12 participants</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-3 rounded-xl border-l-4 border-primary/40">
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-sm font-bold text-primary">2 Proposals</span>
+<span class="text-[10px] bg-primary/10 text-primary px-1.5 rounded uppercase font-bold">Drafting</span>
+</div>
+<p class="text-body-md text-on-surface-variant italic line-clamp-2">"Group procurement model to drive down panel costs by 30% through bulk purchasing for the entire block..."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 right-88 xl:right-[344px] w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform z-40 lg:flex hidden">
+<span class="material-symbols-outlined text-[28px]">add_comment</span>
+</button>
+</main>
+<!-- Right Context Sidebar -->
+<aside class="w-80 border-l border-outline-variant bg-surface shrink-0 overflow-y-auto hidden lg:flex flex-col">
+<div class="p-6 space-y-8">
+<!-- Trending Topics -->
+<div>
+<h4 class="font-label-md font-bold text-on-surface uppercase tracking-widest mb-4">Trending Topics</h4>
+<div class="flex flex-wrap gap-2">
+<a class="px-3 py-1 bg-surface-container-high rounded-full text-label-md text-on-surface-variant hover:bg-primary-fixed hover:text-on-primary-fixed-variant transition-colors" href="#">#WasteManagement</a>
+<a class="px-3 py-1 bg-surface-container-high rounded-full text-label-md text-on-surface-variant hover:bg-primary-fixed hover:text-on-primary-fixed-variant transition-colors" href="#">#TrafficPolicy</a>
+<a class="px-3 py-1 bg-surface-container-high rounded-full text-label-md text-on-surface-variant hover:bg-primary-fixed hover:text-on-primary-fixed-variant transition-colors" href="#">#SmartHauzKhas</a>
+<a class="px-3 py-1 bg-surface-container-high rounded-full text-label-md text-on-surface-variant hover:bg-primary-fixed hover:text-on-primary-fixed-variant transition-colors" href="#">#PublicSafety</a>
+</div>
+</div>
+<!-- Most Active Discussions -->
+<div>
+<h4 class="font-label-md font-bold text-on-surface uppercase tracking-widest mb-4">Most Active</h4>
+<ul class="space-y-4">
+<li class="group cursor-pointer">
+<p class="font-label-md text-on-surface line-clamp-2 group-hover:text-primary transition-colors">Night Market Security Enhancements</p>
+<span class="text-label-sm text-on-surface-variant">24 new comments today</span>
+</li>
+<li class="group cursor-pointer">
+<p class="font-label-md text-on-surface line-clamp-2 group-hover:text-primary transition-colors">Rethinking Park Lighting Hours</p>
+<span class="text-label-sm text-on-surface-variant">12 new comments today</span>
+</li>
+</ul>
+</div>
+<!-- Community Moderators -->
+<div>
+<h4 class="font-label-md font-bold text-on-surface uppercase tracking-widest mb-4">Community Moderators</h4>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed-dim border border-outline-variant overflow-hidden">
+<img alt="Mod" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsFajPtKZSOmJwWNmU91NwqXCVBzzfebksq_f_elJoHM35Ezg4NDWzoH4Gja8duBnWayh-N5XxlxqI7UYAId3pRmZzjzLczf5b_00Csy4mqogOOZ2ceilefbVxq_62dgZhgiohT8HcUWu1QR2wsDROa1fEFyfSa3iLGCpRd-78ibTq4dF_8gowTNoejmldon4wuuSKy6c5Dnt9tvZLCD4X1WKZQHlGIGDQAtWVbqqPNdEe4QO85eRZ"/>
+</div>
+<div>
+<p class="text-label-md font-bold text-on-surface">Arjun Singh</p>
+<span class="text-[10px] text-primary uppercase font-bold tracking-tighter">Verified Official</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed-dim border border-outline-variant overflow-hidden">
+<img alt="Mod" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9t3wFMb2S76N03k-3n9E7-uylQym4YbOT6lqQnxKrSSHtPR4TeVL3YlWYhqQgYfTnWVE2GMJ9xkI9aptcmnkzFZZJI1amy_YLi-fW7rSKH0nGIH89CWZm0rO9LeykTBfN_E14If7Epe3k_HBe4fVDcDJPkddBmiKz0J7_x6Ie1r_E2LAdnEgZUwjbttwYwexw4WsaHxafOrWaZhiGMmDU5DERMzd1p7CCK-ajwE9P0QENBVcqB0Sa"/>
+</div>
+<div>
+<p class="text-label-md font-bold text-on-surface">Priya Sharma</p>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Community Lead</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Upcoming Civic Meetings -->
+<div class="bg-surface-container-highest rounded-2xl p-4">
+<h4 class="font-label-md font-bold text-on-surface uppercase tracking-widest mb-3">Upcoming Meetings</h4>
+<div class="space-y-4">
+<div class="flex gap-3">
+<div class="w-10 h-12 bg-surface-bright rounded-lg flex flex-col items-center justify-center border border-outline-variant shrink-0">
+<span class="text-[10px] font-bold text-primary uppercase">OCT</span>
+<span class="text-lg font-bold leading-none">14</span>
+</div>
+<div class="min-w-0">
+<p class="text-label-md font-bold text-on-surface truncate">Ward 42 Budget Review</p>
+<span class="text-label-sm text-on-surface-variant">6:00 PM • Community Center</span>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-10 h-12 bg-surface-bright rounded-lg flex flex-col items-center justify-center border border-outline-variant shrink-0">
+<span class="text-[10px] font-bold text-primary uppercase">OCT</span>
+<span class="text-lg font-bold leading-none">16</span>
+</div>
+<div class="min-w-0">
+<p class="text-label-md font-bold text-on-surface truncate">Waste Policy Draft</p>
+<span class="text-label-sm text-on-surface-variant">11:00 AM • Zoom</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const toggleIcon = document.getElementById('toggleIcon');
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', () => {
+        if (sidebar.classList.contains('sidebar-collapsed')) {
+          sidebar.classList.remove('sidebar-collapsed');
+          sidebar.style.width = '16rem';
+          toggleIcon.style.transform = 'rotate(0deg)';
+        } else {
+          sidebar.classList.add('sidebar-collapsed');
+          sidebar.style.width = '80px';
+          toggleIcon.style.transform = 'rotate(180deg)';
+        }
+      });
+    }
+  });
+</script>
+</body></html>

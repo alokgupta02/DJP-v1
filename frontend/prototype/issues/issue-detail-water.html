@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Water Issue</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-slate-100">
+    <div class="max-w-7xl mx-auto p-6">
+      <div class="text-sm text-slate-500 mb-4">
+        Feed / Issues / Water Leakage
+      </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <div class="flex justify-between">
+          <div class="flex gap-4">
+            <div class="relative">
+              <div
+                class="w-14 h-14 rounded-full bg-cyan-100 flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-cyan-700"
+                  >water_drop</span
+                >
+              </div>
+              <div
+                class="absolute -top-1 -right-1 w-5 h-5 bg-cyan-500 rounded-full flex items-center justify-center"
+              >
+                <span
+                  class="material-symbols-outlined text-white"
+                  style="font-size: 14px"
+                  >check</span
+                >
+              </div>
+            </div>
+            <div>
+              <div class="flex gap-2 mb-2">
+                <span class="text-xs font-bold uppercase text-blue-700"
+                  >Water Supply</span
+                ><span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded"
+                  >HIGH</span
+                >
+              </div>
+              <h1 class="text-3xl font-bold">
+                Water Main Leakage on Main Street
+              </h1>
+              <p class="mt-3 text-slate-600 max-w-4xl">
+                A continuous leak from an underground water main has been
+                observed on Main Street since early morning. Water is flowing
+                across the carriageway, creating slippery conditions, wasting
+                treated water and reducing water pressure in nearby residential
+                buildings.
+              </p>
+              <div class="flex flex-wrap gap-6 mt-4 text-sm text-slate-600">
+                <span>📍 Main Street • Ward 12</span><span>📏320 m away</span
+                ><span>🕒5h ago</span><span>🏛Ward</span>
+              </div>
+              <div class="flex gap-6 mt-4">
+                <button class="text-blue-700 font-semibold">👍58</button
+                ><button>💬11</button>
+                <div>👥300–500</div>
+              </div>
+            </div>
+          </div>
+          <button class="border rounded px-4 py-2">Share</button>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-6 mt-6">
+        <div class="col-span-2 space-y-6">
+          <div class="bg-white rounded-xl shadow p-5">
+            <h2 class="font-bold text-xl mb-4">Evidence</h2>
+            <img
+              src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=1200"
+              class="w-full h-96 object-cover rounded"
+            />
+            <div class="grid grid-cols-5 gap-3 mt-4">
+              <div class="bg-slate-200 h-20 rounded"></div>
+              <div class="bg-slate-200 h-20 rounded"></div>
+              <div class="bg-slate-200 h-20 rounded"></div>
+              <div class="bg-slate-200 h-20 rounded"></div>
+              <button class="border-2 border-dashed rounded">
+                + Add Evidence
+              </button>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow p-5">
+            <h2 class="font-bold text-xl mb-3">Location</h2>
+            <div
+              class="h-72 bg-slate-200 rounded flex items-center justify-center"
+            >
+              Map Placeholder
+            </div>
+            <p class="mt-3">Main Street, Ward 12</p>
+          </div>
+          <div class="bg-white rounded-xl shadow p-5">
+            <h2 class="font-bold text-xl mb-3">Citizen Activity Timeline</h2>
+            <ul class="space-y-2">
+              <li>💧 Additional leakage photo uploaded.</li>
+              <li>✅ Community verified.</li>
+              <li>👍 Support crossed 50.</li>
+              <li>📝 Issue reported.</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-xl shadow p-5">
+            <h2 class="font-bold text-xl mb-3">Discussion</h2>
+            <div class="border-b pb-3 mb-3">
+              <b>Rahul</b>
+              <p>Water pressure has dropped in our apartments.</p>
+            </div>
+            <div class="border-b pb-3 mb-3">
+              <b>Sneha</b>
+              <p>The road is becoming slippery for two-wheelers.</p>
+            </div>
+            <textarea
+              class="w-full border rounded p-3"
+              rows="4"
+              placeholder="Join discussion"
+            ></textarea
+            ><button class="mt-3 bg-blue-600 text-white px-4 py-2 rounded">
+              Post Comment
+            </button>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <div class="bg-white rounded-xl shadow p-5">
+            <h3 class="font-bold mb-3">Issue Health</h3>
+            <ul class="space-y-2">
+              <li>✅ Community Verified</li>
+              <li>👍58 Support</li>
+              <li>📷9 Photos</li>
+              <li>👥300–500 Affected</li>
+              <li>🕒Active 5 hours</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-xl shadow p-5">
+            <h3 class="font-bold mb-3">Related Issues</h3>
+            <ul class="space-y-2 text-sm">
+              <li>Water logging near Market Road</li>
+              <li>Pipeline leak near School</li>
+              <li>Broken valve at Ward Office</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Civic Insights | Digital Janta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#bf0813",
+                        "on-tertiary-fixed": "#111d26",
+                        "primary": "#bb0311",
+                        "on-surface-variant": "#5d3f39",
+                        "on-error": "#ffffff",
+                        "surface": "#fff8f6",
+                        "tertiary-fixed": "#d7e4f0",
+                        "on-secondary-fixed-variant": "#474747",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#646464",
+                        "secondary-container": "#e2e2e2",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#bbc8d4",
+                        "outline": "#926f68",
+                        "surface-dim": "#f4d3cc",
+                        "inverse-on-surface": "#ffede9",
+                        "surface-container-low": "#fff0ee",
+                        "surface-container-highest": "#fddbd4",
+                        "surface-container-high": "#ffe2dc",
+                        "on-background": "#291713",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#93000a",
+                        "outline-variant": "#e7bdb4",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fff8f6",
+                        "primary-fixed-dim": "#ffb4ab",
+                        "inverse-surface": "#402b27",
+                        "primary-container": "#e02a27",
+                        "secondary-fixed": "#e2e2e2",
+                        "secondary": "#5e5e5e",
+                        "on-surface": "#291713",
+                        "on-primary-container": "#fffbff",
+                        "on-tertiary-fixed-variant": "#3c4852",
+                        "on-primary-fixed": "#410002",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#515e68",
+                        "primary-fixed": "#ffdad6",
+                        "on-tertiary-container": "#fcfcff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#ffe9e5",
+                        "inverse-primary": "#ffb4ab",
+                        "surface-variant": "#fddbd4",
+                        "tertiary-container": "#697681",
+                        "surface-bright": "#fff8f6",
+                        "on-secondary-fixed": "#1b1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "baseline": "4px",
+                        "stack-lg": "24px",
+                        "container-margin": "16px",
+                        "stack-sm": "8px",
+                        "section-gap": "32px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Noto Sans"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "title-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-md": ["Noto Sans"],
+                        "body-md": ["Noto Sans"],
+                        "body-lg": ["Noto Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["11px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.5px", "fontWeight": "700"}],
+                        "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #fff8f6;
+            color: #291713;
+            -webkit-font-smoothing: antialiased;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e7bdb4;
+            border-radius: 10px;
+        }
+        .active-ring {
+            stroke-dasharray: 251.2;
+            stroke-dashoffset: calc(251.2 - (251.2 * 84) / 100);
+        }
+        .glass-panel {
+            background: rgba(255, 248, 246, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        #sidebar { transition: width 0.3s ease; }
+        .sidebar-collapsed .nav-label, .sidebar-collapsed .sidebar-header-text { display: none; }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden">
+<!-- SideNavBar Anchor -->
+<aside class="flex flex-col h-screen p-6 fixed left-0 top-0 overflow-y-auto w-64 bg-surface border-r border-outline-variant z-50 transition-all duration-300" id="sidebar">
+  <div class="flex items-center gap-3 mb-8">
+    <div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center shrink-0">
+      <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+    </div>
+    <div class="sidebar-header-text min-w-0">
+      <h1 class="font-title-lg font-bold text-primary truncate">Digital Janta</h1>
+      <p class="font-label-sm text-on-surface-variant truncate">Civic Platform</p>
+    </div>
+    <button class="shrink-0 p-1.5 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" id="sidebarToggle">
+      <span class="material-symbols-outlined transition-transform duration-300" id="toggleIcon">chevron_left</span>
+    </button>
+  </div>
+  <nav class="flex-1 flex flex-col gap-y-2">
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="feed.html">
+      <span class="material-symbols-outlined nav-icon">dynamic_feed</span>
+      <span class="font-body-md nav-label">Feed</span>
+    </a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="issues.html">
+      <span class="material-symbols-outlined nav-icon">report_problem</span>
+      <span class="font-body-md nav-label">Issues</span>
+    </a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="discussion.html">
+      <span class="material-symbols-outlined nav-icon">forum</span>
+      <span class="font-body-md nav-label">Discussions</span>
+    </a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="polls.html">
+      <span class="material-symbols-outlined nav-icon">ballot</span>
+      <span class="font-body-md nav-label">Polls</span>
+    </a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="#">
+      <span class="material-symbols-outlined nav-icon">map</span>
+      <span class="font-body-md nav-label">Map</span>
+    </a>
+    <!-- Insights (ACTIVE) -->
+    <a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-r-full font-bold nav-item" href="#">
+      <span class="material-symbols-outlined nav-icon" style="font-variation-settings: 'FILL' 1;">analytics</span>
+      <span class="font-body-md nav-label">Insights</span>
+    </a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="profile.html">
+      <span class="material-symbols-outlined nav-icon">person</span>
+      <span class="font-body-md nav-label">Profile</span>
+    </a>
+  </nav>
+  <div class="mt-auto">
+    <button class="w-full bg-primary text-on-primary py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+      <span class="material-symbols-outlined">add_circle</span>
+      <span class="nav-label">Report Issue</span>
+    </button>
+  </div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="flex justify-between items-center h-16 px-stack-lg ml-64 bg-surface/80 backdrop-blur-md sticky top-0 border-b border-outline-variant z-40">
+<div class="flex items-center flex-1">
+<div class="relative w-96 max-w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full h-10 pl-12 pr-4 rounded-full bg-surface-container border-none focus:ring-2 focus:ring-primary text-body-md" placeholder="Search reports, data, or departments..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-lg">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a municipal officer in formal attire, clean background, high-resolution portrait with warm studio lighting, modern minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy9ZFCLPTEZZ_zLsqTMbDNZ2Z7vjBRn_pCeLAfn40fBKnASIRNlWiV6eikLj-adqvgYUcXHobOMplGHHgqWiw2XTqKJlvo4VSaQoWZ2_MXKdaq58vOCBor5dyaOAL9x6CaDvFMGls9R67wX7Muox7SBlBqt_a39irIOmMwInJDujenC4sePQTq8qqtBCjLxKLlq9U4n1qat9uBL98qKJJ8VZj6Q8VYkZN7A8I7PgI96hdhssQ8n0KZ"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-64 p-stack-lg h-[calc(100vh-64px)] overflow-y-auto custom-scrollbar" id="main-content">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Civic Insights</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Data-driven overview of municipal performance and citizen engagement.</p>
+</div>
+<!-- Filters Bar -->
+<div class="flex items-center gap-stack-sm bg-surface-container p-2 rounded-lg">
+<select class="bg-transparent border-none font-label-md focus:ring-0 cursor-pointer">
+<option>This Month</option>
+<option>Last Quarter</option>
+<option>This Year</option>
+</select>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<select class="bg-transparent border-none font-label-md focus:ring-0 cursor-pointer">
+<option>All Wards</option>
+<option>Ward 12 (North)</option>
+<option>Ward 45 (Central)</option>
+</select>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<button class="flex items-center gap-1 font-label-md px-3 py-1 hover:bg-surface-container-high rounded transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                    Departments
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-stack-lg">
+<!-- Key Metrics (Top Row) -->
+<div class="col-span-12 lg:col-span-9 grid grid-cols-1 md:grid-cols-4 gap-stack-md mb-stack-lg">
+<!-- Resolution Rate -->
+<div class="bg-surface-container p-stack-md rounded-lg flex flex-col items-center justify-center text-center">
+<div class="relative w-20 h-20 mb-stack-sm">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container-highest" cx="40" cy="40" fill="transparent" r="32" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary active-ring" cx="40" cy="40" fill="transparent" r="32" stroke="currentColor" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-title-lg text-on-surface">84%</div>
+</div>
+<span class="font-label-md text-on-surface-variant">Resolution Rate</span>
+</div>
+<!-- Avg Response Time -->
+<div class="bg-surface-container p-stack-md rounded-lg">
+<span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Avg Response Time</span>
+<div class="flex items-baseline gap-2 mt-2">
+<h3 class="font-display-lg text-display-lg text-on-surface">3.2</h3>
+<span class="font-body-md text-on-surface-variant">Days</span>
+</div>
+<div class="flex items-center gap-1 text-primary mt-2">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+<span class="font-label-md">12% improvement</span>
+</div>
+</div>
+<!-- CSAT Score -->
+<div class="bg-surface-container p-stack-md rounded-lg">
+<span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Citizen Satisfaction</span>
+<div class="flex items-baseline gap-2 mt-2">
+<h3 class="font-display-lg text-display-lg text-on-surface">4.6</h3>
+<span class="font-body-md text-on-surface-variant">/ 5</span>
+</div>
+<div class="flex gap-1 mt-2 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+</div>
+<!-- Total Issues -->
+<div class="bg-surface-container p-stack-md rounded-lg">
+<span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Issues Reported</span>
+<div class="mt-2">
+<h3 class="font-display-lg text-display-lg text-on-surface">12,402</h3>
+</div>
+<div class="mt-2 w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+<span class="font-label-sm text-on-surface-variant mt-1 block">67% of monthly quota</span>
+</div>
+</div>
+<!-- Visualization Grid -->
+<div class="col-span-12 lg:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<!-- Resolution Trends Area Chart -->
+<div class="bg-surface-container p-stack-lg rounded-lg col-span-1 md:col-span-2">
+<div class="flex justify-between items-center mb-stack-lg">
+<h4 class="font-title-lg text-on-surface">Resolution Trends</h4>
+<div class="flex gap-4">
+<div class="flex items-center gap-1 font-label-md"><span class="w-3 h-3 bg-primary rounded-full"></span> Reported</div>
+<div class="flex items-center gap-1 font-label-md"><span class="w-3 h-3 bg-tertiary-container rounded-full"></span> Resolved</div>
+</div>
+</div>
+<!-- Chart Placeholder -->
+<div class="w-full h-64 flex items-end justify-between gap-1">
+<div class="flex-1 bg-primary/20 h-24 relative group"><div class="absolute bottom-full left-0 w-full bg-primary h-2 mb-1 hidden group-hover:block rounded-t"></div></div>
+<div class="flex-1 bg-primary/20 h-32"></div>
+<div class="flex-1 bg-primary/20 h-40"></div>
+<div class="flex-1 bg-primary/20 h-28"></div>
+<div class="flex-1 bg-primary/20 h-52"></div>
+<div class="flex-1 bg-primary/20 h-44"></div>
+<div class="flex-1 bg-primary/20 h-60"></div>
+<div class="flex-1 bg-primary/20 h-48"></div>
+<div class="flex-1 bg-primary/20 h-36"></div>
+<div class="flex-1 bg-primary/20 h-24"></div>
+<div class="flex-1 bg-primary/20 h-40"></div>
+<div class="flex-1 bg-primary/20 h-56"></div>
+</div>
+<div class="flex justify-between mt-stack-sm text-label-sm text-on-surface-variant">
+<span>1st Nov</span>
+<span>8th Nov</span>
+<span>15th Nov</span>
+<span>22nd Nov</span>
+<span>30th Nov</span>
+</div>
+</div>
+<!-- Category Breakdown Bar Chart -->
+<div class="bg-surface-container p-stack-lg rounded-lg">
+<h4 class="font-title-lg text-on-surface mb-stack-lg">Category Breakdown</h4>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between font-label-md"><span>Garbage Collection</span> <span>4,203</span></div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full"><div class="h-full bg-primary w-[80%] rounded-full"></div></div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-md"><span>Potholes &amp; Roads</span> <span>2,841</span></div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full"><div class="h-full bg-primary w-[55%] rounded-full"></div></div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-md"><span>Water Supply</span> <span>2,104</span></div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full"><div class="h-full bg-primary w-[40%] rounded-full"></div></div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-md"><span>Street Lights</span> <span>1,562</span></div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full"><div class="h-full bg-primary w-[30%] rounded-full"></div></div>
+</div>
+</div>
+</div>
+<!-- Department Efficiency Table -->
+<div class="bg-surface-container p-stack-lg rounded-lg">
+<h4 class="font-title-lg text-on-surface mb-stack-lg">Department Efficiency</h4>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-label-md text-on-surface-variant border-b border-outline-variant">
+<th class="pb-2 font-medium">Department</th>
+<th class="pb-2 font-medium">Rate</th>
+<th class="pb-2 font-medium text-right">Trend</th>
+</tr>
+</thead>
+<tbody class="text-body-md">
+<tr class="border-b border-outline-variant/30">
+<td class="py-3">Sanitation</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<span class="font-bold">92%</span>
+<div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-primary w-[92%]"></div></div>
+</div>
+</td>
+<td class="py-3 text-right text-error"><span class="material-symbols-outlined">trending_up</span></td>
+</tr>
+<tr class="border-b border-outline-variant/30">
+<td class="py-3">Public Works</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<span class="font-bold">78%</span>
+<div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-primary w-[78%]"></div></div>
+</div>
+</td>
+<td class="py-3 text-right text-tertiary"><span class="material-symbols-outlined">trending_flat</span></td>
+</tr>
+<tr>
+<td class="py-3">Electricity</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<span class="font-bold">85%</span>
+<div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-primary w-[85%]"></div></div>
+</div>
+</td>
+<td class="py-3 text-right text-error"><span class="material-symbols-outlined">trending_up</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Sidebar -->
+<div class="col-span-12 lg:col-span-3 flex flex-col gap-stack-lg">
+<!-- Insights Summary -->
+<section class="bg-surface-container p-stack-lg rounded-lg border-l-4 border-primary shadow-sm">
+<div class="flex items-center gap-2 mb-stack-md text-primary">
+<span class="material-symbols-outlined">auto_awesome</span>
+<h4 class="font-title-lg">AI Insights</h4>
+</div>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+<p class="text-body-md text-on-surface">Sanitation response time improved by 24% following the new route optimization.</p>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">warning</span>
+<p class="text-body-md text-on-surface">Water supply issues in Ward 12 are trending upwards; check pump maintenance logs.</p>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">lightbulb</span>
+<p class="text-body-md text-on-surface">Volunteer engagement is at an all-time high, perfect for a community cleanup event.</p>
+</li>
+</ul>
+</section>
+<!-- Top Active Wards -->
+<section class="bg-surface-container p-stack-lg rounded-lg">
+<h4 class="font-title-lg text-on-surface mb-stack-lg">Top Active Wards</h4>
+<div class="space-y-stack-md">
+<div class="flex items-center gap-stack-md">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold">1</div>
+<div class="flex-1">
+<p class="font-label-md">Central Ward</p>
+<p class="text-label-sm text-on-surface-variant">2.4k Interactions</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold">2</div>
+<div class="flex-1">
+<p class="font-label-md">Lakeview East</p>
+<p class="text-label-sm text-on-surface-variant">1.9k Interactions</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold">3</div>
+<div class="flex-1">
+<p class="font-label-md">Hillcrest Heights</p>
+<p class="text-label-sm text-on-surface-variant">1.1k Interactions</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Community Impact -->
+<section class="bg-inverse-surface text-inverse-on-surface p-stack-lg rounded-lg overflow-hidden relative">
+<div class="relative z-10">
+<h4 class="font-title-lg mb-stack-sm">Community Impact</h4>
+<div class="mt-4">
+<p class="text-label-sm uppercase tracking-widest opacity-80">Volunteer Hours</p>
+<h3 class="text-[40px] font-bold leading-tight">4,820</h3>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed-dim">favorite</span>
+<span class="text-body-md">12 active projects</span>
+</div>
+</div>
+<!-- Decorative element -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-primary/20 rounded-full blur-2xl"></div>
+</section>
+</div>
+</div>
+</main>
+<script>
+        // Simple interactivity for the dropdowns and buttons
+        document.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', (e) => {
+                console.log(`Filter changed to: ${e.target.value}`);
+                // In a real app, this would trigger a data refresh
+            });
+        });
+
+        // Hover effect for charts
+        const bars = document.querySelectorAll('.bg-primary\\/20');
+        bars.forEach(bar => {
+            bar.addEventListener('mouseenter', () => bar.classList.add('bg-primary/40'));
+            bar.addEventListener('mouseleave', () => bar.classList.remove('bg-primary/40'));
+        });
+    </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const toggleIcon = document.getElementById('toggleIcon');
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', () => {
+        if (sidebar.classList.contains('sidebar-collapsed')) {
+          sidebar.classList.remove('sidebar-collapsed');
+          sidebar.style.width = '16rem';
+          toggleIcon.style.transform = 'rotate(0deg)';
+        } else {
+          sidebar.classList.add('sidebar-collapsed');
+          sidebar.style.width = '80px';
+          toggleIcon.style.transform = 'rotate(180deg)';
+        }
+      });
+    }
+  });
+</script>
+</body></html>

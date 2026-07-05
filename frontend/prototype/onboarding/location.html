@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DJ • Complete Profile</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Inter, sans-serif;
+      }
+
+      body {
+        background: #f5f6f8;
+        color: #333;
+      }
+
+      .wrapper {
+        max-width: 1400px;
+        margin: auto;
+        padding: 40px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 28px;
+      }
+
+      .logo {
+        font-size: 26px;
+        font-weight: 800;
+        color: #ff6b5b;
+      }
+
+      .step {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #999;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 32px;
+      }
+
+      .sidebar {
+        background: white;
+        padding: 28px;
+        border-radius: 16px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+      }
+
+      .small {
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #999;
+      }
+
+      .sidebar h2 {
+        margin: 12px 0 30px;
+        font-size: 34px;
+        line-height: 1.15;
+      }
+
+      .progress {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .item {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      .number {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+
+      .done {
+        background: #111;
+        color: white;
+      }
+
+      .active {
+        background: #ff6b5b;
+        color: white;
+      }
+
+      .pending {
+        background: #ececec;
+        color: #777;
+      }
+
+      .label {
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .sub {
+        font-size: 13px;
+        margin-top: 4px;
+        color: #777;
+      }
+
+      .btn {
+        margin-top: 40px;
+        width: 100%;
+        padding: 15px;
+        background: #ff6b5b;
+        border: none;
+        color: white;
+        font-size: 15px;
+        font-weight: 700;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .back {
+        display: block;
+        margin-top: 16px;
+        text-align: center;
+        color: #777;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .card {
+        background: white;
+        padding: 40px;
+        border-radius: 18px;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+      }
+
+      .section {
+        font-size: 13px;
+        letter-spacing: 3px;
+        font-weight: 700;
+        color: #888;
+        margin-bottom: 30px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .full {
+        grid-column: 1/-1;
+      }
+
+      label {
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+        color: #666;
+      }
+
+      input,
+      select,
+      textarea {
+        border: 1px solid #e6e6e6;
+        border-radius: 10px;
+        padding: 14px 16px;
+        font-size: 15px;
+        outline: none;
+      }
+
+      input,
+      select {
+        height: 54px;
+      }
+
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #ff6b5b;
+      }
+
+      .note {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #52c41a;
+        font-weight: 600;
+      }
+
+      .info {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #777;
+      }
+
+      .readonly {
+        background: #fafafa;
+        color: #888;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="logo">Digital Janata</div>
+
+        <div class="step">STEP 02 / 03</div>
+      </div>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="small">Citizen Onboarding</div>
+
+          <h2>Complete your DJ Profile</h2>
+
+          <div class="progress">
+            <div class="item">
+              <div class="number done">✓</div>
+
+              <div>
+                <div class="label">Basic Information</div>
+
+                <div class="sub">Completed</div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="number active">2</div>
+
+              <div>
+                <div class="label">Location & Constituency</div>
+
+                <div class="sub">Help us identify your jurisdiction</div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="number pending">3</div>
+
+              <div>
+                <div class="label">About You</div>
+
+                <div class="sub">Interests & profile</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn">Continue →</button>
+
+          <a href="#" class="back"> ← Back </a>
+        </aside>
+
+        <main class="card">
+          <div class="section">02 • LOCATION & CONSTITUENCY</div>
+
+          <div class="grid">
+            <div class="field">
+              <label>Pincode *</label>
+
+              <input type="text" placeholder="462016" />
+
+              <div class="note">✓ Address detected automatically</div>
+            </div>
+
+            <div class="field">
+              <label>Country *</label>
+
+              <input class="readonly" value="India" readonly />
+            </div>
+
+            <div class="field">
+              <label>State *</label>
+
+              <input class="readonly" value="Madhya Pradesh" readonly />
+            </div>
+
+            <div class="field">
+              <label>District *</label>
+
+              <input class="readonly" value="Bhopal" readonly />
+            </div>
+
+            <div class="field">
+              <label>City *</label>
+
+              <input class="readonly" value="Bhopal" readonly />
+            </div>
+
+            <div class="field">
+              <label>Locality / Area *</label>
+
+              <input class="readonly" value="Arera Colony" readonly />
+            </div>
+
+            <div class="field">
+              <label>Ward (Auto)</label>
+
+              <input class="readonly" value="Ward 53" readonly />
+            </div>
+
+            <div class="field">
+              <label>Assembly Constituency</label>
+
+              <input class="readonly" value="Govindpura" readonly />
+            </div>
+
+            <div class="field full">
+              <label>Full Address</label>
+
+              <textarea placeholder="House No, Street, Landmark..."></textarea>
+
+              <div class="info">
+                Only used for identifying the correct civic jurisdiction. Your
+                exact address will never be shown publicly.
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Occupation</label>
+
+              <input type="text" placeholder="Software Engineer" />
+            </div>
+
+            <div class="field">
+              <label>Organization (Optional)</label>
+
+              <input type="text" placeholder="OpenAI" />
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

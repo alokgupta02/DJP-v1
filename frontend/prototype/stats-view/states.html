@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Janta | States Analytics Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#e02a27",
+                    "inverse-surface": "#402b27",
+                    "surface-container-high": "#ffe2dc",
+                    "on-error-container": "#93000a",
+                    "background": "#fff8f6",
+                    "on-secondary-fixed-variant": "#474747",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#3c4852",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-primary-container": "#fffbff",
+                    "on-background": "#291713",
+                    "surface": "#fff8f6",
+                    "tertiary-fixed-dim": "#bbc8d4",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#646464",
+                    "secondary-container": "#e2e2e2",
+                    "inverse-primary": "#ffb4ab",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "inverse-on-surface": "#ffede9",
+                    "secondary-fixed": "#e2e2e2",
+                    "primary-fixed": "#ffdad6",
+                    "on-primary-fixed": "#410002",
+                    "primary": "#bb0311",
+                    "tertiary-container": "#697681",
+                    "tertiary": "#515e68",
+                    "surface-container-highest": "#fddbd4",
+                    "surface-variant": "#fddbd4",
+                    "on-surface": "#291713",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#111d26",
+                    "surface-container": "#ffe9e5",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#f4d3cc",
+                    "tertiary-fixed": "#d7e4f0",
+                    "outline": "#926f68",
+                    "secondary": "#5e5e5e",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#e7bdb4",
+                    "surface-container-low": "#fff0ee",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#5d3f39",
+                    "surface-tint": "#bf0813",
+                    "surface-bright": "#fff8f6",
+                    "on-tertiary-container": "#fcfcff",
+                    "on-primary-fixed-variant": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "section-gap": "32px",
+                    "container-margin": "16px",
+                    "stack-lg": "24px",
+                    "baseline": "4px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "title-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Noto Sans"],
+                    "label-md": ["Noto Sans"],
+                    "body-lg": ["Noto Sans"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Noto Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.5px", "fontWeight": "700"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #fff8f6; font-family: 'Noto Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        .sidebar-scroll::-webkit-scrollbar { width: 4px; }
+        .sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+        .sidebar-scroll::-webkit-scrollbar-thumb { background: #e7bdb4; border-radius: 10px; }
+        .bento-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .bento-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(187, 3, 17, 0.08); }
+        
+        /* Sidebar Transition styles */
+        #sidebar {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #main-content {
+            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-label, .sidebar-header-text, .user-details, .index-header {
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+        .sidebar-collapsed .nav-label, 
+        .sidebar-collapsed .sidebar-header-text, 
+        .sidebar-collapsed .user-details, 
+        .sidebar-collapsed .index-header,
+        .sidebar-collapsed .live-badge {
+            opacity: 0;
+            visibility: hidden;
+            width: 0;
+            display: none;
+        }
+        .sidebar-collapsed .nav-item {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .sidebar-collapsed .nav-icon {
+            margin-right: 0;
+        }
+        .sidebar-collapsed .profile-card {
+            justify-content: center;
+            padding: 0.75rem;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Left Sidebar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-stack-lg z-50" id="sidebar">
+<div class="px-6 mb-8 flex items-center justify-between">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="shrink-0 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center font-black text-xl">DJ</div>
+<div class="sidebar-header-text whitespace-nowrap">
+<h1 class="font-headline-lg text-xl font-black text-primary">Digital Janta</h1>
+<p class="font-label-md text-[10px] text-on-surface-variant opacity-70 uppercase tracking-widest">Civic Platform</p>
+</div>
+</div>
+<button class="p-1 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" id="sidebarToggle">
+<span class="material-symbols-outlined transition-transform duration-300" id="toggleIcon">chevron_left</span>
+</button>
+</div>
+<nav class="flex-1 overflow-y-auto custom-scrollbar px-2 space-y-6">
+<ul class="space-y-1">
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="overview.html"><span class="nav-icon text-lg">📊</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Dashboard</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="judiciary.html"><span class="nav-icon text-lg">⚖️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Judiciary</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="legislatures.html"><span class="nav-icon text-lg">🏛️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Legislatures</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="governments.html"><span class="nav-icon text-lg">🏢</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Governments</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="rep-index.html"><span class="nav-icon text-lg">👥</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Representatives</span></a></li>
+<li><a class="nav-item bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="states.html"><span class="nav-icon text-lg">🗺️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">States</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="municipalities.html"><span class="nav-icon text-lg">🏙️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Municipalities</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="parties.html"><span class="nav-icon text-lg">🎯</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Parties</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="elections.html"><span class="nav-icon text-lg">🗳️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Elections</span></a></li>
+</ul>
+<div class="index-section">
+<div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Leadership Indices</div>
+<ul class="space-y-1">
+<li class="relative">
+<a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#senate-minister">
+<span class="nav-icon text-lg">⭐</span>
+<span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Senate Minister</span>
+<span class="live-badge absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-0.5 rounded-full text-[8px] font-black">LIVE</span>
+</a>
+</li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#chief-minister"><span class="nav-icon text-lg">⭐</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Chief Minister</span></a></li>
+</ul>
+</div>
+<div class="utility-section">
+<div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Utilities</div>
+<ul class="space-y-1">
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#support"><span class="nav-icon text-lg">💬</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Support</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#archive"><span class="nav-icon text-lg">📁</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Archive</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="px-4 mt-auto pt-4">
+<div class="profile-card flex items-center gap-3 p-3 bg-surface-container rounded-lg overflow-hidden">
+<div class="shrink-0 w-10 h-10 rounded-full bg-primary-fixed overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtXsHDIJ6hlFfaTYgczIwbYaEmeiAe2vvTlVOq_t6NRmtAM6QDUShuyCZYEn71ewvxvQIVuWPU-JyJ_OGk9kkKxlHYJ8rIdaigdCBZzBNHo3ByuLgmz-YFbTNlLp5K8bb_uw3jByE452J5wXeLOsNRgFwbY1m4dHeuJ0MppjcRHt-0UTBq4wzDnZOOf3qsYEFmpG4Caz1UJum6miL7OWN-YGd3tWlwUH-CyDBaGioIL9L7a0AiophT"/>
+</div>
+<div class="user-details flex-1 overflow-hidden whitespace-nowrap">
+<p class="font-label-md font-bold truncate">Arjun Sharma</p>
+<p class="text-[10px] text-on-surface-variant truncate">Ward Ambassador</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen" id="main-content">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-gutter w-full sticky top-0 z-50 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline h-16">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-full pl-10 pr-4 py-1.5 w-80 text-body-md focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Search administrative data..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">help</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">account_circle</button>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-8 max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-section-gap">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary">States Analytics</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-2">Comparative performance and fiscal health metrics across administrative regions.</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 border-2 border-secondary text-secondary px-6 py-2 rounded-full font-bold hover:bg-secondary hover:text-white transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">filter_list</span> Filter States
+                    </button>
+<button class="flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full font-bold hover:bg-primary-container transition-all active:scale-95 shadow-lg">
+<span class="material-symbols-outlined text-[20px]">download</span> Export Report
+                    </button>
+</div>
+</div>
+<!-- Top Row: High Impact Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg mb-stack-lg">
+<div class="bento-card bg-surface-container-lowest border border-outline-variant p-6 rounded-lg flex flex-col gap-2">
+<p class="text-label-md font-bold text-on-surface-variant uppercase tracking-wider">AVG GSDP GROWTH</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-display-lg font-black text-on-surface">7.4%</h3>
+<span class="flex items-center text-primary font-bold text-label-md">
+<span class="material-symbols-outlined">arrow_upward</span> 0.2%
+                        </span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-4 overflow-hidden">
+<div class="bg-primary h-full w-[74%] rounded-full"></div>
+</div>
+</div>
+<div class="bento-card bg-surface-container-lowest border border-outline-variant p-6 rounded-lg flex flex-col gap-2">
+<p class="text-label-md font-bold text-on-surface-variant uppercase tracking-wider">LITERACY INDEX</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-display-lg font-black text-on-surface">78.2%</h3>
+<span class="flex items-center text-secondary font-bold text-label-md">
+<span class="material-symbols-outlined">arrow_downward</span> 1.2%
+                        </span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-4 overflow-hidden">
+<div class="bg-tertiary h-full w-[78%] rounded-full"></div>
+</div>
+</div>
+<div class="bento-card bg-surface-container-lowest border border-outline-variant p-6 rounded-lg flex flex-col gap-2">
+<p class="text-label-md font-bold text-on-surface-variant uppercase tracking-wider">HEALTHCARE INDEX</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-display-lg font-black text-on-surface">64.5</h3>
+<span class="flex items-center text-secondary font-bold text-label-md">
+<span class="material-symbols-outlined">arrow_downward</span> 0.3%
+                        </span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-4 overflow-hidden">
+<div class="bg-primary-container h-full w-[64.5%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Middle Section: Visualizations -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-lg mb-stack-lg">
+<!-- Bar Chart Comparison (2/3) -->
+<div class="lg:col-span-2 bento-card bg-surface-container-lowest border border-outline-variant p-8 rounded-lg">
+<div class="flex justify-between items-center mb-8">
+<h4 class="font-title-lg text-title-lg text-on-surface">Development Indicators Comparison</h4>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-label-sm text-on-surface-variant">GSDP</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-outline-variant"></span>
+<span class="text-label-sm text-on-surface-variant">Literacy</span>
+</div>
+</div>
+</div>
+<div class="flex items-end justify-between h-64 gap-6 px-4">
+<!-- MAN -->
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full flex gap-1 justify-center items-end h-full mb-4">
+<div class="bg-primary w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 65%;"></div>
+<div class="bg-outline-variant w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 70%;"></div>
+</div>
+<span class="text-label-md font-bold text-on-surface">MAN</span>
+</div>
+<!-- TN -->
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full flex gap-1 justify-center items-end h-full mb-4">
+<div class="bg-primary w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 85%;"></div>
+<div class="bg-outline-variant w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 80%;"></div>
+</div>
+<span class="text-label-md font-bold text-on-surface">TN</span>
+</div>
+<!-- UP -->
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full flex gap-1 justify-center items-end h-full mb-4">
+<div class="bg-primary w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 50%;"></div>
+<div class="bg-outline-variant w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 55%;"></div>
+</div>
+<span class="text-label-md font-bold text-on-surface">UP</span>
+</div>
+<!-- KAR -->
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full flex gap-1 justify-center items-end h-full mb-4">
+<div class="bg-primary w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 88%;"></div>
+<div class="bg-outline-variant w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 75%;"></div>
+</div>
+<span class="text-label-md font-bold text-on-surface">KAR</span>
+</div>
+<!-- GUJ -->
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full flex gap-1 justify-center items-end h-full mb-4">
+<div class="bg-primary w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 82%;"></div>
+<div class="bg-outline-variant w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 68%;"></div>
+</div>
+<span class="text-label-md font-bold text-on-surface">GUJ</span>
+</div>
+<!-- TEL -->
+<div class="flex flex-col items-center flex-1 group">
+<div class="w-full flex gap-1 justify-center items-end h-full mb-4">
+<div class="bg-primary w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 78%;"></div>
+<div class="bg-outline-variant w-4 rounded-t-sm transition-all group-hover:opacity-80" style="height: 72%;"></div>
+</div>
+<span class="text-label-md font-bold text-on-surface">TEL</span>
+</div>
+</div>
+</div>
+<!-- State Governance Ranking (1/3) -->
+<div class="bento-card bg-surface-container-lowest border border-outline-variant p-8 rounded-lg flex flex-col">
+<h4 class="font-title-lg text-title-lg text-on-surface mb-6">State Governance Index</h4>
+<div class="space-y-6">
+<!-- Kerala -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-bold text-body-lg">Kerala</span>
+<span class="text-primary font-black">9.82</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[98.2%] rounded-full"></div>
+</div>
+</div>
+<!-- TN -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-bold text-body-lg">Tamil Nadu</span>
+<span class="text-on-surface font-black">9.45</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[94.5%] rounded-full"></div>
+</div>
+</div>
+<!-- KAR -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-bold text-body-lg">Karnataka</span>
+<span class="text-on-surface font-black">9.12</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[91.2%] rounded-full"></div>
+</div>
+</div>
+<!-- MAH -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-bold text-body-lg">Maharashtra</span>
+<span class="text-on-surface font-black">8.90</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[89%] rounded-full"></div>
+</div>
+</div>
+</div>
+<button class="mt-auto pt-6 text-primary font-bold text-label-md flex items-center justify-center gap-1 hover:underline">
+                        View Full Rankings <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Bottom Section: Interactive Map -->
+<div class="bento-card bg-surface-container-lowest border border-outline-variant p-8 rounded-lg min-h-[500px] flex flex-col relative overflow-hidden">
+<div class="flex justify-between items-center mb-6 z-10">
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface">Explore Region Metrics</h4>
+<p class="text-label-md text-on-surface-variant">Geospatial heat-map representation of development clusters.</p>
+</div>
+<div class="flex bg-surface-container p-1 rounded-full border border-outline-variant">
+<button class="px-4 py-1.5 rounded-full bg-white shadow-sm text-label-md font-bold">GSDP</button>
+<button class="px-4 py-1.5 rounded-full text-on-surface-variant text-label-md hover:bg-surface-container-high">Education</button>
+<button class="px-4 py-1.5 rounded-full text-on-surface-variant text-label-md hover:bg-surface-container-high">Health</button>
+</div>
+</div>
+<!-- Animated Map Simulation -->
+<div class="flex-grow flex items-center justify-center relative bg-surface-container-low rounded-lg">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#bb0311 1px, transparent 1px); background-size: 20px 20px;"></div>
+<!-- Placeholder for Map Visualization -->
+<div class="relative w-full h-full flex items-center justify-center">
+<div class="w-[80%] h-[80%] bg-contain bg-center bg-no-repeat transition-all hover:scale-[1.02]" data-alt="A stylized, high-contrast digital map of India as a data visualization heatmap. The coastal regions are highlighted in vibrant shades of primary red and coral, while the inland areas show softer tonal transitions. The map is minimalist, professional, and integrated into a high-tech administrative dashboard interface." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbC6t8V2j4FbSLP-vDObMQ66hzr5MsdSJmOAO-TMMAaSFqXq_Qf-bpdVlmPFnR6tmy5uxYccO_F5mf1sRI4u1erHZeIPQm1bPjva0wxUYsEbleIkN2WOfbRVo5IsQOwR_mbueeCWsxt8m0qo92Efw04FcEp4g5pfbG1720oZRRbLqBzyLqANtErL6iyouey8G5IFztbxBphBvfpgqvxgFkmCmHI-Ci4cjlEsj9gw4kgMyX7-fnd8Nr')"></div>
+<!-- Floating Data Tooltip (Decorative) -->
+<div class="absolute top-1/4 right-1/3 bg-white border border-outline-variant p-4 rounded-lg shadow-xl animate-bounce">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-8 h-8 rounded bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+</div>
+<span class="font-bold text-body-md">Maharashtra</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase">Growth</p>
+<p class="text-label-md font-black text-primary">+8.2%</p>
+</div>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase">Rank</p>
+<p class="text-label-md font-black">#04</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Legend -->
+<div class="absolute bottom-12 left-12 bg-white/80 backdrop-blur-md p-4 rounded-lg border border-outline-variant z-10">
+<p class="text-[10px] font-bold text-on-surface-variant mb-2 uppercase">Heat Intensity</p>
+<div class="flex items-center gap-2">
+<span class="text-[10px]">Low</span>
+<div class="h-2 w-32 bg-gradient-to-r from-surface-container-high via-primary-fixed to-primary rounded-full"></div>
+<span class="text-[10px]">Critical</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Sidebar Toggle Logic
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const toggleIcon = document.getElementById('toggleIcon');
+        let isCollapsed = false;
+
+        sidebarToggle.addEventListener('click', () => {
+            isCollapsed = !isCollapsed;
+            
+            if (isCollapsed) {
+                sidebar.classList.add('sidebar-collapsed');
+                sidebar.style.width = '80px';
+                mainContent.style.marginLeft = '80px';
+                toggleIcon.style.transform = 'rotate(180deg)';
+            } else {
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.style.width = '16rem';
+                mainContent.style.marginLeft = '16rem';
+                toggleIcon.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        // Simple Interaction logic
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = 'rgba(187, 3, 17, 0.3)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = '';
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Janta | Political Parties Overview</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#fff8f6",
+                    "inverse-on-surface": "#ffede9",
+                    "on-primary": "#ffffff",
+                    "on-background": "#291713",
+                    "outline": "#926f68",
+                    "tertiary": "#515e68",
+                    "surface-tint": "#bf0813",
+                    "surface-container-low": "#fff0ee",
+                    "primary-container": "#e02a27",
+                    "primary": "#bb0311",
+                    "on-surface-variant": "#5d3f39",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#e2e2e2",
+                    "secondary": "#5e5e5e",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#bbc8d4",
+                    "on-secondary-fixed-variant": "#474747",
+                    "surface-dim": "#f4d3cc",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#410002",
+                    "on-primary-fixed-variant": "#93000a",
+                    "on-primary-container": "#fffbff",
+                    "surface-variant": "#fddbd4",
+                    "primary-fixed": "#ffdad6",
+                    "on-tertiary-container": "#fcfcff",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#ffe2dc",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#646464",
+                    "tertiary-container": "#697681",
+                    "on-tertiary-fixed": "#111d26",
+                    "on-surface": "#291713",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "inverse-surface": "#402b27",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#fff8f6",
+                    "inverse-primary": "#ffb4ab",
+                    "secondary-container": "#e2e2e2",
+                    "surface-container-highest": "#fddbd4",
+                    "on-tertiary-fixed-variant": "#3c4852",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#d7e4f0",
+                    "outline-variant": "#e7bdb4",
+                    "background": "#fff8f6",
+                    "surface-container": "#ffe9e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "container-margin": "16px",
+                    "stack-sm": "8px",
+                    "baseline": "4px",
+                    "stack-md": "16px",
+                    "stack-lg": "24px",
+                    "section-gap": "32px"
+            },
+            "fontFamily": {
+                    "label-md": ["Noto Sans"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Noto Sans"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "label-sm": ["Noto Sans"],
+                    "body-md": ["Noto Sans"],
+                    "title-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.5px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fff8f6;
+            color: #291713;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e7bdb4;
+            border-radius: 10px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(146, 111, 104, 0.1);
+        }
+        
+        /* Sidebar Transition styles */
+        #sidebar {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #main-content {
+            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-label, .sidebar-header-text, .user-details, .index-header {
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+        .sidebar-collapsed .nav-label, 
+        .sidebar-collapsed .sidebar-header-text, 
+        .sidebar-collapsed .user-details, 
+        .sidebar-collapsed .index-header,
+        .sidebar-collapsed .live-badge {
+            opacity: 0;
+            visibility: hidden;
+            width: 0;
+            display: none;
+        }
+        .sidebar-collapsed .nav-item {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .sidebar-collapsed .nav-icon {
+            margin-right: 0;
+        }
+        .sidebar-collapsed .profile-card {
+            justify-content: center;
+            padding: 0.75rem;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden">
+<!-- Left Sidebar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-stack-lg z-50" id="sidebar">
+<div class="px-6 mb-8 flex items-center justify-between">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="shrink-0 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center font-black text-xl">DJ</div>
+<div class="sidebar-header-text whitespace-nowrap">
+<h1 class="font-headline-lg text-xl font-black text-primary">Digital Janta</h1>
+<p class="font-label-md text-[10px] text-on-surface-variant opacity-70 uppercase tracking-widest">Civic Platform</p>
+</div>
+</div>
+<button class="p-1 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" id="sidebarToggle">
+<span class="material-symbols-outlined transition-transform duration-300" id="toggleIcon">chevron_left</span>
+</button>
+</div>
+<nav class="flex-1 overflow-y-auto custom-scrollbar px-2 space-y-6">
+<ul class="space-y-1">
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="overview.html"><span class="nav-icon text-lg">📊</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Dashboard</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="judiciary.html"><span class="nav-icon text-lg">⚖️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Judiciary</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="legislatures.html"><span class="nav-icon text-lg">🏛️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Legislatures</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="governments.html"><span class="nav-icon text-lg">🏢</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Governments</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="rep-index.html"><span class="nav-icon text-lg">👥</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Representatives</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="states.html"><span class="nav-icon text-lg">🗺️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">States</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="municipalities.html"><span class="nav-icon text-lg">🏙️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Municipalities</span></a></li>
+<li><a class="nav-item bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="parties.html"><span class="nav-icon text-lg">🎯</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Parties</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="elections.html"><span class="nav-icon text-lg">🗳️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Elections</span></a></li>
+</ul>
+<div class="index-section">
+<div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Leadership Indices</div>
+<ul class="space-y-1">
+<li class="relative">
+<a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#senate-minister">
+<span class="nav-icon text-lg">⭐</span>
+<span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Senate Minister</span>
+<span class="live-badge absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-0.5 rounded-full text-[8px] font-black">LIVE</span>
+</a>
+</li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#chief-minister"><span class="nav-icon text-lg">⭐</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Chief Minister</span></a></li>
+</ul>
+</div>
+<div class="utility-section">
+<div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Utilities</div>
+<ul class="space-y-1">
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#support"><span class="nav-icon text-lg">💬</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Support</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#archive"><span class="nav-icon text-lg">📁</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Archive</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="px-4 mt-auto pt-4">
+<div class="profile-card flex items-center gap-3 p-3 bg-surface-container rounded-lg overflow-hidden">
+<div class="shrink-0 w-10 h-10 rounded-full bg-primary-fixed overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtXsHDIJ6hlFfaTYgczIwbYaEmeiAe2vvTlVOq_t6NRmtAM6QDUShuyCZYEn71ewvxvQIVuWPU-JyJ_OGk9kkKxlHYJ8rIdaigdCBZzBNHo3ByuLgmz-YFbTNlLp5K8bb_uw3jByE452J5wXeLOsNRgFwbY1m4dHeuJ0MppjcRHt-0UTBq4wzDnZOOf3qsYEFmpG4Caz1UJum6miL7OWN-YGd3tWlwUH-CyDBaGioIL9L7a0AiophT"/>
+</div>
+<div class="user-details flex-1 overflow-hidden whitespace-nowrap">
+<p class="font-label-md font-bold truncate">Arjun Sharma</p>
+<p class="text-[10px] text-on-surface-variant truncate">Ward Ambassador</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="flex justify-between items-center h-16 px-stack-lg ml-64 bg-surface/80 backdrop-blur-md z-40 fixed top-0 right-0 left-0 border-b border-outline-variant">
+<div class="flex items-center bg-surface-container-low px-stack-md py-2 rounded-full border border-outline-variant w-1/3">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full ml-2 text-on-surface" placeholder="Search parties or districts..." type="text"/>
+</div>
+<div class="flex items-center gap-stack-lg">
+<button class="relative text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="flex items-center gap-stack-sm border-l border-outline-variant pl-stack-lg">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional political administrator wearing a neutral suit, standing against a high-tech minimalist office background with soft bokeh lighting. The style is modern corporate, clean and authoritative, with a warm-tone color grading consistent with the brand's red and cream palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEdUhKirQEyrxgLD9ex7dUbiOkeN5bjCn1NfXfNy9kMEsbvSDBvH45Gp0mjvnRHK2DyuZg64J8gOMstGv9MQf3atCdnbYGJ3u32UKTUlBqB90ZJusI8BIeB-EkPkESGQq6QufSsxDDCAmMbDs5FlhY6ypmUbVO4n6lVXaJuys-d3svLbXG7eNYBj3oKxt9nbxlGsnVoOW2IBkgK2UC0R9JdRHjSX41feB9cug7321qTLQaZvzCymAo"/>
+</div>
+<span class="font-label-md text-label-md hidden lg:block">Admin. J. Doe</span>
+</div>
+</div>
+</header>
+<!-- Main Content Cluster -->
+<main class="ml-64 pt-16 h-screen flex" id="main-content">
+<!-- Left & Center Content (Main Dashboard) -->
+<section class="flex-1 overflow-y-auto custom-scrollbar p-container-margin">
+<!-- Page Header Area -->
+<div class="flex justify-between items-end mb-section-gap">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary">Political Parties Overview</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Real-time analytical breakdown of national electoral performance.</p>
+</div>
+<div class="flex gap-stack-sm">
+<button class="flex items-center gap-stack-sm border border-secondary text-secondary px-stack-md py-2 rounded-lg font-label-md text-label-md hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+                        Filter Data
+                    </button>
+<button class="flex items-center gap-stack-sm bg-primary text-on-primary px-stack-md py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">download</span>
+                        Export CSV
+                    </button>
+</div>
+</div>
+<!-- Major Parties Section: Detailed Bento Layout -->
+<div class="grid grid-cols-2 gap-stack-lg mb-section-gap">
+<!-- Party Card 1 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-stack-lg hover:border-primary/30 transition-all group">
+<div class="flex justify-between items-start mb-stack-lg">
+<div class="flex items-center gap-stack-md">
+<div class="w-14 h-14 bg-primary text-on-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">LIBERTY BLOC PARTY</h3>
+<p class="text-primary font-label-md text-label-md uppercase tracking-widest">Main Opposition</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full font-label-md text-label-md">Stable</span>
+</div>
+<div class="grid grid-cols-2 gap-stack-md">
+<div class="bg-surface p-4 rounded-lg border border-outline-variant/50">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-1">Seats Won</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">142</span>
+<span class="text-error font-label-md text-label-md flex items-center"><span class="material-symbols-outlined text-sm">arrow_downward</span> 4%</span>
+</div>
+</div>
+<div class="bg-surface p-4 rounded-lg border border-outline-variant/50">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-1">Vote Share</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">38.4%</span>
+<span class="text-primary font-label-md text-label-md flex items-center"><span class="material-symbols-outlined text-sm">arrow_upward</span> 1.2%</span>
+</div>
+</div>
+<div class="bg-surface p-4 rounded-lg border border-outline-variant/50">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-1">Growth Index</p>
+<div class="h-2 w-full bg-surface-container-high rounded-full mt-2">
+<div class="h-2 bg-primary rounded-full" style="width: 62%;"></div>
+</div>
+</div>
+<div class="bg-surface p-4 rounded-lg border border-outline-variant/50">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-1">Stability Rate</p>
+<span class="text-xl font-semibold">High (0.84)</span>
+</div>
+</div>
+</div>
+<!-- Party Card 2 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-stack-lg hover:border-primary/30 transition-all">
+<div class="flex justify-between items-start mb-stack-lg">
+<div class="flex items-center gap-stack-md">
+<div class="w-14 h-14 bg-tertiary-container text-on-tertiary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">groups_3</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">UNION DEMOCRATIC</h3>
+<p class="text-tertiary font-label-md text-label-md uppercase tracking-widest">Incumbent Coalition</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary rounded-full font-label-md text-label-md">Volatile</span>
+</div>
+<div class="grid grid-cols-2 gap-stack-md">
+<div class="bg-surface p-4 rounded-lg border border-outline-variant/50">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-1">Seats Won</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">186</span>
+<span class="text-primary font-label-md text-label-md flex items-center"><span class="material-symbols-outlined text-sm">arrow_upward</span> 12%</span>
+</div>
+</div>
+<div class="bg-surface p-4 rounded-lg border border-outline-variant/50">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-1">Vote Share</p>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold">44.1%</span>
+<span class="text-primary font-label-md text-label-md flex items-center"><span class="material-symbols-outlined text-sm">arrow_upward</span> 3.5%</span>
+</div>
+</div>
+<div class="bg-surface p-4 rounded-lg border border-outline-variant/50">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-1">Growth Index</p>
+<div class="h-2 w-full bg-surface-container-high rounded-full mt-2">
+<div class="h-2 bg-tertiary-container rounded-full" style="width: 78%;"></div>
+</div>
+</div>
+<div class="bg-surface p-4 rounded-lg border border-outline-variant/50">
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-1">Stability Rate</p>
+<span class="text-xl font-semibold">Med (0.61)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Performance Insights Section -->
+<div class="grid grid-cols-3 gap-stack-lg mb-section-gap">
+<!-- Demographic Leanings -->
+<div class="col-span-2 bg-surface-container rounded-lg p-stack-lg border border-outline-variant">
+<h4 class="font-title-lg text-title-lg mb-stack-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">diversity_3</span>
+                        Demographic Leanings
+                    </h4>
+<div class="space-y-stack-lg">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md">Urban Centers</span>
+<span class="font-label-md text-label-md font-bold">82% Union Demo.</span>
+</div>
+<div class="h-4 w-full bg-surface-container-high rounded-full flex overflow-hidden">
+<div class="bg-tertiary-container h-full" style="width: 82%;"></div>
+<div class="bg-primary h-full" style="width: 18%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md">Rural Provinces</span>
+<span class="font-label-md text-label-md font-bold">67% Liberty Bloc</span>
+</div>
+<div class="h-4 w-full bg-surface-container-high rounded-full flex overflow-hidden">
+<div class="bg-primary h-full" style="width: 67%;"></div>
+<div class="bg-tertiary-container h-full" style="width: 33%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md">Youth (18-24)</span>
+<span class="font-label-md text-label-md font-bold">Mixed (45/55)</span>
+</div>
+<div class="h-4 w-full bg-surface-container-high rounded-full flex overflow-hidden">
+<div class="bg-primary-fixed-dim h-full" style="width: 45%;"></div>
+<div class="bg-tertiary-fixed-dim h-full" style="width: 55%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Seat Retention Metrics -->
+<div class="bg-primary-container text-on-primary-container rounded-lg p-stack-lg flex flex-col justify-between">
+<h4 class="font-title-lg text-title-lg mb-stack-lg">Seat Analysis</h4>
+<div class="space-y-stack-md">
+<div class="flex items-center justify-between border-b border-on-primary/20 pb-2">
+<span class="font-label-md text-label-md opacity-90">Retention Rate</span>
+<span class="text-xl font-bold">92.4%</span>
+</div>
+<div class="flex items-center justify-between border-b border-on-primary/20 pb-2">
+<span class="font-label-md text-label-md opacity-90">Flip Probability</span>
+<span class="text-xl font-bold">14.2%</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md opacity-90">Newly Gained Seats</span>
+<span class="text-xl font-bold">+28</span>
+</div>
+</div>
+<div class="mt-stack-lg pt-stack-md">
+<div class="w-full h-16 bg-white/10 rounded flex items-end gap-1 px-2 pb-2">
+<div class="flex-1 bg-white/40 h-4 rounded-t"></div>
+<div class="flex-1 bg-white/60 h-8 rounded-t"></div>
+<div class="flex-1 bg-white/30 h-6 rounded-t"></div>
+<div class="flex-1 bg-white/80 h-12 rounded-t"></div>
+<div class="flex-1 bg-white h-10 rounded-t"></div>
+</div>
+<p class="font-label-sm text-label-sm text-center mt-2 opacity-70">Momentum Forecast (6mo)</p>
+</div>
+</div>
+</div>
+<!-- Historical Performance Chart Area -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-stack-lg mb-stack-lg">
+<div class="flex justify-between items-center mb-stack-lg">
+<h4 class="font-title-lg text-title-lg">Electoral Trends (2000-2024)</h4>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 font-label-md text-label-md"><span class="w-3 h-3 bg-primary rounded-full"></span> Liberty Bloc</span>
+<span class="flex items-center gap-1 font-label-md text-label-md"><span class="w-3 h-3 bg-tertiary-container rounded-full"></span> Union Demo.</span>
+</div>
+</div>
+<div class="relative h-64 w-full">
+<!-- Simple SVG Trend Visualization -->
+<svg class="w-full h-full overflow-visible" viewbox="0 0 1000 200">
+<path d="M0,150 L100,140 L200,160 L300,130 L400,145 L500,110 L600,120 L700,90 L800,105 L900,80 L1000,85" fill="none" stroke="#bb0311" stroke-linecap="round" stroke-width="4"></path>
+<path d="M0,80 L100,95 L200,85 L300,110 L400,100 L500,125 L600,115 L700,140 L800,135 L900,160 L1000,155" fill="none" stroke="#697681" stroke-dasharray="8,4" stroke-linecap="round" stroke-width="4"></path>
+<!-- Grid Lines -->
+<line stroke="#e7bdb4" stroke-width="1" x1="0" x2="1000" y1="180" y2="180"></line>
+<line stroke="#e7bdb4" stroke-dasharray="4,4" stroke-width="1" x1="0" x2="1000" y1="100" y2="100"></line>
+<line stroke="#e7bdb4" stroke-width="1" x1="0" x2="1000" y1="20" y2="20"></line>
+</svg>
+<div class="flex justify-between mt-4 text-on-surface-variant font-label-sm text-label-sm">
+<span>2000</span>
+<span>2004</span>
+<span>2008</span>
+<span>2012</span>
+<span>2016</span>
+<span>2020</span>
+<span>2024 (Proj.)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Sidebar (Contextual Insights) -->
+<aside class="w-80 bg-surface border-l border-outline-variant p-container-margin flex flex-col gap-section-gap overflow-y-auto custom-scrollbar">
+<!-- Regional Influence Map -->
+<div class="space-y-stack-md">
+<h5 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest font-bold">Regional Influence</h5>
+<div class="relative w-full aspect-square rounded-lg overflow-hidden border border-outline-variant bg-surface-container-high group">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist high-contrast choropleth map visualization of a metropolitan administrative district. The map uses a sophisticated color palette of monochromatic greys with intense glowing red highlight regions indicating areas of high political activity. The aesthetic is data-heavy, professional, and fits within a modern light-mode dashboard theme." data-location="Central Metropolitan District" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuycdoPflmmJFTPlJA1OwcTkbJaQAeoIPssAJbK8NliO1xK8Qyi4oArMal-eF9Qmg_WGQAQ4WSufCrEaI8ET3YW1i75wMDN4GNLF0fTSdIiu9EtioXO3mE5hZ14TJtb2c4PWntYcVnbeeIYT5VMTmKmIOEVbyBbSRHh8DMJUYW1ts-p4UXh0fhYTgVarSWcd9umAfq71z6ZQgQ2QDhpTJTcEf5MPZnO2Qxvk-sJ3UrrU1EgvegjqzI"/>
+<div class="absolute bottom-2 left-2 right-2 bg-surface/90 backdrop-blur p-2 rounded border border-outline-variant shadow-sm">
+<p class="font-label-md text-label-md font-bold">Central Metropolitan District</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Hotspot: Precinct 04 (Rising Trend)</p>
+</div>
+</div>
+</div>
+<!-- Top Emerging Parties -->
+<div class="space-y-stack-md">
+<h5 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest font-bold">Emerging Parties</h5>
+<div class="space-y-stack-sm">
+<div class="flex items-center justify-between p-3 bg-surface-container rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-stack-sm">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-md text-label-md font-bold">Green Front</span>
+</div>
+<span class="text-primary font-bold">+5.2%</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-stack-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-md text-label-md font-bold">Rural Justice</span>
+</div>
+<span class="text-primary font-bold">+2.8%</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-stack-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md font-bold">Tech Collective</span>
+</div>
+<span class="text-primary font-bold">+1.4%</span>
+</div>
+</div>
+</div>
+<!-- Upcoming Election Countdown -->
+<div class="bg-inverse-surface text-inverse-on-surface rounded-lg p-stack-lg relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/20 rounded-full blur-2xl group-hover:bg-primary/40 transition-all"></div>
+<h5 class="font-label-md text-label-md uppercase tracking-widest font-bold mb-stack-md relative z-10 text-primary-fixed">Next General Election</h5>
+<div class="flex justify-between items-center relative z-10">
+<div class="text-center">
+<span class="block text-3xl font-bold">184</span>
+<span class="font-label-sm text-label-sm opacity-70">DAYS</span>
+</div>
+<div class="text-center border-l border-white/10 pl-4">
+<span class="block text-3xl font-bold">12</span>
+<span class="font-label-sm text-label-sm opacity-70">HOURS</span>
+</div>
+<div class="text-center border-l border-white/10 pl-4">
+<span class="block text-3xl font-bold">45</span>
+<span class="font-label-sm text-label-sm opacity-70">MIN</span>
+</div>
+</div>
+<button class="w-full mt-stack-lg bg-primary text-on-primary py-2 rounded font-label-md text-label-md hover:bg-primary-container transition-colors relative z-10">
+                    Prepare Schedule
+                </button>
+</div>
+</aside>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Sidebar Toggle Logic
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const toggleIcon = document.getElementById('toggleIcon');
+        let isCollapsed = false;
+
+        sidebarToggle.addEventListener('click', () => {
+            isCollapsed = !isCollapsed;
+            
+            if (isCollapsed) {
+                sidebar.classList.add('sidebar-collapsed');
+                sidebar.style.width = '80px';
+                mainContent.style.marginLeft = '80px';
+                toggleIcon.style.transform = 'rotate(180deg)';
+            } else {
+                sidebar.classList.remove('sidebar-collapsed');
+                sidebar.style.width = '16rem';
+                mainContent.style.marginLeft = '16rem';
+                toggleIcon.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        // Simple scale effect for interactive cards
+        document.querySelectorAll('.hover\\:border-primary\\/30').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.99)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Dynamic time update for countdown feel
+        setInterval(() => {
+            const minElement = document.querySelectorAll('.text-center .text-3xl')[2];
+            if (minElement) {
+                let current = parseInt(minElement.textContent);
+                if (Math.random() > 0.95) { // Simulate time passing slowly
+                    minElement.textContent = current > 0 ? (current - 1).toString().padStart(2, '0') : "59";
+                }
+            }
+        }, 1000);
+    </script>
+</body></html>

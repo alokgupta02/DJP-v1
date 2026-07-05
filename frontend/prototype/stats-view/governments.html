@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Governments Feed - Digital Janta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#ffe2dc",
+                    "background": "#fff8f6",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#ffb4ab",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "primary": "#bb0311",
+                    "surface-container-highest": "#fddbd4",
+                    "on-surface": "#291713",
+                    "surface-tint": "#bf0813",
+                    "on-tertiary-container": "#fcfcff",
+                    "surface-bright": "#fff8f6",
+                    "surface-variant": "#fddbd4",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#111d26",
+                    "tertiary-fixed": "#d7e4f0",
+                    "primary-container": "#e02a27",
+                    "outline-variant": "#e7bdb4",
+                    "error": "#ba1a1a",
+                    "surface": "#fff8f6",
+                    "tertiary-fixed-dim": "#bbc8d4",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "tertiary": "#515e68",
+                    "inverse-surface": "#402b27",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#697681",
+                    "on-secondary-container": "#646464",
+                    "surface-container": "#ffe9e5",
+                    "secondary-container": "#e2e2e2",
+                    "on-background": "#291713",
+                    "on-secondary": "#ffffff",
+                    "outline": "#926f68",
+                    "on-primary-container": "#fffbff",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-primary-fixed-variant": "#93000a",
+                    "on-secondary-fixed-variant": "#474747",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#ffede9",
+                    "on-surface-variant": "#5d3f39",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "surface-dim": "#f4d3cc",
+                    "secondary": "#5e5e5e",
+                    "primary-fixed": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#fff0ee",
+                    "on-tertiary-fixed-variant": "#3c4852",
+                    "on-primary-fixed": "#410002",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "24px",
+                    "container-margin": "16px",
+                    "baseline": "4px",
+                    "gutter": "16px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "section-gap": "32px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Noto Sans"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Noto Sans"],
+                    "body-md": ["Noto Sans"],
+                    "title-lg": ["Hanken Grotesk"],
+                    "label-md": ["Noto Sans"],
+                    "headline-lg-mobile": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.5px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e7bdb4;
+            border-radius: 10px;
+        }
+        .glass-effect {
+            background: rgba(255, 248, 246, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        
+        /* Sidebar Transition styles */
+        #sidebar {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #main-content {
+            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-label, .sidebar-header-text, .user-details, .index-header {
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+        .sidebar-collapsed .nav-label, 
+        .sidebar-collapsed .sidebar-header-text, 
+        .sidebar-collapsed .user-details, 
+        .sidebar-collapsed .index-header,
+        .sidebar-collapsed .live-badge {
+            opacity: 0;
+            visibility: hidden;
+            width: 0;
+            display: none;
+        }
+        .sidebar-collapsed .nav-item {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .sidebar-collapsed .nav-icon {
+            margin-right: 0;
+        }
+        .sidebar-collapsed .profile-card {
+            justify-content: center;
+            padding: 0.75rem;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg overflow-hidden h-screen flex">
+<!-- Left Sidebar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-stack-lg z-50" id="sidebar">
+<div class="px-6 mb-8 flex items-center justify-between">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="shrink-0 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center font-black text-xl">DJ</div>
+<div class="sidebar-header-text whitespace-nowrap">
+<h1 class="font-headline-lg text-xl font-black text-primary">Digital Janta</h1>
+<p class="font-label-md text-[10px] text-on-surface-variant opacity-70 uppercase tracking-widest">Civic Platform</p>
+</div>
+</div>
+<button class="p-1 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" id="sidebarToggle">
+<span class="material-symbols-outlined transition-transform duration-300" id="toggleIcon">chevron_left</span>
+</button>
+</div>
+<nav class="flex-1 overflow-y-auto custom-scrollbar px-2 space-y-6">
+<ul class="space-y-1">
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="overview.html"><span class="nav-icon text-lg">📊</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Dashboard</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="judiciary.html"><span class="nav-icon text-lg">⚖️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Judiciary</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="legislatures.html"><span class="nav-icon text-lg">🏛️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Legislatures</span></a></li>
+<li><a class="nav-item bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="governments.html"><span class="nav-icon text-lg">🏢</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Governments</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="rep-index.html"><span class="nav-icon text-lg">👥</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Representatives</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="states.html"><span class="nav-icon text-lg">🗺️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">States</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="municipalities.html"><span class="nav-icon text-lg">🏙️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Municipalities</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="parties.html"><span class="nav-icon text-lg">🎯</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Parties</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="elections.html"><span class="nav-icon text-lg">🗳️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Elections</span></a></li>
+</ul>
+<div class="index-section">
+<div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Leadership Indices</div>
+<ul class="space-y-1">
+<li class="relative">
+<a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#senate-minister">
+<span class="nav-icon text-lg">⭐</span>
+<span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Senate Minister</span>
+<span class="live-badge absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-0.5 rounded-full text-[8px] font-black">LIVE</span>
+</a>
+</li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#chief-minister"><span class="nav-icon text-lg">⭐</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Chief Minister</span></a></li>
+</ul>
+</div>
+<div class="utility-section">
+<div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Utilities</div>
+<ul class="space-y-1">
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#support"><span class="nav-icon text-lg">💬</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Support</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#archive"><span class="nav-icon text-lg">📁</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Archive</span></a></li>
+</ul>
+</div>
+</nav>
+<div class="px-4 mt-auto pt-4">
+<div class="profile-card flex items-center gap-3 p-3 bg-surface-container rounded-lg overflow-hidden">
+<div class="shrink-0 w-10 h-10 rounded-full bg-primary-fixed overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtXsHDIJ6hlFfaTYgczIwbYaEmeiAe2vvTlVOq_t6NRmtAM6QDUShuyCZYEn71ewvxvQIVuWPU-JyJ_OGk9kkKxlHYJ8rIdaigdCBZzBNHo3ByuLgmz-YFbTNlLp5K8bb_uw3jByE452J5wXeLOsNRgFwbY1m4dHeuJ0MppjcRHt-0UTBq4wzDnZOOf3qsYEFmpG4Caz1UJum6miL7OWN-YGd3tWlwUH-CyDBaGioIL9L7a0AiophT"/>
+</div>
+<div class="user-details flex-1 overflow-hidden whitespace-nowrap">
+<p class="font-label-md font-bold truncate">Arjun Sharma</p>
+<p class="text-[10px] text-on-surface-variant truncate">Ward Ambassador</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 ml-64 flex flex-col h-screen overflow-hidden" id="main-content">
+<!-- TopNavBar Anchor -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-container-margin w-full bg-background/80 backdrop-blur-md w-full h-16 border-b border-outline-variant">
+<div class="flex items-center gap-stack-md w-full max-w-2xl">
+<div class="bg-surface-container rounded-full px-4 py-2 flex items-center gap-2 flex-1 border border-outline-variant focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md font-body-md w-full text-on-surface" placeholder="Search agencies, budgets, representatives..." type="text"/>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full cursor-pointer hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Ward 42 - South Delhi</span>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="flex gap-2">
+<button class="p-2 text-secondary hover:bg-surface-container rounded-full transition-colors cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container rounded-full transition-colors cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline">
+<img class="w-full h-full object-cover" data-alt="A professional high-contrast portrait of a male government official in a modern corporate setting. The lighting is soft and high-key, aligning with a light-mode aesthetic. The background is a clean, minimalist office with subtle red accents to match the primary brand color." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQJJi8QoZzkbPaWhJpm7A33snkSOAC_6DStH42J8O1xs4oCYDu8DlhDaqSSupa011jIq8haOvoGJK4ke0dhxm7xTsGsCHxLeBWlW_EOSwwRP46mppTSJiiqt-9NBfltZTxX8V5Zr55C0UFjxUiBLAkHVp2XZ8zEgPXGEgyZNeOW917Kre2QWQEeBlV8Ps4wRNJhMZtSL5qD_DOKLecvLZZLP9GQOqLOD-P-Yp7m7CIbkjKRLkSExeo"/>
+</div>
+</div>
+</header>
+<!-- 3-Column Layout Canvas -->
+<main class="flex-1 overflow-y-auto p-gutter custom-scrollbar">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter max-w-screen-2xl mx-auto">
+<!-- Middle Column: Primary Feed (8 Columns) -->
+<div class="lg:col-span-8 space-y-section-gap">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Governments Feed</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-xl">Real-time aggregate data across federal, state, and local hierarchies for transparent governance.</p>
+</div>
+<div class="bg-primary-container/10 border border-primary/20 px-4 py-2 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-primary font-bold text-label-md">Live FY 2024-25</span>
+</div>
+</div>
+<!-- High-Level Metrics (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<!-- Central Government Card -->
+<div class="bg-surface-container-low p-stack-md rounded-lg border border-outline-variant hover:border-primary/50 transition-all group">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="bg-on-surface-variant/5 text-on-surface-variant font-label-md px-2 py-1 rounded text-[10px] uppercase tracking-wider">Central Govt</span>
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">account_balance</span>
+</div>
+<h3 class="font-title-lg text-title-lg mb-4">Aggregate Performance</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-label-sm mb-1">
+<span>Project Completion</span>
+<span class="font-bold">84.2%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[84.2%] rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-label-sm mb-1">
+<span>Budget Utilization</span>
+<span class="font-bold">67.8%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[67.8%] rounded-full"></div>
+</div>
+</div>
+</div>
+<a class="mt-6 inline-flex items-center gap-1 text-primary font-bold text-label-md hover:underline" href="#">
+                                View Departments <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- State Government Card -->
+<div class="bg-surface-container-low p-stack-md rounded-lg border border-outline-variant hover:border-primary/50 transition-all group">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="bg-on-surface-variant/5 text-on-surface-variant font-label-md px-2 py-1 rounded text-[10px] uppercase tracking-wider">State Govts</span>
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">map</span>
+</div>
+<h3 class="font-title-lg text-title-lg mb-4">Averaged Metrics</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-label-sm mb-1">
+<span>Project Completion</span>
+<span class="font-bold">72.1%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[72.1%] rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-label-sm mb-1">
+<span>Budget Utilization</span>
+<span class="font-bold">58.3%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[58.3%] rounded-full"></div>
+</div>
+</div>
+</div>
+<a class="mt-6 inline-flex items-center gap-1 text-primary font-bold text-label-md hover:underline" href="#">
+                                Compare States <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Local Bodies Card -->
+<div class="bg-surface-container-low p-stack-md rounded-lg border border-outline-variant hover:border-primary/50 transition-all group">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="bg-on-surface-variant/5 text-on-surface-variant font-label-md px-2 py-1 rounded text-[10px] uppercase tracking-wider">Local Bodies</span>
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">location_city</span>
+</div>
+<h3 class="font-title-lg text-title-lg mb-4">Municipal Index</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-label-sm mb-1">
+<span>Project Completion</span>
+<span class="font-bold">54.9%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[54.9%] rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-label-sm mb-1">
+<span>Budget Utilization</span>
+<span class="font-bold">42.1%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[42.1%] rounded-full"></div>
+</div>
+</div>
+</div>
+<a class="mt-6 inline-flex items-center gap-1 text-primary font-bold text-label-md hover:underline" href="#">
+                                Drilldown <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Regional Development Indicators Visualizer -->
+<div class="bg-surface p-stack-lg rounded-lg border border-outline-variant overflow-hidden relative min-h-[400px] flex flex-col">
+<div class="flex justify-between items-center mb-stack-lg relative z-10">
+<div>
+<h3 class="font-title-lg text-title-lg">Regional Development Indicators</h3>
+<p class="text-label-md text-on-surface-variant">Geospatial heat-mapping of infra vs population density</p>
+</div>
+<div class="flex bg-surface-container rounded-full p-1">
+<button class="px-4 py-1 rounded-full text-label-md font-bold bg-primary text-on-primary">Heatmap</button>
+<button class="px-4 py-1 rounded-full text-label-md font-medium text-on-surface-variant hover:bg-surface-container-highest transition-colors">Comparison</button>
+</div>
+</div>
+<div class="flex-1 rounded-lg bg-surface-container-low overflow-hidden relative">
+<!-- Map Visualization Mock -->
+<div class="absolute inset-0 bg-cover bg-center" data-location="India" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9TFzKB3_MrBhpPzxbir8-Ct_cGtd8g4qO5keK0yHN2r_Lzhh14IGsK3wtkYhqPuexcM4y61-Zx7TtwfhK0Cc-yuhm2zDkJruKYO2cTzowb2hDp-KrMtvPA3h9XIVu0WR2d2rUUT5tyJr_DEzCs8NyYJ8kI5DFsruVGZu1LNekfvX7Felf-X6qbHbh9r2FHzKGLPL_mTlP07eYw0W0kJuHGHKmrHjOHrkHY8Mxk_V5AN1BrHVcnM-1')"></div>
+<div class="absolute inset-0 bg-primary/5 backdrop-blur-[1px]"></div>
+<!-- Legend Glass Widget -->
+<div class="absolute bottom-4 left-4 glass-effect p-4 rounded-lg border border-white/20 shadow-xl max-w-[200px]">
+<h4 class="text-label-sm font-bold uppercase mb-2">Growth Density</h4>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 bg-primary rounded-full"></span>
+<span class="text-label-sm">High (Tier 1)</span>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 bg-primary/60 rounded-full"></span>
+<span class="text-label-sm">Moderate (Tier 2)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-primary/20 rounded-full"></span>
+<span class="text-label-sm">Developing</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Indicator Breakdown Grid -->
+<div>
+<h3 class="font-title-lg text-title-lg mb-stack-md">Indicator Breakdown</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-stack-md">
+<div class="bg-surface-container p-6 rounded-lg border border-outline-variant text-center">
+<span class="text-label-sm text-on-surface-variant font-bold uppercase block mb-2">Total Projects</span>
+<span class="text-headline-lg font-bold text-on-surface">12,847</span>
+</div>
+<div class="bg-surface-container p-6 rounded-lg border border-outline-variant text-center">
+<span class="text-label-sm text-on-surface-variant font-bold uppercase block mb-2">Active Initiatives</span>
+<span class="text-headline-lg font-bold text-on-surface">3,294</span>
+</div>
+<div class="bg-surface-container p-6 rounded-lg border border-outline-variant text-center">
+<span class="text-label-sm text-on-surface-variant font-bold uppercase block mb-2">Budget Allocated</span>
+<span class="text-headline-lg font-bold text-primary">₹45.2B</span>
+</div>
+<div class="bg-surface-container p-6 rounded-lg border border-outline-variant text-center">
+<span class="text-label-sm text-on-surface-variant font-bold uppercase block mb-2">Expenditure Rate</span>
+<span class="text-headline-lg font-bold text-on-surface">64.3%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Contextual Sidebar (4 Columns) -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Leaderboard -->
+<section class="bg-surface-container-high p-stack-md rounded-lg border border-outline-variant">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-title-lg text-title-lg">Top States</h3>
+<span class="material-symbols-outlined text-primary">emoji_events</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 flex items-center justify-center bg-primary text-on-primary rounded-full text-[10px] font-bold">01</span>
+<span class="font-body-md font-bold">Maharashtra</span>
+</div>
+<span class="text-primary font-bold">94.2</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest/50 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 flex items-center justify-center text-on-surface-variant rounded-full text-[10px] font-bold border border-outline-variant">02</span>
+<span class="font-body-md">Tamil Nadu</span>
+</div>
+<span class="font-bold">91.5</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest/50 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 flex items-center justify-center text-on-surface-variant rounded-full text-[10px] font-bold border border-outline-variant">03</span>
+<span class="font-body-md">Karnataka</span>
+</div>
+<span class="font-bold">88.5</span>
+</div>
+</div>
+<button class="w-full mt-4 text-center text-label-md font-bold text-secondary hover:text-primary transition-colors">Full Rankings</button>
+</section>
+<!-- Ward Snapshot -->
+<section class="bg-inverse-surface text-inverse-on-surface p-stack-md rounded-lg shadow-xl relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-title-lg text-title-lg mb-2">Ward Snapshot</h3>
+<p class="text-label-sm text-surface-variant opacity-80 mb-6">Ward 42 - South Delhi Focus</p>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="block text-[10px] uppercase font-bold opacity-60">Civic Health</span>
+<span class="text-title-lg font-bold text-primary-fixed-dim">A+</span>
+</div>
+<div>
+<span class="block text-[10px] uppercase font-bold opacity-60">Pending Fixes</span>
+<span class="text-title-lg font-bold">12</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-white/10">
+<div class="flex items-center justify-between text-label-sm">
+<span>Community Trust Index</span>
+<span>7.2/10</span>
+</div>
+<div class="w-full h-1 bg-white/10 rounded-full mt-2">
+<div class="h-full bg-primary-fixed-dim w-[72%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-8 -right-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]">location_on</span>
+</div>
+</section>
+<!-- Announcements Feed -->
+<section class="space-y-stack-md">
+<h3 class="font-label-md font-bold text-on-surface-variant uppercase tracking-widest px-1">Civic Announcements</h3>
+<div class="space-y-stack-md">
+<div class="bg-surface-container-low p-4 rounded-lg border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow">
+<span class="text-[10px] font-bold text-primary block mb-1 uppercase">Today • 14:00</span>
+<p class="font-body-md font-bold mb-2">New Housing Policy Draft for Public Review</p>
+<p class="text-label-sm text-on-surface-variant line-clamp-2">Ministry of Urban Development releases the 2025 housing infrastructure plan for citizen feedback...</p>
+<button class="mt-2 text-primary text-[11px] font-bold flex items-center gap-1">Read Briefing <span class="material-symbols-outlined text-xs">open_in_new</span></button>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border-l-4 border-tertiary shadow-sm hover:shadow-md transition-shadow">
+<span class="text-[10px] font-bold text-on-surface-variant block mb-1 uppercase">Yesterday</span>
+<p class="font-body-md font-bold mb-2">Smart City Node 4 Deployment Complete</p>
+<p class="text-label-sm text-on-surface-variant line-clamp-2">Real-time water quality sensors now active across South Delhi nodes for better supply monitoring.</p>
+<button class="mt-2 text-primary text-[11px] font-bold flex items-center gap-1">View Data <span class="material-symbols-outlined text-xs">monitoring</span></button>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border-l-4 border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<span class="text-[10px] font-bold text-on-surface-variant block mb-1 uppercase">15 Oct</span>
+<p class="font-body-md font-bold mb-2">Q3 Budget Variance Report Issued</p>
+<p class="text-label-sm text-on-surface-variant line-clamp-2">Comparison of actual expenditure vs allocated budget for infrastructure projects in NCR region.</p>
+<button class="mt-2 text-primary text-[11px] font-bold flex items-center gap-1">Download PDF <span class="material-symbols-outlined text-xs">download</span></button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sidebar Toggle Logic
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const toggleIcon = document.getElementById('toggleIcon');
+            let isCollapsed = false;
+
+            sidebarToggle.addEventListener('click', () => {
+                isCollapsed = !isCollapsed;
+                
+                if (isCollapsed) {
+                    sidebar.classList.add('sidebar-collapsed');
+                    sidebar.style.width = '80px';
+                    mainContent.style.marginLeft = '80px';
+                    toggleIcon.style.transform = 'rotate(180deg)';
+                } else {
+                    sidebar.classList.remove('sidebar-collapsed');
+                    sidebar.style.width = '16rem';
+                    mainContent.style.marginLeft = '16rem';
+                    toggleIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+    </script>
+</body></html>

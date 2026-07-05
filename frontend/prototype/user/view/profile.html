@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Janta | Arjun Malhotra Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#291713",
+                    "secondary-container": "#e2e2e2",
+                    "on-secondary-container": "#646464",
+                    "surface-container": "#ffe9e5",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#ffede9",
+                    "surface-dim": "#f4d3cc",
+                    "secondary": "#5e5e5e",
+                    "on-surface-variant": "#5d3f39",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "surface-container-low": "#fff0ee",
+                    "on-tertiary-fixed-variant": "#3c4852",
+                    "on-primary-fixed": "#410002",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline": "#926f68",
+                    "on-primary-container": "#fffbff",
+                    "on-secondary-fixed-variant": "#474747",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-primary-fixed-variant": "#93000a",
+                    "surface-tint": "#bf0813",
+                    "on-tertiary-container": "#fcfcff",
+                    "surface-variant": "#fddbd4",
+                    "surface-bright": "#fff8f6",
+                    "on-tertiary-fixed": "#111d26",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#ffe2dc",
+                    "background": "#fff8f6",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#ffb4ab",
+                    "surface-container-highest": "#fddbd4",
+                    "on-surface": "#291713",
+                    "primary": "#bb0311",
+                    "tertiary-fixed-dim": "#bbc8d4",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "tertiary": "#515e68",
+                    "inverse-surface": "#402b27",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#697681",
+                    "tertiary-fixed": "#d7e4f0",
+                    "primary-container": "#e02a27",
+                    "outline-variant": "#e7bdb4",
+                    "error": "#ba1a1a",
+                    "surface": "#fff8f6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "section-gap": "32px",
+                    "stack-md": "16px",
+                    "container-margin": "16px",
+                    "stack-lg": "24px",
+                    "gutter": "16px",
+                    "baseline": "4px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Noto Sans"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Noto Sans"],
+                    "title-lg": ["Hanken Grotesk"],
+                    "label-md": ["Noto Sans"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "body-md": ["Noto Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["11px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.5px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff8f6;
+            color: #291713;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        .stats-gradient {
+            background: linear-gradient(135deg, #bb0311 0%, #e02a27 100%);
+        }
+        #sidebar { transition: width 0.3s ease; }
+        .sidebar-collapsed .nav-label, .sidebar-collapsed .sidebar-header-text { display: none; }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-6 gap-4 z-40 bg-surface border-r border-outline-variant w-64 transition-all duration-300" id="sidebar">
+  <div class="px-6 mb-4">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+      </div>
+      <div class="sidebar-header-text min-w-0">
+        <h1 class="font-title-lg font-bold text-primary truncate">Digital Janta</h1>
+        <p class="font-label-sm text-on-surface-variant truncate">Civic Platform</p>
+      </div>
+      <button class="shrink-0 p-1.5 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" id="sidebarToggle">
+        <span class="material-symbols-outlined transition-transform duration-300" id="toggleIcon">chevron_left</span>
+      </button>
+    </div>
+    <nav class="space-y-1">
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="feed.html">
+        <span class="material-symbols-outlined nav-icon">dynamic_feed</span>
+        <span class="font-body-md nav-label">Feed</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="issues.html">
+        <span class="material-symbols-outlined nav-icon">report_problem</span>
+        <span class="font-body-md nav-label">Issues</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="discussion.html">
+        <span class="material-symbols-outlined nav-icon">forum</span>
+        <span class="font-body-md nav-label">Discussions</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="polls.html">
+        <span class="material-symbols-outlined nav-icon">ballot</span>
+        <span class="font-body-md nav-label">Polls</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="#">
+        <span class="material-symbols-outlined nav-icon">map</span>
+        <span class="font-body-md nav-label">Map</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="insights.html">
+        <span class="material-symbols-outlined nav-icon">analytics</span>
+        <span class="font-body-md nav-label">Insights</span>
+      </a>
+      <!-- Profile (ACTIVE) -->
+      <a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-r-full font-bold nav-item" href="#">
+        <span class="material-symbols-outlined nav-icon" style="font-variation-settings: 'FILL' 1;">person</span>
+        <span class="font-body-md nav-label">Profile</span>
+      </a>
+    </nav>
+  </div>
+  <div class="px-4 mt-auto">
+    <button class="w-full py-4 bg-primary text-on-primary rounded-full font-bold flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+      <span class="material-symbols-outlined">add_circle</span>
+      <span class="nav-label">Report Issue</span>
+    </button>
+  </div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-stack-lg min-h-screen" id="main-content">
+<!-- Header / Hero Section -->
+<header class="w-full bg-surface-container-high rounded-lg p-stack-lg flex items-center justify-between mb-section-gap border border-outline-variant shadow-sm overflow-hidden relative">
+<div class="flex items-center gap-stack-lg z-10">
+<div class="relative">
+<div class="w-32 h-32 rounded-full border-4 border-primary p-1 bg-background">
+<img class="w-full h-full rounded-full object-cover" data-alt="A professional portrait of Arjun Malhotra, a 35-year-old South Asian man with a friendly smile, wearing a semi-formal white shirt. The background is a soft-focus urban park setting in New Delhi. The lighting is bright and natural, reflecting the high-contrast and clean aesthetic of a modern civic-tech dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnvF-Ir7kTqU4a5w3P35N64kgmSaPm1_alYzCoZBFkCHvNMkPGTK779vrRinLjozjSv6cv_Y9otj8KlHVqbkLCo2NU_nM-_-qXvvpxilOj3MtbxVz0ezKXz0uk865QLVOYzCmaw0mTS-W4P0X7_aQ8Rw2eZ3kACtxuoyqtLy4uxZMq7nkG2BXVTJu8KqfLr5P6tNaervZwKJEto3HaQDdKAbIw7hbCQxS1QbPkQvuOgssM5NxGK5Iw"/>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-on-primary p-2 rounded-full border-2 border-background flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+</div>
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Arjun Malhotra</h2>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<p class="font-title-lg text-title-lg text-on-surface-variant">Ward 42 - South Delhi</p>
+</div>
+<div class="flex gap-2 mt-3">
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full text-label-sm font-bold">ACTIVE CITIZEN</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full text-label-sm font-bold">PLATINUM MEMBER</span>
+</div>
+</div>
+</div>
+<!-- Atmospheric BG Element -->
+<div class="absolute right-[-50px] top-[-20px] opacity-10 rotate-12">
+<span class="material-symbols-outlined text-[240px] text-primary">account_balance</span>
+</div>
+<div class="z-10 flex flex-col gap-2">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">edit</span>
+                    Edit Profile
+                </button>
+<button class="bg-surface-container-lowest text-primary border border-primary px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:bg-surface-container-low transition-all active:scale-95">
+<span class="material-symbols-outlined">share</span>
+                    Share Stats
+                </button>
+</div>
+</header>
+<!-- Stats Bento Grid -->
+<section class="bento-grid mb-section-gap">
+<!-- Major Stat: Issues Reported -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 rounded-lg stats-gradient p-stack-lg text-on-primary-container shadow-md hover:scale-[1.02] transition-transform cursor-default">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-4xl">campaign</span>
+<span class="bg-background/20 text-white px-3 py-1 rounded-full text-label-sm">+2 this month</span>
+</div>
+<div class="mt-stack-lg">
+<h3 class="font-display-lg text-[64px] leading-tight font-bold">12</h3>
+<p class="font-title-lg text-title-lg opacity-90">Issues Reported</p>
+</div>
+<div class="mt-4 flex gap-2">
+<div class="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
+<div class="h-full bg-white w-[75%]"></div>
+</div>
+<span class="text-label-sm">8 Resolved</span>
+</div>
+</div>
+<!-- Stats Sub Grid -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container rounded-lg p-stack-lg border border-outline-variant flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4">
+<div class="p-3 rounded-xl bg-primary-fixed text-on-primary-fixed">
+<span class="material-symbols-outlined text-3xl">chat</span>
+</div>
+<div>
+<h3 class="font-display-lg text-display-lg leading-none">05</h3>
+<p class="font-body-md text-on-surface-variant">Discussions Created</p>
+</div>
+</div>
+<div class="mt-stack-lg pt-4 border-t border-outline-variant/30">
+<p class="text-label-sm text-on-surface-variant italic">"Arjun's discussion on Waste Management reached 45 neighbors."</p>
+</div>
+</div>
+<div class="col-span-12 md:col-span-12 lg:col-span-4 bg-surface-container rounded-lg p-stack-lg border border-outline-variant flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4">
+<div class="p-3 rounded-xl bg-tertiary text-on-tertiary">
+<span class="material-symbols-outlined text-3xl">how_to_vote</span>
+</div>
+<div>
+<h3 class="font-display-lg text-display-lg leading-none">08</h3>
+<p class="font-body-md text-on-surface-variant">Polls Created</p>
+</div>
+</div>
+<div class="mt-stack-lg flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-dim"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-high"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-primary-fixed flex items-center justify-center text-[10px] font-bold">120+</div>
+<p class="ml-4 text-label-sm self-center text-on-surface-variant">Participated in your polls</p>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-12 gap-stack-lg">
+<!-- Achievements Section -->
+<section class="col-span-12 lg:col-span-7">
+<div class="flex items-center justify-between mb-stack-md">
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Achievements</h3>
+<button class="text-primary font-bold text-label-md hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-3 gap-stack-md">
+<!-- Badge 1 -->
+<div class="bg-surface-bright border border-outline-variant p-6 rounded-lg flex flex-col items-center text-center shadow-sm hover:border-primary transition-colors cursor-pointer group">
+<div class="w-20 h-20 rounded-full bg-primary-fixed-dim flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[40px] text-on-primary-fixed-variant" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<h4 class="font-title-lg text-on-surface font-bold">Civic Hero</h4>
+<p class="text-label-sm text-on-surface-variant mt-2 leading-tight">First 10 verified issues reported</p>
+</div>
+<!-- Badge 2 -->
+<div class="bg-surface-bright border border-outline-variant p-6 rounded-lg flex flex-col items-center text-center shadow-sm hover:border-primary transition-colors cursor-pointer group">
+<div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[40px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<h4 class="font-title-lg text-on-surface font-bold">Top Contributor</h4>
+<p class="text-label-sm text-on-surface-variant mt-2 leading-tight">Awarded by Ward Councilor</p>
+</div>
+<!-- Badge 3 -->
+<div class="bg-surface-bright border border-outline-variant p-6 rounded-lg flex flex-col items-center text-center shadow-sm hover:border-primary transition-colors cursor-pointer group">
+<div class="w-20 h-20 rounded-full bg-secondary-container flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[40px] text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<h4 class="font-title-lg text-on-surface font-bold">Poll Master</h4>
+<p class="text-label-sm text-on-surface-variant mt-2 leading-tight">Engaged over 500 citizens</p>
+</div>
+</div>
+</section>
+<!-- Account Details Section -->
+<section class="col-span-12 lg:col-span-5">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-stack-md">Account Details</h3>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-stack-lg shadow-sm">
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary">phone_android</span>
+<div class="flex-grow">
+<label class="text-label-sm text-secondary block">Mobile Number</label>
+<div class="flex justify-between items-center mt-1">
+<span class="font-body-lg text-on-surface">+91 98765 43210</span>
+<span class="text-primary material-symbols-outlined cursor-pointer hover:scale-110 transition-transform">edit_square</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary">mail</span>
+<div class="flex-grow">
+<label class="text-label-sm text-secondary block">Email Address</label>
+<div class="flex justify-between items-center mt-1">
+<span class="font-body-lg text-on-surface">arjun.m@civicmail.in</span>
+<span class="text-primary material-symbols-outlined cursor-pointer hover:scale-110 transition-transform">edit_square</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary">home_pin</span>
+<div class="flex-grow">
+<label class="text-label-sm text-secondary block">Primary Address</label>
+<div class="flex justify-between items-start mt-1">
+<span class="font-body-lg text-on-surface pr-4">Flat 402, Block C, Green View Apartments, Saket, New Delhi 110017</span>
+<span class="text-primary material-symbols-outlined cursor-pointer hover:scale-110 transition-transform">edit_square</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-4 pt-4 border-t border-outline-variant">
+<span class="material-symbols-outlined text-secondary">ward</span>
+<div class="flex-grow">
+<label class="text-label-sm text-secondary block">Registered Ward</label>
+<div class="mt-1 flex items-center justify-between">
+<span class="font-body-lg text-on-surface font-bold">Ward 42 (South Delhi)</span>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded text-label-sm">LOCKED</span>
+</div>
+<p class="text-label-sm text-secondary mt-1">Ward changes require address verification.</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-stack-lg border-2 border-outline text-on-surface py-3 rounded-full font-bold hover:bg-surface-container transition-all active:scale-95">
+                        Download Citizen Profile PDF
+                    </button>
+</div>
+</section>
+</div>
+<!-- Recent Activity Feed -->
+<section class="mt-section-gap mb-10">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-stack-md">Recent Activity</h3>
+<div class="bg-surface-bright border border-outline-variant rounded-lg overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-6 py-4 font-bold text-on-surface-variant">Date</th>
+<th class="px-6 py-4 font-bold text-on-surface-variant">Activity</th>
+<th class="px-6 py-4 font-bold text-on-surface-variant">Status</th>
+<th class="px-6 py-4 font-bold text-on-surface-variant text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 text-on-surface">Oct 24, 2023</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error">warning</span>
+<span>Reported "Pothole on Main Market Road"</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="bg-surface-container-highest text-on-surface px-3 py-1 rounded-full text-label-sm">IN REVIEW</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline font-bold">Details</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 text-on-surface">Oct 21, 2023</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">how_to_vote</span>
+<span>New Poll: "Proposed Park Renovation Plan"</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full text-label-sm">LIVE</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline font-bold">Details</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 text-on-surface">Oct 18, 2023</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-600">check_circle</span>
+<span>Issue Resolved: "Street Light Outage"</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-label-sm">COMPLETED</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline font-bold">Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ripple-like effect on stats cards
+            const statsCards = document.querySelectorAll('.stats-gradient, .bg-surface-container');
+            statsCards.forEach(card => {
+                card.addEventListener('mousedown', () => {
+                    card.style.transform = 'scale(0.98)';
+                });
+                card.addEventListener('mouseup', () => {
+                    card.style.transform = 'scale(1.02)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'scale(1)';
+                });
+            });
+
+            // Smooth scroll for nav items (if they linked somewhere)
+            document.querySelectorAll('aside nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Logic to handle navigation state would go here
+                    console.log('Navigating to:', link.innerText);
+                });
+            });
+        });
+    </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const toggleIcon = document.getElementById('toggleIcon');
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', () => {
+        if (sidebar.classList.contains('sidebar-collapsed')) {
+          sidebar.classList.remove('sidebar-collapsed');
+          sidebar.style.width = '16rem';
+          toggleIcon.style.transform = 'rotate(0deg)';
+        } else {
+          sidebar.classList.add('sidebar-collapsed');
+          sidebar.style.width = '80px';
+          toggleIcon.style.transform = 'rotate(180deg)';
+        }
+      });
+    }
+  });
+</script>
+</body></html>

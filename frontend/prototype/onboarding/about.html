@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DJ • Complete Profile</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Inter, sans-serif;
+      }
+
+      body {
+        background: #f5f6f8;
+        color: #333;
+      }
+
+      .wrapper {
+        max-width: 1400px;
+        margin: auto;
+        padding: 40px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 28px;
+      }
+
+      .logo {
+        font-size: 26px;
+        font-weight: 800;
+        color: #ff6b5b;
+      }
+
+      .step {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #999;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 32px;
+      }
+
+      .sidebar {
+        background: white;
+        padding: 28px;
+        border-radius: 16px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+      }
+
+      .small {
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #999;
+      }
+
+      .sidebar h2 {
+        margin: 12px 0 30px;
+        font-size: 34px;
+        line-height: 1.15;
+      }
+
+      .progress {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .item {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      .number {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+
+      .done {
+        background: #111;
+        color: white;
+      }
+
+      .active {
+        background: #ff6b5b;
+        color: white;
+      }
+
+      .label {
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .sub {
+        font-size: 13px;
+        margin-top: 4px;
+        color: #777;
+      }
+
+      .primary {
+        margin-top: 40px;
+        width: 100%;
+        padding: 16px;
+        background: #ff6b5b;
+        color: white;
+        font-size: 15px;
+        font-weight: 700;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .back {
+        display: block;
+        text-align: center;
+        margin-top: 16px;
+        text-decoration: none;
+        color: #777;
+      }
+
+      .card {
+        background: white;
+        padding: 40px;
+        border-radius: 18px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+      }
+
+      .section {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: #888;
+        margin-bottom: 28px;
+      }
+
+      .field {
+        margin-bottom: 28px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #666;
+      }
+
+      textarea,
+      input {
+        width: 100%;
+        border: 1px solid #e6e6e6;
+        border-radius: 10px;
+        padding: 15px;
+        font-size: 15px;
+        outline: none;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 130px;
+      }
+
+      textarea:focus,
+      input:focus {
+        border-color: #ff6b5b;
+      }
+
+      .helper {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #888;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .tag {
+        padding: 12px 18px;
+        border-radius: 999px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        font-weight: 600;
+        background: white;
+        transition: 0.2s;
+      }
+
+      .tag:hover {
+        border-color: #ff6b5b;
+        color: #ff6b5b;
+      }
+
+      .selected {
+        background: #ff6b5b;
+        border-color: #ff6b5b;
+        color: white;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .optional {
+        background: #fafafa;
+        padding: 24px;
+        border-radius: 12px;
+        border: 1px solid #ececec;
+      }
+
+      .optional h4 {
+        margin-bottom: 18px;
+        font-size: 16px;
+      }
+
+      .note {
+        font-size: 13px;
+        color: #777;
+        margin-top: 10px;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="logo">Digital Janata</div>
+
+        <div class="step">STEP 03 / 03</div>
+      </div>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="small">Citizen Onboarding</div>
+
+          <h2>Complete your DJ Profile</h2>
+
+          <div class="progress">
+            <div class="item">
+              <div class="number done">✓</div>
+
+              <div>
+                <div class="label">Basic Information</div>
+
+                <div class="sub">Completed</div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="number done">✓</div>
+
+              <div>
+                <div class="label">Location</div>
+
+                <div class="sub">Completed</div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="number active">3</div>
+
+              <div>
+                <div class="label">About You</div>
+
+                <div class="sub">Personalize your experience</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="primary">Finish Setup →</button>
+
+          <a href="#" class="back"> ← Back </a>
+        </aside>
+
+        <main class="card">
+          <div class="section">03 • ABOUT YOU</div>
+
+          <div class="field">
+            <label> Short Bio </label>
+
+            <textarea
+              placeholder="Tell your fellow citizens a little about yourself..."
+            ></textarea>
+
+            <div class="helper">Visible on your public profile.</div>
+          </div>
+
+          <div class="field">
+            <label> Topics You Care About </label>
+
+            <div class="tags">
+              <div class="tag selected">Roads</div>
+
+              <div class="tag">Garbage</div>
+
+              <div class="tag selected">Water Supply</div>
+
+              <div class="tag">Electricity</div>
+
+              <div class="tag">Public Transport</div>
+
+              <div class="tag">Education</div>
+
+              <div class="tag">Healthcare</div>
+
+              <div class="tag selected">Environment</div>
+
+              <div class="tag">Women's Safety</div>
+
+              <div class="tag">Corruption</div>
+
+              <div class="tag">Judiciary</div>
+
+              <div class="tag">Employment</div>
+
+              <div class="tag">Digital Governance</div>
+
+              <div class="tag">Taxes</div>
+
+              <div class="tag">Housing</div>
+
+              <div class="tag">Traffic</div>
+            </div>
+
+            <div class="helper">
+              These help personalize your feed and recommendations.
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="optional">
+              <h4>Social Links (Optional)</h4>
+
+              <div class="field">
+                <label>LinkedIn</label>
+
+                <input placeholder="https://linkedin.com/in/username" />
+              </div>
+
+              <div class="field">
+                <label>Twitter / X</label>
+
+                <input placeholder="@username" />
+              </div>
+
+              <div class="field">
+                <label>Website</label>
+
+                <input placeholder="https://yourwebsite.com" />
+              </div>
+            </div>
+
+            <div class="optional">
+              <h4>Privacy</h4>
+
+              <div class="field">
+                <label> Display Name </label>
+
+                <input value="Visible to everyone" />
+              </div>
+
+              <div class="field">
+                <label> Location Visibility </label>
+
+                <input value="Ward only" />
+              </div>
+
+              <div class="field">
+                <label> Email Visibility </label>
+
+                <input value="Hidden" />
+              </div>
+
+              <div class="note">
+                Exact address is never shown publicly. Only your civic
+                jurisdiction (Ward/City) is used for issue routing.
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Issues Dashboard | Digital Janta</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#291713",
+                    "surface-container-high": "#ffe2dc",
+                    "secondary": "#5e5e5e",
+                    "primary-fixed": "#ffdad6",
+                    "on-surface-variant": "#5d3f39",
+                    "surface-dim": "#f4d3cc",
+                    "surface": "#fff8f6",
+                    "on-secondary-container": "#646464",
+                    "surface-variant": "#fddbd4",
+                    "surface-tint": "#bf0813",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#fff0ee",
+                    "tertiary-fixed": "#d7e4f0",
+                    "tertiary-container": "#697681",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#402b27",
+                    "tertiary-fixed-dim": "#bbc8d4",
+                    "on-tertiary-fixed-variant": "#3c4852",
+                    "on-primary-fixed": "#410002",
+                    "tertiary": "#515e68",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#ffb4ab",
+                    "on-surface": "#291713",
+                    "surface-bright": "#fff8f6",
+                    "secondary-container": "#e2e2e2",
+                    "on-tertiary-container": "#fcfcff",
+                    "primary": "#bb0311",
+                    "on-tertiary-fixed": "#111d26",
+                    "primary-fixed-dim": "#ffb4ab",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-primary-fixed-variant": "#93000a",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#ffede9",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "surface-container-highest": "#fddbd4",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#ffe9e5",
+                    "outline-variant": "#e7bdb4",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "primary-container": "#e02a27",
+                    "on-secondary-fixed-variant": "#474747",
+                    "on-primary-container": "#fffbff",
+                    "background": "#fff8f6",
+                    "on-secondary": "#ffffff",
+                    "outline": "#926f68"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.75rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "32px",
+                    "gutter": "16px",
+                    "stack-lg": "24px",
+                    "container-margin": "24px",
+                    "stack-md": "16px",
+                    "baseline": "4px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Noto Sans"],
+                    "title-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Noto Sans"],
+                    "body-lg": ["Noto Sans"],
+                    "label-md": ["Noto Sans"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"]
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .workflow-track {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .workflow-track::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e2e2e2;
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+        .workflow-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e2e2e2;
+            z-index: 1;
+            position: relative;
+        }
+        .workflow-dot.active {
+            background: #bb0311;
+            box-shadow: 0 0 0 4px rgba(187, 3, 17, 0.15);
+        }
+        .workflow-dot.completed {
+            background: #bb0311;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        #sidebar { transition: width 0.3s ease; }
+        .sidebar-collapsed .nav-label, .sidebar-collapsed .sidebar-header-text { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg flex min-h-screen">
+<!-- Left Sidebar -->
+<aside class="w-64 bg-surface border-r border-outline-variant flex flex-col fixed inset-y-0 z-50 transition-all duration-300" id="sidebar">
+  <div class="p-6">
+    <div class="flex items-center gap-3 mb-8">
+      <div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+      </div>
+      <div class="sidebar-header-text min-w-0">
+        <h1 class="font-title-lg font-bold text-primary truncate">Digital Janta</h1>
+        <p class="font-label-sm text-on-surface-variant truncate">Civic Platform</p>
+      </div>
+      <button class="shrink-0 p-1.5 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant" id="sidebarToggle">
+        <span class="material-symbols-outlined transition-transform duration-300" id="toggleIcon">chevron_left</span>
+      </button>
+    </div>
+    <nav class="space-y-1">
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="feed.html">
+        <span class="material-symbols-outlined nav-icon">dynamic_feed</span>
+        <span class="font-body-md nav-label">Feed</span>
+      </a>
+      <!-- Issues (ACTIVE) -->
+      <a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-r-full font-bold nav-item" href="#">
+        <span class="material-symbols-outlined nav-icon" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+        <span class="font-body-md nav-label">Issues</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="discussion.html">
+        <span class="material-symbols-outlined nav-icon">forum</span>
+        <span class="font-body-md nav-label">Discussions</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="polls.html">
+        <span class="material-symbols-outlined nav-icon">ballot</span>
+        <span class="font-body-md nav-label">Polls</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="#">
+        <span class="material-symbols-outlined nav-icon">map</span>
+        <span class="font-body-md nav-label">Map</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="insights.html">
+        <span class="material-symbols-outlined nav-icon">analytics</span>
+        <span class="font-body-md nav-label">Insights</span>
+      </a>
+      <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-full group nav-item" href="profile.html">
+        <span class="material-symbols-outlined nav-icon">person</span>
+        <span class="font-body-md nav-label">Profile</span>
+      </a>
+    </nav>
+  </div>
+  <div class="mt-auto p-6">
+    <button class="w-full py-4 px-4 bg-primary text-on-primary font-bold rounded-full flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-lg">
+      <span class="material-symbols-outlined">add_circle</span>
+      <span class="nav-label">Report Issue</span>
+    </button>
+  </div>
+</aside>
+<!-- Main Wrapper -->
+<div class="flex-1 ml-64 flex flex-col" id="main-content">
+<!-- Top Header -->
+<header class="h-16 bg-surface border-b border-outline-variant flex items-center justify-between px-8 sticky top-0 z-40">
+<div class="flex-1 max-w-xl">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="Search issues, keywords, or locations..." type="text"/>
+</div>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 hover:bg-surface-container rounded-lg transition-colors mx-4">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="font-label-md text-on-surface">Ward 42 - South Delhi</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">keyboard_arrow_down</span>
+</button>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center cursor-pointer hover:ring-2 hover:ring-primary-fixed transition-all">
+<span class="text-xs font-bold">AJ</span>
+</div>
+</div>
+</header>
+<main class="flex-1 p-8 flex gap-8">
+<!-- Content Area -->
+<div class="flex-1 min-w-0">
+<!-- Page Header & Actions -->
+<div class="flex justify-between items-start mb-8">
+<div>
+<h1 class="text-3xl font-headline-lg font-bold text-on-surface mb-1">Issues</h1>
+<p class="text-on-surface-variant">Join 12,402 citizens in monitoring and fixing ward problems.</p>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-xl font-bold shadow-md hover:shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                        Report Issue
+                    </button>
+</div>
+<!-- Filters -->
+<div class="space-y-4 mb-8">
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="px-5 py-2 bg-primary text-on-primary rounded-full text-sm font-bold whitespace-nowrap shadow-sm">Near Me</button>
+<button class="px-5 py-2 bg-surface border border-outline-variant text-on-surface-variant rounded-full text-sm hover:bg-surface-container transition-colors whitespace-nowrap">My Issues</button>
+<button class="px-5 py-2 bg-surface border border-outline-variant text-on-surface-variant rounded-full text-sm hover:bg-surface-container transition-colors whitespace-nowrap">Needs Attention</button>
+<button class="px-5 py-2 bg-surface border border-outline-variant text-on-surface-variant rounded-full text-sm hover:bg-surface-container transition-colors whitespace-nowrap">Resolved</button>
+<button class="px-5 py-2 bg-surface border border-outline-variant text-on-surface-variant rounded-full text-sm hover:bg-surface-container transition-colors whitespace-nowrap">High Priority</button>
+</div>
+<div class="flex flex-wrap gap-3 items-center">
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-xs cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="text-on-surface-variant">Ward:</span>
+<span class="font-bold">All South</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-xs cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="text-on-surface-variant">Distance:</span>
+<span class="font-bold">5km</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-xs cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="text-on-surface-variant">Category:</span>
+<span class="font-bold">All</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-xs cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="text-on-surface-variant">Status:</span>
+<span class="font-bold">Active</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-xs cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="text-on-surface-variant">Priority:</span>
+<span class="font-bold">Any</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<button class="text-primary text-xs font-bold ml-auto hover:underline">Clear all filters</button>
+</div>
+</div>
+<!-- Grid of Issue Cards -->
+<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6">
+<!-- Card Template Generator (12 Cards) -->
+<!-- Issue 1 -->
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Garbage</span>
+<span class="px-2 py-0.5 bg-error-container text-on-error-container rounded text-[10px] font-bold uppercase tracking-wider">High Priority</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">2h ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Overflowing bin on High St</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Main waste collection point hasn't been cleared for 3 days. Foul smell spreading to nearby residential units.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot active"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span class="text-primary">Reported</span>
+<span>Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">forum</span>
+<span class="text-xs font-bold">12</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">thumb_up</span>
+<span class="text-xs font-bold">45</span>
+</div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thumb_up</span> Support
+                            </button>
+</div>
+</article>
+<!-- Issue 2 -->
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Pothole</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded text-[10px] font-bold uppercase tracking-wider">Medium</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">5h ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Deep pothole near Junction 4</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Hazardous pothole causing traffic slowdowns and extreme risk to two-wheelers especially during nights.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot active"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span>Reported</span>
+<span class="text-primary">Verified</span>
+<span>Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">forum</span><span class="text-xs font-bold">8</span></div>
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">thumb_up</span><span class="text-xs font-bold">102</span></div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thumb_up</span> Support
+                            </button>
+</div>
+</article>
+<!-- Issue 3 -->
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Water</span>
+<span class="px-2 py-0.5 bg-error-container text-on-error-container rounded text-[10px] font-bold uppercase tracking-wider">Urgent</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">1d ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Main pipe burst at Sector 4</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Significant water wastage on the road. Authorities have started excavation but supply is cut off.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot active"></div>
+<div class="workflow-dot"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span>Assigned</span>
+<span class="text-primary">In Progress</span>
+<span>Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">forum</span><span class="text-xs font-bold">24</span></div>
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">thumb_up</span><span class="text-xs font-bold">256</span></div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thumb_up</span> Support
+                            </button>
+</div>
+</article>
+<!-- Issue 4 -->
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Streetlight</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded text-[10px] font-bold uppercase tracking-wider">Low</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">2d ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Faulty lamp post #452</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">No light for the past week in the park lane area. Security concern for residents.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot active"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span>Verified</span>
+<span class="text-primary">Assigned</span>
+<span>Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">forum</span><span class="text-xs font-bold">3</span></div>
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">thumb_up</span><span class="text-xs font-bold">18</span></div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thumb_up</span> Support
+                            </button>
+</div>
+</article>
+<!-- Issue 5 -->
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Drainage</span>
+<span class="px-2 py-0.5 bg-error-container text-on-error-container rounded text-[10px] font-bold uppercase tracking-wider">High</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">3h ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Clogged drain on Market Road</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Water stagnant after minor rains yesterday. Affecting foot traffic to the local shops.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot active"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span class="text-primary">Reported</span>
+<span>Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">forum</span><span class="text-xs font-bold">15</span></div>
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">thumb_up</span><span class="text-xs font-bold">89</span></div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thumb_up</span> Support
+                            </button>
+</div>
+</article>
+<!-- Issue 6 -->
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Garbage</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded text-[10px] font-bold uppercase tracking-wider">Medium</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">6h ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Illegal dumping near canal</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Construction debris being dumped regularly after midnight. Needs strict patrolling.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot active"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span>Reported</span>
+<span class="text-primary">Verified</span>
+<span>Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">forum</span><span class="text-xs font-bold">6</span></div>
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">thumb_up</span><span class="text-xs font-bold">32</span></div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thumb_up</span> Support
+                            </button>
+</div>
+</article>
+<!-- Add 6 more cards similarly with slightly varied data -->
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Public Park</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded text-[10px] font-bold uppercase tracking-wider">Medium</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">12h ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Broken benches in Central Park</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Three benches near the play area have broken slats. Dangerous for children and elderly.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot active"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span>Reported</span>
+<span class="text-primary">Assigned</span>
+<span>Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">forum</span><span class="text-xs font-bold">4</span></div>
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">thumb_up</span><span class="text-xs font-bold">21</span></div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thumb_up</span> Support
+                            </button>
+</div>
+</article>
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Sidewalk</span>
+<span class="px-2 py-0.5 bg-error-container text-on-error-container rounded text-[10px] font-bold uppercase tracking-wider">High</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">1d ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Encroachment on Sector 2 Path</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Temporary stalls have blocked the entire walking path. Pedestrians forced to walk on road.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot active"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span class="text-primary">Reported</span>
+<span>Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">forum</span><span class="text-xs font-bold">31</span></div>
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">thumb_up</span><span class="text-xs font-bold">142</span></div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thumb_up</span> Support
+                            </button>
+</div>
+</article>
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Traffic</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded text-[10px] font-bold uppercase tracking-wider">Medium</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">2d ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Malfunctioning traffic signal</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Signal at Nehru Crossing is stuck on red for North-bound traffic. Chaos during peak hours.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot active"></div>
+<div class="workflow-dot"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span>Assigned</span>
+<span class="text-primary">In Progress</span>
+<span>Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">forum</span><span class="text-xs font-bold">19</span></div>
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">thumb_up</span><span class="text-xs font-bold">88</span></div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thumb_up</span> Support
+                            </button>
+</div>
+</article>
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Sanitation</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded text-[10px] font-bold uppercase tracking-wider">Low</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">3d ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Litter near Metro Exit</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">High volume of food wrappers and plastic bottles. Need more bins in the vicinity.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot active"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span>Reported</span>
+<span class="text-primary">Verified</span>
+<span>Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">forum</span><span class="text-xs font-bold">7</span></div>
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">thumb_up</span><span class="text-xs font-bold">29</span></div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thumb_up</span> Support
+                            </button>
+</div>
+</article>
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Stray Animals</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded text-[10px] font-bold uppercase tracking-wider">Medium</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">4d ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Aggressive stray pack near School</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Residents concerned for children's safety during morning hours. Requesting relocation/vaccination.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot active"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+<div class="workflow-dot"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span>Reported</span>
+<span class="text-primary">Verified</span>
+<span>Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">forum</span><span class="text-xs font-bold">14</span></div>
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">thumb_up</span><span class="text-xs font-bold">77</span></div>
+</div>
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">thumb_up</span> Support
+                            </button>
+</div>
+</article>
+<article class="bg-surface border border-outline-variant rounded-xl p-5 hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-white rounded text-[10px] font-bold uppercase tracking-wider">Security</span>
+<span class="px-2 py-0.5 bg-error-container text-on-error-container rounded text-[10px] font-bold uppercase tracking-wider">Critical</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">5d ago</span>
+</div>
+<h3 class="font-title-lg text-lg text-on-surface font-bold mb-2 group-hover:text-primary transition-colors cursor-pointer">Broken gate at Community Center</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Main gate hinge broken. Center is open to unauthorized access during night time.</p>
+<div class="mb-6">
+<div class="workflow-track mb-2 px-2">
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot completed"></div>
+<div class="workflow-dot active"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold">
+<span>In Progress</span>
+<span class="text-primary">Resolved</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">forum</span><span class="text-xs font-bold">2</span></div>
+<div class="flex items-center gap-1.5 text-on-surface-variant"><span class="material-symbols-outlined text-lg">thumb_up</span><span class="text-xs font-bold">45</span></div>
+</div>
+<span class="text-xs text-on-surface-variant italic">Closed by Admin</span>
+</div>
+</article>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-12 text-center">
+<button class="px-8 py-3 bg-surface-container-high border border-outline-variant text-on-surface rounded-xl font-bold hover:bg-surface-variant transition-colors">
+                        Load More Issues
+                    </button>
+</div>
+</div>
+<!-- Right Sidebar -->
+<aside class="w-80 hidden lg:flex flex-col gap-6">
+<!-- Ward Snapshot -->
+<section class="bg-surface border border-outline-variant rounded-xl p-6">
+<h2 class="font-bold text-on-surface mb-4">Ward Snapshot</h2>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">Open Issues</span>
+<span class="text-lg font-bold text-primary">124</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">Resolved this week</span>
+<span class="text-lg font-bold text-tertiary">42</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">Avg. Resolution Time</span>
+<span class="text-lg font-bold">3 days</span>
+</div>
+<div class="pt-4 mt-4 border-t border-surface-container">
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 65%"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2">65% of monthly goal reached</p>
+</div>
+</div>
+</section>
+<!-- Trending Categories -->
+<section class="bg-surface border border-outline-variant rounded-xl p-6">
+<h2 class="font-bold text-on-surface mb-4">Trending Categories</h2>
+<div class="space-y-3">
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">delete</span>
+<span class="text-sm">Waste Management</span>
+</div>
+<span class="text-xs font-bold bg-surface-container px-2 py-0.5 rounded text-on-surface-variant group-hover:bg-primary group-hover:text-white transition-colors">42</span>
+</div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">water_drop</span>
+<span class="text-sm">Water Supply</span>
+</div>
+<span class="text-xs font-bold bg-surface-container px-2 py-0.5 rounded text-on-surface-variant group-hover:bg-primary group-hover:text-white transition-colors">28</span>
+</div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">commute</span>
+<span class="text-sm">Roads &amp; Traffic</span>
+</div>
+<span class="text-xs font-bold bg-surface-container px-2 py-0.5 rounded text-on-surface-variant group-hover:bg-primary group-hover:text-white transition-colors">24</span>
+</div>
+</div>
+</section>
+<!-- Community Champions -->
+<section class="bg-surface border border-outline-variant rounded-xl p-6">
+<h2 class="font-bold text-on-surface mb-4">Community Champions</h2>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center font-bold text-xs">RK</div>
+<div class="flex-1">
+<p class="text-sm font-bold leading-tight">Rahul Kapoor</p>
+<p class="text-[10px] text-on-surface-variant">8 issues resolved this month</p>
+</div>
+<span class="material-symbols-outlined text-yellow-500 text-lg">verified</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-xs text-primary">MS</div>
+<div class="flex-1">
+<p class="text-sm font-bold leading-tight">Meera Singh</p>
+<p class="text-[10px] text-on-surface-variant">142 supports provided</p>
+</div>
+<span class="material-symbols-outlined text-yellow-500 text-lg">military_tech</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center font-bold text-xs">AS</div>
+<div class="flex-1">
+<p class="text-sm font-bold leading-tight">Amit Sharma</p>
+<p class="text-[10px] text-on-surface-variant">Active in Sector 4 Discussions</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 text-xs font-bold text-primary hover:underline">View Leaderboard</button>
+</section>
+</aside>
+</main>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<script>
+        // Micro-interactions for support buttons
+        document.querySelectorAll('button').forEach(btn => {
+            if(btn.innerText.includes('Support')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const isSupported = this.classList.contains('bg-surface-container-highest');
+                    
+                    if(!isSupported) {
+                        this.classList.remove('bg-primary', 'text-white');
+                        this.classList.add('bg-surface-container-highest', 'text-on-surface-variant', 'border', 'border-outline-variant');
+                        this.innerHTML = '<span class="material-symbols-outlined text-sm" style="font-variation-settings: \'FILL\' 1;">thumb_up</span> Supported';
+                        
+                        // Increment count for demo
+                        const countSpan = this.parentElement.querySelector('.text-xs:last-child');
+                        if(countSpan) countSpan.innerText = parseInt(countSpan.innerText) + 1;
+                    } else {
+                        this.classList.remove('bg-surface-container-highest', 'text-on-surface-variant', 'border', 'border-outline-variant');
+                        this.classList.add('bg-primary', 'text-white');
+                        this.innerHTML = '<span class="material-symbols-outlined text-sm">thumb_up</span> Support';
+                        
+                        // Decrement count for demo
+                        const countSpan = this.parentElement.querySelector('.text-xs:last-child');
+                        if(countSpan) countSpan.innerText = parseInt(countSpan.innerText) - 1;
+                    }
+                });
+            }
+        });
+    </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const toggleIcon = document.getElementById('toggleIcon');
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', () => {
+        if (sidebar.classList.contains('sidebar-collapsed')) {
+          sidebar.classList.remove('sidebar-collapsed');
+          sidebar.style.width = '16rem';
+          toggleIcon.style.transform = 'rotate(0deg)';
+        } else {
+          sidebar.classList.add('sidebar-collapsed');
+          sidebar.style.width = '80px';
+          toggleIcon.style.transform = 'rotate(180deg)';
+        }
+      });
+    }
+  });
+</script>
+</body></html>
