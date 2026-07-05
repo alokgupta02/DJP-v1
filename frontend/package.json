@@ -1,0 +1,15 @@
+{
+  "name": "djp-frontend",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:citizen": "npm run dev -w citizen",
+    "dev:admin": "npm run dev -w admin",
+    "build:citizen": "npm run build -w citizen",
+    "build:admin": "npm run build -w admin",
+    "lint": "npm run lint -ws"
+  }
+}
