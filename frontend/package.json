@@ -10,6 +10,12 @@
     "dev:admin": "npm run dev -w admin",
     "build:citizen": "npm run build -w citizen",
     "build:admin": "npm run build -w admin",
-    "lint": "npm run lint -ws"
+    "lint": "npm run lint -ws",
+    "typecheck": "npm run typecheck -ws",
+    "clean": "find . -name node_modules -type d -prune -exec rm -rf {} + && find . -name dist -type d -prune -exec rm -rf {} +"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.2",
+    "tailwindcss": "^4.3.2"
   }
 }
