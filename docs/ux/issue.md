@@ -1,40 +1,48 @@
-# Issue Documentation
-
-**Purpose**: Standardized format for reporting and tracking civic concerns  
-**Audience**: Developers, content creators, contributors  
-**Status**: Stable  
+# 🚨 **Civic Issue Reporting UX Specification**
 
 ---
 
-## Overview
+| Metadata | Details |
+| :--- | :--- |
+| **🎯 Purpose** | Standardized UX workflow and schema presentation for reporting and tracking public civic concerns |
+| **👥 Audience** | Developers, Designers, Content Creators |
+| **📌 Status** | `Stable` |
 
-The Issue Documentation provides a standardized format for reporting and tracking civic concerns within the Digital Janata platform.
+---
 
-## Content Structure
+## 🌟 Overview
 
-- **title**: Short, descriptive title of the issue
-- **description**: Detailed explanation of the issue, including steps to reproduce if applicable
-- **category**: Type of issue (e.g., infrastructure, policy, safety, environment)
-- **location**: Geographic location (city, district, region)
-- **severity**: Impact level (Low, Medium, High)
-- **status**: Current state (Open, In Progress, Closed)
-- **attachments**: Files or images supporting the issue
-- **tags**: Keywords for categorization and search
+The **Issue Reporting UX Specification** establishes how citizens report, verify, and track public governance concerns across their local jurisdictions.
 
-## Usage Guidelines
+---
 
-- Use clear, concise language
-- Provide sufficient detail for others to understand and act on the issue
-- Link to related discussions or polls when applicable
-- Update the status as the issue progresses
+## 📑 Issue Reporting Fields & UI Presentation
 
-## Related Documentation
+| Field Name | Type | UI Presentation & UX Rules |
+| :--- | :--- | :--- |
+| **`title`** | `String` | Concise headline summarizing the civic issue (`max 100 chars`) |
+| **`description`** | `Rich Text` | Full context, background, and evidence |
+| **`category`** | `Select / Pill` | `Infrastructure`, `Sanitation`, `Safety`, `Education`, `Policy` |
+| **`location`** | `Map Picker` | Interactive map pin + ward/district selector |
+| **`severity`** | `Badge` | Color-coded impact indicator (`Low` / `Medium` / `High` / `Critical`) |
+| **`status`** | `Status Pill` | Workflow tracker (`Open` → `In Progress` → `Resolved`) |
+| **`attachments`** | `File Uploader` | Photo/document proof uploader with drag-and-drop preview |
+| **`tags`** | `Tag Input` | Keyword tags for community discovery |
 
-- [Design Principles](design-principles.md)
-- [Onboarding](../architecture/onboarding.md)
-- [Submission Model](../architecture/submission-model.md)
-- [AI Assistant](../architecture/ai-assistant.md)
-- [Discussion](discussion.md)
-- [Poll](poll.md)
-- [Vision](../vision/party-vision.md)
-- [Roadmap](../vision/roadmap.md)
+---
+
+## 💡 Reporting UX Best Practices
+
+* [ ] Provide auto-suggestions for duplicate or existing issues near the citizen's location.
+* [ ] Display explicit progress milestones as an issue moves from `Open` to `Resolved`.
+* [ ] Allow community verification upvotes to prioritize high-impact issues.
+
+---
+
+## 📚 Related Documentation
+
+* **[Common Submission Model](../architecture/submission-model.md)** — Backend issue entity schema
+* **[Design Principles](design-principles.md)** — Platform UX rules
+* **[Discussion UX Spec](discussion.md)** — Linked community threads
+
+---

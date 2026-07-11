@@ -1,53 +1,61 @@
-# Roadmap
-
-**Purpose**: Outline the versioned plan, milestones, and timeline  
-**Audience**: Stakeholders, developers, contributors  
-**Status**: Stable  
+# 🗺️ **Product Roadmap & Milestones**
 
 ---
 
-## Version 1 (MVP) — Citizen Participation Foundation
+| Metadata | Details |
+| :--- | :--- |
+| **🎯 Purpose** | Outline the versioned product plan, milestones, and timeline for the DJP platform |
+| **👥 Audience** | Stakeholders, Developers, Contributors |
+| **📌 Status** | `Stable` |
 
-- Issue reporting with progressive disclosure
-- Civic discussion and community polls
-- Responsive mobile-first design
-- Dashboard with key governance metrics
-- Basic navigation and sidebar
+---
 
-## Version 2 (v2) — Party Organization & Accountability
+## 📅 Versioned Release Schedule
 
-- Digital membership and volunteer management
-- Representative performance tracking
-- Promise and issue resolution tracking
-- Enhanced navigation with search
-- User authentication and profiles
+```
+  [ Q1 2026: v1 MVP ]  ──►  [ Q2 2026: v2 Organization ]  ──►  [ Q3 2026: v3 Intelligence ]  ──►  [ Q4 2026: v4 Ecosystem ]
+```
 
-## Version 3 (v3) — Intelligence & Governance
+---
 
-- Analytics dashboards and public sentiment analysis
-- Constituency insights and AI-powered recommendations
-- Multi-level government monitoring
-- Real-time data updates
-- Advanced filtering and segmentation
+## 🚀 Milestones & Feature Breakdown
 
-## Version 4 (v4) — Scale & Ecosystem
+### 1️⃣ Version 1 (MVP) — Citizen Participation Foundation (`Q1 2026`)
+* [x] Issue reporting with progressive disclosure
+* [x] Civic discussions and community polls
+* [x] Responsive mobile-first design tokens (`@djp/theme`, `@djp/ui`)
+* [x] Unified dashboard with key governance metrics
 
-- Campaign coordination and event management
-- Internationalization and multilingual support
-- Offline-first experiences
-- Integration with government and public data sources
-- AI Civic Assistant and policy collaboration tools
+---
 
-## Timeline
+### 2️⃣ Version 2 — Party Organization & Accountability (`Q2 2026`)
+* [ ] Digital membership & volunteer management pipelines
+* [ ] Representative performance & voting record tracking
+* [ ] Promise and issue resolution audit logs
+* [ ] User authentication, RBAC, and verified citizen profiles
 
-- Q1 2026: MVP (Citizen Participation)
-- Q2 2026: v2 (Party Organization)
-- Q3 2026: v3 (Intelligence & Governance)
-- Q4 2026: v4 (Scale & Ecosystem)
+---
 
-## Related Documentation
+### 3️⃣ Version 3 — Intelligence & Governance (`Q3 2026`)
+* [ ] Real-time analytics dashboards & public sentiment tracking
+* [ ] Constituency insights & AI-powered policy recommendations
+* [ ] Multi-level government performance monitoring
+* [ ] Advanced spatial and categorical filtering
 
-- [Vision](party-vision.md) — Foundational vision driving this roadmap
-- [Decisions](decisions.md) — Architectural decisions scoped by version
-- [Architecture Overview](../architecture/overview.md) — System context
-- [Design Principles](../ux/design-principles.md) — UX guidelines
+---
+
+### 4️⃣ Version 4 — Scale & Ecosystem (`Q4 2026`)
+* [ ] Campaign coordination & booth management tooling
+* [ ] Multilingual support across major regional languages
+* [ ] Offline-first Progressive Web App (PWA) sync
+* [ ] Open civic data integrations & AI Civic Assistant
+
+---
+
+## 📚 Related Documentation
+
+* **[Vision Statement](party-vision.md)** — Foundational vision driving this roadmap
+* **[Decisions](decisions.md)** — Architectural decisions scoped by version
+* **[Architecture Overview](../architecture/overview.md)** — System context
+
+---

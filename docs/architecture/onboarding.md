@@ -1,87 +1,75 @@
-# Onboarding
-
-**Purpose**: Define the conversational onboarding flow and progressive disclosure patterns  
-**Audience**: Developers, designers, contributors  
-**Status**: Stable  
+# 👋 **Conversational Onboarding & Progressive Disclosure**
 
 ---
 
-## Progressive Disclosure Flow
+| Metadata | Details |
+| :--- | :--- |
+| **🎯 Purpose** | Define the conversational onboarding flow and progressive disclosure UX patterns |
+| **👥 Audience** | Developers, Designers, Contributors |
+| **📌 Status** | `Stable` |
 
-The onboarding process uses progressive disclosure to gradually introduce users to the platform's features and capabilities, reducing cognitive load and improving user adoption.
+---
 
-### Step-by-Step Flow
+## 🌟 Overview
 
-1. **Welcome Screen**
-   - Brief introduction to the platform
-   - Clear value proposition
-   - Primary call-to-action (e.g., "Get Started")
+The onboarding process uses **Progressive Disclosure** to gradually introduce users to the platform's features and civic capabilities, reducing cognitive load and maximizing citizen adoption.
 
-2. **Location Selection**
-   - Users select their geographic location
-   - Options include: country, state/province, city, or custom location
-   - Location determines available data and context
+---
 
-3. **Interest & Preference Gathering**
-   - Users select areas of interest (e.g., education, healthcare, infrastructure)
-   - Users indicate preferred frequency of updates (daily, weekly, monthly)
-   - Users can opt-in to receive notifications
+## 🔄 6-Step Onboarding Sequence
 
-4. **Account Creation (Optional)**
-   - Users can create an account or use anonymously
-   - Account creation enables personalized experience and data persistence
-   - Optional fields for additional user information
+```
+ [ 1. Welcome ] ──► [ 2. Location ] ──► [ 3. Interests ] ──► [ 4. Account ] ──► [ 5. Tour ] ──► [ 6. Ready ]
+```
 
-5. **Platform Tour**
-   - Interactive tour of key features and navigation
-   - Highlights main dashboard, issue reporting, discussion features
-   - Demonstrates how to navigate between different sections
+### 1️⃣ Step 1: Welcome Screen
+* Warm conversational introduction to the Digital Janata platform
+* Clear civic value proposition ("Participate as easily as sending a message")
+* Primary Action: **Get Started**
 
-6. **Confirmation & Access**
-   - Final confirmation screen summarizing selections
-   - Clear path to the main dashboard
-   - Option to start exploring immediately or revisit onboarding
+### 2️⃣ Step 2: Location Selection
+* Users select their geographic jurisdiction (State, District, Municipality, Ward)
+* Automatically personalizes local feeds, representatives, and issues
 
-### State Management
+### 3️⃣ Step 3: Interest & Preference Gathering
+* Select civic focus areas (Education, Healthcare, Infrastructure, Sanitation, Law)
+* Set preferred notification & summary frequency (Daily / Weekly / Monthly)
 
-- **User State**: Tracks onboarding progress through states
-- **Session State**: Maintains user preferences and selections
-- **Content State**: Manages the state of user-generated content (issues, discussions, etc.)
+### 4️⃣ Step 4: Account Creation (Optional / Progressive)
+* Seamless anonymous exploration or instant OTP/Social login
+* Account creation enables persistent reputation scoring and voting rights
 
-### Data Model Integration
+### 5️⃣ Step 5: Interactive Platform Tour
+* Quick interactive tooltips highlighting the Dashboard, Issue Reporting, and Polls
 
-- Onboarding data is stored in the Common Submission Model
-- User preferences are linked to user profile or session state
-- Location data is integrated with the data visualization system
+### 6️⃣ Step 6: Confirmation & Access
+* Summary card of selected preferences
+* Immediate redirect to personalized Citizen Dashboard
 
-### Edge Cases
+---
 
-- **Interrupted Flow**: Resume from last completed step
-- **User Cancellation**: Clear exit path without losing progress
-- **Location Changes**: Allow users to update location at any time
-- **Accessibility**: Ensure all steps are accessible via keyboard and screen readers
+## 🗃️ State Management & Integration
 
-### Integration Points
+| State Layer | Responsibility | Storage |
+| :--- | :--- | :--- |
+| **User State** | Tracks active onboarding step & completion | Session Storage / User Profile |
+| **Preferences** | Stores location and topic interests | Local Storage / Database Profile |
+| **Civic Context** | Filters API queries by selected jurisdiction | URL Params / Redux/Zustand Store |
 
-- **UI Components**: Onboarding screens use standard UI components (cards, buttons, forms)
-- **Navigation**: Sidebar navigation remains accessible during onboarding
-- **Data Flow**: Onboarding data flows into the Common Submission Model
-- **API**: Onboarding API endpoints handle user preferences and selections
+---
 
-### Testing Checklist
+## ✅ Quality & Edge-Case Checklist
 
-- [ ] All steps complete successfully
-- [ ] Progress is saved and can be resumed
-- [ ] All accessibility requirements met
-- [ ] User feedback collected and incorporated
-- [ ] Performance tested for all device types
-- [ ] Error handling for all possible failure scenarios
+* [ ] **Interrupted Flow:** Users can resume exactly from the last completed onboarding step.
+* [ ] **User Cancellation:** Users can skip onboarding and explore default public views.
+* [ ] **Dynamic Location Updates:** Users can update their geographic location anytime from settings.
+* [ ] **Accessibility:** Every onboarding step is fully navigable via keyboard (`Tab` / `Enter`).
 
-## Related Documentation
+---
 
-- [Vision](../vision/party-vision.md)
-- [Roadmap](../vision/roadmap.md)
-- [Decisions](../vision/decisions.md)
-- [Design Principles](../ux/design-principles.md)
-- [Submission Model](submission-model.md)
-- [AI Assistant](ai-assistant.md)
+## 📚 Related Documentation
+
+* **[Submission Model](submission-model.md)** — User Profile entity schema
+* **[Design Principles](../ux/design-principles.md)** — Progressive disclosure philosophy
+
+---

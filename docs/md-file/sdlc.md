@@ -1,71 +1,78 @@
-Here’s a clean **agent document creation flow** for building a full app:
+# 🔄 **Agent SDLC & Document Creation Flow**
 
-1. **Idea Intake Doc**
-   Capture raw 1-line idea + intent + problem statement.
+---
 
-2. **Idea Expansion Doc**
-   Expand into full concept: users, pain points, goals, assumptions.
+## 🎯 Overview
 
-3. **Business Plan Doc**
-   Define: target market, revenue model, value proposition, competitors, risks.
+A structured **14-stage document creation workflow** and **8-phase lifecycle matrix** designed for AI agents building full-stack applications from concept to continuous iteration.
 
-4. **Product Vision Doc**
-   Long-term vision, mission, success metrics.
+---
 
-5. **PRD (Product Requirement Doc)**
-   Features, user stories, scope, priorities (MVP vs future).
+## 📑 14-Stage Document Creation Flow
 
-6. **System Design Doc**
-   Architecture, services, database design, APIs.
+| # | Document | Icon | Purpose |
+| :-: | :--- | :-: | :--- |
+| **1** | **Idea Intake Doc** | 💡 | Capture raw 1-line idea, core intent, and high-level problem statement. |
+| **2** | **Idea Expansion Doc** | 🔭 | Expand concept into target users, pain points, goals, and assumptions. |
+| **3** | **Business Plan Doc** | 💼 | Define target market, revenue model, value proposition, competitors, and risks. |
+| **4** | **Product Vision Doc** | 🌟 | Establish long-term vision, mission, and success metrics. |
+| **5** | **PRD (Product Requirement Doc)** | 📋 | Document features, user stories, scope, and priorities (MVP vs. future). |
+| **6** | **System Design Doc** | 🏗️ | Define architecture, microservices, database schema, and API boundaries. |
+| **7** | **Tech Specification Doc** | 🛠️ | Select technology stack, frameworks, infrastructure, and developer tooling. |
+| **8** | **Execution Plan Doc** | 📅 | Structure sprint planning, task breakdowns, timelines, and ownership. |
+| **9** | **UI/UX Doc** | 🎨 | Detail screens, user flows, wireframes, and responsive user journeys. |
+| **10** | **Development Doc** | 💻 | Outline coding standards, module organization, and integration plans. |
+| **11** | **Testing Doc** | 🧪 | Define test cases, QA strategy, automated test suites, and coverage goals. |
+| **12** | **Deployment Doc** | 🚀 | Specify CI/CD pipelines, environment setups, and release procedures. |
+| **13** | **Operations Doc** | 📊 | Establish observability, logging, scaling policies, and incident runbooks. |
+| **14** | **Iteration Doc** | 🔁 | Maintain feedback loops, version upgrades, and product roadmap updates. |
 
-7. **Tech Specification Doc**
-   Stack selection, frameworks, infra, tools.
+---
 
-8. **Execution Plan Doc**
-   Sprint planning, task breakdown, timelines, ownership.
+## 🛠️ SDLC Lifecycle Stages & Tooling Matrix
 
-9. **UI/UX Doc**
-   Screens, flows, wireframes, user journey.
+```
+  [ 1. Initiation ] ─► [ 2. Planning ] ─► [ 3. Analysis ] ─► [ 4. Design ] ─► [ 5. Development ] ─► [ 6. Testing ] ─► [ 7. Deployment ] ─► [ 8. Maintenance ]
+```
 
-10. **Development Doc**
-    Coding standards, module structure, integration plan.
+### 1️⃣ Initiation (`idea.md`, `business_case.md`)
+* **🧰 Tools:** Notion, Confluence
+* **🎯 Workflow:** Starts from a raw idea and expands into problem definition, target users, and ROI.
+* **✅ Acceptance Criteria:** Stakeholders approve feasibility and business value.
 
-11. **Testing Doc**
-    Test cases, QA strategy, automation plan.
+### 2️⃣ Planning (`project_plan.md`, `risk_log.xlsx`)
+* **🧰 Tools:** Jira, MS Project
+* **🎯 Workflow:** Uses the business case to define scope, timeline, and resource allocation.
+* **✅ Acceptance Criteria:** Timeline is realistic and risks are tracked.
 
-12. **Deployment Doc**
-    CI/CD, environment setup, release process.
+### 3️⃣ Analysis (`srs.md`, `use_cases.md`)
+* **🧰 Tools:** Confluence, Draw.io
+* **🎯 Workflow:** Transforms high-level scope into detailed, testable requirements.
+* **✅ Acceptance Criteria:** Requirements are complete, unambiguous, testable, and signed off.
 
-13. **Operations Doc**
-    Monitoring, logs, scaling, incident handling.
+### 4️⃣ Design (`hld.md`, `lld.md`, `api_spec.yaml`)
+* **🧰 Tools:** Lucidchart, Swagger / OpenAPI
+* **🎯 Workflow:** Converts SRS into architecture blueprints, database schemas, and API contracts.
+* **✅ Acceptance Criteria:** Design is scalable, clear, and review-approved.
 
-14. **Iteration Doc**
-    Feedback loop, version upgrades, roadmap updates.
+### 5️⃣ Development (`/src`, `dev_guide.md`)
+* **🧰 Tools:** Git, IDEs (VS Code)
+* **🎯 Workflow:** Implements design specifications into clean, modular, tested code.
+* **✅ Acceptance Criteria:** Code reviews pass and automated builds succeed.
 
-=========================================
+### 6️⃣ Testing (`test_plan.md`, `test_cases.xlsx`)
+* **🧰 Tools:** Selenium, Postman, JUnit/Testcontainers
+* **🎯 Workflow:** Validates system behavior against the SRS.
+* **✅ Acceptance Criteria:** All critical test suites pass.
 
-## Tools
+### 7️⃣ Deployment (`deploy.md`, `ci_cd.yml`)
+* **🧰 Tools:** Docker, GitHub Actions, Kubernetes
+* **🎯 Workflow:** Releases tested builds to target environments.
+* **✅ Acceptance Criteria:** System is stable in production with a verified rollback strategy.
 
-**1. Initiation — `idea.md`, `business_case.md` (Notion/Confluence)**
-Starts from raw idea, expanded into problem, users, and ROI. Output feeds planning with clear vision. Accepted when stakeholders approve feasibility and value.
+### 8️⃣ Maintenance (`ops.md`, `changelog.md`)
+* **🧰 Tools:** Grafana, Prometheus, ELK Stack
+* **🎯 Workflow:** Monitors production health and routes feedback back to Analysis for the next iteration.
+* **✅ Acceptance Criteria:** Service Level Agreements (SLAs) are met consistently.
 
-**2. Planning — `project_plan.md`, `risk_log.xlsx` (Jira, MS Project)**
-Uses business case to define scope, timeline, resources. Produces roadmap for analysis. Accepted when timeline is realistic and risks are tracked.
-
-**3. Analysis — `srs.md`, `use_cases.md` (Confluence, Draw.io)**
-Transforms scope into detailed requirements. Feeds design directly. Accepted when requirements are complete, testable, and signed off.
-
-**4. Design — `hld.md`, `lld.md`, `api_spec.yaml` (Lucidchart, Swagger)**
-Converts SRS into architecture, DB, APIs. Guides dev. Accepted when scalable, clear, and review-approved.
-
-**5. Development — `/src`, `dev_guide.md` (Git, VS Code)**
-Implements design into code. Outputs working modules for testing. Accepted via code reviews and build success.
-
-**6. Testing — `test_plan.md`, `test_cases.xlsx` (Selenium, Postman)**
-Validates against SRS. Feeds deployment readiness. Accepted when critical tests pass.
-
-**7. Deployment — `deploy.md`, `ci_cd.yml` (Docker, GitHub Actions)**
-Releases tested build. Feeds ops. Accepted when stable with rollback.
-
-**8. Maintenance — `ops.md`, `changelog.md` (Grafana, ELK)**
-Monitors system, logs issues → loops back to SRS for next iteration. Accepted when SLA met.
+---

@@ -1,60 +1,81 @@
-# Architectural Decision Records
-
-**Purpose**: Document key architectural decisions, technology choices, and trade-offs  
-**Audience**: Developers, architects, contributors  
-**Status**: Stable  
+# 📜 **Architectural Decision Records (ADR)**
 
 ---
 
-## ADR-001: Progressive Disclosure Pattern
+| Metadata | Details |
+| :--- | :--- |
+| **🎯 Purpose** | Document key architectural decisions, technology choices, and design trade-offs |
+| **👥 Audience** | Developers, Architects, Contributors |
+| **📌 Status** | `Stable` |
 
-- **Status**: Accepted
-- **Context**: Need to simplify user onboarding and reduce cognitive load
-- **Decision**: Implement progressive disclosure in all user flows
-- **Consequences**:
-  - Positive: Reduced initial complexity, improved user adoption
-  - Negative: Requires careful state management
+---
 
-## ADR-002: Chart.js for Visualizations
+## 📑 Summary Table of Decisions
 
-- **Status**: Accepted
-- **Context**: Need for interactive, responsive charts with minimal dependencies
-- **Decision**: Use Chart.js library for all data visualizations
-- **Consequences**:
-  - Positive: Rich charting capabilities, responsive design, CDN available
-  - Negative: Requires additional JavaScript knowledge
+| ADR # | Decision Title | Status | Primary Trade-Off |
+| :---: | :--- | :---: | :--- |
+| **ADR-001** | **Progressive Disclosure UX** | `Accepted` | Simplifies onboarding vs. requires multi-step state tracking |
+| **ADR-002** | **Chart.js for Visualizations** | `Accepted` | Lightweight CDN charts vs. manual canvas initialization |
+| **ADR-003** | **Mobile-First Responsive Design** | `Accepted` | Democratic mobile access vs. extra desktop desktop styling |
+| **ADR-004** | **Vanilla JS Prototype & Shared React Foundation** | `Accepted` | Zero build prototype reference + modular React apps |
+| **ADR-005** | **Static File Deployment for Prototypes** | `Accepted` | Deploy anywhere cheaply vs. API backend required separately |
 
-## ADR-003: Mobile-First Design
+---
 
-- **Status**: Accepted
-- **Context**: Majority of users access platform via mobile devices
-- **Decision**: Design all UI components with mobile-first approach
-- **Consequences**:
-  - Positive: Better mobile experience, consistent across devices
-  - Negative: May require additional effort for desktop-specific features
+## 🔍 Detailed Decision Records
 
-## ADR-004: Vanilla JavaScript (No Framework)
+### 📌 ADR-001: Progressive Disclosure Pattern
+* **Status:** `Accepted`
+* **Context:** Need to simplify user onboarding and reduce cognitive load for diverse citizens.
+* **Decision:** Implement progressive disclosure across onboarding and complex reporting flows.
+* **Consequences:**
+  * ✅ **Positive:** Reduced initial complexity, improved user completion rates.
+  * ⚠️ **Trade-off:** Requires explicit step tracking and session state retention.
 
-- **Status**: Accepted
-- **Context**: Need for lightweight, dependency-free frontend
-- **Decision**: Use vanilla JavaScript (ES5+) with no frameworks
-- **Consequences**:
-  - Positive: Zero build step, small footprint, maximum compatibility
-  - Negative: Manual state management, no component abstraction
+---
 
-## ADR-005: Static File Deployment
+### 📌 ADR-002: Chart.js for Visualizations
+* **Status:** `Accepted`
+* **Context:** Need interactive, responsive civic charts with minimal runtime overhead.
+* **Decision:** Use Chart.js library for data visual components.
+* **Consequences:**
+  * ✅ **Positive:** Responsive canvas rendering, extensive chart options, small footprint.
+  * ⚠️ **Trade-off:** Requires manual chart instance lifecycle cleanup.
 
-- **Status**: Accepted
-- **Context**: Simple hosting requirements with no server-side processing
-- **Decision**: Serve as static files on any HTTP server
-- **Consequences**:
-  - Positive: Deploy anywhere (GitHub Pages, Netlify, S3), no backend costs
-  - Negative: No server-side features (auth, database)
+---
 
-## Related Documentation
+### 📌 ADR-003: Mobile-First Design
+* **Status:** `Accepted`
+* **Context:** Majority of citizens access the platform via mobile devices on varying networks.
+* **Decision:** Design all UI components starting from mobile `<768px` breakpoints.
+* **Consequences:**
+  * ✅ **Positive:** Accessible, consistent mobile experience for all users.
+  * ⚠️ **Trade-off:** Desktop views require thoughtful multi-column expansion grids.
 
-- [Vision](party-vision.md) — Product vision driving these decisions
-- [Roadmap](roadmap.md) — Versioned plan for implementation
-- [Architecture Overview](../architecture/overview.md) — System context
-- [Design Tokens](../architecture/colors-typography.md) — Color palette and typography
-- [Design Principles](../ux/design-principles.md) — UX philosophy
+---
+
+### 📌 ADR-004: Vanilla JS Prototypes & Shared React Apps
+* **Status:** `Accepted`
+* **Context:** Need clear visual prototype reference (`/prototype`) along with scalable production React apps (`apps/citizen`, `apps/admin`).
+* **Decision:** Maintain vanilla HTML/CSS in `/prototype` and shared packages (`@djp/*`) for production React apps.
+* **Consequences:**
+  * ✅ **Positive:** Designers can prototype without build tools; devs compose clean React packages.
+
+---
+
+### 📌 ADR-005: Static & CDN Edge Hosting
+* **Status:** `Accepted`
+* **Context:** High public traffic demands scalable, low-cost frontend distribution.
+* **Decision:** Serve static frontend assets via CDN / Edge networks.
+* **Consequences:**
+  * ✅ **Positive:** Extremely fast global latency and zero server-side rendering bottlenecks.
+
+---
+
+## 📚 Related Documentation
+
+* **[Vision](party-vision.md)** — Product vision driving these decisions
+* **[Roadmap](roadmap.md)** — Versioned plan for implementation
+* **[Architecture Overview](../architecture/overview.md)** — System context
+
+---

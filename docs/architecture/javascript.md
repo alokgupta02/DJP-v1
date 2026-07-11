@@ -1,446 +1,172 @@
-# JavaScript Patterns
-
-**Purpose**: Common JavaScript patterns used across all 9 pages  
-**Audience**: Developers, agents  
-**Dependencies**: [Navigation](navigation.md), [Layout](layout.md)  
-**Status**: Stable  
-**Last Updated**: 2026-07-04
+# ⚡ **JavaScript Patterns & Best Practices**
 
 ---
 
-## Overview
-
-DJ Dashboard uses vanilla JavaScript (ES5+) with no dependencies. This document catalogs reusable patterns used on all pages.
+| Metadata | Details |
+| :--- | :--- |
+| **🎯 Purpose** | Standardized catalog of vanilla JavaScript (ES5+) patterns across the DJP frontend |
+| **👥 Audience** | Developers, Designers, AI Agents |
+| **🔗 Dependencies** | [Navigation](navigation.md), [Layout](layout.md) |
+| **📌 Status** | `Stable` |
 
 ---
 
-## Pattern 1: Sidebar Toggle
+## 🌟 Overview
 
-**Purpose**: Collapse/expand sidebar on button click  
-**Used On**: All 9 pages  
-**Responsive**: Mobile overlay effect
+The Digital Janata (DJ) platform frontend relies on **vanilla JavaScript (ES5+)** without heavy runtime dependencies. This document defines the reusable architectural patterns and event handling standards.
 
-**HTML**:
-```html
-<button id="sidebarToggle" class="toggle-btn">☰</button>
-<aside class="sidebar"><!-- content --></aside>
-```
+---
 
-**JavaScript**:
+## 📚 Pattern Library
+
+### 1️⃣ 🧭 Pattern 1: Responsive Sidebar Toggle
+* **🎯 Purpose:** Collapses or expands the navigation sidebar off-canvas drawer on mobile screens.
+
 ```javascript
 const sidebarToggle = document.getElementById('sidebarToggle');
 const sidebar = document.querySelector('.sidebar');
 
-sidebarToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('collapsed');
-});
-```
-
-**CSS**:
-```css
-.sidebar {
-    width: 250px;
-    transition: width 0.3s ease-in-out;
-}
-
-.sidebar.collapsed {
-    width: 0;
-    overflow: hidden;
-}
-
-@media (max-width: 768px) {
-    .sidebar {
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 100vh;
-        z-index: 999;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
-    }
-    
-    .sidebar.collapsed {
-        transform: translateX(0);
-    }
+if (sidebarToggle && sidebar) {
+    sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+    });
 }
 ```
 
 ---
 
-## Pattern 2: Active State Management
+### 2️⃣ ✨ Pattern 2: Active State Management
+* **🎯 Purpose:** Highlights the active navigation link based on page navigation.
 
-**Purpose**: Highlight current page in sidebar menu  
-**Used On**: All 9 pages  
-**Logic**: Remove active from all links, add to clicked
-
-**HTML**:
-```html
-<ul class="sidebar-menu">
-    <li><a href="overview.html" class="active">Dashboard</a></li>
-    <li><a href="judiciary.html">Judiciary</a></li>
-    <!-- etc -->
-</ul>
-```
-
-**JavaScript**:
 ```javascript
 const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
 
 sidebarLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        // Only for page links (not hash anchors)
+    link.addEventListener('click', () => {
         if (!link.href.includes('#')) {
-            // Remove active from all
             sidebarLinks.forEach(l => l.classList.remove('active'));
-            // Add active to clicked
             link.classList.add('active');
         }
     });
 });
 ```
 
-**CSS**:
-```css
-.sidebar-menu a.active {
-    background-color: #ff6b5b;
-    color: white;
+---
+
+### 3️⃣ 📈 Pattern 3: Chart.js Initialization
+* **🎯 Purpose:** Safely initializes Chart.js canvas elements with unified design tokens.
+
+```javascript
+const chartCanvas = document.getElementById('myChart');
+
+if (chartCanvas) {
+    const ctx = chartCanvas.getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar'],
+            datasets: [{
+                label: 'Metric A',
+                data: [10, 20, 15],
+                borderColor: '#a31621',
+                backgroundColor: 'rgba(163, 22, 33, 0.1)',
+                tension: 0.3,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: { legend: { display: false } }
+        }
+    });
 }
 ```
 
 ---
 
-## Pattern 3: Chart.js Initialization
+### 4️⃣ ⚡ Pattern 4: DOM Query Caching
+Always query DOM nodes once and cache them in variables rather than repeatedly executing `document.querySelector()`.
 
-**Purpose**: Initialize charts on pages with data visualization  
-**Used On**: overview.html, judiciary.html, states.html  
-**Config**: Custom colors, no legend
-
-**HTML**:
-```html
-<div class="chart-container">
-    <canvas id="myChart"></canvas>
-</div>
-```
-
-**JavaScript** (Example: Line Chart):
 ```javascript
-const ctx = document.getElementById('myChart').getContext('2d');
-
-const chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Jan', 'Feb', 'Mar'],
-        datasets: [
-            {
-                label: 'Metric A',
-                data: [10, 20, 15],
-                borderColor: '#ff6b5b',
-                backgroundColor: 'rgba(255, 107, 91, 0.1)',
-                tension: 0.3,
-                fill: true
-            },
-            {
-                label: 'Metric B',
-                data: [8, 18, 12],
-                borderColor: '#13c2c2',
-                backgroundColor: 'rgba(19, 194, 194, 0.1)',
-                tension: 0.3,
-                fill: true
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-            legend: {
-                display: false  // No legend
-            }
-        },
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-```
-
-**Bar Chart Example**:
-```javascript
-const barChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['State A', 'State B', 'State C'],
-        datasets: [{
-            label: 'Development Score',
-            data: [65, 72, 58],
-            backgroundColor: '#ff6b5b',
-            borderRadius: 4
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { display: false }
-        }
-    }
-});
-```
-
----
-
-## Pattern 4: DOM Query & Cache
-
-**Purpose**: Efficient DOM manipulation  
-**Best Practice**: Query once, reuse variable
-
-**✅ Good**:
-```javascript
+// ✅ Preferred: Cache reference
 const sidebar = document.querySelector('.sidebar');
-const toggle = document.getElementById('sidebarToggle');
+sidebar.classList.add('active');
+sidebar.style.display = 'block';
 
-toggle.addEventListener('click', () => {
-    sidebar.classList.toggle('collapsed');
-});
-```
-
-**❌ Bad**:
-```javascript
-// Querying DOM multiple times
-document.querySelector('.sidebar').classList.toggle('collapsed');
-// Later...
-document.querySelector('.sidebar').style.display = 'none';
+// ❌ Avoid: Repeated lookups
+document.querySelector('.sidebar').classList.add('active');
+document.querySelector('.sidebar').style.display = 'block';
 ```
 
 ---
 
-## Pattern 5: Event Delegation
-
-**Purpose**: Handle events on dynamic or multiple elements  
-**Example**: Table row actions
+### 5️⃣ 🎯 Pattern 5: Event Delegation
+Use event delegation on parent containers (`<tbody>`, lists) rather than binding listeners to every individual child row.
 
 ```javascript
-// Instead of adding listener to each row:
 const tableBody = document.querySelector('tbody');
 
-tableBody.addEventListener('click', (e) => {
-    const button = e.target.closest('button');
-    
-    if (button && button.classList.contains('action-btn')) {
-        const row = button.closest('tr');
-        console.log('Row clicked:', row);
-    }
-});
+if (tableBody) {
+    tableBody.addEventListener('click', (e) => {
+        const button = e.target.closest('button.action-btn');
+        if (button) {
+            const row = button.closest('tr');
+            console.log('Action triggered on row:', row);
+        }
+    });
+}
 ```
 
 ---
 
-## Pattern 6: Data Attributes
+### 6️⃣ 🏷️ Pattern 6: HTML5 Data Attributes
+Use `data-*` attributes for DOM state tracking rather than string-parsing CSS classes.
 
-**Purpose**: Store data on elements without classes  
-**Example**: Page identification
-
-**HTML**:
 ```html
-<body id="page-judiciary" data-page="judiciary" data-type="dashboard">
-    <div data-row-id="12345" class="table-row">
-        <!-- content -->
-    </div>
+<body id="page-judiciary" data-page="judiciary">
+    <div data-row-id="12345" class="table-row">...</div>
 </body>
 ```
 
-**JavaScript**:
 ```javascript
-const body = document.querySelector('body');
-const pageType = body.dataset.page;  // "judiciary"
-const rows = document.querySelectorAll('[data-row-id]');
-
-rows.forEach(row => {
-    const id = row.dataset.rowId;
-    console.log('Row ID:', id);
-});
+const rowId = element.dataset.rowId;
 ```
 
 ---
 
-## Pattern 7: Class Toggling
-
-**Purpose**: Simple state management with CSS classes  
-**Example**: Tab switching
-
-**HTML**:
-```html
-<div class="tabs">
-    <button class="tab-btn active" data-tab="all">All</button>
-    <button class="tab-btn" data-tab="open">Open</button>
-    <button class="tab-btn" data-tab="closed">Closed</button>
-</div>
-
-<div class="tab-content active" id="tab-all">Content A</div>
-<div class="tab-content" id="tab-open">Content B</div>
-<div class="tab-content" id="tab-closed">Content C</div>
-```
-
-**JavaScript**:
+### 7️⃣ 📑 Pattern 7: Tab Navigation Class Toggling
 ```javascript
 const tabs = document.querySelectorAll('.tab-btn');
 
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-        // Remove active from all
         tabs.forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => {
-            c.classList.remove('active');
-        });
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         
-        // Add active to clicked
         tab.classList.add('active');
         const tabId = tab.dataset.tab;
-        document.getElementById(`tab-${tabId}`).classList.add('active');
+        const targetContent = document.getElementById(`tab-${tabId}`);
+        if (targetContent) targetContent.classList.add('active');
     });
 });
 ```
 
 ---
 
-## Pattern 8: Conditional Initialization
+## 🚫 Common Anti-Patterns to Avoid
 
-**Purpose**: Only initialize components on specific pages  
-**Example**: Charts on some pages only
-
-**HTML**:
-```html
-<body id="page-overview">
-    <canvas id="trendsChart"></canvas>
-</body>
-```
-
-**JavaScript**:
-```javascript
-// Only init chart if element exists
-const chartCanvas = document.getElementById('trendsChart');
-if (chartCanvas) {
-    const ctx = chartCanvas.getContext('2d');
-    new Chart(ctx, { /* config */ });
-}
-```
+| Anti-Pattern | Bad Practice | Clean Replacement |
+| :--- | :--- | :--- |
+| **Inline Scripts** | `<button onclick="toggle()">` | Bind via `addEventListener()` in script |
+| **Global Scope Pollution** | `function toggle() { ... }` at root | Enclose in modular scope or module |
+| **Unchecked DOM Nulls** | Calling `.classList` on non-existent ID | Guard with `if (element) { ... }` |
 
 ---
 
-## Pattern 9: Responsive Behavior
+## 📚 Related Documentation
 
-**Purpose**: Adjust behavior based on screen size  
-**Example**: Mobile sidebar overlay
-
-```javascript
-// Mobile-specific behavior
-const isMobile = window.innerWidth < 768;
-
-if (isMobile) {
-    // Close sidebar when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
-            sidebar.classList.remove('collapsed');
-        }
-    });
-}
-
-// Listen for resize
-window.addEventListener('resize', () => {
-    const newIsMobile = window.innerWidth < 768;
-    if (isMobile !== newIsMobile) {
-        location.reload();  // or adjust UI
-    }
-});
-```
+* **[Navigation System](navigation.md)** — DOM active state rules
+* **[UI Components](components.md)** — Interactive component structures
 
 ---
-
-## Pattern 10: Error Handling
-
-**Purpose**: Handle missing elements gracefully  
-
-```javascript
-// Safe query
-const element = document.getElementById('optional-element');
-if (element) {
-    element.addEventListener('click', handleClick);
-}
-
-// Safe event listener
-try {
-    new Chart(ctx, config);
-} catch (e) {
-    console.error('Chart initialization failed:', e);
-}
-```
-
----
-
-## Common Anti-Patterns to Avoid
-
-### ❌ Inline Scripts
-```html
-<!-- WRONG -->
-<button onclick="toggleSidebar()">Menu</button>
-```
-
-### ❌ Global Functions
-```javascript
-// WRONG: Pollutes global scope
-function toggleSidebar() { /* ... */ }
-function handleClick() { /* ... */ }
-```
-
-### ❌ Multiple DOM Queries
-```javascript
-// WRONG: Queries DOM 3 times
-document.querySelector('.sidebar').style.width = '0';
-document.querySelector('.sidebar').style.opacity = '0';
-document.querySelector('.sidebar').classList.add('hidden');
-```
-
-### ❌ Missing Error Checks
-```javascript
-// WRONG: Crashes if element missing
-const chart = new Chart(document.getElementById('missing-chart'), config);
-```
-
----
-
-## Assumptions & Constraints
-
-### Assumptions
-- Chart.js CDN available
-- Modern browser with ES5+ support
-- No frameworks (vanilla JS only)
-- DOM ready before scripts run
-
-### Constraints
-- No jQuery or libraries
-- No async/await (ES5+ compatible)
-- No template literals for IE11
-- No arrow functions... actually arrows are fine (ES5+)
-
----
-
-## Related Documentation
-
-**Prerequisites**:
-- [Navigation](navigation.md) — Active state logic
-- [Layout](layout.md) — Responsive patterns
-
-**Related Concepts**:
-- [Components](components.md) — Component selectors
-- [Agent Guide](../development/agent.md) — Development patterns
-
-**Depending on This Doc**:
-- All HTML pages — JavaScript implementation
-- [Agent Guide](../development/agent.md) — Best practices
-
----
-
-*Last Updated*: 2026-07-04  
-*Maintainer*: JavaScript Patterns  
-*Version*: 1.0

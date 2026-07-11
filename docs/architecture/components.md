@@ -1,101 +1,74 @@
-# UI Components
-
-**Purpose**: Catalog of reusable UI components and their structure  
-**Audience**: Developers, designers, contributors  
-**Dependencies**: [Colors & Typography](colors-typography.md), [Layout](layout.md)  
-**Status**: Stable  
-**Last Updated**: 2026-07-04
+# 🧩 **UI Components Catalog**
 
 ---
 
-## Overview
-
-DJ Dashboard uses a set of reusable components built with vanilla HTML/CSS. Each component is designed to be:
-- **Simple**: Easy to understand and modify
-- **Consistent**: Uses design tokens from [Colors & Typography](colors-typography.md)
-- **Responsive**: Adapts to mobile, tablet, desktop (see [Layout](layout.md))
-- **Accessible**: Semantic HTML, proper structure
+| Metadata | Details |
+| :--- | :--- |
+| **🎯 Purpose** | Catalog of reusable UI components, HTML structure, and style contracts |
+| **👥 Audience** | Developers, Designers, Contributors |
+| **🔗 Dependencies** | [Colors & Typography](colors-typography.md), [Layout](layout.md) |
+| **📌 Status** | `Stable` |
 
 ---
 
-## Component Library
+## 🌟 Overview
 
-### 1. Sidebar Navigation
+The Digital Janata (DJ) platform uses a modular set of reusable components built with clean HTML/CSS/React tokens. Each component is designed to be:
+* 🎯 **Simple**: Easy to understand, inspect, and modify
+* 🎨 **Consistent**: Strictly consumes design tokens from [Colors & Typography](colors-typography.md)
+* 📱 **Responsive**: Fluidly adapts to mobile, tablet, and desktop (see [Layout](layout.md))
+* ♿ **Accessible**: Semantic HTML elements with high-contrast accessibility
 
-**Purpose**: Main navigation menu for all pages  
-**Location**: Left side of page (250px width on desktop)  
-**Responsive**: Fixed overlay on mobile, collapses on toggle
+---
 
-**Structure**:
+## 📚 Component Library
+
+### 1️⃣ 🧭 Sidebar Navigation
+* **🎯 Purpose:** Primary navigation menu for all pages
+* **📍 Location:** Left side of screen (`250px` width on desktop)
+* **📱 Responsive:** Fixed overlay on mobile screens; collapsible on tablet
+
 ```html
 <aside class="sidebar">
     <div class="sidebar-header">
         <div class="sidebar-logo">DJ</div>
-        <div class="sidebar-title">Digital Janta</div>
+        <div class="sidebar-title">Digital Janata</div>
     </div>
     <nav>
         <ul class="sidebar-menu">
             <li><a href="overview.html" class="active">📊 Dashboard</a></li>
-            <!-- 8 more items -->
         </ul>
     </nav>
 </aside>
 ```
 
-**Styling**:
-- Width: 250px (desktop), 0 collapsed
-- Background: `#f5f6f8`
-- Active state: `#ff6b5b` background, white text
-- Z-index: 1000 (normal), 999 (mobile overlay)
-
-**Responsive**:
-- Desktop (> 1024px): Always visible, 250px
-- Tablet (768-1024px): Collapsible
-- Mobile (< 768px): Fixed overlay, toggle button visible
-
 ---
 
-### 2. Header
+### 2️⃣ 🔝 Header Bar
+* **🎯 Purpose:** Top-level application bar and user profile controls
+* **📍 Location:** Top of screen (`fixed`, `64px` height)
+* **✨ Content:** Navigation toggle, global search box, notification badges, user profile menu
 
-**Purpose**: Top navigation and user controls  
-**Location**: Top of page (fixed, 64px height)  
-**Content**: Toggle button, search, notifications, user menu
-
-**Structure**:
 ```html
 <header class="header">
     <div class="header-left">
-        <button id="sidebarToggle" class="toggle-btn">☰</button>
+        <button id="sidebarToggle" class="toggle-btn" aria-label="Toggle Navigation">☰</button>
         <input type="search" class="search-box" placeholder="Search...">
     </div>
     <div class="header-right">
-        <button class="icon-btn">🔔</button>
-        <button class="icon-btn">⚙️</button>
+        <button class="icon-btn" aria-label="Notifications">🔔</button>
+        <button class="icon-btn" aria-label="Settings">⚙️</button>
         <div class="user-avatar">AG</div>
     </div>
 </header>
 ```
 
-**Styling**:
-- Height: 64px
-- Background: White
-- Border-bottom: 1px solid `#e8ecf1`
-- Padding: 16px 32px
-
-**Responsive**:
-- Desktop: Full spacing
-- Tablet: Reduced gaps
-- Mobile: Search box hidden or collapsed
-
 ---
 
-### 3. Metric Card
+### 3️⃣ 📊 Metric Card (KPI Display)
+* **🎯 Purpose:** Display key performance indicators along with trend arrows
+* **📐 Layout:** Responsive Grid (3 columns on desktop → 2 on tablet → 1 on mobile)
 
-**Purpose**: Display key performance indicator with trend  
-**Usage**: Dashboard, overview pages, metrics grids  
-**Layout**: Grid of 3 (desktop), 2 (tablet), 1 (mobile)
-
-**Structure**:
 ```html
 <div class="metric-card">
     <div class="metric-header">
@@ -107,27 +80,15 @@ DJ Dashboard uses a set of reusable components built with vanilla HTML/CSS. Each
 </div>
 ```
 
-**Styling**:
-- Padding: 24px
-- Border: 1px solid `#e8ecf1`
-- Border-radius: 8px
-- Box-shadow: 0 1px 3px rgba(0,0,0,0.05)
-- Background: White
-
-**Colors**:
-- Label: `#999` (gray)
-- Value: `#333` (dark)
-- Change (↑): `#52c41a` (green) if positive
-- Change (↓): `#f5222d` (red) if negative
+* **🎨 Color Indicators:**
+  * Positive trend (`↑`): `#52c41a` (Success Green)
+  * Negative trend (`↓`): `#f5222d` (Danger Red)
 
 ---
 
-### 4. Section Card
+### 4️⃣ 🗂️ Section Container Card
+* **🎯 Purpose:** Structured container for content blocks, activity tables, or lists
 
-**Purpose**: Container for content sections  
-**Usage**: Hotspots, performers, activity tables
-
-**Structure**:
 ```html
 <div class="section">
     <div class="section-header">
@@ -135,26 +96,17 @@ DJ Dashboard uses a set of reusable components built with vanilla HTML/CSS. Each
         <a href="#" class="section-action">View Full</a>
     </div>
     <div class="section-content">
-        <!-- Content here -->
+        <!-- Section body content -->
     </div>
 </div>
 ```
 
-**Styling**:
-- Padding: 24px
-- Border: 1px solid `#e8ecf1`
-- Border-radius: 8px
-- Background: White
-- Margin-bottom: 24px
-
 ---
 
-### 5. Data Table
+### 5️⃣ 📋 Data Table
+* **🎯 Purpose:** Structured tabular data display (representatives, bills, issues)
+* **📱 Responsive:** Full width on desktop; horizontal overflow scrolling on smaller screens
 
-**Purpose**: Display tabular data (representatives, activities)  
-**Columns**: Vary by page (see specific pages)
-
-**Structure**:
 ```html
 <table class="data-table">
     <thead>
@@ -174,201 +126,94 @@ DJ Dashboard uses a set of reusable components built with vanilla HTML/CSS. Each
 </table>
 ```
 
-**Styling**:
-- Border-collapse: collapse
-- Width: 100%
-- Row borders: 1px solid `#e8ecf1`
-- Hover state: Background `#f9f9f9`
-- Padding: 16px per cell
-
-**Responsive**:
-- Desktop: Full width, all columns visible
-- Tablet: Horizontal scroll if needed
-- Mobile: Horizontal scroll, smaller padding (12px)
-
 ---
 
-### 6. Button
+### 6️⃣ 🔘 Button Variants
+* **🎯 Purpose:** Interactive triggers for primary actions and secondary dismissals
 
-**Purpose**: Primary and secondary actions  
-
-**Primary Button**:
 ```html
+<!-- Primary Action -->
 <button class="button primary">Save Changes</button>
-```
 
-**Styling**:
-- Background: `#ff6b5b`
-- Color: White
-- Padding: 8px 16px
-- Border-radius: 6px
-- Font-size: 13px
-- Font-weight: 500
-- Hover: Opacity 0.9
-
-**Secondary Button**:
-```html
+<!-- Secondary Action -->
 <button class="button secondary">Cancel</button>
 ```
 
-**Styling**:
-- Background: White
-- Color: `#333`
-- Border: 1px solid `#e8ecf1`
-- Padding: 8px 16px
-- Hover: Background `#f9f9f9`
-
 ---
 
-### 7. Badge / Pill
+### 7️⃣ 🏷️ Status Badges & Pills
+* **🎯 Purpose:** Concise status tags and categorization labels
 
-**Purpose**: Status labels, tags, indicators  
-
-**Structure**:
 ```html
 <span class="badge approved">Approved</span>
 <span class="badge in-progress">In Progress</span>
 <span class="badge pending">Pending</span>
 ```
 
-**Styling**:
-- Padding: 2px 8px
-- Border-radius: 4px
-- Font-size: 11px
-- Font-weight: 600
-- Display: inline-block
-
-**Color Variants**:
-- `.badge.approved` → Background `#52c41a`, color white
-- `.badge.in-progress` → Background `#1890ff`, color white
-- `.badge.pending` → Background `#faad14`, color white
-
 ---
 
-### 8. Progress Bar
+### 8️⃣ 📈 Progress Bar
+* **🎯 Purpose:** Visual indicator of completion percentage or budget utilization
 
-**Purpose**: Visual indicator of completion, budget usage  
-
-**Structure**:
 ```html
 <div class="progress-bar">
-    <div class="progress-fill" style="width: 65%;"></div>
+    <div class="progress-fill success" style="width: 65%;"></div>
 </div>
 ```
 
-**Styling**:
-- Height: 4px
-- Background: `#e8ecf1` (container)
-- Border-radius: 2px
-
-**Fill Variants**:
-- `.progress-fill.success` → `#52c41a`
-- `.progress-fill.warning` → `#faad14`
-- `.progress-fill.danger` → `#f5222d`
-- `.progress-fill.info` → `#1890ff`
-
 ---
 
-### 9. Avatar
+### 9️⃣ 👤 User Avatar
+* **🎯 Purpose:** User profile initials with distinct gradient backgrounds
 
-**Purpose**: User profile picture or initials  
-
-**Structure**:
 ```html
-<div class="user-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">AK</div>
+<div class="user-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    AK
+</div>
 ```
 
-**Styling**:
-- Width/Height: 40px (standard), 24px (small), 64px (large)
-- Border-radius: 50%
-- Display: flex, align-items: center, justify-content: center
-- Font-weight: 600
-- Font-size: 14px (standard), 12px (small)
-- Color: White
-
-**Gradient Backgrounds**:
-- Use linear-gradient for visual distinction
-- Different gradient per user (for mockup)
-
 ---
 
-### 10. Chart Container
+### 🔟 📈 Chart Container
+* **🎯 Purpose:** Standardized canvas container for Chart.js / interactive graphics
 
-**Purpose**: Canvas for Chart.js visualizations  
-
-**Structure**:
 ```html
 <div class="chart-container">
     <canvas id="myChart"></canvas>
 </div>
 ```
 
-**Styling**:
-- Position: relative
-- Height: 300px
-- Margin-bottom: 24px
-- Padding: 16px
+---
 
-**Chart.js Configuration**:
-- Custom colors: `#ff6b5b` (primary), `#13c2c2` (secondary)
-- No legend (display: false)
-- Responsive: true
-- Maintain aspect: true
+## 📏 Component Summary Matrix
+
+| Component | Dimensions | Primary Use Case | Responsive Behavior |
+| :--- | :--- | :--- | :--- |
+| **🧭 Sidebar** | `250px` × full height | Application navigation | Collapses / Mobile Overlay |
+| **🔝 Header** | full width × `64px` | Global search & user controls | Adaptive spacing |
+| **📊 Metric Card** | Auto × Auto | KPI metrics & trends | Fluid grid wrap |
+| **🗂️ Section Card** | full width × Auto | Content blocks | Fluid padding |
+| **📋 Data Table** | full width × Auto | Structured records | Horizontal scroll on overflow |
+| **🔘 Button** | Auto × Auto | Action triggers | Touch-friendly hit target |
+| **🏷️ Badge** | Auto × Auto | Inline status label | Inline block |
+| **📈 Progress Bar** | full width × `4px` | Completion ratio | Responsive width |
+| **👤 Avatar** | `40px` × `40px` | User identity | Scalable variants (`24px`, `64px`) |
 
 ---
 
-## Component Grid
+## ✅ Best Practices for Implementation
 
-| Component | Size | Use Case | Responsive |
-|-----------|------|----------|------------|
-| Sidebar | 250px × full | Navigation | Yes (overlay) |
-| Header | full × 64px | Top controls | Yes |
-| Metric Card | auto × auto | KPIs | Yes (grid) |
-| Section | full × auto | Content blocks | Yes |
-| Table | full × auto | Data | Yes (scroll) |
-| Button | auto × auto | Actions | Yes |
-| Badge | auto × auto | Labels | Yes |
-| Progress | full × 4px | Indicators | Yes |
-| Avatar | 40px × 40px | Users | Yes (scalable) |
-| Chart | full × 300px | Visualizations | Yes |
+* [ ] Always reuse these established components before writing custom UI markup.
+* [ ] Consume design tokens (`@djp/theme` or token classes) rather than hardcoded hex values.
+* [ ] Test component rendering across Mobile (`<768px`), Tablet (`768-1024px`), and Desktop (`>1024px`).
 
 ---
 
-## Implementation Notes
+## 📚 Related Documentation
 
-### For Developers
-
-✅ **DO**:
-- Reuse these components across pages
-- Copy HTML structure exactly
-- Use design tokens from [Colors & Typography](colors-typography.md)
-- Test on all breakpoints
-
-❌ **DON'T**:
-- Create custom components without approval
-- Modify component structure without reason
-- Hardcode colors (use design tokens)
-- Add unnecessary complexity
+* **[Colors & Typography](colors-typography.md)** — Core design tokens
+* **[Layout](layout.md)** — Responsive container rules
+* **[Navigation System](navigation.md)** — Navigation patterns
+* **[Agent Guide](../development/agent.md)** — Development guidelines
 
 ---
-
-## Related Documentation
-
-**Prerequisites**:
-- [Colors & Typography](colors-typography.md) — Design tokens
-- [Layout](layout.md) — Responsive behavior
-
-**Related Concepts**:
-- [Navigation System](navigation.md) — How components connect
-- [JavaScript Patterns](javascript.md) — Interactivity
-- [Agent Guide](../development/agent.md) — Development patterns
-
-**Depending on This Doc**:
-- All HTML pages — Component implementation
-- [Agent Guide](../development/agent.md) — Component standards
-
----
-
-*Last Updated*: 2026-07-04  
-*Maintainer*: Design System  
-*Version*: 1.0

@@ -1,127 +1,104 @@
-# Common Submission Model
-
-**Purpose**: Define the unified data structure for all civic content types  
-**Audience**: Developers, architects, API consumers  
-**Status**: Stable  
+# 📦 **Common Submission Model Architecture**
 
 ---
 
-## Overview
+| Metadata | Details |
+| :--- | :--- |
+| **🎯 Purpose** | Define the unified polymorphic data structure for all civic content types |
+| **👥 Audience** | Developers, Architects, API Consumers |
+| **📌 Status** | `Stable` |
 
-The Common Submission Model provides a unified data structure for all civic content types in the Digital Janata platform, enabling consistent handling across different content types while allowing for type-specific extensions.
+---
 
-## Content Types
+## 🌟 Overview
 
-### Issue
-- **Purpose**: Report problems or concerns in governance
-- **Fields**:
-  - title: Short description of the issue
-  - description: Detailed explanation
-  - category: Type of issue (e.g., infrastructure, policy, safety)
-  - location: Geographic location (city, district, etc.)
-  - severity: Low/Medium/High
-  - status: Open/In Progress/Closed
-  - attachments: Files or images
-  - tags: Keywords for categorization
+The **Common Submission Model** provides a unified data structure for all civic content types in the Digital Janata platform, enabling consistent handling across different civic models while supporting type-specific schema extensions.
 
-### Discussion
-- **Purpose**: Facilitate conversation around issues or topics
-- **Fields**:
-  - title: Topic heading
-  - content: Detailed discussion
-  - related_issue_id: Reference to related issue (if any)
-  - author: User who started the discussion
-  - replies: Array of comments
-  - tags: Keywords for categorization
-  - status: Active/Archived
+---
 
-### Poll
-- **Purpose**: Collect opinions or preferences from users
-- **Fields**:
-  - question: Main question text
-  - options: Array of poll choices
-  - option_votes: Array of vote counts for each option
-  - start_date: Poll start timestamp
-  - end_date: Poll end timestamp
-  - results_visibility: Who can see results (participants only or public)
-  - status: Active/Closed
+## 🧱 Core Base Model
 
-### Poll Vote
-- **Purpose**: Record user's vote in a poll
-- **Fields**:
-  - poll_id: Reference to poll
-  - user_id: User who voted
-  - option_index: Selected option index
-  - timestamp: Vote timestamp
+All content types inherit from a shared polymorphic base entity:
 
-### User Profile
-- **Purpose**: Store user information and preferences
-- **Fields**:
-  - user_id: Unique identifier
-  - name: Full name
-  - email: Contact email
-  - location: User's location
-  - preferences: User settings and preferences
-  - reputation_score: Community reputation metric
-  - joined_date: Account creation date
+| Field Name | Type | Description |
+| :--- | :--- | :--- |
+| **`id`** | `UUID` | Primary unique identifier |
+| **`created_at`** | `Timestamp` | Creation timestamp in UTC |
+| **`updated_at`** | `Timestamp` | Last modification timestamp in UTC |
+| **`author_id`** | `UUID` | Reference to the user who authored the submission |
+| **`status`** | `Enum` | Lifecycle status (`active` / `archived` / `deleted`) |
 
-## Data Model Structure
+---
 
-### Base Model
-All content types inherit from a base model with common fields:
-- id: Unique identifier
-- created_at: Creation timestamp
-- updated_at: Last update timestamp
-- author_id: User who created the content
-- status: Current status (active/archived)
+## 📂 Content Types & Specific Extensions
 
-### Type-Specific Extensions
-Each content type extends the base model with its specific fields as defined above.
+### 1️⃣ 🚨 Issue (`type: 'issue'`)
+* **🎯 Purpose:** Report problems or concerns in public infrastructure and governance.
 
-## Validation Rules
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| **`title`** | `String` | Concise headline summary of the issue |
+| **`description`** | `Text` | Detailed context and evidence |
+| **`category`** | `Enum` | `infrastructure`, `policy`, `safety`, `sanitation`, etc. |
+| **`location`** | `GeoJSON` | Geographic coordinates, city, ward, or district |
+| **`severity`** | `Enum` | `Low` / `Medium` / `High` / `Critical` |
+| **`status`** | `Enum` | `Open` / `In Progress` / `Resolved` / `Closed` |
+| **`attachments`** | `Array<URL>` | Evidence photos, PDFs, or documents |
+| **`tags`** | `Array<String>` | Searchable keywords |
 
-- All required fields must be present
-- Date fields must be valid timestamps
-- Location fields must follow geographic format
-- Status values must be from predefined sets
-- File attachments must meet size and type restrictions
+---
 
-## Extensibility
+### 2️⃣ 💬 Discussion (`type: 'discussion'`)
+* **🎯 Purpose:** Facilitate public conversation around civic topics or specific issues.
 
-- New content types can be added by extending the base model
-- Type-specific fields can be added without breaking existing systems
-- API endpoints can handle multiple content types through polymorphism
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| **`title`** | `String` | Discussion heading |
+| **`content`** | `Text` | Main thread prompt or argument |
+| **`related_issue_id`** | `UUID (Optional)` | Reference to a linked issue |
+| **`replies_count`** | `Integer` | Total nested comments/replies |
+| **`tags`** | `Array<String>` | Categorization tags |
 
-## Relationships
+---
 
-- Issues can have related discussions
-- Polls can have related discussions
-- Users can have multiple submissions
-- Content can be linked across different types
+### 3️⃣ 📊 Poll (`type: 'poll'`)
+* **🎯 Purpose:** Collect structured public sentiment and votes.
 
-## API Representation
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| **`question`** | `String` | Main polling question |
+| **`options`** | `Array<String>` | Available ballot choices |
+| **`option_votes`** | `Array<Integer>` | Tally per choice index |
+| **`start_date` / `end_date`** | `Timestamp` | Polling window |
+| **`results_visibility`** | `Enum` | `public` / `participants_only` |
 
-The Common Submission Model is represented in the API through:
-- Consistent field naming conventions
-- Standardized status values
-- Unified validation rules
-- Consistent data types across content types
+---
 
-## Future Extensions
+### 4️⃣ 🗳️ Poll Vote (`type: 'poll_vote'`)
+* **🎯 Purpose:** Record an individual citizen's vote inside a poll.
 
-- Support for multimedia content (videos, audio)
-- Integration with external data sources
-- Enhanced user reputation system
-- Advanced filtering and search capabilities
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| **`poll_id`** | `UUID` | Target poll ID |
+| **`user_id`** | `UUID` | Voter ID |
+| **`option_index`** | `Integer` | Selected option index (`0`-indexed) |
 
-## Related Documentation
+---
 
-- [Vision](../vision/party-vision.md)
-- [Roadmap](../vision/roadmap.md)
-- [Decisions](../vision/decisions.md)
-- [Design Principles](../ux/design-principles.md)
-- [Onboarding](onboarding.md)
-- [AI Assistant](ai-assistant.md)
-- [Issue](../ux/issue.md)
-- [Discussion](../ux/discussion.md)
-- [Poll](../ux/poll.md)
+## ✅ Validation & API Contracts
+
+* [ ] All required base and type fields must pass strict JSON Schema / Zod validation.
+* [ ] Date fields must be valid ISO 8601 UTC timestamps.
+* [ ] Location coordinates must conform to standard GeoJSON structures.
+* [ ] File attachments enforce strict mime-type checks and size limits (`<= 10MB`).
+
+---
+
+## 📚 Related Documentation
+
+* **[Vision](../vision/party-vision.md)** — Core platform vision
+* **[Issue Spec](../ux/issue.md)** — UX breakdown of issues
+* **[Discussion Spec](../ux/discussion.md)** — UX breakdown of discussions
+* **[Poll Spec](../ux/poll.md)** — UX breakdown of polls
+
+---

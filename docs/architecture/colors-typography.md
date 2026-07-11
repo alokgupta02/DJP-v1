@@ -1,69 +1,52 @@
-# Colors & Typography
-
-**Purpose**: Single source of truth for design tokens (colors, fonts, spacing)  
-**Audience**: Developers, designers, agents  
-**Dependencies**: None (foundational)  
-**Status**: Stable  
-**Last Updated**: 2026-07-04
+# 🎨 **Colors & Typography Design Tokens**
 
 ---
 
-## Overview
-
-This document defines all design tokens used across DJ Dashboard. **Use this as the single source of truth**—never duplicate these values elsewhere.
-
----
-
-## Color Palette
-
-### Primary Colors
-
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| **Primary** | <span style="display:inline-block;width:12px;height:12px;background:#a31621;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#a31621` | 255, 107, 91 | Active states, buttons, links, highlights |
-| **Dark** | <span style="display:inline-block;width:12px;height:12px;background:#333;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#333` | 51, 51, 51 | Primary text, headings, strong elements |
-| **Gray** | <span style="display:inline-block;width:12px;height:12px;background:#999;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#999` | 153, 153, 153 | Secondary text, labels, disabled |
-| **Background** | <span style="display:inline-block;width:12px;height:12px;background:#f2ccc3;border:1px solid #e8ecf1;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#f2ccc3` | 245, 246, 248 | Page background, section backgrounds |
-| **Border** | <span style="display:inline-block;width:12px;height:12px;background:#e8ecf1;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#e8ecf1` | 232, 236, 241 | Dividers, outlines, card borders |
-
-### Status Colors
-
-| Name | Hex | RGB | Usage |
-|------|-----|-----|-------|
-| **Success** | <span style="display:inline-block;width:12px;height:12px;background:#52c41a;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#52c41a` | 82, 196, 26 | Positive metrics, success states |
-| **Error** | <span style="display:inline-block;width:12px;height:12px;background:#f5222d;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#f5222d` | 245, 34, 45 | Negative metrics, error states |
-| **Warning** | <span style="display:inline-block;width:12px;height:12px;background:#faad14;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#faad14` | 250, 173, 20 | Caution, warning states |
-| **Info** | <span style="display:inline-block;width:12px;height:12px;background:#1890ff;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#1890ff` | 24, 144, 255 | Informational, neutral |
-
-### CSS Usage
-
-```css
-/* Primary color */
-.metric-label { color: #ff6b5b; }
-.sidebar-menu a.active { background-color: #ff6b5b; color: white; }
-button.primary { background-color: #ff6b5b; }
-
-/* Text colors */
-body { color: #333; }
-.secondary-text { color: #999; }
-
-/* Backgrounds */
-body { background-color: #f5f6f8; }
-
-/* Borders */
-.card { border: 1px solid #e8ecf1; }
-
-/* Status */
-.metric-change.positive { color: #52c41a; }
-.metric-change.negative { color: #f5222d; }
-```
+| Metadata | Details |
+| :--- | :--- |
+| **🎯 Purpose** | Single source of truth for foundational design tokens (colors, fonts, spacing, shadows) |
+| **👥 Audience** | Developers, Designers, AI Agents |
+| **🔗 Dependencies** | None (Foundational Token Reference) |
+| **📌 Status** | `Stable` |
 
 ---
 
-## Typography
+## 🌟 Overview
 
-### Font Stack
+This document defines all visual design tokens used across the **Digital Janata Platform (DJP)**.
+> [!IMPORTANT]
+> **Use this document as the single source of truth**—never invent or hardcode arbitrary colors, font sizes, or spacing values outside these specifications.
 
+---
+
+## 🌈 Color Palette
+
+### 1️⃣ Primary & Neutral Palette
+
+| Token Name | Hex Code | RGB | Usage Description |
+| :--- | :--- | :--- | :--- |
+| **🔴 Primary Brand** | `#a31621` | `255, 107, 91` | Primary CTA buttons, active navigation states, highlights, focus rings |
+| **⚫ Dark Primary** | `#333333` | `51, 51, 51` | Primary body text, headings, strong emphasis elements |
+| **🔘 Gray Secondary** | `#999999` | `153, 153, 153` | Secondary text, form labels, captions, disabled UI states |
+| **⚪ Page Background** | `#f5f6f8` | `245, 246, 248` | Page canvas background, secondary containers |
+| **⬜ Card Border** | `#e8ecf1` | `232, 236, 241` | Component dividers, card outlines, table row borders |
+
+---
+
+### 2️⃣ Status Indicator Colors
+
+| Token Name | Hex Code | RGB | Usage Description |
+| :--- | :--- | :--- | :--- |
+| **🟢 Success** | `#52c41a` | `82, 196, 26` | Positive trends, successful validations, approved badges |
+| **🔴 Error / Danger** | `#f5222d` | `245, 34, 45` | Negative trends, destructive actions, error badges |
+| **🟡 Warning** | `#faad14` | `250, 173, 20` | Cautionary states, pending validations, warning pills |
+| **🔵 Info / Neutral** | `#1890ff` | `24, 144, 255` | Informational callouts, active processing indicators |
+
+---
+
+## 🔡 Typography System
+
+### 1️⃣ Core Font Stack
 ```css
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
@@ -71,235 +54,84 @@ body {
 }
 ```
 
-**Why this order**:
-- `-apple-system` — Native look on Apple devices
-- `BlinkMacSystemFont` — macOS/iOS Safari
-- `Segoe UI` — Windows native font
-- `Roboto` — Android and web fallback
-- `Helvetica Neue` — Older systems
-- `Arial` — Universal fallback
+### 2️⃣ Type Scale & Line Heights
 
-### Font Sizes
+| Hierarchy Level | Font Size | Weight | Line Height | Typical Application |
+| :--- | :--- | :--- | :--- | :--- |
+| **Large Title (`h1`)** | `32px` | `700` (Bold) | `1.2` | Major page titles, primary KPI values |
+| **Section Title (`h2`)** | `20px` | `600` (Semibold) | `1.3` | Card headers, section headers |
+| **Subsection Title (`h3`)** | `18px` | `600` (Semibold) | `1.4` | Group headings, modal titles |
+| **Body Copy (`p`)** | `14px` | `400` (Normal) | `1.6` | Standard descriptive text |
+| **Form Label (`label`)** | `13px` | `500` (Medium) | `1.5` | Input labels, action buttons |
+| **Small Text (`.small`)** | `12px` | `400` (Normal) | `1.5` | Helper text, secondary captions |
+| **Tiny Pill (`.tiny`)** | `11px` | `600` (Semibold) | `1.4` | Badges, status pills |
 
-| Element | Size | Weight | Line Height | Usage |
-|---------|------|--------|-------------|-------|
-| **Large Heading** | 32px | 700 | 1.2 | Page titles |
-| **Heading** | 20px | 600 | 1.3 | Section titles |
-| **Subheading** | 18px | 600 | 1.4 | Subsections |
-| **Body** | 14px | 400 | 1.6 | Regular text |
-| **Label** | 13px | 500 | 1.5 | Form labels, captions |
-| **Small** | 12px | 400 | 1.5 | Help text, badges |
-| **Tiny** | 11px | 600 | 1.4 | Tags, pills |
+---
 
-### Font Weights
+## 📐 Spacing & Border Radius Tokens
 
-| Weight | Name | Usage |
-|--------|------|-------|
-| **400** | Normal | Body text, descriptions |
-| **500** | Medium | Labels, button text |
-| **600** | Semibold | Section titles, emphasis |
-| **700** | Bold | Page titles, strong emphasis |
+### 1️⃣ Spacing Scale Table
 
-### CSS Font Sizes
+| Token Value | Purpose & Example Usage |
+| :--- | :--- |
+| **`4px`** | Micro-spacing (icon to text gaps, tiny inline margins) |
+| **`8px`** | Extra small (compact button padding, chip intervals) |
+| **`12px`** | Small (component internal gaps, stacked list spacing) |
+| **`16px`** | Medium (standard button padding, mobile container padding) |
+| **`20px`** | Medium-large (card internal padding on smaller screens) |
+| **`24px`** | Large (card internal padding on desktop, section intervals) |
+| **`32px`** | Extra large (desktop layout wrapper padding) |
 
+---
+
+### 2️⃣ Border Radius Tokens
+
+| Radius Value | Component Application |
+| :--- | :--- |
+| **`4px`** | Status badges, tags, pills |
+| **`6px`** | Input boxes, action buttons |
+| **`8px`** | Content cards, metric cards, dropdown menus |
+| **`12px`** | Large modals, section containers |
+| **`50%`** | User profile avatars |
+
+---
+
+## 🌤️ Box Shadows & Animation Transitions
+
+### 1️⃣ Shadow Hierarchy
 ```css
-h1 { font-size: 32px; font-weight: 700; }
-h2 { font-size: 20px; font-weight: 600; }
-h3 { font-size: 18px; font-weight: 600; }
-p { font-size: 14px; font-weight: 400; }
-label { font-size: 13px; font-weight: 500; }
-.small { font-size: 12px; font-weight: 400; }
-.tiny { font-size: 11px; font-weight: 600; }
+/* Card Elevation */
+.card-shadow { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); }
 
-.metric-value { font-size: 32px; font-weight: 700; }
-.metric-label { font-size: 12px; font-weight: 600; }
+/* Modal & Popover Elevation */
+.modal-shadow { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+
+/* Interactive Focus Ring */
+.focus-ring { box-shadow: 0 0 0 2px rgba(255, 107, 91, 0.2); }
+```
+
+### 2️⃣ Animation Timing
+```css
+/* Quick Micro-interactions */
+.transition-fast { transition: all 0.15s ease-in-out; }
+
+/* Standard UI Transitions */
+.transition-standard { transition: all 0.2s ease-in-out; }
 ```
 
 ---
 
-## Spacing System
+## ✅ Best Practices for Developers & Designers
 
-### Spacing Scale
-
-| Value | Usage |
-|-------|-------|
-| **4px** | Micro-spacing (icon gaps, tiny margins) |
-| **8px** | Extra small (icon+text gaps) |
-| **12px** | Small (component internal spacing) |
-| **16px** | Medium (button padding, small gaps) |
-| **20px** | Medium-large (component gaps) |
-| **24px** | Large (section gaps, container padding on tablet) |
-| **32px** | Extra large (container padding on desktop) |
-| **48px** | Page sections (rarely used) |
-
-### Common Spacing Patterns
-
-```css
-/* Container padding */
-.container {
-    padding: 32px;  /* Desktop */
-}
-
-@media (max-width: 1024px) {
-    .container { padding: 24px; }
-}
-
-@media (max-width: 768px) {
-    .container { padding: 16px; }
-}
-
-/* Section gaps */
-.section { margin-bottom: 24px; }
-
-/* Component gaps */
-.metric-card { padding: 24px; }
-button { padding: 8px 16px; }
-.sidebar-menu li { margin-bottom: 12px; }
-```
+* [ ] Consistently copy these exact token values when crafting new UI components.
+* [ ] Avoid creating custom hex colors or non-standard font sizes.
+* [ ] When introducing a new design token, update this document before modifying UI implementations.
 
 ---
 
-## Border Radius
+## 📚 Related Documentation
 
-| Value | Usage |
-|-------|-------|
-| **4px** | Badges, small elements |
-| **6px** | Input fields, small buttons |
-| **8px** | Cards, large buttons, modals |
-| **12px** | Larger cards, sections |
-
-### CSS
-
-```css
-.metric-card { border-radius: 8px; }
-.button { border-radius: 6px; }
-.badge { border-radius: 4px; }
-.user-avatar { border-radius: 50%; }
-```
+* **[Layout & Responsive Design](layout.md)** — Spacing at responsive breakpoints
+* **[UI Components](components.md)** — How design tokens are applied to elements
 
 ---
-
-## Shadows
-
-### Subtle Shadow (Cards)
-
-```css
-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-```
-
-### Medium Shadow (Modals, Dropdowns)
-
-```css
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-```
-
-### Focus Shadow
-
-```css
-box-shadow: 0 0 0 2px rgba(255, 107, 91, 0.2);
-```
-
----
-
-## Transitions & Animations
-
-### Timing
-
-```css
-/* Quick feedback */
-transition: all 0.15s ease-in-out;
-
-/* Standard animation */
-transition: all 0.2s ease-in-out;
-
-/* Smooth transitions */
-transition: all 0.3s ease-in-out;
-```
-
-### Easing Functions
-
-```css
-/* Default */
-easing: ease-in-out;
-
-/* For opacity/visibility */
-easing: cubic-bezier(0.4, 0, 0.2, 1);
-```
-
----
-
-## Breakpoints
-
-**See [Layout Guide](layout.md) for detailed responsive behavior.**
-
-```css
-/* Mobile first */
-@media (max-width: 768px) { /* Mobile */ }
-@media (min-width: 768px) and (max-width: 1024px) { /* Tablet */ }
-@media (min-width: 1025px) { /* Desktop */ }
-```
-
----
-
-## Assumptions & Constraints
-
-### Assumptions
-- Hex colors supported in all target browsers
-- System fonts available on user device
-- Browser supports CSS Grid and Flexbox
-- All values in pixels (px), not rem/em
-
-### Constraints
-- **No CSS variables** (for maximum compatibility)
-- **No SASS/LESS** (vanilla CSS only)
-- **Hex colors only** (no rgba/hsla in CSS)
-- **Hardcoded values** (values duplicated intentionally for simplicity)
-
----
-
-## Implementation Notes
-
-### For Developers
-
-✅ **DO**:
-- Use this palette for all new styles
-- Copy hex values directly into CSS
-- Maintain consistency across all pages
-- Reference this doc when unsure
-
-❌ **DON'T**:
-- Create new colors without approval
-- Use different shades of primary color
-- Use CSS variables or SASS
-- Hardcode colors in inline styles
-
-### For Designers
-
-When proposing color/typography changes:
-1. Document the change here first
-2. Update all 9 HTML pages
-3. Test on mobile, tablet, desktop
-4. Update related docs
-
----
-
-## Related Documentation
-
-**Prerequisites**:
-- [Architecture Overview](overview.md) — Project context
-
-**Related Concepts**:
-- [Components](components.md) — Where colors are applied
-- [Layout](layout.md) — Spacing on different screens
-- [Agent Guide](../development/agent.md) — Style guidelines
-
-**Depending on This Doc**:
-- [Components](components.md) — Color definitions
-- [Agent Guide](../development/agent.md) — Style standards
-- All HTML files — CSS color values
-
----
-
-*Last Updated*: 2026-07-04  
-*Maintainer*: Design System  
-*Version*: 1.0
