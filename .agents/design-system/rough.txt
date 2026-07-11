@@ -1,0 +1,12 @@
+Run Design System Engineer
+
+Task:
+Implement the theme package from docs/architecture/colors-typography.md.
+
+Update OUTPUT.md.
+
+Update todo.md.
+
+Do not touch application code.
+-------------------------------------
+

@@ -20,20 +20,20 @@ This document defines all design tokens used across DJ Dashboard. **Use this as 
 
 | Name | Hex | RGB | Usage |
 |------|-----|-----|-------|
-| **Primary** | `#ff6b5b` | 255, 107, 91 | Active states, buttons, links, highlights |
-| **Dark** | `#333` | 51, 51, 51 | Primary text, headings, strong elements |
-| **Gray** | `#999` | 153, 153, 153 | Secondary text, labels, disabled |
-| **Background** | `#f5f6f8` | 245, 246, 248 | Page background, section backgrounds |
-| **Border** | `#e8ecf1` | 232, 236, 241 | Dividers, outlines, card borders |
+| **Primary** | <span style="display:inline-block;width:12px;height:12px;background:#a31621;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#a31621` | 255, 107, 91 | Active states, buttons, links, highlights |
+| **Dark** | <span style="display:inline-block;width:12px;height:12px;background:#333;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#333` | 51, 51, 51 | Primary text, headings, strong elements |
+| **Gray** | <span style="display:inline-block;width:12px;height:12px;background:#999;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#999` | 153, 153, 153 | Secondary text, labels, disabled |
+| **Background** | <span style="display:inline-block;width:12px;height:12px;background:#f2ccc3;border:1px solid #e8ecf1;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#f2ccc3` | 245, 246, 248 | Page background, section backgrounds |
+| **Border** | <span style="display:inline-block;width:12px;height:12px;background:#e8ecf1;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#e8ecf1` | 232, 236, 241 | Dividers, outlines, card borders |
 
 ### Status Colors
 
 | Name | Hex | RGB | Usage |
 |------|-----|-----|-------|
-| **Success** | `#52c41a` | 82, 196, 26 | Positive metrics, success states |
-| **Error** | `#f5222d` | 245, 34, 45 | Negative metrics, error states |
-| **Warning** | `#faad14` | 250, 173, 20 | Caution, warning states |
-| **Info** | `#1890ff` | 24, 144, 255 | Informational, neutral |
+| **Success** | <span style="display:inline-block;width:12px;height:12px;background:#52c41a;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#52c41a` | 82, 196, 26 | Positive metrics, success states |
+| **Error** | <span style="display:inline-block;width:12px;height:12px;background:#f5222d;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#f5222d` | 245, 34, 45 | Negative metrics, error states |
+| **Warning** | <span style="display:inline-block;width:12px;height:12px;background:#faad14;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#faad14` | 250, 173, 20 | Caution, warning states |
+| **Info** | <span style="display:inline-block;width:12px;height:12px;background:#1890ff;border-radius:2px;vertical-align:middle;margin-right:4px;"></span> `#1890ff` | 24, 144, 255 | Informational, neutral |
 
 ### CSS Usage
 
