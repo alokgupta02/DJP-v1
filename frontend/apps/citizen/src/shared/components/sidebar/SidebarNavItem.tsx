@@ -25,8 +25,8 @@ export default function SidebarNavItem({ item }: SidebarNavItemProps) {
         clsx(
           "group relative flex items-center h-11 rounded-xl transition-all duration-200",
           isCollapsed ? "justify-center px-0" : "px-3 gap-3",
-          "text-gray-700 hover:bg-gray-100",
-          isActive && "bg-[#A31621] text-white shadow-sm hover:bg-[#A31621]"
+          "text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)]",
+          isActive && "bg-[var(--color-brand)] text-[var(--color-text-inverse)] shadow-sm hover:bg-[var(--color-brand-hover)]"
         )
       }
     >
@@ -50,8 +50,8 @@ export default function SidebarNavItem({ item }: SidebarNavItemProps) {
                 className={clsx(
                   "flex h-5 w-5 items-center justify-center rounded-full text-xs font-semibold shrink-0 ml-2",
                   isActive
-                    ? "bg-white text-[#A31621]"
-                    : "bg-[#A31621] text-white group-hover:bg-[#A31621]/90"
+                    ? "bg-[var(--color-bg-surface)] text-[var(--color-brand)]"
+                    : "bg-[var(--color-brand)] text-[var(--color-text-inverse)] group-hover:opacity-90"
                 )}
               >
                 {item.badge}
@@ -68,9 +68,9 @@ export default function SidebarNavItem({ item }: SidebarNavItemProps) {
               "
             >
               {/* Tooltip arrow */}
-              <div className="w-2 h-2 bg-gray-900 rotate-45 -mr-1 shadow-md" />
+              <div className="w-2 h-2 bg-[var(--color-text-primary)] rotate-45 -mr-1 shadow-md" />
               {/* Tooltip Content */}
-              <div className="bg-gray-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap">
+              <div className="bg-[var(--color-text-primary)] text-[var(--color-text-inverse)] text-xs font-semibold px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap">
                 {item.label}
               </div>
             </div>

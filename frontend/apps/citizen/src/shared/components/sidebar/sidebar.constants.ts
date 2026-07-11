@@ -8,7 +8,6 @@ import {
     Bell,
     ChartPie,
     User,
-    Ellipsis,
     Plus
 } from "lucide-react";
 
@@ -78,13 +77,6 @@ export const sidebarItems: SidebarItem[] = [
         path: "/profile",
         icon: User
     },
-
-    {
-        id: "more",
-        label: "More",
-        path: "/more",
-        icon: Ellipsis
-    }
 ];
 
 export const createAction = {

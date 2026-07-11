@@ -22,7 +22,7 @@ export default function Sidebar() {
 
       <aside
         className={`
-          fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col bg-white border-r border-gray-200
+          fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col bg-[var(--color-bg-surface)] border-r border-[var(--color-border)]
           transition-all duration-300 ease-in-out
           md:static md:z-auto
           ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
@@ -35,8 +35,8 @@ export default function Sidebar() {
           className={`
             absolute top-6 right-0 translate-x-1/2 z-40
             hidden md:flex h-7 w-7 items-center justify-center
-            rounded-full border border-gray-200 bg-white text-gray-500 shadow-sm
-            transition-all duration-300 hover:bg-gray-50 hover:text-gray-900 cursor-pointer
+            rounded-full border border-[var(--color-border)] bg-[var(--color-bg-surface)] text-[var(--color-text-secondary)] shadow-sm
+            transition-all duration-300 hover:bg-[var(--color-bg-subtle)] hover:text-[var(--color-text-primary)] cursor-pointer
           `}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >

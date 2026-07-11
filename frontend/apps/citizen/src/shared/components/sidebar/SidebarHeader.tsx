@@ -15,10 +15,10 @@ export default function SidebarHeader() {
             items-center
             justify-center
             rounded-full
-            bg-[#A31621]
+            bg-[var(--color-brand)]
             text-lg
             font-bold
-            text-white
+            text-[var(--color-text-inverse)]
           "
         >
           DJ
@@ -30,10 +30,10 @@ export default function SidebarHeader() {
             ${collapsed ? "max-w-0 opacity-0 ml-0" : "max-w-40 opacity-100 ml-3"}
           `}
         >
-          <h1 className="text-lg font-bold text-[#A31621] leading-tight">
+          <h1 className="text-lg font-bold text-[var(--color-brand)] leading-tight">
             Digital Janta
           </h1>
-          <p className="text-xs text-gray-500 leading-none mt-0.5">
+          <p className="text-xs text-[var(--color-text-secondary)] leading-none mt-0.5">
             Political Platform
           </p>
         </div>
