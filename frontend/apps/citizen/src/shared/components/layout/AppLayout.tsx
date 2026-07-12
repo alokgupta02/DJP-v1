@@ -1,8 +1,14 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 import Sidebar, { SidebarProvider } from "../sidebar";
 import { Topbar } from "../navigation";
 
 function AppLayoutContent() {
+  // Ponytail: Simple auth guard via localStorage
+  const isAuthenticated = Boolean(localStorage.getItem("djp_user"));
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
   return (
     <div className="flex h-screen flex-col md:flex-row bg-[var(--color-bg-page)] overflow-hidden">
       <Sidebar />

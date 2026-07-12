@@ -149,7 +149,7 @@ export default function PollsPage() {
         </div>
       </div>
 
-      <aside className="w-80 p-8 space-y-6 bg-[var(--color-bg-surface)] overflow-y-auto hidden lg:flex flex-col">
+      <aside className="w-80 shrink-0 p-8 space-y-6 bg-[var(--color-bg-surface)] overflow-y-auto hidden lg:flex flex-col">
         <section>
           <h3 className="text-[11px] font-bold uppercase tracking-widest text-[var(--color-text-secondary)] mb-4">Poll Statistics</h3>
           <div className="grid grid-cols-2 gap-4">

@@ -40,7 +40,7 @@ export default function Badge({
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-[var(--radius-sm)]",
+        "inline-flex items-center justify-center rounded-full leading-none",
         variantClasses[variant],
         sizeClasses[size],
         className

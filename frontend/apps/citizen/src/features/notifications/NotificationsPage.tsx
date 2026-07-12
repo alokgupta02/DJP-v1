@@ -21,8 +21,8 @@ export default function NotificationsPage() {
     : NOTIFICATIONS.filter((n) => n.type === activeFilter.toLowerCase().replace(/s$/, ""));
 
   return (
-    <div className="flex-1 p-6 overflow-y-auto">
-      <div className="max-w-3xl mx-auto">
+    <div className="flex-1 p-8 overflow-y-auto">
+      <div className="w-full">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-[var(--text-heading)] font-bold text-[var(--color-text-primary)]">Notifications</h1>

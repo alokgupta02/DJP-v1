@@ -1,12 +1,16 @@
 # DJP Citizen App — Todo
 
-**Sprint:** TBD
+**Sprint:** UI Fixes
 
 ---
 
 ## Tasks
 
-- [ ] Add new tasks here
+- [x] Fix Global Sidebar collapse icon overlapping main border
+- [x] Fix Header search bar left alignment with main content
+- [x] Fix Main Layout grid gap between main feeds and right widgets
+- [x] Increase Card Component padding
+- [x] Fix Card Component status badges horizontal alignment
 
 ---
 

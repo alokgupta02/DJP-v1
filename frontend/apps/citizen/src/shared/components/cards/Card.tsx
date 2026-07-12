@@ -21,7 +21,7 @@ export default function Card({
       className={clsx(
         "bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl",
         "shadow-[var(--shadow-sm)]",
-        !noPadding && "p-5",
+        !noPadding && "p-6 md:p-7",
         hoverable &&
           "cursor-pointer transition-shadow duration-200 hover:shadow-[var(--shadow-md)]",
         className

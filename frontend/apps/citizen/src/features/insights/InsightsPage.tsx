@@ -5,7 +5,7 @@ const BARS = [24, 32, 40, 28, 52, 44, 60, 48, 36, 24, 40, 56];
 
 export default function InsightsPage() {
   return (
-    <div className="flex-1 p-6 overflow-y-auto">
+    <div className="flex-1 p-8 overflow-y-auto">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
         <div>
           <h1 className="text-[var(--text-heading)] font-bold text-[var(--color-text-primary)] mb-1">Civic Insights</h1>

@@ -125,8 +125,8 @@ export default function IssueDetailPage() {
   }
 
   return (
-    <div className="flex-1 p-6 overflow-y-auto">
-      <div className="max-w-7xl mx-auto">
+    <div className="flex-1 p-8 overflow-y-auto">
+      <div className="w-full">
         <Link to="/issues" className="inline-flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] mb-4 transition-colors">
           <ArrowLeft size={16} />
           Back to Issues

@@ -166,7 +166,7 @@ function SeverityBadge({ severity }: { severity: string }) {
     ? "bg-[var(--color-error-bg)] text-[var(--color-error)]"
     : "bg-[var(--color-warning-bg)] text-[var(--color-warning)]";
   return (
-    <span className={clsx("px-2 py-0.5 rounded-full text-[10px] font-bold uppercase", color)}>
+    <span className={clsx("inline-flex items-center justify-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase leading-none", color)}>
       {severity}
     </span>
   );
@@ -255,7 +255,7 @@ function IssueCard({ issue }: { issue: typeof ISSUES[number] }) {
   return (
     <Link
       to={`/issues/${issue.id}`}
-      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
+      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 md:p-7 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
     >
       <div className="flex gap-5">
         <div className="flex-1 min-w-0">
@@ -350,7 +350,7 @@ function DiscussionCard({ discussion }: { discussion: typeof DISCUSSIONS[number]
   return (
     <Link
       to={`/discussions/${discussion.id}`}
-      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
+      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 md:p-7 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
     >
       <div className="flex items-center gap-2 mb-3">
         {discussion.tags.map((tag, i) => (
@@ -422,7 +422,7 @@ function PollCard({ poll }: { poll: typeof POLLS[number] }) {
   return (
     <Link
       to={`/polls/${poll.id}`}
-      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
+      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 md:p-7 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
     >
       <div className="flex items-center gap-2 mb-3">
         <span className="px-2 py-1 rounded-full bg-[var(--color-brand-light)] text-[var(--color-brand)] text-[11px] font-semibold">
@@ -514,13 +514,13 @@ function TrendCard({ item }: { item: typeof TRENDING[number] }) {
 export default function FeedPage() {
   return (
     <div className="flex flex-col h-full">
-      <div className="px-6 pt-6">
+      <div className="px-8 pt-8 w-full">
         <FeedFilterBar />
       </div>
 
-      <div className="flex-1 flex overflow-hidden px-6 pb-6">
-        <div className="flex-1 overflow-y-auto">
-          <div className="max-w-3xl mx-auto space-y-6 pb-32">
+      <div className="flex-1 flex gap-8 overflow-hidden px-8 pb-8 w-full">
+        <div className="flex-1 overflow-y-auto min-w-0">
+          <div className="space-y-6 pb-32">
             {ISSUES.map((issue) => (
               <IssueCard key={issue.id} issue={issue} />
             ))}
@@ -533,7 +533,7 @@ export default function FeedPage() {
           </div>
         </div>
 
-        <div className="w-80 overflow-y-auto pl-6 space-y-5 hidden lg:block">
+        <div className="w-80 shrink-0 overflow-y-auto space-y-5 hidden lg:block">
           <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5">
             <div className="flex items-center justify-between mb-4">
               <div>

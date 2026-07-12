@@ -51,7 +51,7 @@ export default function DiscussionsPage() {
 
   return (
     <div className="flex-1 flex flex-col min-w-0">
-      <div className="px-8 py-8 flex items-end justify-between max-w-7xl mx-auto w-full">
+      <div className="px-8 py-8 flex items-end justify-between w-full">
         <div>
           <h1 className="text-[var(--text-heading)] font-bold text-[var(--color-text-primary)]">Discussions</h1>
           <p className="text-sm text-[var(--color-text-secondary)] mt-1">Collaborate with your community to explore civic problems and solutions.</p>
@@ -63,7 +63,7 @@ export default function DiscussionsPage() {
       </div>
 
       <div className="border-y border-[var(--color-border)] bg-[var(--color-bg-surface)] sticky top-0 z-20">
-        <div className="px-8 py-4 max-w-7xl mx-auto flex items-center gap-4">
+        <div className="px-8 py-4 w-full flex items-center gap-4">
           <div className="flex items-center gap-2">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-text-secondary)]">Filters:</span>
             <select className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm focus:ring-1 focus:ring-[var(--color-brand)] outline-none text-[var(--color-text-primary)]">
@@ -79,14 +79,13 @@ export default function DiscussionsPage() {
               <option>Central</option>
             </select>
             <select className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm focus:ring-1 focus:ring-[var(--color-brand)] outline-none text-[var(--color-text-primary)]">
-              <option>Status: Open</option>
-              <option>Resolved</option>
-              <option>Drafting</option>
+              <option>Status: All Active</option>
+              <option>Deliberating</option>
+              <option>Consensus Reached</option>
             </select>
           </div>
-          <div className="h-6 w-px bg-[var(--color-border)] mx-2" />
-          <div className="flex items-center gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-text-secondary)]">Sort:</span>
+          <div className="ml-auto flex items-center gap-2">
+            <span className="text-xs font-bold text-[var(--color-text-secondary)]">Sort By:</span>
             <select className="bg-transparent border-none text-sm font-bold text-[var(--color-brand)] outline-none cursor-pointer">
               <option>Trending Now</option>
               <option>Newest First</option>
@@ -96,7 +95,7 @@ export default function DiscussionsPage() {
         </div>
       </div>
 
-      <div className="px-8 py-6 max-w-7xl mx-auto w-full">
+      <div className="px-8 py-6 w-full">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 pb-20">
           {DISCUSSIONS.map((discussion) => (
             <div

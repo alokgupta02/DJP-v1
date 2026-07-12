@@ -36,8 +36,8 @@ const REPS = [
 
 export default function RepresentativesPage() {
   return (
-    <div className="flex-1 p-6 overflow-y-auto">
-      <div className="max-w-6xl mx-auto">
+    <div className="flex-1 p-8 overflow-y-auto">
+      <div className="w-full">
         <div className="mb-8">
           <h1 className="text-[var(--text-heading)] font-bold text-[var(--color-text-primary)]">Your Representatives</h1>
           <p className="text-sm text-[var(--color-text-secondary)] mt-1">Contact and track the performance of your elected representatives.</p>

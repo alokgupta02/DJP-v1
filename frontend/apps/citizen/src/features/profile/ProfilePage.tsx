@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 export default function ProfilePage() {
   return (
-    <div className="flex-1 p-6 overflow-y-auto">
+    <div className="flex-1 p-8 overflow-y-auto">
       <header className="w-full bg-[var(--color-bg-muted)] rounded-xl p-6 flex items-center justify-between border border-[var(--color-border)] shadow-sm overflow-hidden relative">
         <div className="flex items-center gap-6 z-10">
           <div className="relative">
@@ -34,6 +34,15 @@ export default function ProfilePage() {
           <button className="bg-[var(--color-bg-surface)] text-[var(--color-brand)] border border-[var(--color-brand)] px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:bg-[var(--color-bg-subtle)] transition-all active:scale-95 text-sm">
             <Share2 size={16} />
             Share Stats
+          </button>
+          <button
+            onClick={() => {
+              localStorage.removeItem("djp_user");
+              window.location.href = "/login";
+            }}
+            className="bg-red-50 text-red-600 border border-red-200 px-6 py-2 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-red-100 transition-all active:scale-95 text-sm"
+          >
+            Logout
           </button>
         </div>
       </header>

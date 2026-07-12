@@ -49,8 +49,8 @@ export default function Topbar({
       </div>
 
       {/* Desktop: search */}
-      <div className="hidden md:flex items-center gap-4 flex-1 min-w-0">
-        <div className="relative flex-1 max-w-md">
+      <div className="hidden md:flex items-center gap-4 flex-1 min-w-0 pl-2">
+        <div className="relative w-full max-w-lg">
           <Search
             size={16}
             className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-text-secondary)]"
@@ -61,11 +61,11 @@ export default function Topbar({
             onChange={(e) => onSearchChange?.(e.target.value)}
             placeholder={searchPlaceholder}
             className={clsx(
-              "h-9 w-full rounded-full border border-[var(--color-border)] bg-[var(--color-bg-subtle)]",
-              "pl-9 pr-4 text-sm text-[var(--color-text-primary)]",
+              "h-10 w-full rounded-full border border-[var(--color-border)] bg-[var(--color-bg-subtle)]",
+              "pl-10 pr-4 text-sm text-[var(--color-text-primary)]",
               "placeholder:text-[var(--color-text-secondary)]",
               "focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent",
-              "transition-colors duration-150"
+              "transition-all duration-150"
             )}
             aria-label={searchPlaceholder}
           />

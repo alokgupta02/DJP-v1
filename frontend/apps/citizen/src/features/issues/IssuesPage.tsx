@@ -205,7 +205,7 @@ export default function IssuesPage() {
         </div>
       </div>
 
-      <aside className="w-80 hidden lg:flex flex-col gap-6">
+      <aside className="w-80 shrink-0 hidden lg:flex flex-col gap-6">
         <section className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6">
           <h2 className="font-bold text-[var(--color-text-primary)] mb-4">Ward Snapshot</h2>
           <div className="space-y-4">

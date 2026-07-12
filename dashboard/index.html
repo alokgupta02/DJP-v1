@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DJP Agent Control Center | Live Workspace & Markdown Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0a0e17;
+      --bg-sidebar: #0d121f;
+      --bg-card: rgba(18, 24, 38, 0.75);
+      --bg-card-hover: rgba(26, 35, 54, 0.9);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --accent-cyan: #00f2fe;
+      --accent-blue: #4facfe;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-purple: #8b5cf6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --sidebar-width: 315px;
+    }
+
+    [data-theme="light"] {
+      --bg-main: #f1f5f9;
+      --bg-sidebar: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --bg-card-hover: rgba(255, 255, 255, 1);
+      --border-color: rgba(15, 23, 42, 0.12);
+      --accent-cyan: #0284c7;
+      --accent-blue: #2563eb;
+      --accent-emerald: #059669;
+      --accent-amber: #d97706;
+      --accent-purple: #7c3aed;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      overflow: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(79, 172, 254, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.07) 0%, transparent 40%);
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.25);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.45);
+    }
+
+    /* LEFT SIDEBAR */
+    .sidebar {
+      width: var(--sidebar-width);
+      min-width: var(--sidebar-width);
+      height: 100vh;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      z-index: 40;
+    }
+
+    .sidebar-header {
+      padding: 1.15rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #000;
+      box-shadow: 0 0 16px rgba(0, 242, 254, 0.3);
+      flex-shrink: 0;
+    }
+
+    .brand-text h1 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .brand-text p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.85rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .nav-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.28rem;
+    }
+
+    .nav-section-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.45rem 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      border-radius: 6px;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .nav-section-title:hover {
+      background: rgba(148, 163, 184, 0.08);
+      color: var(--text-main);
+    }
+
+    .nav-chevron {
+      font-size: 0.65rem;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-section.collapsed .nav-chevron {
+      transform: rotate(-90deg);
+    }
+
+    .nav-section.collapsed .nav-section-items {
+      display: none;
+    }
+
+    .nav-section-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .nav-btn {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.62rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-main);
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(148, 163, 184, 0.1);
+    }
+
+    .nav-btn.active {
+      background: rgba(79, 172, 254, 0.14);
+      border-color: rgba(79, 172, 254, 0.35);
+    }
+
+    .nav-btn-icon {
+      font-size: 1.1rem;
+      margin-top: 0.12rem;
+      flex-shrink: 0;
+    }
+
+    .nav-btn-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .nav-btn-title {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-btn.active .nav-btn-title {
+      color: var(--accent-cyan);
+    }
+
+    .nav-btn-desc {
+      font-size: 0.71rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* RIGHT MAIN WINDOW */
+    .main-window {
+      flex: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .main-header {
+      height: 64px;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(16px);
+      background: rgba(10, 14, 23, 0.65);
+      z-index: 30;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .current-view-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .file-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      background: rgba(0, 242, 254, 0.12);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent-emerald);
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.15); }
+    }
+
+    .btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .main-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.75rem;
+    }
+
+    /* KANBAN VIEW */
+    .kanban-view {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .metric-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .metric-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .metric-subtext {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .progress-banner {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+      border-radius: 9999px;
+      width: 0%;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .kanban-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 1100px) {
+      .kanban-grid { grid-template-columns: 1fr; }
+    }
+
+    .column {
+      background: rgba(15, 21, 35, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .column-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .column-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .column-count {
+      padding: 0.15rem 0.55rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .task-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1rem;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .task-card:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .task-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+    }
+
+    .task-card.pending::before { background: var(--text-muted); }
+    .task-card.in-progress::before { background: var(--accent-amber); }
+    .task-card.completed::before { background: var(--accent-emerald); }
+
+    .task-card-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.45;
+      margin-bottom: 0.55rem;
+    }
+
+    .task-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .task-tag {
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+    }
+
+    .tag-pending { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+    .tag-progress { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .tag-completed { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+    /* MARKDOWN VIEWER */
+    .md-view {
+      display: none;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .md-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .md-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .md-card-title {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 1.15rem;
+    }
+
+    .md-card-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .md-body {
+      line-height: 1.7;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .md-body h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--accent-cyan);
+    }
+
+    .md-body h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .md-body h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .md-body p {
+      margin-bottom: 1rem;
+    }
+
+    .md-body ul {
+      margin-bottom: 1rem;
+      padding-left: 1.4rem;
+    }
+
+    .md-body li {
+      margin-bottom: 0.45rem;
+    }
+
+    .md-body .checkbox-item {
+      list-style: none;
+      margin-left: -1.4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.35rem 0.6rem;
+      border-radius: 8px;
+      margin-bottom: 0.35rem;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .md-body .checkbox-item input[type="checkbox"] {
+      margin-top: 0.35rem;
+      accent-color: var(--accent-cyan);
+    }
+
+    .md-body pre {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      margin: 1rem 0;
+    }
+
+    .md-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+    }
+
+    .md-body blockquote {
+      border-left: 3px solid var(--accent-blue);
+      padding-left: 1rem;
+      color: var(--text-muted);
+      margin: 1rem 0;
+    }
+
+    .raw-md-box {
+      display: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.25rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    .dashboard-tabs {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .dash-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .dash-tab-btn:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-main);
+    }
+
+    .dash-tab-btn.active {
+      background: rgba(79, 172, 254, 0.16);
+      border-color: rgba(79, 172, 254, 0.45);
+      color: var(--accent-cyan);
+    }
+
+    /* Tree explorer styling */
+    .tree-folder {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .tree-folder-header {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.38rem 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      border-radius: 6px;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .tree-folder-header:hover {
+      background: rgba(148, 163, 184, 0.08);
+    }
+
+    .tree-folder-icon {
+      font-size: 0.82rem;
+      transition: transform 0.2s ease;
+      display: inline-block;
+      width: 1rem;
+      text-align: center;
+    }
+
+    .tree-folder.collapsed > .tree-folder-header > .tree-folder-icon {
+      transform: rotate(-90deg);
+    }
+
+    .tree-folder-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      border-left: 1px solid var(--border-color);
+      margin-left: 0.5rem;
+      padding-left: 0.4rem;
+    }
+
+    .tree-folder.collapsed > .tree-folder-content {
+      display: none;
+    }
+
+    .tree-file {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.5rem;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 6px;
+      user-select: none;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tree-file:hover {
+      background: rgba(148, 163, 184, 0.08);
+      color: var(--text-main);
+    }
+
+    .tree-file.active {
+      color: var(--accent-cyan);
+      font-weight: 600;
+      background: rgba(79, 172, 254, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-icon">DJP</div>
+      <div class="brand-text">
+        <h1>Control Center</h1>
+        <p>Full Domain MD Monitor</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <!-- DASHBOARD VIEW -->
+      <div class="nav-section">
+        <div class="nav-section-title" onclick="toggleNavSection(this)">
+          <span>Views</span>
+          <span class="nav-chevron">▼</span>
+        </div>
+        <div class="nav-section-items">
+          <button class="nav-btn active" id="btn-kanban" onclick="showKanbanView(this)">
+            <span class="nav-btn-icon">📊</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Kanban Dashboard</span>
+              <span class="nav-btn-desc">Dashboard • Live sprint progress tracker</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- WORKSPACE ROOT MD -->
+      <div class="nav-section">
+        <div class="nav-section-title" onclick="toggleNavSection(this)">
+          <span>Workspace Root (.md)</span>
+          <span class="nav-chevron">▼</span>
+        </div>
+        <div class="nav-section-items">
+          <button class="nav-btn" onclick="openMdFile('../todo.md', 'todo.md', 'Root Task List', this)">
+            <span class="nav-btn-icon">📋</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Master Task Backlog</span>
+              <span class="nav-btn-desc">todo.md • Active agent tasks & sprint roadmap</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../todo/missed_todos.md', 'todo/missed_todos.md', 'Missed Todos Backlog', this)">
+            <span class="nav-btn-icon">🗂️</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Missed Todos & Backlog</span>
+              <span class="nav-btn-desc">todo/missed_todos.md • Deferred & missed tasks</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../.djp_state.md', '.djp_state.md', 'Root State', this)">
+            <span class="nav-btn-icon">⚡</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Workspace Active State</span>
+              <span class="nav-btn-desc">.djp_state.md • Current sprint objectives & status</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../.djp_identity.md', '.djp_identity.md', 'Root Identity', this)">
+            <span class="nav-btn-icon">🧠</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Agent Persona & Stack</span>
+              <span class="nav-btn-desc">.djp_identity.md • Senior full-stack architect profile</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../.djp_rules.md', '.djp_rules.md', 'Root Rules', this)">
+            <span class="nav-btn-icon">📜</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Operational Rules</span>
+              <span class="nav-btn-desc">.djp_rules.md • Lean codebase & execution guidelines</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../README.md', 'README.md', 'Root Overview', this)">
+            <span class="nav-btn-icon">📖</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Workspace Overview</span>
+              <span class="nav-btn-desc">README.md • Root project sitemap & architecture</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../AGENTIC_WORKFLOW_GUIDE.md', 'AGENTIC_WORKFLOW_GUIDE.md', 'Master Guide', this)">
+            <span class="nav-btn-icon">🗺️</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Agentic Workflow Guide</span>
+              <span class="nav-btn-desc">AGENTIC_WORKFLOW_GUIDE.md • Master AI team flow</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- FRONTEND DOMAIN MD -->
+      <div class="nav-section">
+        <div class="nav-section-title" onclick="toggleNavSection(this)">
+          <span>Frontend/ (.md)</span>
+          <span class="nav-chevron">▼</span>
+        </div>
+        <div class="nav-section-items">
+          <button class="nav-btn" onclick="openMdFile('../frontend/todo.md', 'frontend/todo.md', 'FE Tasks', this)">
+            <span class="nav-btn-icon">📄</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Frontend Task Backlog</span>
+              <span class="nav-btn-desc">frontend/todo.md • UI feature tasks & sprint backlog</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../frontend/.djp_state.md', 'frontend/.djp_state.md', 'FE State', this)">
+            <span class="nav-btn-icon">⚡</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Frontend Active State</span>
+              <span class="nav-btn-desc">frontend/.djp_state.md • React & Vite domain objectives</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../frontend/.djp_identity.md', 'frontend/.djp_identity.md', 'FE Identity', this)">
+            <span class="nav-btn-icon">🎨</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Frontend Persona</span>
+              <span class="nav-btn-desc">frontend/.djp_identity.md • React UI architect profile</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../frontend/.djp_rules.md', 'frontend/.djp_rules.md', 'FE Rules', this)">
+            <span class="nav-btn-icon">📜</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Frontend Rules</span>
+              <span class="nav-btn-desc">frontend/.djp_rules.md • Tailwind & UI conventions</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../frontend/README.md', 'frontend/README.md', 'FE Overview', this)">
+            <span class="nav-btn-icon">📖</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Frontend Overview</span>
+              <span class="nav-btn-desc">frontend/README.md • App architecture & startup guide</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../frontend/ARCHITECTURE.md', 'frontend/ARCHITECTURE.md', 'FE Architecture', this)">
+            <span class="nav-btn-icon">🏗️</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Frontend Architecture</span>
+              <span class="nav-btn-desc">frontend/ARCHITECTURE.md • State & component patterns</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- BACKEND DOMAIN MD -->
+      <div class="nav-section">
+        <div class="nav-section-title" onclick="toggleNavSection(this)">
+          <span>Backend/ (.md)</span>
+          <span class="nav-chevron">▼</span>
+        </div>
+        <div class="nav-section-items">
+          <button class="nav-btn" onclick="openMdFile('../backend/todo.md', 'backend/todo.md', 'BE Tasks', this)">
+            <span class="nav-btn-icon">📄</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Backend Task Backlog</span>
+              <span class="nav-btn-desc">backend/todo.md • Spring Boot REST API tasks</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../backend/.djp_state.md', 'backend/.djp_state.md', 'BE State', this)">
+            <span class="nav-btn-icon">⚡</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Backend Active State</span>
+              <span class="nav-btn-desc">backend/.djp_state.md • Microservice sprint status</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../backend/.djp_identity.md', 'backend/.djp_identity.md', 'BE Identity', this)">
+            <span class="nav-btn-icon">⚙️</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Backend Persona</span>
+              <span class="nav-btn-desc">backend/.djp_identity.md • Java 21 & Spring Boot profile</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../backend/.djp_rules.md', 'backend/.djp_rules.md', 'BE Rules', this)">
+            <span class="nav-btn-icon">📜</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Backend Rules</span>
+              <span class="nav-btn-desc">backend/.djp_rules.md • API contract & TDD standards</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../backend/README.md', 'backend/README.md', 'BE Overview', this)">
+            <span class="nav-btn-icon">📖</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">Backend Overview</span>
+              <span class="nav-btn-desc">backend/README.md • Microservices startup guide</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- TESTS DOMAIN MD -->
+      <div class="nav-section">
+        <div class="nav-section-title" onclick="toggleNavSection(this)">
+          <span>Tests/ (.md)</span>
+          <span class="nav-chevron">▼</span>
+        </div>
+        <div class="nav-section-items">
+          <button class="nav-btn" onclick="openMdFile('../tests/.djp_state.md', 'tests/.djp_state.md', 'QA State', this)">
+            <span class="nav-btn-icon">⚡</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">QA Active State</span>
+              <span class="nav-btn-desc">tests/.djp_state.md • Automated test suite status</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../tests/.djp_identity.md', 'tests/.djp_identity.md', 'QA Identity', this)">
+            <span class="nav-btn-icon">🧪</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">QA Persona</span>
+              <span class="nav-btn-desc">tests/.djp_identity.md • Lead QA & TDD specialist</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../tests/.djp_rules.md', 'tests/.djp_rules.md', 'QA Rules', this)">
+            <span class="nav-btn-icon">📜</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">QA Rules</span>
+              <span class="nav-btn-desc">tests/.djp_rules.md • Test-first TDD directives</span>
+            </div>
+          </button>
+          <button class="nav-btn" onclick="openMdFile('../tests/README.md', 'tests/README.md', 'QA Guide', this)">
+            <span class="nav-btn-icon">📖</span>
+            <div class="nav-btn-content">
+              <span class="nav-btn-title">QA Test Overview</span>
+              <span class="nav-btn-desc">tests/README.md • E2E & unit test guide</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- ALL MD DOMAIN TREE -->
+      <div class="nav-section">
+        <div class="nav-section-title" onclick="toggleNavSection(this)">
+          <span>All MD</span>
+          <span class="nav-chevron">▼</span>
+        </div>
+        <div class="nav-section-items" id="treeContainer" style="padding: 0.25rem 0.6rem; display: flex; flex-direction: column; gap: 0.2rem;">
+          <!-- Dynamically populated tree -->
+        </div>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- RIGHT MAIN WINDOW -->
+  <div class="main-window">
+    <header class="main-header">
+      <div class="header-left">
+        <div class="current-view-title" id="currentViewTitle">
+          <span>📊 Kanban Dashboard</span>
+          <span class="file-badge" id="viewBadge">LIVE TRACKER</span>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="status-badge" id="statusBadge">
+          <span class="pulse-dot"></span>
+          <span id="statusText">Live Sync Active</span>
+        </div>
+        <button class="btn" onclick="toggleTheme()" title="Toggle Theme">
+          <span id="themeIcon">☀️ Light</span>
+        </button>
+        <button class="btn" onclick="fetchCurrentView()">
+          <span>↻ Refresh</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- 1. KANBAN DASHBOARD VIEW -->
+      <div class="kanban-view" id="kanbanView">
+        <div class="dashboard-tabs">
+          <button class="dash-tab-btn active" id="tabActiveSprint" onclick="switchDashboardTab('active')">
+            <span>📊 Active Sprint (todo.md)</span>
+          </button>
+          <button class="dash-tab-btn" id="tabMissedBacklog" onclick="switchDashboardTab('backlog')">
+            <span>🗂️ Missed & Domain Backlog (Separated)</span>
+          </button>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-label">Total Root Tasks</div>
+            <div class="metric-value" id="metricTotal">0</div>
+            <div class="metric-subtext">Registered in todo.md</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Active / In Progress</div>
+            <div class="metric-value" style="color: var(--accent-amber);" id="metricActive">0</div>
+            <div class="metric-subtext">Currently executing</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Completed Tasks</div>
+            <div class="metric-value" style="color: var(--accent-emerald);" id="metricCompleted">0</div>
+            <div class="metric-subtext">Verified & done</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Overall Completion</div>
+            <div class="metric-value" style="color: var(--accent-cyan);" id="metricRate">0%</div>
+            <div class="metric-subtext">Sprint velocity</div>
+          </div>
+        </div>
+
+        <div class="progress-banner">
+          <div class="progress-header">
+            <span style="font-weight: 600; font-size: 0.95rem;">Root Task Progress</span>
+            <span id="progressBarLabel" style="font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; color: var(--accent-cyan);">0 / 0 Completed</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+          </div>
+        </div>
+
+        <div class="kanban-grid">
+          <div class="column">
+            <div class="column-header">
+              <div class="column-title"><span>📋 Planned</span></div>
+              <span class="column-count" id="countPending">0</span>
+            </div>
+            <div class="task-list" id="listPending"></div>
+          </div>
+
+          <div class="column">
+            <div class="column-header">
+              <div class="column-title"><span>⚡ In Progress</span></div>
+              <span class="column-count" id="countProgress">0</span>
+            </div>
+            <div class="task-list" id="listProgress"></div>
+          </div>
+
+          <div class="column">
+            <div class="column-header">
+              <div class="column-title"><span>✅ Completed</span></div>
+              <span class="column-count" id="countCompleted">0</span>
+            </div>
+            <div class="task-list" id="listCompleted"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. MARKDOWN VIEWER VIEW -->
+      <div class="md-view" id="mdView">
+        <div class="md-card">
+          <div class="md-card-header">
+            <div class="md-card-title">
+              <span id="mdCardIcon" style="margin-top: 0.15rem;">📄</span>
+              <div style="display: flex; flex-direction: column; gap: 0.15rem; width: 100%;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <span id="mdCardFileName" style="font-weight: 600;">todo.md</span>
+                  <button id="favMdBtn" onclick="toggleFavorite()" style="background: transparent; border: none; font-size: 1.2rem; cursor: pointer; padding: 0; display: flex; align-items: center; line-height: 1;" title="Add to Favorites">☆</button>
+                </div>
+                <span id="mdCardFilePath" style="font-size: 0.75rem; color: var(--text-muted); cursor: pointer; transition: color 0.2s ease; font-weight: normal;" onclick="copyFilePath(this)" title="Click to copy full path">DJP-v1/todo.md</span>
+                <input type="text" id="editFilePath" style="display: none; padding: 0.4rem; font-size: 0.85rem; width: 100%; max-width: 450px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-main); color: var(--text-main);" />
+              </div>
+            </div>
+            <div class="md-card-actions">
+              <button class="btn" id="editMdBtn" onclick="toggleEditMode()" style="background: rgba(79, 172, 254, 0.1); border-color: rgba(79, 172, 254, 0.4); color: var(--accent-cyan);">Edit File</button>
+              <button class="btn" id="saveMdBtn" onclick="saveCurrentMd()" style="display: none; background: rgba(79, 172, 254, 0.3); border-color: var(--accent-cyan); color: white;">Save</button>
+              <button class="btn" id="toggleRawBtn" onclick="toggleRawView()">Raw MD</button>
+              <button class="btn" onclick="copyCurrentMd()">Copy Code</button>
+            </div>
+          </div>
+
+          <div class="md-body" id="mdBodyContent"></div>
+          <pre class="raw-md-box" id="rawMdContent"></pre>
+          <textarea class="raw-md-box" id="editMdContent" style="display: none; width: 100%; min-height: 400px; font-family: 'JetBrains Mono', monospace; background: var(--bg-main); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; resize: vertical; line-height: 1.6;"></textarea>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const FALLBACK_MD = {
+      "../todo.md": `# DJP Project Tasks (Agent Control Center)\n\n## Active Tasks\n- [x] Create DJPv1 core files (\`.djp_identity.md\`, \`.djp_state.md\`, \`.djp_rules.md\`) in workspace root\n- [x] Create domain-adapted DJPv1 files in \`frontend/\`, \`backend/\`, and \`tests/\`\n- [x] Option 1: Build client-ready HTML/JS Live Web Dashboard in \`dashboard/\` with Kanban board & progress tracker`,
+      "../.djp_state.md": `# DJPv1 ACTIVE STATE\n\n## Current Sprint\n* **Active Branch:** \`main\`\n* **Core Objective:** Standardize workspace documentation and AI execution logs with DJPv1 across Root, FE, BE, and Tests.\n\n## Task Breakdown\n- [x] Create Root DJPv1 files\n- [x] Create FE, BE, Tests domain DJPv1 files\n- [x] Synchronize dashboard/index.html sidebar`,
+      "../.djp_identity.md": `# DJPv1 IDENTITY\n\n## Technical Profile\n* **Experience Level:** Senior Systems Engineer & Full-Stack Architect\n* **Primary Stack:** TypeScript, React, Next.js, Node.js, Java Spring Boot, PostgreSQL`,
+      "../.djp_rules.md": `# DJPv1 OPERATIONAL RULES\n\n## Context Allocation\n* Always reference \`.djp_state.md\` prior to executing code modifications.\n* Adhere strictly to lean codebase rules.`,
+      "../README.md": `# DJP (Developer Journal Prompt & Workspace) - Version 1\n\nFull workspace architecture using DJPv1 specification across Root, FE, BE, and Tests domains.`,
+      "../AGENTIC_WORKFLOW_GUIDE.md": `# DJP Master Guide: Production-Grade Agentic Workflow\n\nThis document records our complete architecture and workflow setup for building DJP as a Monorepo.`,
+      
+      "../frontend/todo.md": `# DJP Citizen App — Frontend Todo\n\n## Tasks\n- [x] Fix Global Sidebar collapse icon overlapping main border\n- [x] Fix Header search bar left alignment with main content`,
+      "../frontend/.djp_state.md": `# DJPv1 FRONTEND ACTIVE STATE\n\n## Current Sprint\n* **Active Domain:** Frontend UI Application (\`frontend/\`)\n* **Core Objective:** Maintain responsive, accessible UI aligned with \`docs/ux/\`.`,
+      "../frontend/.djp_identity.md": `# DJPv1 FRONTEND IDENTITY\n\n## Technical Profile\n* **Role:** Senior Frontend Architect & React / Next.js Specialist\n* **Primary Stack:** React, TypeScript, Vite, Tailwind CSS`,
+      "../frontend/.djp_rules.md": `# DJPv1 FRONTEND OPERATIONAL RULES\n\n* Keep component depth under 3 levels.\n* Prefer inline Tailwind utility classes.`,
+      "../frontend/README.md": `# DJP Frontend Application\n\nReact / Vite UI application referencing FE DJPv1 anchor files.`,
+      "../frontend/ARCHITECTURE.md": `# Frontend Architecture Reference\n\nDetails state management and component composition.`,
+
+      "../backend/todo.md": `# DJP Backend Dashboard\n\n**Progress:** 0/22 tasks\n\nBuild a production-quality Spring Boot 3.x + Java 21 backend.`,
+      "../backend/.djp_state.md": `# DJPv1 BACKEND ACTIVE STATE\n\n* **Active Domain:** Backend Microservices (\`backend/springboot/\`)\n* **Core Objective:** Implement REST APIs under \`/api/v1\`.`,
+      "../backend/.djp_identity.md": `# DJPv1 BACKEND IDENTITY\n\n* **Role:** Senior Java Spring Boot Microservice Architect\n* **Primary Stack:** Java 21, Spring Boot 3.x, REST APIs, H2 Database`,
+      "../backend/.djp_rules.md": `# DJPv1 BACKEND OPERATIONAL RULES\n\n* Read \`docs/api/\` contracts before modifying services.\n* Follow TDD flow.`,
+      "../backend/README.md": `# DJP Backend Microservices\n\nJava 21 Spring Boot 3 microservices referencing BE DJPv1 anchor files.`,
+
+      "../tests/.djp_state.md": `# DJPv1 QA & TESTS ACTIVE STATE\n\n* **Active Domain:** Test Suites & Automation (\`tests/\`)\n* **Core Objective:** Validate full-stack code against \`docs/development/\` test specs.`,
+      "../tests/.djp_identity.md": `# DJPv1 QA & TESTS IDENTITY\n\n* **Role:** Lead QA & Test-Driven Development Specialist\n* **Primary Stack:** Automated E2E & Unit Testing`,
+      "../tests/.djp_rules.md": `# DJPv1 QA & TESTS OPERATIONAL RULES\n\n* Always write automated test files FIRST before app code exists.`,
+      "../tests/README.md": `# DJP Test Suites & Automated QA\n\nContains E2E and automated regression test scripts.`,
+      "../todo/missed_todos.md": `# DJP Missed & Deferred Todos (Backlog Separation)\n\n## Previously Missed / Deferred Root Tasks\n- [ ] Option 3: Build live CLI Terminal Progress Visualizer script (\`scripts/todo-visualizer.sh\`)\n- [ ] Add automated health check alert for database connections\n- [ ] Document OAuth callback fallback flow for offline mode\n\n## Frontend Deferred Backlog\n- [ ] Add skeleton loading placeholders for dashboard statistics cards\n- [ ] Verify tablet (768px) layout responsiveness across all pages\n\n## Backend Deferred Backlog\n- [ ] Add rate-limiting headers to \`/api/v1/auth/login\` endpoint\n- [ ] Optimize PostgreSQL connection pool settings for production`
+    };
+
+    let activeMode = 'kanban';
+    let currentKanbanTab = 'active';
+    let currentMdPath = '../todo.md';
+    let currentMdName = 'todo.md';
+    let currentMdLabel = 'Root Task List';
+    let currentMdRaw = '';
+    let isRawView = false;
+
+    function saveDashboardState() {
+      const state = {
+        mode: activeMode,
+        kanbanTab: typeof currentKanbanTab !== 'undefined' ? currentKanbanTab : 'active',
+        mdPath: currentMdPath,
+        mdName: currentMdName,
+        mdLabel: currentMdLabel
+      };
+      localStorage.setItem('djpDashboardState', JSON.stringify(state));
+    }
+
+    function restoreDashboardState() {
+      const saved = localStorage.getItem('djpDashboardState');
+      if (saved) {
+        try {
+          const state = JSON.parse(saved);
+          if (state.mode === 'kanban') {
+            showKanbanView(null, state.kanbanTab || 'active');
+            return true;
+          } else if (state.mode === 'md' && state.mdPath) {
+            let btn = null;
+            document.querySelectorAll('.nav-btn, .tree-file').forEach(b => {
+              if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(`'${state.mdPath}'`)) btn = b;
+            });
+            if (btn && btn.classList.contains('tree-file')) {
+              let parent = btn.closest('.tree-folder');
+              while (parent) {
+                parent.classList.remove('collapsed');
+                parent = parent.parentElement.closest('.tree-folder');
+              }
+            }
+            openMdFile(state.mdPath, state.mdName || state.mdPath.split('/').pop(), state.mdLabel || 'File', btn);
+            return true;
+          }
+        } catch(e) { console.error('Error restoring state:', e); }
+      }
+      return false;
+    }
+
+    let MD_TREE = null;
+
+    const DEFAULT_FAVS = ['../frontend/url.md', '../docs/md-file/skill-artifact.md'];
+
+    function getFavorites() {
+      const saved = localStorage.getItem('djpFavorites');
+      if (saved) return JSON.parse(saved);
+      localStorage.setItem('djpFavorites', JSON.stringify(DEFAULT_FAVS));
+      return DEFAULT_FAVS;
+    }
+
+    function toggleFavorite() {
+      if (!currentMdPath) return;
+      let favs = getFavorites();
+      if (favs.includes(currentMdPath)) {
+        favs = favs.filter(f => f !== currentMdPath);
+      } else {
+        favs.push(currentMdPath);
+      }
+      localStorage.setItem('djpFavorites', JSON.stringify(favs));
+      updateFavIcon();
+      
+      // Keep old state but re-render sidebar
+      const container = document.getElementById('treeContainer');
+      if (container && MD_TREE) {
+        // Strip out old Favorites node if it exists to replace it
+        MD_TREE.children = MD_TREE.children.filter(c => c.name !== "⭐ Favorites");
+        injectFavoritesNode();
+        container.innerHTML = buildTreeHTML(MD_TREE);
+        
+        // Re-highlight the active file in the sidebar
+        document.querySelectorAll('.tree-file').forEach(b => {
+          if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(`'${currentMdPath}'`)) {
+            b.classList.add('active');
+          }
+        });
+      }
+    }
+
+    function updateFavIcon() {
+      const favBtn = document.getElementById('favMdBtn');
+      if (!favBtn) return;
+      const favs = getFavorites();
+      if (favs.includes(currentMdPath)) {
+        favBtn.innerHTML = '⭐';
+        favBtn.title = "Remove from Favorites";
+      } else {
+        favBtn.innerHTML = '☆';
+        favBtn.title = "Add to Favorites";
+      }
+    }
+
+    function injectFavoritesNode() {
+      if (!MD_TREE) return;
+      const favs = getFavorites();
+      if (favs.length === 0) return;
+      
+      const favChildren = favs.map(f => {
+        const name = f.split('/').pop();
+        return { name: name, type: "file", path: f, label: "Favorite" };
+      });
+      
+      const favNode = {
+        name: "⭐ Favorites",
+        type: "folder",
+        expanded: true,
+        children: favChildren
+      };
+      MD_TREE.children.unshift(favNode);
+    }
+
+    async function fetchTreeData() {
+      try {
+        const res = await fetch('/api/tree');
+        if (res.ok) {
+          MD_TREE = await res.json();
+          injectFavoritesNode();
+        }
+      } catch (e) {
+        console.error('Failed to fetch tree dynamically, using fallback', e);
+        MD_TREE = {
+          name: "Root Workspace",
+          type: "folder",
+          expanded: true,
+          children: [
+            { name: "todo.md", type: "file", path: "../todo.md", label: "todo" }
+          ]
+        };
+      }
+    }
+
+    function buildTreeHTML(node) {
+      if (node.type === 'file') {
+        return `
+          <div class="tree-file" onclick="openTreeFile('${node.path}', '${node.name}', '${node.label}', this)">
+            <span class="tree-file-icon">📄</span>
+            <span>${node.name}</span>
+          </div>
+        `;
+      }
+
+      const childrenHTML = node.children ? node.children.map(child => buildTreeHTML(child)).join('') : '';
+      const collapsedClass = node.expanded === false ? 'collapsed' : '';
+      return `
+        <div class="tree-folder ${collapsedClass}">
+          <div class="tree-folder-header" onclick="toggleTreeFolder(this)">
+            <span class="tree-folder-icon">▼</span>
+            <span>📁 ${node.name}</span>
+          </div>
+          <div class="tree-folder-content">
+            ${childrenHTML}
+          </div>
+        </div>
+      `;
+    }
+
+    function toggleTreeFolder(headerEl) {
+      const folderEl = headerEl.parentElement;
+      if (folderEl) {
+        folderEl.classList.toggle('collapsed');
+      }
+    }
+
+    async function openTreeFile(filePath, name, label, el) {
+      document.querySelectorAll('.tree-file').forEach(item => item.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      
+      if (el) el.classList.add('active');
+      
+      activeMode = 'md';
+      currentMdPath = filePath;
+      currentMdName = name;
+      currentMdLabel = label;
+      saveDashboardState();
+      updateFavIcon();
+      
+      document.getElementById('kanbanView').style.display = 'none';
+      document.getElementById('mdView').style.display = 'flex';
+      document.getElementById('currentViewTitle').innerHTML = `<span>📄 ${name}</span><span class="file-badge">${label}</span>`;
+      document.getElementById('mdCardFileName').innerText = name;
+      document.getElementById('mdCardFilePath').innerText = 'DJP-v1/' + filePath.replace(/^\.\.\//, '');
+      
+      await loadAndDisplayMd(filePath);
+    }
+
+    async function initTreeExplorer() {
+      await fetchTreeData();
+      const container = document.getElementById('treeContainer');
+      if (container) {
+        container.innerHTML = buildTreeHTML(MD_TREE);
+      }
+    }
+
+    function setActiveNav(btnElem) {
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnElem) btnElem.classList.add('active');
+    }
+
+    function toggleNavSection(headerEl) {
+      const section = headerEl.closest('.nav-section');
+      if (section) section.classList.toggle('collapsed');
+    }
+
+    function switchDashboardTab(tabMode) {
+      currentKanbanTab = tabMode;
+      document.querySelectorAll('.dash-tab-btn').forEach(btn => btn.classList.remove('active'));
+      if (tabMode === 'active') {
+        const tabEl = document.getElementById('tabActiveSprint');
+        if (tabEl) tabEl.classList.add('active');
+        document.getElementById('currentViewTitle').innerHTML = `<span>📊 Active Sprint Dashboard</span><span class="file-badge">todo.md</span>`;
+      } else {
+        const tabEl = document.getElementById('tabMissedBacklog');
+        if (tabEl) tabEl.classList.add('active');
+        document.getElementById('currentViewTitle').innerHTML = `<span>🗂️ Missed & Domain Backlog</span><span class="file-badge">SEPARATED BACKLOG</span>`;
+      }
+      fetchTodoData();
+      saveDashboardState();
+    }
+
+    function showKanbanView(btnElem, tabMode = 'active') {
+      activeMode = 'kanban';
+      setActiveNav(btnElem || document.getElementById('btn-kanban'));
+      document.getElementById('kanbanView').style.display = 'flex';
+      document.getElementById('mdView').style.display = 'none';
+      switchDashboardTab(tabMode);
+    }
+
+    async function openMdFile(filePath, displayPath, badgeTitle, btnElem) {
+      activeMode = 'md';
+      setActiveNav(btnElem);
+      currentMdPath = filePath;
+      currentMdName = displayPath;
+      currentMdLabel = badgeTitle;
+      saveDashboardState();
+      updateFavIcon();
+
+      document.getElementById('kanbanView').style.display = 'none';
+      document.getElementById('mdView').style.display = 'flex';
+      document.getElementById('currentViewTitle').innerHTML = `<span>📄 ${displayPath}</span><span class="file-badge">${badgeTitle}</span>`;
+      document.getElementById('mdCardFileName').innerText = displayPath;
+      document.getElementById('mdCardFilePath').innerText = 'DJP-v1/' + filePath.replace(/^\.\.\//, '');
+
+      await loadAndDisplayMd(filePath);
+    }
+
+    let isEditMode = false;
+
+    async function loadAndDisplayMd(filePath) {
+      if (isEditMode) toggleEditMode(); // reset if active
+      
+      let mdContent = '';
+      try {
+        const response = await fetch(filePath + '?t=' + Date.now());
+        if (!response.ok) throw new Error('Network response not ok');
+        mdContent = await response.text();
+      } catch (err) {
+        mdContent = FALLBACK_MD[filePath] || `# File Not Loaded\nCould not load \`${filePath}\`.`;
+      }
+
+      currentMdRaw = mdContent;
+      document.getElementById('rawMdContent').innerText = mdContent;
+      document.getElementById('mdBodyContent').innerHTML = renderSimpleMarkdown(mdContent);
+    }
+
+    function renderSimpleMarkdown(md) {
+      const lines = md.split('\n');
+      let html = '';
+      let inCodeBlock = false;
+      let codeBuffer = '';
+
+      lines.forEach(line => {
+        if (line.trim().startsWith('```')) {
+          if (inCodeBlock) {
+            html += `<pre><code>${escapeHtml(codeBuffer)}</code></pre>`;
+            codeBuffer = '';
+            inCodeBlock = false;
+          } else {
+            inCodeBlock = true;
+          }
+          return;
+        }
+
+        if (inCodeBlock) {
+          codeBuffer += line + '\n';
+          return;
+        }
+
+        let l = escapeHtml(line);
+
+        const checkboxMatch = l.match(/^[*-]\s+\[([ xX/!])\]\s+(.*)$/);
+        if (checkboxMatch) {
+          const checked = checkboxMatch[1].toLowerCase() === 'x' ? 'checked' : '';
+          const style = checkboxMatch[1] === '/' ? 'color: var(--accent-amber); font-weight: 500;' : '';
+          html += `<div class="checkbox-item"><input type="checkbox" disabled ${checked} /> <span style="${style}">${formatInlineMd(checkboxMatch[2])}</span></div>`;
+          return;
+        }
+
+        if (l.startsWith('# ')) { html += `<h1>${formatInlineMd(l.slice(2))}</h1>`; return; }
+        if (l.startsWith('## ')) { html += `<h2>${formatInlineMd(l.slice(3))}</h2>`; return; }
+        if (l.startsWith('### ')) { html += `<h3>${formatInlineMd(l.slice(4))}</h3>`; return; }
+
+        if (l.startsWith('* ') || l.startsWith('- ')) {
+          html += `<li>${formatInlineMd(l.slice(2))}</li>`;
+          return;
+        }
+
+        if (l.startsWith('> ')) {
+          html += `<blockquote>${formatInlineMd(l.slice(2))}</blockquote>`;
+          return;
+        }
+
+        if (l.trim() === '') return;
+
+        html += `<p>${formatInlineMd(l)}</p>`;
+      });
+
+      return html;
+    }
+
+    function formatInlineMd(text) {
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/`(.*?)`/g, '<code>$1</code>');
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    function toggleRawView() {
+      isRawView = !isRawView;
+      const bodyContent = document.getElementById('mdBodyContent');
+      const rawContent = document.getElementById('rawMdContent');
+      const toggleBtn = document.getElementById('toggleRawBtn');
+
+      if (isRawView) {
+        bodyContent.style.display = 'none';
+        rawContent.style.display = 'block';
+        toggleBtn.innerText = 'Formatted MD';
+      } else {
+        bodyContent.style.display = 'block';
+        rawContent.style.display = 'none';
+        toggleBtn.innerText = 'Raw MD';
+      }
+    }
+
+    function copyCurrentMd() {
+      navigator.clipboard.writeText(currentMdRaw).then(() => {
+        alert('Markdown content copied to clipboard!');
+      });
+    }
+
+    function copyFilePath(el) {
+      const pathText = el.innerText;
+      navigator.clipboard.writeText(pathText).then(() => {
+        el.innerText = 'Copied!';
+        el.style.color = 'var(--accent-cyan)';
+        setTimeout(() => {
+          el.innerText = pathText;
+          el.style.color = 'var(--text-muted)';
+        }, 1200);
+      });
+    }
+
+    function toggleEditMode() {
+      const editBtn = document.getElementById('editMdBtn');
+      const saveBtn = document.getElementById('saveMdBtn');
+      const rawBtn = document.getElementById('toggleRawBtn');
+      
+      const bodyContent = document.getElementById('mdBodyContent');
+      const rawContent = document.getElementById('rawMdContent');
+      const editContent = document.getElementById('editMdContent');
+      
+      const fileNameSpan = document.getElementById('mdCardFileName');
+      const filePathSpan = document.getElementById('mdCardFilePath');
+      const editPathInput = document.getElementById('editFilePath');
+
+      if (!isEditMode) {
+        // Enter edit mode
+        isEditMode = true;
+        editContent.value = currentMdRaw;
+        editPathInput.value = currentMdPath.replace(/^\.\.\//, '');
+        
+        bodyContent.style.display = 'none';
+        rawContent.style.display = 'none';
+        editContent.style.display = 'block';
+        
+        fileNameSpan.style.display = 'none';
+        filePathSpan.style.display = 'none';
+        editPathInput.style.display = 'block';
+        
+        editBtn.innerText = 'Cancel Edit';
+        saveBtn.style.display = 'block';
+        rawBtn.style.display = 'none';
+        isRawView = false;
+      } else {
+        // Exit edit mode
+        isEditMode = false;
+        editContent.style.display = 'none';
+        bodyContent.style.display = 'block';
+        
+        editPathInput.style.display = 'none';
+        fileNameSpan.style.display = 'block';
+        filePathSpan.style.display = 'block';
+        
+        editBtn.innerText = 'Edit File';
+        saveBtn.style.display = 'none';
+        rawBtn.style.display = 'block';
+        rawBtn.innerText = 'Raw MD';
+      }
+    }
+
+    async function saveCurrentMd() {
+      const newContent = document.getElementById('editMdContent').value;
+      const newPathInput = document.getElementById('editFilePath').value.trim();
+      const saveBtn = document.getElementById('saveMdBtn');
+      
+      saveBtn.innerText = 'Saving...';
+      saveBtn.disabled = true;
+      
+      const finalNewPath = '../' + newPathInput;
+
+      try {
+        const response = await fetch('/api/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ oldFilePath: currentMdPath, newFilePath: finalNewPath, content: newContent })
+        });
+        
+        const result = await response.json();
+        if (result.success) {
+          saveBtn.innerText = 'Saved!';
+          saveBtn.style.background = 'rgba(76, 175, 80, 0.3)';
+          saveBtn.style.borderColor = '#4CAF50';
+          
+          currentMdRaw = newContent;
+          currentMdPath = finalNewPath;
+          
+          const pathParts = newPathInput.split('/');
+          const newName = pathParts[pathParts.length - 1];
+          
+          document.getElementById('mdCardFileName').innerText = newName;
+          document.getElementById('mdCardFilePath').innerText = 'DJP-v1/' + newPathInput;
+          document.getElementById('currentViewTitle').innerHTML = `<span>📄 ${newName}</span><span class="file-badge">Saved</span>`;
+          
+          document.getElementById('rawMdContent').innerText = currentMdRaw;
+          document.getElementById('mdBodyContent').innerHTML = renderSimpleMarkdown(currentMdRaw);
+          
+          // Re-fetch the kanban if we edited a todo.md file
+          if (currentMdPath.includes('todo.md')) {
+            fetchTodoData();
+          }
+          
+          setTimeout(() => {
+            toggleEditMode();
+            saveBtn.disabled = false;
+            saveBtn.style.background = 'rgba(79, 172, 254, 0.3)';
+            saveBtn.style.borderColor = 'var(--accent-cyan)';
+            currentMdName = newName;
+            saveDashboardState();
+          }, 800);
+        } else {
+          throw new Error(result.error);
+        }
+      } catch (err) {
+        alert('Failed to save: ' + err.message + '\\nAre you running the Node.js dashboard-server.js?');
+        saveBtn.innerText = 'Save';
+        saveBtn.disabled = false;
+      }
+    }
+
+    function parseTodoMarkdown(mdContent, sourceLabel = 'todo.md') {
+      const lines = mdContent.split('\n');
+      const tasks = [];
+      lines.forEach((line) => {
+        const trimmed = line.trim();
+        const match = trimmed.match(/^[*-]\s+\[([ xX/!])\]\s+(.+)$/);
+        if (match) {
+          const char = match[1].toLowerCase();
+          const rawTitle = match[2];
+          let status = 'pending';
+          if (char === 'x') status = 'completed';
+          else if (char === '/' || char === '!') status = 'in-progress';
+          tasks.push({ title: rawTitle, status: status, source: sourceLabel });
+        }
+      });
+      return tasks;
+    }
+
+    async function fetchTodoContent(filePath) {
+      try {
+        const response = await fetch(filePath + '?t=' + Date.now());
+        if (!response.ok) throw new Error('File fetch error');
+        return await response.text();
+      } catch (err) {
+        return FALLBACK_MD[filePath] || '';
+      }
+    }
+
+    async function fetchTodoData() {
+      let tasks = [];
+      if (currentKanbanTab === 'backlog') {
+        const missedText = await fetchTodoContent('../todo/missed_todos.md');
+        const feText = await fetchTodoContent('../frontend/todo.md');
+        const beText = await fetchTodoContent('../backend/todo.md');
+        tasks = [
+          ...parseTodoMarkdown(missedText, 'missed_todos.md'),
+          ...parseTodoMarkdown(feText, 'frontend/todo.md'),
+          ...parseTodoMarkdown(beText, 'backend/todo.md')
+        ];
+      } else {
+        const activeText = await fetchTodoContent('../todo.md');
+        tasks = parseTodoMarkdown(activeText, 'todo.md');
+      }
+      renderTasks(tasks);
+    }
+
+    function renderTasks(tasks) {
+      const listPending = document.getElementById('listPending');
+      const listProgress = document.getElementById('listProgress');
+      const listCompleted = document.getElementById('listCompleted');
+
+      if (!listPending || !listProgress || !listCompleted) return;
+
+      listPending.innerHTML = '';
+      listProgress.innerHTML = '';
+      listCompleted.innerHTML = '';
+
+      let pendingCount = 0, progressCount = 0, completedCount = 0;
+
+      tasks.forEach((task) => {
+        const card = document.createElement('div');
+        card.className = `task-card ${task.status}`;
+        let tagClass = 'tag-pending', label = 'PLANNED';
+        if (task.status === 'in-progress') {
+          tagClass = 'tag-progress'; label = 'IN PROGRESS'; progressCount++;
+        } else if (task.status === 'completed') {
+          tagClass = 'tag-completed'; label = 'COMPLETED'; completedCount++;
+        } else {
+          pendingCount++;
+        }
+
+        card.innerHTML = `
+          <div class="task-card-title">${formatInlineMd(task.title)}</div>
+          <div class="task-card-meta">
+            <span class="task-tag ${tagClass}">${label}</span>
+            <span>${task.source || 'todo.md'}</span>
+          </div>
+        `;
+
+        if (task.status === 'in-progress') listProgress.appendChild(card);
+        else if (task.status === 'completed') listCompleted.appendChild(card);
+        else listPending.appendChild(card);
+      });
+
+      document.getElementById('countPending').innerText = pendingCount;
+      document.getElementById('countProgress').innerText = progressCount;
+      document.getElementById('countCompleted').innerText = completedCount;
+
+      const total = tasks.length;
+      document.getElementById('metricTotal').innerText = total;
+      document.getElementById('metricActive').innerText = progressCount;
+      document.getElementById('metricCompleted').innerText = completedCount;
+
+      const rate = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+      document.getElementById('metricRate').innerText = `${rate}%`;
+      document.getElementById('progressBarFill').style.width = `${rate}%`;
+      document.getElementById('progressBarLabel').innerText = `${completedCount} / ${total} Tasks Completed (${rate}%)`;
+    }
+
+    function fetchCurrentView() {
+      if (activeMode === 'kanban') fetchTodoData();
+      else loadAndDisplayMd(currentMdPath);
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('djpTheme', target);
+      const icon = document.getElementById('themeIcon');
+      if (icon) icon.innerText = target === 'light' ? '🌙 Dark' : '☀️ Light';
+    }
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      const savedTheme = localStorage.getItem('djpTheme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const icon = document.getElementById('themeIcon');
+      if (icon) icon.innerText = savedTheme === 'light' ? '🌙 Dark' : '☀️ Light';
+      await initTreeExplorer();
+      const restored = restoreDashboardState();
+      if (!restored) {
+        fetchTodoData();
+      }
+    });
+  </script>
+</body>
+</html>

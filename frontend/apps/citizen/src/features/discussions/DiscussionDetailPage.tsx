@@ -231,8 +231,8 @@ export default function DiscussionDetailPage() {
   }
 
   return (
-    <div className="flex-1 p-6 overflow-y-auto">
-      <div className="max-w-7xl mx-auto">
+    <div className="flex-1 p-8 overflow-y-auto">
+      <div className="w-full">
         <Link to="/discussions" className="inline-flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] mb-6 transition-colors">
           <ArrowLeft size={16} />
           Back to Discussions

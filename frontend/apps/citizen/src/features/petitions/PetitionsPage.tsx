@@ -31,7 +31,7 @@ export default function PetitionsPage() {
   return (
     <div className="flex-1 overflow-y-auto">
       <div className="p-8 pb-0">
-        <div className="flex items-end justify-between max-w-7xl mx-auto w-full mb-6">
+        <div className="flex items-end justify-between w-full mb-6">
           <div>
             <h1 className="text-[var(--text-heading)] font-bold text-[var(--color-text-primary)]">Petitions</h1>
             <p className="text-sm text-[var(--color-text-secondary)] mt-1">Add your voice to community petitions or start a new one.</p>
@@ -61,7 +61,7 @@ export default function PetitionsPage() {
       </div>
 
       <div className="px-8 pb-8">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
           {PETITIONS.map((p) => {
             const pct = Math.round((p.signatures / p.goal) * 100);
             return (
