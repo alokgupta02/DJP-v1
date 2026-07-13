@@ -28,6 +28,16 @@ In the agentic workflow, whenever there is a need to create any documentation, A
 - **`/planning-with-files`**: Use persistent file-based planning (`task_plan.md`, `findings.md`, `progress.md`) to structure complex tasks, research, and decisions.
 - **`/brainstorming`**: Explore user intent, requirements, architecture, and design thoroughly before creating any documentation, specifications, or implementation.
 
-
-
-
+## 5. Master Workflow Guide & Domain Ecosystem
+All agents MUST follow the domain-scoped task & state flow defined in `AGENTIC_WORKFLOW_GUIDE.md`:
+- **Domain State Trackers (`.djp_state.md`)**:
+  - Root: `.djp_state.md` (Monorepo Master State)
+  - Frontend: `frontend/.djp_state.md` (FE UI State)
+  - Backend: `backend/.djp_state.md` (BE Microservice State)
+- **Intake Portal (`/todo.md`)**: User writes 1–2 line goals. PM Agent reads input here and scopes `PRD.md`.
+- **Executive Dashboard (`/dashboard.md`)**: High-level progress tracking.
+- **Domain Execution Todos**:
+  - `frontend/fe-todo.md` (FE Agent)
+  - `backend/be-todo.md` (BE Agent)
+  - `tests/test-todo.md` (QA Agent)
+- **Archive SSOT (`archive/todo.md`)**: Move all completed tasks date-wise into `archive/todo.md`. Never delete completed task history.

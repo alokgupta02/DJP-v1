@@ -4451,7 +4451,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage",
-      "community": 18,
+      "community": 329,
       "norm_label": "creatediscussionpage.tsx"
     },
     {
@@ -4461,7 +4461,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage_communities",
-      "community": 18,
+      "community": 329,
       "norm_label": "communities"
     },
     {
@@ -4471,7 +4471,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage_creatediscussionpage",
-      "community": 18,
+      "community": 329,
       "norm_label": "creatediscussionpage()"
     },
     {
@@ -4991,7 +4991,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage",
-      "community": 18,
+      "community": 328,
       "norm_label": "pollspage.tsx"
     },
     {
@@ -5001,7 +5001,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_filter_tabs",
-      "community": 18,
+      "community": 328,
       "norm_label": "filter_tabs"
     },
     {
@@ -5011,7 +5011,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_polls",
-      "community": 18,
+      "community": 328,
       "norm_label": "polls"
     },
     {
@@ -5021,7 +5021,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_pollspage",
-      "community": 18,
+      "community": 328,
       "norm_label": "pollspage()"
     },
     {
@@ -7185,6 +7185,16 @@
       "norm_label": "4. mandatory lifecycle skills & tools"
     },
     {
+      "label": "5. Master Workflow Guide & Domain Ecosystem",
+      "file_type": "document",
+      "source_file": ".agents/AGENTS.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "agents_agents_5_master_workflow_guide_domain_ecosystem",
+      "community": 246,
+      "norm_label": "5. master workflow guide & domain ecosystem"
+    },
+    {
       "label": "AGENT.md",
       "file_type": "document",
       "source_file": ".agents/design-system/AGENT.md",
@@ -7997,6 +8007,66 @@
     {
       "label": "SKILL.md",
       "file_type": "document",
+      "source_file": ".agents/skills/be-agent/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_skills_be_agent_skill",
+      "community": 159,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "\u2699\ufe0f BE Agent (Backend Microservice Developer) Operating Specification",
+      "file_type": "document",
+      "source_file": ".agents/skills/be-agent/SKILL.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "agents_skills_be_agent_skill_be_agent_backend_microservice_developer_operating_specification",
+      "community": 159,
+      "norm_label": "\u2699\ufe0f be agent (backend microservice developer) operating specification"
+    },
+    {
+      "label": "1. Role Overview & Boundary",
+      "file_type": "document",
+      "source_file": ".agents/skills/be-agent/SKILL.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "agents_skills_be_agent_skill_1_role_overview_boundary",
+      "community": 159,
+      "norm_label": "1. role overview & boundary"
+    },
+    {
+      "label": "2. Mandatory Inputs & Outputs",
+      "file_type": "document",
+      "source_file": ".agents/skills/be-agent/SKILL.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "agents_skills_be_agent_skill_2_mandatory_inputs_outputs",
+      "community": 159,
+      "norm_label": "2. mandatory inputs & outputs"
+    },
+    {
+      "label": "3. Required Skills & Lifecycle Workflows",
+      "file_type": "document",
+      "source_file": ".agents/skills/be-agent/SKILL.md",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "agents_skills_be_agent_skill_3_required_skills_lifecycle_workflows",
+      "community": 159,
+      "norm_label": "3. required skills & lifecycle workflows"
+    },
+    {
+      "label": "4. Execution Guardrails & Checklist",
+      "file_type": "document",
+      "source_file": ".agents/skills/be-agent/SKILL.md",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "agents_skills_be_agent_skill_4_execution_guardrails_checklist",
+      "community": 159,
+      "norm_label": "4. execution guardrails & checklist"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
       "source_file": ".agents/skills/brainstorming/SKILL.md",
       "source_location": "L1",
       "_origin": "ast",
@@ -8427,6 +8497,66 @@
     {
       "label": "SKILL.md",
       "file_type": "document",
+      "source_file": ".agents/skills/fe-agent/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_skills_fe_agent_skill",
+      "community": 305,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "\ud83c\udfa8 FE Agent (Frontend React Developer) Operating Specification",
+      "file_type": "document",
+      "source_file": ".agents/skills/fe-agent/SKILL.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "agents_skills_fe_agent_skill_fe_agent_frontend_react_developer_operating_specification",
+      "community": 305,
+      "norm_label": "\ud83c\udfa8 fe agent (frontend react developer) operating specification"
+    },
+    {
+      "label": "1. Role Overview & Boundary",
+      "file_type": "document",
+      "source_file": ".agents/skills/fe-agent/SKILL.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "agents_skills_fe_agent_skill_1_role_overview_boundary",
+      "community": 305,
+      "norm_label": "1. role overview & boundary"
+    },
+    {
+      "label": "2. Mandatory Inputs & Outputs",
+      "file_type": "document",
+      "source_file": ".agents/skills/fe-agent/SKILL.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "agents_skills_fe_agent_skill_2_mandatory_inputs_outputs",
+      "community": 305,
+      "norm_label": "2. mandatory inputs & outputs"
+    },
+    {
+      "label": "3. Required Skills & Lifecycle Workflows",
+      "file_type": "document",
+      "source_file": ".agents/skills/fe-agent/SKILL.md",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "agents_skills_fe_agent_skill_3_required_skills_lifecycle_workflows",
+      "community": 305,
+      "norm_label": "3. required skills & lifecycle workflows"
+    },
+    {
+      "label": "4. Execution Guardrails & Checklist",
+      "file_type": "document",
+      "source_file": ".agents/skills/fe-agent/SKILL.md",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "agents_skills_fe_agent_skill_4_execution_guardrails_checklist",
+      "community": 305,
+      "norm_label": "4. execution guardrails & checklist"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
       "source_file": ".agents/skills/find-skills/SKILL.md",
       "source_location": "L1",
       "_origin": "ast",
@@ -8563,6 +8693,66 @@
       "id": "agents_skills_find_skills_skill_when_no_skills_are_found",
       "community": 35,
       "norm_label": "when no skills are found"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".agents/skills/github-agent/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_skills_github_agent_skill",
+      "community": 322,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "\ud83d\udc19 GitHub Agent (Git Operations & PR Manager) Operating Specification",
+      "file_type": "document",
+      "source_file": ".agents/skills/github-agent/SKILL.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "agents_skills_github_agent_skill_github_agent_git_operations_pr_manager_operating_specification",
+      "community": 322,
+      "norm_label": "\ud83d\udc19 github agent (git operations & pr manager) operating specification"
+    },
+    {
+      "label": "1. Role Overview & Boundary",
+      "file_type": "document",
+      "source_file": ".agents/skills/github-agent/SKILL.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "agents_skills_github_agent_skill_1_role_overview_boundary",
+      "community": 322,
+      "norm_label": "1. role overview & boundary"
+    },
+    {
+      "label": "2. Mandatory Inputs & Outputs",
+      "file_type": "document",
+      "source_file": ".agents/skills/github-agent/SKILL.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "agents_skills_github_agent_skill_2_mandatory_inputs_outputs",
+      "community": 322,
+      "norm_label": "2. mandatory inputs & outputs"
+    },
+    {
+      "label": "3. Required Skills & Lifecycle Workflows",
+      "file_type": "document",
+      "source_file": ".agents/skills/github-agent/SKILL.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "agents_skills_github_agent_skill_3_required_skills_lifecycle_workflows",
+      "community": 322,
+      "norm_label": "3. required skills & lifecycle workflows"
+    },
+    {
+      "label": "4. Execution Guardrails & Checklist",
+      "file_type": "document",
+      "source_file": ".agents/skills/github-agent/SKILL.md",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "agents_skills_github_agent_skill_4_execution_guardrails_checklist",
+      "community": 322,
+      "norm_label": "4. execution guardrails & checklist"
     },
     {
       "label": "SKILL.md",
@@ -8731,7 +8921,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill",
-      "community": 85,
+      "community": 327,
       "norm_label": "skill.md"
     },
     {
@@ -8801,7 +8991,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_critical_rules",
-      "community": 156,
+      "community": 32,
       "norm_label": "critical rules"
     },
     {
@@ -8811,7 +9001,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_1_create_plan_first",
-      "community": 156,
+      "community": 32,
       "norm_label": "1. create plan first"
     },
     {
@@ -8821,7 +9011,7 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_2_the_2_action_rule",
-      "community": 156,
+      "community": 32,
       "norm_label": "2. the 2-action rule"
     },
     {
@@ -8831,7 +9021,7 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_3_read_before_decide",
-      "community": 156,
+      "community": 32,
       "norm_label": "3. read before decide"
     },
     {
@@ -8841,7 +9031,7 @@
       "source_location": "L114",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_4_update_after_act",
-      "community": 156,
+      "community": 32,
       "norm_label": "4. update after act"
     },
     {
@@ -8851,7 +9041,7 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_5_log_all_errors",
-      "community": 156,
+      "community": 32,
       "norm_label": "5. log all errors"
     },
     {
@@ -8861,7 +9051,7 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_6_never_repeat_failures",
-      "community": 156,
+      "community": 32,
       "norm_label": "6. never repeat failures"
     },
     {
@@ -8871,7 +9061,7 @@
       "source_location": "L138",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_7_continue_after_completion",
-      "community": 156,
+      "community": 32,
       "norm_label": "7. continue after completion"
     },
     {
@@ -8951,7 +9141,7 @@
       "source_location": "L247",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_claude_code_turn_loop_integration_v2_38_0",
-      "community": 159,
+      "community": 32,
       "norm_label": "claude code turn-loop integration (v2.38.0+)"
     },
     {
@@ -8961,7 +9151,7 @@
       "source_location": "L251",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_install_scope_plugin_vs_skill_only_v2_42_0_clarification",
-      "community": 159,
+      "community": 32,
       "norm_label": "install scope: plugin vs skill-only (v2.42.0 clarification)"
     },
     {
@@ -8971,7 +9161,7 @@
       "source_location": "L264",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_precompact_hook_auto",
-      "community": 159,
+      "community": 32,
       "norm_label": "precompact hook (auto)"
     },
     {
@@ -8981,7 +9171,7 @@
       "source_location": "L274",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_plan_goal_slash_command",
-      "community": 159,
+      "community": 32,
       "norm_label": "`/plan-goal` slash command"
     },
     {
@@ -8991,7 +9181,7 @@
       "source_location": "L285",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_plan_loop_slash_command",
-      "community": 159,
+      "community": 32,
       "norm_label": "`/plan-loop` slash command"
     },
     {
@@ -9001,7 +9191,7 @@
       "source_location": "L297",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_manual_fallback_when_plan_goal_plan_loop_are_unavailable_v2_42_0",
-      "community": 159,
+      "community": 32,
       "norm_label": "manual fallback when `/plan-goal` / `/plan-loop` are unavailable (v2.42.0)"
     },
     {
@@ -9011,7 +9201,7 @@
       "source_location": "L320",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_loop_md_template",
-      "community": 159,
+      "community": 32,
       "norm_label": "`loop.md` template"
     },
     {
@@ -9021,7 +9211,7 @@
       "source_location": "L334",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_autonomous_and_gated_modes_v3",
-      "community": 157,
+      "community": 32,
       "norm_label": "autonomous and gated modes (v3)"
     },
     {
@@ -9031,7 +9221,7 @@
       "source_location": "L340",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_the_legacy_invariant_promise",
-      "community": 157,
+      "community": 32,
       "norm_label": "the legacy invariant (promise)"
     },
     {
@@ -9041,7 +9231,7 @@
       "source_location": "L344",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_what_each_mode_does",
-      "community": 157,
+      "community": 32,
       "norm_label": "what each mode does"
     },
     {
@@ -9051,7 +9241,7 @@
       "source_location": "L358",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_gate_decision_table",
-      "community": 157,
+      "community": 32,
       "norm_label": "gate decision table"
     },
     {
@@ -9061,7 +9251,7 @@
       "source_location": "L370",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_host_capability_tiers",
-      "community": 157,
+      "community": 32,
       "norm_label": "host capability tiers"
     },
     {
@@ -9071,7 +9261,7 @@
       "source_location": "L382",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_runaway_guards",
-      "community": 157,
+      "community": 32,
       "norm_label": "runaway guards"
     },
     {
@@ -9081,7 +9271,7 @@
       "source_location": "L391",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_ledger_contract_summary",
-      "community": 157,
+      "community": 32,
       "norm_label": "ledger contract summary"
     },
     {
@@ -9091,7 +9281,7 @@
       "source_location": "L397",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_trying_it",
-      "community": 157,
+      "community": 32,
       "norm_label": "trying it"
     },
     {
@@ -9171,7 +9361,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_examples_example_1_research_task",
-      "community": 305,
+      "community": 98,
       "norm_label": "example 1: research task"
     },
     {
@@ -9181,7 +9371,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_examples_loop_1_create_plan",
-      "community": 305,
+      "community": 98,
       "norm_label": "loop 1: create plan"
     },
     {
@@ -9191,7 +9381,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_examples_loop_2_research",
-      "community": 305,
+      "community": 98,
       "norm_label": "loop 2: research"
     },
     {
@@ -9201,7 +9391,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_examples_loop_3_synthesize",
-      "community": 305,
+      "community": 98,
       "norm_label": "loop 3: synthesize"
     },
     {
@@ -9211,7 +9401,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_examples_loop_4_deliver",
-      "community": 305,
+      "community": 98,
       "norm_label": "loop 4: deliver"
     },
     {
@@ -9301,7 +9491,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference",
-      "community": 85,
+      "community": 327,
       "norm_label": "reference.md"
     },
     {
@@ -9321,7 +9511,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_the_6_manus_principles",
-      "community": 31,
+      "community": 156,
       "norm_label": "the 6 manus principles"
     },
     {
@@ -9331,7 +9521,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_1_design_around_kv_cache",
-      "community": 31,
+      "community": 156,
       "norm_label": "principle 1: design around kv-cache"
     },
     {
@@ -9341,7 +9531,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_2_mask_don_t_remove",
-      "community": 31,
+      "community": 156,
       "norm_label": "principle 2: mask, don't remove"
     },
     {
@@ -9351,7 +9541,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_3_filesystem_as_external_memory",
-      "community": 31,
+      "community": 156,
       "norm_label": "principle 3: filesystem as external memory"
     },
     {
@@ -9361,7 +9551,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_4_manipulate_attention_through_recitation",
-      "community": 31,
+      "community": 156,
       "norm_label": "principle 4: manipulate attention through recitation"
     },
     {
@@ -9371,7 +9561,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_5_keep_the_wrong_stuff_in",
-      "community": 31,
+      "community": 156,
       "norm_label": "principle 5: keep the wrong stuff in"
     },
     {
@@ -9381,7 +9571,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_6_don_t_get_few_shotted",
-      "community": 31,
+      "community": 156,
       "norm_label": "principle 6: don't get few-shotted"
     },
     {
@@ -9721,7 +9911,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_findings",
-      "community": 85,
+      "community": 327,
       "norm_label": "findings.md"
     },
     {
@@ -9881,7 +10071,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan",
-      "community": 85,
+      "community": 327,
       "norm_label": "task_plan.md"
     },
     {
@@ -9921,7 +10111,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phases",
-      "community": 78,
+      "community": 323,
       "norm_label": "phases"
     },
     {
@@ -9931,7 +10121,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phase_1_requirements_discovery",
-      "community": 78,
+      "community": 323,
       "norm_label": "phase 1: requirements & discovery"
     },
     {
@@ -9941,7 +10131,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phase_2_planning_structure",
-      "community": 78,
+      "community": 323,
       "norm_label": "phase 2: planning & structure"
     },
     {
@@ -9951,7 +10141,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phase_3_implementation",
-      "community": 78,
+      "community": 323,
       "norm_label": "phase 3: implementation"
     },
     {
@@ -9961,7 +10151,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phase_4_testing_verification",
-      "community": 78,
+      "community": 323,
       "norm_label": "phase 4: testing & verification"
     },
     {
@@ -9971,7 +10161,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phase_5_delivery",
-      "community": 78,
+      "community": 323,
       "norm_label": "phase 5: delivery"
     },
     {
@@ -10173,6 +10363,136 @@
       "id": "agents_skills_planning_with_files_templates_task_plan_autonomous_notes",
       "community": 42,
       "norm_label": "notes"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_skills_pm_agent_skill",
+      "community": 157,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "\ud83d\udc51 PM Agent (Product Manager) Operating Specification",
+      "file_type": "document",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "agents_skills_pm_agent_skill_pm_agent_product_manager_operating_specification",
+      "community": 157,
+      "norm_label": "\ud83d\udc51 pm agent (product manager) operating specification"
+    },
+    {
+      "label": "1. Role Overview & Boundary",
+      "file_type": "document",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "agents_skills_pm_agent_skill_1_role_overview_boundary",
+      "community": 157,
+      "norm_label": "1. role overview & boundary"
+    },
+    {
+      "label": "2. Mandatory Inputs & Outputs",
+      "file_type": "document",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "agents_skills_pm_agent_skill_2_mandatory_inputs_outputs",
+      "community": 157,
+      "norm_label": "2. mandatory inputs & outputs"
+    },
+    {
+      "label": "3. PM Task Breakdown & Domain Analysis Protocol",
+      "file_type": "document",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "agents_skills_pm_agent_skill_3_pm_task_breakdown_domain_analysis_protocol",
+      "community": 157,
+      "norm_label": "3. pm task breakdown & domain analysis protocol"
+    },
+    {
+      "label": "4. Required Skills & Lifecycle Workflows",
+      "file_type": "document",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "agents_skills_pm_agent_skill_4_required_skills_lifecycle_workflows",
+      "community": 157,
+      "norm_label": "4. required skills & lifecycle workflows"
+    },
+    {
+      "label": "5. Execution Guardrails & Checklist",
+      "file_type": "document",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L64",
+      "_origin": "ast",
+      "id": "agents_skills_pm_agent_skill_5_execution_guardrails_checklist",
+      "community": 157,
+      "norm_label": "5. execution guardrails & checklist"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".agents/skills/qa-agent/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_skills_qa_agent_skill",
+      "community": 324,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "\ud83e\uddea QA Agent (TDD Test Engineer) Operating Specification",
+      "file_type": "document",
+      "source_file": ".agents/skills/qa-agent/SKILL.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "agents_skills_qa_agent_skill_qa_agent_tdd_test_engineer_operating_specification",
+      "community": 324,
+      "norm_label": "\ud83e\uddea qa agent (tdd test engineer) operating specification"
+    },
+    {
+      "label": "1. Role Overview & Boundary",
+      "file_type": "document",
+      "source_file": ".agents/skills/qa-agent/SKILL.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "agents_skills_qa_agent_skill_1_role_overview_boundary",
+      "community": 324,
+      "norm_label": "1. role overview & boundary"
+    },
+    {
+      "label": "2. Mandatory Inputs & Outputs",
+      "file_type": "document",
+      "source_file": ".agents/skills/qa-agent/SKILL.md",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "agents_skills_qa_agent_skill_2_mandatory_inputs_outputs",
+      "community": 324,
+      "norm_label": "2. mandatory inputs & outputs"
+    },
+    {
+      "label": "3. Required Skills & Lifecycle Workflows",
+      "file_type": "document",
+      "source_file": ".agents/skills/qa-agent/SKILL.md",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "agents_skills_qa_agent_skill_3_required_skills_lifecycle_workflows",
+      "community": 324,
+      "norm_label": "3. required skills & lifecycle workflows"
+    },
+    {
+      "label": "4. Execution Guardrails & Checklist",
+      "file_type": "document",
+      "source_file": ".agents/skills/qa-agent/SKILL.md",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "agents_skills_qa_agent_skill_4_execution_guardrails_checklist",
+      "community": 324,
+      "norm_label": "4. execution guardrails & checklist"
     },
     {
       "label": "SKILL.md",
@@ -11227,6 +11547,126 @@
     {
       "label": "SKILL.md",
       "file_type": "document",
+      "source_file": ".agents/skills/tech-arch-agent/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_skills_tech_arch_agent_skill",
+      "community": 325,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "\ud83c\udfdb\ufe0f Tech Arch Agent (Technical Architect) Operating Specification",
+      "file_type": "document",
+      "source_file": ".agents/skills/tech-arch-agent/SKILL.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "agents_skills_tech_arch_agent_skill_tech_arch_agent_technical_architect_operating_specification",
+      "community": 325,
+      "norm_label": "\ud83c\udfdb\ufe0f tech arch agent (technical architect) operating specification"
+    },
+    {
+      "label": "1. Role Overview & Boundary",
+      "file_type": "document",
+      "source_file": ".agents/skills/tech-arch-agent/SKILL.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "agents_skills_tech_arch_agent_skill_1_role_overview_boundary",
+      "community": 325,
+      "norm_label": "1. role overview & boundary"
+    },
+    {
+      "label": "2. Mandatory Inputs & Outputs",
+      "file_type": "document",
+      "source_file": ".agents/skills/tech-arch-agent/SKILL.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "agents_skills_tech_arch_agent_skill_2_mandatory_inputs_outputs",
+      "community": 325,
+      "norm_label": "2. mandatory inputs & outputs"
+    },
+    {
+      "label": "3. Required Skills & Lifecycle Workflows",
+      "file_type": "document",
+      "source_file": ".agents/skills/tech-arch-agent/SKILL.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "agents_skills_tech_arch_agent_skill_3_required_skills_lifecycle_workflows",
+      "community": 325,
+      "norm_label": "3. required skills & lifecycle workflows"
+    },
+    {
+      "label": "4. Execution Guardrails & Checklist",
+      "file_type": "document",
+      "source_file": ".agents/skills/tech-arch-agent/SKILL.md",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "agents_skills_tech_arch_agent_skill_4_execution_guardrails_checklist",
+      "community": 325,
+      "norm_label": "4. execution guardrails & checklist"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".agents/skills/tl-agent/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_skills_tl_agent_skill",
+      "community": 326,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "\ud83e\udded TL Agent (Team Lead & Spec Writer) Operating Specification",
+      "file_type": "document",
+      "source_file": ".agents/skills/tl-agent/SKILL.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "agents_skills_tl_agent_skill_tl_agent_team_lead_spec_writer_operating_specification",
+      "community": 326,
+      "norm_label": "\ud83e\udded tl agent (team lead & spec writer) operating specification"
+    },
+    {
+      "label": "1. Role Overview & Boundary",
+      "file_type": "document",
+      "source_file": ".agents/skills/tl-agent/SKILL.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "agents_skills_tl_agent_skill_1_role_overview_boundary",
+      "community": 326,
+      "norm_label": "1. role overview & boundary"
+    },
+    {
+      "label": "2. Mandatory Inputs & Outputs",
+      "file_type": "document",
+      "source_file": ".agents/skills/tl-agent/SKILL.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "agents_skills_tl_agent_skill_2_mandatory_inputs_outputs",
+      "community": 326,
+      "norm_label": "2. mandatory inputs & outputs"
+    },
+    {
+      "label": "3. Required Skills & Lifecycle Workflows",
+      "file_type": "document",
+      "source_file": ".agents/skills/tl-agent/SKILL.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "agents_skills_tl_agent_skill_3_required_skills_lifecycle_workflows",
+      "community": 326,
+      "norm_label": "3. required skills & lifecycle workflows"
+    },
+    {
+      "label": "4. Execution Guardrails & Checklist",
+      "file_type": "document",
+      "source_file": ".agents/skills/tl-agent/SKILL.md",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "agents_skills_tl_agent_skill_4_execution_guardrails_checklist",
+      "community": 326,
+      "norm_label": "4. execution guardrails & checklist"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
       "source_file": ".agents/skills/using-superpowers/SKILL.md",
       "source_location": "L1",
       "_origin": "ast",
@@ -11488,7 +11928,7 @@
       "label": "Code Quality Standards",
       "file_type": "document",
       "source_file": ".djp_rules.md",
-      "source_location": "L8",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "djp_rules_code_quality_standards",
       "community": 287,
@@ -11585,34 +12025,54 @@
       "norm_label": "1. team hierarchy & roles"
     },
     {
-      "label": "2. Spec-Driven & Test-Driven Development (TDD) Flow",
+      "label": "2. Visual Task Flow Across Todos",
       "file_type": "document",
       "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
       "source_location": "L36",
       "_origin": "ast",
-      "id": "agentic_workflow_guide_2_spec_driven_test_driven_development_tdd_flow",
+      "id": "agentic_workflow_guide_2_visual_task_flow_across_todos",
       "community": 243,
-      "norm_label": "2. spec-driven & test-driven development (tdd) flow"
+      "norm_label": "2. visual task flow across todos"
     },
     {
-      "label": "3. Master Folder & Documentation Structure",
+      "label": "Summary Role Table",
       "file_type": "document",
       "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
-      "source_location": "L50",
+      "source_location": "L69",
       "_origin": "ast",
-      "id": "agentic_workflow_guide_3_master_folder_documentation_structure",
+      "id": "agentic_workflow_guide_summary_role_table",
       "community": 243,
-      "norm_label": "3. master folder & documentation structure"
+      "norm_label": "summary role table"
     },
     {
-      "label": "4. Agent Commander Cheat Sheet",
+      "label": "3. Spec-Driven & Test-Driven Development (TDD) Flow",
       "file_type": "document",
       "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
-      "source_location": "L77",
+      "source_location": "L83",
       "_origin": "ast",
-      "id": "agentic_workflow_guide_4_agent_commander_cheat_sheet",
+      "id": "agentic_workflow_guide_3_spec_driven_test_driven_development_tdd_flow",
       "community": 243,
-      "norm_label": "4. agent commander cheat sheet"
+      "norm_label": "3. spec-driven & test-driven development (tdd) flow"
+    },
+    {
+      "label": "4. Master Folder & Todo Architecture Structure",
+      "file_type": "document",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L97",
+      "_origin": "ast",
+      "id": "agentic_workflow_guide_4_master_folder_todo_architecture_structure",
+      "community": 243,
+      "norm_label": "4. master folder & todo architecture structure"
+    },
+    {
+      "label": "5. Agent Commander Cheat Sheet",
+      "file_type": "document",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L128",
+      "_origin": "ast",
+      "id": "agentic_workflow_guide_5_agent_commander_cheat_sheet",
+      "community": 243,
+      "norm_label": "5. agent commander cheat sheet"
     },
     {
       "label": "README.md",
@@ -31310,6 +31770,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": ".agents/AGENTS.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "agents_agents_djp_agent_team_operating_rules",
+      "target": "agents_agents_5_master_workflow_guide_domain_ecosystem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".agents/design-system/AGENT.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -31960,6 +32430,56 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/be-agent/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "agents_skills_be_agent_skill",
+      "target": "agents_skills_be_agent_skill_be_agent_backend_microservice_developer_operating_specification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/be-agent/SKILL.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "agents_skills_be_agent_skill_be_agent_backend_microservice_developer_operating_specification",
+      "target": "agents_skills_be_agent_skill_1_role_overview_boundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/be-agent/SKILL.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "agents_skills_be_agent_skill_be_agent_backend_microservice_developer_operating_specification",
+      "target": "agents_skills_be_agent_skill_2_mandatory_inputs_outputs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/be-agent/SKILL.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "agents_skills_be_agent_skill_be_agent_backend_microservice_developer_operating_specification",
+      "target": "agents_skills_be_agent_skill_3_required_skills_lifecycle_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/be-agent/SKILL.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "agents_skills_be_agent_skill_be_agent_backend_microservice_developer_operating_specification",
+      "target": "agents_skills_be_agent_skill_4_execution_guardrails_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".agents/skills/brainstorming/SKILL.md",
       "source_location": "L6",
       "weight": 1.0,
@@ -32350,6 +32870,56 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/fe-agent/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "agents_skills_fe_agent_skill",
+      "target": "agents_skills_fe_agent_skill_fe_agent_frontend_react_developer_operating_specification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/fe-agent/SKILL.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "agents_skills_fe_agent_skill_fe_agent_frontend_react_developer_operating_specification",
+      "target": "agents_skills_fe_agent_skill_1_role_overview_boundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/fe-agent/SKILL.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "agents_skills_fe_agent_skill_fe_agent_frontend_react_developer_operating_specification",
+      "target": "agents_skills_fe_agent_skill_2_mandatory_inputs_outputs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/fe-agent/SKILL.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "agents_skills_fe_agent_skill_fe_agent_frontend_react_developer_operating_specification",
+      "target": "agents_skills_fe_agent_skill_3_required_skills_lifecycle_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/fe-agent/SKILL.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "agents_skills_fe_agent_skill_fe_agent_frontend_react_developer_operating_specification",
+      "target": "agents_skills_fe_agent_skill_4_execution_guardrails_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".agents/skills/find-skills/SKILL.md",
       "source_location": "L6",
       "weight": 1.0,
@@ -32475,6 +33045,56 @@
       "weight": 1.0,
       "source": "agents_skills_find_skills_skill_how_to_help_users_find_skills",
       "target": "agents_skills_find_skills_skill_step_6_offer_to_install",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/github-agent/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "agents_skills_github_agent_skill",
+      "target": "agents_skills_github_agent_skill_github_agent_git_operations_pr_manager_operating_specification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/github-agent/SKILL.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "agents_skills_github_agent_skill_github_agent_git_operations_pr_manager_operating_specification",
+      "target": "agents_skills_github_agent_skill_1_role_overview_boundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/github-agent/SKILL.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "agents_skills_github_agent_skill_github_agent_git_operations_pr_manager_operating_specification",
+      "target": "agents_skills_github_agent_skill_2_mandatory_inputs_outputs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/github-agent/SKILL.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "agents_skills_github_agent_skill_github_agent_git_operations_pr_manager_operating_specification",
+      "target": "agents_skills_github_agent_skill_3_required_skills_lifecycle_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/github-agent/SKILL.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "agents_skills_github_agent_skill_github_agent_git_operations_pr_manager_operating_specification",
+      "target": "agents_skills_github_agent_skill_4_execution_guardrails_checklist",
       "confidence_score": 1.0
     },
     {
@@ -34030,6 +34650,116 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "agents_skills_pm_agent_skill",
+      "target": "agents_skills_pm_agent_skill_pm_agent_product_manager_operating_specification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "agents_skills_pm_agent_skill_pm_agent_product_manager_operating_specification",
+      "target": "agents_skills_pm_agent_skill_1_role_overview_boundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "agents_skills_pm_agent_skill_pm_agent_product_manager_operating_specification",
+      "target": "agents_skills_pm_agent_skill_2_mandatory_inputs_outputs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "agents_skills_pm_agent_skill_pm_agent_product_manager_operating_specification",
+      "target": "agents_skills_pm_agent_skill_3_pm_task_breakdown_domain_analysis_protocol",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "agents_skills_pm_agent_skill_pm_agent_product_manager_operating_specification",
+      "target": "agents_skills_pm_agent_skill_4_required_skills_lifecycle_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/pm-agent/SKILL.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "agents_skills_pm_agent_skill_pm_agent_product_manager_operating_specification",
+      "target": "agents_skills_pm_agent_skill_5_execution_guardrails_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/qa-agent/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "agents_skills_qa_agent_skill",
+      "target": "agents_skills_qa_agent_skill_qa_agent_tdd_test_engineer_operating_specification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/qa-agent/SKILL.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "agents_skills_qa_agent_skill_qa_agent_tdd_test_engineer_operating_specification",
+      "target": "agents_skills_qa_agent_skill_1_role_overview_boundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/qa-agent/SKILL.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "agents_skills_qa_agent_skill_qa_agent_tdd_test_engineer_operating_specification",
+      "target": "agents_skills_qa_agent_skill_2_mandatory_inputs_outputs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/qa-agent/SKILL.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "agents_skills_qa_agent_skill_qa_agent_tdd_test_engineer_operating_specification",
+      "target": "agents_skills_qa_agent_skill_3_required_skills_lifecycle_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/qa-agent/SKILL.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "agents_skills_qa_agent_skill_qa_agent_tdd_test_engineer_operating_specification",
+      "target": "agents_skills_qa_agent_skill_4_execution_guardrails_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".agents/skills/skill-creator/SKILL.md",
       "source_location": "L6",
       "weight": 1.0,
@@ -35030,6 +35760,106 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/tech-arch-agent/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "agents_skills_tech_arch_agent_skill",
+      "target": "agents_skills_tech_arch_agent_skill_tech_arch_agent_technical_architect_operating_specification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/tech-arch-agent/SKILL.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "agents_skills_tech_arch_agent_skill_tech_arch_agent_technical_architect_operating_specification",
+      "target": "agents_skills_tech_arch_agent_skill_1_role_overview_boundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/tech-arch-agent/SKILL.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "agents_skills_tech_arch_agent_skill_tech_arch_agent_technical_architect_operating_specification",
+      "target": "agents_skills_tech_arch_agent_skill_2_mandatory_inputs_outputs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/tech-arch-agent/SKILL.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "agents_skills_tech_arch_agent_skill_tech_arch_agent_technical_architect_operating_specification",
+      "target": "agents_skills_tech_arch_agent_skill_3_required_skills_lifecycle_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/tech-arch-agent/SKILL.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "agents_skills_tech_arch_agent_skill_tech_arch_agent_technical_architect_operating_specification",
+      "target": "agents_skills_tech_arch_agent_skill_4_execution_guardrails_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/tl-agent/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "agents_skills_tl_agent_skill",
+      "target": "agents_skills_tl_agent_skill_tl_agent_team_lead_spec_writer_operating_specification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/tl-agent/SKILL.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "agents_skills_tl_agent_skill_tl_agent_team_lead_spec_writer_operating_specification",
+      "target": "agents_skills_tl_agent_skill_1_role_overview_boundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/tl-agent/SKILL.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "agents_skills_tl_agent_skill_tl_agent_team_lead_spec_writer_operating_specification",
+      "target": "agents_skills_tl_agent_skill_2_mandatory_inputs_outputs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/tl-agent/SKILL.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "agents_skills_tl_agent_skill_tl_agent_team_lead_spec_writer_operating_specification",
+      "target": "agents_skills_tl_agent_skill_3_required_skills_lifecycle_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/skills/tl-agent/SKILL.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "agents_skills_tl_agent_skill_tl_agent_team_lead_spec_writer_operating_specification",
+      "target": "agents_skills_tl_agent_skill_4_execution_guardrails_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".agents/skills/using-superpowers/SKILL.md",
       "source_location": "L52",
       "weight": 1.0,
@@ -35211,7 +36041,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".djp_rules.md",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0,
       "source": "djp_rules_djpv1_operational_rules",
       "target": "djp_rules_code_quality_standards",
@@ -35304,27 +36134,47 @@
       "source_location": "L36",
       "weight": 1.0,
       "source": "agentic_workflow_guide_djp_master_guide_production_grade_agentic_workflow_team_hierarchy",
-      "target": "agentic_workflow_guide_2_spec_driven_test_driven_development_tdd_flow",
+      "target": "agentic_workflow_guide_2_visual_task_flow_across_todos",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
-      "source_location": "L50",
+      "source_location": "L83",
       "weight": 1.0,
       "source": "agentic_workflow_guide_djp_master_guide_production_grade_agentic_workflow_team_hierarchy",
-      "target": "agentic_workflow_guide_3_master_folder_documentation_structure",
+      "target": "agentic_workflow_guide_3_spec_driven_test_driven_development_tdd_flow",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
-      "source_location": "L77",
+      "source_location": "L97",
       "weight": 1.0,
       "source": "agentic_workflow_guide_djp_master_guide_production_grade_agentic_workflow_team_hierarchy",
-      "target": "agentic_workflow_guide_4_agent_commander_cheat_sheet",
+      "target": "agentic_workflow_guide_4_master_folder_todo_architecture_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "agentic_workflow_guide_djp_master_guide_production_grade_agentic_workflow_team_hierarchy",
+      "target": "agentic_workflow_guide_5_agent_commander_cheat_sheet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "agentic_workflow_guide_2_visual_task_flow_across_todos",
+      "target": "agentic_workflow_guide_summary_role_table",
       "confidence_score": 1.0
     },
     {
@@ -44429,5 +45279,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "767e75434e8b3a8f5ac8005a96da722f86f4fe79"
+  "built_at_commit": "f7b74533039d0cc19b9db61528ef3812516382ff"
 }

@@ -1,16 +1,16 @@
 # Graph Report - DJP-v1  (2026-07-14)
 
 ## Corpus Check
-- 372 files · ~213,457 words
+- 379 files · ~216,254 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2166 nodes · 2213 edges · 322 communities (192 shown, 130 thin omitted)
+- 2212 nodes · 2252 edges · 330 communities (198 shown, 132 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `767e7543`
+- Built from commit: `f7b74533`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -306,6 +306,13 @@
 - 🔄 Refinement Workflow
 - 🚨 **Civic Issue Reporting UX Specification**
 - DJP Citizen App — Todo
+- 🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification
+- Phases
+- 🧪 QA Agent (TDD Test Engineer) Operating Specification
+- 🏛️ Tech Arch Agent (Technical Architect) Operating Specification
+- 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
+- PollsPage.tsx
+- CreateDiscussionPage.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `✅ **Production-Ready Spring Boot Web App Checklist**` - 22 edges
@@ -334,7 +341,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (322 total, 130 thin omitted)
+## Communities (330 total, 132 thin omitted)
 
 ### Community 0 - "Test-Driven Development (TDD)"
 Cohesion: 0.05
@@ -409,8 +416,8 @@ Cohesion: 0.10
 Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, jsx, lib, module, moduleDetection (+11 more)
 
 ### Community 18 - "router.tsx"
-Cohesion: 0.12
-Nodes (7): AuthLayout(), router, Step2Location(), COMMUNITIES, NotFoundPage(), FILTER_TABS, POLLS
+Cohesion: 0.20
+Nodes (4): AuthLayout(), router, Step2Location(), NotFoundPage()
 
 ### Community 19 - "compilerOptions"
 Cohesion: 0.11
@@ -461,12 +468,12 @@ Cohesion: 0.13
 Nodes (14): Blind Comparator Agent, Field Descriptions, Guidelines, Inputs, Output Format, Process, Role, Step 1: Read Both Outputs (+6 more)
 
 ### Community 31 - "7. JavaScript Performance"
-Cohesion: 0.11
-Nodes (18): Critical Constraints, File Types Manus Creates, Key Quotes, Manus Statistics, Principle 1: Design Around KV-Cache, Principle 2: Mask, Don't Remove, Principle 3: Filesystem as External Memory, Principle 4: Manipulate Attention Through Recitation (+10 more)
+Cohesion: 0.18
+Nodes (11): Critical Constraints, File Types Manus Creates, Key Quotes, Manus Statistics, Reference: Manus Context Engineering Principles, Source, Strategy 1: Context Reduction, Strategy 2: Context Isolation (Multi-Agent) (+3 more)
 
 ### Community 32 - "Quick Reference"
-Cohesion: 0.11
-Nodes (18): Advanced Topics, Anti-Patterns, File Purposes, FIRST: Restore Context (v2.2.0), Important: Where Files Go, Parallel task workflow, Planning with Files, Quick Start (+10 more)
+Cohesion: 0.05
+Nodes (41): 1. Create Plan First, 2. The 2-Action Rule, 3. Read Before Decide, 4. Update After Act, 5. Log ALL Errors, 6. Never Repeat Failures, 7. Continue After Completion, Advanced Topics (+33 more)
 
 ### Community 33 - "scripts"
 Cohesion: 0.13
@@ -641,8 +648,8 @@ Cohesion: 0.15
 Nodes (12): Current Phase, Decisions Made, Errors Encountered, Goal, Hypotheses, Notes, Phase 1: Data Discovery, Phase 2: Exploratory Analysis (+4 more)
 
 ### Community 78 - "2. Bundle Size Optimization"
-Cohesion: 0.15
-Nodes (13): Current Phase, Decisions Made, Errors Encountered, Goal, Key Questions, Notes, Phase 1: Requirements & Discovery, Phase 2: Planning & Structure (+5 more)
+Cohesion: 0.29
+Nodes (7): Current Phase, Decisions Made, Errors Encountered, Goal, Key Questions, Notes, Task Plan: [Brief Description]
 
 ### Community 79 - "design-principles.md"
 Cohesion: 0.17
@@ -669,7 +676,7 @@ Cohesion: 0.33
 Nodes (5): How to Use, References, Rule Categories by Priority, Supabase Postgres Best Practices, When to Apply
 
 ### Community 85 - "React Best Practices"
-Cohesion: 0.18
+Cohesion: 0.29
 Nodes (7): Findings & Decisions, Issues Encountered, Requirements, Research Findings, Resources, Technical Decisions, Visual/Browser Findings
 
 ### Community 86 - "package.json"
@@ -721,8 +728,8 @@ Cohesion: 0.20
 Nodes (9): 3-Layer Workflow (ALWAYS Follow), Examples, Knowledge Agents, Memory Search, Step 1: Search - Get Index with IDs, Step 2: Timeline - Get Context Around Interesting Results, Step 3: Fetch - Get Full Details ONLY for Filtered IDs, When to Use (+1 more)
 
 ### Community 98 - "server-hoist-static-io.md"
-Cohesion: 0.20
-Nodes (9): After (Correct), Before (Wrong), Example 2: Bug Fix Task, Example 3: Feature Development, Example 4: Error Recovery Pattern, Examples: Planning with Files in Action, task_plan.md, The 3-File Pattern in Action (+1 more)
+Cohesion: 0.13
+Nodes (14): After (Correct), Before (Wrong), Example 1: Research Task, Example 2: Bug Fix Task, Example 3: Feature Development, Example 4: Error Recovery Pattern, Examples: Planning with Files in Action, Loop 1: Create Plan (+6 more)
 
 ### Community 99 - "React + TypeScript + Vite"
 Cohesion: 0.50
@@ -753,20 +760,20 @@ Cohesion: 0.47
 Nodes (6): is_within_root(), resolve_from_active_file(), resolve_from_env(), resolve_latest_dir(), resolve-plan-dir.sh script, slug_is_valid()
 
 ### Community 156 - "async-api-routes.md"
-Cohesion: 0.25
-Nodes (8): 1. Create Plan First, 2. The 2-Action Rule, 3. Read Before Decide, 4. Update After Act, 5. Log ALL Errors, 6. Never Repeat Failures, 7. Continue After Completion, Critical Rules
+Cohesion: 0.29
+Nodes (7): Principle 1: Design Around KV-Cache, Principle 2: Mask, Don't Remove, Principle 3: Filesystem as External Memory, Principle 4: Manipulate Attention Through Recitation, Principle 5: Keep the Wrong Stuff In, Principle 6: Don't Get Few-Shotted, The 6 Manus Principles
 
 ### Community 157 - "async-dependencies.md"
-Cohesion: 0.25
-Nodes (8): Autonomous and Gated Modes (v3), Gate decision table, Host capability tiers, Ledger contract summary, Runaway guards, The legacy invariant (promise), Trying it, What each mode does
+Cohesion: 0.29
+Nodes (6): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. PM Task Breakdown & Domain Analysis Protocol, 4. Required Skills & Lifecycle Workflows, 5. Execution Guardrails & Checklist, 👑 PM Agent (Product Manager) Operating Specification
 
 ### Community 158 - "async-parallel.md"
 Cohesion: 0.25
 Nodes (7): 5-Question Reboot Check, Error Log, Phase 1: [Title], Phase 2: [Title], Progress Log, Session: [DATE], Test Results
 
 ### Community 159 - "async-suspense-boundaries.md"
-Cohesion: 0.29
-Nodes (7): Claude Code Turn-Loop Integration (v2.38.0+), Install scope: plugin vs skill-only (v2.42.0 clarification), `loop.md` template, Manual fallback when `/plan-goal` / `/plan-loop` are unavailable (v2.42.0), `/plan-goal` slash command, `/plan-loop` slash command, PreCompact hook (auto)
+Cohesion: 0.33
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, ⚙️ BE Agent (Backend Microservice Developer) Operating Specification
 
 ### Community 160 - "bundle-barrel-imports.md"
 Cohesion: 0.29
@@ -833,8 +840,8 @@ Cohesion: 0.31
 Nodes (6): AuthController, CrossOrigin, GetMapping, RequestMapping, ResponseEntity, RestController
 
 ### Community 243 - "DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy"
-Cohesion: 0.33
-Nodes (5): 1. Team Hierarchy & Roles, 2. Spec-Driven & Test-Driven Development (TDD) Flow, 3. Master Folder & Documentation Structure, 4. Agent Commander Cheat Sheet, DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy
+Cohesion: 0.25
+Nodes (7): 1. Team Hierarchy & Roles, 2. Visual Task Flow Across Todos, 3. Spec-Driven & Test-Driven Development (TDD) Flow, 4. Master Folder & Todo Architecture Structure, 5. Agent Commander Cheat Sheet, DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy, Summary Role Table
 
 ### Community 244 - "Technical Architecture: Spring Boot OAuth2 Login"
 Cohesion: 0.40
@@ -845,8 +852,8 @@ Cohesion: 0.40
 Nodes (4): 1. Project Root (`/`), 2. Agent Rules (`/.agents/`), 3. Documentation Subfolders (`/docs/`), DJP Documentation Sitemap & Organization Rules
 
 ### Community 246 - "DJP Agent Team Operating Rules"
-Cohesion: 0.33
-Nodes (5): 1. Team Roles, 2. Mandatory TDD & Approval Workflow, 3. Mandatory Post-Task Workflow, 4. Mandatory Lifecycle Skills & Tools, DJP Agent Team Operating Rules
+Cohesion: 0.29
+Nodes (6): 1. Team Roles, 2. Mandatory TDD & Approval Workflow, 3. Mandatory Post-Task Workflow, 4. Mandatory Lifecycle Skills & Tools, 5. Master Workflow Guide & Domain Ecosystem, DJP Agent Team Operating Rules
 
 ### Community 248 - "Technical Specifications: Spring Boot + React OAuth Login"
 Cohesion: 0.50
@@ -941,8 +948,8 @@ Cohesion: 0.33
 Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification
 
 ### Community 305 - "Example 1: Research Task"
-Cohesion: 0.40
-Nodes (5): Example 1: Research Task, Loop 1: Create Plan, Loop 2: Research, Loop 3: Synthesize, Loop 4: Deliver
+Cohesion: 0.33
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🎨 FE Agent (Frontend React Developer) Operating Specification
 
 ### Community 308 - "is_server_ready"
 Cohesion: 0.67
@@ -980,22 +987,42 @@ Nodes (5): 🚨 **Civic Issue Reporting UX Specification**, 📑 Issue Reporting
 Cohesion: 0.33
 Nodes (5): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP Frontend Task Tracker (`frontend/fe-todo.md`), Phase 6 — Live Backend Integration (Upcoming Sprint), 📝 Technical Notes & Architectural Reference
 
+### Community 322 - "🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification"
+Cohesion: 0.33
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification
+
+### Community 323 - "Phases"
+Cohesion: 0.33
+Nodes (6): Phase 1: Requirements & Discovery, Phase 2: Planning & Structure, Phase 3: Implementation, Phase 4: Testing & Verification, Phase 5: Delivery, Phases
+
+### Community 324 - "🧪 QA Agent (TDD Test Engineer) Operating Specification"
+Cohesion: 0.33
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🧪 QA Agent (TDD Test Engineer) Operating Specification
+
+### Community 325 - "🏛️ Tech Arch Agent (Technical Architect) Operating Specification"
+Cohesion: 0.33
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🏛️ Tech Arch Agent (Technical Architect) Operating Specification
+
+### Community 326 - "🧭 TL Agent (Team Lead & Spec Writer) Operating Specification"
+Cohesion: 0.33
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
+
 ## Knowledge Gaps
-- **1243 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1238 more)
+- **1274 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1269 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **130 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **132 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `💻 **Frontend Engineering Guide**` connect `💻 **Frontend Engineering Guide**` to `overview.md`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
-- **Why does `✅ **Production-Ready Spring Boot Web App Checklist**` connect `✅ **Production-Ready Spring Boot Web App Checklist**` to `README.md`?**
+- **Why does `⚡ **JavaScript Patterns & Best Practices**` connect `📚 Pattern Library` to `overview.md`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `🎨 **Colors & Typography Design Tokens**` connect `🎨 **Colors & Typography Design Tokens**` to `overview.md`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `🏛️ **Architecture Overview**` connect `🏗️ System Architecture` to `overview.md`?**
+- **Why does `Planning with Files` connect `Quick Reference` to `SKILL.md`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **What connects `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script` to the rest of the system?**
-  _1283 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1314 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Test-Driven Development (TDD)` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Skill Creator` be split into smaller, more focused modules?**

@@ -320,5 +320,13 @@
   "318": "🔄 Refinement Workflow",
   "319": "🚨 **Civic Issue Reporting UX Specification**",
   "320": "DJP Citizen App — Todo",
-  "321": "set-active-plan.ps1"
+  "321": "set-active-plan.ps1",
+  "322": "🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification",
+  "323": "Phases",
+  "324": "🧪 QA Agent (TDD Test Engineer) Operating Specification",
+  "325": "🏛️ Tech Arch Agent (Technical Architect) Operating Specification",
+  "326": "🧭 TL Agent (Team Lead & Spec Writer) Operating Specification",
+  "327": "SKILL.md",
+  "328": "PollsPage.tsx",
+  "329": "CreateDiscussionPage.tsx"
 }
