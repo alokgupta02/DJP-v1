@@ -1,16 +1,16 @@
-# Graph Report - DJP-v1  (2026-07-13)
+# Graph Report - DJP-v1  (2026-07-14)
 
 ## Corpus Check
-- 363 files · ~215,195 words
+- 372 files · ~213,457 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2105 nodes · 2180 edges · 305 communities (178 shown, 127 thin omitted)
+- 2166 nodes · 2213 edges · 322 communities (192 shown, 130 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `205762c4`
+- Built from commit: `767e7543`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -93,6 +93,7 @@
 - stop-server.sh
 - 1. Eliminating Waterfalls
 - 2. Bundle Size Optimization
+- design-principles.md
 - 🧭 **Navigation System Specification**
 - README.md
 - 🧑‍💻 **Backend Engineer Agent Role**
@@ -178,25 +179,18 @@
 - bundle-preload.md
 - client-event-listeners.md
 - client-localstorage-schema.md
-- client-passive-event-listeners.md
+- DJP QA & Test Suite — Todo (`tests/test-todo.md`)
 - client-swr-dedup.md
-- js-batch-dom-css.md
 - js-cache-function-results.md
 - js-cache-property-access.md
-- js-cache-storage.md
 - js-combine-iterations.md
 - js-early-exit.md
 - js-flatmap-filter.md
 - js-hoist-regexp.md
 - js-index-maps.md
-- js-length-check-first.md
 - js-min-max-loop.md
 - js-request-idle-callback.md
 - js-set-map-lookups.md
-- js-tosorted-immutable.md
-- rendering-activity.md
-- rendering-animate-svg-wrapper.md
-- rendering-conditional-render.md
 - rendering-content-visibility.md
 - rendering-hoist-jsx.md
 - rendering-hydration-no-flicker.md
@@ -223,6 +217,7 @@
 - server-after-nonblocking.md
 - server-auth-actions.md
 - server-cache-lru.md
+- server-cache-react.md
 - server-dedup-props.md
 - server-parallel-fetching.md
 - server-parallel-nested-fetching.md
@@ -233,12 +228,13 @@
 - IssuesPage.tsx
 - todo.md
 - README.md
+- CONTRIBUTING.md
 - README.md
 - README.md
 - CreateDiscussionPage.tsx
 - IssueDetailPage.tsx
 - AuthController
-- 3. Microservice Definitions
+- Memory Search
 - DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy
 - Technical Architecture: Spring Boot OAuth2 Login
 - DJP Documentation Sitemap & Organization Rules
@@ -255,7 +251,6 @@
 - Reference: Manus Context Engineering Principles
 - init-session.sh
 - Findings & Decisions
-- Core Concepts
 - ledger-append.sh
 - resolve-plan-dir.sh
 - Progress Log
@@ -267,13 +262,21 @@
 - Phases
 - 🔄 Refinement Workflow
 - attest-plan.sh
+- check-complete.ps1
+- SKILL.md
 - inject-plan.sh
+- ledger-append.ps1
+- attest-plan.ps1
 - ledger-summary.sh
 - gate-stop.sh
+- Get-Nonce
+- ledger-summary.ps1
+- phase-status.ps1
+- resolve-plan-dir.ps1
 - set-active-plan.sh script
 - DJPv1 IDENTITY
 - DJPv1 OPERATIONAL RULES
-- PollsPage.tsx
+- Web Application Testing
 - DJP Test Suites & Automated QA
 - CreateDiscussionPage.tsx
 - DJPv1 BACKEND ACTIVE STATE
@@ -285,9 +288,24 @@
 - DJPv1 FRONTEND OPERATIONAL RULES
 - DJPv1 QA & TESTS IDENTITY
 - DJPv1 QA & TESTS OPERATIONAL RULES
-- .oxlintrc.json
-- DJP Missed & Deferred Todos (Backlog Separation)
-- React + Vite
+- 🏛️ System Boundaries & Agentic Guardrails Matrix
+- 2026-07-10 Session (Original React Frontend Migration Sprint — 40/40 Completed)
+- Karpathy Guidelines
+- skill-artifact-1.md
+- SKILL.md
+- Example 1: Research Task
+- codex-tools.md
+- Pi Tool Mapping
+- is_server_ready
+- Antigravity CLI (`agy`) Tool Mapping
+- 🎨 Original Frontend Migration Sprint (`frontend/archived.todo` Master Archive — 40/40 completed)
+- design-principles.md
+- Feature Execution Checklist (`docs/execution/<feature>/todo.md`)
+- 🚨 **Civic Issue Reporting UX Specification**
+- 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
+- 🔄 Refinement Workflow
+- 🚨 **Civic Issue Reporting UX Specification**
+- DJP Citizen App — Todo
 
 ## God Nodes (most connected - your core abstractions)
 1. `✅ **Production-Ready Spring Boot Web App Checklist**` - 22 edges
@@ -299,24 +317,24 @@
 7. `5. Re-render Optimization` - 16 edges
 8. `compilerOptions` - 15 edges
 9. `compilerOptions` - 15 edges
-10. `Test-Driven Development (TDD)` - 15 edges
+10. `7. JavaScript Performance` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `package_skill()` --references--> `path`  [EXTRACTED]
-  .agents/skills/skill-creator/scripts/package_skill.py → scripts/dashboard-server.js
-- `find_project_root()` --references--> `path`  [EXTRACTED]
-  .agents/skills/skill-creator/scripts/run_eval.py → scripts/dashboard-server.js
-- `get_claude_project_dir()` --references--> `path`  [EXTRACTED]
-  frontend/.agents/skills/planning-with-files/scripts/session-catchup.py → scripts/dashboard-server.js
-- `get_opencode_db_path()` --references--> `path`  [EXTRACTED]
-  frontend/.agents/skills/planning-with-files/scripts/session-catchup.py → scripts/dashboard-server.js
 - `main()` --calls--> `generate_html()`  [INFERRED]
   .agents/skills/skill-creator/scripts/run_loop.py → .agents/skills/skill-creator/scripts/generate_report.py
+- `run_loop()` --calls--> `generate_html()`  [INFERRED]
+  .agents/skills/skill-creator/scripts/run_loop.py → .agents/skills/skill-creator/scripts/generate_report.py
+- `run_loop()` --calls--> `improve_description()`  [INFERRED]
+  .agents/skills/skill-creator/scripts/run_loop.py → .agents/skills/skill-creator/scripts/improve_description.py
+- `main()` --calls--> `parse_skill_md()`  [INFERRED]
+  .agents/skills/skill-creator/scripts/improve_description.py → .agents/skills/skill-creator/scripts/utils.py
+- `package_skill()` --calls--> `validate_skill()`  [INFERRED]
+  .agents/skills/skill-creator/scripts/package_skill.py → .agents/skills/skill-creator/scripts/quick_validate.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (305 total, 127 thin omitted)
+## Communities (322 total, 130 thin omitted)
 
 ### Community 0 - "Test-Driven Development (TDD)"
 Cohesion: 0.05
@@ -420,7 +438,7 @@ Nodes (15): 1. Concrete Transformation Patterns, 2. Error-First Structure, 3. Qu
 
 ### Community 25 - "5. Re-render Optimization"
 Cohesion: 0.12
-Nodes (16): 5.10 Subscribe to Derived State, 5.11 Use Functional setState Updates, 5.12 Use Lazy State Initialization, 5.13 Use Transitions for Non-Urgent Updates, 5.14 Use useDeferredValue for Expensive Derived Renders, 5.15 Use useRef for Transient Values, 5.1 Calculate Derived State During Rendering, 5.2 Defer State Reads to Usage Point (+8 more)
+Nodes (40): codex_meta_cwd(), codex_planning_update(), extract_messages_after(), find_current_codex_session(), find_last_planning_update(), _format_opencode_part(), get_claude_project_dir(), get_codex_sessions() (+32 more)
 
 ### Community 26 - "🎨 **Colors & Typography Design Tokens**"
 Cohesion: 0.12
@@ -443,12 +461,12 @@ Cohesion: 0.13
 Nodes (14): Blind Comparator Agent, Field Descriptions, Guidelines, Inputs, Output Format, Process, Role, Step 1: Read Both Outputs (+6 more)
 
 ### Community 31 - "7. JavaScript Performance"
-Cohesion: 0.13
-Nodes (15): 7.10 Hoist RegExp Creation, 7.11 Use flatMap to Map and Filter in One Pass, 7.12 Use Loop for Min/Max Instead of Sort, 7.13 Use Set/Map for O(1) Lookups, 7.14 Use toSorted() Instead of sort() for Immutability, 7.1 Avoid Layout Thrashing, 7.2 Build Index Maps for Repeated Lookups, 7.3 Cache Property Access in Loops (+7 more)
+Cohesion: 0.11
+Nodes (18): Critical Constraints, File Types Manus Creates, Key Quotes, Manus Statistics, Principle 1: Design Around KV-Cache, Principle 2: Mask, Don't Remove, Principle 3: Filesystem as External Memory, Principle 4: Manipulate Attention Through Recitation (+10 more)
 
 ### Community 32 - "Quick Reference"
-Cohesion: 0.13
-Nodes (14): 1. Eliminating Waterfalls (CRITICAL), 2. Bundle Size Optimization (CRITICAL), 3. Server-Side Performance (HIGH), 4. Client-Side Data Fetching (MEDIUM-HIGH), 5. Re-render Optimization (MEDIUM), 6. Rendering Performance (MEDIUM), 7. JavaScript Performance (LOW-MEDIUM), 8. Advanced Patterns (LOW) (+6 more)
+Cohesion: 0.11
+Nodes (18): Advanced Topics, Anti-Patterns, File Purposes, FIRST: Restore Context (v2.2.0), Important: Where Files Go, Parallel task workflow, Planning with Files, Quick Start (+10 more)
 
 ### Community 33 - "scripts"
 Cohesion: 0.13
@@ -471,8 +489,8 @@ Cohesion: 0.15
 Nodes (10): Designing for Mockability, When to Mock, Anti-patterns, Rules of the loop, Seams — where tests go, Test-Driven Development, What a good test is, Bad Tests (+2 more)
 
 ### Community 38 - "Project Task Tracker"
-Cohesion: 0.15
-Nodes (12): Completed, Current Task, DJP Backend Dashboard, Notes, Objective, Phase 1 — Project Setup, H2 Integration & OAuth2 (MVP 1), Phase 2 — Issues CRUD (MVP 2), Phase 3 — Feed, Discussions & Replies (MVP 3) (+4 more)
+Cohesion: 0.20
+Nodes (9): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP Backend Task Tracker (`backend/be-todo.md`), Phase 1 — Project Setup, H2 Integration & OAuth2 (MVP 1), Phase 2 — Issues CRUD (MVP 2), Phase 3 — Feed, Discussions & Replies (MVP 3), Phase 4 — Polls & Votes (MVP 4), Phase 5 — Petitions, Notifications & Representatives (MVP 5+) (+1 more)
 
 ### Community 39 - "🛠️ SDLC Lifecycle Stages & Tooling Matrix"
 Cohesion: 0.15
@@ -487,8 +505,8 @@ Cohesion: 0.17
 Nodes (10): caveman, Example output, How to invoke, See also, What it does, Auto-Clarity, Boundaries, Intensity (+2 more)
 
 ### Community 42 - "6. Rendering Performance"
-Cohesion: 0.17
-Nodes (12): 6.10 Use React DOM Resource Hints, 6.11 Use useTransition Over Manual Loading States, 6.1 Animate SVG Wrapper Instead of SVG Element, 6.2 CSS content-visibility for Long Lists, 6.3 Hoist Static JSX Elements, 6.4 Optimize SVG Precision, 6.5 Prevent Hydration Mismatch Without Flickering, 6.6 Suppress Expected Hydration Mismatches (+4 more)
+Cohesion: 0.12
+Nodes (15): Current Phase, Decisions Made, Errors Encountered, Goal, Key Questions, Model Routing, Notes, Phase 1: Requirements & Discovery (+7 more)
 
 ### Community 43 - "📚 Pattern Library"
 Cohesion: 0.17
@@ -515,8 +533,8 @@ Cohesion: 0.18
 Nodes (10): [1.2.0](https://github.com/supabase/agent-skills/compare/v1.1.1...v1.2.0) (2026-06-02), [1.3.0](https://github.com/supabase/agent-skills/compare/v1.2.0...v1.3.0) (2026-06-05), [1.4.0](https://github.com/supabase/agent-skills/compare/v1.3.0...v1.4.0) (2026-07-10), Bug Fixes, Bug Fixes, Bug Fixes, Changelog, Features (+2 more)
 
 ### Community 49 - "3. Server-Side Performance"
-Cohesion: 0.18
-Nodes (10): 3.10 Use after() for Non-Blocking Operations, 3.1 Authenticate Server Actions Like API Routes, 3.2 Avoid Duplicate Serialization in RSC Props, 3.3 Avoid Shared Module State for Request Data, 3.4 Cross-Request LRU Caching, 3.5 Hoist Static I/O to Module Level, 3.6 Minimize Serialization at RSC Boundaries, 3.7 Parallel Data Fetching with Component Composition (+2 more)
+Cohesion: 0.12
+Nodes (16): 5.10 Subscribe to Derived State, 5.11 Use Functional setState Updates, 5.12 Use Lazy State Initialization, 5.13 Use Transitions for Non-Urgent Updates, 5.14 Use useDeferredValue for Expensive Derived Renders, 5.15 Use useRef for Transient Values, 5.1 Calculate Derived State During Rendering, 5.2 Defer State Reads to Usage Point (+8 more)
 
 ### Community 50 - "🤖 **AI Agent Interaction & Development Guide**"
 Cohesion: 0.18
@@ -543,12 +561,12 @@ Cohesion: 0.20
 Nodes (9): 1. Query Performance (query), 2. Connection Management (conn), 3. Security & RLS (security), 4. Schema Design (schema), 5. Concurrency & Locking (lock), 6. Data Access Patterns (data), 7. Monitoring & Diagnostics (monitor), 8. Advanced Features (advanced) (+1 more)
 
 ### Community 56 - "React Best Practices"
-Cohesion: 0.20
-Nodes (9): 4.1 Deduplicate Global Event Listeners, 4.2 Use Passive Event Listeners for Scrolling Performance, 4.3 Use SWR for Automatic Deduplication, 4.4 Version and Minimize localStorage Data, 4. Client-Side Data Fetching, Abstract, React Best Practices, References (+1 more)
+Cohesion: 0.13
+Nodes (15): 7.10 Hoist RegExp Creation, 7.11 Use flatMap to Map and Filter in One Pass, 7.12 Use Loop for Min/Max Instead of Sort, 7.13 Use Set/Map for O(1) Lookups, 7.14 Use toSorted() Instead of sort() for Immutability, 7.1 Avoid Layout Thrashing, 7.2 Build Index Maps for Repeated Lookups, 7.3 Cache Property Access in Loops (+7 more)
 
 ### Community 57 - "Sections"
-Cohesion: 0.20
-Nodes (9): 1. Eliminating Waterfalls (async), 2. Bundle Size Optimization (bundle), 3. Server-Side Performance (server), 4. Client-Side Data Fetching (client), 5. Re-render Optimization (rerender), 6. Rendering Performance (rendering), 7. JavaScript Performance (js), 8. Advanced Patterns (advanced) (+1 more)
+Cohesion: 0.13
+Nodes (14): 1. Eliminating Waterfalls (CRITICAL), 2. Bundle Size Optimization (CRITICAL), 3. Server-Side Performance (HIGH), 4. Client-Side Data Fetching (MEDIUM-HIGH), 5. Re-render Optimization (MEDIUM), 6. Rendering Performance (MEDIUM), 7. JavaScript Performance (LOW-MEDIUM), 8. Advanced Patterns (LOW) (+6 more)
 
 ### Community 58 - "🤖 **AI Civic Assistant Architecture**"
 Cohesion: 0.20
@@ -556,7 +574,7 @@ Nodes (10): 1️⃣ Onboarding Integration, 2️⃣ Content Creation Form Co-Pil
 
 ### Community 60 - "🏗️ **Frontend Directory & Monorepo Structure**"
 Cohesion: 0.33
-Nodes (5): 2026-07-12 Session, Current Sprint, DJPv1 ACTIVE STATE, Session Delta Logs, Task Breakdown
+Nodes (5): 2026-07-13 Session, Current Sprint, DJPv1 ACTIVE STATE, Session Delta Logs, Task Breakdown
 
 ### Community 61 - "📦 **Common Submission Model Architecture**"
 Cohesion: 0.20
@@ -571,8 +589,8 @@ Cohesion: 0.22
 Nodes (8): After the Design, Anti-Pattern: "This Is Too Simple To Need A Design", Brainstorming Ideas Into Designs, Checklist, Key Principles, Process Flow, The Process, Visual Companion
 
 ### Community 64 - "✍️ **Prompt Refiner Agent Role (`prompt-refiner`)**"
-Cohesion: 0.15
-Nodes (13): 1️⃣ Step 1: Understand Intent, 1. 📂 What is the intended use case?, 2️⃣ Step 2: Gather Missing Information, 2. 🤖 Which AI model or platform will execute the prompt?, 3️⃣ Step 3: Clarify When Needed, 4️⃣ Step 4: Refine, 📏 Best Practice Guidelines, 🎯 Description (+5 more)
+Cohesion: 0.25
+Nodes (8): 1. 📂 What is the intended use case?, 2. 🤖 Which AI model or platform will execute the prompt?, 📏 Best Practice Guidelines, 🎯 Description, ❓ Mandatory Clarifications, 📤 Output Format Template, ✍️ **Prompt Refiner Agent Role (`prompt-refiner`)**, ⚙️ Responsibilities
 
 ### Community 65 - "🔍 Detailed Decision Records"
 Cohesion: 0.22
@@ -610,10 +628,6 @@ Nodes (5): categoryIcons, FILTER_TABS, Issue, ISSUES, priorityColors
 Cohesion: 0.36
 Nodes (6): Button, ButtonProps, ButtonSize, ButtonVariant, sizeClasses, variantClasses
 
-### Community 74 - "URL Map — DJP Citizen App"
-Cohesion: 0.25
-Nodes (7): Phase 0 — Foundation (Built), Phase 1 — Core Pages (Pending), Phase 2 — Supporting Pages (Migrated), Phase 3 — Detail & Creation Pages (Migrated), Phase 4 — Auth & Onboarding (Migrated), Phase 5 — Missing Routes (Migrated), URL Map — DJP Citizen App
-
 ### Community 75 - "analyze-project"
 Cohesion: 0.29
 Nodes (6): analyze-project, Clear boundaries, Notes, Output expectations, When not to apply, When to apply
@@ -623,12 +637,16 @@ Cohesion: 0.43
 Nodes (4): command_has_server_id(), is_brainstorm_server(), mark_stopped(), stop-server.sh script
 
 ### Community 77 - "1. Eliminating Waterfalls"
-Cohesion: 0.29
-Nodes (7): 1.1 Check Cheap Conditions Before Async Flags, 1.2 Defer Await Until Needed, 1.3 Dependency-Based Parallelization, 1.4 Prevent Waterfall Chains in API Routes, 1.5 Promise.all() for Independent Operations, 1.6 Strategic Suspense Boundaries, 1. Eliminating Waterfalls
+Cohesion: 0.15
+Nodes (12): Current Phase, Decisions Made, Errors Encountered, Goal, Hypotheses, Notes, Phase 1: Data Discovery, Phase 2: Exploratory Analysis (+4 more)
 
 ### Community 78 - "2. Bundle Size Optimization"
-Cohesion: 0.29
-Nodes (7): 2.1 Avoid Barrel File Imports, 2.2 Conditional Module Loading, 2.3 Defer Non-Critical Third-Party Libraries, 2.4 Dynamic Imports for Heavy Components, 2.5 Prefer Statically Analyzable Paths, 2.6 Preload Based on User Intent, 2. Bundle Size Optimization
+Cohesion: 0.15
+Nodes (13): Current Phase, Decisions Made, Errors Encountered, Goal, Key Questions, Notes, Phase 1: Requirements & Discovery, Phase 2: Planning & Structure (+5 more)
+
+### Community 79 - "design-principles.md"
+Cohesion: 0.17
+Nodes (12): 6.10 Use React DOM Resource Hints, 6.11 Use useTransition Over Manual Loading States, 6.1 Animate SVG Wrapper Instead of SVG Element, 6.2 CSS content-visibility for Long Lists, 6.3 Hoist Static JSX Elements, 6.4 Optimize SVG Precision, 6.5 Prevent Hydration Mismatch Without Flickering, 6.6 Suppress Expected Hydration Mismatches (+4 more)
 
 ### Community 80 - "🧭 **Navigation System Specification**"
 Cohesion: 0.29
@@ -651,8 +669,8 @@ Cohesion: 0.33
 Nodes (5): How to Use, References, Rule Categories by Priority, Supabase Postgres Best Practices, When to Apply
 
 ### Community 85 - "React Best Practices"
-Cohesion: 0.33
-Nodes (5): Creating a New Rule, Getting Started, React Best Practices, Rule File Structure, Structure
+Cohesion: 0.18
+Nodes (7): Findings & Decisions, Issues Encountered, Requirements, Research Findings, Resources, Technical Decisions, Visual/Browser Findings
 
 ### Community 86 - "package.json"
 Cohesion: 0.33
@@ -667,8 +685,8 @@ Cohesion: 0.40
 Nodes (4): Analysis Policy, Default stance, Forbidden behavior, Required behavior
 
 ### Community 89 - "8. Advanced Patterns"
-Cohesion: 0.40
-Nodes (5): 8.1 Do Not Put Effect Events in Dependency Arrays, 8.2 Initialize App Once, Not Per Mount, 8.3 Store Event Handlers in Refs, 8.4 useEffectEvent for Stable Callback Refs, 8. Advanced Patterns
+Cohesion: 0.31
+Nodes (8): apply_v3_mode(), create_files_in(), gen_nonce(), init-session.sh script, write_analytics_progress(), write_default_findings(), write_default_progress(), write_default_task_plan()
 
 ### Community 90 - "User"
 Cohesion: 0.17
@@ -676,7 +694,7 @@ Nodes (3): User, Entity, Table
 
 ### Community 91 - "🛠️ **Agent Skills & Slash Commands Directory**"
 Cohesion: 0.33
-Nodes (5): 🛠️ **Agent Skills & Slash Commands Directory**, 💡 Best Practices for Using Skills, 🌍 Global Commands, 🏠 Local Commands, 🎯 Overview
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, ⚙️ BE Agent (Backend Microservice Developer) Operating Specification
 
 ### Community 92 - "💬 **Civic Discussion UX Specification**"
 Cohesion: 0.40
@@ -684,19 +702,27 @@ Nodes (5): 💬 **Civic Discussion UX Specification**, 📑 Data Schema & UI Fie
 
 ### Community 93 - "🚨 **Civic Issue Reporting UX Specification**"
 Cohesion: 0.40
-Nodes (5): 🚨 **Civic Issue Reporting UX Specification**, 📑 Issue Reporting Fields & UI Presentation, 🌟 Overview, 📚 Related Documentation, 💡 Reporting UX Best Practices
+Nodes (5): 📊 **Civic Polling UX Specification**, 🌟 Overview, 📑 Poll Schema & UI Representation, 💡 Polling UX Best Practices, 📚 Related Documentation
 
 ### Community 94 - "📊 **Civic Polling UX Specification**"
-Cohesion: 0.40
-Nodes (5): 📊 **Civic Polling UX Specification**, 🌟 Overview, 📑 Poll Schema & UI Representation, 💡 Polling UX Best Practices, 📚 Related Documentation
+Cohesion: 0.29
+Nodes (6): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. PM Task Breakdown & Domain Analysis Protocol, 4. Required Skills & Lifecycle Workflows, 5. Execution Guardrails & Checklist, 👑 PM Agent (Product Manager) Operating Specification
 
 ### Community 95 - "DiscussionsPage.tsx"
 Cohesion: 0.40
 Nodes (3): badgeVariantStyles, Discussion, DISCUSSIONS
 
+### Community 96 - "async-cheap-condition-before-await.md"
+Cohesion: 0.18
+Nodes (10): 3.10 Use after() for Non-Blocking Operations, 3.1 Authenticate Server Actions Like API Routes, 3.2 Avoid Duplicate Serialization in RSC Props, 3.3 Avoid Shared Module State for Request Data, 3.4 Cross-Request LRU Caching, 3.5 Hoist Static I/O to Module Level, 3.6 Minimize Serialization at RSC Boundaries, 3.7 Parallel Data Fetching with Component Composition (+2 more)
+
 ### Community 97 - "Prefer Statically Analyzable Paths"
-Cohesion: 0.50
-Nodes (3): File-System Paths, Import Paths, Prefer Statically Analyzable Paths
+Cohesion: 0.20
+Nodes (9): 3-Layer Workflow (ALWAYS Follow), Examples, Knowledge Agents, Memory Search, Step 1: Search - Get Index with IDs, Step 2: Timeline - Get Context Around Interesting Results, Step 3: Fetch - Get Full Details ONLY for Filtered IDs, When to Use (+1 more)
+
+### Community 98 - "server-hoist-static-io.md"
+Cohesion: 0.20
+Nodes (9): After (Correct), Before (Wrong), Example 2: Bug Fix Task, Example 3: Feature Development, Example 4: Error Recovery Pattern, Examples: Planning with Files in Action, task_plan.md, The 3-File Pattern in Action (+1 more)
 
 ### Community 99 - "React + TypeScript + Vite"
 Cohesion: 0.50
@@ -707,20 +733,92 @@ Cohesion: 0.50
 Nodes (3): Expanding the ESLint configuration, React Compiler, React + TypeScript + Vite
 
 ### Community 104 - "PollsPage.tsx"
-Cohesion: 0.09
-Nodes (47): codex_meta_cwd(), codex_planning_update(), extract_messages_after(), find_current_codex_session(), find_last_planning_update(), _format_opencode_part(), get_claude_project_dir(), get_codex_sessions() (+39 more)
+Cohesion: 0.20
+Nodes (9): Data Sources, Findings & Decisions, Hypothesis Log, Issues Encountered, Query Results, Resources, Statistical Findings, Technical Decisions (+1 more)
 
 ### Community 106 - "DJP Citizen App — Todo"
-Cohesion: 0.50
-Nodes (3): DJP Citizen App — Todo, Notes, Tasks
+Cohesion: 0.18
+Nodes (10): Configuration, Data Layer (Repositories), Dependency Injection & Components, Logging, Project Setup & Structure, Security, Service Layer, Spring Boot Best Practices (+2 more)
 
-### Community 221 - "todo.md"
+### Community 152 - "advanced-effect-event-deps.md"
+Cohesion: 0.20
+Nodes (9): 4.1 Deduplicate Global Event Listeners, 4.2 Use Passive Event Listeners for Scrolling Performance, 4.3 Use SWR for Automatic Deduplication, 4.4 Version and Minimize localStorage Data, 4. Client-Side Data Fetching, Abstract, React Best Practices, References (+1 more)
+
+### Community 153 - "advanced-event-handler-refs.md"
+Cohesion: 0.20
+Nodes (9): 1. Eliminating Waterfalls (async), 2. Bundle Size Optimization (bundle), 3. Server-Side Performance (server), 4. Client-Side Data Fetching (client), 5. Re-render Optimization (rerender), 6. Rendering Performance (rendering), 7. JavaScript Performance (js), 8. Advanced Patterns (advanced) (+1 more)
+
+### Community 155 - "advanced-use-latest.md"
+Cohesion: 0.47
+Nodes (6): is_within_root(), resolve_from_active_file(), resolve_from_env(), resolve_latest_dir(), resolve-plan-dir.sh script, slug_is_valid()
+
+### Community 156 - "async-api-routes.md"
+Cohesion: 0.25
+Nodes (8): 1. Create Plan First, 2. The 2-Action Rule, 3. Read Before Decide, 4. Update After Act, 5. Log ALL Errors, 6. Never Repeat Failures, 7. Continue After Completion, Critical Rules
+
+### Community 157 - "async-dependencies.md"
+Cohesion: 0.25
+Nodes (8): Autonomous and Gated Modes (v3), Gate decision table, Host capability tiers, Ledger contract summary, Runaway guards, The legacy invariant (promise), Trying it, What each mode does
+
+### Community 158 - "async-parallel.md"
+Cohesion: 0.25
+Nodes (7): 5-Question Reboot Check, Error Log, Phase 1: [Title], Phase 2: [Title], Progress Log, Session: [DATE], Test Results
+
+### Community 159 - "async-suspense-boundaries.md"
+Cohesion: 0.29
+Nodes (7): Claude Code Turn-Loop Integration (v2.38.0+), Install scope: plugin vs skill-only (v2.42.0 clarification), `loop.md` template, Manual fallback when `/plan-goal` / `/plan-loop` are unavailable (v2.42.0), `/plan-goal` slash command, `/plan-loop` slash command, PreCompact hook (auto)
+
+### Community 160 - "bundle-barrel-imports.md"
+Cohesion: 0.29
+Nodes (7): 1.1 Check Cheap Conditions Before Async Flags, 1.2 Defer Await Until Needed, 1.3 Dependency-Based Parallelization, 1.4 Prevent Waterfall Chains in API Routes, 1.5 Promise.all() for Independent Operations, 1.6 Strategic Suspense Boundaries, 1. Eliminating Waterfalls
+
+### Community 161 - "bundle-conditional.md"
+Cohesion: 0.29
+Nodes (7): 2.1 Avoid Barrel File Imports, 2.2 Conditional Module Loading, 2.3 Defer Non-Critical Third-Party Libraries, 2.4 Dynamic Imports for Heavy Components, 2.5 Prefer Statically Analyzable Paths, 2.6 Preload Based on User Intent, 2. Bundle Size Optimization
+
+### Community 162 - "bundle-defer-third-party.md"
+Cohesion: 0.33
+Nodes (5): 1. Think Before Coding, 2. Simplicity First, 3. Surgical Changes, 4. Goal-Driven Execution, Karpathy Guidelines
+
+### Community 164 - "bundle-preload.md"
+Cohesion: 0.53
+Nodes (4): do_write(), rewrite(), phase-status.sh script, usage()
+
+### Community 165 - "client-event-listeners.md"
+Cohesion: 0.33
+Nodes (5): Platform Adaptation, Red Flags, Skill Priority, The Rule, User Instructions
+
+### Community 166 - "client-localstorage-schema.md"
+Cohesion: 0.33
+Nodes (5): Creating a New Rule, Getting Started, React Best Practices, Rule File Structure, Structure
+
+### Community 167 - "DJP QA & Test Suite — Todo (`tests/test-todo.md`)"
+Cohesion: 0.29
+Nodes (6): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP QA & Test Suite Task Tracker (`tests/test-todo.md`), Phase 2 — Core E2E & API Test Automation (TDD Red Phase), Phase 3 — Continuous Regression & CI Pipeline, 📝 Technical Notes & Architectural Reference
+
+### Community 170 - "js-cache-function-results.md"
+Cohesion: 0.40
+Nodes (5): 8.1 Do Not Put Effect Events in Dependency Arrays, 8.2 Initialize App Once, Not Per Mount, 8.3 Store Event Handlers in Refs, 8.4 useEffectEvent for Stable Callback Refs, 8. Advanced Patterns
+
+### Community 173 - "js-combine-iterations.md"
 Cohesion: 0.50
-Nodes (3): Active Tasks, Completed Tasks, DJP Project Tasks (Agent Control Center)
+Nodes (3): Codex App Finishing, Environment Detection, Subagent dispatch requires multi-agent support
+
+### Community 174 - "js-early-exit.md"
+Cohesion: 0.50
+Nodes (3): Pi Tool Mapping, Subagents, Task lists
+
+### Community 176 - "js-hoist-regexp.md"
+Cohesion: 0.50
+Nodes (3): File-System Paths, Import Paths, Prefer Statically Analyzable Paths
 
 ### Community 223 - "README.md"
 Cohesion: 0.40
 Nodes (4): DJP Backend Microservices, DJPv1 Synchronization, Overview, Running Locally
+
+### Community 224 - "CONTRIBUTING.md"
+Cohesion: 0.33
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🎨 FE Agent (Frontend React Developer) Operating Specification
 
 ### Community 237 - "README.md"
 Cohesion: 0.40
@@ -730,17 +828,9 @@ Nodes (4): Architecture Reference, DJP Frontend Application, DJPv1 Synchronizati
 Cohesion: 0.29
 Nodes (6): 1. What DJP Is, 2. Repository Layout & Core DJPv1 Files, 3. How to Run Frontend, 4. How to Run Backend, 5. Where Documentation Lives, DJP (Developer Journal Prompt & Workspace) - Version 1
 
-### Community 239 - "CreateDiscussionPage.tsx"
-Cohesion: 0.05
-Nodes (41): 1. Create Plan First, 2. The 2-Action Rule, 3. Read Before Decide, 4. Update After Act, 5. Log ALL Errors, 6. Never Repeat Failures, 7. Continue After Completion, Advanced Topics (+33 more)
-
 ### Community 241 - "AuthController"
 Cohesion: 0.31
 Nodes (6): AuthController, CrossOrigin, GetMapping, RequestMapping, ResponseEntity, RestController
-
-### Community 242 - "3. Microservice Definitions"
-Cohesion: 0.10
-Nodes (19): dependencies, lucide-react, react, react-dom, devDependencies, oxlint, @types/react, @types/react-dom (+11 more)
 
 ### Community 243 - "DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy"
 Cohesion: 0.33
@@ -766,69 +856,17 @@ Nodes (3): 1. Files to Create / Modify, 2. Component Specs, Technical Specificat
 Cohesion: 0.50
 Nodes (3): 1. Goal, 2. User Stories, Product Requirements Document (PRD): OAuth Login Feature
 
-### Community 253 - "Task Plan: [Brief Description]"
-Cohesion: 0.12
-Nodes (15): Current Phase, Decisions Made, Errors Encountered, Goal, Key Questions, Model Routing, Notes, Phase 1: Requirements & Discovery (+7 more)
-
-### Community 254 - "Examples: Planning with Files in Action"
-Cohesion: 0.13
-Nodes (14): After (Correct), Before (Wrong), Example 1: Research Task, Example 2: Bug Fix Task, Example 3: Feature Development, Example 4: Error Recovery Pattern, Examples: Planning with Files in Action, Loop 1: Create Plan (+6 more)
-
-### Community 255 - "Task Plan: [Analytics Project Description]"
-Cohesion: 0.15
-Nodes (12): Current Phase, Decisions Made, Errors Encountered, Goal, Hypotheses, Notes, Phase 1: Data Discovery, Phase 2: Exploratory Analysis (+4 more)
-
 ### Community 256 - "Spring Boot Best Practices"
-Cohesion: 0.18
-Nodes (10): Configuration, Data Layer (Repositories), Dependency Injection & Components, Logging, Project Setup & Structure, Security, Service Layer, Spring Boot Best Practices (+2 more)
-
-### Community 257 - "Communication Patterns"
 Cohesion: 0.18
 Nodes (10): Circuit Breaker Pattern, Communication Patterns, microservices-patterns — detailed patterns and worked examples, Pattern 1: By Business Capability, Pattern 1: Synchronous REST Communication, Pattern 2: API Gateway, Pattern 2: Asynchronous Event-Driven, Pattern 3: Saga Pattern (Distributed Transactions) (+2 more)
 
-### Community 258 - "Reference: Manus Context Engineering Principles"
-Cohesion: 0.18
-Nodes (11): Critical Constraints, File Types Manus Creates, Key Quotes, Manus Statistics, Reference: Manus Context Engineering Principles, Source, Strategy 1: Context Reduction, Strategy 2: Context Isolation (Multi-Agent) (+3 more)
-
-### Community 259 - "init-session.sh"
-Cohesion: 0.31
-Nodes (8): apply_v3_mode(), create_files_in(), gen_nonce(), init-session.sh script, write_analytics_progress(), write_default_findings(), write_default_progress(), write_default_task_plan()
-
-### Community 260 - "Findings & Decisions"
-Cohesion: 0.20
-Nodes (9): Data Sources, Findings & Decisions, Hypothesis Log, Issues Encountered, Query Results, Resources, Statistical Findings, Technical Decisions (+1 more)
-
-### Community 261 - "Core Concepts"
+### Community 257 - "Communication Patterns"
 Cohesion: 0.22
 Nodes (8): 1. Service Decomposition Strategies, 2. Communication Patterns, 3. Data Management, 4. Resilience Patterns, Core Concepts, Detailed patterns and worked examples, Microservices Patterns, When to Use This Skill
 
-### Community 263 - "resolve-plan-dir.sh"
-Cohesion: 0.47
-Nodes (6): is_within_root(), resolve_from_active_file(), resolve_from_env(), resolve_latest_dir(), resolve-plan-dir.sh script, slug_is_valid()
-
-### Community 264 - "Progress Log"
-Cohesion: 0.25
-Nodes (7): 5-Question Reboot Check, Error Log, Phase 1: [Title], Phase 2: [Title], Progress Log, Session: [DATE], Test Results
-
-### Community 265 - "The 6 Manus Principles"
-Cohesion: 0.29
-Nodes (7): Principle 1: Design Around KV-Cache, Principle 2: Mask, Don't Remove, Principle 3: Filesystem as External Memory, Principle 4: Manipulate Attention Through Recitation, Principle 5: Keep the Wrong Stuff In, Principle 6: Don't Get Few-Shotted, The 6 Manus Principles
-
-### Community 266 - "Findings & Decisions"
-Cohesion: 0.29
-Nodes (7): Findings & Decisions, Issues Encountered, Requirements, Research Findings, Resources, Technical Decisions, Visual/Browser Findings
-
-### Community 267 - "Task Plan: [Brief Description]"
-Cohesion: 0.29
-Nodes (7): Current Phase, Decisions Made, Errors Encountered, Goal, Key Questions, Notes, Task Plan: [Brief Description]
-
-### Community 269 - "phase-status.sh"
-Cohesion: 0.53
-Nodes (4): do_write(), rewrite(), phase-status.sh script, usage()
-
 ### Community 270 - "Phases"
-Cohesion: 0.33
-Nodes (6): Phase 1: Requirements & Discovery, Phase 2: Planning & Structure, Phase 3: Implementation, Phase 4: Testing & Verification, Phase 5: Delivery, Phases
+Cohesion: 0.40
+Nodes (4): 1. Feature Folder Structure, 2. Agent Execution Workflow in This Folder, 3. Key Takeaways & Memory Aid, 🚀 DJP Execution Hub (`docs/execution/`)
 
 ### Community 271 - "🔄 Refinement Workflow"
 Cohesion: 0.20
@@ -842,9 +880,9 @@ Nodes (3): Communication Guardrails, DJPv1 IDENTITY, Technical Profile
 Cohesion: 0.50
 Nodes (3): Code Quality Standards, Context Allocation, DJPv1 OPERATIONAL RULES
 
-### Community 288 - "PollsPage.tsx"
-Cohesion: 0.21
-Nodes (9): App(), MarkdownViewer(), DEFAULT_FAVS, Sidebar(), TreeNode(), escapeHtml(), formatInlineMd(), renderSimpleMarkdown() (+1 more)
+### Community 288 - "Web Application Testing"
+Cohesion: 0.25
+Nodes (7): Best Practices, Common Pitfall, Decision Tree: Choosing Your Approach, Example: Using with_server.py, Reconnaissance-Then-Action Pattern, Reference Files, Web Application Testing
 
 ### Community 289 - "DJP Test Suites & Automated QA"
 Cohesion: 0.50
@@ -890,37 +928,77 @@ Nodes (3): Communication Guardrails, DJPv1 QA & TESTS IDENTITY, Technical Profil
 Cohesion: 0.50
 Nodes (3): Code Quality Standards, Context Allocation, DJPv1 QA & TESTS OPERATIONAL RULES
 
-### Community 300 - ".oxlintrc.json"
+### Community 300 - "🏛️ System Boundaries & Agentic Guardrails Matrix"
+Cohesion: 0.29
+Nodes (6): 1. Executive Summary & Big Picture, 2. Identified Architectural Areas & Domain Boundaries, 3. Agentic Workflow Guardrails & Responsibilities, 4. Key Takeaways & Memory Aid, Strict Agent Enforcement Rules:, 🏛️ System Boundaries & Agentic Guardrails Matrix
+
+### Community 301 - "2026-07-10 Session (Original React Frontend Migration Sprint — 40/40 Completed)"
+Cohesion: 0.15
+Nodes (12): 2026-07-10 Session (Original React Frontend Migration Sprint — 40/40 Completed), 2026-07-11 Session (Live Dashboard & Backend Blueprint), 2026-07-12 Session (UI Fixes & Control Center Navigation), 2026-07-13 Session (Agent Architecture & Domain Standardization), DJP Master Completed Tasks Archive (`archive/todo.md`), Phase 0 — Foundation, Phase 1 — Core Pages, Phase 2 — Supporting Pages (+4 more)
+
+### Community 303 - "skill-artifact-1.md"
 Cohesion: 0.33
-Nodes (5): plugins, rules, react/only-export-components, react/rules-of-hooks, $schema
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification
 
-### Community 301 - "DJP Missed & Deferred Todos (Backlog Separation)"
+### Community 305 - "Example 1: Research Task"
 Cohesion: 0.40
-Nodes (4): Backend Deferred Backlog, DJP Missed & Deferred Todos (Backlog Separation), Frontend Deferred Backlog, Previously Missed / Deferred Root Tasks
+Nodes (5): Example 1: Research Task, Loop 1: Create Plan, Loop 2: Research, Loop 3: Synthesize, Loop 4: Deliver
 
-### Community 302 - "React + Vite"
-Cohesion: 0.50
-Nodes (3): Expanding the Oxlint configuration, React Compiler, React + Vite
+### Community 308 - "is_server_ready"
+Cohesion: 0.67
+Nodes (3): is_server_ready(), main(), Wait for server to be ready by polling the port.
+
+### Community 313 - "🎨 Original Frontend Migration Sprint (`frontend/archived.todo` Master Archive — 40/40 completed)"
+Cohesion: 0.29
+Nodes (6): ⚙️ Backend Microservices Roadmap (`backend/be-todo.md`), 🏛️ Completed Infrastructure & Agentic Workflow Setup (Master Archive), 🚀 Currently Executing Tasks (Active Control Panel), DJP Master Executive Dashboard (`/dashboard.md`), 🎨 Frontend UI Fixes & Polish (`frontend/fe-todo.md`), 🧪 QA & Test Suite (`tests/test-todo.md`)
+
+### Community 314 - "design-principles.md"
+Cohesion: 0.33
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🧪 QA Agent (TDD Test Engineer) Operating Specification
+
+### Community 315 - "Feature Execution Checklist (`docs/execution/<feature>/todo.md`)"
+Cohesion: 0.33
+Nodes (5): Feature Execution SSOT (`docs/execution/<feature>/todo.md`), Phase 1: Product & Architecture Planning, Phase 2: Specs & Test-Driven QA (TDD Red Phase), Phase 3: Lean Implementation (TDD Green Phase), Phase 4: Post-Task Review & PR
+
+### Community 316 - "🚨 **Civic Issue Reporting UX Specification**"
+Cohesion: 0.33
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🏛️ Tech Arch Agent (Technical Architect) Operating Specification
+
+### Community 317 - "🧭 TL Agent (Team Lead & Spec Writer) Operating Specification"
+Cohesion: 0.33
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
+
+### Community 318 - "🔄 Refinement Workflow"
+Cohesion: 0.40
+Nodes (5): 1️⃣ Step 1: Understand Intent, 2️⃣ Step 2: Gather Missing Information, 3️⃣ Step 3: Clarify When Needed, 4️⃣ Step 4: Refine, 🔄 Refinement Workflow
+
+### Community 319 - "🚨 **Civic Issue Reporting UX Specification**"
+Cohesion: 0.40
+Nodes (5): 🚨 **Civic Issue Reporting UX Specification**, 📑 Issue Reporting Fields & UI Presentation, 🌟 Overview, 📚 Related Documentation, 💡 Reporting UX Best Practices
+
+### Community 320 - "DJP Citizen App — Todo"
+Cohesion: 0.33
+Nodes (5): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP Frontend Task Tracker (`frontend/fe-todo.md`), Phase 6 — Live Backend Integration (Upcoming Sprint), 📝 Technical Notes & Architectural Reference
 
 ## Knowledge Gaps
-- **1201 isolated node(s):** `com.djp:backend`, `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script` (+1196 more)
+- **1243 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1238 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **127 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **130 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `✅ **Production-Ready Spring Boot Web App Checklist**` connect `✅ **Production-Ready Spring Boot Web App Checklist**` to `README.md`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `🧩 **UI Components Catalog**` connect `📚 Component Library` to `overview.md`?**
+- **Why does `💻 **Frontend Engineering Guide**` connect `💻 **Frontend Engineering Guide**` to `overview.md`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
-- **What connects `Recursively find directories that contain an outputs/ subdirectory.`, `Build a run dict with prompt, outputs, and grading data.`, `Read a file and return an embedded representation.` to the rest of the system?**
-  _1240 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `✅ **Production-Ready Spring Boot Web App Checklist**` connect `✅ **Production-Ready Spring Boot Web App Checklist**` to `README.md`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **Why does `🏛️ **Architecture Overview**` connect `🏗️ System Architecture` to `overview.md`?**
+  _High betweenness centrality (0.003) - this node is a cross-community bridge._
+- **What connects `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script` to the rest of the system?**
+  _1283 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Test-Driven Development (TDD)` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Skill Creator` be split into smaller, more focused modules?**
   _Cohesion score 0.05714285714285714 - nodes in this community are weakly interconnected._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.058823529411764705 - nodes in this community are weakly interconnected._
-- **Should `run_loop` be split into smaller, more focused modules?**
-  _Cohesion score 0.11088709677419355 - nodes in this community are weakly interconnected._

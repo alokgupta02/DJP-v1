@@ -1,32 +1,20 @@
-# DJP Backend Dashboard
+# DJP Backend Task Tracker (`backend/be-todo.md`)
 
-**Progress: 0%** `[................................]` 0/22 tasks
-
-| Phase | Done | Status |
-|---|---|---|
-| 1 — Project Setup, H2 & OAuth2 | 0/6 | ⬜ Not Started |
-| 2 — Issues CRUD | 0/5 | ⬜ Not Started |
-| 3 — Feed, Discussions & Replies | 0/4 | ⬜ Not Started |
-| 4 — Polls & Votes | 0/4 | ⬜ Not Started |
-| 5 — Petitions, Notifications & Representatives | 0/3 | ⬜ Not Started |
----
-
-# Project Task Tracker
-
-## Objective
-Build a production-quality Spring Boot 3.x + Java 21 + H2 backend for the DJP citizen app, following TDD principles. Implement REST APIs under `/api/v1`, OAuth2 authentication, and progressive database integration — designed to migrate to PostgreSQL/Supabase.
-
-Overall Progress: ~0% (0/22 tasks)
+> **Domain Role:** ⭐ **SINGLE SOURCE OF TRUTH (SSOT)** for Backend Microservices & Spring Boot Execution
+> **Sprint Progress:** 0% `[................................]` 0/22 tasks completed
+> **Completed Tasks Archive:** All completed tasks are moved to [`archive/todo.md`](file:///home/ap/git-repo/DJP-v1/archive/todo.md) (SSOT for historical completed work).
 
 ---
 
-## Current Task
+## 🚀 Active Sprint & Executing Tasks
 
-None — no phase has started yet.
+| Phase / Sprint | Task Description | Assigned Agent | Status |
+| :--- | :--- | :--- | :--- |
+| **Phase 1 (MVP 1)** | Project Setup, H2 Integration & OAuth2 Login | **BE Agent** | ⬜ Ready to Start |
 
 ---
 
-## Remaining Tasks
+## 📋 Backlog & Planned Phases
 
 ### Phase 1 — Project Setup, H2 Integration & OAuth2 (MVP 1)
 - [ ] Initialize Spring Boot Maven project (`spring-web`, `spring-security`, `spring-data-jpa`, `validation`, `h2`, `oauth2-client`)
@@ -62,13 +50,7 @@ None — no phase has started yet.
 
 ---
 
-## Completed
-
-None — backend implementation has not started.
-
----
-
-## Notes
+## 📝 Technical Notes & Architectural Reference
 
 - Stack: Spring Boot 3.x, Java 21, H2 embedded DB, Spring Security, Spring Data JPA
 - Auth: OAuth2 Authorization Code Flow (Google + LinkedIn) → JWT issued to React frontend

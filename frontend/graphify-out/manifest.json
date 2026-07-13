@@ -285,9 +285,9 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "README.md": {
-    "mtime": 1783261536.3116162,
-    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
-    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    "mtime": 1783878742.3820188,
+    "ast_hash": "7b0a59de6167f22bfeaee4bbb9ebbcbd",
+    "semantic_hash": "7b0a59de6167f22bfeaee4bbb9ebbcbd"
   },
   "apps/admin/README.md": {
     "mtime": 1783261260.0730677,
@@ -685,14 +685,14 @@
     "semantic_hash": "83bae916997ef086723521e20519e4a5"
   },
   "url.md": {
-    "mtime": 1783752058.721307,
-    "ast_hash": "ba7f7b757ee4a3ee52f0c44646936c3b",
-    "semantic_hash": "ba7f7b757ee4a3ee52f0c44646936c3b"
+    "mtime": 1783887941.9380841,
+    "ast_hash": "116baaa5b56d2b2716e96b3638055c29",
+    "semantic_hash": "116baaa5b56d2b2716e96b3638055c29"
   },
   "skills-lock.json": {
-    "mtime": 1783871203.8967795,
-    "ast_hash": "b40f952f9c7ac1c05900572405dc87c5",
-    "semantic_hash": "b40f952f9c7ac1c05900572405dc87c5"
+    "mtime": 1783964789.5227559,
+    "ast_hash": "caefee2975653ff679c1d5510fab69f3",
+    "semantic_hash": "caefee2975653ff679c1d5510fab69f3"
   },
   ".agents/skills/planning-with-files/scripts/attest-plan.ps1": {
     "mtime": 1783871156.6971486,
@@ -853,5 +853,80 @@
     "mtime": 1783871156.6971407,
     "ast_hash": "8635f627acfbcf47ce6262e374002de1",
     "semantic_hash": "8635f627acfbcf47ce6262e374002de1"
+  },
+  ".agents/skills/karpathy-guidelines/SKILL.md": {
+    "mtime": 1783964220.3765028,
+    "ast_hash": "568fe33228692e85543530ce376f695f",
+    "semantic_hash": "568fe33228692e85543530ce376f695f"
+  },
+  ".agents/skills/mem-search/SKILL.md": {
+    "mtime": 1783964212.5657125,
+    "ast_hash": "bc93ed17f083df4124ba0d9593ca4e07",
+    "semantic_hash": "bc93ed17f083df4124ba0d9593ca4e07"
+  },
+  ".agents/skills/using-superpowers/SKILL.md": {
+    "mtime": 1783964193.0009139,
+    "ast_hash": "49ffa86b53c14bb79d93ad3390399d7d",
+    "semantic_hash": "49ffa86b53c14bb79d93ad3390399d7d"
+  },
+  ".agents/skills/using-superpowers/references/antigravity-tools.md": {
+    "mtime": 1783964193.0013664,
+    "ast_hash": "eae8839e6c0e77f9c9205352566f7752",
+    "semantic_hash": "eae8839e6c0e77f9c9205352566f7752"
+  },
+  ".agents/skills/using-superpowers/references/codex-tools.md": {
+    "mtime": 1783964193.0014439,
+    "ast_hash": "dc15922a00cf25d92d2f929fd732763a",
+    "semantic_hash": "dc15922a00cf25d92d2f929fd732763a"
+  },
+  ".agents/skills/using-superpowers/references/pi-tools.md": {
+    "mtime": 1783964193.0014439,
+    "ast_hash": "eb8697d87b1f763f007cb2fdac3257a5",
+    "semantic_hash": "eb8697d87b1f763f007cb2fdac3257a5"
+  },
+  ".djp_identity.md": {
+    "mtime": 1783879600.0862901,
+    "ast_hash": "052c095d4a84289e9b93a42936fa56f0",
+    "semantic_hash": "052c095d4a84289e9b93a42936fa56f0"
+  },
+  ".djp_rules.md": {
+    "mtime": 1783879611.3554738,
+    "ast_hash": "899d067993148c02d85ecf8aa5e9fa9a",
+    "semantic_hash": "899d067993148c02d85ecf8aa5e9fa9a"
+  },
+  ".djp_state.md": {
+    "mtime": 1783879605.170373,
+    "ast_hash": "430e801e529d3e8325e5d14b9c61b567",
+    "semantic_hash": "430e801e529d3e8325e5d14b9c61b567"
+  },
+  ".agents/skills/webapp-testing/examples/console_logging.py": {
+    "mtime": 1783964789.4779892,
+    "ast_hash": "eeccdae76b3d57954c562d6116bf0dea",
+    "semantic_hash": "eeccdae76b3d57954c562d6116bf0dea"
+  },
+  ".agents/skills/webapp-testing/examples/element_discovery.py": {
+    "mtime": 1783964789.4779892,
+    "ast_hash": "ab18cb3570c77564a08cc73269d7b97d",
+    "semantic_hash": "ab18cb3570c77564a08cc73269d7b97d"
+  },
+  ".agents/skills/webapp-testing/examples/static_html_automation.py": {
+    "mtime": 1783964789.4782393,
+    "ast_hash": "b631a23dc044d41fae4614be9353527d",
+    "semantic_hash": "b631a23dc044d41fae4614be9353527d"
+  },
+  ".agents/skills/webapp-testing/scripts/with_server.py": {
+    "mtime": 1783964789.4782393,
+    "ast_hash": "5182121f66c1b4279a5b3013378e6ea9",
+    "semantic_hash": "5182121f66c1b4279a5b3013378e6ea9"
+  },
+  ".agents/skills/webapp-testing/LICENSE.txt": {
+    "mtime": 1783964789.4768903,
+    "ast_hash": "0ee6429f4c66920b6744d818225fb58f",
+    "semantic_hash": "0ee6429f4c66920b6744d818225fb58f"
+  },
+  ".agents/skills/webapp-testing/SKILL.md": {
+    "mtime": 1783964789.4768903,
+    "ast_hash": "b02025a3df7ff4a6ac7e765cd1d6d54c",
+    "semantic_hash": "b02025a3df7ff4a6ac7e765cd1d6d54c"
   }
 }
