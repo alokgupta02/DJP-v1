@@ -1,16 +1,16 @@
 # Graph Report - DJP-v1  (2026-07-14)
 
 ## Corpus Check
-- 372 files · ~214,199 words
+- 372 files · ~213,292 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2169 nodes · 2216 edges · 319 communities (189 shown, 130 thin omitted)
+- 2164 nodes · 2211 edges · 321 communities (192 shown, 129 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `dcd51224`
+- Built from commit: `c3706f32`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -106,6 +106,7 @@
 - 8. Advanced Patterns
 - User
 - 💬 **Civic Discussion UX Specification**
+- 🚨 **Civic Issue Reporting UX Specification**
 - 🚨 **Civic Issue Reporting UX Specification**
 - DiscussionsPage.tsx
 - async-cheap-condition-before-await.md
@@ -331,7 +332,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (319 total, 130 thin omitted)
+## Communities (321 total, 129 thin omitted)
 
 ### Community 0 - "Test-Driven Development (TDD)"
 Cohesion: 0.05
@@ -518,8 +519,8 @@ Cohesion: 0.17
 Nodes (12): 1️⃣ Step 1: Welcome Screen, 2️⃣ Step 2: Location Selection, 3️⃣ Step 3: Interest & Preference Gathering, 4️⃣ Step 4: Account Creation (Optional / Progressive), 5️⃣ Step 5: Interactive Platform Tour, 6️⃣ Step 6: Confirmation & Access, 🔄 6-Step Onboarding Sequence, 👋 **Conversational Onboarding & Progressive Disclosure** (+4 more)
 
 ### Community 46 - "Lean Codebase Rule"
-Cohesion: 0.18
-Nodes (10): Components, Core Principles, Decision Process, Dependencies, Hooks, Lean Codebase Rule, Refactoring, State Management (+2 more)
+Cohesion: 0.40
+Nodes (4): 1. Zero Speculative Code, 2. Components, Hooks & Utilities, 3. Post-Task Cleanup, Lean Codebase Guardrail
 
 ### Community 47 - "Changelog"
 Cohesion: 0.18
@@ -690,12 +691,16 @@ Cohesion: 0.17
 Nodes (3): User, Entity, Table
 
 ### Community 92 - "💬 **Civic Discussion UX Specification**"
-Cohesion: 0.16
-Nodes (10): 💬 **Civic Discussion UX Specification**, 📑 Data Schema & UI Fields, 🌟 Overview, 📚 Related Documentation, 💡 UX & Content Guidelines, 🚨 **Civic Issue Reporting UX Specification**, 📑 Issue Reporting Fields & UI Presentation, 🌟 Overview (+2 more)
+Cohesion: 0.40
+Nodes (5): 💬 **Civic Discussion UX Specification**, 📑 Data Schema & UI Fields, 🌟 Overview, 📚 Related Documentation, 💡 UX & Content Guidelines
 
 ### Community 93 - "🚨 **Civic Issue Reporting UX Specification**"
 Cohesion: 0.40
 Nodes (5): 📊 **Civic Polling UX Specification**, 🌟 Overview, 📑 Poll Schema & UI Representation, 💡 Polling UX Best Practices, 📚 Related Documentation
+
+### Community 94 - "🚨 **Civic Issue Reporting UX Specification**"
+Cohesion: 0.40
+Nodes (5): 🚨 **Civic Issue Reporting UX Specification**, 📑 Issue Reporting Fields & UI Presentation, 🌟 Overview, 📚 Related Documentation, 💡 Reporting UX Best Practices
 
 ### Community 95 - "DiscussionsPage.tsx"
 Cohesion: 0.40
@@ -728,6 +733,10 @@ Nodes (9): Data Sources, Findings & Decisions, Hypothesis Log, Issues Encountere
 ### Community 106 - "DJP Citizen App — Todo"
 Cohesion: 0.18
 Nodes (10): Configuration, Data Layer (Repositories), Dependency Injection & Components, Logging, Project Setup & Structure, Security, Service Layer, Spring Boot Best Practices (+2 more)
+
+### Community 118 - "ponytail.md"
+Cohesion: 0.50
+Nodes (3): 1. Efficiency Ladder (Stop at First Match), 2. Rules, Ponytail (Lazy Senior Dev Mode)
 
 ### Community 152 - "advanced-effect-event-deps.md"
 Cohesion: 0.20
@@ -830,8 +839,8 @@ Cohesion: 0.40
 Nodes (4): 1. Project Root (`/`), 2. Agent Rules (`/.agents/`), 3. Documentation Subfolders (`/docs/`), DJP Documentation Sitemap & Organization Rules
 
 ### Community 246 - "DJP Agent Team Operating Rules"
-Cohesion: 0.29
-Nodes (6): 1. Team Roles, 2. Mandatory TDD & Approval Workflow, 3. Mandatory Post-Task Workflow, 4. Mandatory Lifecycle Skills & Tools, 5. Master Workflow Guide & Domain Ecosystem, DJP Agent Team Operating Rules
+Cohesion: 0.33
+Nodes (5): 1. Team Roles & Skills, 2. Mandatory TDD & Approval Workflow, 3. Post-Task Audit Sequence, 4. Domain State Ecosystem (`AGENTIC_WORKFLOW_GUIDE.md`), DJP Agent Team Operating Rules
 
 ### Community 248 - "Technical Specifications: Spring Boot + React OAuth Login"
 Cohesion: 0.50
@@ -966,21 +975,21 @@ Cohesion: 0.33
 Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
 
 ## Knowledge Gaps
-- **1245 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1240 more)
+- **1239 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1234 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **130 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **129 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `💻 **Frontend Engineering Guide**` connect `💻 **Frontend Engineering Guide**` to `overview.md`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
+- **Why does `🏛️ **Architecture Overview**` connect `🏗️ System Architecture` to `overview.md`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Why does `✅ **Production-Ready Spring Boot Web App Checklist**` connect `✅ **Production-Ready Spring Boot Web App Checklist**` to `README.md`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `📊 **Civic Polling UX Specification**` connect `🚨 **Civic Issue Reporting UX Specification**` to `💬 **Civic Discussion UX Specification**`?**
-  _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **What connects `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script` to the rest of the system?**
-  _1285 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1279 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Test-Driven Development (TDD)` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Skill Creator` be split into smaller, more focused modules?**

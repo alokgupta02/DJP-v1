@@ -540,18 +540,18 @@
     "semantic_hash": ""
   },
   ".agents/rules/boilerplate-code-guardrail.md": {
-    "mtime": 1783449856.834157,
-    "ast_hash": "bf9e6723e315c70b9203dd5689ae61e4",
+    "mtime": 1783981976.7183743,
+    "ast_hash": "1bcbe721c899b3719e611a30aa60f9ee",
     "semantic_hash": ""
   },
   ".agents/rules/graphify.md": {
-    "mtime": 1783442641.9453952,
-    "ast_hash": "f1e53ecc9194573d3c28fc116c743a2e",
+    "mtime": 1783981994.0074637,
+    "ast_hash": "8120bae97db4a8e07b1bec04f334a6fd",
     "semantic_hash": ""
   },
   ".agents/rules/ponytail.md": {
-    "mtime": 1783769845.0137196,
-    "ast_hash": "2d922daa034b7081de0bcd1a1fd01040",
+    "mtime": 1783981983.0264065,
+    "ast_hash": "0000672cae23eb2222fd8c3d614db945",
     "semantic_hash": ""
   },
   ".agents/skills/analyze-project/SKILL.md": {
@@ -1080,8 +1080,8 @@
     "semantic_hash": ""
   },
   ".agents/AGENTS.md": {
-    "mtime": 1783980722.4771292,
-    "ast_hash": "30e0c84d7a08a8775e04a3a78b325fec",
+    "mtime": 1783982001.764505,
+    "ast_hash": "90ef5b483c3c09cc7884b87b9d5a14e0",
     "semantic_hash": ""
   },
   "AGENTIC_WORKFLOW_GUIDE.md": {
