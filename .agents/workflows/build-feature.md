@@ -1,7 +1,9 @@
-# Build Feature (Master End-to-End Pipeline)
+---
+name: build-feature
+description: Orchestrates the complete end-to-end multi-agent pipeline from user intake to a working application and Pull Request.
+---
 
-**Command:** `/build-feature`
-**Description:** Orchestrates the complete end-to-end multi-agent pipeline from user intake to a working application and Pull Request.
+# Build Feature (Master End-to-End Pipeline)
 
 ---
 
