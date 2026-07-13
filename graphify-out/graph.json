@@ -4451,7 +4451,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage",
-      "community": 18,
+      "community": 303,
       "norm_label": "creatediscussionpage.tsx"
     },
     {
@@ -4461,7 +4461,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage_communities",
-      "community": 18,
+      "community": 303,
       "norm_label": "communities"
     },
     {
@@ -4471,7 +4471,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage_creatediscussionpage",
-      "community": 18,
+      "community": 303,
       "norm_label": "creatediscussionpage()"
     },
     {
@@ -4991,7 +4991,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage",
-      "community": 18,
+      "community": 261,
       "norm_label": "pollspage.tsx"
     },
     {
@@ -5001,7 +5001,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_filter_tabs",
-      "community": 18,
+      "community": 261,
       "norm_label": "filter_tabs"
     },
     {
@@ -5011,7 +5011,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_polls",
-      "community": 18,
+      "community": 261,
       "norm_label": "polls"
     },
     {
@@ -5021,7 +5021,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_pollspage",
-      "community": 18,
+      "community": 261,
       "norm_label": "pollspage()"
     },
     {
@@ -7375,34 +7375,64 @@
       "norm_label": "ponytail.md"
     },
     {
-      "label": "Ponytail (Lazy Senior Dev Mode)",
+      "label": "\ud83d\udc71\u200d\u2640\ufe0f Ponytail (Lazy Senior Dev Mode)",
       "file_type": "document",
       "source_file": ".agents/rules/ponytail.md",
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents_rules_ponytail_ponytail_lazy_senior_dev_mode",
       "community": 118,
-      "norm_label": "ponytail (lazy senior dev mode)"
+      "norm_label": "\ud83d\udc71\u200d\u2640\ufe0f ponytail (lazy senior dev mode)"
     },
     {
-      "label": "1. Efficiency Ladder (Stop at First Match)",
+      "label": "1. The Efficiency Ladder",
       "file_type": "document",
       "source_file": ".agents/rules/ponytail.md",
-      "source_location": "L5",
+      "source_location": "L7",
       "_origin": "ast",
-      "id": "agents_rules_ponytail_1_efficiency_ladder_stop_at_first_match",
+      "id": "agents_rules_ponytail_1_the_efficiency_ladder",
       "community": 118,
-      "norm_label": "1. efficiency ladder (stop at first match)"
+      "norm_label": "1. the efficiency ladder"
     },
     {
-      "label": "2. Rules",
+      "label": "2. Bug Fix Protocol (Root Cause vs. Symptom)",
       "file_type": "document",
       "source_file": ".agents/rules/ponytail.md",
-      "source_location": "L11",
+      "source_location": "L24",
       "_origin": "ast",
-      "id": "agents_rules_ponytail_2_rules",
+      "id": "agents_rules_ponytail_2_bug_fix_protocol_root_cause_vs_symptom",
       "community": 118,
-      "norm_label": "2. rules"
+      "norm_label": "2. bug fix protocol (root cause vs. symptom)"
+    },
+    {
+      "label": "3. Core Rules",
+      "file_type": "document",
+      "source_file": ".agents/rules/ponytail.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "agents_rules_ponytail_3_core_rules",
+      "community": 118,
+      "norm_label": "3. core rules"
+    },
+    {
+      "label": "4. What We Are NEVER Lazy About",
+      "file_type": "document",
+      "source_file": ".agents/rules/ponytail.md",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "agents_rules_ponytail_4_what_we_are_never_lazy_about",
+      "community": 118,
+      "norm_label": "4. what we are never lazy about"
+    },
+    {
+      "label": "5. Verification & Testing Rule",
+      "file_type": "document",
+      "source_file": ".agents/rules/ponytail.md",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "agents_rules_ponytail_5_verification_testing_rule",
+      "community": 118,
+      "norm_label": "5. verification & testing rule"
     },
     {
       "label": "SKILL.md",
@@ -11353,6 +11383,96 @@
       "id": "agents_skills_using_superpowers_references_pi_tools_task_lists",
       "community": 174,
       "norm_label": "task lists"
+    },
+    {
+      "label": "build-feature.md",
+      "file_type": "document",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_workflows_build_feature",
+      "community": 224,
+      "norm_label": "build-feature.md"
+    },
+    {
+      "label": "Build Feature (Master End-to-End Pipeline)",
+      "file_type": "document",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_workflows_build_feature_build_feature_master_end_to_end_pipeline",
+      "community": 224,
+      "norm_label": "build feature (master end-to-end pipeline)"
+    },
+    {
+      "label": "\ud83e\udd16 Instructions for the Agent",
+      "file_type": "document",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "agents_workflows_build_feature_instructions_for_the_agent",
+      "community": 224,
+      "norm_label": "\ud83e\udd16 instructions for the agent"
+    },
+    {
+      "label": "Step 1: \ud83d\udc51 PM Agent (Scope & Requirements)",
+      "file_type": "document",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "agents_workflows_build_feature_step_1_pm_agent_scope_requirements",
+      "community": 224,
+      "norm_label": "step 1: \ud83d\udc51 pm agent (scope & requirements)"
+    },
+    {
+      "label": "Step 2: \ud83c\udfdb\ufe0f Tech Arch Agent (Architecture)",
+      "file_type": "document",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "agents_workflows_build_feature_step_2_tech_arch_agent_architecture",
+      "community": 224,
+      "norm_label": "step 2: \ud83c\udfdb\ufe0f tech arch agent (architecture)"
+    },
+    {
+      "label": "Step 3: \ud83e\udded TL Agent (Surgical Specification)",
+      "file_type": "document",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "agents_workflows_build_feature_step_3_tl_agent_surgical_specification",
+      "community": 224,
+      "norm_label": "step 3: \ud83e\udded tl agent (surgical specification)"
+    },
+    {
+      "label": "Step 4: \ud83e\uddea QA Agent (TDD Red Phase)",
+      "file_type": "document",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "agents_workflows_build_feature_step_4_qa_agent_tdd_red_phase",
+      "community": 224,
+      "norm_label": "step 4: \ud83e\uddea qa agent (tdd red phase)"
+    },
+    {
+      "label": "Step 5: \ud83c\udfa8 / \u2699\ufe0f FE & BE Agents (TDD Green Phase)",
+      "file_type": "document",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "agents_workflows_build_feature_step_5_fe_be_agents_tdd_green_phase",
+      "community": 224,
+      "norm_label": "step 5: \ud83c\udfa8 / \u2699\ufe0f fe & be agents (tdd green phase)"
+    },
+    {
+      "label": "Step 6: \ud83d\udc19 GitHub Agent (Audit & PR)",
+      "file_type": "document",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "agents_workflows_build_feature_step_6_github_agent_audit_pr",
+      "community": 224,
+      "norm_label": "step 6: \ud83d\udc19 github agent (audit & pr)"
     },
     {
       "label": "graphify.md",
@@ -31421,20 +31541,50 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".agents/rules/ponytail.md",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0,
       "source": "agents_rules_ponytail_ponytail_lazy_senior_dev_mode",
-      "target": "agents_rules_ponytail_1_efficiency_ladder_stop_at_first_match",
+      "target": "agents_rules_ponytail_1_the_efficiency_ladder",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".agents/rules/ponytail.md",
-      "source_location": "L11",
+      "source_location": "L24",
       "weight": 1.0,
       "source": "agents_rules_ponytail_ponytail_lazy_senior_dev_mode",
-      "target": "agents_rules_ponytail_2_rules",
+      "target": "agents_rules_ponytail_2_bug_fix_protocol_root_cause_vs_symptom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/rules/ponytail.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "agents_rules_ponytail_ponytail_lazy_senior_dev_mode",
+      "target": "agents_rules_ponytail_3_core_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/rules/ponytail.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "agents_rules_ponytail_ponytail_lazy_senior_dev_mode",
+      "target": "agents_rules_ponytail_4_what_we_are_never_lazy_about",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/rules/ponytail.md",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "agents_rules_ponytail_ponytail_lazy_senior_dev_mode",
+      "target": "agents_rules_ponytail_5_verification_testing_rule",
       "confidence_score": 1.0
     },
     {
@@ -35095,6 +35245,86 @@
       "weight": 1.0,
       "source": "agents_skills_using_superpowers_references_pi_tools_pi_tool_mapping",
       "target": "agents_skills_using_superpowers_references_pi_tools_task_lists",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "agents_workflows_build_feature",
+      "target": "agents_workflows_build_feature_build_feature_master_end_to_end_pipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "agents_workflows_build_feature_build_feature_master_end_to_end_pipeline",
+      "target": "agents_workflows_build_feature_instructions_for_the_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "agents_workflows_build_feature_instructions_for_the_agent",
+      "target": "agents_workflows_build_feature_step_1_pm_agent_scope_requirements",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "agents_workflows_build_feature_instructions_for_the_agent",
+      "target": "agents_workflows_build_feature_step_2_tech_arch_agent_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "agents_workflows_build_feature_instructions_for_the_agent",
+      "target": "agents_workflows_build_feature_step_3_tl_agent_surgical_specification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "agents_workflows_build_feature_instructions_for_the_agent",
+      "target": "agents_workflows_build_feature_step_4_qa_agent_tdd_red_phase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "agents_workflows_build_feature_instructions_for_the_agent",
+      "target": "agents_workflows_build_feature_step_5_fe_be_agents_tdd_green_phase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/workflows/build-feature.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "agents_workflows_build_feature_instructions_for_the_agent",
+      "target": "agents_workflows_build_feature_step_6_github_agent_audit_pr",
       "confidence_score": 1.0
     },
     {
@@ -44389,5 +44619,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c3706f325f414e73447fad471137c6fc5236e02c"
+  "built_at_commit": "54711db40749927aa4cb1d28808a00441d287e04"
 }

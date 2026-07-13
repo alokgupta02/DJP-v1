@@ -39,6 +39,7 @@ Do NOT skip any steps or human approval gates. Ensure `docs/execution/<feature>/
 2. Write the **minimal possible** application code in `frontend/` and `backend/` required to make the tests pass.
 3. Obey the `Lean Codebase Guardrail`: always modify existing files first; no speculative code.
 4. Run the QA tests. If they fail, retry (max 3 times) until passing green ✅.
+5. **🛑 STOP.** Ask the user: *"The QA tests are passing. Please verify the working application. Type 'Approve' to proceed to Audit & PR."* Wait for explicit human approval.
 
 ### Step 6: 🐙 GitHub Agent (Audit & PR)
 1. Run `graphify update .` to sync the AST graph.

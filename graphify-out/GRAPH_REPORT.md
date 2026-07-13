@@ -1,16 +1,16 @@
 # Graph Report - DJP-v1  (2026-07-14)
 
 ## Corpus Check
-- 372 files · ~213,292 words
+- 373 files · ~214,157 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2164 nodes · 2211 edges · 321 communities (192 shown, 129 thin omitted)
+- 2176 nodes · 2222 edges · 324 communities (193 shown, 131 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c3706f32`
+- Built from commit: `54711db4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -227,6 +227,7 @@
 - IssuesPage.tsx
 - todo.md
 - README.md
+- 🤖 Instructions for the Agent
 - README.md
 - README.md
 - CreateDiscussionPage.tsx
@@ -249,6 +250,7 @@
 - Reference: Manus Context Engineering Principles
 - init-session.sh
 - Findings & Decisions
+- PollsPage.tsx
 - ledger-append.sh
 - resolve-plan-dir.sh
 - Progress Log
@@ -289,6 +291,7 @@
 - 🏛️ System Boundaries & Agentic Guardrails Matrix
 - 2026-07-10 Session (Original React Frontend Migration Sprint — 40/40 Completed)
 - Karpathy Guidelines
+- CreateDiscussionPage.tsx
 - SKILL.md
 - Example 1: Research Task
 - codex-tools.md
@@ -332,7 +335,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (321 total, 129 thin omitted)
+## Communities (324 total, 131 thin omitted)
 
 ### Community 0 - "Test-Driven Development (TDD)"
 Cohesion: 0.05
@@ -407,8 +410,8 @@ Cohesion: 0.10
 Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, jsx, lib, module, moduleDetection (+11 more)
 
 ### Community 18 - "router.tsx"
-Cohesion: 0.12
-Nodes (7): AuthLayout(), router, Step2Location(), COMMUNITIES, NotFoundPage(), FILTER_TABS, POLLS
+Cohesion: 0.20
+Nodes (4): AuthLayout(), router, Step2Location(), NotFoundPage()
 
 ### Community 19 - "compilerOptions"
 Cohesion: 0.11
@@ -735,8 +738,8 @@ Cohesion: 0.18
 Nodes (10): Configuration, Data Layer (Repositories), Dependency Injection & Components, Logging, Project Setup & Structure, Security, Service Layer, Spring Boot Best Practices (+2 more)
 
 ### Community 118 - "ponytail.md"
-Cohesion: 0.50
-Nodes (3): 1. Efficiency Ladder (Stop at First Match), 2. Rules, Ponytail (Lazy Senior Dev Mode)
+Cohesion: 0.29
+Nodes (6): 1. The Efficiency Ladder, 2. Bug Fix Protocol (Root Cause vs. Symptom), 3. Core Rules, 4. What We Are NEVER Lazy About, 5. Verification & Testing Rule, 👱‍♀️ Ponytail (Lazy Senior Dev Mode)
 
 ### Community 152 - "advanced-effect-event-deps.md"
 Cohesion: 0.20
@@ -813,6 +816,10 @@ Nodes (3): File-System Paths, Import Paths, Prefer Statically Analyzable Paths
 ### Community 223 - "README.md"
 Cohesion: 0.40
 Nodes (4): DJP Backend Microservices, DJPv1 Synchronization, Overview, Running Locally
+
+### Community 224 - "🤖 Instructions for the Agent"
+Cohesion: 0.22
+Nodes (8): Build Feature (Master End-to-End Pipeline), 🤖 Instructions for the Agent, Step 1: 👑 PM Agent (Scope & Requirements), Step 2: 🏛️ Tech Arch Agent (Architecture), Step 3: 🧭 TL Agent (Surgical Specification), Step 4: 🧪 QA Agent (TDD Red Phase), Step 5: 🎨 / ⚙️ FE & BE Agents (TDD Green Phase), Step 6: 🐙 GitHub Agent (Audit & PR)
 
 ### Community 237 - "README.md"
 Cohesion: 0.40
@@ -975,21 +982,21 @@ Cohesion: 0.33
 Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
 
 ## Knowledge Gaps
-- **1239 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1234 more)
+- **1248 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1243 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **129 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **131 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `💻 **Frontend Engineering Guide**` connect `💻 **Frontend Engineering Guide**` to `overview.md`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `🏛️ **Architecture Overview**` connect `🏗️ System Architecture` to `overview.md`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `👋 **Conversational Onboarding & Progressive Disclosure**` connect `🔄 6-Step Onboarding Sequence` to `design-principles.md`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `✅ **Production-Ready Spring Boot Web App Checklist**` connect `✅ **Production-Ready Spring Boot Web App Checklist**` to `README.md`?**
+- **Why does `🚨 **Civic Issue Reporting UX Specification**` connect `🚨 **Civic Issue Reporting UX Specification**` to `design-principles.md`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script` to the rest of the system?**
-  _1279 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1288 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Test-Driven Development (TDD)` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Skill Creator` be split into smaller, more focused modules?**
