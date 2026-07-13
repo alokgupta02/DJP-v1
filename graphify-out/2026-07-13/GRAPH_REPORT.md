@@ -1,16 +1,16 @@
-# Graph Report - DJP-v1  (2026-07-12)
+# Graph Report - DJP-v1  (2026-07-13)
 
 ## Corpus Check
-- 350 files · ~207,949 words
+- 366 files · ~210,760 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2043 nodes · 2112 edges · 300 communities (171 shown, 129 thin omitted)
+- 2111 nodes · 2165 edges · 314 communities (183 shown, 131 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `205762c4`
+- Built from commit: `767e7543`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -93,6 +93,7 @@
 - stop-server.sh
 - 1. Eliminating Waterfalls
 - 2. Bundle Size Optimization
+- design-principles.md
 - 🧭 **Navigation System Specification**
 - README.md
 - 🧑‍💻 **Backend Engineer Agent Role**
@@ -238,7 +239,7 @@
 - CreateDiscussionPage.tsx
 - IssueDetailPage.tsx
 - AuthController
-- 3. Microservice Definitions
+- Memory Search
 - DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy
 - Technical Architecture: Spring Boot OAuth2 Login
 - DJP Documentation Sitemap & Organization Rules
@@ -273,7 +274,7 @@
 - set-active-plan.sh script
 - DJPv1 IDENTITY
 - DJPv1 OPERATIONAL RULES
-- PollsPage.tsx
+- Web Application Testing
 - DJP Test Suites & Automated QA
 - CreateDiscussionPage.tsx
 - DJPv1 BACKEND ACTIVE STATE
@@ -285,6 +286,16 @@
 - DJPv1 FRONTEND OPERATIONAL RULES
 - DJPv1 QA & TESTS IDENTITY
 - DJPv1 QA & TESTS OPERATIONAL RULES
+- 🏛️ System Boundaries & Agentic Guardrails Matrix
+- DJP Missed & Deferred Todos (Backlog Separation)
+- Karpathy Guidelines
+- SKILL.md
+- Example 1: Research Task
+- codex-tools.md
+- Pi Tool Mapping
+- is_server_ready
+- Antigravity CLI (`agy`) Tool Mapping
+- CreateDiscussionPage.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `✅ **Production-Ready Spring Boot Web App Checklist**` - 22 edges
@@ -313,7 +324,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (300 total, 129 thin omitted)
+## Communities (314 total, 131 thin omitted)
 
 ### Community 0 - "Test-Driven Development (TDD)"
 Cohesion: 0.05
@@ -553,7 +564,7 @@ Nodes (10): 1️⃣ Onboarding Integration, 2️⃣ Content Creation Form Co-Pil
 
 ### Community 60 - "🏗️ **Frontend Directory & Monorepo Structure**"
 Cohesion: 0.33
-Nodes (5): 2026-07-12 Session, Current Sprint, DJPv1 ACTIVE STATE, Session Delta Logs, Task Breakdown
+Nodes (5): 2026-07-13 Session, Current Sprint, DJPv1 ACTIVE STATE, Session Delta Logs, Task Breakdown
 
 ### Community 61 - "📦 **Common Submission Model Architecture**"
 Cohesion: 0.20
@@ -607,10 +618,6 @@ Nodes (5): categoryIcons, FILTER_TABS, Issue, ISSUES, priorityColors
 Cohesion: 0.36
 Nodes (6): Button, ButtonProps, ButtonSize, ButtonVariant, sizeClasses, variantClasses
 
-### Community 74 - "URL Map — DJP Citizen App"
-Cohesion: 0.25
-Nodes (7): Phase 0 — Foundation (Built), Phase 1 — Core Pages (Pending), Phase 2 — Supporting Pages (Migrated), Phase 3 — Detail & Creation Pages (Migrated), Phase 4 — Auth & Onboarding (Migrated), Phase 5 — Missing Routes (Migrated), URL Map — DJP Citizen App
-
 ### Community 75 - "analyze-project"
 Cohesion: 0.29
 Nodes (6): analyze-project, Clear boundaries, Notes, Output expectations, When not to apply, When to apply
@@ -626,6 +633,10 @@ Nodes (7): 1.1 Check Cheap Conditions Before Async Flags, 1.2 Defer Await Until 
 ### Community 78 - "2. Bundle Size Optimization"
 Cohesion: 0.29
 Nodes (7): 2.1 Avoid Barrel File Imports, 2.2 Conditional Module Loading, 2.3 Defer Non-Critical Third-Party Libraries, 2.4 Dynamic Imports for Heavy Components, 2.5 Prefer Statically Analyzable Paths, 2.6 Preload Based on User Intent, 2. Bundle Size Optimization
+
+### Community 79 - "design-principles.md"
+Cohesion: 0.29
+Nodes (7): Principle 1: Design Around KV-Cache, Principle 2: Mask, Don't Remove, Principle 3: Filesystem as External Memory, Principle 4: Manipulate Attention Through Recitation, Principle 5: Keep the Wrong Stuff In, Principle 6: Don't Get Few-Shotted, The 6 Manus Principles
 
 ### Community 80 - "🧭 **Navigation System Specification**"
 Cohesion: 0.29
@@ -672,20 +683,20 @@ Cohesion: 0.17
 Nodes (3): User, Entity, Table
 
 ### Community 91 - "🛠️ **Agent Skills & Slash Commands Directory**"
-Cohesion: 0.40
-Nodes (4): 🛠️ **Agent Skills & Slash Commands Directory**, 💡 Best Practices for Using Skills, 📦 Installed Skills & Commands Table, 🎯 Overview
+Cohesion: 0.33
+Nodes (5): 🛠️ **Agent Skills & Slash Commands Directory**, 💡 Best Practices for Using Skills, 🌍 Global Commands, 🏠 Local Commands, 🎯 Overview
 
 ### Community 92 - "💬 **Civic Discussion UX Specification**"
-Cohesion: 0.40
-Nodes (5): 💬 **Civic Discussion UX Specification**, 📑 Data Schema & UI Fields, 🌟 Overview, 📚 Related Documentation, 💡 UX & Content Guidelines
+Cohesion: 0.16
+Nodes (10): 💬 **Civic Discussion UX Specification**, 📑 Data Schema & UI Fields, 🌟 Overview, 📚 Related Documentation, 💡 UX & Content Guidelines, 📊 **Civic Polling UX Specification**, 🌟 Overview, 📑 Poll Schema & UI Representation (+2 more)
 
 ### Community 93 - "🚨 **Civic Issue Reporting UX Specification**"
 Cohesion: 0.40
 Nodes (5): 🚨 **Civic Issue Reporting UX Specification**, 📑 Issue Reporting Fields & UI Presentation, 🌟 Overview, 📚 Related Documentation, 💡 Reporting UX Best Practices
 
 ### Community 94 - "📊 **Civic Polling UX Specification**"
-Cohesion: 0.40
-Nodes (5): 📊 **Civic Polling UX Specification**, 🌟 Overview, 📑 Poll Schema & UI Representation, 💡 Polling UX Best Practices, 📚 Related Documentation
+Cohesion: 0.33
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 👑 PM Agent (Product Manager) Operating Specification
 
 ### Community 95 - "DiscussionsPage.tsx"
 Cohesion: 0.40
@@ -735,9 +746,9 @@ Nodes (41): 1. Create Plan First, 2. The 2-Action Rule, 3. Read Before Decide, 4
 Cohesion: 0.31
 Nodes (6): AuthController, CrossOrigin, GetMapping, RequestMapping, ResponseEntity, RestController
 
-### Community 242 - "3. Microservice Definitions"
-Cohesion: 0.25
-Nodes (7): 1. System Overview, 2. Global Tech Stack, 3. Microservice Definitions, A. Auth Service (`backend/auth-service`), B. Core Service (`backend/core-service`), C. AI / Analytics Service (`backend/ai-service`), Modular Microservices Backend Architecture & Tech Stack
+### Community 242 - "Memory Search"
+Cohesion: 0.20
+Nodes (9): 3-Layer Workflow (ALWAYS Follow), Examples, Knowledge Agents, Memory Search, Step 1: Search - Get Index with IDs, Step 2: Timeline - Get Context Around Interesting Results, Step 3: Fetch - Get Full Details ONLY for Filtered IDs, When to Use (+1 more)
 
 ### Community 243 - "DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy"
 Cohesion: 0.33
@@ -808,8 +819,8 @@ Cohesion: 0.25
 Nodes (7): 5-Question Reboot Check, Error Log, Phase 1: [Title], Phase 2: [Title], Progress Log, Session: [DATE], Test Results
 
 ### Community 265 - "The 6 Manus Principles"
-Cohesion: 0.29
-Nodes (7): Principle 1: Design Around KV-Cache, Principle 2: Mask, Don't Remove, Principle 3: Filesystem as External Memory, Principle 4: Manipulate Attention Through Recitation, Principle 5: Keep the Wrong Stuff In, Principle 6: Don't Get Few-Shotted, The 6 Manus Principles
+Cohesion: 0.33
+Nodes (6): Phase 1: Requirements & Discovery, Phase 2: Planning & Structure, Phase 3: Implementation, Phase 4: Testing & Verification, Phase 5: Delivery, Phases
 
 ### Community 266 - "Findings & Decisions"
 Cohesion: 0.29
@@ -824,8 +835,8 @@ Cohesion: 0.53
 Nodes (4): do_write(), rewrite(), phase-status.sh script, usage()
 
 ### Community 270 - "Phases"
-Cohesion: 0.33
-Nodes (6): Phase 1: Requirements & Discovery, Phase 2: Planning & Structure, Phase 3: Implementation, Phase 4: Testing & Verification, Phase 5: Delivery, Phases
+Cohesion: 0.40
+Nodes (4): 1. Feature Folder Structure, 2. Agent Execution Workflow in This Folder, 3. Key Takeaways & Memory Aid, 🚀 DJP Execution Hub (`docs/execution/`)
 
 ### Community 271 - "🔄 Refinement Workflow"
 Cohesion: 0.20
@@ -839,9 +850,17 @@ Nodes (3): Communication Guardrails, DJPv1 IDENTITY, Technical Profile
 Cohesion: 0.50
 Nodes (3): Code Quality Standards, Context Allocation, DJPv1 OPERATIONAL RULES
 
+### Community 288 - "Web Application Testing"
+Cohesion: 0.25
+Nodes (7): Best Practices, Common Pitfall, Decision Tree: Choosing Your Approach, Example: Using with_server.py, Reconnaissance-Then-Action Pattern, Reference Files, Web Application Testing
+
 ### Community 289 - "DJP Test Suites & Automated QA"
 Cohesion: 0.50
 Nodes (3): DJP Test Suites & Automated QA, DJPv1 Synchronization, Overview
+
+### Community 290 - "CreateDiscussionPage.tsx"
+Cohesion: 0.25
+Nodes (7): 1. System Overview, 2. Global Tech Stack, 3. Microservice Definitions, A. Auth Service (`backend/auth-service`), B. Core Service (`backend/core-service`), C. AI / Analytics Service (`backend/ai-service`), Modular Microservices Backend Architecture & Tech Stack
 
 ### Community 291 - "DJPv1 BACKEND ACTIVE STATE"
 Cohesion: 0.33
@@ -879,22 +898,50 @@ Nodes (3): Communication Guardrails, DJPv1 QA & TESTS IDENTITY, Technical Profil
 Cohesion: 0.50
 Nodes (3): Code Quality Standards, Context Allocation, DJPv1 QA & TESTS OPERATIONAL RULES
 
+### Community 300 - "🏛️ System Boundaries & Agentic Guardrails Matrix"
+Cohesion: 0.29
+Nodes (6): 1. Executive Summary & Big Picture, 2. Identified Architectural Areas & Domain Boundaries, 3. Agentic Workflow Guardrails & Responsibilities, 4. Key Takeaways & Memory Aid, Strict Agent Enforcement Rules:, 🏛️ System Boundaries & Agentic Guardrails Matrix
+
+### Community 301 - "DJP Missed & Deferred Todos (Backlog Separation)"
+Cohesion: 0.40
+Nodes (4): Backend Deferred Backlog, DJP Missed & Deferred Todos (Backlog Separation), Frontend Deferred Backlog, Previously Missed / Deferred Root Tasks
+
+### Community 302 - "Karpathy Guidelines"
+Cohesion: 0.33
+Nodes (5): 1. Think Before Coding, 2. Simplicity First, 3. Surgical Changes, 4. Goal-Driven Execution, Karpathy Guidelines
+
+### Community 304 - "SKILL.md"
+Cohesion: 0.33
+Nodes (5): Platform Adaptation, Red Flags, Skill Priority, The Rule, User Instructions
+
+### Community 306 - "codex-tools.md"
+Cohesion: 0.50
+Nodes (3): Codex App Finishing, Environment Detection, Subagent dispatch requires multi-agent support
+
+### Community 307 - "Pi Tool Mapping"
+Cohesion: 0.50
+Nodes (3): Pi Tool Mapping, Subagents, Task lists
+
+### Community 308 - "is_server_ready"
+Cohesion: 0.67
+Nodes (3): is_server_ready(), main(), Wait for server to be ready by polling the port.
+
 ## Knowledge Gaps
-- **1168 isolated node(s):** `com.djp:backend`, `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script` (+1163 more)
+- **1206 isolated node(s):** `com.djp:backend`, `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script` (+1201 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **129 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **131 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `💻 **Frontend Engineering Guide**` connect `💻 **Frontend Engineering Guide**` to `overview.md`?**
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
 - **Why does `✍️ **Prompt Refiner Agent Role (`prompt-refiner`)**` connect `✍️ **Prompt Refiner Agent Role (`prompt-refiner`)**` to `README.md`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `🏗️ **Frontend Directory & Monorepo Structure**` connect `🔄 Refinement Workflow` to `overview.md`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `🎨 **Colors & Typography Design Tokens**` connect `🎨 **Colors & Typography Design Tokens**` to `overview.md`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `🤖 **AI Civic Assistant Architecture**` connect `🤖 **AI Civic Assistant Architecture**` to `overview.md`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **What connects `Recursively find directories that contain an outputs/ subdirectory.`, `Build a run dict with prompt, outputs, and grading data.`, `Read a file and return an embedded representation.` to the rest of the system?**
-  _1207 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1246 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Test-Driven Development (TDD)` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Skill Creator` be split into smaller, more focused modules?**

@@ -3015,6 +3015,86 @@
       "norm_label": "set-active-plan.sh script"
     },
     {
+      "label": "console_logging.py",
+      "file_type": "code",
+      "source_file": "frontend/.agents/skills/webapp-testing/examples/console_logging.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_examples_console_logging",
+      "community": 310,
+      "norm_label": "console_logging.py"
+    },
+    {
+      "label": "handle_console_message()",
+      "file_type": "code",
+      "source_file": "frontend/.agents/skills/webapp-testing/examples/console_logging.py",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_examples_console_logging_handle_console_message",
+      "community": 310,
+      "norm_label": "handle_console_message()"
+    },
+    {
+      "label": "element_discovery.py",
+      "file_type": "code",
+      "source_file": "frontend/.agents/skills/webapp-testing/examples/element_discovery.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_examples_element_discovery",
+      "community": 311,
+      "norm_label": "element_discovery.py"
+    },
+    {
+      "label": "static_html_automation.py",
+      "file_type": "code",
+      "source_file": "frontend/.agents/skills/webapp-testing/examples/static_html_automation.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_examples_static_html_automation",
+      "community": 312,
+      "norm_label": "static_html_automation.py"
+    },
+    {
+      "label": "with_server.py",
+      "file_type": "code",
+      "source_file": "frontend/.agents/skills/webapp-testing/scripts/with_server.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_scripts_with_server",
+      "community": 308,
+      "norm_label": "with_server.py"
+    },
+    {
+      "label": "is_server_ready()",
+      "file_type": "code",
+      "source_file": "frontend/.agents/skills/webapp-testing/scripts/with_server.py",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_scripts_with_server_is_server_ready",
+      "community": 308,
+      "norm_label": "is_server_ready()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "frontend/.agents/skills/webapp-testing/scripts/with_server.py",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_scripts_with_server_main",
+      "community": 308,
+      "norm_label": "main()"
+    },
+    {
+      "label": "Wait for server to be ready by polling the port.",
+      "file_type": "rationale",
+      "source_file": "frontend/.agents/skills/webapp-testing/scripts/with_server.py",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_scripts_with_server_rationale_24",
+      "community": 308,
+      "norm_label": "wait for server to be ready by polling the port."
+    },
+    {
       "label": "eslint.config.js",
       "file_type": "code",
       "source_file": "frontend/apps/admin/eslint.config.js",
@@ -4371,7 +4451,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage",
-      "community": 290,
+      "community": 313,
       "norm_label": "creatediscussionpage.tsx"
     },
     {
@@ -4381,7 +4461,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage_communities",
-      "community": 290,
+      "community": 313,
       "norm_label": "communities"
     },
     {
@@ -4391,7 +4471,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage_creatediscussionpage",
-      "community": 290,
+      "community": 313,
       "norm_label": "creatediscussionpage()"
     },
     {
@@ -4911,7 +4991,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage",
-      "community": 288,
+      "community": 305,
       "norm_label": "pollspage.tsx"
     },
     {
@@ -4921,7 +5001,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_filter_tabs",
-      "community": 288,
+      "community": 305,
       "norm_label": "filter_tabs"
     },
     {
@@ -4931,7 +5011,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_polls",
-      "community": 288,
+      "community": 305,
       "norm_label": "polls"
     },
     {
@@ -4941,7 +5021,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_pollspage",
-      "community": 288,
+      "community": 305,
       "norm_label": "pollspage()"
     },
     {
@@ -7213,6 +7293,66 @@
       "id": "agents_design_system_prompt_design_system_engineer",
       "community": 116,
       "norm_label": "design system engineer"
+    },
+    {
+      "label": "pm-agent.md",
+      "file_type": "document",
+      "source_file": ".agents/roles/pm-agent.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_roles_pm_agent",
+      "community": 94,
+      "norm_label": "pm-agent.md"
+    },
+    {
+      "label": "\ud83d\udc51 PM Agent (Product Manager) Operating Specification",
+      "file_type": "document",
+      "source_file": ".agents/roles/pm-agent.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
+      "community": 94,
+      "norm_label": "\ud83d\udc51 pm agent (product manager) operating specification"
+    },
+    {
+      "label": "1. Role Overview & Boundary",
+      "file_type": "document",
+      "source_file": ".agents/roles/pm-agent.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "agents_roles_pm_agent_1_role_overview_boundary",
+      "community": 94,
+      "norm_label": "1. role overview & boundary"
+    },
+    {
+      "label": "2. Mandatory Inputs & Outputs",
+      "file_type": "document",
+      "source_file": ".agents/roles/pm-agent.md",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "agents_roles_pm_agent_2_mandatory_inputs_outputs",
+      "community": 94,
+      "norm_label": "2. mandatory inputs & outputs"
+    },
+    {
+      "label": "3. Required Skills & Lifecycle Workflows",
+      "file_type": "document",
+      "source_file": ".agents/roles/pm-agent.md",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "agents_roles_pm_agent_3_required_skills_lifecycle_workflows",
+      "community": 94,
+      "norm_label": "3. required skills & lifecycle workflows"
+    },
+    {
+      "label": "4. Execution Guardrails & Checklist",
+      "file_type": "document",
+      "source_file": ".agents/roles/pm-agent.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "agents_roles_pm_agent_4_execution_guardrails_checklist",
+      "community": 94,
+      "norm_label": "4. execution guardrails & checklist"
     },
     {
       "label": "boilerplate-code-guardrail.md",
@@ -14348,21 +14488,21 @@
       "label": "Session Delta Logs",
       "file_type": "document",
       "source_file": ".djp_state.md",
-      "source_location": "L12",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "djp_state_session_delta_logs",
       "community": 60,
       "norm_label": "session delta logs"
     },
     {
-      "label": "2026-07-12 Session",
+      "label": "2026-07-13 Session",
       "file_type": "document",
       "source_file": ".djp_state.md",
-      "source_location": "L13",
+      "source_location": "L14",
       "_origin": "ast",
-      "id": "djp_state_2026_07_12_session",
+      "id": "djp_state_2026_07_13_session",
       "community": 60,
-      "norm_label": "2026-07-12 session"
+      "norm_label": "2026-07-13 session"
     },
     {
       "label": "AGENTIC_WORKFLOW_GUIDE.md",
@@ -14398,7 +14538,7 @@
       "label": "2. Spec-Driven & Test-Driven Development (TDD) Flow",
       "file_type": "document",
       "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
-      "source_location": "L32",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "agentic_workflow_guide_2_spec_driven_test_driven_development_tdd_flow",
       "community": 243,
@@ -14408,7 +14548,7 @@
       "label": "3. Master Folder & Documentation Structure",
       "file_type": "document",
       "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
-      "source_location": "L46",
+      "source_location": "L50",
       "_origin": "ast",
       "id": "agentic_workflow_guide_3_master_folder_documentation_structure",
       "community": 243,
@@ -14418,7 +14558,7 @@
       "label": "4. Agent Commander Cheat Sheet",
       "file_type": "document",
       "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
-      "source_location": "L73",
+      "source_location": "L77",
       "_origin": "ast",
       "id": "agentic_workflow_guide_4_agent_commander_cheat_sheet",
       "community": 243,
@@ -14881,7 +15021,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_architecture_ai_assistant",
-      "community": 79,
+      "community": 59,
       "norm_label": "ai-assistant.md"
     },
     {
@@ -14985,83 +15125,83 @@
       "norm_label": "\ud83d\udcda related documentation"
     },
     {
-      "label": "backend-microservices-techstack.md",
+      "label": "backend-techstack.md",
       "file_type": "document",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "docs_architecture_backend_microservices_techstack",
-      "community": 242,
-      "norm_label": "backend-microservices-techstack.md"
+      "id": "docs_architecture_backend_techstack",
+      "community": 290,
+      "norm_label": "backend-techstack.md"
     },
     {
       "label": "Modular Microservices Backend Architecture & Tech Stack",
       "file_type": "document",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "docs_architecture_backend_microservices_techstack_modular_microservices_backend_architecture_tech_stack",
-      "community": 242,
+      "id": "docs_architecture_backend_techstack_modular_microservices_backend_architecture_tech_stack",
+      "community": 290,
       "norm_label": "modular microservices backend architecture & tech stack"
     },
     {
       "label": "1. System Overview",
       "file_type": "document",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "docs_architecture_backend_microservices_techstack_1_system_overview",
-      "community": 242,
+      "id": "docs_architecture_backend_techstack_1_system_overview",
+      "community": 290,
       "norm_label": "1. system overview"
     },
     {
       "label": "2. Global Tech Stack",
       "file_type": "document",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "docs_architecture_backend_microservices_techstack_2_global_tech_stack",
-      "community": 242,
+      "id": "docs_architecture_backend_techstack_2_global_tech_stack",
+      "community": 290,
       "norm_label": "2. global tech stack"
     },
     {
       "label": "3. Microservice Definitions",
       "file_type": "document",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L11",
       "_origin": "ast",
-      "id": "docs_architecture_backend_microservices_techstack_3_microservice_definitions",
-      "community": 242,
+      "id": "docs_architecture_backend_techstack_3_microservice_definitions",
+      "community": 290,
       "norm_label": "3. microservice definitions"
     },
     {
       "label": "A. Auth Service (`backend/auth-service`)",
       "file_type": "document",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L13",
       "_origin": "ast",
-      "id": "docs_architecture_backend_microservices_techstack_a_auth_service_backend_auth_service",
-      "community": 242,
+      "id": "docs_architecture_backend_techstack_a_auth_service_backend_auth_service",
+      "community": 290,
       "norm_label": "a. auth service (`backend/auth-service`)"
     },
     {
       "label": "B. Core Service (`backend/core-service`)",
       "file_type": "document",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L18",
       "_origin": "ast",
-      "id": "docs_architecture_backend_microservices_techstack_b_core_service_backend_core_service",
-      "community": 242,
+      "id": "docs_architecture_backend_techstack_b_core_service_backend_core_service",
+      "community": 290,
       "norm_label": "b. core service (`backend/core-service`)"
     },
     {
       "label": "C. AI / Analytics Service (`backend/ai-service`)",
       "file_type": "document",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "docs_architecture_backend_microservices_techstack_c_ai_analytics_service_backend_ai_service",
-      "community": 242,
+      "id": "docs_architecture_backend_techstack_c_ai_analytics_service_backend_ai_service",
+      "community": 290,
       "norm_label": "c. ai / analytics service (`backend/ai-service`)"
     },
     {
@@ -16201,7 +16341,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_architecture_onboarding",
-      "community": 79,
+      "community": 59,
       "norm_label": "onboarding.md"
     },
     {
@@ -16431,7 +16571,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_architecture_submission_model",
-      "community": 79,
+      "community": 92,
       "norm_label": "submission-model.md"
     },
     {
@@ -16533,6 +16673,76 @@
       "id": "docs_architecture_submission_model_related_documentation",
       "community": 61,
       "norm_label": "\ud83d\udcda related documentation"
+    },
+    {
+      "label": "system-boundaries.md",
+      "file_type": "document",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_architecture_system_boundaries",
+      "community": 300,
+      "norm_label": "system-boundaries.md"
+    },
+    {
+      "label": "\ud83c\udfdb\ufe0f System Boundaries & Agentic Guardrails Matrix",
+      "file_type": "document",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_architecture_system_boundaries_system_boundaries_agentic_guardrails_matrix",
+      "community": 300,
+      "norm_label": "\ud83c\udfdb\ufe0f system boundaries & agentic guardrails matrix"
+    },
+    {
+      "label": "1. Executive Summary & Big Picture",
+      "file_type": "document",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "docs_architecture_system_boundaries_1_executive_summary_big_picture",
+      "community": 300,
+      "norm_label": "1. executive summary & big picture"
+    },
+    {
+      "label": "2. Identified Architectural Areas & Domain Boundaries",
+      "file_type": "document",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "docs_architecture_system_boundaries_2_identified_architectural_areas_domain_boundaries",
+      "community": 300,
+      "norm_label": "2. identified architectural areas & domain boundaries"
+    },
+    {
+      "label": "3. Agentic Workflow Guardrails & Responsibilities",
+      "file_type": "document",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "docs_architecture_system_boundaries_3_agentic_workflow_guardrails_responsibilities",
+      "community": 300,
+      "norm_label": "3. agentic workflow guardrails & responsibilities"
+    },
+    {
+      "label": "Strict Agent Enforcement Rules:",
+      "file_type": "document",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "docs_architecture_system_boundaries_strict_agent_enforcement_rules",
+      "community": 300,
+      "norm_label": "strict agent enforcement rules:"
+    },
+    {
+      "label": "4. Key Takeaways & Memory Aid",
+      "file_type": "document",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L84",
+      "_origin": "ast",
+      "id": "docs_architecture_system_boundaries_4_key_takeaways_memory_aid",
+      "community": 300,
+      "norm_label": "4. key takeaways & memory aid"
     },
     {
       "label": "deployment.md",
@@ -16783,6 +16993,56 @@
       "id": "docs_development_oauth_login_specs_2_component_specs",
       "community": 248,
       "norm_label": "2. component specs"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "docs/execution/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_execution_readme",
+      "community": 270,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "\ud83d\ude80 DJP Execution Hub (`docs/execution/`)",
+      "file_type": "document",
+      "source_file": "docs/execution/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_execution_readme_djp_execution_hub_docs_execution",
+      "community": 270,
+      "norm_label": "\ud83d\ude80 djp execution hub (`docs/execution/`)"
+    },
+    {
+      "label": "1. Feature Folder Structure",
+      "file_type": "document",
+      "source_file": "docs/execution/README.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "docs_execution_readme_1_feature_folder_structure",
+      "community": 270,
+      "norm_label": "1. feature folder structure"
+    },
+    {
+      "label": "2. Agent Execution Workflow in This Folder",
+      "file_type": "document",
+      "source_file": "docs/execution/README.md",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "docs_execution_readme_2_agent_execution_workflow_in_this_folder",
+      "community": 270,
+      "norm_label": "2. agent execution workflow in this folder"
+    },
+    {
+      "label": "3. Key Takeaways & Memory Aid",
+      "file_type": "document",
+      "source_file": "docs/execution/README.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "docs_execution_readme_3_key_takeaways_memory_aid",
+      "community": 270,
+      "norm_label": "3. key takeaways & memory aid"
     },
     {
       "label": "README.md",
@@ -17495,6 +17755,16 @@
       "norm_label": "8\ufe0f\u20e3 maintenance (`ops.md`, `changelog.md`)"
     },
     {
+      "label": "skill-artifact-1.md",
+      "file_type": "document",
+      "source_file": "docs/md-file/skill-artifact-1.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_md_file_skill_artifact_1",
+      "community": 303,
+      "norm_label": "skill-artifact-1.md"
+    },
+    {
       "label": "skill-artifact.md",
       "file_type": "document",
       "source_file": "docs/md-file/skill-artifact.md",
@@ -17525,20 +17795,30 @@
       "norm_label": "\ud83c\udfaf overview"
     },
     {
-      "label": "\ud83d\udce6 Installed Skills & Commands Table",
+      "label": "\ud83c\udf0d Global Commands",
       "file_type": "document",
       "source_file": "docs/md-file/skill-artifact.md",
       "source_location": "L11",
       "_origin": "ast",
-      "id": "docs_md_file_skill_artifact_installed_skills_commands_table",
+      "id": "docs_md_file_skill_artifact_global_commands",
       "community": 91,
-      "norm_label": "\ud83d\udce6 installed skills & commands table"
+      "norm_label": "\ud83c\udf0d global commands"
+    },
+    {
+      "label": "\ud83c\udfe0 Local Commands",
+      "file_type": "document",
+      "source_file": "docs/md-file/skill-artifact.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "docs_md_file_skill_artifact_local_commands",
+      "community": 91,
+      "norm_label": "\ud83c\udfe0 local commands"
     },
     {
       "label": "\ud83d\udca1 Best Practices for Using Skills",
       "file_type": "document",
       "source_file": "docs/md-file/skill-artifact.md",
-      "source_location": "L43",
+      "source_location": "L50",
       "_origin": "ast",
       "id": "docs_md_file_skill_artifact_best_practices_for_using_skills",
       "community": 91,
@@ -17711,7 +17991,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_ux_design_principles",
-      "community": 79,
+      "community": 59,
       "norm_label": "design-principles.md"
     },
     {
@@ -17801,7 +18081,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_ux_discussion",
-      "community": 79,
+      "community": 92,
       "norm_label": "discussion.md"
     },
     {
@@ -17861,7 +18141,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_ux_issue",
-      "community": 79,
+      "community": 92,
       "norm_label": "issue.md"
     },
     {
@@ -17921,7 +18201,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_ux_poll",
-      "community": 79,
+      "community": 92,
       "norm_label": "poll.md"
     },
     {
@@ -17931,7 +18211,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_ux_poll_civic_polling_ux_specification",
-      "community": 94,
+      "community": 92,
       "norm_label": "\ud83d\udcca **civic polling ux specification**"
     },
     {
@@ -17941,7 +18221,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "docs_ux_poll_overview",
-      "community": 94,
+      "community": 92,
       "norm_label": "\ud83c\udf1f overview"
     },
     {
@@ -17951,7 +18231,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "docs_ux_poll_poll_schema_ui_representation",
-      "community": 94,
+      "community": 92,
       "norm_label": "\ud83d\udcd1 poll schema & ui representation"
     },
     {
@@ -17961,7 +18241,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "docs_ux_poll_polling_ux_best_practices",
-      "community": 94,
+      "community": 92,
       "norm_label": "\ud83d\udca1 polling ux best practices"
     },
     {
@@ -17971,7 +18251,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "docs_ux_poll_related_documentation",
-      "community": 94,
+      "community": 92,
       "norm_label": "\ud83d\udcda related documentation"
     },
     {
@@ -18413,6 +18693,166 @@
       "id": "frontend_agents_skills_java_springboot_skill_security",
       "community": 256,
       "norm_label": "security"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/karpathy-guidelines/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_karpathy_guidelines_skill",
+      "community": 302,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "Karpathy Guidelines",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/karpathy-guidelines/SKILL.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_karpathy_guidelines_skill_karpathy_guidelines",
+      "community": 302,
+      "norm_label": "karpathy guidelines"
+    },
+    {
+      "label": "1. Think Before Coding",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/karpathy-guidelines/SKILL.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_karpathy_guidelines_skill_1_think_before_coding",
+      "community": 302,
+      "norm_label": "1. think before coding"
+    },
+    {
+      "label": "2. Simplicity First",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/karpathy-guidelines/SKILL.md",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_karpathy_guidelines_skill_2_simplicity_first",
+      "community": 302,
+      "norm_label": "2. simplicity first"
+    },
+    {
+      "label": "3. Surgical Changes",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/karpathy-guidelines/SKILL.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_karpathy_guidelines_skill_3_surgical_changes",
+      "community": 302,
+      "norm_label": "3. surgical changes"
+    },
+    {
+      "label": "4. Goal-Driven Execution",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/karpathy-guidelines/SKILL.md",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_karpathy_guidelines_skill_4_goal_driven_execution",
+      "community": 302,
+      "norm_label": "4. goal-driven execution"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_mem_search_skill",
+      "community": 242,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "Memory Search",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_mem_search_skill_memory_search",
+      "community": 242,
+      "norm_label": "memory search"
+    },
+    {
+      "label": "When to Use",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_mem_search_skill_when_to_use",
+      "community": 242,
+      "norm_label": "when to use"
+    },
+    {
+      "label": "3-Layer Workflow (ALWAYS Follow)",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_mem_search_skill_3_layer_workflow_always_follow",
+      "community": 242,
+      "norm_label": "3-layer workflow (always follow)"
+    },
+    {
+      "label": "Step 1: Search - Get Index with IDs",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_mem_search_skill_step_1_search_get_index_with_ids",
+      "community": 242,
+      "norm_label": "step 1: search - get index with ids"
+    },
+    {
+      "label": "Step 2: Timeline - Get Context Around Interesting Results",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_mem_search_skill_step_2_timeline_get_context_around_interesting_results",
+      "community": 242,
+      "norm_label": "step 2: timeline - get context around interesting results"
+    },
+    {
+      "label": "Step 3: Fetch - Get Full Details ONLY for Filtered IDs",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_mem_search_skill_step_3_fetch_get_full_details_only_for_filtered_ids",
+      "community": 242,
+      "norm_label": "step 3: fetch - get full details only for filtered ids"
+    },
+    {
+      "label": "Examples",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_mem_search_skill_examples",
+      "community": 242,
+      "norm_label": "examples"
+    },
+    {
+      "label": "Why This Workflow?",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L122",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_mem_search_skill_why_this_workflow",
+      "community": 242,
+      "norm_label": "why this workflow?"
+    },
+    {
+      "label": "Knowledge Agents",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L129",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_mem_search_skill_knowledge_agents",
+      "community": 242,
+      "norm_label": "knowledge agents"
     },
     {
       "label": "SKILL.md",
@@ -19211,7 +19651,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_reference_the_6_manus_principles",
-      "community": 265,
+      "community": 79,
       "norm_label": "the 6 manus principles"
     },
     {
@@ -19221,7 +19661,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_reference_principle_1_design_around_kv_cache",
-      "community": 265,
+      "community": 79,
       "norm_label": "principle 1: design around kv-cache"
     },
     {
@@ -19231,7 +19671,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_reference_principle_2_mask_don_t_remove",
-      "community": 265,
+      "community": 79,
       "norm_label": "principle 2: mask, don't remove"
     },
     {
@@ -19241,7 +19681,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_reference_principle_3_filesystem_as_external_memory",
-      "community": 265,
+      "community": 79,
       "norm_label": "principle 3: filesystem as external memory"
     },
     {
@@ -19251,7 +19691,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_reference_principle_4_manipulate_attention_through_recitation",
-      "community": 265,
+      "community": 79,
       "norm_label": "principle 4: manipulate attention through recitation"
     },
     {
@@ -19261,7 +19701,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_reference_principle_5_keep_the_wrong_stuff_in",
-      "community": 265,
+      "community": 79,
       "norm_label": "principle 5: keep the wrong stuff in"
     },
     {
@@ -19271,7 +19711,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_reference_principle_6_don_t_get_few_shotted",
-      "community": 265,
+      "community": 79,
       "norm_label": "principle 6: don't get few-shotted"
     },
     {
@@ -19811,7 +20251,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_templates_task_plan_phases",
-      "community": 270,
+      "community": 265,
       "norm_label": "phases"
     },
     {
@@ -19821,7 +20261,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_templates_task_plan_phase_1_requirements_discovery",
-      "community": 270,
+      "community": 265,
       "norm_label": "phase 1: requirements & discovery"
     },
     {
@@ -19831,7 +20271,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_templates_task_plan_phase_2_planning_structure",
-      "community": 270,
+      "community": 265,
       "norm_label": "phase 2: planning & structure"
     },
     {
@@ -19841,7 +20281,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_templates_task_plan_phase_3_implementation",
-      "community": 270,
+      "community": 265,
       "norm_label": "phase 3: implementation"
     },
     {
@@ -19851,7 +20291,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_templates_task_plan_phase_4_testing_verification",
-      "community": 270,
+      "community": 265,
       "norm_label": "phase 4: testing & verification"
     },
     {
@@ -19861,7 +20301,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "frontend_agents_skills_planning_with_files_templates_task_plan_phase_5_delivery",
-      "community": 270,
+      "community": 265,
       "norm_label": "phase 5: delivery"
     },
     {
@@ -20063,6 +20503,256 @@
       "id": "frontend_agents_skills_planning_with_files_templates_task_plan_autonomous_notes",
       "community": 253,
       "norm_label": "notes"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_skill",
+      "community": 304,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "The Rule",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/SKILL.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_skill_the_rule",
+      "community": 304,
+      "norm_label": "the rule"
+    },
+    {
+      "label": "Skill Priority",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/SKILL.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_skill_skill_priority",
+      "community": 304,
+      "norm_label": "skill priority"
+    },
+    {
+      "label": "Red Flags",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/SKILL.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_skill_red_flags",
+      "community": 304,
+      "norm_label": "red flags"
+    },
+    {
+      "label": "Platform Adaptation",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/SKILL.md",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_skill_platform_adaptation",
+      "community": 304,
+      "norm_label": "platform adaptation"
+    },
+    {
+      "label": "User Instructions",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/SKILL.md",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_skill_user_instructions",
+      "community": 304,
+      "norm_label": "user instructions"
+    },
+    {
+      "label": "antigravity-tools.md",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/antigravity-tools.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_references_antigravity_tools",
+      "community": 309,
+      "norm_label": "antigravity-tools.md"
+    },
+    {
+      "label": "Antigravity CLI (`agy`) Tool Mapping",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/antigravity-tools.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_references_antigravity_tools_antigravity_cli_agy_tool_mapping",
+      "community": 309,
+      "norm_label": "antigravity cli (`agy`) tool mapping"
+    },
+    {
+      "label": "Task tracking",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/antigravity-tools.md",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_references_antigravity_tools_task_tracking",
+      "community": 309,
+      "norm_label": "task tracking"
+    },
+    {
+      "label": "codex-tools.md",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/codex-tools.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_references_codex_tools",
+      "community": 306,
+      "norm_label": "codex-tools.md"
+    },
+    {
+      "label": "Subagent dispatch requires multi-agent support",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/codex-tools.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_references_codex_tools_subagent_dispatch_requires_multi_agent_support",
+      "community": 306,
+      "norm_label": "subagent dispatch requires multi-agent support"
+    },
+    {
+      "label": "Environment Detection",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/codex-tools.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_references_codex_tools_environment_detection",
+      "community": 306,
+      "norm_label": "environment detection"
+    },
+    {
+      "label": "Codex App Finishing",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/codex-tools.md",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_references_codex_tools_codex_app_finishing",
+      "community": 306,
+      "norm_label": "codex app finishing"
+    },
+    {
+      "label": "pi-tools.md",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/pi-tools.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_references_pi_tools",
+      "community": 307,
+      "norm_label": "pi-tools.md"
+    },
+    {
+      "label": "Pi Tool Mapping",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/pi-tools.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_references_pi_tools_pi_tool_mapping",
+      "community": 307,
+      "norm_label": "pi tool mapping"
+    },
+    {
+      "label": "Subagents",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/pi-tools.md",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_references_pi_tools_subagents",
+      "community": 307,
+      "norm_label": "subagents"
+    },
+    {
+      "label": "Task lists",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/pi-tools.md",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_using_superpowers_references_pi_tools_task_lists",
+      "community": 307,
+      "norm_label": "task lists"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_skill",
+      "community": 288,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "Web Application Testing",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_skill_web_application_testing",
+      "community": 288,
+      "norm_label": "web application testing"
+    },
+    {
+      "label": "Decision Tree: Choosing Your Approach",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_skill_decision_tree_choosing_your_approach",
+      "community": 288,
+      "norm_label": "decision tree: choosing your approach"
+    },
+    {
+      "label": "Example: Using with_server.py",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_skill_example_using_with_server_py",
+      "community": 288,
+      "norm_label": "example: using with_server.py"
+    },
+    {
+      "label": "Reconnaissance-Then-Action Pattern",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L65",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_skill_reconnaissance_then_action_pattern",
+      "community": 288,
+      "norm_label": "reconnaissance-then-action pattern"
+    },
+    {
+      "label": "Common Pitfall",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_skill_common_pitfall",
+      "community": 288,
+      "norm_label": "common pitfall"
+    },
+    {
+      "label": "Best Practices",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_skill_best_practices",
+      "community": 288,
+      "norm_label": "best practices"
+    },
+    {
+      "label": "Reference Files",
+      "file_type": "document",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L91",
+      "_origin": "ast",
+      "id": "frontend_agents_skills_webapp_testing_skill_reference_files",
+      "community": 288,
+      "norm_label": "reference files"
     },
     {
       "label": ".djp_identity.md",
@@ -20415,74 +21105,14 @@
       "norm_label": "url.md"
     },
     {
-      "label": "URL Map \u2014 DJP Citizen App",
+      "label": "Frontend URL Map \u2014 DJP Citizen App",
       "file_type": "document",
       "source_file": "frontend/url.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "frontend_url_url_map_djp_citizen_app",
+      "id": "frontend_url_frontend_url_map_djp_citizen_app",
       "community": 74,
-      "norm_label": "url map \u2014 djp citizen app"
-    },
-    {
-      "label": "Phase 0 \u2014 Foundation (Built)",
-      "file_type": "document",
-      "source_file": "frontend/url.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "frontend_url_phase_0_foundation_built",
-      "community": 74,
-      "norm_label": "phase 0 \u2014 foundation (built)"
-    },
-    {
-      "label": "Phase 4 \u2014 Auth & Onboarding (Migrated)",
-      "file_type": "document",
-      "source_file": "frontend/url.md",
-      "source_location": "L23",
-      "_origin": "ast",
-      "id": "frontend_url_phase_4_auth_onboarding_migrated",
-      "community": 74,
-      "norm_label": "phase 4 \u2014 auth & onboarding (migrated)"
-    },
-    {
-      "label": "Phase 1 \u2014 Core Pages (Pending)",
-      "file_type": "document",
-      "source_file": "frontend/url.md",
-      "source_location": "L34",
-      "_origin": "ast",
-      "id": "frontend_url_phase_1_core_pages_pending",
-      "community": 74,
-      "norm_label": "phase 1 \u2014 core pages (pending)"
-    },
-    {
-      "label": "Phase 2 \u2014 Supporting Pages (Migrated)",
-      "file_type": "document",
-      "source_file": "frontend/url.md",
-      "source_location": "L42",
-      "_origin": "ast",
-      "id": "frontend_url_phase_2_supporting_pages_migrated",
-      "community": 74,
-      "norm_label": "phase 2 \u2014 supporting pages (migrated)"
-    },
-    {
-      "label": "Phase 3 \u2014 Detail & Creation Pages (Migrated)",
-      "file_type": "document",
-      "source_file": "frontend/url.md",
-      "source_location": "L50",
-      "_origin": "ast",
-      "id": "frontend_url_phase_3_detail_creation_pages_migrated",
-      "community": 74,
-      "norm_label": "phase 3 \u2014 detail & creation pages (migrated)"
-    },
-    {
-      "label": "Phase 5 \u2014 Missing Routes (Migrated)",
-      "file_type": "document",
-      "source_file": "frontend/url.md",
-      "source_location": "L60",
-      "_origin": "ast",
-      "id": "frontend_url_phase_5_missing_routes_migrated",
-      "community": 74,
-      "norm_label": "phase 5 \u2014 missing routes (migrated)"
+      "norm_label": "frontend url map \u2014 djp citizen app"
     },
     {
       "label": ".djp_identity.md",
@@ -20698,11 +21328,61 @@
       "label": "Completed Tasks",
       "file_type": "document",
       "source_file": "todo.md",
-      "source_location": "L12",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "todo_completed_tasks",
       "community": 221,
       "norm_label": "completed tasks"
+    },
+    {
+      "label": "missed_todos.md",
+      "file_type": "document",
+      "source_file": "todo/missed_todos.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "todo_missed_todos",
+      "community": 301,
+      "norm_label": "missed_todos.md"
+    },
+    {
+      "label": "DJP Missed & Deferred Todos (Backlog Separation)",
+      "file_type": "document",
+      "source_file": "todo/missed_todos.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "todo_missed_todos_djp_missed_deferred_todos_backlog_separation",
+      "community": 301,
+      "norm_label": "djp missed & deferred todos (backlog separation)"
+    },
+    {
+      "label": "Previously Missed / Deferred Root Tasks",
+      "file_type": "document",
+      "source_file": "todo/missed_todos.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "todo_missed_todos_previously_missed_deferred_root_tasks",
+      "community": 301,
+      "norm_label": "previously missed / deferred root tasks"
+    },
+    {
+      "label": "Frontend Deferred Backlog",
+      "file_type": "document",
+      "source_file": "todo/missed_todos.md",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "todo_missed_todos_frontend_deferred_backlog",
+      "community": 301,
+      "norm_label": "frontend deferred backlog"
+    },
+    {
+      "label": "Backend Deferred Backlog",
+      "file_type": "document",
+      "source_file": "todo/missed_todos.md",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "todo_missed_todos_backend_deferred_backlog",
+      "community": 301,
+      "norm_label": "backend deferred backlog"
     }
   ],
   "links": [
@@ -25370,6 +26050,57 @@
       "weight": 1.0,
       "source": "frontend_agents_skills_planning_with_files_scripts_set_active_plan_sh_frontend_agents_skills_planning_with_files_scripts_set_active_plan",
       "target": "frontend_agents_skills_planning_with_files_scripts_set_active_plan_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/examples/console_logging.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_examples_console_logging",
+      "target": "frontend_agents_skills_webapp_testing_examples_console_logging_handle_console_message",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/scripts/with_server.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_scripts_with_server",
+      "target": "frontend_agents_skills_webapp_testing_scripts_with_server_is_server_ready",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/scripts/with_server.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_scripts_with_server",
+      "target": "frontend_agents_skills_webapp_testing_scripts_with_server_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/scripts/with_server.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_scripts_with_server_main",
+      "target": "frontend_agents_skills_webapp_testing_scripts_with_server_is_server_ready",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/scripts/with_server.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_scripts_with_server_rationale_24",
+      "target": "frontend_agents_skills_webapp_testing_scripts_with_server_is_server_ready",
       "confidence_score": 1.0
     },
     {
@@ -30094,6 +30825,56 @@
       "weight": 1.0,
       "source": "agents_design_system_prompt",
       "target": "agents_design_system_prompt_design_system_engineer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/roles/pm-agent.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "agents_roles_pm_agent",
+      "target": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/roles/pm-agent.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
+      "target": "agents_roles_pm_agent_1_role_overview_boundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/roles/pm-agent.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
+      "target": "agents_roles_pm_agent_2_mandatory_inputs_outputs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/roles/pm-agent.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
+      "target": "agents_roles_pm_agent_3_required_skills_lifecycle_workflows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agents/roles/pm-agent.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
+      "target": "agents_roles_pm_agent_4_execution_guardrails_checklist",
       "confidence_score": 1.0
     },
     {
@@ -35880,7 +36661,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".djp_state.md",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0,
       "source": "djp_state_djpv1_active_state",
       "target": "djp_state_session_delta_logs",
@@ -35900,10 +36681,10 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".djp_state.md",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0,
       "source": "djp_state_session_delta_logs",
-      "target": "djp_state_2026_07_12_session",
+      "target": "djp_state_2026_07_13_session",
       "confidence_score": 1.0
     },
     {
@@ -35930,7 +36711,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
-      "source_location": "L32",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "agentic_workflow_guide_djp_master_guide_production_grade_agentic_workflow_team_hierarchy",
       "target": "agentic_workflow_guide_2_spec_driven_test_driven_development_tdd_flow",
@@ -35940,7 +36721,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
-      "source_location": "L46",
+      "source_location": "L50",
       "weight": 1.0,
       "source": "agentic_workflow_guide_djp_master_guide_production_grade_agentic_workflow_team_hierarchy",
       "target": "agentic_workflow_guide_3_master_folder_documentation_structure",
@@ -35950,7 +36731,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
-      "source_location": "L73",
+      "source_location": "L77",
       "weight": 1.0,
       "source": "agentic_workflow_guide_djp_master_guide_production_grade_agentic_workflow_team_hierarchy",
       "target": "agentic_workflow_guide_4_agent_commander_cheat_sheet",
@@ -36469,71 +37250,71 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L1",
       "weight": 1.0,
-      "source": "docs_architecture_backend_microservices_techstack",
-      "target": "docs_architecture_backend_microservices_techstack_modular_microservices_backend_architecture_tech_stack",
+      "source": "docs_architecture_backend_techstack",
+      "target": "docs_architecture_backend_techstack_modular_microservices_backend_architecture_tech_stack",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L3",
       "weight": 1.0,
-      "source": "docs_architecture_backend_microservices_techstack_modular_microservices_backend_architecture_tech_stack",
-      "target": "docs_architecture_backend_microservices_techstack_1_system_overview",
+      "source": "docs_architecture_backend_techstack_modular_microservices_backend_architecture_tech_stack",
+      "target": "docs_architecture_backend_techstack_1_system_overview",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L6",
       "weight": 1.0,
-      "source": "docs_architecture_backend_microservices_techstack_modular_microservices_backend_architecture_tech_stack",
-      "target": "docs_architecture_backend_microservices_techstack_2_global_tech_stack",
+      "source": "docs_architecture_backend_techstack_modular_microservices_backend_architecture_tech_stack",
+      "target": "docs_architecture_backend_techstack_2_global_tech_stack",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L11",
       "weight": 1.0,
-      "source": "docs_architecture_backend_microservices_techstack_modular_microservices_backend_architecture_tech_stack",
-      "target": "docs_architecture_backend_microservices_techstack_3_microservice_definitions",
+      "source": "docs_architecture_backend_techstack_modular_microservices_backend_architecture_tech_stack",
+      "target": "docs_architecture_backend_techstack_3_microservice_definitions",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L13",
       "weight": 1.0,
-      "source": "docs_architecture_backend_microservices_techstack_3_microservice_definitions",
-      "target": "docs_architecture_backend_microservices_techstack_a_auth_service_backend_auth_service",
+      "source": "docs_architecture_backend_techstack_3_microservice_definitions",
+      "target": "docs_architecture_backend_techstack_a_auth_service_backend_auth_service",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L18",
       "weight": 1.0,
-      "source": "docs_architecture_backend_microservices_techstack_3_microservice_definitions",
-      "target": "docs_architecture_backend_microservices_techstack_b_core_service_backend_core_service",
+      "source": "docs_architecture_backend_techstack_3_microservice_definitions",
+      "target": "docs_architecture_backend_techstack_b_core_service_backend_core_service",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/backend-microservices-techstack.md",
+      "source_file": "docs/architecture/backend-techstack.md",
       "source_location": "L23",
       "weight": 1.0,
-      "source": "docs_architecture_backend_microservices_techstack_3_microservice_definitions",
-      "target": "docs_architecture_backend_microservices_techstack_c_ai_analytics_service_backend_ai_service",
+      "source": "docs_architecture_backend_techstack_3_microservice_definitions",
+      "target": "docs_architecture_backend_techstack_c_ai_analytics_service_backend_ai_service",
       "confidence_score": 1.0
     },
     {
@@ -38259,6 +39040,66 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_architecture_system_boundaries",
+      "target": "docs_architecture_system_boundaries_system_boundaries_agentic_guardrails_matrix",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "docs_architecture_system_boundaries_system_boundaries_agentic_guardrails_matrix",
+      "target": "docs_architecture_system_boundaries_1_executive_summary_big_picture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "docs_architecture_system_boundaries_system_boundaries_agentic_guardrails_matrix",
+      "target": "docs_architecture_system_boundaries_2_identified_architectural_areas_domain_boundaries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "docs_architecture_system_boundaries_system_boundaries_agentic_guardrails_matrix",
+      "target": "docs_architecture_system_boundaries_3_agentic_workflow_guardrails_responsibilities",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "docs_architecture_system_boundaries_system_boundaries_agentic_guardrails_matrix",
+      "target": "docs_architecture_system_boundaries_4_key_takeaways_memory_aid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/system-boundaries.md",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "docs_architecture_system_boundaries_3_agentic_workflow_guardrails_responsibilities",
+      "target": "docs_architecture_system_boundaries_strict_agent_enforcement_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "docs/deployment/deployment.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -38504,6 +39345,46 @@
       "weight": 1.0,
       "source": "docs_development_oauth_login_specs_technical_specifications_spring_boot_react_oauth_login",
       "target": "docs_development_oauth_login_specs_2_component_specs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/execution/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_execution_readme",
+      "target": "docs_execution_readme_djp_execution_hub_docs_execution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/execution/README.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "docs_execution_readme_djp_execution_hub_docs_execution",
+      "target": "docs_execution_readme_1_feature_folder_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/execution/README.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "docs_execution_readme_djp_execution_hub_docs_execution",
+      "target": "docs_execution_readme_2_agent_execution_workflow_in_this_folder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/execution/README.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "docs_execution_readme_djp_execution_hub_docs_execution",
+      "target": "docs_execution_readme_3_key_takeaways_memory_aid",
       "confidence_score": 1.0
     },
     {
@@ -39230,7 +40111,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/md-file/skill-artifact.md",
-      "source_location": "L43",
+      "source_location": "L50",
       "weight": 1.0,
       "source": "docs_md_file_skill_artifact_agent_skills_slash_commands_directory",
       "target": "docs_md_file_skill_artifact_best_practices_for_using_skills",
@@ -39243,7 +40124,17 @@
       "source_location": "L11",
       "weight": 1.0,
       "source": "docs_md_file_skill_artifact_agent_skills_slash_commands_directory",
-      "target": "docs_md_file_skill_artifact_installed_skills_commands_table",
+      "target": "docs_md_file_skill_artifact_global_commands",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/md-file/skill-artifact.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "docs_md_file_skill_artifact_agent_skills_slash_commands_directory",
+      "target": "docs_md_file_skill_artifact_local_commands",
       "confidence_score": 1.0
     },
     {
@@ -40114,6 +41005,146 @@
       "weight": 1.0,
       "source": "frontend_agents_skills_java_springboot_skill_spring_boot_best_practices",
       "target": "frontend_agents_skills_java_springboot_skill_web_layer_controllers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/karpathy-guidelines/SKILL.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_karpathy_guidelines_skill",
+      "target": "frontend_agents_skills_karpathy_guidelines_skill_karpathy_guidelines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/karpathy-guidelines/SKILL.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_karpathy_guidelines_skill_karpathy_guidelines",
+      "target": "frontend_agents_skills_karpathy_guidelines_skill_1_think_before_coding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/karpathy-guidelines/SKILL.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_karpathy_guidelines_skill_karpathy_guidelines",
+      "target": "frontend_agents_skills_karpathy_guidelines_skill_2_simplicity_first",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/karpathy-guidelines/SKILL.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_karpathy_guidelines_skill_karpathy_guidelines",
+      "target": "frontend_agents_skills_karpathy_guidelines_skill_3_surgical_changes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/karpathy-guidelines/SKILL.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_karpathy_guidelines_skill_karpathy_guidelines",
+      "target": "frontend_agents_skills_karpathy_guidelines_skill_4_goal_driven_execution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_mem_search_skill",
+      "target": "frontend_agents_skills_mem_search_skill_memory_search",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_mem_search_skill_memory_search",
+      "target": "frontend_agents_skills_mem_search_skill_3_layer_workflow_always_follow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_mem_search_skill_memory_search",
+      "target": "frontend_agents_skills_mem_search_skill_examples",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L129",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_mem_search_skill_memory_search",
+      "target": "frontend_agents_skills_mem_search_skill_knowledge_agents",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_mem_search_skill_memory_search",
+      "target": "frontend_agents_skills_mem_search_skill_when_to_use",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_mem_search_skill_memory_search",
+      "target": "frontend_agents_skills_mem_search_skill_why_this_workflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_mem_search_skill_3_layer_workflow_always_follow",
+      "target": "frontend_agents_skills_mem_search_skill_step_1_search_get_index_with_ids",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_mem_search_skill_3_layer_workflow_always_follow",
+      "target": "frontend_agents_skills_mem_search_skill_step_2_timeline_get_context_around_interesting_results",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/mem-search/SKILL.md",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_mem_search_skill_3_layer_workflow_always_follow",
+      "target": "frontend_agents_skills_mem_search_skill_step_3_fetch_get_full_details_only_for_filtered_ids",
       "confidence_score": 1.0
     },
     {
@@ -41709,6 +42740,206 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/SKILL.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_skill",
+      "target": "frontend_agents_skills_using_superpowers_skill_platform_adaptation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/SKILL.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_skill",
+      "target": "frontend_agents_skills_using_superpowers_skill_red_flags",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/SKILL.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_skill",
+      "target": "frontend_agents_skills_using_superpowers_skill_skill_priority",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/SKILL.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_skill",
+      "target": "frontend_agents_skills_using_superpowers_skill_the_rule",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/SKILL.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_skill",
+      "target": "frontend_agents_skills_using_superpowers_skill_user_instructions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/antigravity-tools.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_references_antigravity_tools",
+      "target": "frontend_agents_skills_using_superpowers_references_antigravity_tools_antigravity_cli_agy_tool_mapping",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/antigravity-tools.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_references_antigravity_tools_antigravity_cli_agy_tool_mapping",
+      "target": "frontend_agents_skills_using_superpowers_references_antigravity_tools_task_tracking",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/codex-tools.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_references_codex_tools",
+      "target": "frontend_agents_skills_using_superpowers_references_codex_tools_codex_app_finishing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/codex-tools.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_references_codex_tools",
+      "target": "frontend_agents_skills_using_superpowers_references_codex_tools_environment_detection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/codex-tools.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_references_codex_tools",
+      "target": "frontend_agents_skills_using_superpowers_references_codex_tools_subagent_dispatch_requires_multi_agent_support",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/pi-tools.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_references_pi_tools",
+      "target": "frontend_agents_skills_using_superpowers_references_pi_tools_pi_tool_mapping",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/pi-tools.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_references_pi_tools_pi_tool_mapping",
+      "target": "frontend_agents_skills_using_superpowers_references_pi_tools_subagents",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/using-superpowers/references/pi-tools.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_using_superpowers_references_pi_tools_pi_tool_mapping",
+      "target": "frontend_agents_skills_using_superpowers_references_pi_tools_task_lists",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_skill",
+      "target": "frontend_agents_skills_webapp_testing_skill_web_application_testing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_skill_web_application_testing",
+      "target": "frontend_agents_skills_webapp_testing_skill_best_practices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_skill_web_application_testing",
+      "target": "frontend_agents_skills_webapp_testing_skill_common_pitfall",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_skill_web_application_testing",
+      "target": "frontend_agents_skills_webapp_testing_skill_decision_tree_choosing_your_approach",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_skill_web_application_testing",
+      "target": "frontend_agents_skills_webapp_testing_skill_example_using_with_server_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_skill_web_application_testing",
+      "target": "frontend_agents_skills_webapp_testing_skill_reconnaissance_then_action_pattern",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/.agents/skills/webapp-testing/SKILL.md",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "frontend_agents_skills_webapp_testing_skill_web_application_testing",
+      "target": "frontend_agents_skills_webapp_testing_skill_reference_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "frontend/.djp_identity.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -41953,67 +43184,7 @@
       "source_location": "L1",
       "weight": 1.0,
       "source": "frontend_url",
-      "target": "frontend_url_url_map_djp_citizen_app",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/url.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "frontend_url_url_map_djp_citizen_app",
-      "target": "frontend_url_phase_0_foundation_built",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/url.md",
-      "source_location": "L34",
-      "weight": 1.0,
-      "source": "frontend_url_url_map_djp_citizen_app",
-      "target": "frontend_url_phase_1_core_pages_pending",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/url.md",
-      "source_location": "L42",
-      "weight": 1.0,
-      "source": "frontend_url_url_map_djp_citizen_app",
-      "target": "frontend_url_phase_2_supporting_pages_migrated",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/url.md",
-      "source_location": "L50",
-      "weight": 1.0,
-      "source": "frontend_url_url_map_djp_citizen_app",
-      "target": "frontend_url_phase_3_detail_creation_pages_migrated",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/url.md",
-      "source_location": "L23",
-      "weight": 1.0,
-      "source": "frontend_url_url_map_djp_citizen_app",
-      "target": "frontend_url_phase_4_auth_onboarding_migrated",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/url.md",
-      "source_location": "L60",
-      "weight": 1.0,
-      "source": "frontend_url_url_map_djp_citizen_app",
-      "target": "frontend_url_phase_5_missing_routes_migrated",
+      "target": "frontend_url_frontend_url_map_djp_citizen_app",
       "confidence_score": 1.0
     },
     {
@@ -42180,13 +43351,53 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "todo.md",
-      "source_location": "L12",
+      "source_location": "L25",
       "weight": 1.0,
       "source": "todo_djp_project_tasks_agent_control_center",
       "target": "todo_completed_tasks",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "todo/missed_todos.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "todo_missed_todos",
+      "target": "todo_missed_todos_djp_missed_deferred_todos_backlog_separation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "todo/missed_todos.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "todo_missed_todos_djp_missed_deferred_todos_backlog_separation",
+      "target": "todo_missed_todos_backend_deferred_backlog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "todo/missed_todos.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "todo_missed_todos_djp_missed_deferred_todos_backlog_separation",
+      "target": "todo_missed_todos_frontend_deferred_backlog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "todo/missed_todos.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "todo_missed_todos_djp_missed_deferred_todos_backlog_separation",
+      "target": "todo_missed_todos_previously_missed_deferred_root_tasks",
+      "confidence_score": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "205762c4c8aa2c77d91f34ee67974dab91a25053"
+  "built_at_commit": "767e75434e8b3a8f5ac8005a96da722f86f4fe79"
 }

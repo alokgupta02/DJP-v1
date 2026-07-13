@@ -18,12 +18,16 @@ graph TD
 
     PM -->|PRD.md| TA
     TA -->|architecture.md| GATE{HUMAN APPROVAL GATE}
+    GATE -->|Revision Requested| PM
+    GATE -->|Revision Requested| TA
     GATE -->|Approved| TL
     TL -->|specs.md| QA
     QA -->|Writes Tests First| FE
     QA -->|Writes Tests First| BE
     FE -->|App Code| TEST{Do Tests Pass?}
     BE -->|App Code| TEST
+    TEST -->|No - Retry| FE
+    TEST -->|No - Retry| BE
     TEST -->|Yes| GH
 ```
 
@@ -32,10 +36,10 @@ graph TD
 ## 2. Spec-Driven & Test-Driven Development (TDD) Flow
 
 1. **User Goal**: Written in `todo.md`.
-2. **PM Agent**: Creates Product Requirements Document (`docs/vision/PRD-*.md`).
-3. **Tech Arch Agent**: Creates Technical Architecture (`docs/architecture/*-architecture.md`).
-4. **🛑 Human Approval Gate**: User reviews and approves PRD + Architecture before coding begins.
-5. **TL Agent**: Creates File & Component Specification (`docs/development/*-specs.md`).
+2. **PM Agent**: Creates Product Requirements Document (`docs/execution/<feature>/PRD.md`).
+3. **Tech Arch Agent**: Creates Technical Architecture (`docs/execution/<feature>/architecture.md`).
+4. **🛑 Circular Human Approval Gate**: User reviews and approves PRD + Architecture before coding begins.
+5. **TL Agent**: Creates File & Component Specification (`docs/execution/<feature>/specs.md`).
 6. **QA Agent (TDD Red Phase)**: Writes automated test suites *before* application code exists.
 7. **TL Quality Check**: Verifies QA test edge cases.
 8. **FE & BE Agents (TDD Green Phase)**: Write application code to pass QA tests (Max 3 retry loop).

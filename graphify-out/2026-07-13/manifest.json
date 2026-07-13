@@ -510,8 +510,8 @@
     "semantic_hash": ""
   },
   "frontend/skills-lock.json": {
-    "mtime": 1783871203.8967795,
-    "ast_hash": "b40f952f9c7ac1c05900572405dc87c5",
+    "mtime": 1783964789.5227559,
+    "ast_hash": "caefee2975653ff679c1d5510fab69f3",
     "semantic_hash": ""
   },
   "frontend/tsconfig.base.json": {
@@ -1405,8 +1405,8 @@
     "semantic_hash": ""
   },
   "docs/md-file/skill-artifact.md": {
-    "mtime": 1783775987.007169,
-    "ast_hash": "bc95d1c40c2a69f8532ba95027feeb73",
+    "mtime": 1783886931.8098629,
+    "ast_hash": "1cc6520df5084cff39528953947be36c",
     "semantic_hash": ""
   },
   "docs/superpowers/specs/2026-07-11-springboot-h2-backend-design.md": {
@@ -1645,13 +1645,13 @@
     "semantic_hash": ""
   },
   "frontend/url.md": {
-    "mtime": 1783752058.721307,
-    "ast_hash": "ba7f7b757ee4a3ee52f0c44646936c3b",
+    "mtime": 1783887941.9380841,
+    "ast_hash": "116baaa5b56d2b2716e96b3638055c29",
     "semantic_hash": ""
   },
   "todo.md": {
-    "mtime": 1783879709.4030483,
-    "ast_hash": "638407e0d4d1d4c1bae18595e2759d6d",
+    "mtime": 1783965653.140168,
+    "ast_hash": "c7cebf364cec52a3ded20efce40e2e33",
     "semantic_hash": ""
   },
   "frontend/apps/admin/public/favicon.svg": {
@@ -1740,8 +1740,8 @@
     "semantic_hash": ""
   },
   "AGENTIC_WORKFLOW_GUIDE.md": {
-    "mtime": 1783878725.0935528,
-    "ast_hash": "898518bcdc9c0d29f181ecd1a0fa343c",
+    "mtime": 1783967067.4815056,
+    "ast_hash": "07ae99da2e29c2246b178484b2937996",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/resources/application-h2.yml": {
@@ -1755,13 +1755,8 @@
     "semantic_hash": ""
   },
   "docs/README.md": {
-    "mtime": 1783869912.1548204,
-    "ast_hash": "f9440b04e7fbcd67c7b8e4f21f70ec5a",
-    "semantic_hash": ""
-  },
-  "docs/architecture/backend-microservices-techstack.md": {
-    "mtime": 1783870420.4813657,
-    "ast_hash": "97394df950054334ba9e79d7dff65dd1",
+    "mtime": 1783967039.3041623,
+    "ast_hash": "27ce26dad46dbe5e933bc29fa6e0a6d4",
     "semantic_hash": ""
   },
   "docs/architecture/oauth-login-architecture.md": {
@@ -1945,13 +1940,8 @@
     "semantic_hash": ""
   },
   ".djp_state.md": {
-    "mtime": 1783878759.7844803,
-    "ast_hash": "6cd83de36b35ff9e037d1b7eb0c50699",
-    "semantic_hash": ""
-  },
-  "dashboard/index.html": {
-    "mtime": 1783879703.84796,
-    "ast_hash": "9a4a6cb7e1a571849d1defeb477890e1",
+    "mtime": 1783965401.02387,
+    "ast_hash": "ed16e550b392674fd8f91c6fe25278c8",
     "semantic_hash": ""
   },
   "tests/README.md": {
@@ -2002,6 +1992,96 @@
   "tests/.djp_state.md": {
     "mtime": 1783879636.4348803,
     "ast_hash": "cd42f838268ca56dbb1ba696bbb14af0",
+    "semantic_hash": ""
+  },
+  "docs/architecture/backend-techstack.md": {
+    "mtime": 1783887422.1757245,
+    "ast_hash": "55e9bc5c1cf8b9a1e03a94ef20f22f87",
+    "semantic_hash": ""
+  },
+  "docs/md-file/skill-artifact-1.md": {
+    "mtime": 1783886226.755548,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "todo/missed_todos.md": {
+    "mtime": 1783880666.3761725,
+    "ast_hash": "523949ff2e96225e9ae97063ff03750c",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/webapp-testing/examples/console_logging.py": {
+    "mtime": 1783964789.4779892,
+    "ast_hash": "eeccdae76b3d57954c562d6116bf0dea",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/webapp-testing/examples/element_discovery.py": {
+    "mtime": 1783964789.4779892,
+    "ast_hash": "ab18cb3570c77564a08cc73269d7b97d",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/webapp-testing/examples/static_html_automation.py": {
+    "mtime": 1783964789.4782393,
+    "ast_hash": "b631a23dc044d41fae4614be9353527d",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/webapp-testing/scripts/with_server.py": {
+    "mtime": 1783964789.4782393,
+    "ast_hash": "5182121f66c1b4279a5b3013378e6ea9",
+    "semantic_hash": ""
+  },
+  "docs/architecture/system-boundaries.md": {
+    "mtime": 1783965512.0215325,
+    "ast_hash": "cd992c0a2011363dcc531f9fc14fad59",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/karpathy-guidelines/SKILL.md": {
+    "mtime": 1783964220.3765028,
+    "ast_hash": "568fe33228692e85543530ce376f695f",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/mem-search/SKILL.md": {
+    "mtime": 1783964212.5657125,
+    "ast_hash": "bc93ed17f083df4124ba0d9593ca4e07",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/using-superpowers/SKILL.md": {
+    "mtime": 1783964193.0009139,
+    "ast_hash": "49ffa86b53c14bb79d93ad3390399d7d",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/using-superpowers/references/antigravity-tools.md": {
+    "mtime": 1783964193.0013664,
+    "ast_hash": "eae8839e6c0e77f9c9205352566f7752",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/using-superpowers/references/codex-tools.md": {
+    "mtime": 1783964193.0014439,
+    "ast_hash": "dc15922a00cf25d92d2f929fd732763a",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/using-superpowers/references/pi-tools.md": {
+    "mtime": 1783964193.0014439,
+    "ast_hash": "eb8697d87b1f763f007cb2fdac3257a5",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/webapp-testing/LICENSE.txt": {
+    "mtime": 1783964789.4768903,
+    "ast_hash": "0ee6429f4c66920b6744d818225fb58f",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills/webapp-testing/SKILL.md": {
+    "mtime": 1783964789.4768903,
+    "ast_hash": "b02025a3df7ff4a6ac7e765cd1d6d54c",
+    "semantic_hash": ""
+  },
+  ".agents/roles/pm-agent.md": {
+    "mtime": 1783967054.821906,
+    "ast_hash": "0ca0549c2aa0a561ec120f102ef65feb",
+    "semantic_hash": ""
+  },
+  "docs/execution/README.md": {
+    "mtime": 1783967047.4375534,
+    "ast_hash": "f741fde724c804e9ebcf035fc336ab27",
     "semantic_hash": ""
   }
 }
