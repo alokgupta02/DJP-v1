@@ -4451,7 +4451,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage",
-      "community": 329,
+      "community": 18,
       "norm_label": "creatediscussionpage.tsx"
     },
     {
@@ -4461,7 +4461,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage_communities",
-      "community": 329,
+      "community": 18,
       "norm_label": "communities"
     },
     {
@@ -4471,7 +4471,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage_creatediscussionpage",
-      "community": 329,
+      "community": 18,
       "norm_label": "creatediscussionpage()"
     },
     {
@@ -4991,7 +4991,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage",
-      "community": 328,
+      "community": 18,
       "norm_label": "pollspage.tsx"
     },
     {
@@ -5001,7 +5001,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_filter_tabs",
-      "community": 328,
+      "community": 18,
       "norm_label": "filter_tabs"
     },
     {
@@ -5011,7 +5011,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_polls",
-      "community": 328,
+      "community": 18,
       "norm_label": "polls"
     },
     {
@@ -5021,7 +5021,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_pollspage",
-      "community": 328,
+      "community": 18,
       "norm_label": "pollspage()"
     },
     {
@@ -7303,436 +7303,6 @@
       "id": "agents_design_system_prompt_design_system_engineer",
       "community": 116,
       "norm_label": "design system engineer"
-    },
-    {
-      "label": "be-agent.md",
-      "file_type": "document",
-      "source_file": ".agents/roles/be-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_be_agent",
-      "community": 91,
-      "norm_label": "be-agent.md"
-    },
-    {
-      "label": "\u2699\ufe0f BE Agent (Backend Microservice Developer) Operating Specification",
-      "file_type": "document",
-      "source_file": ".agents/roles/be-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_be_agent_be_agent_backend_microservice_developer_operating_specification",
-      "community": 91,
-      "norm_label": "\u2699\ufe0f be agent (backend microservice developer) operating specification"
-    },
-    {
-      "label": "1. Role Overview & Boundary",
-      "file_type": "document",
-      "source_file": ".agents/roles/be-agent.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "agents_roles_be_agent_1_role_overview_boundary",
-      "community": 91,
-      "norm_label": "1. role overview & boundary"
-    },
-    {
-      "label": "2. Mandatory Inputs & Outputs",
-      "file_type": "document",
-      "source_file": ".agents/roles/be-agent.md",
-      "source_location": "L28",
-      "_origin": "ast",
-      "id": "agents_roles_be_agent_2_mandatory_inputs_outputs",
-      "community": 91,
-      "norm_label": "2. mandatory inputs & outputs"
-    },
-    {
-      "label": "3. Required Skills & Lifecycle Workflows",
-      "file_type": "document",
-      "source_file": ".agents/roles/be-agent.md",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "agents_roles_be_agent_3_required_skills_lifecycle_workflows",
-      "community": 91,
-      "norm_label": "3. required skills & lifecycle workflows"
-    },
-    {
-      "label": "4. Execution Guardrails & Checklist",
-      "file_type": "document",
-      "source_file": ".agents/roles/be-agent.md",
-      "source_location": "L44",
-      "_origin": "ast",
-      "id": "agents_roles_be_agent_4_execution_guardrails_checklist",
-      "community": 91,
-      "norm_label": "4. execution guardrails & checklist"
-    },
-    {
-      "label": "fe-agent.md",
-      "file_type": "document",
-      "source_file": ".agents/roles/fe-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_fe_agent",
-      "community": 224,
-      "norm_label": "fe-agent.md"
-    },
-    {
-      "label": "\ud83c\udfa8 FE Agent (Frontend React Developer) Operating Specification",
-      "file_type": "document",
-      "source_file": ".agents/roles/fe-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_fe_agent_fe_agent_frontend_react_developer_operating_specification",
-      "community": 224,
-      "norm_label": "\ud83c\udfa8 fe agent (frontend react developer) operating specification"
-    },
-    {
-      "label": "1. Role Overview & Boundary",
-      "file_type": "document",
-      "source_file": ".agents/roles/fe-agent.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "agents_roles_fe_agent_1_role_overview_boundary",
-      "community": 224,
-      "norm_label": "1. role overview & boundary"
-    },
-    {
-      "label": "2. Mandatory Inputs & Outputs",
-      "file_type": "document",
-      "source_file": ".agents/roles/fe-agent.md",
-      "source_location": "L28",
-      "_origin": "ast",
-      "id": "agents_roles_fe_agent_2_mandatory_inputs_outputs",
-      "community": 224,
-      "norm_label": "2. mandatory inputs & outputs"
-    },
-    {
-      "label": "3. Required Skills & Lifecycle Workflows",
-      "file_type": "document",
-      "source_file": ".agents/roles/fe-agent.md",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "agents_roles_fe_agent_3_required_skills_lifecycle_workflows",
-      "community": 224,
-      "norm_label": "3. required skills & lifecycle workflows"
-    },
-    {
-      "label": "4. Execution Guardrails & Checklist",
-      "file_type": "document",
-      "source_file": ".agents/roles/fe-agent.md",
-      "source_location": "L44",
-      "_origin": "ast",
-      "id": "agents_roles_fe_agent_4_execution_guardrails_checklist",
-      "community": 224,
-      "norm_label": "4. execution guardrails & checklist"
-    },
-    {
-      "label": "github-agent.md",
-      "file_type": "document",
-      "source_file": ".agents/roles/github-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_github_agent",
-      "community": 303,
-      "norm_label": "github-agent.md"
-    },
-    {
-      "label": "\ud83d\udc19 GitHub Agent (Git Operations & PR Manager) Operating Specification",
-      "file_type": "document",
-      "source_file": ".agents/roles/github-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_github_agent_github_agent_git_operations_pr_manager_operating_specification",
-      "community": 303,
-      "norm_label": "\ud83d\udc19 github agent (git operations & pr manager) operating specification"
-    },
-    {
-      "label": "1. Role Overview & Boundary",
-      "file_type": "document",
-      "source_file": ".agents/roles/github-agent.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "agents_roles_github_agent_1_role_overview_boundary",
-      "community": 303,
-      "norm_label": "1. role overview & boundary"
-    },
-    {
-      "label": "2. Mandatory Inputs & Outputs",
-      "file_type": "document",
-      "source_file": ".agents/roles/github-agent.md",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "agents_roles_github_agent_2_mandatory_inputs_outputs",
-      "community": 303,
-      "norm_label": "2. mandatory inputs & outputs"
-    },
-    {
-      "label": "3. Required Skills & Lifecycle Workflows",
-      "file_type": "document",
-      "source_file": ".agents/roles/github-agent.md",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "agents_roles_github_agent_3_required_skills_lifecycle_workflows",
-      "community": 303,
-      "norm_label": "3. required skills & lifecycle workflows"
-    },
-    {
-      "label": "4. Execution Guardrails & Checklist",
-      "file_type": "document",
-      "source_file": ".agents/roles/github-agent.md",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "agents_roles_github_agent_4_execution_guardrails_checklist",
-      "community": 303,
-      "norm_label": "4. execution guardrails & checklist"
-    },
-    {
-      "label": "pm-agent.md",
-      "file_type": "document",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_pm_agent",
-      "community": 94,
-      "norm_label": "pm-agent.md"
-    },
-    {
-      "label": "\ud83d\udc51 PM Agent (Product Manager) Operating Specification",
-      "file_type": "document",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
-      "community": 94,
-      "norm_label": "\ud83d\udc51 pm agent (product manager) operating specification"
-    },
-    {
-      "label": "1. Role Overview & Boundary",
-      "file_type": "document",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "agents_roles_pm_agent_1_role_overview_boundary",
-      "community": 94,
-      "norm_label": "1. role overview & boundary"
-    },
-    {
-      "label": "2. Mandatory Inputs & Outputs",
-      "file_type": "document",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "agents_roles_pm_agent_2_mandatory_inputs_outputs",
-      "community": 94,
-      "norm_label": "2. mandatory inputs & outputs"
-    },
-    {
-      "label": "3. PM Task Breakdown & Domain Analysis Protocol",
-      "file_type": "document",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "agents_roles_pm_agent_3_pm_task_breakdown_domain_analysis_protocol",
-      "community": 94,
-      "norm_label": "3. pm task breakdown & domain analysis protocol"
-    },
-    {
-      "label": "4. Required Skills & Lifecycle Workflows",
-      "file_type": "document",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L52",
-      "_origin": "ast",
-      "id": "agents_roles_pm_agent_4_required_skills_lifecycle_workflows",
-      "community": 94,
-      "norm_label": "4. required skills & lifecycle workflows"
-    },
-    {
-      "label": "5. Execution Guardrails & Checklist",
-      "file_type": "document",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L59",
-      "_origin": "ast",
-      "id": "agents_roles_pm_agent_5_execution_guardrails_checklist",
-      "community": 94,
-      "norm_label": "5. execution guardrails & checklist"
-    },
-    {
-      "label": "qa-agent.md",
-      "file_type": "document",
-      "source_file": ".agents/roles/qa-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_qa_agent",
-      "community": 314,
-      "norm_label": "qa-agent.md"
-    },
-    {
-      "label": "\ud83e\uddea QA Agent (TDD Test Engineer) Operating Specification",
-      "file_type": "document",
-      "source_file": ".agents/roles/qa-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_qa_agent_qa_agent_tdd_test_engineer_operating_specification",
-      "community": 314,
-      "norm_label": "\ud83e\uddea qa agent (tdd test engineer) operating specification"
-    },
-    {
-      "label": "1. Role Overview & Boundary",
-      "file_type": "document",
-      "source_file": ".agents/roles/qa-agent.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "agents_roles_qa_agent_1_role_overview_boundary",
-      "community": 314,
-      "norm_label": "1. role overview & boundary"
-    },
-    {
-      "label": "2. Mandatory Inputs & Outputs",
-      "file_type": "document",
-      "source_file": ".agents/roles/qa-agent.md",
-      "source_location": "L24",
-      "_origin": "ast",
-      "id": "agents_roles_qa_agent_2_mandatory_inputs_outputs",
-      "community": 314,
-      "norm_label": "2. mandatory inputs & outputs"
-    },
-    {
-      "label": "3. Required Skills & Lifecycle Workflows",
-      "file_type": "document",
-      "source_file": ".agents/roles/qa-agent.md",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "agents_roles_qa_agent_3_required_skills_lifecycle_workflows",
-      "community": 314,
-      "norm_label": "3. required skills & lifecycle workflows"
-    },
-    {
-      "label": "4. Execution Guardrails & Checklist",
-      "file_type": "document",
-      "source_file": ".agents/roles/qa-agent.md",
-      "source_location": "L40",
-      "_origin": "ast",
-      "id": "agents_roles_qa_agent_4_execution_guardrails_checklist",
-      "community": 314,
-      "norm_label": "4. execution guardrails & checklist"
-    },
-    {
-      "label": "tech-arch-agent.md",
-      "file_type": "document",
-      "source_file": ".agents/roles/tech-arch-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_tech_arch_agent",
-      "community": 316,
-      "norm_label": "tech-arch-agent.md"
-    },
-    {
-      "label": "\ud83c\udfdb\ufe0f Tech Arch Agent (Technical Architect) Operating Specification",
-      "file_type": "document",
-      "source_file": ".agents/roles/tech-arch-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_tech_arch_agent_tech_arch_agent_technical_architect_operating_specification",
-      "community": 316,
-      "norm_label": "\ud83c\udfdb\ufe0f tech arch agent (technical architect) operating specification"
-    },
-    {
-      "label": "1. Role Overview & Boundary",
-      "file_type": "document",
-      "source_file": ".agents/roles/tech-arch-agent.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "agents_roles_tech_arch_agent_1_role_overview_boundary",
-      "community": 316,
-      "norm_label": "1. role overview & boundary"
-    },
-    {
-      "label": "2. Mandatory Inputs & Outputs",
-      "file_type": "document",
-      "source_file": ".agents/roles/tech-arch-agent.md",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "agents_roles_tech_arch_agent_2_mandatory_inputs_outputs",
-      "community": 316,
-      "norm_label": "2. mandatory inputs & outputs"
-    },
-    {
-      "label": "3. Required Skills & Lifecycle Workflows",
-      "file_type": "document",
-      "source_file": ".agents/roles/tech-arch-agent.md",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "agents_roles_tech_arch_agent_3_required_skills_lifecycle_workflows",
-      "community": 316,
-      "norm_label": "3. required skills & lifecycle workflows"
-    },
-    {
-      "label": "4. Execution Guardrails & Checklist",
-      "file_type": "document",
-      "source_file": ".agents/roles/tech-arch-agent.md",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "agents_roles_tech_arch_agent_4_execution_guardrails_checklist",
-      "community": 316,
-      "norm_label": "4. execution guardrails & checklist"
-    },
-    {
-      "label": "tl-agent.md",
-      "file_type": "document",
-      "source_file": ".agents/roles/tl-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_tl_agent",
-      "community": 317,
-      "norm_label": "tl-agent.md"
-    },
-    {
-      "label": "\ud83e\udded TL Agent (Team Lead & Spec Writer) Operating Specification",
-      "file_type": "document",
-      "source_file": ".agents/roles/tl-agent.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_roles_tl_agent_tl_agent_team_lead_spec_writer_operating_specification",
-      "community": 317,
-      "norm_label": "\ud83e\udded tl agent (team lead & spec writer) operating specification"
-    },
-    {
-      "label": "1. Role Overview & Boundary",
-      "file_type": "document",
-      "source_file": ".agents/roles/tl-agent.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "agents_roles_tl_agent_1_role_overview_boundary",
-      "community": 317,
-      "norm_label": "1. role overview & boundary"
-    },
-    {
-      "label": "2. Mandatory Inputs & Outputs",
-      "file_type": "document",
-      "source_file": ".agents/roles/tl-agent.md",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "agents_roles_tl_agent_2_mandatory_inputs_outputs",
-      "community": 317,
-      "norm_label": "2. mandatory inputs & outputs"
-    },
-    {
-      "label": "3. Required Skills & Lifecycle Workflows",
-      "file_type": "document",
-      "source_file": ".agents/roles/tl-agent.md",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "agents_roles_tl_agent_3_required_skills_lifecycle_workflows",
-      "community": 317,
-      "norm_label": "3. required skills & lifecycle workflows"
-    },
-    {
-      "label": "4. Execution Guardrails & Checklist",
-      "file_type": "document",
-      "source_file": ".agents/roles/tl-agent.md",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "agents_roles_tl_agent_4_execution_guardrails_checklist",
-      "community": 317,
-      "norm_label": "4. execution guardrails & checklist"
     },
     {
       "label": "boilerplate-code-guardrail.md",
@@ -14791,7 +14361,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_architecture_ai_assistant",
-      "community": 261,
+      "community": 59,
       "norm_label": "ai-assistant.md"
     },
     {
@@ -16111,7 +15681,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_architecture_onboarding",
-      "community": 261,
+      "community": 59,
       "norm_label": "onboarding.md"
     },
     {
@@ -16341,7 +15911,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_architecture_submission_model",
-      "community": 261,
+      "community": 92,
       "norm_label": "submission-model.md"
     },
     {
@@ -17751,7 +17321,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_ux_design_principles",
-      "community": 261,
+      "community": 59,
       "norm_label": "design-principles.md"
     },
     {
@@ -17841,7 +17411,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_ux_discussion",
-      "community": 261,
+      "community": 92,
       "norm_label": "discussion.md"
     },
     {
@@ -17901,7 +17471,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_ux_issue",
-      "community": 261,
+      "community": 92,
       "norm_label": "issue.md"
     },
     {
@@ -17911,7 +17481,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_ux_issue_civic_issue_reporting_ux_specification",
-      "community": 319,
+      "community": 92,
       "norm_label": "\ud83d\udea8 **civic issue reporting ux specification**"
     },
     {
@@ -17921,7 +17491,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "docs_ux_issue_overview",
-      "community": 319,
+      "community": 92,
       "norm_label": "\ud83c\udf1f overview"
     },
     {
@@ -17931,7 +17501,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "docs_ux_issue_issue_reporting_fields_ui_presentation",
-      "community": 319,
+      "community": 92,
       "norm_label": "\ud83d\udcd1 issue reporting fields & ui presentation"
     },
     {
@@ -17941,7 +17511,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "docs_ux_issue_reporting_ux_best_practices",
-      "community": 319,
+      "community": 92,
       "norm_label": "\ud83d\udca1 reporting ux best practices"
     },
     {
@@ -17951,7 +17521,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "docs_ux_issue_related_documentation",
-      "community": 319,
+      "community": 92,
       "norm_label": "\ud83d\udcda related documentation"
     },
     {
@@ -17961,7 +17531,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_ux_poll",
-      "community": 261,
+      "community": 92,
       "norm_label": "poll.md"
     },
     {
@@ -31850,366 +31420,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/be-agent.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "agents_roles_be_agent",
-      "target": "agents_roles_be_agent_be_agent_backend_microservice_developer_operating_specification",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/be-agent.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "agents_roles_be_agent_be_agent_backend_microservice_developer_operating_specification",
-      "target": "agents_roles_be_agent_1_role_overview_boundary",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/be-agent.md",
-      "source_location": "L28",
-      "weight": 1.0,
-      "source": "agents_roles_be_agent_be_agent_backend_microservice_developer_operating_specification",
-      "target": "agents_roles_be_agent_2_mandatory_inputs_outputs",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/be-agent.md",
-      "source_location": "L37",
-      "weight": 1.0,
-      "source": "agents_roles_be_agent_be_agent_backend_microservice_developer_operating_specification",
-      "target": "agents_roles_be_agent_3_required_skills_lifecycle_workflows",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/be-agent.md",
-      "source_location": "L44",
-      "weight": 1.0,
-      "source": "agents_roles_be_agent_be_agent_backend_microservice_developer_operating_specification",
-      "target": "agents_roles_be_agent_4_execution_guardrails_checklist",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/fe-agent.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "agents_roles_fe_agent",
-      "target": "agents_roles_fe_agent_fe_agent_frontend_react_developer_operating_specification",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/fe-agent.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "agents_roles_fe_agent_fe_agent_frontend_react_developer_operating_specification",
-      "target": "agents_roles_fe_agent_1_role_overview_boundary",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/fe-agent.md",
-      "source_location": "L28",
-      "weight": 1.0,
-      "source": "agents_roles_fe_agent_fe_agent_frontend_react_developer_operating_specification",
-      "target": "agents_roles_fe_agent_2_mandatory_inputs_outputs",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/fe-agent.md",
-      "source_location": "L37",
-      "weight": 1.0,
-      "source": "agents_roles_fe_agent_fe_agent_frontend_react_developer_operating_specification",
-      "target": "agents_roles_fe_agent_3_required_skills_lifecycle_workflows",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/fe-agent.md",
-      "source_location": "L44",
-      "weight": 1.0,
-      "source": "agents_roles_fe_agent_fe_agent_frontend_react_developer_operating_specification",
-      "target": "agents_roles_fe_agent_4_execution_guardrails_checklist",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/github-agent.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "agents_roles_github_agent",
-      "target": "agents_roles_github_agent_github_agent_git_operations_pr_manager_operating_specification",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/github-agent.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "agents_roles_github_agent_github_agent_git_operations_pr_manager_operating_specification",
-      "target": "agents_roles_github_agent_1_role_overview_boundary",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/github-agent.md",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "agents_roles_github_agent_github_agent_git_operations_pr_manager_operating_specification",
-      "target": "agents_roles_github_agent_2_mandatory_inputs_outputs",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/github-agent.md",
-      "source_location": "L30",
-      "weight": 1.0,
-      "source": "agents_roles_github_agent_github_agent_git_operations_pr_manager_operating_specification",
-      "target": "agents_roles_github_agent_3_required_skills_lifecycle_workflows",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/github-agent.md",
-      "source_location": "L37",
-      "weight": 1.0,
-      "source": "agents_roles_github_agent_github_agent_git_operations_pr_manager_operating_specification",
-      "target": "agents_roles_github_agent_4_execution_guardrails_checklist",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "agents_roles_pm_agent",
-      "target": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
-      "target": "agents_roles_pm_agent_1_role_overview_boundary",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
-      "target": "agents_roles_pm_agent_2_mandatory_inputs_outputs",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L30",
-      "weight": 1.0,
-      "source": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
-      "target": "agents_roles_pm_agent_3_pm_task_breakdown_domain_analysis_protocol",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L52",
-      "weight": 1.0,
-      "source": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
-      "target": "agents_roles_pm_agent_4_required_skills_lifecycle_workflows",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/pm-agent.md",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "agents_roles_pm_agent_pm_agent_product_manager_operating_specification",
-      "target": "agents_roles_pm_agent_5_execution_guardrails_checklist",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/qa-agent.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "agents_roles_qa_agent",
-      "target": "agents_roles_qa_agent_qa_agent_tdd_test_engineer_operating_specification",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/qa-agent.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "agents_roles_qa_agent_qa_agent_tdd_test_engineer_operating_specification",
-      "target": "agents_roles_qa_agent_1_role_overview_boundary",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/qa-agent.md",
-      "source_location": "L24",
-      "weight": 1.0,
-      "source": "agents_roles_qa_agent_qa_agent_tdd_test_engineer_operating_specification",
-      "target": "agents_roles_qa_agent_2_mandatory_inputs_outputs",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/qa-agent.md",
-      "source_location": "L33",
-      "weight": 1.0,
-      "source": "agents_roles_qa_agent_qa_agent_tdd_test_engineer_operating_specification",
-      "target": "agents_roles_qa_agent_3_required_skills_lifecycle_workflows",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/qa-agent.md",
-      "source_location": "L40",
-      "weight": 1.0,
-      "source": "agents_roles_qa_agent_qa_agent_tdd_test_engineer_operating_specification",
-      "target": "agents_roles_qa_agent_4_execution_guardrails_checklist",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/tech-arch-agent.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "agents_roles_tech_arch_agent",
-      "target": "agents_roles_tech_arch_agent_tech_arch_agent_technical_architect_operating_specification",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/tech-arch-agent.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "agents_roles_tech_arch_agent_tech_arch_agent_technical_architect_operating_specification",
-      "target": "agents_roles_tech_arch_agent_1_role_overview_boundary",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/tech-arch-agent.md",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "agents_roles_tech_arch_agent_tech_arch_agent_technical_architect_operating_specification",
-      "target": "agents_roles_tech_arch_agent_2_mandatory_inputs_outputs",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/tech-arch-agent.md",
-      "source_location": "L30",
-      "weight": 1.0,
-      "source": "agents_roles_tech_arch_agent_tech_arch_agent_technical_architect_operating_specification",
-      "target": "agents_roles_tech_arch_agent_3_required_skills_lifecycle_workflows",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/tech-arch-agent.md",
-      "source_location": "L37",
-      "weight": 1.0,
-      "source": "agents_roles_tech_arch_agent_tech_arch_agent_technical_architect_operating_specification",
-      "target": "agents_roles_tech_arch_agent_4_execution_guardrails_checklist",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/tl-agent.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "agents_roles_tl_agent",
-      "target": "agents_roles_tl_agent_tl_agent_team_lead_spec_writer_operating_specification",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/tl-agent.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "agents_roles_tl_agent_tl_agent_team_lead_spec_writer_operating_specification",
-      "target": "agents_roles_tl_agent_1_role_overview_boundary",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/tl-agent.md",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "agents_roles_tl_agent_tl_agent_team_lead_spec_writer_operating_specification",
-      "target": "agents_roles_tl_agent_2_mandatory_inputs_outputs",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/tl-agent.md",
-      "source_location": "L30",
-      "weight": 1.0,
-      "source": "agents_roles_tl_agent_tl_agent_team_lead_spec_writer_operating_specification",
-      "target": "agents_roles_tl_agent_3_required_skills_lifecycle_workflows",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agents/roles/tl-agent.md",
-      "source_location": "L37",
-      "weight": 1.0,
-      "source": "agents_roles_tl_agent_tl_agent_team_lead_spec_writer_operating_specification",
-      "target": "agents_roles_tl_agent_4_execution_guardrails_checklist",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": ".agents/rules/boilerplate-code-guardrail.md",
       "source_location": "L5",
       "weight": 1.0,
@@ -45279,5 +44489,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f7b74533039d0cc19b9db61528ef3812516382ff"
+  "built_at_commit": "dcd5122413f24443c564e9d2b791d5f0a14b0ad1"
 }

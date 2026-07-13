@@ -1,16 +1,16 @@
 # Graph Report - DJP-v1  (2026-07-14)
 
 ## Corpus Check
-- 379 files · ~216,254 words
+- 372 files · ~214,199 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2212 nodes · 2252 edges · 330 communities (198 shown, 132 thin omitted)
+- 2169 nodes · 2216 edges · 319 communities (189 shown, 130 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f7b74533`
+- Built from commit: `dcd51224`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -105,10 +105,8 @@
 - Analysis Policy
 - 8. Advanced Patterns
 - User
-- 🛠️ **Agent Skills & Slash Commands Directory**
 - 💬 **Civic Discussion UX Specification**
 - 🚨 **Civic Issue Reporting UX Specification**
-- 📊 **Civic Polling UX Specification**
 - DiscussionsPage.tsx
 - async-cheap-condition-before-await.md
 - Prefer Statically Analyzable Paths
@@ -228,7 +226,6 @@
 - IssuesPage.tsx
 - todo.md
 - README.md
-- CONTRIBUTING.md
 - README.md
 - README.md
 - CreateDiscussionPage.tsx
@@ -291,7 +288,6 @@
 - 🏛️ System Boundaries & Agentic Guardrails Matrix
 - 2026-07-10 Session (Original React Frontend Migration Sprint — 40/40 Completed)
 - Karpathy Guidelines
-- skill-artifact-1.md
 - SKILL.md
 - Example 1: Research Task
 - codex-tools.md
@@ -299,20 +295,14 @@
 - is_server_ready
 - Antigravity CLI (`agy`) Tool Mapping
 - 🎨 Original Frontend Migration Sprint (`frontend/archived.todo` Master Archive — 40/40 completed)
-- design-principles.md
 - Feature Execution Checklist (`docs/execution/<feature>/todo.md`)
-- 🚨 **Civic Issue Reporting UX Specification**
-- 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
 - 🔄 Refinement Workflow
-- 🚨 **Civic Issue Reporting UX Specification**
 - DJP Citizen App — Todo
 - 🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification
 - Phases
 - 🧪 QA Agent (TDD Test Engineer) Operating Specification
 - 🏛️ Tech Arch Agent (Technical Architect) Operating Specification
 - 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
-- PollsPage.tsx
-- CreateDiscussionPage.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `✅ **Production-Ready Spring Boot Web App Checklist**` - 22 edges
@@ -341,7 +331,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (330 total, 132 thin omitted)
+## Communities (319 total, 130 thin omitted)
 
 ### Community 0 - "Test-Driven Development (TDD)"
 Cohesion: 0.05
@@ -416,8 +406,8 @@ Cohesion: 0.10
 Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, jsx, lib, module, moduleDetection (+11 more)
 
 ### Community 18 - "router.tsx"
-Cohesion: 0.20
-Nodes (4): AuthLayout(), router, Step2Location(), NotFoundPage()
+Cohesion: 0.12
+Nodes (7): AuthLayout(), router, Step2Location(), COMMUNITIES, NotFoundPage(), FILTER_TABS, POLLS
 
 ### Community 19 - "compilerOptions"
 Cohesion: 0.11
@@ -699,21 +689,13 @@ Nodes (8): apply_v3_mode(), create_files_in(), gen_nonce(), init-session.sh scri
 Cohesion: 0.17
 Nodes (3): User, Entity, Table
 
-### Community 91 - "🛠️ **Agent Skills & Slash Commands Directory**"
-Cohesion: 0.33
-Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, ⚙️ BE Agent (Backend Microservice Developer) Operating Specification
-
 ### Community 92 - "💬 **Civic Discussion UX Specification**"
-Cohesion: 0.40
-Nodes (5): 💬 **Civic Discussion UX Specification**, 📑 Data Schema & UI Fields, 🌟 Overview, 📚 Related Documentation, 💡 UX & Content Guidelines
+Cohesion: 0.16
+Nodes (10): 💬 **Civic Discussion UX Specification**, 📑 Data Schema & UI Fields, 🌟 Overview, 📚 Related Documentation, 💡 UX & Content Guidelines, 🚨 **Civic Issue Reporting UX Specification**, 📑 Issue Reporting Fields & UI Presentation, 🌟 Overview (+2 more)
 
 ### Community 93 - "🚨 **Civic Issue Reporting UX Specification**"
 Cohesion: 0.40
 Nodes (5): 📊 **Civic Polling UX Specification**, 🌟 Overview, 📑 Poll Schema & UI Representation, 💡 Polling UX Best Practices, 📚 Related Documentation
-
-### Community 94 - "📊 **Civic Polling UX Specification**"
-Cohesion: 0.29
-Nodes (6): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. PM Task Breakdown & Domain Analysis Protocol, 4. Required Skills & Lifecycle Workflows, 5. Execution Guardrails & Checklist, 👑 PM Agent (Product Manager) Operating Specification
 
 ### Community 95 - "DiscussionsPage.tsx"
 Cohesion: 0.40
@@ -822,10 +804,6 @@ Nodes (3): File-System Paths, Import Paths, Prefer Statically Analyzable Paths
 ### Community 223 - "README.md"
 Cohesion: 0.40
 Nodes (4): DJP Backend Microservices, DJPv1 Synchronization, Overview, Running Locally
-
-### Community 224 - "CONTRIBUTING.md"
-Cohesion: 0.33
-Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🎨 FE Agent (Frontend React Developer) Operating Specification
 
 ### Community 237 - "README.md"
 Cohesion: 0.40
@@ -943,10 +921,6 @@ Nodes (6): 1. Executive Summary & Big Picture, 2. Identified Architectural Areas
 Cohesion: 0.15
 Nodes (12): 2026-07-10 Session (Original React Frontend Migration Sprint — 40/40 Completed), 2026-07-11 Session (Live Dashboard & Backend Blueprint), 2026-07-12 Session (UI Fixes & Control Center Navigation), 2026-07-13 Session (Agent Architecture & Domain Standardization), DJP Master Completed Tasks Archive (`archive/todo.md`), Phase 0 — Foundation, Phase 1 — Core Pages, Phase 2 — Supporting Pages (+4 more)
 
-### Community 303 - "skill-artifact-1.md"
-Cohesion: 0.33
-Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification
-
 ### Community 305 - "Example 1: Research Task"
 Cohesion: 0.33
 Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🎨 FE Agent (Frontend React Developer) Operating Specification
@@ -959,29 +933,13 @@ Nodes (3): is_server_ready(), main(), Wait for server to be ready by polling the
 Cohesion: 0.29
 Nodes (6): ⚙️ Backend Microservices Roadmap (`backend/be-todo.md`), 🏛️ Completed Infrastructure & Agentic Workflow Setup (Master Archive), 🚀 Currently Executing Tasks (Active Control Panel), DJP Master Executive Dashboard (`/dashboard.md`), 🎨 Frontend UI Fixes & Polish (`frontend/fe-todo.md`), 🧪 QA & Test Suite (`tests/test-todo.md`)
 
-### Community 314 - "design-principles.md"
-Cohesion: 0.33
-Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🧪 QA Agent (TDD Test Engineer) Operating Specification
-
 ### Community 315 - "Feature Execution Checklist (`docs/execution/<feature>/todo.md`)"
 Cohesion: 0.33
 Nodes (5): Feature Execution SSOT (`docs/execution/<feature>/todo.md`), Phase 1: Product & Architecture Planning, Phase 2: Specs & Test-Driven QA (TDD Red Phase), Phase 3: Lean Implementation (TDD Green Phase), Phase 4: Post-Task Review & PR
 
-### Community 316 - "🚨 **Civic Issue Reporting UX Specification**"
-Cohesion: 0.33
-Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🏛️ Tech Arch Agent (Technical Architect) Operating Specification
-
-### Community 317 - "🧭 TL Agent (Team Lead & Spec Writer) Operating Specification"
-Cohesion: 0.33
-Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
-
 ### Community 318 - "🔄 Refinement Workflow"
 Cohesion: 0.40
 Nodes (5): 1️⃣ Step 1: Understand Intent, 2️⃣ Step 2: Gather Missing Information, 3️⃣ Step 3: Clarify When Needed, 4️⃣ Step 4: Refine, 🔄 Refinement Workflow
-
-### Community 319 - "🚨 **Civic Issue Reporting UX Specification**"
-Cohesion: 0.40
-Nodes (5): 🚨 **Civic Issue Reporting UX Specification**, 📑 Issue Reporting Fields & UI Presentation, 🌟 Overview, 📚 Related Documentation, 💡 Reporting UX Best Practices
 
 ### Community 320 - "DJP Citizen App — Todo"
 Cohesion: 0.33
@@ -1008,21 +966,21 @@ Cohesion: 0.33
 Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
 
 ## Knowledge Gaps
-- **1274 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1269 more)
+- **1245 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1240 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **132 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **130 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `⚡ **JavaScript Patterns & Best Practices**` connect `📚 Pattern Library` to `overview.md`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `🎨 **Colors & Typography Design Tokens**` connect `🎨 **Colors & Typography Design Tokens**` to `overview.md`?**
+- **Why does `💻 **Frontend Engineering Guide**` connect `💻 **Frontend Engineering Guide**` to `overview.md`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `✅ **Production-Ready Spring Boot Web App Checklist**` connect `✅ **Production-Ready Spring Boot Web App Checklist**` to `README.md`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `Planning with Files` connect `Quick Reference` to `SKILL.md`?**
+- **Why does `📊 **Civic Polling UX Specification**` connect `🚨 **Civic Issue Reporting UX Specification**` to `💬 **Civic Discussion UX Specification**`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **What connects `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script` to the rest of the system?**
-  _1314 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1285 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Test-Driven Development (TDD)` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Skill Creator` be split into smaller, more focused modules?**

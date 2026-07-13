@@ -1224,11 +1224,6 @@
     "ast_hash": "b02025a3df7ff4a6ac7e765cd1d6d54c",
     "semantic_hash": ""
   },
-  ".agents/roles/pm-agent.md": {
-    "mtime": 1783978854.7160645,
-    "ast_hash": "cd1fa7b71369c782b14e916f419288d7",
-    "semantic_hash": ""
-  },
   "docs/execution/README.md": {
     "mtime": 1783967559.1290152,
     "ast_hash": "d2807c29209e9d210f9ed849bc9604d8",
@@ -1237,36 +1232,6 @@
   "docs/execution/_template/todo.md": {
     "mtime": 1783967568.4043326,
     "ast_hash": "a0e5d4fadeeaade3163022673e553f47",
-    "semantic_hash": ""
-  },
-  ".agents/roles/be-agent.md": {
-    "mtime": 1783976391.9123595,
-    "ast_hash": "06cdd6590f9be108fa7719ee439657b4",
-    "semantic_hash": ""
-  },
-  ".agents/roles/fe-agent.md": {
-    "mtime": 1783976386.7903078,
-    "ast_hash": "a568a0cc3c555ddeb054d219bebd1a39",
-    "semantic_hash": ""
-  },
-  ".agents/roles/github-agent.md": {
-    "mtime": 1783973806.4804585,
-    "ast_hash": "6063a98b51ceb9f801c116f3e27388dd",
-    "semantic_hash": ""
-  },
-  ".agents/roles/qa-agent.md": {
-    "mtime": 1783973646.3728344,
-    "ast_hash": "68389c0aca760300b052344f98cc4a38",
-    "semantic_hash": ""
-  },
-  ".agents/roles/tech-arch-agent.md": {
-    "mtime": 1783973430.9794588,
-    "ast_hash": "2aece33f6283cfaf3ab0f431e2d22346",
-    "semantic_hash": ""
-  },
-  ".agents/roles/tl-agent.md": {
-    "mtime": 1783973614.9648519,
-    "ast_hash": "779400aef17a894ac4c28f1e504e6451",
     "semantic_hash": ""
   },
   "backend/.agents/skills/java-springboot/SKILL.md": {
