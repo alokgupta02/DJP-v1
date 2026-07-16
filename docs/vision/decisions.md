@@ -17,9 +17,10 @@
 | **ADR-001** | **Progressive Disclosure UX** | `Accepted` | Simplifies onboarding vs. requires multi-step state tracking |
 | **ADR-002** | **Chart.js for Visualizations** | `Accepted` | Lightweight CDN charts vs. manual canvas initialization |
 | **ADR-003** | **Mobile-First Responsive Design** | `Accepted` | Democratic mobile access vs. extra desktop desktop styling |
-| **ADR-004** | **Vanilla JS Prototype & Shared React Foundation** | `Accepted` | Zero build prototype reference + modular React apps |
+| **ADR-004** | **Shared React 18 & Vite Foundation** | `Accepted` | Requires node build step for prototype vs. 100% code portability |
 | **ADR-005** | **Static File Deployment for Prototypes** | `Accepted` | Deploy anywhere cheaply vs. API backend required separately |
 | **ADR-006** | **Modular Microservices Backend** | `Accepted` | Scales domains independently vs. adds network complexity |
+| **ADR-007** | **Dynamic Ranks & Paid Leader Gate** | `Accepted` | Filters spam / locks inactive leaders vs. introduces billing gates |
 
 ---
 
@@ -55,12 +56,13 @@
 
 ---
 
-### 📌 ADR-004: Vanilla JS Prototypes & Shared React Apps
+### 📌 ADR-004: Shared React 18 & Vite Foundation
 * **Status:** `Accepted`
 * **Context:** Need clear visual prototype reference (`/prototype`) along with scalable production React apps (`apps/citizen`, `apps/admin`).
-* **Decision:** Maintain vanilla HTML/CSS in `/prototype` and shared packages (`@djp/*`) for production React apps.
+* **Decision:** Build both `/prototype` and production packages using React 18, Vite, and Tailwind CSS.
 * **Consequences:**
-  * ✅ **Positive:** Designers can prototype without build tools; devs compose clean React packages.
+  * ✅ **Positive:** Allows direct copy-paste code portability and component reuse between prototype and production.
+  * ⚠️ **Trade-off:** Prototype requires a Node.js build step, but this aligns with modern developer workflows.
 
 ---
 
@@ -80,6 +82,16 @@
 * **Consequences:**
   * ✅ **Positive:** Independent scaling, isolated deployments, and stack matching.
   * ⚠️ **Trade-off:** Adds gateway maintenance and network/integration complexity.
+
+---
+
+### 📌 ADR-007: Dynamic Ranks & Paid Leader Gate
+* **Status:** `Accepted`
+* **Context:** The target demographic of party leaders/members is urban (cities), digitally active, and highly educated. To maintain trust, the hierarchy must reflect active, serious ground contributions rather than spam or historical accumulation.
+* **Decision:** Lock leadership status behind a paid monthly plan as a seriousness filter. Calculate ranking (Area → Locality → Ward) based on a rolling 6-month reputation score, while preserving lifetime reputation score as profile badges.
+* **Consequences:**
+  * ✅ **Positive:** Prevents inactive leaders from dominating active ranks; generates sustainable revenue; targets committed urban users.
+  * ⚠️ **Trade-off:** Paid gate may limit early adoption, but ensures high seriousness of active leaders.
 
 ---
 
