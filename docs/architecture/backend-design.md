@@ -43,6 +43,10 @@ For complete details on database tables, column types, entity relations, constra
 ---
 ## 4. REST API Endpoint Contracts
 All controllers will map requests under `/api/v1`. Secured endpoints require a valid Bearer JWT.
+
+> [!NOTE]
+> **API-First Development:** During the implementation phase, these text contracts will be formalized into an executable **`api-spec.yaml`** (OpenAPI 3.0 specification) file under `docs/architecture/` to auto-generate Spring Boot and React/Axios interfaces.
+
 ### A. Authentication & Subscription (`/api/v1/auth`)
 * `GET /login/oauth2/code/google` & `linkedin` (Default Spring Security Callback URLs)
   * Invoked by the OAuth provider. Spring Security intercepts, grabs user info, registers/updates the user in the database, and redirects the client to the frontend with an access JWT.
