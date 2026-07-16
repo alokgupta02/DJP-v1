@@ -80,6 +80,9 @@ graph TD
     Gate -->|Approved| TL
 ```
 
+> [!NOTE]
+> These agentic guardrails align with the **BMAD (Breakthrough Method for Agile AI-Driven Development)** framework. The development lifecycle is structured, documentation-first, and role-segregated to prevent "vibe coding" and ensure production-quality output.
+
 ### Strict Agent Enforcement Rules:
 1. **No Code Without Tests:** Application code (`frontend/`, `backend/`) cannot be written until QA automated tests exist in `tests/`.
 2. **Lean Codebase Guarantee:** Do not generate speculative abstractions, placeholder wrappers, or dead code.
