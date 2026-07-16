@@ -17,3 +17,6 @@ Every AI Agent and human developer MUST place and read Markdown (`.md`) files ac
 | `docs/architecture/` | **Tech Arch Agent** | Global system boundaries, reference tech stack & reusable component designs | `system-boundaries.md`, `frontend.md`, `backend-design.md` |
 | `docs/development/` | **TL Agent** | Engineering conventions & developer guides | `oauth-login-specs.md`, [`prototype/README.md`](../prototype/README.md) |
 | `docs/api/` | **BE Agent** | API route definitions & OpenAPI/Swagger contracts | `auth-api.md` |
+
+## 4. Prototype Workspace (`/prototype/`)
+- `prototype/README.md` -> Prototype dev server instructions, UI/UX staging workflow, and playground documentation.
