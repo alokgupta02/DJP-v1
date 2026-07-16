@@ -19,6 +19,7 @@
 | **ADR-003** | **Mobile-First Responsive Design** | `Accepted` | Democratic mobile access vs. extra desktop desktop styling |
 | **ADR-004** | **Vanilla JS Prototype & Shared React Foundation** | `Accepted` | Zero build prototype reference + modular React apps |
 | **ADR-005** | **Static File Deployment for Prototypes** | `Accepted` | Deploy anywhere cheaply vs. API backend required separately |
+| **ADR-006** | **Modular Microservices Backend** | `Accepted` | Scales domains independently vs. adds network complexity |
 
 ---
 
@@ -69,6 +70,16 @@
 * **Decision:** Serve static frontend assets via CDN / Edge networks.
 * **Consequences:**
   * ✅ **Positive:** Extremely fast global latency and zero server-side rendering bottlenecks.
+
+---
+
+### 📌 ADR-006: Modular Microservices Backend
+* **Status:** `Accepted`
+* **Context:** Need resilience, clear domain separation, and distinct tech stacks (Java Spring Boot for Auth/Core, Python for AI/Embeddings).
+* **Decision:** Implement a modular microservices backend (Auth, Core, AI Service) communicating via JWT behind an API Gateway.
+* **Consequences:**
+  * ✅ **Positive:** Independent scaling, isolated deployments, and stack matching.
+  * ⚠️ **Trade-off:** Adds gateway maintenance and network/integration complexity.
 
 ---
 
