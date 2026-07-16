@@ -52,6 +52,7 @@ CREATE TABLE users (
     subscription_status VARCHAR(20) DEFAULT 'INACTIVE', -- 'ACTIVE', 'INACTIVE', 'SUSPENDED'
     subscription_ends_at TIMESTAMP WITH TIME ZONE,
     grace_period_ends_at TIMESTAMP WITH TIME ZONE,
+    onboarding_completed BOOLEAN DEFAULT FALSE,
     joined_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     role VARCHAR(20) DEFAULT 'CITIZEN',
     UNIQUE(provider, provider_id)
