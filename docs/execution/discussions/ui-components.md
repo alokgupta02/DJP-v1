@@ -41,9 +41,9 @@ The **Discussion UX Specification** outlines the structure, interaction patterns
 
 ## 📚 Related Documentation
 
-* **[Common Submission Model](../architecture/submission-model.md)** — Backend discussion schema
-* **[Design Principles](design-principles.md)** — Platform UX rules
-* **[Issue UX Spec](issue.md)** — Linked issue reports
-* **[Poll UX Spec](poll.md)** — Linked civic polls
+* **[Common Submission Model](../../architecture/submission-model.md)** — Backend discussion schema
+* **[Design Principles](../../ux/design-principles.md)** — Platform UX rules
+* **[Issue UX Spec](../issues/ui-components.md)** — Linked issue reports
+* **[Poll UX Spec](../polls/ui-components.md)** — Linked civic polls
 
 ---

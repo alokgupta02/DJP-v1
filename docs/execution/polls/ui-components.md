@@ -39,8 +39,8 @@ The **Civic Polling UX Specification** establishes how public polls are presente
 
 ## 📚 Related Documentation
 
-* **[Common Submission Model](../architecture/submission-model.md)** — Backend poll entity schema
-* **[Design Principles](design-principles.md)** — Platform UX rules
-* **[Discussion UX Spec](discussion.md)** — Linked debate threads
+* **[Common Submission Model](../../architecture/submission-model.md)** — Backend poll entity schema
+* **[Design Principles](../../ux/design-principles.md)** — Platform UX rules
+* **[Discussion UX Spec](../discussions/ui-components.md)** — Linked debate threads
 
 ---

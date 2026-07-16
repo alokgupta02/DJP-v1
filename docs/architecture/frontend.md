@@ -68,6 +68,33 @@ frontend/
 └── README.md
 ```
 
+### 📱 Application Internal Architecture (`apps/citizen/src`)
+
+```
+src/
+├── app/                      # App-wide wiring (Layouts, Router, Providers)
+├── features/                 # Domain-specific feature modules
+├── shared/                   # App-scoped static assets & config
+└── main.tsx                  # Application entry point
+```
+
+* **`/src/app` (Application Infrastructure)**: Contains application bootstrap wiring only (`/layouts`, `/router`, `/providers`). Must not contain domain business logic.
+* **`/src/features` (Feature Modules)**: Every business capability is isolated as an autonomous feature folder (e.g., `features/issues/`).
+
+---
+
+## 🚦 Architectural Boundary Rules
+
+```
+✅ Allowed Dependency Flow:
+   [ Feature Layer ]  ──►  [ Shared App Config ]  ──►  [ Shared Workspace Packages (@djp/*) ]
+
+❌ Prohibited Flow (No Cross-Feature Direct Imports):
+   [ Feature A ]  ──X──►  [ Feature B ]
+```
+
+* Inter-feature communication must happen via shared packages, events, or state stores—never by directly importing files inside another feature's private directory.
+
 ---
 
 ## 📱 Applications

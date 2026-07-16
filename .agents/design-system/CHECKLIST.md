@@ -1,5 +1,5 @@
 ## Before Starting
-□ Read colors-typography.md, components.md, layout.md, frontend-structure.md
+□ Read colors-typography.md, components.md, layout.md, frontend.md
 □ Verify packages/theme and packages/ui exist
 
 ## Theme

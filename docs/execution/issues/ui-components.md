@@ -41,8 +41,8 @@ The **Issue Reporting UX Specification** establishes how citizens report, verify
 
 ## 📚 Related Documentation
 
-* **[Common Submission Model](../architecture/submission-model.md)** — Backend issue entity schema
-* **[Design Principles](design-principles.md)** — Platform UX rules
-* **[Discussion UX Spec](discussion.md)** — Linked community threads
+* **[Common Submission Model](../../architecture/submission-model.md)** — Backend issue entity schema
+* **[Design Principles](../../ux/design-principles.md)** — Platform UX rules
+* **[Discussion UX Spec](../discussions/ui-components.md)** — Linked community threads
 
 ---
