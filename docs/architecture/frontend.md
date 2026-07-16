@@ -37,7 +37,7 @@ The frontend must be:
 
 The frontend is **a platform**, not a collection of pages.
 
-* **Citizen** and **Admin** are independent applications sharing a common engineering foundation.
+* The architecture is built on a shared engineering foundation supporting production applications and package boundaries.
 * Everything reusable belongs in **shared packages**.
 * Applications should assemble reusable building blocks instead of implementing custom solutions repeatedly.
 
@@ -49,8 +49,7 @@ The frontend is **a platform**, not a collection of pages.
 frontend/ (Production monorepo root)
 │
 ├── apps/
-│   ├── citizen/
-│   └── admin/
+│   └── citizen/
 │
 ├── packages/
 │   ├── api/
@@ -101,13 +100,9 @@ src/
 
 ## 📱 Applications
 
-### 1️⃣ Citizen (`citizen.djp.org`)
+### 1️⃣ Citizen
 * **🎯 Purpose:** Public-facing platform.
 * **✨ Features:** Feed, Issues, Discussions, Polls, Representatives, Notifications, Profile, Onboarding.
-
-### 2️⃣ Admin (`admin.djp.org`)
-* **🎯 Purpose:** Internal party operations.
-* **✨ Features:** Dashboard, Analytics, Moderation, Issue Management, Reports, User Management, Campaign Management.
 
 ---
 
@@ -222,7 +217,7 @@ Each component should:
 | **Server State** | TanStack Query | Caching, synchronization, background refetching |
 | **Client State** | Zustand | Global UI preferences. *Never duplicate server state or cache APIs in Zustand.* |
 | **Forms** | React Hook Form + Zod | Fully typed schema validation. Manual validation prohibited. |
-| **Routing** | React Router | Citizen and Admin maintain independent routing trees. |
+| **Routing** | React Router | Application routing tree with page and layout routes. |
 
 ---
 
