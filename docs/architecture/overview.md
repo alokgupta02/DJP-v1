@@ -4,89 +4,68 @@
 
 | Metadata | Details |
 | :--- | :--- |
-| **🎯 Purpose** | High-level system architecture, concepts, and data flow |
-| **👥 Audience** | Developers, designers, contributors, AI agents |
+| **🎯 Purpose** | High-level system architecture, microservices topology, and tech stack |
+| **👥 Audience** | Developers, Tech Architects, Contributors, AI Agents |
 | **📌 Status** | `Stable` |
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ 1. System Architecture
 
-The **Digital Janata (DJ)** platform is the **digital operating system of a political party** — a unified ecosystem for citizen participation, party organization, governance, and intelligence, designed to make political participation as simple, transparent, and accessible as sending a message.
+The **DJPlatform App** operates as a decoupled, multi-tier civic engagement network. It separates citizen action from political party management. The platform is built on a **React 18 frontend** and a **modular microservices backend**.
 
----
+### Microservices Block Diagram
 
-### 🧱 Key Components
-
-* **🌐 Frontend**: HTML5, CSS3, JavaScript (ES5+)
-* **📊 Visualization**: Chart.js library for interactive charts
-* **🎨 Styling**: CSS Grid, Flexbox, Media Queries for responsive design
-* **🧭 Navigation**: Sidebar-based navigation with active state management
-* **⚡ Data Flow**: Progressive disclosure pattern for user interaction
-
----
-
-### 💡 Core Concepts
-
-* **📦 Common Submission Model**: Unified data model for issues, discussions, polls, and other civic content
-* **🔍 Progressive Disclosure**: Step-by-step user interaction to reduce cognitive load
-* **📱 Responsive Design**: Mobile-first approach with breakpoints at `768px` and `1024px`
-* **♿ Accessibility**: WCAG 2.1 compliance with keyboard navigation and semantic HTML
-
----
-
-### 🔄 Data Flow
-
-```
-  [ 1. User Entry ] ──► [ 2. Onboarding ] ──► [ 3. Content Creation ] ──► [ 4. Processing ] ──► [ 5. Render Display ]
+```mermaid
+graph TD
+    User["🌐 React 18 Client App<br>(Vite + TS + Tailwind)"] 
+    --> Gateway["🔒 Reverse Proxy / API Gateway<br>(Port 80/443)"]
+    
+    Gateway -->|"/api/v1/auth/*"| AuthService["🔑 Auth Service<br>(Spring Boot - Port 8081)"]
+    Gateway -->|"/api/v1/core/*"| CoreService["🛠️ Core Service<br>(Spring Boot - Port 8080)"]
+    Gateway -->|"/api/v1/ai/*"| AIService["🧠 AI Service<br>(Python FastAPI - Port 8000)"]
+    
+    CoreService --> DB[("🗄️ H2 Database (Local Dev)<br>PostgreSQL (Production)")]
 ```
 
-1. **🚪 User Entry**: Users access the platform through the unified dashboard.
-2. **👋 Onboarding**: Progressive disclosure flow gathers user preferences.
-3. **✍️ Content Creation**: Users create issues, discussions, polls, and proposals.
-4. **⚙️ Data Processing**: Platform processes and aggregates data in real-time.
-5. **📈 Display**: Visualizations are rendered using Chart.js with responsive layouts.
+---
+
+## 🧱 2. Key Components
+
+* **🌐 Frontend Core:** Built on **React 18 (Vite, TypeScript, Tailwind CSS)**, managing asynchronous API calls via TanStack Query.
+* **🔑 Auth Service:** Java Spring Boot service responsible for Google/LinkedIn OAuth2 flows, JWT creation, token signing, and session validation.
+* **🛠️ Core Service:** Java Spring Boot service processing the business logic for Issues (I), Discussions (D), Polls (P), and user reputation metrics.
+* **🧠 AI Service:** Python FastAPI service executing machine learning models to classify issues as solvable vs. non-solvable, and verifying resolutions via visual before/after image comparison.
+* **🔒 API Gateway:** A lightweight reverse proxy routing client requests to the correct port based on path prefixing.
 
 ---
 
-### 📜 Architecture Principles
+## 💡 3. Core Concepts
 
-* **👤 Citizen First**: Every feature serves citizen engagement and public impact.
-* **🔎 Transparency by Default**: All data flows and decisions are auditable and visible.
-* **⚖️ Accountability Through Technology**: Track promises, issues, and representative performance.
-* **🗳️ Internal Democracy**: Enable grassroots participation and democratic decision-making.
-* **🧩 Modular Design**: Each component has a single responsibility.
-* **⚡ Separation of Concerns**: Clear separation between UI, logic, and data.
-* **🔁 Reusability**: Components and patterns are reusable across pages.
-* **🛠️ Maintainability**: Clear structure and documentation for easy updates.
+* **🔍 Action-Oriented vs. Conversation-Oriented:** The frontend clearly separates actionable **Issues (I)** (which AI maps to local volunteer campaigns or petitions) from conversation-oriented **Discussions (D)** (which capture any national debate or cultural concern).
+* **📱 Responsive Design:** Mobile-first layout with layout adaptation optimized for digitally active, educated urban early-adopters.
+* **🔐 Double-Lock Verification:** A problem resolution requires both GPS proximity check-ins from local witnesses (within 500m) and AI visual before/after analysis.
+* **📈 Dynamic Ranks:** Ranks are periodically recalculated using a rolling 6-month active reputation score, while permanent profile badges display lifetime contributions.
 
 ---
 
-### 🧰 Technology Stack
+## 🧰 4. Technology Stack
 
-| Layer | Technologies |
-| :--- | :--- |
-| **Frontend Core** | HTML5, CSS3, JavaScript (ES5+) |
-| **Data Visualization** | Chart.js (CDN) |
-| **Styling System** | Vanilla CSS (Grid, Flexbox, Custom Properties) |
-| **Hosting & Deployment** | Static file serving (GitHub Pages, Netlify, Vercel) |
+| Layer | Component | Technologies |
+| :--- | :--- | :--- |
+| **Frontend** | Client SPA | React 18, Vite, TypeScript, Tailwind CSS, TanStack Query |
+| **Gateway** | API Router | Reverse Proxy (Nginx / Spring Cloud Gateway) |
+| **Backend Auth** | Security | Java 21, Spring Boot, Spring Security, JWT, OAuth2 |
+| **Backend Core** | Business API | Java 21, Spring Boot, Spring Data JPA, H2 / PostgreSQL |
+| **Backend AI** | ML Inference | Python 3.11+, FastAPI, PyTorch / OpenCV |
 
 ---
 
 ## 📚 Related Documentation
 
-* **[Vision](../vision/party-vision.md)** — Product vision and goals
-* **[Roadmap](../vision/roadmap.md)** — Versioned plan and timeline
-* **[Decisions](../vision/decisions.md)** — Architectural decisions and trade-offs
-* **[Submission Model](submission-model.md)** — Detailed data model
-* **[Onboarding](onboarding.md)** — Conversational onboarding flow
-* **[AI Assistant](ai-assistant.md)** — AI assistant design
-* **[Design Principles](../ux/design-principles.md)** — UX philosophy and guidelines
-* **[Components](components.md)** — UI component library
-* **[Layout](layout.md)** — Responsive design
-* **[Colors & Typography](colors-typography.md)** — Design tokens
-* **[Navigation](navigation.md)** — Navigation system
-* **[JavaScript](javascript.md)** — JavaScript patterns
-* **[Agent Guide](../development/agent.md)** — AI agent interaction guide
-
----
+* **[Vision](../vision/party-vision.md)** — Core framework and app scope
+* **[Roadmap](../vision/roadmap.md)** — Staged release schedule (v1.1, v1.2, v1.3)
+* **[Decisions](../vision/decisions.md)** — Architectural decision records (ADR-001 to ADR-007)
+* **[System Boundaries](system-boundaries.md)** — Detail network and routing definitions
+* **[Frontend Monorepo Spec](frontend.md)** — UI design tokens and package structures
+* **[Backend Design Spec](backend-design.md)** — Core schema and REST API endpoints
