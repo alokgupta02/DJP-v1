@@ -31,7 +31,9 @@ Transform politics from a system centered on periodic elections and personalitie
 The **DJPlatform App** is the digital operating system of the movement. 
 
 * **Open to All Citizens:** The app is open to all citizens of India. Party membership is separate and decoupled from using the app.
-* **Problem Solving & Accountability:** It is a tool for citizens to log pain points on Executive, Legislative, or Judiciary (ELJ) spheres (education, infrastructure, hospitals, corruption, etc.).
+* **Issues vs. Discussions:** 
+  * **Issues (I) [Action-Oriented]:** Specific, solvable or non-solvable civic problems mapped to the **ELJ spheres** (Executive, Legislative, Judiciary). The goal is to **solve** the problem, either through citizen volunteering or government intervention.
+  * **Discussions (D) [Conversation-Oriented]:** An open space to **discuss anything in the country that concerns a citizen** (e.g. hyper-sexualization in films, societal trends, or national debates). These threads can have Polls (P) attached to measure public sentiment.
 * **Not for Governance or Campaigning:** The app is not a governance platform and does not directly share data with the government. It is also not a campaign management portal for official politicians. It is purely a citizen-action network.
 
 ---
