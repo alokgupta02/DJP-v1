@@ -48,6 +48,17 @@ The onboarding process uses **Progressive Disclosure** to gradually introduce us
 
 ---
 
+## 📊 Progressive Profile Completion UX (Second-Time Users)
+
+For citizens who skip or exit the onboarding flow prior to completion:
+1. **Top Reminder Notification:** Display a persistent warning/info banner at the top of the main feed: *"Complete your onboarding profile to unlock voting and issue reporting."* Clicking the banner redirects back to the onboarding step.
+2. **Profile Percentage Status Bar:** Render a completion status bar (e.g., "Profile 60% Complete") on the user's profile and main dashboard sidebar. The completion percentage is calculated dynamically based on completed steps:
+   - Geographic Location Selector (+40%)
+   - Focus Topics of Interest (+30%)
+   - Notification Frequency Frequencies (+30%)
+
+---
+
 ## 🗃️ State Management & Integration
 
 | State Layer | Responsibility | Storage |
