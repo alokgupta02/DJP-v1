@@ -46,7 +46,7 @@ The frontend is **a platform**, not a collection of pages.
 ## 🏗️ Architecture
 
 ```
-frontend/
+frontend/ (Production monorepo root)
 │
 ├── apps/
 │   ├── citizen/
@@ -63,10 +63,12 @@ frontend/
 │   ├── ui/
 │   └── utils/
 │
-├── prototype/
 ├── package.json
 └── README.md
 ```
+
+> [!NOTE]
+> The active staging playground sandbox lives at the project root workspace under `/prototype`.
 
 ### 📱 Application Internal Architecture (`apps/citizen/src`)
 
