@@ -8,36 +8,40 @@
 
 ```mermaid
 graph TD
-    subgraph Client [Client & Frontend Layer]
-        FE_PROT["Playground Sandbox<br>(/prototype)"]
-        FE_PROD["Production Client App<br>(/frontend)"]
+    subgraph Client [Client Sandbox /frontend & /prototype]
+        FE["React 18 SPA"]
     end
 
-    subgraph Gateway [API Gateway Layer]
-        GW[API Router / Reverse Proxy]
+    subgraph Security [JWT API Gateway Layer]
+        GW["API Gateway (Bearer Token Validator)"]
     end
 
-    subgraph Microservices [Backend Microservices Layer]
-        AUTH[Auth Service - Java 21 / Spring Boot 3]
-        CORE[Core Civic Service - Java 21 / Spring Boot 3]
-        AI[AI Analytics Service - Python 3.11 / FastAPI]
+    subgraph Microservices [Isolated Services backend/*]
+        AUTH["Auth Service (Issues JWT)"]
+        CORE["Core Service (Stateful SQL Data)"]
+        AI["AI Service (Stateless NLP)"]
     end
 
     subgraph Storage [Data Storage Layer]
-        PG[(Supabase PostgreSQL Database)]
-        VEC[(pgvector Semantic Store)]
+        DB[("Supabase PostgreSQL Database")]
+        VEC[("pgvector Semantic Store")]
     end
 
-    FE_PROD -->|REST / JSON| GW
-    GW -->|"/api/v1/auth/*"| AUTH
-    GW -->|"/api/v1/core/*"| CORE
-    GW -->|"/api/v1/ai/*"| AI
-    AUTH -->|JWT / OAuth| PG
-    CORE -->|SQL / JPA| PG
-    AI -->|Vectors / Embeddings| VEC
+    %% Network flows
+    FE -->|Bearer Token / API requests| GW
+    GW -->|Validate & Route /api/v1/auth| AUTH
+    GW -->|Validate & Route /api/v1/core| CORE
+    GW -->|Validate & Route /api/v1/ai| AI
+    
+    %% Storage access
+    CORE -->|Read/Write SQL| DB
+    AUTH -->|Query user credentials| DB
+    AI -->|Query vectors| VEC
+    
+    %% Strict boundaries & blockages
+    FE -.-x|❌ BLOCKED DIRECT ACCESS| DB
+    AI -.-x|❌ BLOCKED WRITE ACCESS| DB
 ```
-
-![DJP System Architecture Diagram](images/djp_architecture.jpg)
 
 ---
 
@@ -56,23 +60,24 @@ graph TD
 
 ## 3. Agentic Workflow Guardrails & Responsibilities
 
-```
-+--------------------------------------------------------------------------------+
-|                   CIRCULAR HUMAN APPROVAL FEEDBACK LOOP                        |
-|                                                                                |
-|      ┌───────────────────────── [ FEEDBACK / REVISION ] ───────────┐           |
-|      ▼                                                             │           |
-|  PM Agent (PRD) ──► Tech Arch Agent (Architecture) ──► [ HUMAN APPROVAL GATE ] |
-|                                                                    │           |
-|                                                         [APPROVED] │           |
-+--------------------------------------------------------------------┼-----------+
-                                                                     ▼
-+--------------------------------------------------------------------------------+
-|                        SPEC & TDD EXECUTION LOOP                               |
-|   TL Agent (Specs) ---> QA Agent (Writes Failing Tests FIRST)                  |
-|                   ---> FE/BE Agents (Write Code to Pass Tests)                 |
-|                   ---> GitHub Agent (Creates PR Once Green ✅)                  |
-+--------------------------------------------------------------------------------+
+```mermaid
+graph TD
+    subgraph Loop1 [1. Circular Human Approval Feedback Loop]
+        PM["PM Agent (PRD)"] 
+        --> Arch["Tech Arch Agent (Architecture)"]
+        --> Gate{"👤 HUMAN APPROVAL GATE"}
+        
+        Gate -->|Feedback / Revision| PM
+    end
+
+    subgraph Loop2 [2. Spec & TDD Execution Loop]
+        TL["TL Agent (Specs)"] 
+        --> QA["QA Agent (Writes Failing Tests FIRST)"]
+        --> Dev["FE/BE Agents (Write Code to Pass Tests)"]
+        --> Git["GitHub Agent (Audits & Creates PR ✅)"]
+    end
+
+    Gate -->|Approved| TL
 ```
 
 ### Strict Agent Enforcement Rules:
