@@ -37,6 +37,8 @@ graph TD
     AI -->|Vectors / Embeddings| VEC
 ```
 
+![DJP System Architecture Diagram](images/djp_architecture.jpg)
+
 ---
 
 ## 2. Identified Architectural Areas & Domain Boundaries

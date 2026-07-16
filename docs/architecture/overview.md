@@ -28,6 +28,8 @@ graph TD
     CoreService --> DB[("🗄️ H2 Database (Local Dev)<br>PostgreSQL (Production)")]
 ```
 
+![DJP System Architecture Diagram](images/djp_architecture.jpg)
+
 ---
 
 ## 🧱 2. Key Components
