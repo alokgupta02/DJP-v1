@@ -236,7 +236,7 @@ Every asynchronous operation must explicitly support 4 UI states:
 
 ## 🖼️ Prototype Usage (`/prototype`)
 
-For details on sandbox rules, staging servers, and the copy-port flow between production and prototype workspaces, refer to the **[Prototype Staging & Playground Guide](../development/prototype-guide.md)**.
+For details on sandbox rules, staging servers, and the copy-port flow between production and prototype workspaces, refer to the **[Prototype Staging & Playground Guide](../../prototype/README.md)**.
 
 ---
 

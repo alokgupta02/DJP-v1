@@ -15,5 +15,5 @@ Every AI Agent and human developer MUST place and read Markdown (`.md`) files ac
 | `docs/execution/` | **All Agents (PM, TA, TL, QA)** | **Active Feature Execution Hub:** PRDs, Architecture blueprints, TL Specs, & QA/UI specs grouped per feature | `docs/execution/oauth-login/PRD.md`, `docs/execution/issues/ui-components.md` |
 | `docs/vision/` | **PM Agent** | High-level product vision, party goals & roadmaps | `party-vision.md`, `roadmap.md` |
 | `docs/architecture/` | **Tech Arch Agent** | Global system boundaries, reference tech stack & reusable component designs | `system-boundaries.md`, `frontend.md`, `backend-design.md` |
-| `docs/development/` | **TL Agent** | Engineering conventions & developer guides | `oauth-login-specs.md`, `prototype-guide.md` |
+| `docs/development/` | **TL Agent** | Engineering conventions & developer guides | `oauth-login-specs.md`, [`prototype/README.md`](../prototype/README.md) |
 | `docs/api/` | **BE Agent** | API route definitions & OpenAPI/Swagger contracts | `auth-api.md` |
