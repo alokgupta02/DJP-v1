@@ -45,45 +45,8 @@ For complete details on database tables, column types, entity relations, constra
 All controllers will map requests under `/api/v1`. Secured endpoints require a valid Bearer JWT.
 
 > [!NOTE]
-> **API-First Development:** During the implementation phase, these text contracts will be formalized into an executable **`api-spec.yaml`** (OpenAPI 3.0 specification) file under `docs/architecture/` to auto-generate Spring Boot and React/Axios interfaces.
+> **API-First Development:** During the implementation phase, endpoint contracts (paths, schemas, DTOs, request/response bodies) will be created as an executable **`api-spec.yaml`** (OpenAPI 3.0 specification) file under `docs/architecture/` to auto-generate Spring Boot and React/Axios interfaces, avoiding manual text maintenance or drift.
 
-### A. Authentication & Subscription (`/api/v1/auth`)
-* `GET /login/oauth2/code/google` & `linkedin` (Default Spring Security Callback URLs)
-  * Invoked by the OAuth provider. Spring Security intercepts, grabs user info, registers/updates the user in the database, and redirects the client to the frontend with an access JWT.
-* `GET /api/v1/auth/me` *(Secured)*
-  * **Response**: `200 OK` with User model representation.
-* `POST /api/v1/auth/subscription/subscribe` *(Secured)*
-  * Simulates purchasing a monthly plan. Updates `subscription_status` to `ACTIVE` and sets `subscription_ends_at`.
-  * **Response**: `200 OK` with updated User model.
-* `POST /api/v1/auth/subscription/cancel` *(Secured)*
-  * Cancels leader subscription, scheduling standard or grace-period lapse behavior.
-  * **Response**: `200 OK` with updated User model.
-### B. Issues (`/api/v1/issues`)
-* `GET /api/v1/issues` *(Secured)*
-  * **Query Parameters**: `category` (optional), `status` (optional), `priority` (optional)
-  * **Response**: `200 OK` listing match results.
-* `POST /api/v1/issues` *(Secured)*
-  * **Request Payload**:
-    ```json
-    {
-      "title": "Water Pipe Leakage",
-      "description": "Clean water wasting on Main street for 2 days.",
-      "category": "Water",
-      "priority": "HIGH",
-      "location": "South Ward"
-    }
-    ```
-  * **Response**: `201 Created` with generated Issue DTO.
-* `GET /api/v1/issues/{id}` *(Secured)*
-  * **Response**: `200 OK` with full issue details, or `404 Not Found`.
-* `PUT /api/v1/issues/{id}` *(Secured)*
-  * **Request Payload**: Updates fields like `status` or `workflowStep`.
-  * **Response**: `200 OK` with updated Issue DTO.
-* `DELETE /api/v1/issues/{id}` *(Secured)*
-  * **Response**: `204 No Content` (Permitted only for the issue's author).
-* `POST /api/v1/issues/{id}/support` *(Secured)*
-  * Toggles support state. Increments/decrements support count in a transactional block.
-  * **Response**: `200 OK` returning updated support count.
 ---
 ## 5. Phased Implementation Plan
 We adopt a "Working Model First" (MVP) approach. Each phase is completed using Test-Driven Development (TDD) before implementing production logic.
