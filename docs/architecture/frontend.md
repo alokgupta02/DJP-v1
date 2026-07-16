@@ -236,9 +236,7 @@ Every asynchronous operation must explicitly support 4 UI states:
 
 ## 🖼️ Prototype Usage (`/prototype`)
 
-* The `/prototype` folder is a **visual reference only**.
-* Never modify prototype files or copy raw static HTML directly into production React pages.
-* Extract reusable components first, then assemble features cleanly.
+For details on sandbox rules, staging servers, and the copy-port flow between production and prototype workspaces, refer to the **[Prototype Staging & Playground Guide](../development/prototype-guide.md)**.
 
 ---
 
