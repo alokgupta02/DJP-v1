@@ -1,14 +1,14 @@
-# Spring Boot + H2 Backend Design Specification
+# ⚙️ **Backend Engineering & Database Specification**
 **Author**: Principal Technical Architect  
-**Status**: Draft for Review  
-**Date**: 2026-07-11  
+**Status**: Stable  
+**Date**: 2026-07-16  
 ---
 ## 1. Goal & Architecture Overview
-The objective is to implement a robust, lightweight, and test-driven backend for the citizen application using **Spring Boot 3.x**, **Java 21**, and an embedded **H2 Database**.
-To support authentication, the system will use **OAuth2 (Google and LinkedIn)**. The application will leverage standard Spring Security and Spring Data JPA to simplify database mapping. By utilizing an embedded H2 database with local files, we provide a zero-setup local development experience that can be seamlessly migrated to PostgreSQL/Supabase in the future.
+The objective is to implement a robust, lightweight, and test-driven backend for the citizen application using **Spring Boot 3.x**, **Java 21**, and **Supabase PostgreSQL** as the production target database.
+To support authentication, the system uses **OAuth2 (Google and LinkedIn)**. The application leverages standard Spring Security and Spring Data JPA to simplify database mapping. While the production target is Supabase PostgreSQL, we utilize an in-memory **H2 Database** strictly for local development and running unit/integration test suites to enable a zero-setup local environment.
 ### System Components
 * **REST APIs**: Built with Spring Web (REST controllers), conforming to RESTful standards under the `/api/v1` namespace.
-* **Database**: Embedded H2 Database. Schema setup and initial seeding are managed dynamically on application startup via `schema.sql` and `data.sql`.
+* **Database**: Supabase PostgreSQL (Production) / In-Memory H2 Database (Local Testing). Schema setup and initial seeding are managed dynamically on application startup via `schema.sql` and `data.sql`.
 * **Security & Auth**: Spring Security configuration acting as an OAuth2 Login Client (Authorization Code Flow) that persists authenticated profiles into the local `users` table and issues lightweight JWTs to the React frontend.
 ---
 ## 2. Directory & Package Structure
@@ -48,7 +48,10 @@ CREATE TABLE users (
     provider VARCHAR(50) NOT NULL, -- 'GOOGLE', 'LINKEDIN'
     provider_id VARCHAR(255) NOT NULL,
     location VARCHAR(150),
-    reputation_score INT DEFAULT 0,
+    reputation_score INT DEFAULT 0, -- Lifetime score
+    subscription_status VARCHAR(20) DEFAULT 'INACTIVE', -- 'ACTIVE', 'INACTIVE', 'SUSPENDED'
+    subscription_ends_at TIMESTAMP WITH TIME ZONE,
+    grace_period_ends_at TIMESTAMP WITH TIME ZONE,
     joined_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     role VARCHAR(20) DEFAULT 'CITIZEN',
     UNIQUE(provider, provider_id)
@@ -112,15 +115,30 @@ CREATE TABLE poll_votes (
     FOREIGN KEY (poll_id) REFERENCES polls(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+-- 7. Reputation Transactions table (for rolling 6-month calculations)
+CREATE TABLE reputation_transactions (
+    id VARCHAR(36) PRIMARY KEY,
+    user_id VARCHAR(36) NOT NULL,
+    points INT NOT NULL,
+    action_type VARCHAR(50) NOT NULL, -- 'ISSUE_REPORTED', 'FIX_VERIFIED', etc.
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
 ```
 ---
 ## 4. REST API Endpoint Contracts
 All controllers will map requests under `/api/v1`. Secured endpoints require a valid Bearer JWT.
-### A. Authentication (`/api/v1/auth`)
+### A. Authentication & Subscription (`/api/v1/auth`)
 * `GET /login/oauth2/code/google` & `linkedin` (Default Spring Security Callback URLs)
   * Invoked by the OAuth provider. Spring Security intercepts, grabs user info, registers/updates the user in the database, and redirects the client to the frontend with an access JWT.
 * `GET /api/v1/auth/me` *(Secured)*
   * **Response**: `200 OK` with User model representation.
+* `POST /api/v1/auth/subscription/subscribe` *(Secured)*
+  * Simulates purchasing a monthly plan. Updates `subscription_status` to `ACTIVE` and sets `subscription_ends_at`.
+  * **Response**: `200 OK` with updated User model.
+* `POST /api/v1/auth/subscription/cancel` *(Secured)*
+  * Cancels leader subscription, scheduling standard or grace-period lapse behavior.
+  * **Response**: `200 OK` with updated User model.
 ### B. Issues (`/api/v1/issues`)
 * `GET /api/v1/issues` *(Secured)*
   * **Query Parameters**: `category` (optional), `status` (optional), `priority` (optional)
@@ -143,7 +161,7 @@ All controllers will map requests under `/api/v1`. Secured endpoints require a v
   * **Request Payload**: Updates fields like `status` or `workflowStep`.
   * **Response**: `200 OK` with updated Issue DTO.
 * `DELETE /api/v1/issues/{id}` *(Secured)*
-  * **Response**: `204 No Content` (Permitted only for the issue's author or Admins).
+  * **Response**: `204 No Content` (Permitted only for the issue's author).
 * `POST /api/v1/issues/{id}/support` *(Secured)*
   * Toggles support state. Increments/decrements support count in a transactional block.
   * **Response**: `200 OK` returning updated support count.
