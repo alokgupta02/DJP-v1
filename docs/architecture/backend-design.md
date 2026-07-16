@@ -1,15 +1,14 @@
-# ⚙️ **Backend Engineering & Database Specification**
+# ⚙️ **Backend API Engineering Specification**
 **Author**: Principal Technical Architect  
 **Status**: Stable  
 **Date**: 2026-07-16  
 ---
 ## 1. Goal & Architecture Overview
-The objective is to implement a robust, lightweight, and test-driven backend for the citizen application using **Spring Boot 3.x**, **Java 21**, and **Supabase PostgreSQL** as the production target database.
-To support authentication, the system uses **OAuth2 (Google and LinkedIn)**. The application leverages standard Spring Security and Spring Data JPA to simplify database mapping. While the production target is Supabase PostgreSQL, we utilize an in-memory **H2 Database** strictly for local development and running unit/integration test suites to enable a zero-setup local environment.
+The objective is to implement a robust, lightweight, and test-driven backend for the citizen application using **Spring Boot 3.x** and **Java 21**, exposed via REST APIs.
+To support authentication, the system uses **OAuth2 (Google and LinkedIn)**. The application leverages standard Spring Security and Spring Data JPA to map database tables. For details on database tables and schema structures, refer to **[db-design.md](db-design.md)**.
 ### System Components
 * **REST APIs**: Built with Spring Web (REST controllers), conforming to RESTful standards under the `/api/v1` namespace.
-* **Database**: Supabase PostgreSQL (Production) / In-Memory H2 Database (Local Testing). Schema setup and initial seeding are managed dynamically on application startup via `schema.sql` and `data.sql`.
-* **Security & Auth**: Spring Security configuration acting as an OAuth2 Login Client (Authorization Code Flow) that persists authenticated profiles into the local `users` table and issues lightweight JWTs to the React frontend.
+* **Security & Auth**: Spring Security configuration acting as an OAuth2 Login Client (Authorization Code Flow) that persists authenticated profiles and issues lightweight JWTs to the React frontend.
 ---
 ## 2. Directory & Package Structure
 All backend source files will be stored inside the `backend/springboot` directory:
@@ -84,31 +83,29 @@ All controllers will map requests under `/api/v1`. Secured endpoints require a v
 ---
 ## 5. Phased Implementation Plan
 We adopt a "Working Model First" (MVP) approach. Each phase is completed using Test-Driven Development (TDD) before implementing production logic.
-### Phase 1: Project Setup, H2 Integration & OAuth2 (MVP 1)
-1. Initialize the Spring Boot maven project with security, web, data-jpa, validation, and H2 dependencies.
-2. Configure `schema.sql` and `data.sql` to initialize schema and seed mock users.
-3. Configure Spring Security for OAuth2 Login with Google and LinkedIn.
-4. Implement JWT helper to parse, generate, and validate authorization tokens.
-5. Create `/api/v1/auth/me` endpoint to verify current user context.
-6. Verify OAuth2 flows locally using integration tests.
+### Phase 1: Project Setup & OAuth2 (MVP 1)
+1. Initialize the Spring Boot maven project with security, web, data-jpa, and validation dependencies.
+2. Configure Spring Security for OAuth2 Login with Google and LinkedIn.
+3. Implement JWT helper to parse, generate, and validate authorization tokens.
+4. Create `/api/v1/auth/me` endpoint to verify current user context.
+5. Verify OAuth2 flows locally using integration tests.
 ### Phase 2: Issues CRUD (MVP 2)
-1. Add the `issues` table definition and mock seed data.
-2. Implement `Issue` database entity and `IssueRepository`.
-3. Create `IssueService` and `IssueController` using TDD (write unit/integration test suites testing search, creation, updates, and deletion).
-4. Implement support toggling logic.
-5. Connect frontend TanStack Query requests to backend Spring Boot REST endpoints.
+1. Implement `Issue` database entity and `IssueRepository` mapped to `issues` table in `db-design.md`.
+2. Create `IssueService` and `IssueController` using TDD (write unit/integration test suites testing search, creation, updates, and deletion).
+3. Implement support toggling logic.
+4. Connect frontend TanStack Query requests to backend Spring Boot REST endpoints.
 ### Phase 3: Feed, Discussions & Replies (MVP 3)
-1. Define `discussions` and `discussion_replies` in H2 schema files.
+1. Implement `Discussion` and `DiscussionReply` JPA entities and repositories.
 2. Implement domain entities, JPA relations, service layers, and validation rules.
 3. Create controllers under `/api/v1/discussions` to fetch discussion lists and handle posting/replying.
 4. Connect frontend Feed and Discussions pages.
 ### Phase 5: Polls & Votes (MVP 4)
-1. Implement `polls` and `poll_votes` tables.
+1. Implement `Poll` and `PollVote` JPA entities and repositories.
 2. Write custom validation constraint to enforce the unique constraint mapping user to poll voting options.
 3. Expose `/api/v1/polls` endpoints.
 4. Integrate frontend poll voting logic and real-time visualization bindings.
 ### Phase 6: Petitions, Notifications, and Representatives (MVP 5+)
-1. Construct supporting database schemas.
+1. Map JPA entities and repositories for representative tracking and petitions.
 2. Map endpoints for representative tracking and petitions.
 3. Wire final frontend views.
 ---
