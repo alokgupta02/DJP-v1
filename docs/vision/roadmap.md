@@ -21,11 +21,21 @@
 ## 🚀 Milestones & Feature Breakdown
 
 ### 1️⃣ Version 1 (MVP) — Citizen Participation Foundation (`Q3 2026`)
-* [/] User authentication, JWT security, and Google/LinkedIn OAuth2 integration
-* [ ] Responsive mobile-first design tokens (`@djp/theme`, `@djp/ui`)
-* [ ] Issue reporting with progressive disclosure
-* [ ] Civic discussions and community polls
-* [ ] Unified dashboard with key governance metrics
+
+#### 🎨 v1.1 — UI/UX Foundation (Current Sprint)
+* [x] Core layouts (collapsible sidebar, header search alignment, responsive grid)
+* [x] Responsive mobile-first design tokens (`@djp/theme`, `@djp/ui`)
+* [ ] Static pages and interactive UI mockups for Issues (I), Discussions (D), Polls (P), and profile dashboards
+
+#### 💻 v1.2 — Core Backend Integration
+* [ ] Spring Boot base Maven project and H2 database schema setup
+* [ ] Google and LinkedIn OAuth2 authentication flow
+* [ ] Basic CRUD REST APIs for Issues, Discussions, and Polls (wired to React TanStack query)
+
+#### ⚡ v1.3 — Advanced Logic & Operations
+* [ ] Double-Lock Verification (AI before/after photo comparison and 500m proximity GPS consensus)
+* [ ] Paid Leader Subscription gate and 14-day grace period logic
+* [ ] Dynamic leadership rank hierarchy (calculated via rolling 6-month reputation score)
 
 ---
 
