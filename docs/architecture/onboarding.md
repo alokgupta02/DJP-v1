@@ -2,11 +2,13 @@
 
 ---
 
-| Metadata | Details |
+| Metadata | Value |
 | :--- | :--- |
-| **🎯 Purpose** | Define the conversational onboarding flow and progressive disclosure UX patterns |
-| **👥 Audience** | Developers, Designers, Contributors |
+| **📅 Last Updated** | 2026-07-18 00:50 |
 | **📌 Status** | `Stable` |
+| **🏷️ Version** | `v1.0.0` |
+| **👥 Owner** | `Principal UX Designer` |
+| **🔗 Dependencies** | [overview.md](overview.md) |
 
 ---
 

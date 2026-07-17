@@ -2,11 +2,13 @@
 
 ---
 
-| Metadata | Details |
+| Metadata | Value |
 | :--- | :--- |
-| **👑 Document Owner** | Database & Infrastructure Team |
-| **👥 Audience** | BE Developers, DB Administrators, AI Agents |
+| **📅 Last Updated** | 2026-07-18 00:50 |
 | **📌 Status** | `Stable` |
+| **🏷️ Version** | `v1.0.0` |
+| **👥 Owner** | `Database & Infrastructure Team` |
+| **🔗 Dependencies** | [overview.md](overview.md) |
 
 ---
 

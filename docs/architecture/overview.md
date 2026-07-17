@@ -2,17 +2,19 @@
 
 ---
 
-| Metadata | Details |
+| Metadata | Value |
 | :--- | :--- |
-| **🎯 Purpose** | High-level system architecture, microservices topology, and tech stack |
-| **👥 Audience** | Developers, Tech Architects, Contributors, AI Agents |
+| **📅 Last Updated** | 2026-07-18 00:50 |
 | **📌 Status** | `Stable` |
+| **🏷️ Version** | `v1.0.0` |
+| **👥 Owner** | `Principal Technical Architect` |
+| **🔗 Dependencies** | None |
 
 ---
 
 ## 🏗️ 1. System Architecture
 
-The **DJPlatform App** operates as a decoupled, multi-tier civic engagement network. It separates citizen action from political party management. The platform is built on a **React 18 frontend** and a **modular microservices backend**.
+The **DJPlatform App** operates as a decoupled, multi-tier civic engagement network. It separates citizen action from political party management. The platform is built on a **React 18 frontend** and a **modular microservices backend**. All base paths (`/djp/api/v1`), ports, and service definitions are governed centrally by **[global-config.yaml](global-config.yaml)**.
 
 ### Microservices Block Diagram
 
@@ -21,14 +23,12 @@ graph TD
     User["🌐 React 18 Client App<br>(Vite + TS + Tailwind)"] 
     --> Gateway["🔒 Reverse Proxy / API Gateway<br>(Port 80/443)"]
     
-    Gateway -->|"/api/v1/auth/*"| AuthService["🔑 Auth Service<br>(Spring Boot - Port 8081)"]
-    Gateway -->|"/api/v1/core/*"| CoreService["🛠️ Core Service<br>(Spring Boot - Port 8080)"]
-    Gateway -->|"/api/v1/ai/*"| AIService["🧠 AI Service<br>(Python FastAPI - Port 8000)"]
+    Gateway -->|"/djp/api/v1/auth/*"| AuthService["🔑 Auth Service<br>(Spring Boot - Port 8081)"]
+    Gateway -->|"/djp/api/v1/core/*"| CoreService["🛠️ Core Service<br>(Spring Boot - Port 8080)"]
+    Gateway -->|"/djp/api/v1/ai/*"| AIService["🧠 AI Service<br>(Python FastAPI - Port 8000)"]
     
     CoreService --> DB[("🗄️ H2 Database (Local Dev)<br>PostgreSQL (Production)")]
 ```
-
-![DJP System Architecture Diagram](images/djp_architecture.jpg)
 
 ---
 

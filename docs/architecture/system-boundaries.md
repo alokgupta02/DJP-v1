@@ -1,6 +1,14 @@
 # 🏛️ System Boundaries & Agentic Guardrails Matrix
 
-> **Purpose:** Establish production-ready boundaries, clear ownership, exact technical stacks, and AI agent guardrails across the Digital Janta (DJP) platform.
+---
+
+| Metadata | Value |
+| :--- | :--- |
+| **📅 Last Updated** | 2026-07-18 00:50 |
+| **📌 Status** | `Stable` |
+| **🏷️ Version** | `v1.0.0` |
+| **👥 Owner** | `Principal Technical Architect` |
+| **🔗 Dependencies** | [overview.md](overview.md), [backend-design.md](backend-design.md) |
 
 ---
 

@@ -1,5 +1,16 @@
 # Technical Architecture: Spring Boot OAuth2 Login
 
+---
+
+| Metadata | Value |
+| :--- | :--- |
+| **📅 Last Updated** | 2026-07-18 00:50 |
+| **📌 Status** | `Stable` |
+| **🏷️ Version** | `v1.0.0` |
+| **👥 Owner** | `Principal Technical Architect` |
+| **🔗 Dependencies** | [backend-design.md](backend-design.md), [db-design.md](db-design.md) |
+
+---
 ## 1. Tech Stack (Discovered from docs)
 - **Language & Framework**: Java 21 + Spring Boot 3.x (`backend/springboot/`)
 - **Database**: Embedded H2 Database (`schema.sql`)
