@@ -2,11 +2,13 @@
 
 ---
 
-| Metadata | Details |
+| Metadata | Value |
 | :--- | :--- |
-| **🎯 Purpose** | Outline the versioned product plan, milestones, and timeline for the DJP platform |
-| **👥 Audience** | Stakeholders, Developers, Contributors |
+| **📅 Last Updated** | 2026-07-18 01:08 |
 | **📌 Status** | `Stable` |
+| **🏷️ Version** | `v1.0.0` |
+| **👥 Owner** | `Product Manager` |
+| **🔗 Dependencies** | [party-vision.md](party-vision.md) |
 
 ---
 

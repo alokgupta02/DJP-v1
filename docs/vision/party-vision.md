@@ -2,11 +2,13 @@
 
 ---
 
-| Metadata | Details |
+| Metadata | Value |
 | :--- | :--- |
-| **🎯 Purpose** | Define the long-term vision, framework, app architecture, and nomination principles of DJP |
-| **👥 Audience** | Stakeholders, Volunteers, Developers, AI Agents |
+| **📅 Last Updated** | 2026-07-18 01:08 |
 | **📌 Status** | `Stable` |
+| **🏷️ Version** | `v1.0.0` |
+| **👥 Owner** | `Product Manager` |
+| **🔗 Dependencies** | None |
 
 ---
 
