@@ -505,8 +505,8 @@
     "semantic_hash": ""
   },
   "frontend/skills-lock.json": {
-    "mtime": 1783964789.5227559,
-    "ast_hash": "caefee2975653ff679c1d5510fab69f3",
+    "mtime": 1784105573.441311,
+    "ast_hash": "2d5e24eebc82d303b62b319c0a3a86f7",
     "semantic_hash": ""
   },
   "frontend/tsconfig.base.json": {
@@ -520,8 +520,8 @@
     "semantic_hash": ""
   },
   ".agents/design-system/CHECKLIST.md": {
-    "mtime": 1783275881.5770552,
-    "ast_hash": "592047a0392ef3b60a11627f305db12d",
+    "mtime": 1784204573.4321866,
+    "ast_hash": "e71cf601243e89817cc2a96c529e1758",
     "semantic_hash": ""
   },
   ".agents/design-system/OUTPUT.md": {
@@ -659,64 +659,9 @@
     "ast_hash": "d860f898664582350313c3822024aa5a",
     "semantic_hash": ""
   },
-  "docs/architecture/ai-assistant.md": {
-    "mtime": 1783776170.264706,
-    "ast_hash": "fc495003790712f6365bdb524bfa0066",
-    "semantic_hash": ""
-  },
-  "docs/architecture/colors-typography.md": {
-    "mtime": 1783776092.8433533,
-    "ast_hash": "ed2ee99f192808530f7e9685dd3a391e",
-    "semantic_hash": ""
-  },
-  "docs/architecture/components.md": {
-    "mtime": 1783776054.1770203,
-    "ast_hash": "40702e624349e0594aef6d919f5f29af",
-    "semantic_hash": ""
-  },
-  "docs/architecture/frontend-structure.md": {
-    "mtime": 1783776218.712235,
-    "ast_hash": "387e2756f571152dc518cc1640e1ec51",
-    "semantic_hash": ""
-  },
-  "docs/architecture/frontend.md": {
-    "mtime": 1783776035.5208533,
-    "ast_hash": "54166b0919e3b278043d793b54e48be2",
-    "semantic_hash": ""
-  },
-  "docs/architecture/javascript.md": {
-    "mtime": 1783776126.4702938,
-    "ast_hash": "2fd55a899a0daa5f64b71561a643c639",
-    "semantic_hash": ""
-  },
-  "docs/architecture/layout.md": {
-    "mtime": 1783776071.0500524,
-    "ast_hash": "ea045100cdf18871b347b4ff1e5072e9",
-    "semantic_hash": ""
-  },
-  "docs/architecture/navigation.md": {
-    "mtime": 1783776110.1103597,
-    "ast_hash": "f3396de296a24eace4e5ba630621ce97",
-    "semantic_hash": ""
-  },
-  "docs/architecture/onboarding.md": {
-    "mtime": 1783776155.8529258,
-    "ast_hash": "58834af1686e60f8b4762844a570d590",
-    "semantic_hash": ""
-  },
   "docs/architecture/overview.md": {
-    "mtime": 1783776014.9495335,
-    "ast_hash": "b50ece2e95b4015117a834d07327fedf",
-    "semantic_hash": ""
-  },
-  "docs/architecture/routes.md": {
-    "mtime": 1783360466.926544,
-    "ast_hash": "c0ab52a7db547cad8cdfd0b686254671",
-    "semantic_hash": ""
-  },
-  "docs/architecture/submission-model.md": {
-    "mtime": 1783776142.442188,
-    "ast_hash": "5cc85808ca10a5049dc3ddedf6e94714",
+    "mtime": 1784316618.9375303,
+    "ast_hash": "019b8c6e5591f587d2e4314c8d717812",
     "semantic_hash": ""
   },
   "docs/deployment/deployment.md": {
@@ -724,44 +669,24 @@
     "ast_hash": "8c5425c0d3129541aea108c4e3ec8fba",
     "semantic_hash": ""
   },
-  "docs/development/agent.md": {
-    "mtime": 1783776376.4596062,
-    "ast_hash": "325c539650cde6a31568d9a35faecdd8",
-    "semantic_hash": ""
-  },
   "docs/md-file/README.md": {
-    "mtime": 1783775905.1558466,
-    "ast_hash": "bcb4d3f16b28b9fbfe22a84870f76217",
-    "semantic_hash": ""
-  },
-  "docs/md-file/backend-engineer-dev.md": {
-    "mtime": 1783775920.1179628,
-    "ast_hash": "fbeb7765120bb02241d52199fb66762c",
-    "semantic_hash": ""
-  },
-  "docs/md-file/backend-springboot-checklist.md": {
-    "mtime": 1783754687.551633,
-    "ast_hash": "73290ee43c87d595f708964fb5546df1",
+    "mtime": 1784386689.4569652,
+    "ast_hash": "39b64ea5ee73772138cd8f66a641ebd4",
     "semantic_hash": ""
   },
   "docs/md-file/improvedlearning.md": {
-    "mtime": 1783775935.5020866,
-    "ast_hash": "29bcbfc3b627df833f6a4c333a8236cc",
+    "mtime": 1784386925.697807,
+    "ast_hash": "5440d2b5c6411bbde76ce6ced5cd09f3",
     "semantic_hash": ""
   },
   "docs/md-file/prompt-refiner-agent.md": {
-    "mtime": 1783775952.863327,
-    "ast_hash": "06f88039d31e23d7fe66e498e89c2e15",
+    "mtime": 1784386925.5498066,
+    "ast_hash": "21d4dfcfd5ef69346cbbae21d7fe8496",
     "semantic_hash": ""
   },
   "docs/md-file/sdlc.md": {
-    "mtime": 1783775970.7915776,
-    "ast_hash": "b48efc75f0f9026d0be612feae8bf374",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/specs/2026-07-11-springboot-h2-backend-design.md": {
-    "mtime": 1783776929.4638293,
-    "ast_hash": "95e97ef8ee3c8f456e963311f15c81ed",
+    "mtime": 1784386925.5788066,
+    "ast_hash": "4aa1a94af37ef789cf9e9b87da97186d",
     "semantic_hash": ""
   },
   "docs/ux/design-principles.md": {
@@ -769,34 +694,19 @@
     "ast_hash": "8e54dd1f188497ffd2ac64c4cc80c01c",
     "semantic_hash": ""
   },
-  "docs/ux/discussion.md": {
-    "mtime": 1783776257.166147,
-    "ast_hash": "c940802f96c06dff8009b5b07dde75b6",
-    "semantic_hash": ""
-  },
-  "docs/ux/issue.md": {
-    "mtime": 1783776270.328783,
-    "ast_hash": "54f153ce4cf9ca41c907413331c11f80",
-    "semantic_hash": ""
-  },
-  "docs/ux/poll.md": {
-    "mtime": 1783776282.0433419,
-    "ast_hash": "f7c151e71171de4d33ec6dc8a7a4acae",
-    "semantic_hash": ""
-  },
   "docs/vision/decisions.md": {
-    "mtime": 1783776336.1898372,
-    "ast_hash": "c5c9c989f6b27becc82ee76470b4956b",
+    "mtime": 1784317111.2282052,
+    "ast_hash": "8dac4be9df3c50b89b512de6d9138542",
     "semantic_hash": ""
   },
   "docs/vision/party-vision.md": {
-    "mtime": 1783776304.6644013,
-    "ast_hash": "23142581c747aecfd111866cbe484906",
+    "mtime": 1784361829.7624836,
+    "ast_hash": "730c8944fabaed7a33d6a73adb76eab1",
     "semantic_hash": ""
   },
   "docs/vision/roadmap.md": {
-    "mtime": 1783776319.4630811,
-    "ast_hash": "7daa6c13815b95dbdf51481b98f1b2c2",
+    "mtime": 1784317108.8251336,
+    "ast_hash": "42888eb49cdc858f2727db7fdf9b346b",
     "semantic_hash": ""
   },
   "frontend/ARCHITECTURE.md": {
@@ -1100,23 +1010,13 @@
     "semantic_hash": ""
   },
   "docs/README.md": {
-    "mtime": 1783967039.3041623,
-    "ast_hash": "27ce26dad46dbe5e933bc29fa6e0a6d4",
-    "semantic_hash": ""
-  },
-  "docs/architecture/oauth-login-architecture.md": {
-    "mtime": 1783869769.4713507,
-    "ast_hash": "6758db967a78b97d87300af59fcb38c5",
+    "mtime": 1784222800.4941657,
+    "ast_hash": "10f7ff5e9f673c9df7db665061c4271d",
     "semantic_hash": ""
   },
   "docs/development/oauth-login-specs.md": {
     "mtime": 1783869774.51498,
     "ast_hash": "d924d6834bf3a0da54cea0be70ca2341",
-    "semantic_hash": ""
-  },
-  "docs/vision/PRD-oauth-login.md": {
-    "mtime": 1783869374.4157963,
-    "ast_hash": "922b1325a7105fd43e219023735775c2",
     "semantic_hash": ""
   },
   ".djp_identity.md": {
@@ -1184,46 +1084,6 @@
     "ast_hash": "cd42f838268ca56dbb1ba696bbb14af0",
     "semantic_hash": ""
   },
-  "docs/architecture/backend-techstack.md": {
-    "mtime": 1783887422.1757245,
-    "ast_hash": "55e9bc5c1cf8b9a1e03a94ef20f22f87",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/webapp-testing/examples/console_logging.py": {
-    "mtime": 1783964789.4779892,
-    "ast_hash": "eeccdae76b3d57954c562d6116bf0dea",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/webapp-testing/examples/element_discovery.py": {
-    "mtime": 1783964789.4779892,
-    "ast_hash": "ab18cb3570c77564a08cc73269d7b97d",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/webapp-testing/examples/static_html_automation.py": {
-    "mtime": 1783964789.4782393,
-    "ast_hash": "b631a23dc044d41fae4614be9353527d",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/webapp-testing/scripts/with_server.py": {
-    "mtime": 1783964789.4782393,
-    "ast_hash": "5182121f66c1b4279a5b3013378e6ea9",
-    "semantic_hash": ""
-  },
-  "docs/architecture/system-boundaries.md": {
-    "mtime": 1783965512.0215325,
-    "ast_hash": "cd992c0a2011363dcc531f9fc14fad59",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/webapp-testing/LICENSE.txt": {
-    "mtime": 1783964789.4768903,
-    "ast_hash": "0ee6429f4c66920b6744d818225fb58f",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/webapp-testing/SKILL.md": {
-    "mtime": 1783964789.4768903,
-    "ast_hash": "b02025a3df7ff4a6ac7e765cd1d6d54c",
-    "semantic_hash": ""
-  },
   "docs/execution/README.md": {
     "mtime": 1783967559.1290152,
     "ast_hash": "d2807c29209e9d210f9ed849bc9604d8",
@@ -1235,8 +1095,8 @@
     "semantic_hash": ""
   },
   "backend/.agents/skills/java-springboot/SKILL.md": {
-    "mtime": 1783871190.7955585,
-    "ast_hash": "f9d3a251148ea846cc61176d8294bfd3",
+    "mtime": 1784112017.7699795,
+    "ast_hash": "f940d01b7b56c7fad6b4b6577ca0b99c",
     "semantic_hash": ""
   },
   "backend/.agents/skills/microservices-patterns/SKILL.md": {
@@ -1250,8 +1110,8 @@
     "semantic_hash": ""
   },
   "backend/be-todo.md": {
-    "mtime": 1783977354.451272,
-    "ast_hash": "e22eb81f1fac300792e9795dc7fd5671",
+    "mtime": 1784202854.5158296,
+    "ast_hash": "e9ef0c31477ed01ed5a11851c1f0c1f9",
     "semantic_hash": ""
   },
   "frontend/fe-todo.md": {
@@ -1354,11 +1214,6 @@
     "ast_hash": "ea2485d30b1608b3b86623d4c33ebce8",
     "semantic_hash": ""
   },
-  "frontend/.agents/skills/vercel-react-best-practices/metadata.json": {
-    "mtime": 1783770898.5071971,
-    "ast_hash": "5cd9ae4fc688353236c3b92e8f06dfcc",
-    "semantic_hash": ""
-  },
   ".agents/skills/karpathy-guidelines/SKILL.md": {
     "mtime": 1783964220.3765028,
     "ast_hash": "568fe33228692e85543530ce376f695f",
@@ -1432,381 +1287,6 @@
   ".agents/skills/using-superpowers/references/pi-tools.md": {
     "mtime": 1783964193.0014439,
     "ast_hash": "eb8697d87b1f763f007cb2fdac3257a5",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/AGENTS.md": {
-    "mtime": 1783770898.5061972,
-    "ast_hash": "fc8f9b0218d2173112a8418bf9d8abe7",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/README.md": {
-    "mtime": 1783770898.5081973,
-    "ast_hash": "abb5236c535db0bf7ce6f38c8998bc47",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/SKILL.md": {
-    "mtime": 1783770898.5536904,
-    "ast_hash": "995a667ef0b53598f56ff897d9e4b334",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/_sections.md": {
-    "mtime": 1783770898.5091972,
-    "ast_hash": "b8c110b45145ded6919562772afe067c",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/_template.md": {
-    "mtime": 1783770898.5106742,
-    "ast_hash": "a0d76a2f87f3f80e9a8f3a2a1054aaaf",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/advanced-effect-event-deps.md": {
-    "mtime": 1783770898.5114458,
-    "ast_hash": "3a0e314bb9576bab61f68d5de5afaf3e",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/advanced-event-handler-refs.md": {
-    "mtime": 1783770898.512294,
-    "ast_hash": "f2a0d125f3773bfda91e187fa5bed48a",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/advanced-init-once.md": {
-    "mtime": 1783770898.5127084,
-    "ast_hash": "0100519098b834e69a3515657a39bdc9",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/advanced-use-latest.md": {
-    "mtime": 1783770898.5141973,
-    "ast_hash": "60309961293388c9b9e9fd4e0db344e3",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/async-api-routes.md": {
-    "mtime": 1783770898.5151973,
-    "ast_hash": "344fa543b37e303660404e1ef3a4638b",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/async-cheap-condition-before-await.md": {
-    "mtime": 1783770898.516664,
-    "ast_hash": "96352f626f328e15a6213d485e29e36f",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/async-defer-await.md": {
-    "mtime": 1783770898.5172553,
-    "ast_hash": "235a6b5760c2e4843d778167e462cb0e",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/async-dependencies.md": {
-    "mtime": 1783770898.5178702,
-    "ast_hash": "9c5622d97b20b9e0cb79455b4322061a",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/async-parallel.md": {
-    "mtime": 1783770898.5183017,
-    "ast_hash": "a0e06a8e9985cdff4ece0312d8ee35db",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/async-suspense-boundaries.md": {
-    "mtime": 1783770898.5186698,
-    "ast_hash": "dbb2fc80721ca1ce32426f43219d314f",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/bundle-analyzable-paths.md": {
-    "mtime": 1783770898.5190628,
-    "ast_hash": "8cfe6e284cafd2be33f09c6a1abc78fd",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/bundle-barrel-imports.md": {
-    "mtime": 1783770898.51941,
-    "ast_hash": "fcba301df7f11c6847dca5962ac78828",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/bundle-conditional.md": {
-    "mtime": 1783770898.519692,
-    "ast_hash": "585be2b6fc418c766e5b91cc2141d334",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/bundle-defer-third-party.md": {
-    "mtime": 1783770898.5205667,
-    "ast_hash": "6d4d1d4fac411f724071428dd0bc93ba",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/bundle-dynamic-imports.md": {
-    "mtime": 1783770898.521171,
-    "ast_hash": "72d89583306887810f67e9f7860f06af",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/bundle-preload.md": {
-    "mtime": 1783770898.5211973,
-    "ast_hash": "924ec7e7502ca042070326d38e88f8cd",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/client-event-listeners.md": {
-    "mtime": 1783770898.5221975,
-    "ast_hash": "71062add972f9735348b7ae77e778eb8",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/client-localstorage-schema.md": {
-    "mtime": 1783770898.5231974,
-    "ast_hash": "982a459b07cbec2f8386e526b924c339",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/client-passive-event-listeners.md": {
-    "mtime": 1783770898.524583,
-    "ast_hash": "3853533fd5f49fa2fc98296f9c34d84f",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/client-swr-dedup.md": {
-    "mtime": 1783770898.5251975,
-    "ast_hash": "e565fcba7836d339ca4707aad6fdaa4a",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-batch-dom-css.md": {
-    "mtime": 1783770898.5261974,
-    "ast_hash": "869dbc06a931ccfb899b739316c348af",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-cache-function-results.md": {
-    "mtime": 1783770898.5275204,
-    "ast_hash": "5d641ce87ef753d59e3205244e2851a1",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-cache-property-access.md": {
-    "mtime": 1783770898.5281832,
-    "ast_hash": "5b4ae3cd853b92222a8fd8c8d8202426",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-cache-storage.md": {
-    "mtime": 1783770898.5291975,
-    "ast_hash": "828f260566ff92df56089321fa41c116",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-combine-iterations.md": {
-    "mtime": 1783770898.5291975,
-    "ast_hash": "4f241532133637fee75304d40f016713",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-early-exit.md": {
-    "mtime": 1783770898.5301976,
-    "ast_hash": "d300cb3e57255029e446bdfa49dc4074",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-flatmap-filter.md": {
-    "mtime": 1783770898.53106,
-    "ast_hash": "161d9d8b444e5ec9cb58bffb0e1b76cd",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-hoist-regexp.md": {
-    "mtime": 1783770898.531497,
-    "ast_hash": "ced4609a5916db47bbaccfcc3f2dcdbb",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-index-maps.md": {
-    "mtime": 1783770898.5319128,
-    "ast_hash": "db5bcfde02e1ce9f41d6ed1f5aafc8c5",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-length-check-first.md": {
-    "mtime": 1783770898.5322752,
-    "ast_hash": "2ba208759dd91578f1085c28e6a92ce9",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-min-max-loop.md": {
-    "mtime": 1783770898.5326421,
-    "ast_hash": "82f654d27529dd80be7ae33d45dcdf8c",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-request-idle-callback.md": {
-    "mtime": 1783770898.533152,
-    "ast_hash": "91d7e7fca676efb7cecb4ccff1eaec01",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-set-map-lookups.md": {
-    "mtime": 1783770898.5335994,
-    "ast_hash": "59a278e21ecd322bff566ba4ad7f5a30",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/js-tosorted-immutable.md": {
-    "mtime": 1783770898.534143,
-    "ast_hash": "fd0804905877b6b7b1858e5df1b5f3c4",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rendering-activity.md": {
-    "mtime": 1783770898.534562,
-    "ast_hash": "b66bde1377564aa196ba15fc94215cd3",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rendering-animate-svg-wrapper.md": {
-    "mtime": 1783770898.5351408,
-    "ast_hash": "7301cbe48bf0e1c44934847861384d03",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rendering-conditional-render.md": {
-    "mtime": 1783770898.5355117,
-    "ast_hash": "7aa6112d7544d55147e183b84add9c31",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rendering-content-visibility.md": {
-    "mtime": 1783770898.535775,
-    "ast_hash": "a4ec0125d3a9d79ac2ab5f7a7b5b4d7d",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rendering-hoist-jsx.md": {
-    "mtime": 1783770898.5360136,
-    "ast_hash": "00519c11155c5c2a6f493d7980211a71",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rendering-hydration-no-flicker.md": {
-    "mtime": 1783770898.5363605,
-    "ast_hash": "a33ebc96d26525f94c460342d913e47a",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rendering-hydration-suppress-warning.md": {
-    "mtime": 1783770898.536659,
-    "ast_hash": "23bc895f5697c19a59712bf19474ec12",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rendering-resource-hints.md": {
-    "mtime": 1783770898.536972,
-    "ast_hash": "a612b2d1d86d1b8205b92ff7dfd81eb8",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rendering-script-defer-async.md": {
-    "mtime": 1783770898.5374067,
-    "ast_hash": "d62596aed565dd3ad7bddd38bc8f7798",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rendering-svg-precision.md": {
-    "mtime": 1783770898.537886,
-    "ast_hash": "1b880754ee449c52ccc725481f8b2e90",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rendering-usetransition-loading.md": {
-    "mtime": 1783770898.5383842,
-    "ast_hash": "3cea04ec76a76183cebc6571ac6365a2",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-defer-reads.md": {
-    "mtime": 1783770898.5388014,
-    "ast_hash": "2b754062eb7b203632859f6515ed3561",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-dependencies.md": {
-    "mtime": 1783770898.5391397,
-    "ast_hash": "ad0e42cd0616237f62f8a5abbc2138bc",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-derived-state-no-effect.md": {
-    "mtime": 1783770898.5395386,
-    "ast_hash": "c83ba3c8ea58015fd30072790a4959c4",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-derived-state.md": {
-    "mtime": 1783770898.5398695,
-    "ast_hash": "fadd31941e355786cb0cc7bba3c672fd",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-functional-setstate.md": {
-    "mtime": 1783770898.5401604,
-    "ast_hash": "188c0b949d23c11885914c573f4a770a",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-lazy-state-init.md": {
-    "mtime": 1783770898.540459,
-    "ast_hash": "6f9fc3d826cea2ca484912256149b077",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-memo-with-default-value.md": {
-    "mtime": 1783770898.5413396,
-    "ast_hash": "9bfa45660e0a4d4f180e1d12d9ed44ea",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-memo.md": {
-    "mtime": 1783770898.5423925,
-    "ast_hash": "f0decabf1e4cf032c36f0977c81167b7",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-move-effect-to-event.md": {
-    "mtime": 1783770898.5432696,
-    "ast_hash": "599463fe624afd8822ba2bfa7c0138d5",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-no-inline-components.md": {
-    "mtime": 1783770898.543758,
-    "ast_hash": "713855e0060cfe2ce549d08ea77e1af6",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-simple-expression-in-memo.md": {
-    "mtime": 1783770898.5443056,
-    "ast_hash": "42c37552160cff86a0fcbd93a27aa74e",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-split-combined-hooks.md": {
-    "mtime": 1783770898.5448902,
-    "ast_hash": "b7485878ff82ce8468078a31fc1b7f19",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-transitions.md": {
-    "mtime": 1783770898.545542,
-    "ast_hash": "3f275bbfb966fcb39c554ad959fdf016",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-use-deferred-value.md": {
-    "mtime": 1783770898.5464008,
-    "ast_hash": "913dc783397142c25ec997b5dc11245b",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/rerender-use-ref-transient-values.md": {
-    "mtime": 1783770898.5473588,
-    "ast_hash": "24d2e82617e2da4207afaf049e1314f3",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/server-after-nonblocking.md": {
-    "mtime": 1783770898.5480945,
-    "ast_hash": "c88a79384f87826bf1b20aa3637093a5",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/server-auth-actions.md": {
-    "mtime": 1783770898.5481977,
-    "ast_hash": "d8691820d666e5dd9094ccc6996398e3",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/server-cache-lru.md": {
-    "mtime": 1783770898.549198,
-    "ast_hash": "723195ea460bfbc4d43b4eb0c47b246b",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/server-cache-react.md": {
-    "mtime": 1783770898.550686,
-    "ast_hash": "bc168ee66c4378854c7aa23cb9ca1369",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/server-dedup-props.md": {
-    "mtime": 1783770898.5514169,
-    "ast_hash": "86bf6f2d562ca98bca778a5b9d2f0251",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/server-hoist-static-io.md": {
-    "mtime": 1783770898.5518966,
-    "ast_hash": "05789c4ba35f68cc0ed6deba3078f7ab",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/server-no-shared-module-state.md": {
-    "mtime": 1783770898.5522988,
-    "ast_hash": "7733faf82c146008e8f1c65660bac4bb",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/server-parallel-fetching.md": {
-    "mtime": 1783770898.5526536,
-    "ast_hash": "1a36cf0b49a1a498fc1150afbf7a42c2",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/server-parallel-nested-fetching.md": {
-    "mtime": 1783770898.5531533,
-    "ast_hash": "eaa7835a15d41842406acc34002f0d6c",
-    "semantic_hash": ""
-  },
-  "frontend/.agents/skills/vercel-react-best-practices/rules/server-serialization.md": {
-    "mtime": 1783770898.5536904,
-    "ast_hash": "e6d34426614852685f43609dd9e3b250",
     "semantic_hash": ""
   },
   "backend/.agents/skills/supabase-postgres-best-practices/CHANGELOG.md": {
@@ -2009,11 +1489,6 @@
     "ast_hash": "38a53e95ded880782190ddf2f2810317",
     "semantic_hash": ""
   },
-  "frontend/.agents/skills/redesign-existing-projects/SKILL.md": {
-    "mtime": 1783770972.7478237,
-    "ast_hash": "31d802d02ccb9f5da82d99156af36317",
-    "semantic_hash": ""
-  },
   "tests/.agents/skills/tdd/SKILL.md": {
     "mtime": 1783770908.4074516,
     "ast_hash": "a78e613a36731153b960491c24b06106",
@@ -2115,8 +1590,623 @@
     "semantic_hash": ""
   },
   ".agents/workflows/build-feature.md": {
-    "mtime": 1783982730.2872043,
-    "ast_hash": "b498927de2ef25cde5cc32c4dd7f8764",
+    "mtime": 1783983275.589144,
+    "ast_hash": "41a5e7bbf0b23172ffa8828caf24874b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/metadata.json": {
+    "mtime": 1784105965.038487,
+    "ast_hash": "5cd9ae4fc688353236c3b92e8f06dfcc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/webapp-testing/examples/console_logging.py": {
+    "mtime": 1784105965.043512,
+    "ast_hash": "eeccdae76b3d57954c562d6116bf0dea",
+    "semantic_hash": ""
+  },
+  ".agents/skills/webapp-testing/examples/element_discovery.py": {
+    "mtime": 1784105965.043586,
+    "ast_hash": "ab18cb3570c77564a08cc73269d7b97d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/webapp-testing/examples/static_html_automation.py": {
+    "mtime": 1784105965.0436478,
+    "ast_hash": "b631a23dc044d41fae4614be9353527d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/webapp-testing/scripts/with_server.py": {
+    "mtime": 1784105965.043853,
+    "ast_hash": "5182121f66c1b4279a5b3013378e6ea9",
+    "semantic_hash": ""
+  },
+  "frontend/.agents/skills.json": {
+    "mtime": 1784106012.0526738,
+    "ast_hash": "b610981a02346433d45f791ee52258a7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/gstack/SKILL.md": {
+    "mtime": 1784105965.0375335,
+    "ast_hash": "3550d82dde2e92fc0eac17ed1580715a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/redesign-existing-projects/SKILL.md": {
+    "mtime": 1784105965.0379612,
+    "ast_hash": "31d802d02ccb9f5da82d99156af36317",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/AGENTS.md": {
+    "mtime": 1784105965.0382555,
+    "ast_hash": "fc8f9b0218d2173112a8418bf9d8abe7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/README.md": {
+    "mtime": 1784105965.0386062,
+    "ast_hash": "abb5236c535db0bf7ce6f38c8998bc47",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/SKILL.md": {
+    "mtime": 1784105965.043161,
+    "ast_hash": "995a667ef0b53598f56ff897d9e4b334",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/_sections.md": {
+    "mtime": 1784105965.0391774,
+    "ast_hash": "b8c110b45145ded6919562772afe067c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/_template.md": {
+    "mtime": 1784105965.0392766,
+    "ast_hash": "a0d76a2f87f3f80e9a8f3a2a1054aaaf",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/advanced-effect-event-deps.md": {
+    "mtime": 1784105965.0393214,
+    "ast_hash": "3a0e314bb9576bab61f68d5de5afaf3e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/advanced-event-handler-refs.md": {
+    "mtime": 1784105965.0393634,
+    "ast_hash": "f2a0d125f3773bfda91e187fa5bed48a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/advanced-init-once.md": {
+    "mtime": 1784105965.0394175,
+    "ast_hash": "0100519098b834e69a3515657a39bdc9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/advanced-use-latest.md": {
+    "mtime": 1784105965.039462,
+    "ast_hash": "60309961293388c9b9e9fd4e0db344e3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/async-api-routes.md": {
+    "mtime": 1784105965.039502,
+    "ast_hash": "344fa543b37e303660404e1ef3a4638b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/async-cheap-condition-before-await.md": {
+    "mtime": 1784105965.0395446,
+    "ast_hash": "96352f626f328e15a6213d485e29e36f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/async-defer-await.md": {
+    "mtime": 1784105965.0395865,
+    "ast_hash": "235a6b5760c2e4843d778167e462cb0e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/async-dependencies.md": {
+    "mtime": 1784105965.0396278,
+    "ast_hash": "9c5622d97b20b9e0cb79455b4322061a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/async-parallel.md": {
+    "mtime": 1784105965.0396695,
+    "ast_hash": "a0e06a8e9985cdff4ece0312d8ee35db",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/async-suspense-boundaries.md": {
+    "mtime": 1784105965.0397322,
+    "ast_hash": "dbb2fc80721ca1ce32426f43219d314f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/bundle-analyzable-paths.md": {
+    "mtime": 1784105965.039778,
+    "ast_hash": "8cfe6e284cafd2be33f09c6a1abc78fd",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/bundle-barrel-imports.md": {
+    "mtime": 1784105965.039818,
+    "ast_hash": "fcba301df7f11c6847dca5962ac78828",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/bundle-conditional.md": {
+    "mtime": 1784105965.0398626,
+    "ast_hash": "585be2b6fc418c766e5b91cc2141d334",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/bundle-defer-third-party.md": {
+    "mtime": 1784105965.039905,
+    "ast_hash": "6d4d1d4fac411f724071428dd0bc93ba",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/bundle-dynamic-imports.md": {
+    "mtime": 1784105965.0399518,
+    "ast_hash": "72d89583306887810f67e9f7860f06af",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/bundle-preload.md": {
+    "mtime": 1784105965.0400116,
+    "ast_hash": "924ec7e7502ca042070326d38e88f8cd",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/client-event-listeners.md": {
+    "mtime": 1784105965.0400639,
+    "ast_hash": "71062add972f9735348b7ae77e778eb8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/client-localstorage-schema.md": {
+    "mtime": 1784105965.0401137,
+    "ast_hash": "982a459b07cbec2f8386e526b924c339",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/client-passive-event-listeners.md": {
+    "mtime": 1784105965.0401747,
+    "ast_hash": "3853533fd5f49fa2fc98296f9c34d84f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/client-swr-dedup.md": {
+    "mtime": 1784105965.0402248,
+    "ast_hash": "e565fcba7836d339ca4707aad6fdaa4a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-batch-dom-css.md": {
+    "mtime": 1784105965.0402749,
+    "ast_hash": "869dbc06a931ccfb899b739316c348af",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-cache-function-results.md": {
+    "mtime": 1784105965.040324,
+    "ast_hash": "5d641ce87ef753d59e3205244e2851a1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-cache-property-access.md": {
+    "mtime": 1784105965.0403717,
+    "ast_hash": "5b4ae3cd853b92222a8fd8c8d8202426",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-cache-storage.md": {
+    "mtime": 1784105965.04042,
+    "ast_hash": "828f260566ff92df56089321fa41c116",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-combine-iterations.md": {
+    "mtime": 1784105965.0404706,
+    "ast_hash": "4f241532133637fee75304d40f016713",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-early-exit.md": {
+    "mtime": 1784105965.0405195,
+    "ast_hash": "d300cb3e57255029e446bdfa49dc4074",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-flatmap-filter.md": {
+    "mtime": 1784105965.0405657,
+    "ast_hash": "161d9d8b444e5ec9cb58bffb0e1b76cd",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-hoist-regexp.md": {
+    "mtime": 1784105965.0406134,
+    "ast_hash": "ced4609a5916db47bbaccfcc3f2dcdbb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-index-maps.md": {
+    "mtime": 1784105965.0406625,
+    "ast_hash": "db5bcfde02e1ce9f41d6ed1f5aafc8c5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-length-check-first.md": {
+    "mtime": 1784105965.040725,
+    "ast_hash": "2ba208759dd91578f1085c28e6a92ce9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-min-max-loop.md": {
+    "mtime": 1784105965.0407784,
+    "ast_hash": "82f654d27529dd80be7ae33d45dcdf8c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-request-idle-callback.md": {
+    "mtime": 1784105965.0408268,
+    "ast_hash": "91d7e7fca676efb7cecb4ccff1eaec01",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-set-map-lookups.md": {
+    "mtime": 1784105965.0408747,
+    "ast_hash": "59a278e21ecd322bff566ba4ad7f5a30",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/js-tosorted-immutable.md": {
+    "mtime": 1784105965.0409226,
+    "ast_hash": "fd0804905877b6b7b1858e5df1b5f3c4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rendering-activity.md": {
+    "mtime": 1784105965.0409803,
+    "ast_hash": "b66bde1377564aa196ba15fc94215cd3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rendering-animate-svg-wrapper.md": {
+    "mtime": 1784105965.0410316,
+    "ast_hash": "7301cbe48bf0e1c44934847861384d03",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rendering-conditional-render.md": {
+    "mtime": 1784105965.0410805,
+    "ast_hash": "7aa6112d7544d55147e183b84add9c31",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rendering-content-visibility.md": {
+    "mtime": 1784105965.04113,
+    "ast_hash": "a4ec0125d3a9d79ac2ab5f7a7b5b4d7d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rendering-hoist-jsx.md": {
+    "mtime": 1784105965.0411794,
+    "ast_hash": "00519c11155c5c2a6f493d7980211a71",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rendering-hydration-no-flicker.md": {
+    "mtime": 1784105965.0412297,
+    "ast_hash": "a33ebc96d26525f94c460342d913e47a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rendering-hydration-suppress-warning.md": {
+    "mtime": 1784105965.0412812,
+    "ast_hash": "23bc895f5697c19a59712bf19474ec12",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rendering-resource-hints.md": {
+    "mtime": 1784105965.0413468,
+    "ast_hash": "a612b2d1d86d1b8205b92ff7dfd81eb8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rendering-script-defer-async.md": {
+    "mtime": 1784105965.0413985,
+    "ast_hash": "d62596aed565dd3ad7bddd38bc8f7798",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rendering-svg-precision.md": {
+    "mtime": 1784105965.0414562,
+    "ast_hash": "1b880754ee449c52ccc725481f8b2e90",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rendering-usetransition-loading.md": {
+    "mtime": 1784105965.0415292,
+    "ast_hash": "3cea04ec76a76183cebc6571ac6365a2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-defer-reads.md": {
+    "mtime": 1784105965.0415802,
+    "ast_hash": "2b754062eb7b203632859f6515ed3561",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-dependencies.md": {
+    "mtime": 1784105965.0416324,
+    "ast_hash": "ad0e42cd0616237f62f8a5abbc2138bc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-derived-state-no-effect.md": {
+    "mtime": 1784105965.041686,
+    "ast_hash": "c83ba3c8ea58015fd30072790a4959c4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-derived-state.md": {
+    "mtime": 1784105965.041764,
+    "ast_hash": "fadd31941e355786cb0cc7bba3c672fd",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-functional-setstate.md": {
+    "mtime": 1784105965.0418184,
+    "ast_hash": "188c0b949d23c11885914c573f4a770a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-lazy-state-init.md": {
+    "mtime": 1784105965.041885,
+    "ast_hash": "6f9fc3d826cea2ca484912256149b077",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-memo-with-default-value.md": {
+    "mtime": 1784105965.0419395,
+    "ast_hash": "9bfa45660e0a4d4f180e1d12d9ed44ea",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-memo.md": {
+    "mtime": 1784105965.0420005,
+    "ast_hash": "f0decabf1e4cf032c36f0977c81167b7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-move-effect-to-event.md": {
+    "mtime": 1784105965.0420568,
+    "ast_hash": "599463fe624afd8822ba2bfa7c0138d5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-no-inline-components.md": {
+    "mtime": 1784105965.042115,
+    "ast_hash": "713855e0060cfe2ce549d08ea77e1af6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-simple-expression-in-memo.md": {
+    "mtime": 1784105965.042179,
+    "ast_hash": "42c37552160cff86a0fcbd93a27aa74e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-split-combined-hooks.md": {
+    "mtime": 1784105965.0422375,
+    "ast_hash": "b7485878ff82ce8468078a31fc1b7f19",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-transitions.md": {
+    "mtime": 1784105965.0422983,
+    "ast_hash": "3f275bbfb966fcb39c554ad959fdf016",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-use-deferred-value.md": {
+    "mtime": 1784105965.0423634,
+    "ast_hash": "913dc783397142c25ec997b5dc11245b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/rerender-use-ref-transient-values.md": {
+    "mtime": 1784105965.0424366,
+    "ast_hash": "24d2e82617e2da4207afaf049e1314f3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/server-after-nonblocking.md": {
+    "mtime": 1784105965.0424964,
+    "ast_hash": "c88a79384f87826bf1b20aa3637093a5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/server-auth-actions.md": {
+    "mtime": 1784105965.0425606,
+    "ast_hash": "d8691820d666e5dd9094ccc6996398e3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/server-cache-lru.md": {
+    "mtime": 1784105965.0426266,
+    "ast_hash": "723195ea460bfbc4d43b4eb0c47b246b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/server-cache-react.md": {
+    "mtime": 1784105965.0426865,
+    "ast_hash": "bc168ee66c4378854c7aa23cb9ca1369",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/server-dedup-props.md": {
+    "mtime": 1784105965.042766,
+    "ast_hash": "86bf6f2d562ca98bca778a5b9d2f0251",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/server-hoist-static-io.md": {
+    "mtime": 1784105965.042827,
+    "ast_hash": "05789c4ba35f68cc0ed6deba3078f7ab",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/server-no-shared-module-state.md": {
+    "mtime": 1784105965.0429006,
+    "ast_hash": "7733faf82c146008e8f1c65660bac4bb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/server-parallel-fetching.md": {
+    "mtime": 1784105965.0429645,
+    "ast_hash": "1a36cf0b49a1a498fc1150afbf7a42c2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/server-parallel-nested-fetching.md": {
+    "mtime": 1784105965.0430245,
+    "ast_hash": "eaa7835a15d41842406acc34002f0d6c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/vercel-react-best-practices/rules/server-serialization.md": {
+    "mtime": 1784105965.043084,
+    "ast_hash": "e6d34426614852685f43609dd9e3b250",
+    "semantic_hash": ""
+  },
+  ".agents/skills/webapp-testing/LICENSE.txt": {
+    "mtime": 1784105965.0439503,
+    "ast_hash": "0ee6429f4c66920b6744d818225fb58f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/webapp-testing/SKILL.md": {
+    "mtime": 1784105965.0440254,
+    "ast_hash": "b02025a3df7ff4a6ac7e765cd1d6d54c",
+    "semantic_hash": ""
+  },
+  "backend/.agents/skills/java-pro/SKILL.md": {
+    "mtime": 1784111845.0074072,
+    "ast_hash": "c0340c23f885cb24f9c170bf58ece32c",
+    "semantic_hash": ""
+  },
+  "docs/execution/discussions/ui-components.md": {
+    "mtime": 1784386922.8557954,
+    "ast_hash": "2f6ff265aacd15b8ccb85601131d40df",
+    "semantic_hash": ""
+  },
+  "docs/execution/issues/ui-components.md": {
+    "mtime": 1784227155.147456,
+    "ast_hash": "c7af85169b3590b0eab9035b5d80c657",
+    "semantic_hash": ""
+  },
+  "docs/execution/polls/ui-components.md": {
+    "mtime": 1784386924.1518009,
+    "ast_hash": "52f266455c824550e0ecee4b786b264b",
+    "semantic_hash": ""
+  },
+  "prototype/.djp_identity.md": {
+    "mtime": 1784119250.8722584,
+    "ast_hash": "4c6087ee7d284a006b91bf3d8fb1406a",
+    "semantic_hash": ""
+  },
+  "prototype/.djp_rules.md": {
+    "mtime": 1784119253.4533525,
+    "ast_hash": "2b193d0fb34c9f6b6eefff0778de6ae1",
+    "semantic_hash": ""
+  },
+  "prototype/.djp_state.md": {
+    "mtime": 1784119256.2844555,
+    "ast_hash": "bd26ee89368e7b22d3d8fe3b85e409c9",
+    "semantic_hash": ""
+  },
+  "prototype/AGENTIC_WORKFLOW_GUIDE.md": {
+    "mtime": 1784119276.031174,
+    "ast_hash": "6e9ab96f103863523eb28caa26a842b6",
+    "semantic_hash": ""
+  },
+  "prototype/README.md": {
+    "mtime": 1784206660.8422966,
+    "ast_hash": "75497d1921223d672ed36d964f3fcd49",
+    "semantic_hash": ""
+  },
+  "prototype/archive/archive-todo.md": {
+    "mtime": 1784119264.7927651,
+    "ast_hash": "3f3e33b559c589568a4d52c8e9be2b6a",
+    "semantic_hash": ""
+  },
+  "prototype/backend/be-todo.md": {
+    "mtime": 1784119269.7109442,
+    "ast_hash": "85808bd71a5977aeb201710fd7356cf1",
+    "semantic_hash": ""
+  },
+  "prototype/dashboard.md": {
+    "mtime": 1784119262.643687,
+    "ast_hash": "5d0978e39f94186f5f692a9dfe892c22",
+    "semantic_hash": ""
+  },
+  "prototype/frontend/fe-todo.md": {
+    "mtime": 1784119267.3658588,
+    "ast_hash": "630c905f074b2c473f5f39ccfb55cfe2",
+    "semantic_hash": ""
+  },
+  "prototype/tests/test-todo.md": {
+    "mtime": 1784119272.4770446,
+    "ast_hash": "b27cf3aadc6a04a89ddf2447107322bf",
+    "semantic_hash": ""
+  },
+  "prototype/todo.md": {
+    "mtime": 1784130173.0244899,
+    "ast_hash": "094695192395d901a4eb00c8d1e1853a",
+    "semantic_hash": ""
+  },
+  "docs/vision/vision-core-draft.md": {
+    "mtime": 1784317113.434271,
+    "ast_hash": "731128136e6c407fff79d204e7a3cde2",
+    "semantic_hash": ""
+  },
+  "docs/execution/oauth-login/PRD.md": {
+    "mtime": 1784227075.0356944,
+    "ast_hash": "a4d6fdd5af20de827d92d063149057cd",
+    "semantic_hash": ""
+  },
+  "docs/architecture/images/djp_architecture.jpg": {
+    "mtime": 1784224118.3828173,
+    "ast_hash": "569a496b6fc1f0b21da23f8aa362523d",
+    "semantic_hash": ""
+  },
+  "docs/architecture/global-config.yaml": {
+    "mtime": 1784227772.14019,
+    "ast_hash": "e12ca113c57c20091b8a48cd7ac23090",
+    "semantic_hash": ""
+  },
+  "docs/audit/audit-report-2026-07-18.md": {
+    "mtime": 1784391354.8584259,
+    "ast_hash": "241716d766ccc4fdef602bcec39c0928",
+    "semantic_hash": ""
+  },
+  "docs/architecture/ai/ai-assistant.md": {
+    "mtime": 1783776170.264706,
+    "ast_hash": "fc495003790712f6365bdb524bfa0066",
+    "semantic_hash": ""
+  },
+  "docs/architecture/backend/backend-design.md": {
+    "mtime": 1784386648.5588515,
+    "ast_hash": "89c39452446e16a00a918c57eb0237de",
+    "semantic_hash": ""
+  },
+  "docs/architecture/backend/backend-engineer-dev.md": {
+    "mtime": 1784386666.800901,
+    "ast_hash": "ec1fe2102b67d1f9610c4d229f139056",
+    "semantic_hash": ""
+  },
+  "docs/architecture/backend/backend-springboot-checklist.md": {
+    "mtime": 1784389391.3356931,
+    "ast_hash": "c8836465c85bb143e011ed859747bd6a",
+    "semantic_hash": ""
+  },
+  "docs/architecture/backend/backend-techstack.md": {
+    "mtime": 1784386318.8614538,
+    "ast_hash": "bf2e5fc850764acade7d3693223cabbc",
+    "semantic_hash": ""
+  },
+  "docs/architecture/database/db-design.md": {
+    "mtime": 1784316624.137625,
+    "ast_hash": "c2be1744bffc37a3aafbae82586a47d7",
+    "semantic_hash": ""
+  },
+  "docs/architecture/database/submission-model.md": {
+    "mtime": 1783776142.442188,
+    "ast_hash": "5cc85808ca10a5049dc3ddedf6e94714",
+    "semantic_hash": ""
+  },
+  "docs/architecture/frontend/colors-typography.md": {
+    "mtime": 1783776092.8433533,
+    "ast_hash": "ed2ee99f192808530f7e9685dd3a391e",
+    "semantic_hash": ""
+  },
+  "docs/architecture/frontend/components.md": {
+    "mtime": 1783776054.1770203,
+    "ast_hash": "40702e624349e0594aef6d919f5f29af",
+    "semantic_hash": ""
+  },
+  "docs/architecture/frontend/frontend.md": {
+    "mtime": 1784225640.0712051,
+    "ast_hash": "2cd890514fec1f707f784e00be4319b4",
+    "semantic_hash": ""
+  },
+  "docs/architecture/frontend/javascript.md": {
+    "mtime": 1783776126.4702938,
+    "ast_hash": "2fd55a899a0daa5f64b71561a643c639",
+    "semantic_hash": ""
+  },
+  "docs/architecture/frontend/layout.md": {
+    "mtime": 1783776071.0500524,
+    "ast_hash": "ea045100cdf18871b347b4ff1e5072e9",
+    "semantic_hash": ""
+  },
+  "docs/architecture/frontend/navigation.md": {
+    "mtime": 1783776110.1103597,
+    "ast_hash": "f3396de296a24eace4e5ba630621ce97",
+    "semantic_hash": ""
+  },
+  "docs/architecture/frontend/onboarding.md": {
+    "mtime": 1784316630.7947485,
+    "ast_hash": "c3b88c1aa01961d787a78d4f2a802254",
+    "semantic_hash": ""
+  },
+  "docs/architecture/system/oauth-login-architecture.md": {
+    "mtime": 1784316628.8687124,
+    "ast_hash": "e1f8c6bdb8562b788f6b91302f8a8665",
+    "semantic_hash": ""
+  },
+  "docs/architecture/system/routes.md": {
+    "mtime": 1783360466.926544,
+    "ast_hash": "c0ab52a7db547cad8cdfd0b686254671",
+    "semantic_hash": ""
+  },
+  "docs/architecture/system/system-boundaries.md": {
+    "mtime": 1784316626.7026722,
+    "ast_hash": "5ee676a2764f1423d7fe691074ac0042",
+    "semantic_hash": ""
+  },
+  "docs/audit/audit-recom.md": {
+    "mtime": 1784392647.8632004,
+    "ast_hash": "b6ccb2660cebf962a72ed83bd0b4c5a7",
     "semantic_hash": ""
   }
 }

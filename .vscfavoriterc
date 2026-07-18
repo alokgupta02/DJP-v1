@@ -1,0 +1,11 @@
+{
+  "resources": [
+    {
+      "filePath": ".agents/AGENTS.md",
+      "group": "Default"
+    }
+  ],
+  "groups": [
+    "Default"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  ".djp_identity.md": {
+    "mtime": 1784119250.8722584,
+    "ast_hash": "4c6087ee7d284a006b91bf3d8fb1406a",
+    "semantic_hash": ""
+  },
+  ".djp_rules.md": {
+    "mtime": 1784119253.4533525,
+    "ast_hash": "2b193d0fb34c9f6b6eefff0778de6ae1",
+    "semantic_hash": ""
+  },
+  ".djp_state.md": {
+    "mtime": 1784119256.2844555,
+    "ast_hash": "bd26ee89368e7b22d3d8fe3b85e409c9",
+    "semantic_hash": ""
+  },
+  "AGENTIC_WORKFLOW_GUIDE.md": {
+    "mtime": 1784119276.031174,
+    "ast_hash": "6e9ab96f103863523eb28caa26a842b6",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1784119553.1581771,
+    "ast_hash": "7ed0c3a16163581a02ad85b7436bd238",
+    "semantic_hash": ""
+  },
+  "archive/archive-todo.md": {
+    "mtime": 1784119264.7927651,
+    "ast_hash": "3f3e33b559c589568a4d52c8e9be2b6a",
+    "semantic_hash": ""
+  },
+  "backend/be-todo.md": {
+    "mtime": 1784119269.7109442,
+    "ast_hash": "85808bd71a5977aeb201710fd7356cf1",
+    "semantic_hash": ""
+  },
+  "dashboard.md": {
+    "mtime": 1784119262.643687,
+    "ast_hash": "5d0978e39f94186f5f692a9dfe892c22",
+    "semantic_hash": ""
+  },
+  "frontend/fe-todo.md": {
+    "mtime": 1784119267.3658588,
+    "ast_hash": "630c905f074b2c473f5f39ccfb55cfe2",
+    "semantic_hash": ""
+  },
+  "tests/test-todo.md": {
+    "mtime": 1784119272.4770446,
+    "ast_hash": "b27cf3aadc6a04a89ddf2447107322bf",
+    "semantic_hash": ""
+  },
+  "todo.md": {
+    "mtime": 1784129519.464676,
+    "ast_hash": "63ad4b5f1d4882fee86d597a68fc52b4",
+    "semantic_hash": ""
+  }
+}

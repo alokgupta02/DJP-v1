@@ -17,7 +17,7 @@
 ## 📋 Backlog & Planned Phases
 
 ### Phase 1 — Project Setup, H2 Integration & OAuth2 (MVP 1)
-- [ ] Initialize Spring Boot Maven project (`spring-web`, `spring-security`, `spring-data-jpa`, `validation`, `h2`, `oauth2-client`)
+- [ ] Initialize Spring Boot Maven project (`spring-web`, `spring-security`, `spring-data-jpa`, `validation`, `h2`, `oauth2-client`, `lombok`)
 - [ ] Configure `schema.sql` and `data.sql` for H2 schema setup and mock user seeding
 - [ ] Configure Spring Security for OAuth2 Login with Google and LinkedIn
 - [ ] Implement JWT helper (generate, parse, validate tokens)

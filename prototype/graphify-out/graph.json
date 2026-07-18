@@ -1,0 +1,1121 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": ".djp_identity.md",
+      "file_type": "document",
+      "source_file": ".djp_identity.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "djp_identity",
+      "community": 8,
+      "norm_label": ".djp_identity.md"
+    },
+    {
+      "label": "DJP PROTOTYPE IDENTITY",
+      "file_type": "document",
+      "source_file": ".djp_identity.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "djp_identity_djp_prototype_identity",
+      "community": 8,
+      "norm_label": "djp prototype identity"
+    },
+    {
+      "label": "Technical Profile",
+      "file_type": "document",
+      "source_file": ".djp_identity.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "djp_identity_technical_profile",
+      "community": 8,
+      "norm_label": "technical profile"
+    },
+    {
+      "label": "Communication Guardrails",
+      "file_type": "document",
+      "source_file": ".djp_identity.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "djp_identity_communication_guardrails",
+      "community": 8,
+      "norm_label": "communication guardrails"
+    },
+    {
+      "label": ".djp_rules.md",
+      "file_type": "document",
+      "source_file": ".djp_rules.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "djp_rules",
+      "community": 6,
+      "norm_label": ".djp_rules.md"
+    },
+    {
+      "label": "DJP PROTOTYPE OPERATIONAL RULES",
+      "file_type": "document",
+      "source_file": ".djp_rules.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "djp_rules_djp_prototype_operational_rules",
+      "community": 6,
+      "norm_label": "djp prototype operational rules"
+    },
+    {
+      "label": "Context Allocation",
+      "file_type": "document",
+      "source_file": ".djp_rules.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "djp_rules_context_allocation",
+      "community": 6,
+      "norm_label": "context allocation"
+    },
+    {
+      "label": "Anti-Over-Engineering Guidelines",
+      "file_type": "document",
+      "source_file": ".djp_rules.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "djp_rules_anti_over_engineering_guidelines",
+      "community": 6,
+      "norm_label": "anti-over-engineering guidelines"
+    },
+    {
+      "label": "Code Quality Standards",
+      "file_type": "document",
+      "source_file": ".djp_rules.md",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "djp_rules_code_quality_standards",
+      "community": 6,
+      "norm_label": "code quality standards"
+    },
+    {
+      "label": ".djp_state.md",
+      "file_type": "document",
+      "source_file": ".djp_state.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "djp_state",
+      "community": 3,
+      "norm_label": ".djp_state.md"
+    },
+    {
+      "label": "DJP PROTOTYPE ACTIVE STATE",
+      "file_type": "document",
+      "source_file": ".djp_state.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "djp_state_djp_prototype_active_state",
+      "community": 3,
+      "norm_label": "djp prototype active state"
+    },
+    {
+      "label": "Current Sprint",
+      "file_type": "document",
+      "source_file": ".djp_state.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "djp_state_current_sprint",
+      "community": 3,
+      "norm_label": "current sprint"
+    },
+    {
+      "label": "Task Breakdown",
+      "file_type": "document",
+      "source_file": ".djp_state.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "djp_state_task_breakdown",
+      "community": 3,
+      "norm_label": "task breakdown"
+    },
+    {
+      "label": "Session Delta Logs",
+      "file_type": "document",
+      "source_file": ".djp_state.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "djp_state_session_delta_logs",
+      "community": 3,
+      "norm_label": "session delta logs"
+    },
+    {
+      "label": "2026-07-15 Session",
+      "file_type": "document",
+      "source_file": ".djp_state.md",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "djp_state_2026_07_15_session",
+      "community": 3,
+      "norm_label": "2026-07-15 session"
+    },
+    {
+      "label": "AGENTIC_WORKFLOW_GUIDE.md",
+      "file_type": "document",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agentic_workflow_guide",
+      "community": 0,
+      "norm_label": "agentic_workflow_guide.md"
+    },
+    {
+      "label": "DJP Prototype Master Guide: Agentic Workflow & Reuse Guidelines",
+      "file_type": "document",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agentic_workflow_guide_djp_prototype_master_guide_agentic_workflow_reuse_guidelines",
+      "community": 0,
+      "norm_label": "djp prototype master guide: agentic workflow & reuse guidelines"
+    },
+    {
+      "label": "1. Primary Guideline: Anti-Over-Engineering & Reuse",
+      "file_type": "document",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "agentic_workflow_guide_1_primary_guideline_anti_over_engineering_reuse",
+      "community": 0,
+      "norm_label": "1. primary guideline: anti-over-engineering & reuse"
+    },
+    {
+      "label": "2. Visual Task Flow Across Prototype Todos",
+      "file_type": "document",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "agentic_workflow_guide_2_visual_task_flow_across_prototype_todos",
+      "community": 0,
+      "norm_label": "2. visual task flow across prototype todos"
+    },
+    {
+      "label": "Summary Role Table",
+      "file_type": "document",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "agentic_workflow_guide_summary_role_table",
+      "community": 0,
+      "norm_label": "summary role table"
+    },
+    {
+      "label": "3. TDD Flow for Prototype",
+      "file_type": "document",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "agentic_workflow_guide_3_tdd_flow_for_prototype",
+      "community": 0,
+      "norm_label": "3. tdd flow for prototype"
+    },
+    {
+      "label": "4. Master Folder & Todo Architecture Structure",
+      "file_type": "document",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "agentic_workflow_guide_4_master_folder_todo_architecture_structure",
+      "community": 0,
+      "norm_label": "4. master folder & todo architecture structure"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme",
+      "community": 10,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "DJP Prototype Workspace",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme_djp_prototype_workspace",
+      "community": 10,
+      "norm_label": "djp prototype workspace"
+    },
+    {
+      "label": "\ud83d\ude80 Tech Stack",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "readme_tech_stack",
+      "community": 10,
+      "norm_label": "\ud83d\ude80 tech stack"
+    },
+    {
+      "label": "\ud83d\udca1 Core Philosophy: Reuse & Anti-Over-Engineering",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "readme_core_philosophy_reuse_anti_over_engineering",
+      "community": 10,
+      "norm_label": "\ud83d\udca1 core philosophy: reuse & anti-over-engineering"
+    },
+    {
+      "label": "\ud83e\udd16 Agentic State & Workspace Files",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "readme_agentic_state_workspace_files",
+      "community": 10,
+      "norm_label": "\ud83e\udd16 agentic state & workspace files"
+    },
+    {
+      "label": "\ud83d\udccb Task & Dashboard Ecosystem",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "readme_task_dashboard_ecosystem",
+      "community": 10,
+      "norm_label": "\ud83d\udccb task & dashboard ecosystem"
+    },
+    {
+      "label": "\ud83d\udd0d Local Graph Analysis",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "readme_local_graph_analysis",
+      "community": 10,
+      "norm_label": "\ud83d\udd0d local graph analysis"
+    },
+    {
+      "label": "archive-todo.md",
+      "file_type": "document",
+      "source_file": "archive/archive-todo.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "archive_archive_todo",
+      "community": 7,
+      "norm_label": "archive-todo.md"
+    },
+    {
+      "label": "DJP Prototype Completed Tasks Archive (`prototype/archive/archive-todo.md`)",
+      "file_type": "document",
+      "source_file": "archive/archive-todo.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "archive_archive_todo_djp_prototype_completed_tasks_archive_prototype_archive_archive_todo_md",
+      "community": 7,
+      "norm_label": "djp prototype completed tasks archive (`prototype/archive/archive-todo.md`)"
+    },
+    {
+      "label": "Session Delta Logs",
+      "file_type": "document",
+      "source_file": "archive/archive-todo.md",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "archive_archive_todo_session_delta_logs",
+      "community": 7,
+      "norm_label": "session delta logs"
+    },
+    {
+      "label": "2026-07-15 Session (Prototype Agent Workspace Initialization)",
+      "file_type": "document",
+      "source_file": "archive/archive-todo.md",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "archive_archive_todo_2026_07_15_session_prototype_agent_workspace_initialization",
+      "community": 7,
+      "norm_label": "2026-07-15 session (prototype agent workspace initialization)"
+    },
+    {
+      "label": "be-todo.md",
+      "file_type": "document",
+      "source_file": "backend/be-todo.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "backend_be_todo",
+      "community": 2,
+      "norm_label": "be-todo.md"
+    },
+    {
+      "label": "DJP Prototype Backend Task Tracker (`prototype/backend/be-todo.md`)",
+      "file_type": "document",
+      "source_file": "backend/be-todo.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "backend_be_todo_djp_prototype_backend_task_tracker_prototype_backend_be_todo_md",
+      "community": 2,
+      "norm_label": "djp prototype backend task tracker (`prototype/backend/be-todo.md`)"
+    },
+    {
+      "label": "\ud83d\ude80 Active Sprint & Executing Tasks",
+      "file_type": "document",
+      "source_file": "backend/be-todo.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "backend_be_todo_active_sprint_executing_tasks",
+      "community": 2,
+      "norm_label": "\ud83d\ude80 active sprint & executing tasks"
+    },
+    {
+      "label": "\ud83d\udccb Backlog & Planned Phases",
+      "file_type": "document",
+      "source_file": "backend/be-todo.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "backend_be_todo_backlog_planned_phases",
+      "community": 2,
+      "norm_label": "\ud83d\udccb backlog & planned phases"
+    },
+    {
+      "label": "Phase 1 \u2014 Spring Boot App Setup",
+      "file_type": "document",
+      "source_file": "backend/be-todo.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "backend_be_todo_phase_1_spring_boot_app_setup",
+      "community": 2,
+      "norm_label": "phase 1 \u2014 spring boot app setup"
+    },
+    {
+      "label": "\ud83d\udcdd Technical Notes & Architectural Reference",
+      "file_type": "document",
+      "source_file": "backend/be-todo.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "backend_be_todo_technical_notes_architectural_reference",
+      "community": 2,
+      "norm_label": "\ud83d\udcdd technical notes & architectural reference"
+    },
+    {
+      "label": "dashboard.md",
+      "file_type": "document",
+      "source_file": "dashboard.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "dashboard",
+      "community": 1,
+      "norm_label": "dashboard.md"
+    },
+    {
+      "label": "DJP Prototype Executive Dashboard (`prototype/dashboard.md`)",
+      "file_type": "document",
+      "source_file": "dashboard.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "dashboard_djp_prototype_executive_dashboard_prototype_dashboard_md",
+      "community": 1,
+      "norm_label": "djp prototype executive dashboard (`prototype/dashboard.md`)"
+    },
+    {
+      "label": "\ud83d\ude80 Currently Executing Tasks (Active Control Panel)",
+      "file_type": "document",
+      "source_file": "dashboard.md",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "dashboard_currently_executing_tasks_active_control_panel",
+      "community": 1,
+      "norm_label": "\ud83d\ude80 currently executing tasks (active control panel)"
+    },
+    {
+      "label": "\u2699\ufe0f Backend Roadmap (`prototype/backend/be-todo.md`)",
+      "file_type": "document",
+      "source_file": "dashboard.md",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "dashboard_backend_roadmap_prototype_backend_be_todo_md",
+      "community": 1,
+      "norm_label": "\u2699\ufe0f backend roadmap (`prototype/backend/be-todo.md`)"
+    },
+    {
+      "label": "\ud83c\udfa8 Frontend Roadmap (`prototype/frontend/fe-todo.md`)",
+      "file_type": "document",
+      "source_file": "dashboard.md",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "dashboard_frontend_roadmap_prototype_frontend_fe_todo_md",
+      "community": 1,
+      "norm_label": "\ud83c\udfa8 frontend roadmap (`prototype/frontend/fe-todo.md`)"
+    },
+    {
+      "label": "\ud83e\uddea QA & Test Suite (`prototype/tests/test-todo.md`)",
+      "file_type": "document",
+      "source_file": "dashboard.md",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "dashboard_qa_test_suite_prototype_tests_test_todo_md",
+      "community": 1,
+      "norm_label": "\ud83e\uddea qa & test suite (`prototype/tests/test-todo.md`)"
+    },
+    {
+      "label": "\ud83c\udfdb\ufe0f Completed Infrastructure & Agentic Workflow Setup (Master Archive)",
+      "file_type": "document",
+      "source_file": "dashboard.md",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "dashboard_completed_infrastructure_agentic_workflow_setup_master_archive",
+      "community": 1,
+      "norm_label": "\ud83c\udfdb\ufe0f completed infrastructure & agentic workflow setup (master archive)"
+    },
+    {
+      "label": "fe-todo.md",
+      "file_type": "document",
+      "source_file": "frontend/fe-todo.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_fe_todo",
+      "community": 4,
+      "norm_label": "fe-todo.md"
+    },
+    {
+      "label": "DJP Prototype Frontend Task Tracker (`prototype/frontend/fe-todo.md`)",
+      "file_type": "document",
+      "source_file": "frontend/fe-todo.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_fe_todo_djp_prototype_frontend_task_tracker_prototype_frontend_fe_todo_md",
+      "community": 4,
+      "norm_label": "djp prototype frontend task tracker (`prototype/frontend/fe-todo.md`)"
+    },
+    {
+      "label": "\ud83d\ude80 Active Sprint & Executing Tasks",
+      "file_type": "document",
+      "source_file": "frontend/fe-todo.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "frontend_fe_todo_active_sprint_executing_tasks",
+      "community": 4,
+      "norm_label": "\ud83d\ude80 active sprint & executing tasks"
+    },
+    {
+      "label": "\ud83d\udccb Backlog & Planned Phases",
+      "file_type": "document",
+      "source_file": "frontend/fe-todo.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "frontend_fe_todo_backlog_planned_phases",
+      "community": 4,
+      "norm_label": "\ud83d\udccb backlog & planned phases"
+    },
+    {
+      "label": "Phase 1 \u2014 Core App Integration",
+      "file_type": "document",
+      "source_file": "frontend/fe-todo.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "frontend_fe_todo_phase_1_core_app_integration",
+      "community": 4,
+      "norm_label": "phase 1 \u2014 core app integration"
+    },
+    {
+      "label": "\ud83d\udcdd Technical Notes & Architectural Reference",
+      "file_type": "document",
+      "source_file": "frontend/fe-todo.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "frontend_fe_todo_technical_notes_architectural_reference",
+      "community": 4,
+      "norm_label": "\ud83d\udcdd technical notes & architectural reference"
+    },
+    {
+      "label": "test-todo.md",
+      "file_type": "document",
+      "source_file": "tests/test-todo.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_test_todo",
+      "community": 5,
+      "norm_label": "test-todo.md"
+    },
+    {
+      "label": "DJP Prototype QA & Test Suite Task Tracker (`prototype/tests/test-todo.md`)",
+      "file_type": "document",
+      "source_file": "tests/test-todo.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tests_test_todo_djp_prototype_qa_test_suite_task_tracker_prototype_tests_test_todo_md",
+      "community": 5,
+      "norm_label": "djp prototype qa & test suite task tracker (`prototype/tests/test-todo.md`)"
+    },
+    {
+      "label": "\ud83d\ude80 Active Sprint & Executing Tasks",
+      "file_type": "document",
+      "source_file": "tests/test-todo.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "tests_test_todo_active_sprint_executing_tasks",
+      "community": 5,
+      "norm_label": "\ud83d\ude80 active sprint & executing tasks"
+    },
+    {
+      "label": "\ud83d\udccb Backlog & Planned Phases",
+      "file_type": "document",
+      "source_file": "tests/test-todo.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "tests_test_todo_backlog_planned_phases",
+      "community": 5,
+      "norm_label": "\ud83d\udccb backlog & planned phases"
+    },
+    {
+      "label": "Phase 1 \u2014 Validation Verification",
+      "file_type": "document",
+      "source_file": "tests/test-todo.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "tests_test_todo_phase_1_validation_verification",
+      "community": 5,
+      "norm_label": "phase 1 \u2014 validation verification"
+    },
+    {
+      "label": "\ud83d\udcdd Technical Notes & Architectural Reference",
+      "file_type": "document",
+      "source_file": "tests/test-todo.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "tests_test_todo_technical_notes_architectural_reference",
+      "community": 5,
+      "norm_label": "\ud83d\udcdd technical notes & architectural reference"
+    },
+    {
+      "label": "todo.md",
+      "file_type": "document",
+      "source_file": "todo.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "todo",
+      "community": 9,
+      "norm_label": "todo.md"
+    },
+    {
+      "label": "DJP Prototype User Request Intake Portal (`prototype/todo.md`)",
+      "file_type": "document",
+      "source_file": "todo.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "todo_djp_prototype_user_request_intake_portal_prototype_todo_md",
+      "community": 9,
+      "norm_label": "djp prototype user request intake portal (`prototype/todo.md`)"
+    },
+    {
+      "label": "\u270d\ufe0f User Input (Add your 1\u20132 line prototype task or goal items below)",
+      "file_type": "document",
+      "source_file": "todo.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "todo_user_input_add_your_1_2_line_prototype_task_or_goal_items_below",
+      "community": 9,
+      "norm_label": "\u270d\ufe0f user input (add your 1\u20132 line prototype task or goal items below)"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_identity.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "djp_identity",
+      "target": "djp_identity_djp_prototype_identity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_identity.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "djp_identity_djp_prototype_identity",
+      "target": "djp_identity_communication_guardrails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_identity.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "djp_identity_djp_prototype_identity",
+      "target": "djp_identity_technical_profile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_rules.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "djp_rules",
+      "target": "djp_rules_djp_prototype_operational_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_rules.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "djp_rules_djp_prototype_operational_rules",
+      "target": "djp_rules_anti_over_engineering_guidelines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_rules.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "djp_rules_djp_prototype_operational_rules",
+      "target": "djp_rules_code_quality_standards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_rules.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "djp_rules_djp_prototype_operational_rules",
+      "target": "djp_rules_context_allocation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_state.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "djp_state",
+      "target": "djp_state_djp_prototype_active_state",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_state.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "djp_state_djp_prototype_active_state",
+      "target": "djp_state_current_sprint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_state.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "djp_state_djp_prototype_active_state",
+      "target": "djp_state_session_delta_logs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_state.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "djp_state_djp_prototype_active_state",
+      "target": "djp_state_task_breakdown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".djp_state.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "djp_state_session_delta_logs",
+      "target": "djp_state_2026_07_15_session",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "agentic_workflow_guide",
+      "target": "agentic_workflow_guide_djp_prototype_master_guide_agentic_workflow_reuse_guidelines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "agentic_workflow_guide_djp_prototype_master_guide_agentic_workflow_reuse_guidelines",
+      "target": "agentic_workflow_guide_1_primary_guideline_anti_over_engineering_reuse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "agentic_workflow_guide_djp_prototype_master_guide_agentic_workflow_reuse_guidelines",
+      "target": "agentic_workflow_guide_2_visual_task_flow_across_prototype_todos",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "agentic_workflow_guide_djp_prototype_master_guide_agentic_workflow_reuse_guidelines",
+      "target": "agentic_workflow_guide_3_tdd_flow_for_prototype",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "agentic_workflow_guide_djp_prototype_master_guide_agentic_workflow_reuse_guidelines",
+      "target": "agentic_workflow_guide_4_master_folder_todo_architecture_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTIC_WORKFLOW_GUIDE.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "agentic_workflow_guide_2_visual_task_flow_across_prototype_todos",
+      "target": "agentic_workflow_guide_summary_role_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme",
+      "target": "readme_djp_prototype_workspace",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "readme_djp_prototype_workspace",
+      "target": "readme_agentic_state_workspace_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "readme_djp_prototype_workspace",
+      "target": "readme_core_philosophy_reuse_anti_over_engineering",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "readme_djp_prototype_workspace",
+      "target": "readme_local_graph_analysis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "readme_djp_prototype_workspace",
+      "target": "readme_task_dashboard_ecosystem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "readme_djp_prototype_workspace",
+      "target": "readme_tech_stack",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "archive/archive-todo.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "archive_archive_todo",
+      "target": "archive_archive_todo_djp_prototype_completed_tasks_archive_prototype_archive_archive_todo_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "archive/archive-todo.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "archive_archive_todo_djp_prototype_completed_tasks_archive_prototype_archive_archive_todo_md",
+      "target": "archive_archive_todo_session_delta_logs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "archive/archive-todo.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "archive_archive_todo_session_delta_logs",
+      "target": "archive_archive_todo_2026_07_15_session_prototype_agent_workspace_initialization",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/be-todo.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "backend_be_todo",
+      "target": "backend_be_todo_djp_prototype_backend_task_tracker_prototype_backend_be_todo_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/be-todo.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "backend_be_todo_djp_prototype_backend_task_tracker_prototype_backend_be_todo_md",
+      "target": "backend_be_todo_active_sprint_executing_tasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/be-todo.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "backend_be_todo_djp_prototype_backend_task_tracker_prototype_backend_be_todo_md",
+      "target": "backend_be_todo_backlog_planned_phases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/be-todo.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "backend_be_todo_djp_prototype_backend_task_tracker_prototype_backend_be_todo_md",
+      "target": "backend_be_todo_technical_notes_architectural_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/be-todo.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "backend_be_todo_backlog_planned_phases",
+      "target": "backend_be_todo_phase_1_spring_boot_app_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "dashboard",
+      "target": "dashboard_djp_prototype_executive_dashboard_prototype_dashboard_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "dashboard_djp_prototype_executive_dashboard_prototype_dashboard_md",
+      "target": "dashboard_backend_roadmap_prototype_backend_be_todo_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "dashboard_djp_prototype_executive_dashboard_prototype_dashboard_md",
+      "target": "dashboard_completed_infrastructure_agentic_workflow_setup_master_archive",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "dashboard_djp_prototype_executive_dashboard_prototype_dashboard_md",
+      "target": "dashboard_currently_executing_tasks_active_control_panel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "dashboard_djp_prototype_executive_dashboard_prototype_dashboard_md",
+      "target": "dashboard_frontend_roadmap_prototype_frontend_fe_todo_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "dashboard_djp_prototype_executive_dashboard_prototype_dashboard_md",
+      "target": "dashboard_qa_test_suite_prototype_tests_test_todo_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/fe-todo.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "frontend_fe_todo",
+      "target": "frontend_fe_todo_djp_prototype_frontend_task_tracker_prototype_frontend_fe_todo_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/fe-todo.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "frontend_fe_todo_djp_prototype_frontend_task_tracker_prototype_frontend_fe_todo_md",
+      "target": "frontend_fe_todo_active_sprint_executing_tasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/fe-todo.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "frontend_fe_todo_djp_prototype_frontend_task_tracker_prototype_frontend_fe_todo_md",
+      "target": "frontend_fe_todo_backlog_planned_phases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/fe-todo.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "frontend_fe_todo_djp_prototype_frontend_task_tracker_prototype_frontend_fe_todo_md",
+      "target": "frontend_fe_todo_technical_notes_architectural_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/fe-todo.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "frontend_fe_todo_backlog_planned_phases",
+      "target": "frontend_fe_todo_phase_1_core_app_integration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test-todo.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "tests_test_todo",
+      "target": "tests_test_todo_djp_prototype_qa_test_suite_task_tracker_prototype_tests_test_todo_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test-todo.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "tests_test_todo_djp_prototype_qa_test_suite_task_tracker_prototype_tests_test_todo_md",
+      "target": "tests_test_todo_active_sprint_executing_tasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test-todo.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "tests_test_todo_djp_prototype_qa_test_suite_task_tracker_prototype_tests_test_todo_md",
+      "target": "tests_test_todo_backlog_planned_phases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test-todo.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tests_test_todo_djp_prototype_qa_test_suite_task_tracker_prototype_tests_test_todo_md",
+      "target": "tests_test_todo_technical_notes_architectural_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test-todo.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "tests_test_todo_backlog_planned_phases",
+      "target": "tests_test_todo_phase_1_validation_verification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "todo.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "todo",
+      "target": "todo_djp_prototype_user_request_intake_portal_prototype_todo_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "todo.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "todo_djp_prototype_user_request_intake_portal_prototype_todo_md",
+      "target": "todo_user_input_add_your_1_2_line_prototype_task_or_goal_items_below",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "79ba26c57d341b155cdaa4f1c739bff4576a4d65"
+}

@@ -2,6 +2,16 @@
 
 ---
 
+| Metadata | Value |
+| :--- | :--- |
+| **📅 Last Updated** | 2026-07-18 20:30 |
+| **📌 Status** | `Stable` |
+| **🏷️ Version** | `v1.0.0` |
+| **👥 Owner** | `Dyslexia & Accessibility Lead` |
+| **🔗 Dependencies** | [prompt-refiner-agent.md](prompt-refiner-agent.md), [sdlc.md](sdlc.md) |
+
+---
+
 ## 🎯 Purpose
 
 Ensure all educational and technical content is structured to be **simple, visual, structured, and effortless to remember**—specifically optimized for learners with dyslexia or anyone who experiences cognitive overload from dense text.

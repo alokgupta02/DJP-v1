@@ -1,16 +1,16 @@
-# Graph Report - DJP-v1  (2026-07-14)
+# Graph Report - DJP-v1  (2026-07-18)
 
 ## Corpus Check
-- 373 files · ~214,157 words
+- 389 files · ~243,528 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2176 nodes · 2222 edges · 324 communities (193 shown, 131 thin omitted)
+- 2346 nodes · 2353 edges · 340 communities (210 shown, 130 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `54711db4`
+- Built from commit: `22ab8728`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -74,6 +74,7 @@
 - React Best Practices
 - Sections
 - 🤖 **AI Civic Assistant Architecture**
+- overview.md
 - 🏗️ **Frontend Directory & Monorepo Structure**
 - 📦 **Common Submission Model Architecture**
 - helper.js
@@ -105,6 +106,7 @@
 - Analysis Policy
 - 8. Advanced Patterns
 - User
+- design-principles.md
 - 💬 **Civic Discussion UX Specification**
 - 🚨 **Civic Issue Reporting UX Specification**
 - 🚨 **Civic Issue Reporting UX Specification**
@@ -115,13 +117,11 @@
 - React + TypeScript + Vite
 - React + TypeScript + Vite
 - DiscussionDetailPage.tsx
-- NotificationsPage.tsx
 - PetitionsPage.tsx
 - PollsPage.tsx
 - DJP Citizen App — Todo
 - start-server.sh
 - tsconfig.json
-- InsightsPage.tsx
 - RepresentativesPage.tsx
 - tsconfig.json
 - vercel.json
@@ -163,7 +163,7 @@
 - security-rls-basics.md
 - security-rls-performance.md
 - _template.md
-- advanced-effect-event-deps.md
+- # Technical Debt
 - advanced-event-handler-refs.md
 - advanced-init-once.md
 - advanced-use-latest.md
@@ -194,9 +194,9 @@
 - rendering-hoist-jsx.md
 - rendering-hydration-no-flicker.md
 - rendering-hydration-suppress-warning.md
-- rendering-resource-hints.md
+- design-principles.md
 - rendering-script-defer-async.md
-- rendering-svg-precision.md
+- 📋 DJP-v1 Technical Debt Register
 - rendering-usetransition-loading.md
 - rerender-defer-reads.md
 - rerender-dependencies.md
@@ -274,6 +274,7 @@
 - phase-status.ps1
 - resolve-plan-dir.ps1
 - set-active-plan.sh script
+- set-active-plan.ps1
 - DJPv1 IDENTITY
 - DJPv1 OPERATIONAL RULES
 - Web Application Testing
@@ -288,7 +289,6 @@
 - DJPv1 FRONTEND OPERATIONAL RULES
 - DJPv1 QA & TESTS IDENTITY
 - DJPv1 QA & TESTS OPERATIONAL RULES
-- 🏛️ System Boundaries & Agentic Guardrails Matrix
 - 2026-07-10 Session (Original React Frontend Migration Sprint — 40/40 Completed)
 - Karpathy Guidelines
 - CreateDiscussionPage.tsx
@@ -298,27 +298,43 @@
 - Pi Tool Mapping
 - is_server_ready
 - Antigravity CLI (`agy`) Tool Mapping
+- console_logging.py
+- element_discovery.py
+- static_html_automation.py
 - 🎨 Original Frontend Migration Sprint (`frontend/archived.todo` Master Archive — 40/40 completed)
+- server-auth-actions.md
 - Feature Execution Checklist (`docs/execution/<feature>/todo.md`)
-- 🔄 Refinement Workflow
+- server-cache-lru.md
+- server-dedup-props.md
 - DJP Citizen App — Todo
 - 🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification
 - Phases
 - 🧪 QA Agent (TDD Test Engineer) Operating Specification
 - 🏛️ Tech Arch Agent (Technical Architect) Operating Specification
 - 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
+- SKILL.md
+- server-serialization.md
+- _template.md
+- NotificationsPage.tsx
+- SKILL.md
+- # Architecture Debt
+- vision-core-draft.md
+- # Leadership / Process Debt
+- # Testing Debt
+- # DevOps Debt
+- # Observability Debt
 
 ## God Nodes (most connected - your core abstractions)
-1. `✅ **Production-Ready Spring Boot Web App Checklist**` - 22 edges
-2. `💻 **Frontend Engineering Guide**` - 21 edges
-3. `analyze_repo()` - 20 edges
-4. `compilerOptions` - 18 edges
-5. `Planning with Files` - 18 edges
-6. `compilerOptions` - 16 edges
-7. `5. Re-render Optimization` - 16 edges
+1. `💻 **Frontend Engineering Guide**` - 22 edges
+2. `analyze_repo()` - 20 edges
+3. `compilerOptions` - 18 edges
+4. `Planning with Files` - 18 edges
+5. `compilerOptions` - 16 edges
+6. `5. Re-render Optimization` - 16 edges
+7. `compilerOptions` - 15 edges
 8. `compilerOptions` - 15 edges
-9. `compilerOptions` - 15 edges
-10. `7. JavaScript Performance` - 15 edges
+9. `7. JavaScript Performance` - 15 edges
+10. `Test-Driven Development (TDD)` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `main()` --calls--> `generate_html()`  [INFERRED]
@@ -335,7 +351,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (324 total, 131 thin omitted)
+## Communities (340 total, 130 thin omitted)
 
 ### Community 0 - "Test-Driven Development (TDD)"
 Cohesion: 0.05
@@ -358,12 +374,12 @@ Cohesion: 0.19
 Nodes (29): analyze_repo(), build_change_map(), build_eval_contract(), build_research_map(), collect_candidates(), collect_config_binding_hints(), collect_data_interface_files(), collect_metric_files() (+21 more)
 
 ### Community 5 - "useSidebar"
-Cohesion: 0.13
-Nodes (16): AppLayout(), Topbar(), TopbarProps, createAction, sidebarItems, Sidebar(), SidebarItem, SidebarContext (+8 more)
+Cohesion: 0.12
+Nodes (17): AppLayout(), Topbar(), TopbarProps, createAction, sidebarItems, Sidebar(), SidebarItem, SidebarContext (+9 more)
 
 ### Community 6 - "index.ts"
 Cohesion: 0.10
-Nodes (17): Avatar(), AvatarProps, AvatarSize, sizeClasses, BadgeProps, BadgeSize, BadgeVariant, sizeClasses (+9 more)
+Nodes (16): AvatarProps, AvatarSize, sizeClasses, BadgeProps, BadgeSize, BadgeVariant, sizeClasses, variantClasses (+8 more)
 
 ### Community 7 - "Process"
 Cohesion: 0.07
@@ -371,7 +387,7 @@ Nodes (27): Analyzing Benchmark Results, Categories for Suggestions, Guidelines,
 
 ### Community 8 - "💻 **Frontend Engineering Guide**"
 Cohesion: 0.07
-Nodes (28): 1️⃣ Citizen (`citizen.djp.org`), 1. 👤 Citizen First, 2️⃣ Admin (`admin.djp.org`), 2. 🔁 Reuse Before Create, 3. 🧩 Composition Over Duplication, 4. 📁 Feature-Oriented Development, 5. 🛡️ Strict Type Safety, ♿ Accessibility (WCAG 2.1 AA Mandatory) (+20 more)
+Nodes (29): 1️⃣ Citizen, 1. 👤 Citizen First, 2. 🔁 Reuse Before Create, 3. 🧩 Composition Over Duplication, 4. 📁 Feature-Oriented Development, 5. 🛡️ Strict Type Safety, ♿ Accessibility (WCAG 2.1 AA Mandatory), 🤖 AI Agent Rules (+21 more)
 
 ### Community 9 - "devDependencies"
 Cohesion: 0.08
@@ -390,8 +406,8 @@ Cohesion: 0.15
 Nodes (19): build_run(), embed_file(), find_runs(), _find_runs_recursive(), generate_html(), get_mime_type(), _kill_port(), load_previous_iteration() (+11 more)
 
 ### Community 13 - "✅ **Production-Ready Spring Boot Web App Checklist**"
-Cohesion: 0.09
-Nodes (22): ⚙️ 10. Configuration Management, 🛢️ 11. Database, 🚀 12. Build & Deployment, 🧪 13. Environment Readiness, 🚦 14. Performance & Scalability, ☑️ 15. Production Sanity Checks, 🐳 16. Docker (Shipping Code), 🔁 17. CI/CD Integration (+14 more)
+Cohesion: 0.12
+Nodes (16): 1️⃣ Core Font Stack, 1️⃣ Primary & Neutral Palette, 1️⃣ Shadow Hierarchy, 1️⃣ Spacing Scale Table, 2️⃣ Animation Timing, 2️⃣ Border Radius Tokens, 2️⃣ Status Indicator Colors, 2️⃣ Type Scale & Line Heights (+8 more)
 
 ### Community 14 - "Visual Companion Guide"
 Cohesion: 0.10
@@ -403,15 +419,15 @@ Nodes (18): Call-graph collapse, Candidate card, Cross-section (good for layered
 
 ### Community 16 - "Design Audit"
 Cohesion: 0.10
-Nodes (19): Code Quality, Color and Surfaces, Component Patterns, Content, Design Audit, Fix Priority, How This Works, Iconography (+11 more)
+Nodes (20): Behavioral Traits, Capabilities, Cloud-Native Development, Database & Persistence, Do not use this skill when, Enterprise Architecture Patterns, Example Interactions, Instructions (+12 more)
 
 ### Community 17 - "compilerOptions"
 Cohesion: 0.10
 Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, jsx, lib, module, moduleDetection (+11 more)
 
 ### Community 18 - "router.tsx"
-Cohesion: 0.20
-Nodes (4): AuthLayout(), router, Step2Location(), NotFoundPage()
+Cohesion: 0.12
+Nodes (7): AuthLayout(), router, Step2Location(), COMMUNITIES, NotFoundPage(), FILTER_TABS, POLLS
 
 ### Community 19 - "compilerOptions"
 Cohesion: 0.11
@@ -442,16 +458,16 @@ Cohesion: 0.12
 Nodes (40): codex_meta_cwd(), codex_planning_update(), extract_messages_after(), find_current_codex_session(), find_last_planning_update(), _format_opencode_part(), get_claude_project_dir(), get_codex_sessions() (+32 more)
 
 ### Community 26 - "🎨 **Colors & Typography Design Tokens**"
-Cohesion: 0.12
-Nodes (16): 1️⃣ Core Font Stack, 1️⃣ Primary & Neutral Palette, 1️⃣ Shadow Hierarchy, 1️⃣ Spacing Scale Table, 2️⃣ Animation Timing, 2️⃣ Border Radius Tokens, 2️⃣ Status Indicator Colors, 2️⃣ Type Scale & Line Heights (+8 more)
+Cohesion: 0.14
+Nodes (13): 1️⃣ Step 1: Welcome Screen, 2️⃣ Step 2: Location Selection, 3️⃣ Step 3: Interest & Preference Gathering, 4️⃣ Step 4: Account Creation (Optional / Progressive), 5️⃣ Step 5: Interactive Platform Tour, 6️⃣ Step 6: Confirmation & Access, 🔄 6-Step Onboarding Sequence, 👋 **Conversational Onboarding & Progressive Disclosure** (+5 more)
 
 ### Community 27 - "📚 Component Library"
-Cohesion: 0.12
-Nodes (16): 1️⃣ 🧭 Sidebar Navigation, 2️⃣ 🔝 Header Bar, 3️⃣ 📊 Metric Card (KPI Display), 4️⃣ 🗂️ Section Container Card, 5️⃣ 📋 Data Table, 6️⃣ 🔘 Button Variants, 7️⃣ 🏷️ Status Badges & Pills, 8️⃣ 📈 Progress Bar (+8 more)
+Cohesion: 0.17
+Nodes (12): 10.10 Distributed Tracing, 10.11 Production Troubleshooting, 10.1 Structured Logging, 10.2 Correlation & Trace IDs, 10.3 Request & Response Logging, 10.4 Exception & Error Logging, 10.5 Security & Audit Logging, 10.6 PII Masking (+4 more)
 
 ### Community 28 - "Spring Boot + H2 Backend Design Specification"
-Cohesion: 0.12
-Nodes (15): 1. Goal & Architecture Overview, 2. Directory & Package Structure, 3. Database Schema Design (H2 SQL), 4. REST API Endpoint Contracts, 5. Phased Implementation Plan, 6. Verification & Test Plan, A. Authentication (`/api/v1/auth`), B. Issues (`/api/v1/issues`) (+7 more)
+Cohesion: 0.10
+Nodes (19): Code Quality, Color and Surfaces, Component Patterns, Content, Design Audit, Fix Priority, How This Works, Iconography (+11 more)
 
 ### Community 29 - "FeedPage.tsx"
 Cohesion: 0.12
@@ -494,8 +510,8 @@ Cohesion: 0.20
 Nodes (9): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP Backend Task Tracker (`backend/be-todo.md`), Phase 1 — Project Setup, H2 Integration & OAuth2 (MVP 1), Phase 2 — Issues CRUD (MVP 2), Phase 3 — Feed, Discussions & Replies (MVP 3), Phase 4 — Polls & Votes (MVP 4), Phase 5 — Petitions, Notifications & Representatives (MVP 5+) (+1 more)
 
 ### Community 39 - "🛠️ SDLC Lifecycle Stages & Tooling Matrix"
-Cohesion: 0.15
-Nodes (12): 📑 14-Stage Document Creation Flow, 1️⃣ Initiation (`idea.md`, `business_case.md`), 2️⃣ Planning (`project_plan.md`, `risk_log.xlsx`), 3️⃣ Analysis (`srs.md`, `use_cases.md`), 4️⃣ Design (`hld.md`, `lld.md`, `api_spec.yaml`), 5️⃣ Development (`/src`, `dev_guide.md`), 6️⃣ Testing (`test_plan.md`, `test_cases.xlsx`), 7️⃣ Deployment (`deploy.md`, `ci_cd.yml`) (+4 more)
+Cohesion: 0.17
+Nodes (12): 🚦 11. Rate Limiting & Resilience *(New)*, 🔁 12. Post-Task Audit & Cleanup, 🧱 1. Layered Architecture & Code Structure, 🌐 2. REST API & Namespace Contracts (`/djp/api/v1`), 📝 3. API Documentation (`springdoc-openapi`), ⚠️ 4. Global Exception & Error Handling, 🔐 5. Security & Authentication (OAuth2 / JWT), 🧪 6. Test-Driven Development (TDD Gates) (+4 more)
 
 ### Community 40 - "index.ts"
 Cohesion: 0.24
@@ -518,8 +534,8 @@ Cohesion: 0.17
 Nodes (12): 1️⃣ Desktop Layout (`> 1024px`), 2️⃣ Tablet Layout (`768px – 1024px`), 3️⃣ Mobile Layout (`< 768px`), 📏 Breakpoint Specification Matrix, 🛠️ Core Media Query Pattern, 🧪 Device Verification Checklist, 🗂️ Grid Layout Responsive Transformations, 📐 Layout Patterns & Sidebar Transformations (+4 more)
 
 ### Community 45 - "🔄 6-Step Onboarding Sequence"
-Cohesion: 0.17
-Nodes (12): 1️⃣ Step 1: Welcome Screen, 2️⃣ Step 2: Location Selection, 3️⃣ Step 3: Interest & Preference Gathering, 4️⃣ Step 4: Account Creation (Optional / Progressive), 5️⃣ Step 5: Interactive Platform Tour, 6️⃣ Step 6: Confirmation & Access, 🔄 6-Step Onboarding Sequence, 👋 **Conversational Onboarding & Progressive Disclosure** (+4 more)
+Cohesion: 0.18
+Nodes (10): 1️⃣ Onboarding Integration, 2️⃣ Content Creation Form Co-Pilot, 3️⃣ Interactive Chart Explainer, 🤖 **AI Civic Assistant Architecture**, 🧠 Core Capabilities, 🔌 Integration & Touchpoints, 🌟 Overview, ✅ Quality & Safety Checklist (+2 more)
 
 ### Community 46 - "Lean Codebase Rule"
 Cohesion: 0.40
@@ -539,11 +555,11 @@ Nodes (16): 5.10 Subscribe to Derived State, 5.11 Use Functional setState Update
 
 ### Community 50 - "🤖 **AI Agent Interaction & Development Guide**"
 Cohesion: 0.18
-Nodes (11): 1️⃣ Lean Codebase & File Creation Rules, 1️⃣ Modifying or Creating Documentation, 2️⃣ Adding or Updating Frontend Components, 2️⃣ Design System & Styling, 🤖 **AI Agent Interaction & Development Guide**, 📑 Documentation Navigation Matrix, 🚦 Key Operating Rules for AI Agents, 🌟 Overview (+3 more)
+Nodes (10): 1️⃣ 🚨 Issue (`type: 'issue'`), 2️⃣ 💬 Discussion (`type: 'discussion'`), 3️⃣ 📊 Poll (`type: 'poll'`), 4️⃣ 🗳️ Poll Vote (`type: 'poll_vote'`), 📦 **Common Submission Model Architecture**, 📂 Content Types & Specific Extensions, 🧱 Core Base Model, 🌟 Overview (+2 more)
 
 ### Community 51 - "party-vision.md"
-Cohesion: 0.20
-Nodes (8): 1️⃣ Version 1 (MVP) — Citizen Participation Foundation (`Q1 2026`), 2️⃣ Version 2 — Party Organization & Accountability (`Q2 2026`), 3️⃣ Version 3 — Intelligence & Governance (`Q3 2026`), 4️⃣ Version 4 — Scale & Ecosystem (`Q4 2026`), 🚀 Milestones & Feature Breakdown, 🗺️ **Product Roadmap & Milestones**, 📚 Related Documentation, 📅 Versioned Release Schedule
+Cohesion: 0.18
+Nodes (11): 1️⃣ Version 1 (MVP) — Citizen Participation Foundation (`Q3 2026`), 2️⃣ Version 2 — Party Organization & Accountability (`Q4 2026`), 3️⃣ Version 3 — Intelligence & Governance (`Q1 2027`), 4️⃣ Version 4 — Scale & Ecosystem (`Q2 2027`), 🚀 Milestones & Feature Breakdown, 🗺️ **Product Roadmap & Milestones**, 📚 Related Documentation, 🎨 v1.1 — UI/UX Foundation (Current Sprint) (+3 more)
 
 ### Community 52 - "OnboardingLayout.tsx"
 Cohesion: 0.18
@@ -570,16 +586,20 @@ Cohesion: 0.13
 Nodes (14): 1. Eliminating Waterfalls (CRITICAL), 2. Bundle Size Optimization (CRITICAL), 3. Server-Side Performance (HIGH), 4. Client-Side Data Fetching (MEDIUM-HIGH), 5. Re-render Optimization (MEDIUM), 6. Rendering Performance (MEDIUM), 7. JavaScript Performance (LOW-MEDIUM), 8. Advanced Patterns (LOW) (+6 more)
 
 ### Community 58 - "🤖 **AI Civic Assistant Architecture**"
-Cohesion: 0.20
-Nodes (10): 1️⃣ Onboarding Integration, 2️⃣ Content Creation Form Co-Pilot, 3️⃣ Interactive Chart Explainer, 🤖 **AI Civic Assistant Architecture**, 🧠 Core Capabilities, 🔌 Integration & Touchpoints, 🌟 Overview, ✅ Quality & Safety Checklist (+2 more)
+Cohesion: 0.18
+Nodes (11): 1️⃣ 🧭 Sidebar Navigation, 2️⃣ 🔝 Header Bar, 3️⃣ 📊 Metric Card (KPI Display), 4️⃣ 🗂️ Section Container Card, 5️⃣ 📋 Data Table, 6️⃣ 🔘 Button Variants, 7️⃣ 🏷️ Status Badges & Pills, 8️⃣ 📈 Progress Bar (+3 more)
+
+### Community 59 - "overview.md"
+Cohesion: 0.38
+Nodes (3): 1. Global Tech Stack & Constants, 2. Microservice Technology Matrix, 🛠️ **Modular Microservices Backend Architecture & Tech Stack**
 
 ### Community 60 - "🏗️ **Frontend Directory & Monorepo Structure**"
 Cohesion: 0.33
 Nodes (5): 2026-07-13 Session, Current Sprint, DJPv1 ACTIVE STATE, Session Delta Logs, Task Breakdown
 
 ### Community 61 - "📦 **Common Submission Model Architecture**"
-Cohesion: 0.20
-Nodes (10): 1️⃣ 🚨 Issue (`type: 'issue'`), 2️⃣ 💬 Discussion (`type: 'discussion'`), 3️⃣ 📊 Poll (`type: 'poll'`), 4️⃣ 🗳️ Poll Vote (`type: 'poll_vote'`), 📦 **Common Submission Model Architecture**, 📂 Content Types & Specific Extensions, 🧱 Core Base Model, 🌟 Overview (+2 more)
+Cohesion: 0.29
+Nodes (7): 1. Goal & Architecture Overview, 2. Directory & Package Structure, 3. Database Schema Design, 4. REST API Endpoint Contracts, 6. Verification & Test Plan, ⚙️ **Backend API Engineering Specification**, System Components
 
 ### Community 62 - "helper.js"
 Cohesion: 0.42
@@ -590,36 +610,36 @@ Cohesion: 0.22
 Nodes (8): After the Design, Anti-Pattern: "This Is Too Simple To Need A Design", Brainstorming Ideas Into Designs, Checklist, Key Principles, Process Flow, The Process, Visual Companion
 
 ### Community 64 - "✍️ **Prompt Refiner Agent Role (`prompt-refiner`)**"
-Cohesion: 0.25
-Nodes (8): 1. 📂 What is the intended use case?, 2. 🤖 Which AI model or platform will execute the prompt?, 📏 Best Practice Guidelines, 🎯 Description, ❓ Mandatory Clarifications, 📤 Output Format Template, ✍️ **Prompt Refiner Agent Role (`prompt-refiner`)**, ⚙️ Responsibilities
+Cohesion: 0.05
+Nodes (36): 🎨 1. Presentation & Layout, 📊 2. Visual Enhancements, 🧭 4-Step Teaching Framework for Complex Topics, 🧠 **Accessible & Visual Learning Guide (Dyslexia-Friendly)**, ✅ Content Quality Checklist, ✨ Core Communication Rules, 🎯 Purpose, 1️⃣ Step 1: Understand Intent (+28 more)
 
 ### Community 65 - "🔍 Detailed Decision Records"
-Cohesion: 0.22
-Nodes (9): 📌 ADR-001: Progressive Disclosure Pattern, 📌 ADR-002: Chart.js for Visualizations, 📌 ADR-003: Mobile-First Design, 📌 ADR-004: Vanilla JS Prototypes & Shared React Apps, 📌 ADR-005: Static & CDN Edge Hosting, 📜 **Architectural Decision Records (ADR)**, 🔍 Detailed Decision Records, 📚 Related Documentation (+1 more)
+Cohesion: 0.18
+Nodes (11): 📌 ADR-001: Progressive Disclosure Pattern, 📌 ADR-002: Chart.js for Visualizations, 📌 ADR-003: Mobile-First Design, 📌 ADR-004: Shared React 18 & Vite Foundation, 📌 ADR-005: Static & CDN Edge Hosting, 📌 ADR-006: Modular Microservices Backend, 📌 ADR-007: Dynamic Ranks & Paid Leader Gate, 📜 **Architectural Decision Records (ADR)** (+3 more)
 
 ### Community 66 - "🌟 **Digital Janata Party (DJP) Vision**"
-Cohesion: 0.22
-Nodes (9): 📜 Core Principles Checklist, 🌟 **Digital Janata Party (DJP) Vision**, 🎯 Mission, 🏛️ Product Philosophy, 📚 Related Documentation, 🏆 Success Indicators, 👥 Target Stakeholders, 🌟 Vision Statement (+1 more)
+Cohesion: 0.17
+Nodes (12): 🌟 1. Core Vision & Framework, 📱 2. DJPlatform App Scope, 👥 3. User Roles & The Leadership Loop, 📊 4. Reputation, Hierarchy & Dynamic Ranks, 🏛️ 5. Leader → Official Party Rep (DJ Ceremonies), 🤖 6. AI Categorization & Resolution, 🙋 Citizen, 🌟 **Digital Janata Party (DJP) Vision & Framework** (+4 more)
 
 ### Community 67 - "compilerOptions"
 Cohesion: 0.22
 Nodes (8): compilerOptions, composite, declaration, declarationMap, outDir, rootDir, extends, include
 
 ### Community 68 - "🏗️ System Architecture"
-Cohesion: 0.25
-Nodes (8): 🏛️ **Architecture Overview**, 📜 Architecture Principles, 💡 Core Concepts, 🔄 Data Flow, 🧱 Key Components, 📚 Related Documentation, 🏗️ System Architecture, 🧰 Technology Stack
+Cohesion: 0.29
+Nodes (7): 🏗️ 1. System Architecture, 🧱 2. Key Components, 💡 3. Core Concepts, 🧰 4. Technology Stack, 🏛️ **Architecture Overview**, Microservices Block Diagram, 📚 Related Documentation
 
 ### Community 69 - "🚀 **Deployment & Hosting Guide**"
-Cohesion: 0.25
-Nodes (8): ⚙️ CI/CD Automation (GitHub Actions Example), 🚀 **Deployment & Hosting Guide**, 💻 Local Development Servers, 🌟 Overview, ☁️ Production Hosting Platform Matrix, 📋 Quick Pre-Deployment Checklist, 🛡️ Recommended Security Headers, 📚 Related Documentation
+Cohesion: 0.14
+Nodes (13): Artifacts Sync (skill start), Completion Status Protocol, First-run guidance (one-time), Model-Specific Behavioral Patch (claude), Operational Self-Improvement, Plan Mode Safe Operations, Plan Status Footer, Preamble (run first) (+5 more)
 
 ### Community 70 - "🧠 **Accessible & Visual Learning Guide (Dyslexia-Friendly)**"
-Cohesion: 0.25
-Nodes (7): 🎨 1. Presentation & Layout, 📊 2. Visual Enhancements, 🧭 4-Step Teaching Framework for Complex Topics, 🧠 **Accessible & Visual Learning Guide (Dyslexia-Friendly)**, ✅ Content Quality Checklist, ✨ Core Communication Rules, 🎯 Purpose
+Cohesion: 0.29
+Nodes (7): 🧑‍💻 **Backend Engineer Agent Role**, 🧱 Core Principles, 📥 Inputs, 📤 Outputs, 🎯 Purpose, ⚙️ Responsibilities, 🏆 Success Metrics
 
 ### Community 71 - "🎨 **Design Principles & UX System**"
-Cohesion: 0.25
-Nodes (8): 1️⃣ Core Palette Reference, 2️⃣ Status Indicator Colors, 💡 6 Core User-Centered Principles, 🌟 Core UX Philosophy, 🎨 **Design Principles & UX System**, 🧱 Design System Tokens Summary, ✅ Implementation & QA Checklist, 📚 Related Documentation
+Cohesion: 0.08
+Nodes (24): 💬 **Civic Discussion UX Specification**, 📑 Data Schema & UI Fields, 🌟 Overview, 📚 Related Documentation, 💡 UX & Content Guidelines, 🚨 **Civic Issue Reporting UX Specification**, 📑 Issue Reporting Fields & UI Presentation, 📑 Issue Resolution & Verification Schema (+16 more)
 
 ### Community 72 - "IssuesPage.tsx"
 Cohesion: 0.25
@@ -654,12 +674,12 @@ Cohesion: 0.29
 Nodes (7): ⚡ JavaScript Active State Automation, ✅ Navigation Quality Checklist, 🧭 **Navigation System Specification**, 🌟 Overview, 📑 Page Registry & Identifier Matrix, 📚 Related Documentation, 🏗️ Standard Sidebar Markup
 
 ### Community 81 - "README.md"
-Cohesion: 0.25
-Nodes (4): 💡 Best Practices for Editing Markdown, 📑 Directory Contents, 📂 **Markdown Custom Files Directory (`docs/md-file`)**, 🎯 Overview
+Cohesion: 0.29
+Nodes (6): 1. Executive Summary & Big Picture, 2. Identified Architectural Areas & Domain Boundaries, 3. Agentic Workflow Guardrails & Responsibilities, 4. Key Takeaways & Memory Aid, Strict Agent Enforcement Rules:, 🏛️ System Boundaries & Agentic Guardrails Matrix
 
 ### Community 82 - "🧑‍💻 **Backend Engineer Agent Role**"
-Cohesion: 0.29
-Nodes (7): 🧑‍💻 **Backend Engineer Agent Role**, 🧱 Core Principles, 📥 Inputs, 📤 Outputs, 🎯 Purpose, ⚙️ Responsibilities, 🏆 Success Metrics
+Cohesion: 0.18
+Nodes (11): DOC-001 — Missing api-spec.yaml (OpenAPI Contract), DOC-002 — No Developer Onboarding Guide, DOC-003 — No Runbooks or Operational Playbooks, DOC-004 — AI Service Has No Architecture or API Documentation, DOC-005 — Schema Conflict: db-design.md vs oauth-login-architecture.md vs AuthController.java, DOC-006 — No Contribution Guidelines (CONTRIBUTING.md), DOC-007 — Deployment Guide Missing Backend Deployment Instructions, DOC-008 — Execution PRDs Exist Only for OAuth Login (+3 more)
 
 ### Community 83 - "index.ts"
 Cohesion: 0.38
@@ -693,25 +713,29 @@ Nodes (8): apply_v3_mode(), create_files_in(), gen_nonce(), init-session.sh scri
 Cohesion: 0.17
 Nodes (3): User, Entity, Table
 
+### Community 91 - "design-principles.md"
+Cohesion: 0.22
+Nodes (8): ⚙️ CI/CD Automation (GitHub Actions Example), 🚀 **Deployment & Hosting Guide**, 💻 Local Development Servers, 🌟 Overview, ☁️ Production Hosting Platform Matrix, 📋 Quick Pre-Deployment Checklist, 🛡️ Recommended Security Headers, 📚 Related Documentation
+
 ### Community 92 - "💬 **Civic Discussion UX Specification**"
-Cohesion: 0.40
-Nodes (5): 💬 **Civic Discussion UX Specification**, 📑 Data Schema & UI Fields, 🌟 Overview, 📚 Related Documentation, 💡 UX & Content Guidelines
+Cohesion: 0.18
+Nodes (10): 3.10 Use after() for Non-Blocking Operations, 3.1 Authenticate Server Actions Like API Routes, 3.2 Avoid Duplicate Serialization in RSC Props, 3.3 Avoid Shared Module State for Request Data, 3.4 Cross-Request LRU Caching, 3.5 Hoist Static I/O to Module Level, 3.6 Minimize Serialization at RSC Boundaries, 3.7 Parallel Data Fetching with Component Composition (+2 more)
 
 ### Community 93 - "🚨 **Civic Issue Reporting UX Specification**"
-Cohesion: 0.40
-Nodes (5): 📊 **Civic Polling UX Specification**, 🌟 Overview, 📑 Poll Schema & UI Representation, 💡 Polling UX Best Practices, 📚 Related Documentation
+Cohesion: 0.20
+Nodes (9): 4.1 Deduplicate Global Event Listeners, 4.2 Use Passive Event Listeners for Scrolling Performance, 4.3 Use SWR for Automatic Deduplication, 4.4 Version and Minimize localStorage Data, 4. Client-Side Data Fetching, Abstract, React Best Practices, References (+1 more)
 
 ### Community 94 - "🚨 **Civic Issue Reporting UX Specification**"
-Cohesion: 0.40
-Nodes (5): 🚨 **Civic Issue Reporting UX Specification**, 📑 Issue Reporting Fields & UI Presentation, 🌟 Overview, 📚 Related Documentation, 💡 Reporting UX Best Practices
+Cohesion: 0.20
+Nodes (9): 1. Eliminating Waterfalls (async), 2. Bundle Size Optimization (bundle), 3. Server-Side Performance (server), 4. Client-Side Data Fetching (client), 5. Re-render Optimization (rerender), 6. Rendering Performance (rendering), 7. JavaScript Performance (js), 8. Advanced Patterns (advanced) (+1 more)
 
 ### Community 95 - "DiscussionsPage.tsx"
 Cohesion: 0.40
 Nodes (3): badgeVariantStyles, Discussion, DISCUSSIONS
 
 ### Community 96 - "async-cheap-condition-before-await.md"
-Cohesion: 0.18
-Nodes (10): 3.10 Use after() for Non-Blocking Operations, 3.1 Authenticate Server Actions Like API Routes, 3.2 Avoid Duplicate Serialization in RSC Props, 3.3 Avoid Shared Module State for Request Data, 3.4 Cross-Request LRU Caching, 3.5 Hoist Static I/O to Module Level, 3.6 Minimize Serialization at RSC Boundaries, 3.7 Parallel Data Fetching with Component Composition (+2 more)
+Cohesion: 0.33
+Nodes (6): Phase 1: Requirements & Discovery, Phase 2: Planning & Structure, Phase 3: Implementation, Phase 4: Testing & Verification, Phase 5: Delivery, Phases
 
 ### Community 97 - "Prefer Statically Analyzable Paths"
 Cohesion: 0.20
@@ -741,13 +765,13 @@ Nodes (10): Configuration, Data Layer (Repositories), Dependency Injection & Com
 Cohesion: 0.29
 Nodes (6): 1. The Efficiency Ladder, 2. Bug Fix Protocol (Root Cause vs. Symptom), 3. Core Rules, 4. What We Are NEVER Lazy About, 5. Verification & Testing Rule, 👱‍♀️ Ponytail (Lazy Senior Dev Mode)
 
-### Community 152 - "advanced-effect-event-deps.md"
+### Community 152 - "# Technical Debt"
 Cohesion: 0.20
-Nodes (9): 4.1 Deduplicate Global Event Listeners, 4.2 Use Passive Event Listeners for Scrolling Performance, 4.3 Use SWR for Automatic Deduplication, 4.4 Version and Minimize localStorage Data, 4. Client-Side Data Fetching, Abstract, React Best Practices, References (+1 more)
+Nodes (10): TECH-001 — Wildcard CORS on AuthController (`origins = "*"`), TECH-002 — User Entity Missing 7 of 12 Fields from db-design.md, TECH-003 — AuthController Is a Stub (No JWT, No OAuth Wiring), TECH-004 — pom.xml Missing 7 Critical Dependencies, TECH-005 — No Base application.yml (Default Profile Missing), TECH-006 — frontend/src/ Structure Doesn't Match Documented Architecture, TECH-007 — QA Test File Contains No Real Assertions (Green Theater), TECH-008 — Hardcoded Secret Default in Production Config (+2 more)
 
 ### Community 153 - "advanced-event-handler-refs.md"
-Cohesion: 0.20
-Nodes (9): 1. Eliminating Waterfalls (async), 2. Bundle Size Optimization (bundle), 3. Server-Side Performance (server), 4. Client-Side Data Fetching (client), 5. Re-render Optimization (rerender), 6. Rendering Performance (rendering), 7. JavaScript Performance (js), 8. Advanced Patterns (advanced) (+1 more)
+Cohesion: 0.25
+Nodes (7): Best Practices, Common Pitfall, Decision Tree: Choosing Your Approach, Example: Using with_server.py, Reconnaissance-Then-Action Pattern, Reference Files, Web Application Testing
 
 ### Community 155 - "advanced-use-latest.md"
 Cohesion: 0.47
@@ -790,16 +814,16 @@ Cohesion: 0.33
 Nodes (5): Platform Adaptation, Red Flags, Skill Priority, The Rule, User Instructions
 
 ### Community 166 - "client-localstorage-schema.md"
-Cohesion: 0.33
-Nodes (5): Creating a New Rule, Getting Started, React Best Practices, Rule File Structure, Structure
+Cohesion: 0.29
+Nodes (6): 1. Primary Guideline: Anti-Over-Engineering & Reuse, 2. Visual Task Flow Across Prototype Todos, 3. TDD Flow for Prototype, 4. Master Folder & Todo Architecture Structure, DJP Prototype Master Guide: Agentic Workflow & Reuse Guidelines, Summary Role Table
 
 ### Community 167 - "DJP QA & Test Suite — Todo (`tests/test-todo.md`)"
 Cohesion: 0.29
 Nodes (6): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP QA & Test Suite Task Tracker (`tests/test-todo.md`), Phase 2 — Core E2E & API Test Automation (TDD Red Phase), Phase 3 — Continuous Regression & CI Pipeline, 📝 Technical Notes & Architectural Reference
 
 ### Community 170 - "js-cache-function-results.md"
-Cohesion: 0.40
-Nodes (5): 8.1 Do Not Put Effect Events in Dependency Arrays, 8.2 Initialize App Once, Not Per Mount, 8.3 Store Event Handlers in Refs, 8.4 useEffectEvent for Stable Callback Refs, 8. Advanced Patterns
+Cohesion: 0.29
+Nodes (6): ⚙️ Backend Roadmap (`prototype/backend/be-todo.md`), 🏛️ Completed Infrastructure & Agentic Workflow Setup (Master Archive), 🚀 Currently Executing Tasks (Active Control Panel), DJP Prototype Executive Dashboard (`prototype/dashboard.md`), 🎨 Frontend Roadmap (`prototype/frontend/fe-todo.md`), 🧪 QA & Test Suite (`prototype/tests/test-todo.md`)
 
 ### Community 173 - "js-combine-iterations.md"
 Cohesion: 0.50
@@ -809,9 +833,69 @@ Nodes (3): Codex App Finishing, Environment Detection, Subagent dispatch require
 Cohesion: 0.50
 Nodes (3): Pi Tool Mapping, Subagents, Task lists
 
+### Community 175 - "js-flatmap-filter.md"
+Cohesion: 0.13
+Nodes (13): 1. Project Root (`/`), 2. Agent Rules (`/.agents/`), 3. Documentation Subfolders (`/docs/`), 4. Prototype Workspace (`/prototype/`), DJP Documentation Sitemap & Organization Rules, 🤖 Agentic State & Workspace Files, 💡 Core Philosophy: Reuse & Anti-Over-Engineering, DJP Prototype Workspace (+5 more)
+
 ### Community 176 - "js-hoist-regexp.md"
+Cohesion: 0.33
+Nodes (5): Creating a New Rule, Getting Started, React Best Practices, Rule File Structure, Structure
+
+### Community 177 - "js-index-maps.md"
+Cohesion: 0.33
+Nodes (5): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP Prototype Backend Task Tracker (`prototype/backend/be-todo.md`), Phase 1 — Spring Boot App Setup, 📝 Technical Notes & Architectural Reference
+
+### Community 187 - "rendering-hoist-jsx.md"
+Cohesion: 0.33
+Nodes (5): 2026-07-15 Session, Current Sprint, DJP PROTOTYPE ACTIVE STATE, Session Delta Logs, Task Breakdown
+
+### Community 188 - "rendering-hydration-no-flicker.md"
+Cohesion: 0.33
+Nodes (5): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP Prototype Frontend Task Tracker (`prototype/frontend/fe-todo.md`), Phase 1 — Core App Integration, 📝 Technical Notes & Architectural Reference
+
+### Community 189 - "rendering-hydration-suppress-warning.md"
+Cohesion: 0.33
+Nodes (5): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP Prototype QA & Test Suite Task Tracker (`prototype/tests/test-todo.md`), Phase 1 — Validation Verification, 📝 Technical Notes & Architectural Reference
+
+### Community 190 - "design-principles.md"
+Cohesion: 0.29
+Nodes (6): 🔴 1. Critical Debt (11 Items), 🟠 2. High Debt (28 Items), 🟡 3. Medium Debt (11 Items), 📊 **DJP Platform Technical Debt & Audit Recommendations**, 📝 Docs, Process & Governance, 🔐 Security, Architecture & DevOps
+
+### Community 191 - "rendering-script-defer-async.md"
+Cohesion: 0.40
+Nodes (5): 8.1 Do Not Put Effect Events in Dependency Arrays, 8.2 Initialize App Once, Not Per Mount, 8.3 Store Event Handlers in Refs, 8.4 useEffectEvent for Stable Callback Refs, 8. Advanced Patterns
+
+### Community 192 - "📋 DJP-v1 Technical Debt Register"
+Cohesion: 0.22
+Nodes (8): 📋 DJP-v1 Technical Debt Register, 🚦 Quick Health Status, SEC-001 — No OWASP / Security Review Process Defined, SEC-002 — JWT Signing Key and Rotation Strategy Undefined, SEC-003 — No Rate Limiting on Auth Endpoints, SEC-004 — Citizen Location + Political Activity = High-Risk PII Profile, # Security Debt, 📊 Severity Dashboard
+
+### Community 193 - "rendering-usetransition-loading.md"
+Cohesion: 0.33
+Nodes (6): 5. Phased Implementation Plan, Phase 1: Project Setup & OAuth2 (MVP 1), Phase 2: Issues CRUD (MVP 2), Phase 3: Feed, Discussions & Replies (MVP 3), Phase 5: Polls & Votes (MVP 4), Phase 6: Petitions, Notifications, and Representatives (MVP 5+)
+
+### Community 194 - "rerender-defer-reads.md"
+Cohesion: 0.33
+Nodes (5): 1. Goal & Architecture Overview, 2. Database Schema Definition (SQL), 3. Database Dialect Differences, 4. Entity Relation Rules, 🗄️ **Database Schema & Relational Design**
+
+### Community 195 - "rerender-dependencies.md"
+Cohesion: 0.40
+Nodes (4): Anti-Over-Engineering Guidelines, Code Quality Standards, Context Allocation, DJP PROTOTYPE OPERATIONAL RULES
+
+### Community 197 - "rerender-derived-state-no-effect.md"
 Cohesion: 0.50
 Nodes (3): File-System Paths, Import Paths, Prefer Statically Analyzable Paths
+
+### Community 199 - "rerender-lazy-state-init.md"
+Cohesion: 0.67
+Nodes (3): is_server_ready(), main(), Wait for server to be ready by polling the port.
+
+### Community 200 - "rerender-memo.md"
+Cohesion: 0.50
+Nodes (3): 2026-07-15 Session (Prototype Agent Workspace Initialization), DJP Prototype Completed Tasks Archive (`prototype/archive/archive-todo.md`), Session Delta Logs
+
+### Community 201 - "rerender-memo-with-default-value.md"
+Cohesion: 0.50
+Nodes (3): Communication Guardrails, DJP PROTOTYPE IDENTITY, Technical Profile
 
 ### Community 223 - "README.md"
 Cohesion: 0.40
@@ -838,12 +922,12 @@ Cohesion: 0.25
 Nodes (7): 1. Team Hierarchy & Roles, 2. Visual Task Flow Across Todos, 3. Spec-Driven & Test-Driven Development (TDD) Flow, 4. Master Folder & Todo Architecture Structure, 5. Agent Commander Cheat Sheet, DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy, Summary Role Table
 
 ### Community 244 - "Technical Architecture: Spring Boot OAuth2 Login"
-Cohesion: 0.40
-Nodes (4): 1. Tech Stack (Discovered from docs), 2. Database Schema (`users` table in H2), 3. Spring Boot Package Structure (`com.djp.backend`), Technical Architecture: Spring Boot OAuth2 Login
+Cohesion: 0.25
+Nodes (8): GOV-001 — No Legal / Party Registration Structure, GOV-002 — No Data Privacy Policy (DPDPA / GDPR-equivalent), GOV-003 — No Funding, Finance, or Donation Policy, GOV-004 — No Anti-Gaming Safeguards Defined, GOV-005 — No Moderation / Legal Liability Framework, GOV-006 — No Leader Exit / Dispute Resolution Process, GOV-007 — No Regional / Language Scaling Plan, # Governance & Compliance Gaps
 
 ### Community 245 - "DJP Documentation Sitemap & Organization Rules"
 Cohesion: 0.40
-Nodes (4): 1. Project Root (`/`), 2. Agent Rules (`/.agents/`), 3. Documentation Subfolders (`/docs/`), DJP Documentation Sitemap & Organization Rules
+Nodes (5): ✅ Best Practices for Implementation, 📏 Component Summary Matrix, 🌟 Overview, 📚 Related Documentation, 🧩 **UI Components Catalog**
 
 ### Community 246 - "DJP Agent Team Operating Rules"
 Cohesion: 0.33
@@ -854,8 +938,8 @@ Cohesion: 0.50
 Nodes (3): 1. Files to Create / Modify, 2. Component Specs, Technical Specifications: Spring Boot + React OAuth Login
 
 ### Community 249 - "Product Requirements Document (PRD): OAuth Login Feature"
-Cohesion: 0.50
-Nodes (3): 1. Goal, 2. User Stories, Product Requirements Document (PRD): OAuth Login Feature
+Cohesion: 0.25
+Nodes (7): 1. Goal, 2. User Stories, 3. Acceptance Criteria, 4. Security & Session Rules, 👤 Citizen Authentication, 🧭 Onboarding Redirection, 🔑 **Product Requirements Document (PRD): OAuth Login & Onboarding**
 
 ### Community 256 - "Spring Boot Best Practices"
 Cohesion: 0.18
@@ -869,10 +953,6 @@ Nodes (8): 1. Service Decomposition Strategies, 2. Communication Patterns, 3. Da
 Cohesion: 0.40
 Nodes (4): 1. Feature Folder Structure, 2. Agent Execution Workflow in This Folder, 3. Key Takeaways & Memory Aid, 🚀 DJP Execution Hub (`docs/execution/`)
 
-### Community 271 - "🔄 Refinement Workflow"
-Cohesion: 0.20
-Nodes (10): 1️⃣ `/src/app` (Application Infrastructure), 2️⃣ `/src/features` (Feature Modules), 📱 Application Internal Architecture (`apps/citizen/src`), 🚦 Architectural Boundary Rules, 💎 Core Organization Principles, 🏗️ **Frontend Directory & Monorepo Structure**, 🌳 Monorepo Workspace Hierarchy, 🌟 Overview (+2 more)
-
 ### Community 286 - "DJPv1 IDENTITY"
 Cohesion: 0.50
 Nodes (3): Communication Guardrails, DJPv1 IDENTITY, Technical Profile
@@ -881,17 +961,13 @@ Nodes (3): Communication Guardrails, DJPv1 IDENTITY, Technical Profile
 Cohesion: 0.50
 Nodes (3): Code Quality Standards, Context Allocation, DJPv1 OPERATIONAL RULES
 
-### Community 288 - "Web Application Testing"
-Cohesion: 0.25
-Nodes (7): Best Practices, Common Pitfall, Decision Tree: Choosing Your Approach, Example: Using with_server.py, Reconnaissance-Then-Action Pattern, Reference Files, Web Application Testing
-
 ### Community 289 - "DJP Test Suites & Automated QA"
 Cohesion: 0.50
 Nodes (3): DJP Test Suites & Automated QA, DJPv1 Synchronization, Overview
 
 ### Community 290 - "CreateDiscussionPage.tsx"
-Cohesion: 0.25
-Nodes (7): 1. System Overview, 2. Global Tech Stack, 3. Microservice Definitions, A. Auth Service (`backend/auth-service`), B. Core Service (`backend/core-service`), C. AI / Analytics Service (`backend/ai-service`), Modular Microservices Backend Architecture & Tech Stack
+Cohesion: 0.40
+Nodes (4): 1. Tech Stack (Discovered from docs), 2. Database Schema (`users` table in H2), 3. Spring Boot Package Structure (`com.djp.backend`), Technical Architecture: Spring Boot OAuth2 Login
 
 ### Community 291 - "DJPv1 BACKEND ACTIVE STATE"
 Cohesion: 0.33
@@ -929,10 +1005,6 @@ Nodes (3): Communication Guardrails, DJPv1 QA & TESTS IDENTITY, Technical Profil
 Cohesion: 0.50
 Nodes (3): Code Quality Standards, Context Allocation, DJPv1 QA & TESTS OPERATIONAL RULES
 
-### Community 300 - "🏛️ System Boundaries & Agentic Guardrails Matrix"
-Cohesion: 0.29
-Nodes (6): 1. Executive Summary & Big Picture, 2. Identified Architectural Areas & Domain Boundaries, 3. Agentic Workflow Guardrails & Responsibilities, 4. Key Takeaways & Memory Aid, Strict Agent Enforcement Rules:, 🏛️ System Boundaries & Agentic Guardrails Matrix
-
 ### Community 301 - "2026-07-10 Session (Original React Frontend Migration Sprint — 40/40 Completed)"
 Cohesion: 0.15
 Nodes (12): 2026-07-10 Session (Original React Frontend Migration Sprint — 40/40 Completed), 2026-07-11 Session (Live Dashboard & Backend Blueprint), 2026-07-12 Session (UI Fixes & Control Center Navigation), 2026-07-13 Session (Agent Architecture & Domain Standardization), DJP Master Completed Tasks Archive (`archive/todo.md`), Phase 0 — Foundation, Phase 1 — Core Pages, Phase 2 — Supporting Pages (+4 more)
@@ -940,10 +1012,6 @@ Nodes (12): 2026-07-10 Session (Original React Frontend Migration Sprint — 40/
 ### Community 305 - "Example 1: Research Task"
 Cohesion: 0.33
 Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🎨 FE Agent (Frontend React Developer) Operating Specification
-
-### Community 308 - "is_server_ready"
-Cohesion: 0.67
-Nodes (3): is_server_ready(), main(), Wait for server to be ready by polling the port.
 
 ### Community 313 - "🎨 Original Frontend Migration Sprint (`frontend/archived.todo` Master Archive — 40/40 completed)"
 Cohesion: 0.29
@@ -953,10 +1021,6 @@ Nodes (6): ⚙️ Backend Microservices Roadmap (`backend/be-todo.md`), 🏛️ 
 Cohesion: 0.33
 Nodes (5): Feature Execution SSOT (`docs/execution/<feature>/todo.md`), Phase 1: Product & Architecture Planning, Phase 2: Specs & Test-Driven QA (TDD Red Phase), Phase 3: Lean Implementation (TDD Green Phase), Phase 4: Post-Task Review & PR
 
-### Community 318 - "🔄 Refinement Workflow"
-Cohesion: 0.40
-Nodes (5): 1️⃣ Step 1: Understand Intent, 2️⃣ Step 2: Gather Missing Information, 3️⃣ Step 3: Clarify When Needed, 4️⃣ Step 4: Refine, 🔄 Refinement Workflow
-
 ### Community 320 - "DJP Citizen App — Todo"
 Cohesion: 0.33
 Nodes (5): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP Frontend Task Tracker (`frontend/fe-todo.md`), Phase 6 — Live Backend Integration (Upcoming Sprint), 📝 Technical Notes & Architectural Reference
@@ -964,10 +1028,6 @@ Nodes (5): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, 
 ### Community 322 - "🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification"
 Cohesion: 0.33
 Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification
-
-### Community 323 - "Phases"
-Cohesion: 0.33
-Nodes (6): Phase 1: Requirements & Discovery, Phase 2: Planning & Structure, Phase 3: Implementation, Phase 4: Testing & Verification, Phase 5: Delivery, Phases
 
 ### Community 324 - "🧪 QA Agent (TDD Test Engineer) Operating Specification"
 Cohesion: 0.33
@@ -981,22 +1041,46 @@ Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Requir
 Cohesion: 0.33
 Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
 
+### Community 336 - "# Architecture Debt"
+Cohesion: 0.33
+Nodes (6): ARCH-001 — Monolith Deployed; Microservices Documented (Critical Divergence), ARCH-002 — No API Gateway Exists, ARCH-003 — No Database Migration Strategy (ddl-auto: update in H2), ARCH-004 — Event Bus (Kafka/RabbitMQ) Listed but Undefined, ARCH-005 — pgvector / Semantic Store Architecture Undocumented, # Architecture Debt
+
+### Community 337 - "vision-core-draft.md"
+Cohesion: 0.25
+Nodes (7): AI:, Citizen action: they can raise:, 📝 **Digital Janta Vision Core (Draft)**, DJ Ceremonies, how it works:, Selection, types of user
+
+### Community 338 - "# Leadership / Process Debt"
+Cohesion: 0.33
+Nodes (6): LEAD-001 — No Definition of Done (DoD), LEAD-002 — dashboard.md Progress Metrics Are Stale and Inaccurate, LEAD-003 — Knowledge Silo: Single Agent / Owner Context, LEAD-004 — No Enforced Engineering Metrics or Quality Gates, LEAD-005 — ADRs Cover Only Frontend/Product Decisions; Backend Decisions Unrecorded, # Leadership / Process Debt
+
+### Community 339 - "# Testing Debt"
+Cohesion: 0.40
+Nodes (5): TEST-001 — Zero Real Backend Integration Tests Exist, TEST-002 — No Playwright Tests Despite "Active Sprint" Status on Dashboard, TEST-003 — No Frontend Unit or Component Tests, TEST-004 — No CI Pipeline for Automated Test Execution, # Testing Debt
+
+### Community 340 - "# DevOps Debt"
+Cohesion: 0.50
+Nodes (4): DEVOPS-001 — No Dockerfile for Backend, DEVOPS-002 — No Docker Compose for Local Development, DEVOPS-003 — No Release Strategy or Git Branching Convention, # DevOps Debt
+
+### Community 341 - "# Observability Debt"
+Cohesion: 0.50
+Nodes (4): OBS-001 — Zero Logging Configuration Exists, OBS-002 — No Metrics or Health Endpoint (Actuator Not in pom.xml), OBS-003 — No Distributed Tracing Between Microservices, # Observability Debt
+
 ## Knowledge Gaps
-- **1248 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1243 more)
+- **1371 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1366 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **131 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **130 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `💻 **Frontend Engineering Guide**` connect `💻 **Frontend Engineering Guide**` to `overview.md`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
-- **Why does `👋 **Conversational Onboarding & Progressive Disclosure**` connect `🔄 6-Step Onboarding Sequence` to `design-principles.md`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `🚨 **Civic Issue Reporting UX Specification**` connect `🚨 **Civic Issue Reporting UX Specification**` to `design-principles.md`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **Why does `Planning with Files` connect `Quick Reference` to `InsightsPage.tsx`?**
+  _High betweenness centrality (0.003) - this node is a cross-community bridge._
+- **Why does `Reference: Manus Context Engineering Principles` connect `7. JavaScript Performance` to `async-api-routes.md`, `InsightsPage.tsx`?**
+  _High betweenness centrality (0.002) - this node is a cross-community bridge._
+- **Why does `Task Plan: [Brief Description]` connect `2. Bundle Size Optimization` to `async-cheap-condition-before-await.md`, `InsightsPage.tsx`?**
+  _High betweenness centrality (0.001) - this node is a cross-community bridge._
 - **What connects `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script` to the rest of the system?**
-  _1288 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1411 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Test-Driven Development (TDD)` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Skill Creator` be split into smaller, more focused modules?**

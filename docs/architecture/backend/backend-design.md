@@ -4,11 +4,11 @@
 
 | Metadata | Value |
 | :--- | :--- |
-| **📅 Last Updated** | 2026-07-18 00:50 |
+| **📅 Last Updated** | 2026-07-18 20:25 |
 | **📌 Status** | `Stable` |
 | **🏷️ Version** | `v1.0.0` |
 | **👥 Owner** | `Principal Technical Architect` |
-| **🔗 Dependencies** | [overview.md](overview.md), [db-design.md](db-design.md) |
+| **🔗 Dependencies** | [overview.md](overview.md), [db-design.md](db-design.md), [backend-techstack.md](backend-techstack.md), [backend-engineer-dev.md](backend-engineer-dev.md) |
 
 ---
 ## 1. Goal & Architecture Overview
@@ -86,7 +86,12 @@ We adopt a "Working Model First" (MVP) approach. Each phase is completed using T
 3. Wire final frontend views.
 ---
 ## 6. Verification & Test Plan
-All endpoints will be verified through automated tests:
+All endpoints will be verified through automated tests and strict architectural standards:
 * **Unit Tests**: Using JUnit 5 and Mockito to test services and business logic validation in isolation.
 * **Integration Tests**: Using `@SpringBootTest` with active H2 profile to execute web layer requests (`MockMvc`) and database assertions.
-* **TDD Enforcement**: Write failing integration test cases first, verify failure, then write minimal clean code to make tests pass.
+* **TDD Enforcement**: Write failing integration test cases first (`Red`), verify failure, then write minimal clean code (`Green`) to make tests pass.
+* **Mandatory Engineering Gates**:
+  * **Layered Architecture**: Strictly isolate `Controller` → `Service` → `Repository`. Never expose JPA database entities directly to controllers; always map via `DTOs`.
+  * **Global Exception Handling**: All API errors must be handled centrally via `@ControllerAdvice` returning standardized HTTP error codes and hiding internal stack traces.
+  * **OpenAPI Generation**: All endpoints under `/djp/api/v1` must auto-document via `springdoc-openapi`.
+  * **Checklist Binding**: Before completing tasks or raising PRs, developers and agents must verify against **[backend-springboot-checklist.md](backend-springboot-checklist.md)**.

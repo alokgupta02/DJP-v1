@@ -9,11 +9,8 @@ This directory contains customized agent role definitions, checklists, guideline
 
 ### 📑 Directory Contents
 
-* **[Backend Engineer Agent Role](backend-engineer-dev.md)** `backend-engineer-dev.md`  
-  * 🧑‍💻 Comprehensive definition of the autonomous Backend Engineer Agent role, core principles (TDD), responsibilities, inputs/outputs, and success metrics.
-
-* **[Production-Ready Spring Boot Checklist](backend-springboot-checklist.md)** `backend-springboot-checklist.md`  
-  * ✅ Complete 21-point checklist covering code quality, API design, security, Docker, CI/CD, database tuning, and observability.
+* **Note on Backend Engineering Guides:**
+  * 🧑‍💻 **[Backend Engineer Agent Role](../architecture/backend-engineer-dev.md)** and ✅ **[Production-Ready Spring Boot Checklist](../architecture/backend-springboot-checklist.md)** have been moved to `docs/architecture/` so all backend architecture and engineering rules reside in one unified location.
 
 * **[Accessible & Visual Learning Guide](improvedlearning.md)** `improvedlearning.md`  
   * 🧠 Guidelines for structuring visual, highly readable, simple explanations tailored for learners who prefer structured visual layouts.

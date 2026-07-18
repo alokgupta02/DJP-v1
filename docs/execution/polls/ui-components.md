@@ -2,11 +2,13 @@
 
 ---
 
-| Metadata | Details |
+| Metadata | Value |
 | :--- | :--- |
-| **🎯 Purpose** | Standardized format and UX interaction patterns for creating and voting in civic polls |
-| **👥 Audience** | Developers, Designers, Content Creators |
+| **📅 Last Updated** | 2026-07-18 20:30 |
 | **📌 Status** | `Stable` |
+| **🏷️ Version** | `v1.0.0` |
+| **👥 Owner** | `UX / FE Lead` |
+| **🔗 Dependencies** | [../../architecture/submission-model.md](../../architecture/submission-model.md), [../../ux/design-principles.md](../../ux/design-principles.md), [../../architecture/global-config.yaml](../../architecture/global-config.yaml) |
 
 ---
 
