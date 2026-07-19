@@ -21,3 +21,5 @@
 - [x] Fix DEVOPS-001: Scaffold multi-stage production Dockerfile and corresponding .dockerignore targets
 - [x] Fix TECH-004 & SEC-003: Integrate Lombok and Resilience4j libraries and configure circuit breakers and retries
 - [x] Fix TECH-006: Scaffold layered exception classes, DTOs, and global RestControllerAdvice error handler
+- [x] Fix TECH-003: Implement Spring Security configurations, OAuth2 client redirection, and JWT verification
+
