@@ -48,6 +48,26 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: XCUT-002 — Missing Audit Logging Infrastructure (Tracking WHO/WHEN/WHAT mutations)
+* **📅 Resolution Date:** 2026-07-19 12:51 UTC
+* **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🟠 High
+* **📂 Files Modified / Created:**
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/BackendApplication.java` (Added @EnableJpaAuditing config annotation)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java` (Created AuditLog JPA entity mapping the audit_logs db schema)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java` (Created repository boundary extending JpaRepository and JpaSpecificationExecutor)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java` (Created audit logging service with transactional logAction storing entries to DB and writing structured logs)
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java` (Wired AuditLogService to track CREATE_ISSUE mutations)
+  * `[MODIFY] backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java` (Added database assertions verifying AuditLog entry creation)
+* **📝 Resolution Summary:**
+  * Implemented centralized audit logging infrastructure. Enabled Spring Data JPA Auditing, created the `AuditLog` entity mapping table columns, and built a reusable `AuditLogService`. Wired this to issue creation mutations to verify and validate operational audit logging.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `feat(backend): implement centralized database audit logging service (XCUT-002)`
+
 ### [RESOLVED] ID: XCUT-003 — Missing PII Masking in Logs & Exception Traces
 * **📅 Resolution Date:** 2026-07-19 12:43 UTC
 * **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)

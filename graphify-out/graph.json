@@ -2858,7 +2858,7 @@
       "label": "BackendApplication",
       "file_type": "code",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/BackendApplication.java",
-      "source_location": "L6",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_backendapplication_backendapplication",
       "community": 247,
@@ -2875,10 +2875,20 @@
       "norm_label": "springbootapplication"
     },
     {
+      "label": "EnableJpaAuditing",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "enablejpaauditing",
+      "community": 247,
+      "norm_label": "enablejpaauditing"
+    },
+    {
       "label": ".main()",
       "file_type": "code",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/BackendApplication.java",
-      "source_location": "L9",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_backendapplication_backendapplication_main",
       "community": 247,
@@ -3121,7 +3131,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller",
-      "community": 244,
+      "community": 336,
       "norm_label": "issuecontroller.java"
     },
     {
@@ -3168,7 +3178,7 @@
       "label": ".IssueController()",
       "file_type": "code",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L22",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_issuecontroller",
       "community": 244,
@@ -3178,10 +3188,10 @@
       "label": ".createIssue()",
       "file_type": "code",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L27",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_createissue",
-      "community": 244,
+      "community": 336,
       "norm_label": ".createissue()"
     },
     {
@@ -3191,7 +3201,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_java_authentication",
-      "community": 244,
+      "community": 336,
       "norm_label": "authentication"
     },
     {
@@ -3201,7 +3211,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_java_responseentity",
-      "community": 244,
+      "community": 336,
       "norm_label": "responseentity"
     },
     {
@@ -3211,7 +3221,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_java_issue",
-      "community": 244,
+      "community": 336,
       "norm_label": "issue"
     },
     {
@@ -3221,7 +3231,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "postmapping",
-      "community": 244,
+      "community": 336,
       "norm_label": "postmapping"
     },
     {
@@ -3775,6 +3785,216 @@
       "norm_label": "override"
     },
     {
+      "label": "AuditLog.java",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog",
+      "community": 340,
+      "norm_label": "auditlog.java"
+    },
+    {
+      "label": "AuditLog",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "community": 340,
+      "norm_label": "auditlog"
+    },
+    {
+      "label": "Entity",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_java_entity",
+      "community": 340,
+      "norm_label": "entity"
+    },
+    {
+      "label": "Table",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_java_table",
+      "community": 340,
+      "norm_label": "table"
+    },
+    {
+      "label": ".AuditLog()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_auditlog",
+      "community": 340,
+      "norm_label": ".auditlog()"
+    },
+    {
+      "label": ".onCreate()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_oncreate",
+      "community": 340,
+      "norm_label": ".oncreate()"
+    },
+    {
+      "label": "PrePersist",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_java_prepersist",
+      "community": 340,
+      "norm_label": "prepersist"
+    },
+    {
+      "label": ".getId()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_getid",
+      "community": 340,
+      "norm_label": ".getid()"
+    },
+    {
+      "label": ".setId()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_setid",
+      "community": 340,
+      "norm_label": ".setid()"
+    },
+    {
+      "label": ".getUserId()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_getuserid",
+      "community": 339,
+      "norm_label": ".getuserid()"
+    },
+    {
+      "label": ".setUserId()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_setuserid",
+      "community": 340,
+      "norm_label": ".setuserid()"
+    },
+    {
+      "label": ".getAction()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L64",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_getaction",
+      "community": 339,
+      "norm_label": ".getaction()"
+    },
+    {
+      "label": ".setAction()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L68",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_setaction",
+      "community": 340,
+      "norm_label": ".setaction()"
+    },
+    {
+      "label": ".getTargetType()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_gettargettype",
+      "community": 339,
+      "norm_label": ".gettargettype()"
+    },
+    {
+      "label": ".setTargetType()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_settargettype",
+      "community": 340,
+      "norm_label": ".settargettype()"
+    },
+    {
+      "label": ".getTargetId()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_gettargetid",
+      "community": 340,
+      "norm_label": ".gettargetid()"
+    },
+    {
+      "label": ".setTargetId()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L84",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_settargetid",
+      "community": 340,
+      "norm_label": ".settargetid()"
+    },
+    {
+      "label": ".getDetails()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L88",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_getdetails",
+      "community": 340,
+      "norm_label": ".getdetails()"
+    },
+    {
+      "label": ".setDetails()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L92",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_setdetails",
+      "community": 340,
+      "norm_label": ".setdetails()"
+    },
+    {
+      "label": ".getTimestamp()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_gettimestamp",
+      "community": 340,
+      "norm_label": ".gettimestamp()"
+    },
+    {
+      "label": ".setTimestamp()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L100",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_settimestamp",
+      "community": 340,
+      "norm_label": ".settimestamp()"
+    },
+    {
       "label": "Issue.java",
       "file_type": "code",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/model/Issue.java",
@@ -3831,7 +4051,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_issue_issue_oncreate",
-      "community": 223,
+      "community": 344,
       "norm_label": ".oncreate()"
     },
     {
@@ -3840,8 +4060,8 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "prepersist",
-      "community": 223,
+      "id": "backend_springboot_src_main_java_com_djp_backend_model_issue_java_prepersist",
+      "community": 344,
       "norm_label": "prepersist"
     },
     {
@@ -3851,7 +4071,7 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_issue_issue_onupdate",
-      "community": 223,
+      "community": 346,
       "norm_label": ".onupdate()"
     },
     {
@@ -3861,7 +4081,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "preupdate",
-      "community": 223,
+      "community": 346,
       "norm_label": "preupdate"
     },
     {
@@ -3891,7 +4111,7 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_issue_issue_getauthor",
-      "community": 223,
+      "community": 90,
       "norm_label": ".getauthor()"
     },
     {
@@ -4131,7 +4351,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user",
-      "community": 193,
+      "community": 336,
       "norm_label": "user.java"
     },
     {
@@ -4211,7 +4431,7 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setemail",
-      "community": 90,
+      "community": 342,
       "norm_label": ".setemail()"
     },
     {
@@ -4231,7 +4451,7 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setname",
-      "community": 90,
+      "community": 342,
       "norm_label": ".setname()"
     },
     {
@@ -4251,7 +4471,7 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setprovider",
-      "community": 90,
+      "community": 342,
       "norm_label": ".setprovider()"
     },
     {
@@ -4271,7 +4491,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setproviderid",
-      "community": 90,
+      "community": 342,
       "norm_label": ".setproviderid()"
     },
     {
@@ -4331,7 +4551,7 @@
       "source_location": "L126",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setsubscriptionstatus",
-      "community": 90,
+      "community": 342,
       "norm_label": ".setsubscriptionstatus()"
     },
     {
@@ -4391,7 +4611,7 @@
       "source_location": "L150",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setonboardingcompleted",
-      "community": 90,
+      "community": 342,
       "norm_label": ".setonboardingcompleted()"
     },
     {
@@ -4431,8 +4651,58 @@
       "source_location": "L166",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setrole",
-      "community": 193,
+      "community": 339,
       "norm_label": ".setrole()"
+    },
+    {
+      "label": "AuditLogRepository.java",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository",
+      "community": 244,
+      "norm_label": "auditlogrepository.java"
+    },
+    {
+      "label": "AuditLogRepository",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_auditlogrepository",
+      "community": 244,
+      "norm_label": "auditlogrepository"
+    },
+    {
+      "label": "JpaRepository",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "jparepository",
+      "community": 244,
+      "norm_label": "jparepository"
+    },
+    {
+      "label": "JpaSpecificationExecutor",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "jpaspecificationexecutor",
+      "community": 244,
+      "norm_label": "jpaspecificationexecutor"
+    },
+    {
+      "label": "Repository",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_java_repository",
+      "community": 244,
+      "norm_label": "repository"
     },
     {
       "label": "IssueRepository.java",
@@ -4455,16 +4725,6 @@
       "norm_label": "issuerepository"
     },
     {
-      "label": "JpaRepository",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "jparepository",
-      "community": 244,
-      "norm_label": "jparepository"
-    },
-    {
       "label": "Issue",
       "file_type": "code",
       "source_file": "",
@@ -4473,16 +4733,6 @@
       "id": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository_java_issue",
       "community": 244,
       "norm_label": "issue"
-    },
-    {
-      "label": "JpaSpecificationExecutor",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "jpaspecificationexecutor",
-      "community": 244,
-      "norm_label": "jpaspecificationexecutor"
     },
     {
       "label": "Repository",
@@ -4541,7 +4791,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository_userrepository_findbyproviderandproviderid",
-      "community": 90,
+      "community": 342,
       "norm_label": ".findbyproviderandproviderid()"
     },
     {
@@ -4771,7 +5021,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler",
-      "community": 340,
+      "community": 190,
       "norm_label": "oauth2successhandler.java"
     },
     {
@@ -4781,7 +5031,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler",
-      "community": 340,
+      "community": 190,
       "norm_label": "oauth2successhandler"
     },
     {
@@ -4791,7 +5041,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "simpleurlauthenticationsuccesshandler",
-      "community": 340,
+      "community": 190,
       "norm_label": "simpleurlauthenticationsuccesshandler"
     },
     {
@@ -4801,7 +5051,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_component",
-      "community": 340,
+      "community": 190,
       "norm_label": "component"
     },
     {
@@ -4811,7 +5061,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_logger",
-      "community": 340,
+      "community": 190,
       "norm_label": "logger"
     },
     {
@@ -4831,7 +5081,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler_onauthenticationsuccess",
-      "community": 340,
+      "community": 190,
       "norm_label": ".onauthenticationsuccess()"
     },
     {
@@ -4841,7 +5091,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_httpservletrequest",
-      "community": 340,
+      "community": 190,
       "norm_label": "httpservletrequest"
     },
     {
@@ -4851,7 +5101,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_httpservletresponse",
-      "community": 340,
+      "community": 190,
       "norm_label": "httpservletresponse"
     },
     {
@@ -4861,7 +5111,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_authentication",
-      "community": 340,
+      "community": 190,
       "norm_label": "authentication"
     },
     {
@@ -4871,7 +5121,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_override",
-      "community": 340,
+      "community": 190,
       "norm_label": "override"
     },
     {
@@ -4881,7 +5131,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler_getproviderid",
-      "community": 340,
+      "community": 190,
       "norm_label": ".getproviderid()"
     },
     {
@@ -4891,7 +5141,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "oauth2user",
-      "community": 340,
+      "community": 190,
       "norm_label": "oauth2user"
     },
     {
@@ -4901,7 +5151,7 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler_getemail",
-      "community": 340,
+      "community": 190,
       "norm_label": ".getemail()"
     },
     {
@@ -4911,7 +5161,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler_getname",
-      "community": 340,
+      "community": 190,
       "norm_label": ".getname()"
     },
     {
@@ -4921,8 +5171,78 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler_syncuserindatabase",
-      "community": 90,
+      "community": 342,
       "norm_label": ".syncuserindatabase()"
+    },
+    {
+      "label": "AuditLogService.java",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice",
+      "community": 343,
+      "norm_label": "auditlogservice.java"
+    },
+    {
+      "label": "AuditLogService",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice",
+      "community": 343,
+      "norm_label": "auditlogservice"
+    },
+    {
+      "label": "Service",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "service",
+      "community": 343,
+      "norm_label": "service"
+    },
+    {
+      "label": "Logger",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_java_logger",
+      "community": 343,
+      "norm_label": "logger"
+    },
+    {
+      "label": ".AuditLogService()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice_auditlogservice",
+      "community": 343,
+      "norm_label": ".auditlogservice()"
+    },
+    {
+      "label": ".logAction()",
+      "file_type": "code",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice_logaction",
+      "community": 343,
+      "norm_label": ".logaction()"
+    },
+    {
+      "label": "Transactional",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "transactional",
+      "community": 343,
+      "norm_label": "transactional"
     },
     {
       "label": "AuthIntegrationTest.java",
@@ -5011,7 +5331,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "backend_springboot_src_test_java_com_djp_backend_authintegrationtest_authintegrationtest_getme_withvalidtoken_returnsuserdto",
-      "community": 193,
+      "community": 339,
       "norm_label": ".getme_withvalidtoken_returnsuserdto()"
     },
     {
@@ -5158,7 +5478,7 @@
       "label": ".cleanup()",
       "file_type": "code",
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L33",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_cleanup",
       "community": 339,
@@ -5178,7 +5498,7 @@
       "label": ".createIssue_invalidInput_returns400()",
       "file_type": "code",
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L39",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_invalidinput_returns400",
       "community": 339,
@@ -5198,7 +5518,7 @@
       "label": ".createIssue_validInput_returns201()",
       "file_type": "code",
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L55",
+      "source_location": "L59",
       "_origin": "ast",
       "id": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_validinput_returns201",
       "community": 339,
@@ -11451,7 +11771,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_examples_example_1_research_task",
-      "community": 342,
+      "community": 98,
       "norm_label": "example 1: research task"
     },
     {
@@ -11461,7 +11781,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_examples_loop_1_create_plan",
-      "community": 342,
+      "community": 98,
       "norm_label": "loop 1: create plan"
     },
     {
@@ -11471,7 +11791,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_examples_loop_2_research",
-      "community": 342,
+      "community": 98,
       "norm_label": "loop 2: research"
     },
     {
@@ -11481,7 +11801,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_examples_loop_3_synthesize",
-      "community": 342,
+      "community": 98,
       "norm_label": "loop 3: synthesize"
     },
     {
@@ -11491,7 +11811,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_examples_loop_4_deliver",
-      "community": 342,
+      "community": 98,
       "norm_label": "loop 4: deliver"
     },
     {
@@ -22985,20 +23305,10 @@
       "norm_label": "obs-004: missing centralized alerting rules (`prometheus-alerts.yaml` / slack / pagerduty)"
     },
     {
-      "label": "XCUT-002: Missing Audit Logging Infrastructure (Tracking WHO/WHEN/WHAT mutations)",
-      "file_type": "document",
-      "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L427",
-      "_origin": "ast",
-      "id": "docs_audit_audit_debt_xcut_002_missing_audit_logging_infrastructure_tracking_who_when_what_mutations",
-      "community": 6,
-      "norm_label": "xcut-002: missing audit logging infrastructure (tracking who/when/what mutations)"
-    },
-    {
       "label": "Part X: Master Execution Roadmap & Prioritized Remediation Summary",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L441",
+      "source_location": "L430",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_part_x_master_execution_roadmap_prioritized_remediation_summary",
       "community": 6,
@@ -23055,10 +23365,20 @@
       "norm_label": "\ud83d\udcdc completed resolutions ledger"
     },
     {
-      "label": "[RESOLVED] ID: XCUT-003 \u2014 Missing PII Masking in Logs & Exception Traces",
+      "label": "[RESOLVED] ID: XCUT-002 \u2014 Missing Audit Logging Infrastructure (Tracking WHO/WHEN/WHAT mutations)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
       "source_location": "L51",
+      "_origin": "ast",
+      "id": "docs_audit_audit_log_resolved_id_xcut_002_missing_audit_logging_infrastructure_tracking_who_when_what_mutations",
+      "community": 156,
+      "norm_label": "[resolved] id: xcut-002 \u2014 missing audit logging infrastructure (tracking who/when/what mutations)"
+    },
+    {
+      "label": "[RESOLVED] ID: XCUT-003 \u2014 Missing PII Masking in Logs & Exception Traces",
+      "file_type": "document",
+      "source_file": "docs/audit/audit-log.md",
+      "source_location": "L71",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_xcut_003_missing_pii_masking_in_logs_exception_traces",
       "community": 156,
@@ -23068,7 +23388,7 @@
       "label": "[RESOLVED] ID: SEC-003 \u2014 Zero Bean Input Validation (@Valid, DTO annotations, OWASP Top 10)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L68",
+      "source_location": "L88",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_sec_003_zero_bean_input_validation_valid_dto_annotations_owasp_top_10",
       "community": 156,
@@ -23078,7 +23398,7 @@
       "label": "[RESOLVED] ID: DATA-002 \u2014 Missing JPA Repository Interfaces & Custom Queries",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L86",
+      "source_location": "L106",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_data_002_missing_jpa_repository_interfaces_custom_queries",
       "community": 156,
@@ -23088,7 +23408,7 @@
       "label": "[RESOLVED] ID: DOC-001 \u2014 backend-techstack.md vs backend-design.md Architectural Contradiction",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L103",
+      "source_location": "L123",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_doc_001_backend_techstack_md_vs_backend_design_md_architectural_contradiction",
       "community": 156,
@@ -23098,7 +23418,7 @@
       "label": "[RESOLVED] ID: SEC-005 \u2014 Graceful Shutdown & HTTP Security Headers Configuration",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L118",
+      "source_location": "L138",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_sec_005_graceful_shutdown_http_security_headers_configuration",
       "community": 156,
@@ -23108,7 +23428,7 @@
       "label": "[RESOLVED] ID: DATA-004 \u2014 H2 vs PostgreSQL Dialect Gaps & Connection Pool Settings Unverified",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L134",
+      "source_location": "L154",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_data_004_h2_vs_postgresql_dialect_gaps_connection_pool_settings_unverified",
       "community": 156,
@@ -23118,7 +23438,7 @@
       "label": "[RESOLVED] ID: SEC-001 (TECH-003) \u2014 Zero Authentication Implementation (SecurityConfig & JWT Flow)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L149",
+      "source_location": "L169",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_sec_001_tech_003_zero_authentication_implementation_securityconfig_jwt_flow",
       "community": 156,
@@ -23128,7 +23448,7 @@
       "label": "[RESOLVED] ID: TECH-006 \u2014 Missing Internal Layered Architecture (DTO, Service, Exception)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L173",
+      "source_location": "L193",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_tech_006_missing_internal_layered_architecture_dto_service_exception",
       "community": 156,
@@ -23138,7 +23458,7 @@
       "label": "[RESOLVED] ID: TECH-004 & SEC-003 \u2014 Missing Maven Dependencies & Resilience4j Configurations",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L191",
+      "source_location": "L211",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_tech_004_sec_003_missing_maven_dependencies_resilience4j_configurations",
       "community": 156,
@@ -23148,7 +23468,7 @@
       "label": "[RESOLVED] ID: DEVOPS-001 \u2014 No Backend Production Dockerfile",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L207",
+      "source_location": "L227",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_devops_001_no_backend_production_dockerfile",
       "community": 156,
@@ -23158,7 +23478,7 @@
       "label": "[RESOLVED] ID: SEC-001 \u2014 Missing Dependency Vulnerability Audit Process (OWASP / Dependabot)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L223",
+      "source_location": "L243",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_sec_001_missing_dependency_vulnerability_audit_process_owasp_dependabot",
       "community": 156,
@@ -23168,7 +23488,7 @@
       "label": "[RESOLVED] ID: DEP-002 \u2014 Spring Boot Version Drift (EOL 3.2.5 to 3.4.x)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L239",
+      "source_location": "L259",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_dep_002_spring_boot_version_drift_eol_3_2_5_to_3_4_x",
       "community": 156,
@@ -23178,7 +23498,7 @@
       "label": "[RESOLVED] ID: DOC-003 \u2014 Reference Links and Non-Existent Files in Architecture Design",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L254",
+      "source_location": "L274",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_doc_003_reference_links_and_non_existent_files_in_architecture_design",
       "community": 156,
@@ -23188,7 +23508,7 @@
       "label": "[RESOLVED] ID: DOC-002 \u2014 No Developer Onboarding / Environment Guide",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L272",
+      "source_location": "L292",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_doc_002_no_developer_onboarding_environment_guide",
       "community": 156,
@@ -23198,7 +23518,7 @@
       "label": "[RESOLVED] ID: OBS-001 \u2014 Zero Logging Configuration Exists",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L288",
+      "source_location": "L308",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_obs_001_zero_logging_configuration_exists",
       "community": 156,
@@ -23208,7 +23528,7 @@
       "label": "[RESOLVED] ID: TECH-002 \u2014 User Entity Missing 7 of 12 Fields from Spec",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L305",
+      "source_location": "L325",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_tech_002_user_entity_missing_7_of_12_fields_from_spec",
       "community": 156,
@@ -23218,7 +23538,7 @@
       "label": "[RESOLVED] ID: DOC-001 \u2014 Missing `api-spec.yaml` (OpenAPI Contract)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L320",
+      "source_location": "L340",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_doc_001_missing_api_spec_yaml_openapi_contract",
       "community": 156,
@@ -23228,7 +23548,7 @@
       "label": "[RESOLVED] ID: TECH-001 / ARCH-007 \u2014 Wildcard CORS & Base Path prefix in AuthController",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L335",
+      "source_location": "L355",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_tech_001_arch_007_wildcard_cors_base_path_prefix_in_authcontroller",
       "community": 156,
@@ -23238,7 +23558,7 @@
       "label": "[RESOLVED] ID: ARCH-001 \u2014 Modular Monolith Architectural Shift",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L350",
+      "source_location": "L370",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_arch_001_modular_monolith_architectural_shift",
       "community": 156,
@@ -23248,7 +23568,7 @@
       "label": "[RESOLVED] ID: LEAD-001 \u2014 Definition of Done (DoD) Quality Gate",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L366",
+      "source_location": "L386",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_lead_001_definition_of_done_dod_quality_gate",
       "community": 156,
@@ -23258,7 +23578,7 @@
       "label": "[RESOLVED] ID: CFG-001 / TEST-001 \u2014 Split Environment Profiles & Scaffold Integration Tests",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L381",
+      "source_location": "L401",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_cfg_001_test_001_split_environment_profiles_scaffold_integration_tests",
       "community": 156,
@@ -23268,7 +23588,7 @@
       "label": "[EXAMPLE] ID: DOC-001 \u2014 Missing `api-spec.yaml` (OpenAPI Contract)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L401",
+      "source_location": "L421",
       "_origin": "ast",
       "id": "docs_audit_audit_log_example_id_doc_001_missing_api_spec_yaml_openapi_contract",
       "community": 156,
@@ -31165,10 +31485,21 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/BackendApplication.java",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0,
       "source": "backend_springboot_src_main_java_com_djp_backend_backendapplication",
       "target": "backend_springboot_src_main_java_com_djp_backend_backendapplication_backendapplication",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/BackendApplication.java",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_backendapplication",
+      "target": "enablejpaauditing",
       "confidence_score": 1.0
     },
     {
@@ -31186,7 +31517,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/BackendApplication.java",
-      "source_location": "L9",
+      "source_location": "L11",
       "weight": 1.0,
       "source": "backend_springboot_src_main_java_com_djp_backend_backendapplication_backendapplication",
       "target": "backend_springboot_src_main_java_com_djp_backend_backendapplication_backendapplication_main",
@@ -31196,7 +31527,18 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/BackendApplication.java",
-      "source_location": "L6",
+      "source_location": "L7",
+      "weight": 1.0,
+      "context": "attribute",
+      "source": "backend_springboot_src_main_java_com_djp_backend_backendapplication_backendapplication",
+      "target": "enablejpaauditing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/BackendApplication.java",
+      "source_location": "L7",
       "weight": 1.0,
       "context": "attribute",
       "source": "backend_springboot_src_main_java_com_djp_backend_backendapplication_backendapplication",
@@ -31846,7 +32188,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller",
       "target": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_createissue",
@@ -31856,7 +32198,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0,
       "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller",
       "target": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_issuecontroller",
@@ -31921,7 +32263,18 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L22",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "field",
+      "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller",
+      "target": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
+      "source_location": "L23",
       "weight": 1.0,
       "context": "parameter_type",
       "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_issuecontroller",
@@ -31932,7 +32285,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0,
       "context": "parameter_type",
       "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_issuecontroller",
@@ -31943,7 +32296,18 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L27",
+      "source_location": "L23",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_issuecontroller",
+      "target": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
+      "source_location": "L29",
       "weight": 1.0,
       "context": "parameter_type",
       "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_createissue",
@@ -31955,7 +32319,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_createissue",
       "target": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_java_issue",
@@ -31965,7 +32329,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "context": "return_type",
       "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_createissue",
@@ -31976,7 +32340,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "context": "parameter_type",
       "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_createissue",
@@ -31989,16 +32353,27 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L37",
+      "source_location": "L39",
       "weight": 1.0,
       "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_createissue",
       "target": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository_userrepository_findbyemail"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_createissue",
+      "target": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice_logaction"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "context": "attribute",
       "source": "backend_springboot_src_main_java_com_djp_backend_controller_issuecontroller_issuecontroller_createissue",
@@ -33001,6 +33376,297 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_auditlog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_getaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_getdetails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_getid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_gettargetid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_gettargettype",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_gettimestamp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_getuserid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_oncreate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_setaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_setdetails",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_setid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_settargetid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_settargettype",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_settimestamp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_setuserid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "context": "attribute",
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_java_entity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "context": "attribute",
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_java_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "generic_arg",
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_auditlogrepository",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice_logaction",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java",
+      "source_location": "L43",
+      "weight": 1.0,
+      "context": "attribute",
+      "source": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_oncreate",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_java_prepersist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_validinput_returns201",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_getuserid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_validinput_returns201",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_getaction"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_validinput_returns201",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_gettargettype"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/security/JwtAuthenticationFilter.java",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_security_jwtauthenticationfilter_jwtauthenticationfilter_dofilterinternal",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_setdetails"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/model/Issue.java",
       "source_location": "L7",
       "weight": 1.0,
@@ -33361,7 +34027,7 @@
       "weight": 1.0,
       "context": "attribute",
       "source": "backend_springboot_src_main_java_com_djp_backend_model_issue_issue_oncreate",
-      "target": "prepersist",
+      "target": "backend_springboot_src_main_java_com_djp_backend_model_issue_java_prepersist",
       "confidence_score": 1.0
     },
     {
@@ -33881,7 +34547,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L43",
+      "source_location": "L47",
       "weight": 1.0,
       "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_invalidinput_returns400",
       "target": "backend_springboot_src_main_java_com_djp_backend_model_user_user_getrole"
@@ -33892,7 +34558,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L59",
+      "source_location": "L63",
       "weight": 1.0,
       "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_validinput_returns201",
       "target": "backend_springboot_src_main_java_com_djp_backend_model_user_user_getrole"
@@ -33922,6 +34588,208 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository",
+      "target": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_auditlogrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository",
+      "target": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_java_repository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository",
+      "target": "jparepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository",
+      "target": "jpaspecificationexecutor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "attribute",
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_auditlogrepository",
+      "target": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_java_repository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_auditlogrepository",
+      "target": "jparepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_auditlogrepository",
+      "target": "jpaspecificationexecutor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice",
+      "target": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_auditlogrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L15",
+      "weight": 1.0,
+      "context": "field",
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice",
+      "target": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_auditlogrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L17",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice_auditlogservice",
+      "target": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_auditlogrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
+      "source_location": "L33",
+      "weight": 1.0,
+      "context": "field",
+      "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest",
+      "target": "backend_springboot_src_main_java_com_djp_backend_repository_auditlogrepository_auditlogrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository",
+      "target": "jparepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository_issuerepository",
+      "target": "jparepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/UserRepository.java",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository",
+      "target": "jparepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/UserRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository_userrepository",
+      "target": "jparepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository",
+      "target": "jpaspecificationexecutor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository_issuerepository",
+      "target": "jpaspecificationexecutor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/UserRepository.java",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository",
+      "target": "jpaspecificationexecutor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/UserRepository.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository_userrepository",
+      "target": "jpaspecificationexecutor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java",
       "source_location": "L10",
       "weight": 1.0,
@@ -33938,28 +34806,6 @@
       "weight": 1.0,
       "source": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository",
       "target": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository_java_repository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository",
-      "target": "jparepository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository",
-      "target": "jpaspecificationexecutor",
       "confidence_score": 1.0
     },
     {
@@ -33985,26 +34831,6 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "inherits",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository_issuerepository",
-      "target": "jparepository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "inherits",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository_issuerepository",
-      "target": "jpaspecificationexecutor",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -34024,48 +34850,6 @@
       "context": "field",
       "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest",
       "target": "backend_springboot_src_main_java_com_djp_backend_repository_issuerepository_issuerepository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/UserRepository.java",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository",
-      "target": "jparepository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "inherits",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/UserRepository.java",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository_userrepository",
-      "target": "jparepository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/UserRepository.java",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository",
-      "target": "jpaspecificationexecutor",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "inherits",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/springboot/src/main/java/com/djp/backend/repository/UserRepository.java",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository_userrepository",
-      "target": "jpaspecificationexecutor",
       "confidence_score": 1.0
     },
     {
@@ -34697,7 +35481,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L43",
+      "source_location": "L47",
       "weight": 1.0,
       "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_invalidinput_returns400",
       "target": "backend_springboot_src_main_java_com_djp_backend_security_jwttokenprovider_jwttokenprovider_createtoken"
@@ -34708,7 +35492,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L59",
+      "source_location": "L63",
       "weight": 1.0,
       "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_validinput_returns201",
       "target": "backend_springboot_src_main_java_com_djp_backend_security_jwttokenprovider_jwttokenprovider_createtoken"
@@ -35011,6 +35795,102 @@
       "context": "parameter_type",
       "source": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler_getname",
       "target": "oauth2user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice",
+      "target": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice",
+      "target": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_java_logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice",
+      "target": "service",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice",
+      "target": "transactional",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice",
+      "target": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice_auditlogservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice",
+      "target": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice_logaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L13",
+      "weight": 1.0,
+      "context": "field",
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice",
+      "target": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_java_logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L10",
+      "weight": 1.0,
+      "context": "attribute",
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice",
+      "target": "service",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "attribute",
+      "source": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice_logaction",
+      "target": "transactional",
       "confidence_score": 1.0
     },
     {
@@ -35378,7 +36258,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest",
       "target": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_cleanup",
@@ -35388,7 +36268,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L39",
+      "source_location": "L43",
       "weight": 1.0,
       "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest",
       "target": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_invalidinput_returns400",
@@ -35398,7 +36278,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L55",
+      "source_location": "L59",
       "weight": 1.0,
       "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest",
       "target": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_validinput_returns201",
@@ -35430,7 +36310,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0,
       "context": "attribute",
       "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_cleanup",
@@ -35441,7 +36321,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L39",
+      "source_location": "L43",
       "weight": 1.0,
       "context": "attribute",
       "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_invalidinput_returns400",
@@ -35452,7 +36332,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java",
-      "source_location": "L55",
+      "source_location": "L59",
       "weight": 1.0,
       "context": "attribute",
       "source": "backend_springboot_src_test_java_com_djp_backend_issueintegrationtest_issueintegrationtest_createissue_validinput_returns201",
@@ -51831,7 +52711,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L441",
+      "source_location": "L430",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_monorepo_master_technical_architectural_debt_register_ssot",
       "target": "docs_audit_audit_debt_part_x_master_execution_roadmap_prioritized_remediation_summary",
@@ -52160,16 +53040,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L427",
-      "weight": 1.0,
-      "source": "docs_audit_audit_debt_part_ix_observability_logging_cross_cutting_concerns_obs_xcut",
-      "target": "docs_audit_audit_debt_xcut_002_missing_audit_logging_infrastructure_tracking_who_when_what_mutations",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -52221,7 +53091,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L401",
+      "source_location": "L421",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_example_id_doc_001_missing_api_spec_yaml_openapi_contract",
@@ -52231,7 +53101,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L350",
+      "source_location": "L370",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_arch_001_modular_monolith_architectural_shift",
@@ -52241,7 +53111,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L381",
+      "source_location": "L401",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_cfg_001_test_001_split_environment_profiles_scaffold_integration_tests",
@@ -52251,7 +53121,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L86",
+      "source_location": "L106",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_data_002_missing_jpa_repository_interfaces_custom_queries",
@@ -52261,7 +53131,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L134",
+      "source_location": "L154",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_data_004_h2_vs_postgresql_dialect_gaps_connection_pool_settings_unverified",
@@ -52271,7 +53141,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L239",
+      "source_location": "L259",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_dep_002_spring_boot_version_drift_eol_3_2_5_to_3_4_x",
@@ -52281,7 +53151,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L207",
+      "source_location": "L227",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_devops_001_no_backend_production_dockerfile",
@@ -52291,7 +53161,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L103",
+      "source_location": "L123",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_doc_001_backend_techstack_md_vs_backend_design_md_architectural_contradiction",
@@ -52301,7 +53171,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L320",
+      "source_location": "L340",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_doc_001_missing_api_spec_yaml_openapi_contract",
@@ -52311,7 +53181,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L272",
+      "source_location": "L292",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_doc_002_no_developer_onboarding_environment_guide",
@@ -52321,7 +53191,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L254",
+      "source_location": "L274",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_doc_003_reference_links_and_non_existent_files_in_architecture_design",
@@ -52331,7 +53201,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L366",
+      "source_location": "L386",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_lead_001_definition_of_done_dod_quality_gate",
@@ -52341,7 +53211,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L288",
+      "source_location": "L308",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_obs_001_zero_logging_configuration_exists",
@@ -52351,7 +53221,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L223",
+      "source_location": "L243",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_sec_001_missing_dependency_vulnerability_audit_process_owasp_dependabot",
@@ -52361,7 +53231,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L149",
+      "source_location": "L169",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_sec_001_tech_003_zero_authentication_implementation_securityconfig_jwt_flow",
@@ -52371,7 +53241,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L68",
+      "source_location": "L88",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_sec_003_zero_bean_input_validation_valid_dto_annotations_owasp_top_10",
@@ -52381,7 +53251,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L118",
+      "source_location": "L138",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_sec_005_graceful_shutdown_http_security_headers_configuration",
@@ -52391,7 +53261,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L335",
+      "source_location": "L355",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_tech_001_arch_007_wildcard_cors_base_path_prefix_in_authcontroller",
@@ -52401,7 +53271,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L305",
+      "source_location": "L325",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_tech_002_user_entity_missing_7_of_12_fields_from_spec",
@@ -52411,7 +53281,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L191",
+      "source_location": "L211",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_tech_004_sec_003_missing_maven_dependencies_resilience4j_configurations",
@@ -52421,7 +53291,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L173",
+      "source_location": "L193",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_tech_006_missing_internal_layered_architecture_dto_service_exception",
@@ -52432,6 +53302,16 @@
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
       "source_location": "L51",
+      "weight": 1.0,
+      "source": "docs_audit_audit_log_completed_resolutions_ledger",
+      "target": "docs_audit_audit_log_resolved_id_xcut_002_missing_audit_logging_infrastructure_tracking_who_when_what_mutations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/audit/audit-log.md",
+      "source_location": "L71",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_xcut_003_missing_pii_masking_in_logs_exception_traces",
@@ -55539,5 +56419,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "cdf6ddcc13bb8d8ce6f12f4b058c250223ffb603"
+  "built_at_commit": "8f1bbf93aaa72edeea0b4b43bd228a7af28dcac6"
 }

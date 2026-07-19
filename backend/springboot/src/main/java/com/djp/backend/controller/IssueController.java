@@ -18,10 +18,12 @@ public class IssueController {
 
     private final IssueRepository issueRepository;
     private final UserRepository userRepository;
+    private final com.djp.backend.service.AuditLogService auditLogService;
 
-    public IssueController(IssueRepository issueRepository, UserRepository userRepository) {
+    public IssueController(IssueRepository issueRepository, UserRepository userRepository, com.djp.backend.service.AuditLogService auditLogService) {
         this.issueRepository = issueRepository;
         this.userRepository = userRepository;
+        this.auditLogService = auditLogService;
     }
 
     @PostMapping
@@ -51,6 +53,16 @@ public class IssueController {
         issue.setLocation(request.getLocation());
 
         Issue saved = issueRepository.save(issue);
+
+        // Audit the mutation
+        auditLogService.logAction(
+                author.getId().toString(),
+                "CREATE_ISSUE",
+                "Issue",
+                saved.getId().toString(),
+                "Title: " + saved.getTitle() + ", Category: " + saved.getCategory()
+        );
+
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 }

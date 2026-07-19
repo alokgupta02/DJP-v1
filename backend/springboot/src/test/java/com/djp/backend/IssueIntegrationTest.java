@@ -30,8 +30,12 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
+    @Autowired
+    private com.djp.backend.repository.AuditLogRepository auditLogRepository;
+
     @AfterEach
     public void cleanup() {
+        auditLogRepository.deleteAll();
         issueRepository.deleteAll();
         userRepository.deleteAll();
     }
@@ -74,5 +78,12 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
                 .andExpect(jsonPath("$.id").exists())
                 .andExpect(jsonPath("$.title").value("Water leakage in ward 12"))
                 .andExpect(jsonPath("$.status").value("REPORTED"));
+
+        // Assert that the mutation was audited
+        org.junit.jupiter.api.Assertions.assertEquals(1, auditLogRepository.count());
+        com.djp.backend.model.AuditLog auditLog = auditLogRepository.findAll().get(0);
+        org.junit.jupiter.api.Assertions.assertEquals(user.getId().toString(), auditLog.getUserId());
+        org.junit.jupiter.api.Assertions.assertEquals("CREATE_ISSUE", auditLog.getAction());
+        org.junit.jupiter.api.Assertions.assertEquals("Issue", auditLog.getTargetType());
     }
 }

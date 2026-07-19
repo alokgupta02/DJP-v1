@@ -960,13 +960,13 @@
     "semantic_hash": ""
   },
   "backend/springboot/pom.xml": {
-    "mtime": 1784464677.4146183,
-    "ast_hash": "23f8bb7a260f6a5a86df048a71092684",
+    "mtime": 1784465357.3323896,
+    "ast_hash": "dd9aa491a1d33df50cc6f72b32802a6f",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/BackendApplication.java": {
-    "mtime": 1783870338.6306405,
-    "ast_hash": "e43707410b1956b1deda7b9e69a36256",
+    "mtime": 1784465355.1924193,
+    "ast_hash": "08b40f57a82a0467f5c6a63e1d0f3fb8",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/controller/AuthController.java": {
@@ -2200,8 +2200,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-log.md": {
-    "mtime": 1784465012.0700948,
-    "ast_hash": "06f679e216fbb347f6f657427fb92b99",
+    "mtime": 1784465442.209345,
+    "ast_hash": "f194db10ca0593c7b2e1c87e8ad5afdb",
     "semantic_hash": ""
   },
   "docs/audit/README.MD": {
@@ -2250,8 +2250,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-debt.md": {
-    "mtime": 1784465023.2827306,
-    "ast_hash": "4d4c342df649ce9bc747771ba25d4475",
+    "mtime": 1784465456.1121976,
+    "ast_hash": "b7d1cdd37ae16209af8c07d6dcf6d648",
     "semantic_hash": ""
   },
   "backend/springboot/src/test/java/com/djp/backend/BackendApplicationTests.java": {
@@ -2370,8 +2370,8 @@
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java": {
-    "mtime": 1784464688.1357393,
-    "ast_hash": "7ec73bec682f6788259bc471fd4eacb3",
+    "mtime": 1784465314.0750263,
+    "ast_hash": "00bfd64953d8fea1bf16084fff27ce23",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/dto/IssueCreateRequestDto.java": {
@@ -2380,8 +2380,8 @@
     "semantic_hash": ""
   },
   "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java": {
-    "mtime": 1784464694.9548166,
-    "ast_hash": "13cfff1c113af9c07dd843764c69c49d",
+    "mtime": 1784465327.2398245,
+    "ast_hash": "d9ad73e0d3aa73af6edad7b68d50f841",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/logging/MaskingMessageConverter.java": {
@@ -2392,6 +2392,21 @@
   "backend/springboot/src/test/java/com/djp/backend/LoggingMaskingTest.java": {
     "mtime": 1784464886.4988763,
     "ast_hash": "072b17db6ceb3f2726d8d19d83e50f8d",
+    "semantic_hash": ""
+  },
+  "backend/springboot/src/main/java/com/djp/backend/model/AuditLog.java": {
+    "mtime": 1784465298.1762795,
+    "ast_hash": "60bb1dcd077ab21483cd35a2ff9e345d",
+    "semantic_hash": ""
+  },
+  "backend/springboot/src/main/java/com/djp/backend/repository/AuditLogRepository.java": {
+    "mtime": 1784465301.4392269,
+    "ast_hash": "06a5a96a79397a0a7f7fc45278867416",
+    "semantic_hash": ""
+  },
+  "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java": {
+    "mtime": 1784465304.3871794,
+    "ast_hash": "08deafb05f32bf83e45d0c6efe30d60c",
     "semantic_hash": ""
   }
 }

@@ -31,8 +31,8 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **7. Security, Auth & Fault Tolerance (`SEC`)** | 0 | 1 | 0 | **1** | **Substantially Improved** — JWT Engine, Graceful Shutdown, Security Filter Chain, and input validation are live. |
 | **8. Testing & Quality Assurance (`TEST`)** | 2 | 1 | 0 | **3** | **Partial Base** — Backend test infrastructure scaffolded; E2E Playwright and frontend test suites missing. |
 | **9. DevOps, Containerization & CI/CD (`DEVOPS`)** | 2 | 0 | 0 | **2** | **Non-Existent** — Missing automated CI/CD pipeline and multi-stage Dockerfiles. |
-| **10. Observability & Cross-Cutting (`OBS/XCUT`)** | 3 | 1 | 0 | **4** | **Blind Spot** — Missing Actuator health probes, structured log format (JSON), and centralized alerting. PII log masking active. |
-| **TOTALS** | **11** | **19** | **3** | **33** | **Active Technical Debt Tracked and Scoped for Remediation.** |
+| **10. Observability & Cross-Cutting (`OBS/XCUT`)** | 3 | 0 | 0 | **3** | **Blind Spot** — Missing Actuator health probes, structured log format (JSON), and centralized alerting. PII log masking and DB audit logging are active. |
+| **TOTALS** | **11** | **18** | **3** | **32** | **Active Technical Debt Tracked and Scoped for Remediation.** |
 
 ---
 
@@ -423,17 +423,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Impact / Risk** | Production outages and database deadlocks go unnoticed until reported by external citizens or political stakeholders. |
 | **Remediation Action** | Create `docs/operations/prometheus-alerts.yaml` defining critical liveness, error rate, and latency SLA alerts tied to Slack/PagerDuty webhook targets. |
 | **Estimated Effort** | 2 hours |
-
-### XCUT-002: Missing Audit Logging Infrastructure (Tracking WHO/WHEN/WHAT mutations)
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | 🟠 High |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | Civic political platforms require strict immutable audit logs tracking who created, updated, or deleted critical records (`issues`, `polls`, `discussions`, `user roles`). |
-| **Impl Reality / Evidence** | No `@EntityListeners(AuditingEntityListener.class)` configuration, `@CreatedBy`/`@LastModifiedBy` annotations, or dedicated `audit_logs` table tracking exists in `backend/springboot/`. |
-| **Impact / Risk** | Cannot trace unauthorized administrative role changes, deleted civic posts, or poll vote manipulation back to specific user accounts. |
-| **Remediation Action** | Enable `@EnableJpaAuditing` in Spring Boot config and create `AuditLogService` logging state transitions to `audit_logs` table (and structured JSON logs). |
-| **Estimated Effort** | 3 hours |
 
 
 ---
