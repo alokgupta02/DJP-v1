@@ -1,16 +1,16 @@
-# Graph Report - DJP-v1  (2026-07-18)
+# Graph Report - DJP-v1  (2026-07-19)
 
 ## Corpus Check
-- 389 files · ~243,528 words
+- 415 files · ~260,292 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2346 nodes · 2353 edges · 340 communities (210 shown, 130 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.71)
+- 2580 nodes · 2710 edges · 348 communities (218 shown, 130 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 38 edges (avg confidence: 0.77)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `22ab8728`
+- Built from commit: `e8e6c388`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -97,7 +97,7 @@
 - design-principles.md
 - 🧭 **Navigation System Specification**
 - README.md
-- 🧑‍💻 **Backend Engineer Agent Role**
+- GlobalExceptionHandler.java
 - index.ts
 - Supabase Postgres Best Practices
 - React Best Practices
@@ -122,6 +122,7 @@
 - DJP Citizen App — Todo
 - start-server.sh
 - tsconfig.json
+- InsightsPage.tsx
 - RepresentativesPage.tsx
 - tsconfig.json
 - vercel.json
@@ -194,7 +195,7 @@
 - rendering-hoist-jsx.md
 - rendering-hydration-no-flicker.md
 - rendering-hydration-suppress-warning.md
-- design-principles.md
+- JwtTokenProvider
 - rendering-script-defer-async.md
 - 📋 DJP-v1 Technical Debt Register
 - rendering-usetransition-loading.md
@@ -235,7 +236,6 @@
 - AuthController
 - Memory Search
 - DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy
-- Technical Architecture: Spring Boot OAuth2 Login
 - DJP Documentation Sitemap & Organization Rules
 - DJP Agent Team Operating Rules
 - BackendApplication
@@ -305,6 +305,7 @@
 - server-auth-actions.md
 - Feature Execution Checklist (`docs/execution/<feature>/todo.md`)
 - server-cache-lru.md
+- # Technical Debt
 - server-dedup-props.md
 - DJP Citizen App — Todo
 - 🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification
@@ -317,24 +318,31 @@
 - _template.md
 - NotificationsPage.tsx
 - SKILL.md
-- # Architecture Debt
+- 📋 DJP-v1 Technical Debt Register
+- Backend Engineering Debt Register — DJP-v1
 - vision-core-draft.md
-- # Leadership / Process Debt
-- # Testing Debt
-- # DevOps Debt
-- # Observability Debt
+- 📋 Standard Mandatory Steps for Every Completed Task
+- Universal Markdown Metadata Guardrail
+- OAuth2SuccessHandler
+- Part V: DevOps, CI/CD & Observability
+- SecurityConfig.java
+- Category 7: Observability Debt (Checklist §10 — 0/61 Items)
+- Category 5: Data Layer Debt
+- 🔴 1. Critical Backend Debt (Active Blockers)
+- .doFilter
+- Part IV: Testing, TDD & Quality Assurance
 
 ## God Nodes (most connected - your core abstractions)
-1. `💻 **Frontend Engineering Guide**` - 22 edges
-2. `analyze_repo()` - 20 edges
-3. `compilerOptions` - 18 edges
-4. `Planning with Files` - 18 edges
-5. `compilerOptions` - 16 edges
-6. `5. Re-render Optimization` - 16 edges
-7. `compilerOptions` - 15 edges
-8. `compilerOptions` - 15 edges
-9. `7. JavaScript Performance` - 15 edges
-10. `Test-Driven Development (TDD)` - 15 edges
+1. `User` - 36 edges
+2. `💻 **Frontend Engineering Guide**` - 22 edges
+3. `analyze_repo()` - 20 edges
+4. `📜 Completed Resolutions Ledger` - 19 edges
+5. `compilerOptions` - 18 edges
+6. `Planning with Files` - 18 edges
+7. `JwtTokenProvider` - 16 edges
+8. `compilerOptions` - 16 edges
+9. `5. Re-render Optimization` - 16 edges
+10. `OAuth2SuccessHandler` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `main()` --calls--> `generate_html()`  [INFERRED]
@@ -351,7 +359,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (340 total, 130 thin omitted)
+## Communities (348 total, 130 thin omitted)
 
 ### Community 0 - "Test-Driven Development (TDD)"
 Cohesion: 0.05
@@ -374,12 +382,12 @@ Cohesion: 0.19
 Nodes (29): analyze_repo(), build_change_map(), build_eval_contract(), build_research_map(), collect_candidates(), collect_config_binding_hints(), collect_data_interface_files(), collect_metric_files() (+21 more)
 
 ### Community 5 - "useSidebar"
-Cohesion: 0.12
-Nodes (17): AppLayout(), Topbar(), TopbarProps, createAction, sidebarItems, Sidebar(), SidebarItem, SidebarContext (+9 more)
+Cohesion: 0.06
+Nodes (33): AppLayout(), Topbar(), TopbarProps, createAction, sidebarItems, Sidebar(), SidebarItem, SidebarContext (+25 more)
 
 ### Community 6 - "index.ts"
-Cohesion: 0.10
-Nodes (16): AvatarProps, AvatarSize, sizeClasses, BadgeProps, BadgeSize, BadgeVariant, sizeClasses, variantClasses (+8 more)
+Cohesion: 0.13
+Nodes (15): GOV-001: No Election Commission of India (ECI) / Political Party Legal Structure, GOV-002: No Data Privacy Policy under India's DPDPA 2023 / GDPR, GOV-003: No Financial Governance, Treasury, or Paid Leader Policy, GOV-004: No Anti-Gaming Safeguards Defined (GPS Spoofing & Sybil Attacks), GOV-005: No Content Moderation Framework & Designated Grievance Officer, GOV-006: No Leader Exit, Demotion, or Dispute Resolution Process, GOV-007: No Regional / Multilingual (i18n) Architecture Plan, LEAD-001: No Authoritative Definition of Done (DoD) & TDD Workflow Gate [RESOLVED] (+7 more)
 
 ### Community 7 - "Process"
 Cohesion: 0.07
@@ -598,8 +606,8 @@ Cohesion: 0.33
 Nodes (5): 2026-07-13 Session, Current Sprint, DJPv1 ACTIVE STATE, Session Delta Logs, Task Breakdown
 
 ### Community 61 - "📦 **Common Submission Model Architecture**"
-Cohesion: 0.29
-Nodes (7): 1. Goal & Architecture Overview, 2. Directory & Package Structure, 3. Database Schema Design, 4. REST API Endpoint Contracts, 6. Verification & Test Plan, ⚙️ **Backend API Engineering Specification**, System Components
+Cohesion: 0.15
+Nodes (13): 1. Goal & Architecture Overview, 2. Directory & Package Structure, 3. Database Schema Design, 4. REST API Endpoint Contracts, 5. Phased Implementation Plan, 6. Verification & Test Plan, ⚙️ **Backend API Engineering Specification**, Phase 1: Project Setup & OAuth2 (MVP 1) (+5 more)
 
 ### Community 62 - "helper.js"
 Cohesion: 0.42
@@ -614,8 +622,8 @@ Cohesion: 0.05
 Nodes (36): 🎨 1. Presentation & Layout, 📊 2. Visual Enhancements, 🧭 4-Step Teaching Framework for Complex Topics, 🧠 **Accessible & Visual Learning Guide (Dyslexia-Friendly)**, ✅ Content Quality Checklist, ✨ Core Communication Rules, 🎯 Purpose, 1️⃣ Step 1: Understand Intent (+28 more)
 
 ### Community 65 - "🔍 Detailed Decision Records"
-Cohesion: 0.18
-Nodes (11): 📌 ADR-001: Progressive Disclosure Pattern, 📌 ADR-002: Chart.js for Visualizations, 📌 ADR-003: Mobile-First Design, 📌 ADR-004: Shared React 18 & Vite Foundation, 📌 ADR-005: Static & CDN Edge Hosting, 📌 ADR-006: Modular Microservices Backend, 📌 ADR-007: Dynamic Ranks & Paid Leader Gate, 📜 **Architectural Decision Records (ADR)** (+3 more)
+Cohesion: 0.17
+Nodes (12): 📌 ADR-001: Progressive Disclosure Pattern, 📌 ADR-002: Chart.js for Visualizations, 📌 ADR-003: Mobile-First Design, 📌 ADR-004: Shared React 18 & Vite Foundation, 📌 ADR-005: Static & CDN Edge Hosting, 📌 ADR-006: Modular Microservices Backend, 📌 ADR-007: Dynamic Ranks & Paid Leader Gate, 📌 ADR-008: Modular Monolith for MVP (+4 more)
 
 ### Community 66 - "🌟 **Digital Janata Party (DJP) Vision**"
 Cohesion: 0.17
@@ -677,9 +685,9 @@ Nodes (7): ⚡ JavaScript Active State Automation, ✅ Navigation Quality Checkl
 Cohesion: 0.29
 Nodes (6): 1. Executive Summary & Big Picture, 2. Identified Architectural Areas & Domain Boundaries, 3. Agentic Workflow Guardrails & Responsibilities, 4. Key Takeaways & Memory Aid, Strict Agent Enforcement Rules:, 🏛️ System Boundaries & Agentic Guardrails Matrix
 
-### Community 82 - "🧑‍💻 **Backend Engineer Agent Role**"
-Cohesion: 0.18
-Nodes (11): DOC-001 — Missing api-spec.yaml (OpenAPI Contract), DOC-002 — No Developer Onboarding Guide, DOC-003 — No Runbooks or Operational Playbooks, DOC-004 — AI Service Has No Architecture or API Documentation, DOC-005 — Schema Conflict: db-design.md vs oauth-login-architecture.md vs AuthController.java, DOC-006 — No Contribution Guidelines (CONTRIBUTING.md), DOC-007 — Deployment Guide Missing Backend Deployment Instructions, DOC-008 — Execution PRDs Exist Only for OAuth Login (+3 more)
+### Community 82 - "GlobalExceptionHandler.java"
+Cohesion: 0.19
+Nodes (13): ErrorResponse, GlobalExceptionHandler, HttpServletRequest, Logger, ResponseEntity, ResponseStatus, ResourceNotFoundException, ResponseStatus (+5 more)
 
 ### Community 83 - "index.ts"
 Cohesion: 0.38
@@ -710,7 +718,7 @@ Cohesion: 0.31
 Nodes (8): apply_v3_mode(), create_files_in(), gen_nonce(), init-session.sh script, write_analytics_progress(), write_default_findings(), write_default_progress(), write_default_task_plan()
 
 ### Community 90 - "User"
-Cohesion: 0.17
+Cohesion: 0.09
 Nodes (3): User, Entity, Table
 
 ### Community 91 - "design-principles.md"
@@ -734,8 +742,8 @@ Cohesion: 0.40
 Nodes (3): badgeVariantStyles, Discussion, DISCUSSIONS
 
 ### Community 96 - "async-cheap-condition-before-await.md"
-Cohesion: 0.33
-Nodes (6): Phase 1: Requirements & Discovery, Phase 2: Planning & Structure, Phase 3: Implementation, Phase 4: Testing & Verification, Phase 5: Delivery, Phases
+Cohesion: 0.22
+Nodes (9): CFG-001: Single `application.yml` — No Profile Separation (`application-local.yml` / `-prod.yml`) [RESOLVED], CFG-002: Hardcoded Secret Default & H2 Console Enabled Without Production Guard [RESOLVED], DEP-001: Missing Critical Dependencies (Incremental Adoption Strategy) [RESOLVED], DEP-002: Spring Boot Version Drift (`3.2.5` EOL vs `3.4.x`) [RESOLVED], DEP-003: No Dependency Management Discipline (`<dependencyManagement>`, dependabot, SBOM) [RESOLVED], IMPL-001: Phase 1 Core Tasks — 0% Complete (6/6 Tasks Blocked), IMPL-002: `User` JPA Entity Diverges from Canonical Schema (7 Missing Columns) [RESOLVED], IMPL-003: `AuthController` Wildcard CORS & Security/Spec Violations [RESOLVED] (+1 more)
 
 ### Community 97 - "Prefer Statically Analyzable Paths"
 Cohesion: 0.20
@@ -761,13 +769,17 @@ Nodes (9): Data Sources, Findings & Decisions, Hypothesis Log, Issues Encountere
 Cohesion: 0.18
 Nodes (10): Configuration, Data Layer (Repositories), Dependency Injection & Components, Logging, Project Setup & Structure, Security, Service Layer, Spring Boot Best Practices (+2 more)
 
+### Community 110 - "InsightsPage.tsx"
+Cohesion: 0.25
+Nodes (8): ARCH-001: Monolith Deployed vs. Microservices Documented (Critical Divergence) [RESOLVED], ARCH-002: Package Structure 86% Missing (`config/`, `dto/`, `exception/`, `repository/`, `service/`) [RESOLVED], ARCH-003: Contradictory Directory Structure Across Docs, ARCH-004: Frontend Shared Packages Are Empty Shells & Structure Discrepancy, ARCH-005: Missing API Gateway Implementation, ARCH-006: Undocumented Async Event Bus & pgvector Semantic Store Pipelines, ARCH-007: Base Path & Namespace Configuration Mismatch [RESOLVED], Part II: System Architecture, Boundaries & Technical Stack (`ARCH`)
+
 ### Community 118 - "ponytail.md"
 Cohesion: 0.29
 Nodes (6): 1. The Efficiency Ladder, 2. Bug Fix Protocol (Root Cause vs. Symptom), 3. Core Rules, 4. What We Are NEVER Lazy About, 5. Verification & Testing Rule, 👱‍♀️ Ponytail (Lazy Senior Dev Mode)
 
 ### Community 152 - "# Technical Debt"
-Cohesion: 0.20
-Nodes (10): TECH-001 — Wildcard CORS on AuthController (`origins = "*"`), TECH-002 — User Entity Missing 7 of 12 Fields from db-design.md, TECH-003 — AuthController Is a Stub (No JWT, No OAuth Wiring), TECH-004 — pom.xml Missing 7 Critical Dependencies, TECH-005 — No Base application.yml (Default Profile Missing), TECH-006 — frontend/src/ Structure Doesn't Match Documented Architecture, TECH-007 — QA Test File Contains No Real Assertions (Green Theater), TECH-008 — Hardcoded Secret Default in Production Config (+2 more)
+Cohesion: 0.17
+Nodes (9): DJP Backend Microservices, DJPv1 Synchronization, Overview, Running Locally, 📜 Completed Resolutions Ledger, 📔 DJP Backend Technical Debt Resolution & Audit Log (`be-audit-log.md`), 📋 How to Use This Log (Agent & Developer Instructions), 🛠️ Standard Resolution Entry Template (+1 more)
 
 ### Community 153 - "advanced-event-handler-refs.md"
 Cohesion: 0.25
@@ -778,8 +790,8 @@ Cohesion: 0.47
 Nodes (6): is_within_root(), resolve_from_active_file(), resolve_from_env(), resolve_latest_dir(), resolve-plan-dir.sh script, slug_is_valid()
 
 ### Community 156 - "async-api-routes.md"
-Cohesion: 0.29
-Nodes (7): Principle 1: Design Around KV-Cache, Principle 2: Mask, Don't Remove, Principle 3: Filesystem as External Memory, Principle 4: Manipulate Attention Through Recitation, Principle 5: Keep the Wrong Stuff In, Principle 6: Don't Get Few-Shotted, The 6 Manus Principles
+Cohesion: 0.06
+Nodes (29): 📜 Completed Resolutions Ledger, 📔 DJP Platform Technical Debt Resolution & Audit Log (Historical Ledger SSOT), [EXAMPLE] ID: DOC-001 — Missing `api-spec.yaml` (OpenAPI Contract), 📋 How to Use This Log (Agent & Developer Instructions), [RESOLVED] ID: ARCH-001 — Modular Monolith Architectural Shift, [RESOLVED] ID: CFG-001 / TEST-001 — Split Environment Profiles & Scaffold Integration Tests, [RESOLVED] ID: DATA-004 — H2 vs PostgreSQL Dialect Gaps & Connection Pool Settings Unverified, [RESOLVED] ID: DEP-002 — Spring Boot Version Drift (EOL 3.2.5 to 3.4.x) (+21 more)
 
 ### Community 157 - "async-dependencies.md"
 Cohesion: 0.29
@@ -857,21 +869,21 @@ Nodes (5): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, 
 Cohesion: 0.33
 Nodes (5): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP Prototype QA & Test Suite Task Tracker (`prototype/tests/test-todo.md`), Phase 1 — Validation Verification, 📝 Technical Notes & Architectural Reference
 
-### Community 190 - "design-principles.md"
-Cohesion: 0.29
-Nodes (6): 🔴 1. Critical Debt (11 Items), 🟠 2. High Debt (28 Items), 🟡 3. Medium Debt (11 Items), 📊 **DJP Platform Technical Debt & Audit Recommendations**, 📝 Docs, Process & Governance, 🔐 Security, Architecture & DevOps
+### Community 190 - "JwtTokenProvider"
+Cohesion: 0.17
+Nodes (11): Component, FilterChain, HttpServletRequest, HttpServletResponse, Override, JwtAuthenticationFilter, Component, Logger (+3 more)
 
 ### Community 191 - "rendering-script-defer-async.md"
 Cohesion: 0.40
 Nodes (5): 8.1 Do Not Put Effect Events in Dependency Arrays, 8.2 Initialize App Once, Not Per Mount, 8.3 Store Event Handlers in Refs, 8.4 useEffectEvent for Stable Callback Refs, 8. Advanced Patterns
 
 ### Community 192 - "📋 DJP-v1 Technical Debt Register"
-Cohesion: 0.22
-Nodes (8): 📋 DJP-v1 Technical Debt Register, 🚦 Quick Health Status, SEC-001 — No OWASP / Security Review Process Defined, SEC-002 — JWT Signing Key and Rotation Strategy Undefined, SEC-003 — No Rate Limiting on Auth Endpoints, SEC-004 — Citizen Location + Political Activity = High-Risk PII Profile, # Security Debt, 📊 Severity Dashboard
+Cohesion: 0.29
+Nodes (7): Principle 1: Design Around KV-Cache, Principle 2: Mask, Don't Remove, Principle 3: Filesystem as External Memory, Principle 4: Manipulate Attention Through Recitation, Principle 5: Keep the Wrong Stuff In, Principle 6: Don't Get Few-Shotted, The 6 Manus Principles
 
 ### Community 193 - "rendering-usetransition-loading.md"
-Cohesion: 0.33
-Nodes (6): 5. Phased Implementation Plan, Phase 1: Project Setup & OAuth2 (MVP 1), Phase 2: Issues CRUD (MVP 2), Phase 3: Feed, Discussions & Replies (MVP 3), Phase 5: Polls & Votes (MVP 4), Phase 6: Petitions, Notifications, and Representatives (MVP 5+)
+Cohesion: 0.20
+Nodes (5): AfterEach, AutoConfigureMockMvc, AuthIntegrationTest, Test, MockMvc
 
 ### Community 194 - "rerender-defer-reads.md"
 Cohesion: 0.33
@@ -898,12 +910,12 @@ Cohesion: 0.50
 Nodes (3): Communication Guardrails, DJP PROTOTYPE IDENTITY, Technical Profile
 
 ### Community 223 - "README.md"
-Cohesion: 0.40
-Nodes (4): DJP Backend Microservices, DJPv1 Synchronization, Overview, Running Locally
+Cohesion: 0.33
+Nodes (6): Phase 1: Requirements & Discovery, Phase 2: Planning & Structure, Phase 3: Implementation, Phase 4: Testing & Verification, Phase 5: Delivery, Phases
 
 ### Community 224 - "🤖 Instructions for the Agent"
 Cohesion: 0.22
-Nodes (8): Build Feature (Master End-to-End Pipeline), 🤖 Instructions for the Agent, Step 1: 👑 PM Agent (Scope & Requirements), Step 2: 🏛️ Tech Arch Agent (Architecture), Step 3: 🧭 TL Agent (Surgical Specification), Step 4: 🧪 QA Agent (TDD Red Phase), Step 5: 🎨 / ⚙️ FE & BE Agents (TDD Green Phase), Step 6: 🐙 GitHub Agent (Audit & PR)
+Nodes (8): Build Feature (Master End-to-End Pipeline), 🤖 Instructions for the Agent, Step 1: 👑 PM Agent (Scope & Requirements), Step 2: 🏛️ Tech Arch Agent (Architecture), Step 3: 🧭 TL Agent (Surgical Specification), Step 4: 🧪 QA Agent (TDD Red Phase), Step 5: 🎨 / ⚙️ FE & BE Agents (TDD Green Phase), Step 6: 🐙 GitHub & CI/CD Agent (Git, PR & Pipeline Manager)
 
 ### Community 237 - "README.md"
 Cohesion: 0.40
@@ -914,24 +926,20 @@ Cohesion: 0.29
 Nodes (6): 1. What DJP Is, 2. Repository Layout & Core DJPv1 Files, 3. How to Run Frontend, 4. How to Run Backend, 5. Where Documentation Lives, DJP (Developer Journal Prompt & Workspace) - Version 1
 
 ### Community 241 - "AuthController"
-Cohesion: 0.31
-Nodes (6): AuthController, CrossOrigin, GetMapping, RequestMapping, ResponseEntity, RestController
+Cohesion: 0.15
+Nodes (11): AuthController, Authentication, ResponseEntity, UserDto, UserRepository, CrossOrigin, GetMapping, JpaRepository (+3 more)
 
 ### Community 243 - "DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy"
 Cohesion: 0.25
 Nodes (7): 1. Team Hierarchy & Roles, 2. Visual Task Flow Across Todos, 3. Spec-Driven & Test-Driven Development (TDD) Flow, 4. Master Folder & Todo Architecture Structure, 5. Agent Commander Cheat Sheet, DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy, Summary Role Table
-
-### Community 244 - "Technical Architecture: Spring Boot OAuth2 Login"
-Cohesion: 0.25
-Nodes (8): GOV-001 — No Legal / Party Registration Structure, GOV-002 — No Data Privacy Policy (DPDPA / GDPR-equivalent), GOV-003 — No Funding, Finance, or Donation Policy, GOV-004 — No Anti-Gaming Safeguards Defined, GOV-005 — No Moderation / Legal Liability Framework, GOV-006 — No Leader Exit / Dispute Resolution Process, GOV-007 — No Regional / Language Scaling Plan, # Governance & Compliance Gaps
 
 ### Community 245 - "DJP Documentation Sitemap & Organization Rules"
 Cohesion: 0.40
 Nodes (5): ✅ Best Practices for Implementation, 📏 Component Summary Matrix, 🌟 Overview, 📚 Related Documentation, 🧩 **UI Components Catalog**
 
 ### Community 246 - "DJP Agent Team Operating Rules"
-Cohesion: 0.33
-Nodes (5): 1. Team Roles & Skills, 2. Mandatory TDD & Approval Workflow, 3. Post-Task Audit Sequence, 4. Domain State Ecosystem (`AGENTIC_WORKFLOW_GUIDE.md`), DJP Agent Team Operating Rules
+Cohesion: 0.05
+Nodes (34): 0. Mandatory Session Initialization Protocol, 1. Team Roles & Skills, 2. Mandatory TDD & Approval Workflow, 3. Git & CI/CD Section (Post-Task Audit, Commit, Push & PR Workflow), 4. Domain State Ecosystem (`AGENTIC_WORKFLOW_GUIDE.md`), 5. Universal Task & Commit Execution Loop, 6. Real Developer Mindset & Continuous Learning Mode (`Weekly Proactive Audits`), 7. Universal Markdown Metadata Guardrail (`Common Front Metadata Header`) (+26 more)
 
 ### Community 248 - "Technical Specifications: Spring Boot + React OAuth Login"
 Cohesion: 0.50
@@ -1021,13 +1029,17 @@ Nodes (6): ⚙️ Backend Microservices Roadmap (`backend/be-todo.md`), 🏛️ 
 Cohesion: 0.33
 Nodes (5): Feature Execution SSOT (`docs/execution/<feature>/todo.md`), Phase 1: Product & Architecture Planning, Phase 2: Specs & Test-Driven QA (TDD Red Phase), Phase 3: Lean Implementation (TDD Green Phase), Phase 4: Post-Task Review & PR
 
+### Community 318 - "# Technical Debt"
+Cohesion: 0.36
+Nodes (5): ActiveProfiles, BackendApplicationTests, Test, BaseIntegrationTest, SpringBootTest
+
 ### Community 320 - "DJP Citizen App — Todo"
 Cohesion: 0.33
 Nodes (5): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, DJP Frontend Task Tracker (`frontend/fe-todo.md`), Phase 6 — Live Backend Integration (Upcoming Sprint), 📝 Technical Notes & Architectural Reference
 
 ### Community 322 - "🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification"
 Cohesion: 0.33
-Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🐙 GitHub Agent (Git Operations & PR Manager) Operating Specification
+Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist (`Git & CI/CD Section`), 🐙 GitHub & CI/CD Agent (Git Operations, PR Review & Pipeline Manager) Operating Specification
 
 ### Community 324 - "🧪 QA Agent (TDD Test Engineer) Operating Specification"
 Cohesion: 0.33
@@ -1041,46 +1053,74 @@ Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Requir
 Cohesion: 0.33
 Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Required Skills & Lifecycle Workflows, 4. Execution Guardrails & Checklist, 🧭 TL Agent (Team Lead & Spec Writer) Operating Specification
 
-### Community 336 - "# Architecture Debt"
-Cohesion: 0.33
-Nodes (6): ARCH-001 — Monolith Deployed; Microservices Documented (Critical Divergence), ARCH-002 — No API Gateway Exists, ARCH-003 — No Database Migration Strategy (ddl-auto: update in H2), ARCH-004 — Event Bus (Kafka/RabbitMQ) Listed but Undefined, ARCH-005 — pgvector / Semantic Store Architecture Undocumented, # Architecture Debt
+### Community 335 - "📋 DJP-v1 Technical Debt Register"
+Cohesion: 0.25
+Nodes (7): 📊 DJP Platform Audit & Technical Debt Management System, 🔄 Dual-Loop Audit & Execution Architecture, Loop 1: Continuous Learning & Weekly Proactive Audit Loop (`debt.md`), Loop 2: Autonomous Execution & Replenishment Loop (`audit-recom.md`), 🏛️ Single Sources of Truth (SSOT), 📋 Standard Item Schema (`debt.md` & `audit-recom.md`), 🚀 Step-by-Step Operating Guide
+
+### Community 336 - "Backend Engineering Debt Register — DJP-v1"
+Cohesion: 0.25
+Nodes (8): DOC-001: `backend-techstack.md` vs `backend-design.md` Architectural Contradiction, DOC-002: Missing Executable OpenAPI Contract (`api-spec.yaml`) & Schema Descriptions [RESOLVED], DOC-003: `backend-design.md` & `backend-engineer-dev.md` Reference Non-Existent Files [RESOLVED], DOC-004: Missing Developer Onboarding & Local Setup Guide [RESOLVED], DOC-005: Missing Operational Runbooks & Backend Deployment Guide, DOC-006: AI Service Lacks Architecture & API Documentation, DOC-007: Canonical Schema & OAuth Provider Contradictions Across Docs, Part III: Documentation & Specifications (`DOC`)
 
 ### Community 337 - "vision-core-draft.md"
 Cohesion: 0.25
 Nodes (7): AI:, Citizen action: they can raise:, 📝 **Digital Janta Vision Core (Draft)**, DJ Ceremonies, how it works:, Selection, types of user
 
-### Community 338 - "# Leadership / Process Debt"
+### Community 338 - "📋 Standard Mandatory Steps for Every Completed Task"
+Cohesion: 0.20
+Nodes (9): 🚀 0. Mandatory Session Initialization Protocol, 🧠 1. Real Developer Mindset & Continuous Learning Mode (`Weekly Proactive Audits`), 📋 Standard Mandatory Steps for Every Completed Task, Step 1: Log the Resolution (`*-log.md` / `archive/todo.md`), Step 2: Git Commit Using Log Data (`Reversible Cloud Save`), Step 3: Auto-Fetch Replenishment ("One Goes Out, Auto-Fetches Next"), 🔄 The Universal Double-Loop Architecture, Universal Task & Commit Execution Loop (Reversible Cloud Save) (+1 more)
+
+### Community 339 - "Universal Markdown Metadata Guardrail"
+Cohesion: 0.25
+Nodes (8): OBS-001: Zero Structured JSON Logging Configuration (`logstash-logback-encoder` / `MDC`) [RESOLVED], OBS-002: Missing Actuator Readiness Probes (`/actuator/health`), Prometheus & Security Guards, OBS-003: Missing Request/Response Logging, Exception Context & Distributed Tracing, OBS-004: Missing Centralized Alerting Rules (`prometheus-alerts.yaml` / Slack / PagerDuty), Part IX: Observability, Logging & Cross-Cutting Concerns (`OBS`, `XCUT`), XCUT-001: Zero Global Exception Handling (`@ControllerAdvice` / Standardized Error DTOs) [RESOLVED], XCUT-002: Missing Audit Logging Infrastructure (Tracking WHO/WHEN/WHAT mutations), XCUT-003: Missing PII Masking in Logs & Exception Traces
+
+### Community 340 - "OAuth2SuccessHandler"
+Cohesion: 0.27
+Nodes (9): Authentication, Component, HttpServletRequest, HttpServletResponse, Logger, Override, OAuth2SuccessHandler, OAuth2User (+1 more)
+
+### Community 341 - "Part V: DevOps, CI/CD & Observability"
+Cohesion: 0.25
+Nodes (7): DEVOPS-001: Missing Multi-Stage Production Dockerfile for Backend & Non-Root User [RESOLVED], DEVOPS-002: Missing Multi-Stage Dockerfile for Frontend & Local `docker-compose.yml`, DEVOPS-003: Empty `.github/workflows/` Directory (No Automated CI/CD Pipeline), Executive Summary & Comprehensive Scorecard, Monorepo Master Technical & Architectural Debt Register (SSOT), Part VIII: DevOps, Containerization & CI/CD Pipelines (`DEVOPS`), Part X: Master Execution Roadmap & Prioritized Remediation Summary
+
+### Community 342 - "SecurityConfig.java"
 Cohesion: 0.33
-Nodes (6): LEAD-001 — No Definition of Done (DoD), LEAD-002 — dashboard.md Progress Metrics Are Stale and Inaccurate, LEAD-003 — Knowledge Silo: Single Agent / Owner Context, LEAD-004 — No Enforced Engineering Metrics or Quality Gates, LEAD-005 — ADRs Cover Only Frontend/Product Decisions; Backend Decisions Unrecorded, # Leadership / Process Debt
+Nodes (7): SecurityConfig, Bean, Configuration, CorsConfigurationSource, EnableWebSecurity, HttpSecurity, SecurityFilterChain
 
-### Community 339 - "# Testing Debt"
+### Community 343 - "Category 7: Observability Debt (Checklist §10 — 0/61 Items)"
+Cohesion: 0.33
+Nodes (6): Part VI: Security, Authentication & Fault Tolerance (`SEC`), SEC-001: Zero Authentication Implementation (`SecurityConfig`, `JwtAuthenticationFilter`) [RESOLVED], SEC-002: Undocumented/Missing JWT Key Rotation & Secret Management (`@Value` / KeyVault), SEC-003: Zero Bean Input Validation (`@Valid`, DTO annotations, OWASP Top 10), SEC-004: Missing Circuit Breakers, Retries with Backoff, Rate Limiting & Timeouts [RESOLVED], SEC-005: Missing Graceful Shutdown & HTTP Security Headers [RESOLVED]
+
+### Community 344 - "Category 5: Data Layer Debt"
 Cohesion: 0.40
-Nodes (5): TEST-001 — Zero Real Backend Integration Tests Exist, TEST-002 — No Playwright Tests Despite "Active Sprint" Status on Dashboard, TEST-003 — No Frontend Unit or Component Tests, TEST-004 — No CI Pipeline for Automated Test Execution, # Testing Debt
+Nodes (5): DATA-001: Missing Database Migration Engine (Flyway/Liquibase) vs Unsafe `ddl-auto: update`, DATA-002: Missing JPA Repository Interfaces & Custom Queries, DATA-003: Missing Database Indexes & Performance Optimizations in Schema, DATA-004: H2 vs PostgreSQL Dialect Gaps & Connection Pool Settings Unverified [RESOLVED], Part V: Database Layer, Migrations & Data Integrity (`DATA`)
 
-### Community 340 - "# DevOps Debt"
-Cohesion: 0.50
-Nodes (4): DEVOPS-001 — No Dockerfile for Backend, DEVOPS-002 — No Docker Compose for Local Development, DEVOPS-003 — No Release Strategy or Git Branching Convention, # DevOps Debt
+### Community 345 - "🔴 1. Critical Backend Debt (Active Blockers)"
+Cohesion: 0.18
+Nodes (11): 🔴 1. Critical Backend Debt (Active Blockers), 🟠 2. High Priority Backend Debt, ARCH-001 — Microservices Architecture Documented vs. Monolith Implemented, ARCH-002 — Layered Package Structure 86% Missing, ⚙️ Autonomous Execution & Replenishment Loop (`Backend Domain`), CFG-001 — Single `application.yml` Without Profile Separation, CFG-002 — Hardcoded Secret Default (`${SUPABASE_PASSWORD:secret-password}`), DATA-001 — No Database Migration Strategy (`ddl-auto: update` in Code) (+3 more)
 
-### Community 341 - "# Observability Debt"
-Cohesion: 0.50
-Nodes (4): OBS-001 — Zero Logging Configuration Exists, OBS-002 — No Metrics or Health Endpoint (Actuator Not in pom.xml), OBS-003 — No Distributed Tracing Between Microservices, # Observability Debt
+### Community 346 - ".doFilter"
+Cohesion: 0.25
+Nodes (7): Component, FilterChain, Override, MdcFilter, Filter, ServletRequest, ServletResponse
+
+### Community 351 - "Part IV: Testing, TDD & Quality Assurance"
+Cohesion: 0.40
+Nodes (5): Part VII: Testing Infrastructure & Quality Assurance (`TEST`), TEST-001: Zero Real Backend Test Infrastructure (`src/test/java`, TDD Red Violated) [RESOLVED], TEST-002: Frontend Test Stub Is Green Theater (`auth.test.js`) & Zero Playwright E2E Tests, TEST-003: Missing Contract Testing, Pact/OpenAPI Verification & Frontend Unit Tests, TEST-004: Missing Automated Coverage Gates & Jacoco/SonarQube Checks
 
 ## Knowledge Gaps
-- **1371 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1366 more)
+- **1446 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1441 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **130 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Planning with Files` connect `Quick Reference` to `InsightsPage.tsx`?**
-  _High betweenness centrality (0.003) - this node is a cross-community bridge._
-- **Why does `Reference: Manus Context Engineering Principles` connect `7. JavaScript Performance` to `async-api-routes.md`, `InsightsPage.tsx`?**
+- **Why does `UserRepository` connect `AuthController` to `rendering-usetransition-loading.md`, `User`, `OAuth2SuccessHandler`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
-- **Why does `Task Plan: [Brief Description]` connect `2. Bundle Size Optimization` to `async-cheap-condition-before-await.md`, `InsightsPage.tsx`?**
-  _High betweenness centrality (0.001) - this node is a cross-community bridge._
+- **Why does `User` connect `User` to `rendering-usetransition-loading.md`, `OAuth2SuccessHandler`, `AuthController`?**
+  _High betweenness centrality (0.002) - this node is a cross-community bridge._
+- **Why does `Planning with Files` connect `Quick Reference` to `Technical Architecture: Spring Boot OAuth2 Login`?**
+  _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **What connects `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script` to the rest of the system?**
-  _1411 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1486 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Test-Driven Development (TDD)` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Skill Creator` be split into smaller, more focused modules?**
