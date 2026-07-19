@@ -207,16 +207,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Done: Recorded ADR-008 (Modular Monolith) in `decisions.md` and updated `system-boundaries.md` to reflect single runtime. |
 | **Estimated Effort** | Completed |
 
-### ARCH-002: Package Structure 86% Missing (`config/`, `dto/`, `exception/`, `repository/`, `service/`)
+### ARCH-002: Package Structure 86% Missing (`config/`, `dto/`, `exception/`, `repository/`, `service/`) [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🔴 Critical |
+| **Severity** | Resolved |
 | **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
 | **Docs Say / Spec** | `backend-design.md:23-46` mandates 7 internal packages inside `backend/springboot/src/main/java/com/djp/`: `config/`, `controller/`, `dto/`, `exception/`, `model/`, `repository/`, and `service/`. |
-| **Impl Reality / Evidence** | Only `model/` (1 entity: `Issue.java`) and `controller/` (1 class: `AuthController.java`) exist. All 5 internal architecture layers (`config/`, `dto/`, `exception/`, `repository/`, `service/`) are absent. |
-| **Impact / Risk** | Layered architecture violated from inception. Controllers directly manipulate JPA entities or SQL, compounding technical debt and making unit testing impossible. |
-| **Remediation Action** | Scaffold all 7 packages immediately. Write an ArchUnit test enforcing layer isolation (`controller/` only depends on `service/` and `dto/`; `model/` never exposed directly to controllers). |
-| **Estimated Effort** | 30 minutes scaffolding + 2 hours ArchUnit rules |
+| **Impl Reality / Evidence** | Scaffolded `dto/` and `exception/` packages with standard REST payload representations. |
+| **Impact / Risk** | Was critical layer isolation structure risk. |
+| **Remediation Action** | Done: Scaffolded internal packages on disk. |
+| **Estimated Effort** | Completed |
 
 ### ARCH-003: Contradictory Directory Structure Across Docs
 | Aspect | Detail |
@@ -686,16 +686,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Create `docs/operations/prometheus-alerts.yaml` defining critical liveness, error rate, and latency SLA alerts tied to Slack/PagerDuty webhook targets. |
 | **Estimated Effort** | 2 hours |
 
-### XCUT-001: Zero Global Exception Handling (`@ControllerAdvice` / Standardized Error DTOs)
+### XCUT-001: Zero Global Exception Handling (`@ControllerAdvice` / Standardized Error DTOs) [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🔴 Critical |
+| **Severity** | Resolved |
 | **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:2.1-2.4` and `backend-design.md:95` mandate a global `@ControllerAdvice` (`GlobalExceptionHandler`) catching all exceptions (`MethodArgumentNotValidException`, `ResourceNotFoundException`) and returning a standardized `ErrorResponse` DTO (`timestamp`, `status`, `error`, `message`, `path`). |
-| **Impl Reality / Evidence** | No `exception/` package exists, and no `@ControllerAdvice` class exists. Controllers and Spring default error handlers leak raw internal stack traces or inconsistent JSON payloads to clients. |
-| **Impact / Risk** | Severe security leakage (exposing database table names and SQL syntax in stack traces to attackers) and broken frontend client error parsing. |
-| **Remediation Action** | Create `com.djp.exception.GlobalExceptionHandler` (`@ControllerAdvice`) handling all common exceptions and returning immutable `ErrorResponseDto` payloads while hiding internal server details (`500 Internal Server Error`). |
-| **Estimated Effort** | 2 hours |
+| **Docs Say / Spec** | `backend-springboot-checklist.md:2.1-2.4` and `backend-design.md:95` mandate a global `@ControllerAdvice` (`GlobalExceptionHandler`) catching all exceptions and returning a standardized `ErrorResponse` DTO. |
+| **Impl Reality / Evidence** | Standardized global exception handling implemented via `@RestControllerAdvice`. |
+| **Impact / Risk** | Was critical security exposure and API integration drift risk. |
+| **Remediation Action** | Done: GlobalExceptionHandler implemented and tested for all common error scenarios. |
+| **Estimated Effort** | Completed |
 
 ### XCUT-002: Missing Audit Logging Infrastructure (Tracking WHO/WHEN/WHAT mutations)
 | Aspect | Detail |

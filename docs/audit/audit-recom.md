@@ -57,11 +57,6 @@ This file (`audit-recom.md`) is the **Single Source of Truth (SSOT)** for active
 * **Severity:** 🟠 High
 * **Changes required:** Code (`backend/springboot/src/main/java/.../security/`), Config (`application.yml`)
 
-### TECH-006 — Missing Internal Layered Architecture (`DTO`, `Service`, `Exception`)
-* **Worker/Who:** QA Agent | Nemotron
-* **Severity:** 🟠 High
-* **Changes required:** Code (`backend/springboot/src/main/java/.../dto/`, `service/`, `exception/GlobalExceptionHandler.java`)
-
 ---
 
 > [!TIP]

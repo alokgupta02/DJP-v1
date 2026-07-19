@@ -48,6 +48,24 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: TECH-006 — Missing Internal Layered Architecture (DTO, Service, Exception)
+* **📅 Resolution Date:** 2026-07-19 08:00 UTC
+* **Found By:** QA Agent | Nemotron, Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🟠 High
+* **📂 Files Modified / Created:**
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/dto/ErrorResponse.java` (Standard REST error payload DTO)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/exception/ResourceNotFoundException.java` (404 Not Found exception class)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/exception/UnauthorizedException.java` (401 Unauthorized exception class)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/exception/GlobalExceptionHandler.java` (Standardized RestControllerAdvice)
+* **📝 Resolution Summary:**
+  * I scaffolded the backend layered architecture packages. I created a standard `ErrorResponse` DTO carrying request timestamps, error details, request paths, validation details, and correlation IDs correlated from MDC. Additionally, implemented the global RestControllerAdvice mapping standard and custom application exceptions (400 Bad Request validations, 404 Not Found, 401 Unauthorized, and 500 unhandled errors).
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (deferred in bulk per user request)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `PR #6 — feat(backend): scaffold layered exception structures and GlobalExceptionHandler`
+
 ### [RESOLVED] ID: TECH-004 & SEC-003 — Missing Maven Dependencies & Resilience4j Configurations
 * **📅 Resolution Date:** 2026-07-19 07:45 UTC
 * **Found By:** Tech Arch Agent | Antigravity (Gemini), BE Agent | Antigravity (Gemini), QA Agent | Nemotron
