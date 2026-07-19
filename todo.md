@@ -15,3 +15,6 @@
 - [x] Fix TECH-002: Align User entity model properties with canonical database schema
 - [x] Fix OBS-001: Configure structured JSON logging via Logback and populate MDC correlation IDs
 - [x] Fix DOC-002: Create developer-setup.md and configure .env.example environment variables templates
+- [x] Fix DOC-003: Correct broken relative paths to global-config.yaml and api-spec.yaml in backend docs
+- [x] Fix DEP-002: Upgrade Spring Boot starter parent parent version from EOL 3.2.5 to stable 3.4.1
+- [x] Fix SEC-001: Configure weekly Dependabot scanning schedules and OWASP Dependency-Check GitHub Actions workflow
