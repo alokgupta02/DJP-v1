@@ -115,17 +115,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Define `docs/architecture/frontend/i18n-spec.md` for React (`react-i18next`) and specify translation/localization columns in `db-design.md`. |
 | **Estimated Effort** | 1 day |
 
-### LEAD-001: No Authoritative Definition of Done (DoD) & TDD Workflow Gate [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `Tech Arch Agent \| Antigravity (Gemini), BE Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `.agents/AGENTS.md` (§2 Mandatory TDD & Approval Workflow) and `backend-springboot-checklist.md` (§8.2 Gate) require failing tests (`Red`) before code (`Green`) and checklist verification. |
-| **Impl Reality / Evidence** | Created the formal `docs/development/DoD.md` checklist. |
-| **Impact / Risk** | Was critical governance blocker. |
-| **Remediation Action** | Done: Created `docs/development/DoD.md` defining strict quality gates for code compilation, TDD compliance, cleanup, and documentation sync. |
-| **Estimated Effort** | Completed |
-
 ### LEAD-002: Missing Contribution Guidelines & Repo Scaffolding
 | Aspect | Detail |
 | :--- | :--- |
@@ -196,28 +185,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 
 ## Part II: System Architecture, Boundaries & Technical Stack (`ARCH`)
 
-### ARCH-001: Monolith Deployed vs. Microservices Documented (Critical Divergence) [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-techstack.md:31-35` defines 3 distinct services: `backend/auth-service` (port 8081), `backend/core-service` (port 8080), and `backend/ai-service` (port 8000, Python/FastAPI). |
-| **Impl Reality / Evidence** | Consolidated single backend deployable at `backend/springboot/`. |
-| **Impact / Risk** | Was critical divergence. Restructured via ADR-008. |
-| **Remediation Action** | Done: Recorded ADR-008 (Modular Monolith) in `decisions.md` and updated `system-boundaries.md` to reflect single runtime. |
-| **Estimated Effort** | Completed |
-
-### ARCH-002: Package Structure 86% Missing (`config/`, `dto/`, `exception/`, `repository/`, `service/`) [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-design.md:23-46` mandates 7 internal packages inside `backend/springboot/src/main/java/com/djp/`: `config/`, `controller/`, `dto/`, `exception/`, `model/`, `repository/`, and `service/`. |
-| **Impl Reality / Evidence** | Scaffolded `dto/` and `exception/` packages with standard REST payload representations. |
-| **Impact / Risk** | Was critical layer isolation structure risk. |
-| **Remediation Action** | Done: Scaffolded internal packages on disk. |
-| **Estimated Effort** | Completed |
-
 ### ARCH-003: Contradictory Directory Structure Across Docs
 | Aspect | Detail |
 | :--- | :--- |
@@ -262,17 +229,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Document that async eventing and `pgvector` pipelines are deferred to Phase 4 (AI features) per Lean Codebase, ensuring clear boundaries without upfront boilerplate. |
 | **Estimated Effort** | 1 hour |
 
-### ARCH-007: Base Path & Namespace Configuration Mismatch [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `global-config.yaml:18` mandates `network.base_url: /djp/api/v1` across all endpoints.<br>`backend-design.md:18` mandates `/djp/api/v1`. |
-| **Impl Reality / Evidence** | Updated `AuthController.java` mappings to route traffic through the correct namespace prefix. |
-| **Impact / Risk** | Was high routing mismatch risk. |
-| **Remediation Action** | Done: Updated `AuthController.java` to `@RequestMapping("/djp/api/v1/auth")` routing prefix. |
-| **Estimated Effort** | Completed |
-
 ---
 
 ## Part III: Documentation & Specifications (`DOC`)
@@ -287,39 +243,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Impact / Risk** | Developers and AI agents receiving tasks make conflicting structural decisions depending on which doc they read first. |
 | **Remediation Action** | Update `backend-techstack.md` to officially align with `backend-design.md` under the **Modular Monolith (`backend/springboot/`)** specification (ADR-008). |
 | **Estimated Effort** | 1 hour |
-
-### DOC-002: Missing Executable OpenAPI Contract (`api-spec.yaml`) & Schema Descriptions [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `Tech Arch Agent \| Antigravity (Gemini), BE Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-design.md:57` mandates API-first development via an executable `api-spec.yaml` (OpenAPI 3.0) under `docs/architecture/`. Furthermore, `backend-springboot-checklist.md:3.2` requires descriptions on all schemas and endpoints. |
-| **Impl Reality / Evidence** | Created the canonical OpenAPI 3.0 contract. |
-| **Impact / Risk** | Was critical API contract blocker. |
-| **Remediation Action** | Done: Created `docs/api/api-spec.yaml` defining OAuth login redirect endpoints and active UserDTO schema. |
-| **Estimated Effort** | Completed |
-
-### DOC-003: `backend-design.md` & `backend-engineer-dev.md` Reference Non-Existent Files [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-design.md:18` points to `[global-config.yaml](global-config.yaml)` inside `docs/architecture/backend/`.`backend-engineer-dev.md:48` references input specifications from `routes.md`. |
-| **Impl Reality / Evidence** | Corrected relative link paths on disk. |
-| **Impact / Risk** | Was high documentation link drift risk. |
-| **Remediation Action** | Done: Updated links to point to the correct relative path `../../../global-config.yaml` and `../../api/api-spec.yaml`. |
-| **Estimated Effort** | Completed |
-
-### DOC-004: Missing Developer Onboarding & Local Setup Guide [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | Doc (`docs/development/local-setup.md`) |
-| **Impl Reality / Evidence** | Created the onboarding setup guide at `developer-setup.md` and configured `.env.example` templates. |
-| **Impact / Risk** | Was critical onboarding blocker. |
-| **Remediation Action** | Done: Created `developer-setup.md` in the root workspace and provided templates for variables. |
-| **Estimated Effort** | Completed |
 
 ### DOC-005: Missing Operational Runbooks & Backend Deployment Guide
 | Aspect | Detail |
@@ -369,83 +292,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Execute Phase 1 tasks sequentially using TDD Red/Green loops (`QA Agent` writing tests first, `BE Agent` implementing minimal code). |
 | **Estimated Effort** | 2-3 days across agent team |
 
-### IMPL-002: `User` JPA Entity Diverges from Canonical Schema (7 Missing Columns) [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `db-design.md` (`users` table schema) defines canonical columns for the user profile. |
-| **Impl Reality / Evidence** | Updated `User.java` to map all canonical columns specified. |
-| **Impact / Risk** | Was critical database JPA mapping drift blocker. |
-| **Remediation Action** | Done: Overwrote `User.java` containing all canonical properties from database specification and composite constraints. |
-| **Estimated Effort** | Completed |
-
-### IMPL-003: `AuthController` Wildcard CORS & Security/Spec Violations [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:5.4` strictly prohibits wildcard CORS (`origins = "*"`) when credentials/tokens are involved. Furthermore, all endpoints must map under `/djp/api/v1/auth`. |
-| **Impl Reality / Evidence** | Updated `AuthController.java` to secure origins configuration and namespace pathing. |
-| **Impact / Risk** | Was critical security and specs compliance risk. |
-| **Remediation Action** | Done: Replaced origins wildcard on controller with dynamic property loader `${app.cors.allowed-origins:http://localhost:5173}` and corrected request mapping path namespaces. |
-| **Estimated Effort** | Completed |
-
-### DEP-001: Missing Critical Dependencies (Incremental Adoption Strategy) [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | Checklist §1, §3, §5, §7, §9, §10, §11 mandate starters across various features. However, per the **Lean Codebase Philosophy**, dependencies must be adopted **incrementally** to avoid upfront complexity. |
-| **Impl Reality / Evidence** | Adopted Phase 1 dependencies incrementally: `springdoc-openapi`, `actuator`, `logstash-logback-encoder`, `resilience4j`, `validation`, and `lombok`. |
-| **Impact / Risk** | Lacking core developer utilities blocks immediate feature integration. |
-| **Remediation Action** | Done: Added Phase 1 baseline starters to `pom.xml`. |
-| **Estimated Effort** | Completed |
-
-### DEP-002: Spring Boot Version Drift (`3.2.5` EOL vs `3.4.x`) [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-techstack.md` specifies current LTS Spring Boot 3.x line (`3.3.x / 3.4.x`). |
-| **Impl Reality / Evidence** | Upgraded `pom.xml` version to `3.4.1` on disk and ran passing contextual tests. |
-| **Impact / Risk** | Was high version drift and vulnerability risk. |
-| **Remediation Action** | Done: Upgraded POM parent module template to `3.4.1`. |
-| **Estimated Effort** | Completed |
-
-### DEP-003: No Dependency Management Discipline (`<dependencyManagement>`, dependabot, SBOM) [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | Enterprise build best practices require centralized version management, automated vulnerability scanning, and SBOM generation. |
-| **Impl Reality / Evidence** | Scaffolded `.github/dependabot.yml` and configured `.github/workflows/dependency-check.yml` executing OWASP Dependency-Check. |
-| **Impact / Risk** | Was medium version and supply-chain drift risk. |
-| **Remediation Action** | Done: Added Dependabot schedules and OWASP security vulnerability check action. |
-| **Estimated Effort** | Completed |
-
-### CFG-001: Single `application.yml` — No Profile Separation (`application-local.yml` / `-prod.yml`) [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:8.1` mandates strict separation across environments: `application.yml` (base), `application-local.yml` (dev), and `application-prod.yml` (production). |
-| **Impl Reality / Evidence** | Created profile configurations `application-local.yml` and `application-prod.yml`. |
-| **Impact / Risk** | Was critical database config risk. |
-| **Remediation Action** | Done: Split configuration environment settings to load H2 in-memory db during local development and validate database schemas against production PostgreSQL with secure defaults. |
-| **Estimated Effort** | Completed |
-
-### CFG-002: Hardcoded Secret Default & H2 Console Enabled Without Production Guard [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:5.3` mandates never storing hardcoded secrets in code/yaml. `checklist:8.3` mandates disabling H2 console (`spring.h2.console.enabled=false`) in production. |
-| **Impl Reality / Evidence** | Removed fallback defaults in database configurations and disabled H2 console in production config. |
-| **Impact / Risk** | Was critical security vulnerability. |
-| **Remediation Action** | Done: Deleted the default fallback credentials from the database configuration properties and secured the production properties to fail startup if environment variables are missing, alongside disabling the H2 console. |
-| **Estimated Effort** | Completed |
-
 ---
 
 ## Part V: Database Layer, Migrations & Data Integrity (`DATA`)
@@ -483,31 +329,9 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Add `@Table(name="issues", indexes={@Index(name="idx_issues_jurisdiction", columnList="jurisdiction"), @Index(name="idx_issues_status", columnList="status")})` to `Issue.java` and explicitly define them in Flyway `V1__init.sql`. |
 | **Estimated Effort** | 1 hour |
 
-### DATA-004: H2 vs PostgreSQL Dialect Gaps & Connection Pool Settings Unverified [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:8.1` requires H2 to run in PostgreSQL compatibility mode (`MODE=PostgreSQL`) for local development, with HikariCP production pool sizing configured. |
-| **Impl Reality / Evidence** | Active profile configuration files declare PostgreSQL compatibility mode parameters, and production connection pool sizes are explicitly managed under Hikari properties. |
-| **Impact / Risk** | Was connection exhaustion and dialect compatibility failure risk. |
-| **Remediation Action** | Done: Added Hikari properties configuration to `application-prod.yml`. |
-| **Estimated Effort** | Completed |
-
 ---
 
 ## Part VI: Security, Authentication & Fault Tolerance (`SEC`)
-
-### SEC-001: Zero Authentication Implementation (`SecurityConfig`, `JwtAuthenticationFilter`) [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:5.1` and `backend-design.md:54` require Spring Security with `SecurityFilterChain`, stateless session management (`STATELESS`), and `JwtAuthenticationFilter` verifying Bearer tokens. |
-| **Impl Reality / Evidence** | Implemented Spring Security configurations, custom OncePerRequestFilter extracting Bearer JWT tokens, and OAuth2 authentication handlers. |
-| **Impact / Risk** | Was critical security and authentication gap. |
-| **Remediation Action** | Done: Added Spring Security and configured JWT validation filtering. |
-| **Estimated Effort** | Completed |
 
 ### SEC-002: Undocumented/Missing JWT Key Rotation & Secret Management (`@Value` / KeyVault)
 | Aspect | Detail |
@@ -531,42 +355,9 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Add `spring-boot-starter-validation` to `pom.xml` during Phase 1/2 controller builds. Create request DTOs (`IssueCreateRequestDto`) annotated with `@NotBlank`, `@Size(max=500)`, and enforce `@Valid` in controllers. |
 | **Estimated Effort** | 2 hours |
 
-### SEC-004: Missing Circuit Breakers, Retries with Backoff, Rate Limiting & Timeouts [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:6.1`, `6.2`, `6.3` mandate Resilience4j (`@CircuitBreaker`, `@Retry` with exponential backoff) and Bucket4j rate limiting on public endpoints (`/auth/login`). |
-| **Impl Reality / Evidence** | Added `resilience4j-spring-boot3` library and configured circuit breaker default sliding window structures and exponential backoff retries in `application.yml`. |
-| **Impact / Risk** | Was high cascading downstream failure and credential stuffing risk. |
-| **Remediation Action** | Done: Added Resilience4j dependencies and configured application properties defaults. |
-| **Estimated Effort** | Completed |
-
-### SEC-005: Missing Graceful Shutdown & HTTP Security Headers [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:6.4` and `5.1` require graceful server shutdown (`server.shutdown=graceful`) and standard security response headers (`HSTS`, `X-Content-Type-Options`, `X-Frame-Options`). |
-| **Impl Reality / Evidence** | Graceful shutdown properties declared in application.yml, and standard security headers (sameOrigin frame options, Cache-Control, HSTS) are wired in SecurityConfig. |
-| **Impact / Risk** | Was mid-deployment request termination and browser clickjacking risk. |
-| **Remediation Action** | Done: Added graceful shutdown configs and configured SecurityConfig headers. |
-| **Estimated Effort** | Completed |
-
 ---
 
 ## Part VII: Testing Infrastructure & Quality Assurance (`TEST`)
-
-### TEST-001: Zero Real Backend Test Infrastructure (`src/test/java`, TDD Red Violated) [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `QA Agent \| Nemotron, BE Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-engineer-dev.md:26`, `AGENTS.md: §2`, and `backend-springboot-checklist.md:7.1-7.3` strictly enforce **Test-Driven Development (TDD)**: failing unit/integration tests (`src/test/java`) written FIRST (`Red Phase`), using `@SpringBootTest` + Testcontainers PostgreSQL + `@WebMvcTest`. |
-| **Impl Reality / Evidence** | Scaffolded test directory structures and implemented a baseline integration test proving successful Tomcat initialization and local database bootstrapping. |
-| **Impact / Risk** | Was critical testing blocker. Resolved by setting up base integration test structure. |
-| **Remediation Action** | Done: Scaffolded `BaseIntegrationTest.java` and context loads tests. |
-| **Estimated Effort** | Completed |
 
 ### TEST-002: Frontend Test Stub Is Green Theater (`auth.test.js`) & Zero Playwright E2E Tests
 | Aspect | Detail |
@@ -605,17 +396,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 
 ## Part VIII: DevOps, Containerization & CI/CD Pipelines (`DEVOPS`)
 
-### DEVOPS-001: Missing Multi-Stage Production Dockerfile for Backend & Non-Root User [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `GitHub Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:9.1-9.3` and deployment guidelines require optimized multi-stage Docker builds using Eclipse Temurin JRE, non-root user (`USER spring:spring`), and Spring Boot layered JARs (`extract`). |
-| **Impl Reality / Evidence** | Created optimized multi-stage Dockerfile and corresponding .dockerignore configurations. |
-| **Impact / Risk** | Was critical containerization and runtime security blocker. |
-| **Remediation Action** | Done: Scaffolded production Dockerfile running under non-root djp user using JRE 21. |
-| **Estimated Effort** | Completed |
-
 ### DEVOPS-002: Missing Multi-Stage Dockerfile for Frontend & Local `docker-compose.yml`
 | Aspect | Detail |
 | :--- | :--- |
@@ -641,17 +421,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 ---
 
 ## Part IX: Observability, Logging & Cross-Cutting Concerns (`OBS`, `XCUT`)
-
-### OBS-001: Zero Structured JSON Logging Configuration (`logstash-logback-encoder` / `MDC`) [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:4.1` mandates structured JSON logging via `logstash-logback-encoder` and `logback-spring.xml`, injecting correlation IDs into MDC for every request. |
-| **Impl Reality / Evidence** | Configured `logback-spring.xml` and implemented `MdcFilter` for request correlation tracing. |
-| **Impact / Risk** | Was critical cloud log aggregation blocker. |
-| **Remediation Action** | Done: Added `logstash-logback-encoder` to `pom.xml`, created Logback configuration separating local dev console vs prod JSON output, and wired `MdcFilter` using SLF4J MDC context. |
-| **Estimated Effort** | Completed |
 
 ### OBS-002: Missing Actuator Readiness Probes (`/actuator/health`), Prometheus & Security Guards
 | Aspect | Detail |
@@ -685,17 +454,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Impact / Risk** | Production outages and database deadlocks go unnoticed until reported by external citizens or political stakeholders. |
 | **Remediation Action** | Create `docs/operations/prometheus-alerts.yaml` defining critical liveness, error rate, and latency SLA alerts tied to Slack/PagerDuty webhook targets. |
 | **Estimated Effort** | 2 hours |
-
-### XCUT-001: Zero Global Exception Handling (`@ControllerAdvice` / Standardized Error DTOs) [RESOLVED]
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | Resolved |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:2.1-2.4` and `backend-design.md:95` mandate a global `@ControllerAdvice` (`GlobalExceptionHandler`) catching all exceptions and returning a standardized `ErrorResponse` DTO. |
-| **Impl Reality / Evidence** | Standardized global exception handling implemented via `@RestControllerAdvice`. |
-| **Impact / Risk** | Was critical security exposure and API integration drift risk. |
-| **Remediation Action** | Done: GlobalExceptionHandler implemented and tested for all common error scenarios. |
-| **Estimated Effort** | Completed |
 
 ### XCUT-002: Missing Audit Logging Infrastructure (Tracking WHO/WHEN/WHAT mutations)
 | Aspect | Detail |
