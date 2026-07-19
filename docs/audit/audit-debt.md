@@ -498,16 +498,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 
 ## Part VI: Security, Authentication & Fault Tolerance (`SEC`)
 
-### SEC-001: Zero Authentication Implementation (`SecurityConfig`, `JwtAuthenticationFilter`)
+### SEC-001: Zero Authentication Implementation (`SecurityConfig`, `JwtAuthenticationFilter`) [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🔴 Critical |
+| **Severity** | Resolved |
 | **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
 | **Docs Say / Spec** | `backend-springboot-checklist.md:5.1` and `backend-design.md:54` require Spring Security with `SecurityFilterChain`, stateless session management (`STATELESS`), and `JwtAuthenticationFilter` verifying Bearer tokens. |
-| **Impl Reality / Evidence** | No `spring-boot-starter-security` in `pom.xml`, no `config/SecurityConfig.java`, and no `JwtAuthenticationFilter.java`. All endpoints are completely unauthenticated and publicly accessible. |
-| **Impact / Risk** | Total lack of AuthN/AuthZ. Any anonymous external user can forge requests, access user profiles, or submit unauthorized civic issues and votes. |
-| **Remediation Action** | Add `spring-boot-starter-security` and `oauth2-resource-server` (Phase 2 core). Implement `SecurityConfig` enforcing `.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))` and custom `JwtAuthenticationFilter` verifying tokens against public keys. |
-| **Estimated Effort** | 4-6 hours |
+| **Impl Reality / Evidence** | Implemented Spring Security configurations, custom OncePerRequestFilter extracting Bearer JWT tokens, and OAuth2 authentication handlers. |
+| **Impact / Risk** | Was critical security and authentication gap. |
+| **Remediation Action** | Done: Added Spring Security and configured JWT validation filtering. |
+| **Estimated Effort** | Completed |
 
 ### SEC-002: Undocumented/Missing JWT Key Rotation & Secret Management (`@Value` / KeyVault)
 | Aspect | Detail |

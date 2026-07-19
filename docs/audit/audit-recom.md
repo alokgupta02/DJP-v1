@@ -26,13 +26,6 @@ This file (`audit-recom.md`) is the **Single Source of Truth (SSOT)** for active
 ## 🔴 1. Critical Debt (Active Blockers)
 *Must resolve immediately before any production release or feature development.*
 
-### TECH-003 — AuthController Is a Stub (No JWT/OAuth wiring)
-* **Worker/Who:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron
-* **Severity:** 🔴 Critical
-* **Changes required:** Code (`backend/springboot/src/main/java/.../controller/AuthController.java`, `security/`)
-* **Why it matters:** Core authentication does not function; controller stubs return static mock strings.
-* **Recommended action:** Integrate `spring-boot-starter-security`, configure OAuth2 resource server, and wire a `JwtTokenProvider`.
-
 ### GOV-001 — No Legal / Party Registration (ECI) Structure
 * **Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
 * **Severity:** 🔴 Critical

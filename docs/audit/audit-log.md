@@ -48,6 +48,30 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: SEC-001 (TECH-003) — Zero Authentication Implementation (SecurityConfig & JWT Flow)
+* **📅 Resolution Date:** 2026-07-19 08:15 UTC
+* **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🔴 Critical
+* **📂 Files Modified / Created:**
+  * `[MODIFY] backend/springboot/pom.xml` (Added spring-boot-starter-security, spring-security-oauth2-client, jjwt, and spring-security-test)
+  * `[MODIFY] backend/springboot/src/main/resources/application.yml` (Added default mock google and github oauth2 registration configurations)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/repository/UserRepository.java` (Added UserRepository JpaRepository interface)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/security/JwtTokenProvider.java` (Added JWT creation, validation, and parsing components)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/security/JwtAuthenticationFilter.java` (OncePerRequestFilter checking Bearer tokens)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/security/OAuth2SuccessHandler.java` (Redirecting authenticated clients with JWTs)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/config/SecurityConfig.java` (Spring Security bean filter chain declaring stateless rules)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/dto/UserDto.java` (Standard citizen context return DTO representation)
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/controller/AuthController.java` (Added endpoint /me returning UserDto context)
+  * `[NEW] backend/springboot/src/test/java/com/djp/backend/AuthIntegrationTest.java` (Integration tests validating stateless 401s and token auth)
+* **📝 Resolution Summary:**
+  * I wired Spring Security and stateless JWT token authentication. Integrated OAuth2 Login Client allowing redirection code exchanges from Google/GitHub, which sync the user in our local database via `OAuth2SuccessHandler` and redirect back to the React app with a lightweight JWT token. Added request token filters verifying Bearer claims, standardizing Rest responses to return 401 instead of 302 redirects, and exposed `/auth/me` returning UserDto properties.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (deferred in bulk per user request)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `PR #6 — feat(backend): integrate Spring Security OAuth2 Login and JWT token verification`
+
 ### [RESOLVED] ID: TECH-006 — Missing Internal Layered Architecture (DTO, Service, Exception)
 * **📅 Resolution Date:** 2026-07-19 08:00 UTC
 * **Found By:** QA Agent | Nemotron, Tech Arch Agent | Antigravity (Gemini)
