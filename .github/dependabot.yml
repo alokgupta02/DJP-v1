@@ -1,0 +1,23 @@
+version: 2
+updates:
+  # Enable version updates for Maven dependencies in the backend
+  - package-ecosystem: "maven"
+    directory: "/backend/springboot"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+
+  # Enable version updates for npm dependencies in the frontend
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"

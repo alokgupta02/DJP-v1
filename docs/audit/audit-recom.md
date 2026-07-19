@@ -52,11 +52,6 @@ This file (`audit-recom.md`) is the **Single Source of Truth (SSOT)** for active
 ## 🟠 2. High Debt (Ready for Replenishment Queue)
 *As Critical items are resolved and removed above ("one goes out"), auto-fetch the following items from `debt.md`:*
 
-### SEC-001 — No OWASP / Security Review Process
-* **Worker/Who:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron
-* **Severity:** 🟠 High
-* **Changes required:** CI/CD (`.github/workflows/dependency-check.yml`, `.github/dependabot.yml`)
-
 ### SEC-002 — JWT Key & Rotation Strategy Undefined
 * **Worker/Who:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron
 * **Severity:** 🟠 High

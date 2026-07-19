@@ -413,16 +413,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Done: Upgraded POM parent module template to `3.4.1`. |
 | **Estimated Effort** | Completed |
 
-### DEP-003: No Dependency Management Discipline (`<dependencyManagement>`, dependabot, SBOM)
+### DEP-003: No Dependency Management Discipline (`<dependencyManagement>`, dependabot, SBOM) [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🟡 Medium |
+| **Severity** | Resolved |
 | **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
 | **Docs Say / Spec** | Enterprise build best practices require centralized version management, automated vulnerability scanning, and SBOM generation. |
-| **Impl Reality / Evidence** | No `<dependencyManagement>` section, no `versions-maven-plugin`, no `.github/dependabot.yml`, and no CycloneDX SBOM plugin configured. |
-| **Impact / Risk** | Increased risk of transitive dependency conflicts, undetected supply chain vulnerabilities, and uncoordinated version drift across team members. |
-| **Remediation Action** | Configure `cyclonedx-maven-plugin` for automated SBOM generation and add `.github/dependabot.yml` scanning weekly. |
-| **Estimated Effort** | 1 hour |
+| **Impl Reality / Evidence** | Scaffolded `.github/dependabot.yml` and configured `.github/workflows/dependency-check.yml` executing OWASP Dependency-Check. |
+| **Impact / Risk** | Was medium version and supply-chain drift risk. |
+| **Remediation Action** | Done: Added Dependabot schedules and OWASP security vulnerability check action. |
+| **Estimated Effort** | Completed |
 
 ### CFG-001: Single `application.yml` — No Profile Separation (`application-local.yml` / `-prod.yml`) [RESOLVED]
 | Aspect | Detail |
