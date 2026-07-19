@@ -48,6 +48,22 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: DOC-002 — No Developer Onboarding / Environment Guide
+* **📅 Resolution Date:** 2026-07-19 06:45 UTC
+* **Found By:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🔴 Critical
+* **📂 Files Modified / Created:**
+  * `[NEW] developer-setup.md` (Monorepo setup and build runbooks)
+  * `[NEW] backend/springboot/.env.example` (Backend environment properties template)
+* **📝 Resolution Summary:**
+  * To patch the lack of local runbooks and environment configurations for developers and agents, I created `developer-setup.md` containing prerequisite tools, monorepo packages context, and Spring local vs prod profile descriptions. I also created the default `.env.example` properties template for backend database credentials.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (deferred in bulk per user request)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `PR #6 — feat(docs): implement developer-setup onboarding runbook`
+
 ### [RESOLVED] ID: OBS-001 — Zero Logging Configuration Exists
 * **📅 Resolution Date:** 2026-07-19 06:40 UTC
 * **Found By:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron

@@ -310,16 +310,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Fix link targets in `backend-design.md` to point to `../../global-config.yaml`. Remove references to non-existent `routes.md` and point to `api-spec.yaml`. |
 | **Estimated Effort** | 30 minutes |
 
-### DOC-004: Missing Developer Onboarding & Local Setup Guide
+### DOC-004: Missing Developer Onboarding & Local Setup Guide [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🟠 High |
+| **Severity** | Resolved |
 | **Found By** | `Tech Arch Agent \| Antigravity (Gemini)` |
 | **Docs Say / Spec** | Doc (`docs/development/local-setup.md`) |
-| **Impl Reality / Evidence** | No unified onboarding document exists explaining how to spin up local PostgreSQL/H2, run Spring Boot, start React dev server, and execute Playwright tests. |
-| **Impact / Risk** | Slow onboarding for human contributors and repeated setup questions for new agent instances. |
-| **Remediation Action** | Create `docs/development/local-setup.md` providing step-by-step terminal commands (`mvn spring-boot:run`, `npm run dev`) and environment variable templates (`.env.example`). |
-| **Estimated Effort** | 2 hours |
+| **Impl Reality / Evidence** | Created the onboarding setup guide at `developer-setup.md` and configured `.env.example` templates. |
+| **Impact / Risk** | Was critical onboarding blocker. |
+| **Remediation Action** | Done: Created `developer-setup.md` in the root workspace and provided templates for variables. |
+| **Estimated Effort** | Completed |
 
 ### DOC-005: Missing Operational Runbooks & Backend Deployment Guide
 | Aspect | Detail |

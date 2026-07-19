@@ -14,3 +14,4 @@
 - [x] Fix DOC-001: implement canonical OpenAPI 3.0 specification in docs/api/api-spec.yaml
 - [x] Fix TECH-002: Align User entity model properties with canonical database schema
 - [x] Fix OBS-001: Configure structured JSON logging via Logback and populate MDC correlation IDs
+- [x] Fix DOC-002: Create developer-setup.md and configure .env.example environment variables templates

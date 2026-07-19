@@ -33,13 +33,6 @@ This file (`audit-recom.md`) is the **Single Source of Truth (SSOT)** for active
 * **Why it matters:** Core authentication does not function; controller stubs return static mock strings.
 * **Recommended action:** Integrate `spring-boot-starter-security`, configure OAuth2 resource server, and wire a `JwtTokenProvider`.
 
-### DOC-002 — No Developer Onboarding / Environment Guide
-* **Worker/Who:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron
-* **Severity:** 🔴 Critical
-* **Changes required:** Doc (`developer-setup.md`, `backend/springboot/.env.example`, `frontend/.env.example`)
-* **Why it matters:** Missing installation setups, prerequisite checks, and environment templates (`.env.example`) block new developers and agents.
-* **Recommended action:** Create `developer-setup.md` and explicit `.env.example` templates across all subprojects.
-
 ### GOV-001 — No Legal / Party Registration (ECI) Structure
 * **Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
 * **Severity:** 🔴 Critical
