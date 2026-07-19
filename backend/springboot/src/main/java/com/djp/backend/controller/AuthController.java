@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/auth")
-@CrossOrigin(origins = "*")
+@RequestMapping("/djp/api/v1/auth")
+@CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
 public class AuthController {
 
     @GetMapping("/google")

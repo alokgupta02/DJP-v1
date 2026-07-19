@@ -20,31 +20,25 @@ graph TD
         FE["React 18 SPA"]
     end
 
-    subgraph Security [JWT API Gateway Layer]
-        GW["API Gateway (Bearer Token Validator)"]
-    end
-
-    subgraph Microservices [Isolated Services backend/*]
-        AUTH["Auth Service (Issues JWT)"]
-        CORE["Core Service (Stateful SQL Data)"]
-        AI["AI Service (Stateless NLP)"]
+    subgraph Monolith [Modular Monolith backend/springboot]
+        AUTH["Auth Module (com.djp.auth)"]
+        CORE["Core Module (com.djp.core)"]
+        AI["AI Module (com.djp.ai)"]
     end
 
     subgraph Storage [Data Storage Layer]
-        DB[("Supabase PostgreSQL Database")]
-        VEC[("pgvector Semantic Store")]
+        DB[("Embedded H2 Database")]
     end
 
     %% Network flows
-    FE -->|Bearer Token / API requests| GW
-    GW -->|Validate & Route /api/v1/auth| AUTH
-    GW -->|Validate & Route /api/v1/core| CORE
-    GW -->|Validate & Route /api/v1/ai| AI
+    FE -->|API requests /djp/api/v1| AUTH
+    FE -->|API requests /djp/api/v1| CORE
+    FE -->|API requests /djp/api/v1| AI
     
     %% Storage access
     CORE -->|Read/Write SQL| DB
     AUTH -->|Query user credentials| DB
-    AI -->|Query vectors| VEC
+    AI -->|Query/Cache data| DB
     
     %% Strict boundaries & blockages
     FE -.-x|❌ BLOCKED DIRECT ACCESS| DB
@@ -59,9 +53,7 @@ graph TD
 | :--- | :--- | :--- | :--- | :--- |
 | **Frontend App** | `frontend/` | UI rendering, user interaction, state management, client validation | React 18, TypeScript, Vite, Tailwind CSS | No direct DB access; must communicate strictly via Gateway API endpoints. |
 | **Prototype App** | `prototype/` | Sandbox playground for component design iterations and static UI/UX mockups | React 18, TypeScript, Vite, Tailwind CSS | Isolated from live backend APIs; operates strictly with mock JSON states. |
-| **Auth Service** | `backend/auth-service` | Identity management, OAuth2 login, JWT issuance, session security | Java 21, Spring Boot 3, Spring Security | Sole authority on authentication tokens and user credentials. |
-| **Core Service** | `backend/core-service` | Civic issues, democratic discussions, citizen polls, proposals | Java 21, Spring Boot 3, Spring Data JPA, Supabase PostgreSQL | Owns civic business logic and relational domain tables. |
-| **AI Service** | `backend/ai-service` | LLM processing, semantic vector search, Recommendation pipelines | Python 3.11, FastAPI, Pydantic, pgvector | Stateless inference and semantic embeddings only. |
+| **Modular Monolith Backend** | `backend/springboot/` | Identity, OAuth2, JWT auth, civic issues, discussions, polls, and local storage | Java 21, Spring Boot 3, Spring Data JPA, Embedded H2 | Consolidated single backend deployable for MVP. |
 | **Quality & Tests** | `tests/` | Automated verification, TDD regression suites, API contract checks | Playwright, JUnit 5, PyTest | Must run and pass before any code merge. |
 
 ---
@@ -82,7 +74,7 @@ graph TD
         TL["TL Agent (Specs)"] 
         --> QA["QA Agent (Writes Failing Tests FIRST)"]
         --> Dev["FE/BE Agents (Write Code to Pass Tests)"]
-        --> Git["GitHub Agent (Audits & Creates PR ✅)"]
+        --> Git["GitHub & CI/CD Agent (Audits, Commits, PR & Pipelines ✅)"]
     end
 
     Gate -->|Approved| TL

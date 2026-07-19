@@ -9,7 +9,7 @@ description: Orchestrates the complete end-to-end multi-agent pipeline from user
 
 ## 🤖 Instructions for the Agent
 
-When the user triggers `/build-feature`, you must act as the ultimate Orchestrator and execute the following end-to-end relay exactly in this sequence. You will embody different agent roles (`PM Agent`, `Tech Arch Agent`, `TL Agent`, `QA Agent`, `FE/BE Agents`, `GitHub Agent`) sequentially to complete the delivery.
+When the user triggers `/build-feature`, you must act as the ultimate Orchestrator and execute the following end-to-end relay exactly in this sequence. You will embody different agent roles (`PM Agent`, `Tech Arch Agent`, `TL Agent`, `QA Agent`, `FE/BE Agents`, `GitHub & CI/CD Agent`) sequentially to complete the delivery.
 
 Do NOT skip any steps or human approval gates. Ensure `docs/execution/<feature>/` is used as the directory for output artifacts.
 
@@ -43,12 +43,14 @@ Do NOT skip any steps or human approval gates. Ensure `docs/execution/<feature>/
 4. Run the QA tests. If they fail, retry (max 3 times) until passing green ✅.
 5. **🛑 STOP.** Ask the user: *"The QA tests are passing. Please verify the working application. Type 'Approve' to proceed to Audit & PR."* Wait for explicit human approval.
 
-### Step 6: 🐙 GitHub Agent (Audit & PR)
+### Step 6: 🐙 GitHub & CI/CD Agent (Git, PR & Pipeline Manager)
 1. Run `graphify update .` to sync the AST graph.
-2. Run `/ponytail-review` (or simulate a Ponytail review) on the diff to ensure zero over-engineering. Delete any unneeded complexity found.
-3. Generate a semantic git commit for all changes.
-4. Raise a GitHub Pull Request with the body linking to the execution documentation.
-5. Move completed items to `archive/todo.md`.
+2. Run `/ponytail-review` on the diff to ensure zero over-engineering. Delete any unneeded complexity found.
+3. Generate a structured git commit using exact resolution log data (`Reversible Cloud Save`: `Worker/Who: Role | Model`).
+4. Push branch (`git push origin <branch>`) and raise a GitHub Pull Request (`gh pr create` / `/commit-push-pr`).
+5. Conduct PR review & resolve review feedback (`/babysit-pr`).
+6. Monitor CI/CD pipeline execution (`.github/workflows`) to verify 100% green automated build and test status.
+7. Move completed items to `archive/todo.md`.
 
 ---
 **End of Workflow.** Report final success to the user!

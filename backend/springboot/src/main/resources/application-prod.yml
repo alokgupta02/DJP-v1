@@ -1,0 +1,17 @@
+# Spring Boot Configuration: Production Profile (application-prod.yml)
+# Active in production: --spring.profiles.active=prod
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:postgres}?sslmode=require
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD}  # Fail startup if secret password env var is missing
+    driver-class-name: org.postgresql.Driver
+  h2:
+    console:
+      enabled: false  # Hard disable console in production
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate  # Safety guard: never drop/update schemas automatically
+    show-sql: false

@@ -22,7 +22,7 @@ description: Executes Frontend React Developer (FE Agent) responsibilities for D
                                                      │
                                                   (Pass ✅)
                                                      ▼
-                                            [ GitHub Agent PR ]
+                                            [ GitHub & CI/CD Agent ]
 ```
 
 * **Primary Scope:** React 18 UI components, state management, client routing, API integration, and styling (`frontend/`).

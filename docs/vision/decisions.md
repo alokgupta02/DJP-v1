@@ -21,8 +21,9 @@
 | **ADR-003** | **Mobile-First Responsive Design** | `Accepted` | Democratic mobile access vs. extra desktop desktop styling |
 | **ADR-004** | **Shared React 18 & Vite Foundation** | `Accepted` | Requires node build step for prototype vs. 100% code portability |
 | **ADR-005** | **Static File Deployment for Prototypes** | `Accepted` | Deploy anywhere cheaply vs. API backend required separately |
-| **ADR-006** | **Modular Microservices Backend** | `Accepted` | Scales domains independently vs. adds network complexity |
+| **ADR-006** | **Modular Microservices Backend** | `Superseded` | Scales domains independently vs. adds network complexity |
 | **ADR-007** | **Dynamic Ranks & Paid Leader Gate** | `Accepted` | Filters spam / locks inactive leaders vs. introduces billing gates |
+| **ADR-008** | **Modular Monolith for MVP** | `Accepted` | Reduces deployment & network overhead vs. limits independent scaling |
 
 ---
 
@@ -94,6 +95,16 @@
 * **Consequences:**
   * ✅ **Positive:** Prevents inactive leaders from dominating active ranks; generates sustainable revenue; targets committed urban users.
   * ⚠️ **Trade-off:** Paid gate may limit early adoption, but ensures high seriousness of active leaders.
+
+---
+
+### 📌 ADR-008: Modular Monolith for MVP
+* **Status:** `Accepted` (Supersedes ADR-006)
+* **Context:** The original microservice architecture documented in ADR-006 requires configuring and running multiple services, which adds operational complexity and setup friction for early phases.
+* **Decision:** Build the backend as a single Modular Monolith in `backend/springboot/` with strict package boundaries (`com.djp.auth`, `com.djp.core`, `com.djp.ai`) instead of separate services. 
+* **Consequences:**
+  * ✅ **Positive:** Simplifies deployment, logging, and database transactions for the MVP.
+  * ⚠️ **Trade-off:** Prevents independent scaling of individual domains, but remains easily decomposable if needed in future releases.
 
 ---
 

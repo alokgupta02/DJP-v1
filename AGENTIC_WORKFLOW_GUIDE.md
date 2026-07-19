@@ -14,7 +14,7 @@ graph TD
     FE[FE Agent - Frontend React Developer]
     BE[BE Agent - Backend Spring Boot Developer]
     QA[QA Agent - TDD Test Engineer]
-    GH[GitHub Agent - Git & PR Operations]
+    GH[GitHub & CI/CD Agent - Git, PR & Pipeline Operations]
 
     PM -->|PRD.md & Intake Analysis| TA
     TA -->|architecture.md| GATE{HUMAN APPROVAL GATE}
@@ -90,7 +90,7 @@ Our repository separates **user intake**, **domain execution**, and **historical
 6. **QA Agent (TDD Red Phase)**: Reads `test-todo.md` and writes automated test suites *before* application code exists.
 7. **TL Quality Check**: Verifies QA test edge cases.
 8. **FE & BE Agents (TDD Green Phase)**: Read `fe-todo.md` / `be-todo.md` and write application code to pass QA tests (Max 3 retry loop).
-9. **Archive & Git Operations**: Completed tasks funnel into `archive/todo.md` date-wise logs, and GitHub Agent commits docs/tests/code.
+9. **Universal Double-Loop & Reversible Cloud Save (`universal-task-commit-loop.md`)**: When any task finishes across `fe-todo.md`, `be-todo.md`, or `test-todo.md`, the agent records the exact details in `archive/todo.md` and **commits the changes using the exact log entry data as the multi-line Git commit message (`Cloud Save`)**. Then, it removes the item (`one goes out`) and **auto-fetches the next highest-priority task from the upstream backlog (`todo.md` / `specs.md`)** to maintain continuous replenishment.
 
 ---
 

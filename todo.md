@@ -8,5 +8,9 @@
 
 ## ✍️ User Input (Add your 1–2 line task or goal items below)
 
-- [ ] `<Enter your 1–2 line task or goal here>`
-- [ ] 
+- [x] Create audit/README.MD detailing report generation, shorlist, and patching/logging lifecycle
+- [x] Fix SEC-003: remove supabase references in YML files and use dev with H2 database by default
+- [x] Fix TECH-001 & ARCH-007: secure wildcard CORS on AuthController and prefix request mapping context path
+- [x] Fix DOC-001: implement canonical OpenAPI 3.0 specification in docs/api/api-spec.yaml
+- [x] Fix TECH-002: Align User entity model properties with canonical database schema
+- [x] Fix OBS-001: Configure structured JSON logging via Logback and populate MDC correlation IDs

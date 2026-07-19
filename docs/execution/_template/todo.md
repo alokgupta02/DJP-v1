@@ -24,4 +24,4 @@
 ## Phase 4: Post-Task Review & PR
 - [ ] **Graphify Update:** Run `graphify update .` to sync codebase graph
 - [ ] **Ponytail Review:** Audit code for over-engineering and dead abstractions
-- [ ] **GitHub Agent:** Raise Pull Request linking back to this execution folder
+- [ ] **GitHub & CI/CD Agent:** Create structured git commit (`Reversible Cloud Save`), push branch, raise Pull Request, run PR review (`/babysit-pr`), and verify 100% green CI/CD pipeline status linking back to this execution folder

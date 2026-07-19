@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: Digital Janata Platform (DJP) API Specification
+  description: OpenAPI 3.0 contract defining core citizen and authentication endpoints.
+  version: 1.0.0-MVP
+servers:
+  - url: http://localhost:8080/djp/api/v1
+    description: Local development backend server
+paths:
+  /auth/google:
+    get:
+      summary: Initiate Google OAuth2 Login
+      description: Returns the OAuth2 redirect URL for Google login.
+      responses:
+        '200':
+          description: Successful redirection URL payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  provider:
+                    type: string
+                    example: google
+                  redirectUrl:
+                    type: string
+                    example: /oauth2/authorization/google
+  /auth/github:
+    get:
+      summary: Initiate GitHub OAuth2 Login
+      description: Returns the OAuth2 redirect URL for GitHub login.
+      responses:
+        '200':
+          description: Successful redirection URL payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  provider:
+                    type: string
+                    example: github
+                  redirectUrl:
+                    type: string
+                    example: /oauth2/authorization/github
+  /auth/me:
+    get:
+      summary: Get Current Authenticated User Info
+      description: Returns details of the currently active session user.
+      responses:
+        '200':
+          description: Current user context details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        '401':
+          description: Unauthorized session
+components:
+  schemas:
+    UserDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        fullName:
+          type: string
+        avatarUrl:
+          type: string
+        role:
+          type: string
+          example: CITIZEN

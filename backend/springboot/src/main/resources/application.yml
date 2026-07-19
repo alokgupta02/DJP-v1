@@ -1,0 +1,9 @@
+# Spring Boot Configuration: Common Base Configuration (application.yml)
+# Active profile defaults to 'local' for embedded H2 database dev mode.
+# Override via command line: --spring.profiles.active=prod
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: backend

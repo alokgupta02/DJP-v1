@@ -22,7 +22,7 @@ description: Executes Backend Microservice Developer (BE Agent) responsibilities
                                                      │
                                                   (Pass ✅)
                                                      ▼
-                                            [ GitHub Agent PR ]
+                                            [ GitHub & CI/CD Agent ]
 ```
 
 * **Primary Scope:** REST APIs, domain services, database JPA/SQL repositories, security configuration (`backend/auth-service`, `backend/core-service`, `backend/ai-service`).
