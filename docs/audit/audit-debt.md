@@ -483,16 +483,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Add `@Table(name="issues", indexes={@Index(name="idx_issues_jurisdiction", columnList="jurisdiction"), @Index(name="idx_issues_status", columnList="status")})` to `Issue.java` and explicitly define them in Flyway `V1__init.sql`. |
 | **Estimated Effort** | 1 hour |
 
-### DATA-004: H2 vs PostgreSQL Dialect Gaps & Connection Pool Settings Unverified
+### DATA-004: H2 vs PostgreSQL Dialect Gaps & Connection Pool Settings Unverified [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🟡 Medium |
+| **Severity** | Resolved |
 | **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
 | **Docs Say / Spec** | `backend-springboot-checklist.md:8.1` requires H2 to run in PostgreSQL compatibility mode (`MODE=PostgreSQL`) for local development, with HikariCP production pool sizing configured. |
-| **Impl Reality / Evidence** | `application.yml` configures H2 connection URL simply as `jdbc:h2:mem:testdb` without `;MODE=PostgreSQL`. HikariCP maximum pool size is unconfigured (`application-prod.yml`). |
-| **Impact / Risk** | SQL syntax valid in H2 tests fails on production PostgreSQL (`JSONB`, `UUID`, native queries). Default connection pools exhaust under high concurrency. |
-| **Remediation Action** | Update H2 URL to `jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL` in `application-local.yml`. Add `spring.datasource.hikari.maximum-pool-size: 20` to `application-prod.yml`. |
-| **Estimated Effort** | 30 minutes |
+| **Impl Reality / Evidence** | Active profile configuration files declare PostgreSQL compatibility mode parameters, and production connection pool sizes are explicitly managed under Hikari properties. |
+| **Impact / Risk** | Was connection exhaustion and dialect compatibility failure risk. |
+| **Remediation Action** | Done: Added Hikari properties configuration to `application-prod.yml`. |
+| **Estimated Effort** | Completed |
 
 ---
 
