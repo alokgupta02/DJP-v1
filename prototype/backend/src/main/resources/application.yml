@@ -1,0 +1,74 @@
+# Spring Boot Configuration: Common Base Configuration (application.yml)
+# Active profile defaults to 'local' for embedded H2 database dev mode.
+# Override via command line: --spring.profiles.active=prod
+
+server:
+  shutdown: graceful
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: backend
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${OAUTH_GOOGLE_CLIENT_ID:mock-google-client-id}
+            client-secret: ${OAUTH_GOOGLE_CLIENT_SECRET:mock-google-client-secret}
+            scope:
+              - email
+              - profile
+          github:
+            client-id: ${OAUTH_GITHUB_CLIENT_ID:mock-github-client-id}
+            client-secret: ${OAUTH_GITHUB_CLIENT_SECRET:mock-github-client-secret}
+            scope:
+              - read:user
+              - user:email
+
+# Spring Boot Actuator & Prometheus Observability Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: when_authorized
+    prometheus:
+      enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+# Resilience4j Circuit Breaker & Retry Configurations
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+    instances:
+      authServiceCB:
+        baseConfig: default
+  retry:
+    configs:
+      default:
+        maxAttempts: 3
+        waitDuration: 1s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+    instances:
+      authServiceRetry:
+        baseConfig: default

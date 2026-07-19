@@ -1,89 +1,55 @@
-# DJP Prototype Workspace
+# DJP Prototype Environment
 
-This directory is the playground and staging area to build and test the **DJP Prototype App**. 
-
----
-
-## 🚀 Tech Stack
-
-- **Frontend:** React 18 (Vite, TypeScript, Tailwind CSS)
-- **Backend:** Java 21 & Spring Boot 3.x (H2 Embedded Database)
-- **Tests:** Automated validation check suites
+This folder (`prototype/`) is a **lightweight, fast-iteration development setup** mirroring the core production functionality of DJP (`/frontend` and `/backend`), stripped of complex production overhead (such as remote OAuth client secrets and telemetry chains). It is designed to let developers and agents rapidly build, iterate, and verify functional features.
 
 ---
 
-## 💡 Core Philosophy: Reuse & Anti-Over-Engineering
+## 🏗️ Architecture Summary
 
-> [!IMPORTANT]
-> The primary objective of the prototype is **speed and simplicity**.
-> To prevent over-engineering and duplication:
-> 1. **Reference the main production code first:** Before writing new pages, components, repositories, or controllers, check the root `/frontend` and `/backend` directories.
-> 2. **Copy and adapt:** Directly copy the existing modules, styling layouts, database entities, and mock scripts from the production folders into `prototype/frontend` and `prototype/backend` as needed.
-
----
-
-## 🤖 Agentic State & Workspace Files
-
-An agent working inside `/prototype` is constrained by the local operational environment:
-
-- **[.djp_identity.md](file:///home/ap/git-repo/DJP-v1/prototype/.djp_identity.md):** Defines profile, goals, and stack constraints for the prototype agent.
-- **[.djp_rules.md](file:///home/ap/git-repo/DJP-v1/prototype/.djp_rules.md):** Operational guardrails that strictly limit edits to the `/prototype` directory.
-- **[.djp_state.md](file:///home/ap/git-repo/DJP-v1/prototype/.djp_state.md):** Active session metrics and sprint tracking.
-- **[AGENTIC_WORKFLOW_GUIDE.md](file:///home/ap/git-repo/DJP-v1/prototype/AGENTIC_WORKFLOW_GUIDE.md):** Detailed agent lifecycle checklist and workflow instructions.
+* **Frontend (`prototype/frontend/`)**: Standalone Vite + React 19 + Tailwind v4 application, running on port `5174`. Proxy pre-configured to forward API requests (`/djp/api/v1`) directly to the local prototype backend.
+* **Backend (`prototype/backend/`)**: Spring Boot 3.4.1 Java 21 service running on port `8081` with active `local` profile (`--spring.profiles.active=local`).
+* **Database**: Embedded **in-memory H2 database** (`jdbc:h2:mem:djpdb`) with auto-seeding (`data.sql`) populated with sample users (`citizen@djp.org`) and issues on every boot. H2 Console enabled at `http://localhost:8081/h2-console`.
+* **Security & Auth**: Includes a `/djp/api/v1/auth/dev-login` endpoint so the frontend can instantly authenticate and interact with APIs without requiring live external Google/GitHub OAuth API keys during iteration.
 
 ---
 
-## 📋 Task & Dashboard Ecosystem
+## 🚀 Quickstart Guide
 
-Use these local files to drive feature development:
-
-1. **[todo.md](file:///home/ap/git-repo/DJP-v1/prototype/todo.md) (User Intake):** Write your 1–2 line task requests here.
-2. **[dashboard.md](file:///home/ap/git-repo/DJP-v1/prototype/dashboard.md) (Dashboard):** Aggregates sprint status.
-3. **Domain Task Sheets:**
-   - Frontend: [`prototype/frontend/fe-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/frontend/fe-todo.md)
-   - Backend: [`prototype/backend/be-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/backend/be-todo.md)
-   - Tests: [`prototype/tests/test-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/tests/test-todo.md)
-4. **[archive/archive-todo.md](file:///home/ap/git-repo/DJP-v1/prototype/archive/archive-todo.md):** History of completed items.
-
----
-
-## 💻 Running Staging Dev Servers
-
-When developing inside the prototype workspace, run the local dev servers on independent ports to prevent port conflicts with production:
-
+### 1. Start the Prototype Backend
+From `prototype/backend/`:
 ```bash
-# 1. Start Staging Frontend (Vite)
-cd prototype/frontend
-npm run dev
-
-# 2. Start Staging Backend (Spring Boot + H2)
 cd prototype/backend
 ./mvnw spring-boot:run
+# OR using global maven:
+mvn spring-boot:run
 ```
+* Backend starts on **`http://localhost:8081`**.
+* H2 Database console accessible at `http://localhost:8081/h2-console` (`jdbc:h2:mem:djpdb`, username: `sa`, password: empty).
 
----
-
-## 🔄 The Staging to Production Loop (Porting Logic)
-
-When a feature is proven and ready for production, follow this flow:
-
-```
-[ Build & Test in Proto ] ──► [ Strip Mock Logic & Hacks ] ──► [ Port into Production Layers ]
-```
-
-1. **Audit:** Identify exactly which components, classes, and SQL updates in the prototype represent the core feature.
-2. **Refactor:** Strip prototype-specific helpers and temporary logging from the ported code.
-3. **Integrate:** Copy the clean code into the main `/frontend` and `/backend` monorepo packages.
-4. **Update AST Graph:** Run `graphify update .` in the root folder to update the production code graph.
-
----
-
-## 🔍 Local Graph Analysis
-
-A local code dependency graph is maintained for this workspace. To rebuild/sync the AST graph after editing files, run:
-
+### 2. Start the Prototype Frontend
+From `prototype/frontend/`:
 ```bash
-cd prototype && graphify update .
+cd prototype/frontend
+npm run dev
 ```
+* Frontend starts on **`http://localhost:5174`** (or 5173 depending on availability).
+* Automatically proxies `/djp/api/v1` to `http://localhost:8081`.
 
-The resulting report is located at [`prototype/graphify-out/GRAPH_REPORT.md`](file:///home/ap/git-repo/DJP-v1/prototype/graphify-out/GRAPH_REPORT.md).
+### 3. Verify System Health
+From `prototype/tests/`:
+```bash
+cd prototype/tests
+node api-health.test.mjs
+```
+This runs an automated check against the local backend to verify issues retrieval and dev authentication.
+
+---
+
+## 🛠️ Key Differences from Production (`root/`)
+
+| Aspect | Production (`/`) | Prototype (`prototype/`) |
+| :--- | :--- | :--- |
+| **Ports** | `8080` (BE), `5173` (FE) | `8081` (BE), `5174` (FE) — zero collision |
+| **Auth** | OAuth2 Client required (Google/GitHub keys) | Built-in `dev-login` endpoint + mock JWT issuance |
+| **Database** | Postgres (`application-prod.yml`) | Embedded H2 + auto-seeded `data.sql` |
+| **Telemetry** | Full Prometheus / Actuator metrics | Streamlined dev observability |
