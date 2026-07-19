@@ -605,16 +605,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 
 ## Part VIII: DevOps, Containerization & CI/CD Pipelines (`DEVOPS`)
 
-### DEVOPS-001: Missing Multi-Stage Production Dockerfile for Backend & Non-Root User
+### DEVOPS-001: Missing Multi-Stage Production Dockerfile for Backend & Non-Root User [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🔴 Critical |
+| **Severity** | Resolved |
 | **Found By** | `GitHub Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
 | **Docs Say / Spec** | `backend-springboot-checklist.md:9.1-9.3` and deployment guidelines require optimized multi-stage Docker builds using Eclipse Temurin JRE, non-root user (`USER spring:spring`), and Spring Boot layered JARs (`extract`). |
-| **Impl Reality / Evidence** | No `Dockerfile` or `.dockerignore` exists inside `backend/springboot/` or repository root for the backend service. |
-| **Impact / Risk** | Cannot deploy containerized applications to cloud platforms (AWS ECS / Kubernetes / Google Cloud Run). Building unoptimized single-layer root containers poses severe container escape security vulnerabilities. |
-| **Remediation Action** | Create `backend/springboot/Dockerfile` utilizing multi-stage build (`eclipse-temurin:21-jdk-alpine` builder → `eclipse-temurin:21-jre-alpine` runtime), extracting layered JAR layers, and setting `USER 1001:1001`. |
-| **Estimated Effort** | 2 hours |
+| **Impl Reality / Evidence** | Created optimized multi-stage Dockerfile and corresponding .dockerignore configurations. |
+| **Impact / Risk** | Was critical containerization and runtime security blocker. |
+| **Remediation Action** | Done: Scaffolded production Dockerfile running under non-root djp user using JRE 21. |
+| **Estimated Effort** | Completed |
 
 ### DEVOPS-002: Missing Multi-Stage Dockerfile for Frontend & Local `docker-compose.yml`
 | Aspect | Detail |

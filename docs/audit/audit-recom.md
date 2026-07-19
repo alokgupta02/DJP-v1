@@ -72,11 +72,6 @@ This file (`audit-recom.md`) is the **Single Source of Truth (SSOT)** for active
 * **Severity:** 🟠 High
 * **Changes required:** Code (`backend/springboot/src/main/java/.../dto/`, `service/`, `exception/GlobalExceptionHandler.java`)
 
-### DEVOPS-001 — No Backend Production Dockerfile
-* **Worker/Who:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron
-* **Severity:** 🟠 High
-* **Changes required:** DevOps (`backend/springboot/Dockerfile`, `.dockerignore`)
-
 ---
 
 > [!TIP]

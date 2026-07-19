@@ -1,0 +1,28 @@
+# Ignore build outputs
+target/
+*.jar
+*.war
+*.ear
+
+# Ignore IDE files
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+# Ignore local configuration and sensitive secrets
+.env
+.env.local
+*.log
+*.sqlite
+
+# Ignore git metadata
+.git
+.gitignore
+.gitattributes
+
+# Ignore temp folders
+tmp/
+temp/
