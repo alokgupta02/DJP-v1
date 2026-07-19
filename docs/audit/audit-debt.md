@@ -542,16 +542,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Done: Added Resilience4j dependencies and configured application properties defaults. |
 | **Estimated Effort** | Completed |
 
-### SEC-005: Missing Graceful Shutdown & HTTP Security Headers
+### SEC-005: Missing Graceful Shutdown & HTTP Security Headers [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🟡 Medium |
+| **Severity** | Resolved |
 | **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
 | **Docs Say / Spec** | `backend-springboot-checklist.md:6.4` and `5.1` require graceful server shutdown (`server.shutdown=graceful`) and standard security response headers (`HSTS`, `X-Content-Type-Options`, `X-Frame-Options`). |
-| **Impl Reality / Evidence** | `application.yml` lacks `server.shutdown=graceful`. No security headers or filter is configured. |
-| **Impact / Risk** | In-flight HTTP requests and database transactions abort abruptly during Kubernetes rolling deployments. Browsers remain vulnerable to clickjacking and MIME-sniffing attacks. |
-| **Remediation Action** | Add `server.shutdown: graceful` and `spring.lifecycle.timeout-per-shutdown-phase: 30s` to `application.yml`. Configure Spring Security header defaults in `SecurityConfig`. |
-| **Estimated Effort** | 30 minutes |
+| **Impl Reality / Evidence** | Graceful shutdown properties declared in application.yml, and standard security headers (sameOrigin frame options, Cache-Control, HSTS) are wired in SecurityConfig. |
+| **Impact / Risk** | Was mid-deployment request termination and browser clickjacking risk. |
+| **Remediation Action** | Done: Added graceful shutdown configs and configured SecurityConfig headers. |
+| **Estimated Effort** | Completed |
 
 ---
 

@@ -2,11 +2,16 @@
 # Active profile defaults to 'local' for embedded H2 database dev mode.
 # Override via command line: --spring.profiles.active=prod
 
+server:
+  shutdown: graceful
+
 spring:
   profiles:
     active: local
   application:
     name: backend
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
   security:
     oauth2:
       client:
