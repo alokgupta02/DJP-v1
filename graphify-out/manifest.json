@@ -180,8 +180,8 @@
     "semantic_hash": ""
   },
   "frontend/apps/citizen/src/features/discussions/CreateDiscussionPage.tsx": {
-    "mtime": 1783857437.6054227,
-    "ast_hash": "eefce336710ba586a444a229b03282a6",
+    "mtime": 1784467236.089958,
+    "ast_hash": "9936c90cf200b692a556f7b90916f266",
     "semantic_hash": ""
   },
   "frontend/apps/citizen/src/features/discussions/DiscussionDetailPage.tsx": {
@@ -340,8 +340,8 @@
     "semantic_hash": ""
   },
   "frontend/apps/citizen/src/shared/components/sidebar/SidebarContext.tsx": {
-    "mtime": 1783446271.337552,
-    "ast_hash": "9b3352b7c12c4e6b7fc7bfa8a0c1f365",
+    "mtime": 1784467240.929264,
+    "ast_hash": "787c970ee79495f565f6235abfb97314",
     "semantic_hash": ""
   },
   "frontend/apps/citizen/src/shared/components/sidebar/SidebarFooter.tsx": {
@@ -435,8 +435,8 @@
     "semantic_hash": ""
   },
   "frontend/package.json": {
-    "mtime": 1783272703.9276605,
-    "ast_hash": "4d23e397281a049bad7d4c7366179fb0",
+    "mtime": 1784467247.4066703,
+    "ast_hash": "38c17f19e3b063cf49ff1dd1f9e87def",
     "semantic_hash": ""
   },
   "frontend/packages/theme/package.json": {
@@ -960,8 +960,8 @@
     "semantic_hash": ""
   },
   "backend/springboot/pom.xml": {
-    "mtime": 1784465357.3323896,
-    "ast_hash": "dd9aa491a1d33df50cc6f72b32802a6f",
+    "mtime": 1784466331.6455336,
+    "ast_hash": "39283b2a7febf4977de203a495755588",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/BackendApplication.java": {
@@ -2195,13 +2195,13 @@
     "semantic_hash": ""
   },
   "backend/springboot/src/main/resources/application.yml": {
-    "mtime": 1784443863.2387877,
-    "ast_hash": "44c87f14cb0dd44ec6908776e9521c37",
+    "mtime": 1784466829.6745336,
+    "ast_hash": "2cfb9bf97811fbe112ffaeb5170db97a",
     "semantic_hash": ""
   },
   "docs/audit/audit-log.md": {
-    "mtime": 1784465849.5410473,
-    "ast_hash": "7b066ca44ff236f8f44f548d2bdd7f25",
+    "mtime": 1784467314.1246476,
+    "ast_hash": "8449b09bd47ea16afd5d5d9178a2f998",
     "semantic_hash": ""
   },
   "docs/audit/README.MD": {
@@ -2250,8 +2250,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-debt.md": {
-    "mtime": 1784465862.6690269,
-    "ast_hash": "e0e223f3659d5952ada4458f135fab25",
+    "mtime": 1784467302.31397,
+    "ast_hash": "1a6f2fe4f5a42201898461ece0b1e5d1",
     "semantic_hash": ""
   },
   "backend/springboot/src/test/java/com/djp/backend/BackendApplicationTests.java": {
@@ -2265,7 +2265,7 @@
     "semantic_hash": ""
   },
   "backend/springboot/src/main/resources/application-local.yml": {
-    "mtime": 1784440399.060776,
+    "mtime": 1784466686.4148726,
     "ast_hash": "1711f45873d3b7c618677452378e6996",
     "semantic_hash": ""
   },
@@ -2280,8 +2280,8 @@
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/config/SecurityConfig.java": {
-    "mtime": 1784443867.8334153,
-    "ast_hash": "34337f4030cdd9e6460f38c530921289",
+    "mtime": 1784466356.6056092,
+    "ast_hash": "99dd98320bf106fc9ee445094433d084",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/dto/ErrorResponse.java": {
@@ -2407,6 +2407,16 @@
   "backend/springboot/src/main/java/com/djp/backend/service/AuditLogService.java": {
     "mtime": 1784465304.3871794,
     "ast_hash": "08deafb05f32bf83e45d0c6efe30d60c",
+    "semantic_hash": ""
+  },
+  "backend/springboot/src/test/java/com/djp/backend/ActuatorIntegrationTest.java": {
+    "mtime": 1784466904.68868,
+    "ast_hash": "124e1f0403f1b25c813ec8e99adb37d4",
+    "semantic_hash": ""
+  },
+  ".github/workflows/ci.yml": {
+    "mtime": 1784467169.0634918,
+    "ast_hash": "aaf6bf2233af13e5a782566fde447912",
     "semantic_hash": ""
   }
 }

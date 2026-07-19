@@ -1,57 +1,27 @@
-# DJP Prototype Executive Dashboard (`prototype/dashboard.md`)
-
-> **Role:** ⭐ **PROTOTYPE CONTROL CENTER & EXECUTIVE DASHBOARD**
-> Sourced dynamically from respective prototype domain execution todos ([`frontend/fe-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/frontend/fe-todo.md), [`backend/be-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/backend/be-todo.md), [`tests/test-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/tests/test-todo.md)).
+# DJP Prototype Executive Dashboard (`web-app = prototype`)
 
 ---
 
-## 🚀 Currently Executing Tasks (Active Control Panel)
-
-| Domain | Assigned Agent | Feature / Phase | Active Executing Task | Source Todo | Status |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Backend** | **BE Agent** | Prototype Setup | Initialize Spring Boot project & reuse root modules | [`backend/be-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/backend/be-todo.md) | ⬜ Ready to Start |
-| **QA / Tests** | **QA Agent** | Prototype Setup | Create validation checklist/tests for prototype views | [`tests/test-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/tests/test-todo.md) | ⬜ Ready to Start |
-| **Frontend** | **FE Agent** | Prototype Setup | Configure React environment & prepare core page imports | [`frontend/fe-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/frontend/fe-todo.md) | ⬜ Ready to Start |
-
----
-
-## ⚙️ Backend Roadmap (`prototype/backend/be-todo.md`)
-
-**Progress: 0%** `[................................]` 0/1 tasks
-
-| Phase | Done | Status | Target Layer / Feature |
-| :--- | :--- | :--- | :--- |
-| **1 — Spring Boot App Setup** | 0/1 | ⬜ Ready | Initialize project and prepare core controllers for reuse |
+| Metadata | Value |
+| :--- | :--- |
+| **📌 Purpose** | Executive Dashboard aggregating status across `web-app = prototype`, backend (`port 8081`), and QA. |
+| **📅 Last Updated** | 2026-07-19 |
+| **🏷️ Status / Version** | Active SSOT / v1.0.0 |
+| **👥 Owner / Worker** | `Worker/Who: [PM Agent / TL Agent | Antigravity (Gemini)]` |
+| **🔗 Upstream / Dependencies** | [`prototype/AGENTIC_WORKFLOW_GUIDE.md`](file:///home/ap/git-repo/DJP-v1/prototype/AGENTIC_WORKFLOW_GUIDE.md), [`prototype/todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/todo.md) |
 
 ---
 
-## 🎨 Frontend Roadmap (`prototype/frontend/fe-todo.md`)
+## 🚀 Domain Execution Scorecard
 
-**Progress: 0%** `[................................]` 0/1 tasks
-
-| Phase | Done | Status | Target Layer / Feature |
-| :--- | :--- | :--- | :--- |
-| **1 — React Frontend Setup** | 0/1 | ⬜ Ready | Import core styles, setup page layouts and basic routing |
-
----
-
-## 🧪 QA & Test Suite (`prototype/tests/test-todo.md`)
-
-**Progress: 0%** `[................................]` 0/1 tasks
-
-| Phase | Done | Status | Target Layer / Feature |
-| :--- | :--- | :--- | :--- |
-| **1 — Verification Setup** | 0/1 | ⬜ Ready | Add simple test verification checklists for prototype pages |
+| Domain | Target Environment | Assigned Agent | Tracker SSOT | Progress & Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **Frontend** | React / Vite (`port 5174`) | **FE Agent** | [`frontend/fe-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/frontend/fe-todo.md) | ✅ Phase 1 Complete (100%) |
+| **Backend** | Spring Boot (`port 8081`) | **BE Agent** | [`backend/be-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/backend/be-todo.md) | ✅ Phase 1 Complete (100%) |
+| **QA / Tests** | Automated Verification | **QA Agent** | [`tests/test-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/tests/test-todo.md) | ✅ Phase 1 Verified (100%) |
 
 ---
 
-## 🏛️ Completed Infrastructure & Agentic Workflow Setup (Master Archive)
-
-<details>
-<summary><strong>Click to expand completed Agent Architecture & Guardrails (4/4 tasks completed)</strong></summary>
-
-- [x] Create core prototype files (`.djp_identity.md`, `.djp_state.md`, `.djp_rules.md`)
-- [x] Initialize domain todos under `prototype/frontend/`, `prototype/backend/`, and `prototype/tests/`
-- [x] Link master dashboard and task portal
-- [x] Configure workflow guide for React + Spring Boot prototype
-</details>
+## 🎯 Phase 2 Roadmap Overview
+* **Goal:** Copy and adapt `Discussions` (`/discussions`) and `Polls` (`/polls`) APIs and UI views from root production into `prototype/` (`web-app = prototype`).
+* **Replenishment Rule:** Pick up tasks from [`todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/todo.md), execute in domain trackers, and archive completed items to `archive/archive-todo.md`.

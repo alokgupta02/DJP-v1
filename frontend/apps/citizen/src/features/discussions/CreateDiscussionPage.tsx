@@ -77,18 +77,20 @@ export default function CreateDiscussionPage() {
   useEffect(() => {
     const saved = localStorage.getItem(DRAFT_STORAGE_KEY);
     if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed.title) setTitle(parsed.title);
-        if (parsed.selectedCommunity) setSelectedCommunity(parsed.selectedCommunity);
-        if (parsed.tags && Array.isArray(parsed.tags)) setTags(parsed.tags);
-        if (parsed.html && editorRef.current) {
-          editorRef.current.innerHTML = parsed.html;
-          setEditorEmpty(editorRef.current.innerText.trim() === "");
+      setTimeout(() => {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.title) setTitle(parsed.title);
+          if (parsed.selectedCommunity) setSelectedCommunity(parsed.selectedCommunity);
+          if (parsed.tags && Array.isArray(parsed.tags)) setTags(parsed.tags);
+          if (parsed.html && editorRef.current) {
+            editorRef.current.innerHTML = parsed.html;
+            setEditorEmpty(editorRef.current.innerText.trim() === "");
+          }
+        } catch {
+          // ignore invalid JSON
         }
-      } catch {
-        // ignore invalid JSON
-      }
+      }, 0);
     }
   }, []);
 
