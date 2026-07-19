@@ -1,16 +1,16 @@
 # Graph Report - DJP-v1  (2026-07-19)
 
 ## Corpus Check
-- 425 files · ~259,702 words
+- 425 files · ~259,589 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2676 nodes · 2874 edges · 347 communities (216 shown, 131 thin omitted)
+- 2673 nodes · 2872 edges · 346 communities (215 shown, 131 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 51 edges (avg confidence: 0.78)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8f1bbf93`
+- Built from commit: `670972da`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -329,16 +329,15 @@
 - AuditLogService
 - .onCreate
 - 🔴 1. Critical Backend Debt (Active Blockers)
-- .onUpdate
 
 ## God Nodes (most connected - your core abstractions)
 1. `User` - 40 edges
 2. `Issue` - 35 edges
-3. `📜 Completed Resolutions Ledger` - 24 edges
+3. `📜 Completed Resolutions Ledger` - 25 edges
 4. `AuditLog` - 23 edges
-5. `💻 **Frontend Engineering Guide**` - 22 edges
-6. `analyze_repo()` - 20 edges
-7. `UserRepository` - 20 edges
+5. `analyze_repo()` - 20 edges
+6. `UserRepository` - 20 edges
+7. `💻 **Frontend Engineering Guide**` - 20 edges
 8. `JwtTokenProvider` - 18 edges
 9. `compilerOptions` - 18 edges
 10. `Planning with Files` - 18 edges
@@ -358,7 +357,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (347 total, 131 thin omitted)
+## Communities (346 total, 131 thin omitted)
 
 ### Community 0 - "Test-Driven Development (TDD)"
 Cohesion: 0.05
@@ -385,16 +384,16 @@ Cohesion: 0.06
 Nodes (33): AppLayout(), Topbar(), TopbarProps, createAction, sidebarItems, Sidebar(), SidebarItem, SidebarContext (+25 more)
 
 ### Community 6 - "index.ts"
-Cohesion: 0.04
-Nodes (44): ARCH-003: Contradictory Directory Structure Across Docs, ARCH-004: Frontend Shared Packages Are Empty Shells & Structure Discrepancy, ARCH-005: Missing API Gateway Implementation, ARCH-006: Undocumented Async Event Bus & pgvector Semantic Store Pipelines, DATA-001: Missing Database Migration Engine (Flyway/Liquibase) vs Unsafe `ddl-auto: update`, DATA-003: Missing Database Indexes & Performance Optimizations in Schema, DEVOPS-002: Missing Multi-Stage Dockerfile for Frontend & Local `docker-compose.yml`, DEVOPS-003: Empty `.github/workflows/` Directory (No Automated CI/CD Pipeline) (+36 more)
+Cohesion: 0.05
+Nodes (43): ARCH-003: Contradictory Directory Structure Across Docs, ARCH-005: Missing API Gateway Implementation, ARCH-006: Undocumented Async Event Bus & pgvector Semantic Store Pipelines, DATA-001: Missing Database Migration Engine (Flyway/Liquibase) vs Unsafe `ddl-auto: update`, DATA-003: Missing Database Indexes & Performance Optimizations in Schema, DEVOPS-002: Missing Multi-Stage Dockerfile for Frontend & Local `docker-compose.yml`, DEVOPS-003: Empty `.github/workflows/` Directory (No Automated CI/CD Pipeline), DOC-005: Missing Operational Runbooks & Backend Deployment Guide (+35 more)
 
 ### Community 7 - "Process"
 Cohesion: 0.07
 Nodes (27): Analyzing Benchmark Results, Categories for Suggestions, Guidelines, Guidelines, Inputs, Inputs, Output Format, Post-hoc Analyzer Agent (+19 more)
 
 ### Community 8 - "💻 **Frontend Engineering Guide**"
-Cohesion: 0.07
-Nodes (29): 1️⃣ Citizen, 1. 👤 Citizen First, 2. 🔁 Reuse Before Create, 3. 🧩 Composition Over Duplication, 4. 📁 Feature-Oriented Development, 5. 🛡️ Strict Type Safety, ♿ Accessibility (WCAG 2.1 AA Mandatory), 🤖 AI Agent Rules (+21 more)
+Cohesion: 0.10
+Nodes (20): 1️⃣ Citizen, ♿ Accessibility (WCAG 2.1 AA Mandatory), 🤖 AI Agent Rules, 📱 Applications, 🚦 Architectural Boundary Rules, 🏗️ Architecture, ✅ Code Review & PR Checklist, 🧱 Component Guidelines (+12 more)
 
 ### Community 9 - "devDependencies"
 Cohesion: 0.08
@@ -433,8 +432,8 @@ Cohesion: 0.10
 Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, jsx, lib, module, moduleDetection (+11 more)
 
 ### Community 18 - "router.tsx"
-Cohesion: 0.12
-Nodes (7): AuthLayout(), router, Step2Location(), COMMUNITIES, NotFoundPage(), FILTER_TABS, POLLS
+Cohesion: 0.20
+Nodes (4): AuthLayout(), router, Step2Location(), NotFoundPage()
 
 ### Community 19 - "compilerOptions"
 Cohesion: 0.11
@@ -485,12 +484,12 @@ Cohesion: 0.13
 Nodes (14): Blind Comparator Agent, Field Descriptions, Guidelines, Inputs, Output Format, Process, Role, Step 1: Read Both Outputs (+6 more)
 
 ### Community 31 - "7. JavaScript Performance"
-Cohesion: 0.11
-Nodes (18): Critical Constraints, File Types Manus Creates, Key Quotes, Manus Statistics, Principle 1: Design Around KV-Cache, Principle 2: Mask, Don't Remove, Principle 3: Filesystem as External Memory, Principle 4: Manipulate Attention Through Recitation (+10 more)
+Cohesion: 0.18
+Nodes (11): Critical Constraints, File Types Manus Creates, Key Quotes, Manus Statistics, Reference: Manus Context Engineering Principles, Source, Strategy 1: Context Reduction, Strategy 2: Context Isolation (Multi-Agent) (+3 more)
 
 ### Community 32 - "Quick Reference"
-Cohesion: 0.11
-Nodes (18): Advanced Topics, Anti-Patterns, File Purposes, FIRST: Restore Context (v2.2.0), Important: Where Files Go, Parallel task workflow, Planning with Files, Quick Start (+10 more)
+Cohesion: 0.05
+Nodes (41): 1. Create Plan First, 2. The 2-Action Rule, 3. Read Before Decide, 4. Update After Act, 5. Log ALL Errors, 6. Never Repeat Failures, 7. Continue After Completion, Advanced Topics (+33 more)
 
 ### Community 33 - "scripts"
 Cohesion: 0.13
@@ -669,8 +668,8 @@ Cohesion: 0.15
 Nodes (12): Current Phase, Decisions Made, Errors Encountered, Goal, Hypotheses, Notes, Phase 1: Data Discovery, Phase 2: Exploratory Analysis (+4 more)
 
 ### Community 78 - "2. Bundle Size Optimization"
-Cohesion: 0.15
-Nodes (13): Current Phase, Decisions Made, Errors Encountered, Goal, Key Questions, Notes, Phase 1: Requirements & Discovery, Phase 2: Planning & Structure (+5 more)
+Cohesion: 0.29
+Nodes (7): Current Phase, Decisions Made, Errors Encountered, Goal, Key Questions, Notes, Task Plan: [Brief Description]
 
 ### Community 79 - "design-principles.md"
 Cohesion: 0.17
@@ -685,8 +684,8 @@ Cohesion: 0.29
 Nodes (6): 1. Executive Summary & Big Picture, 2. Identified Architectural Areas & Domain Boundaries, 3. Agentic Workflow Guardrails & Responsibilities, 4. Key Takeaways & Memory Aid, Strict Agent Enforcement Rules:, 🏛️ System Boundaries & Agentic Guardrails Matrix
 
 ### Community 82 - "GlobalExceptionHandler.java"
-Cohesion: 0.19
-Nodes (13): ErrorResponse, GlobalExceptionHandler, HttpServletRequest, Logger, ResponseEntity, ResponseStatus, ResourceNotFoundException, ResponseStatus (+5 more)
+Cohesion: 0.27
+Nodes (9): Authentication, Component, HttpServletRequest, HttpServletResponse, Logger, Override, OAuth2SuccessHandler, OAuth2User (+1 more)
 
 ### Community 83 - "index.ts"
 Cohesion: 0.38
@@ -697,7 +696,7 @@ Cohesion: 0.33
 Nodes (5): How to Use, References, Rule Categories by Priority, Supabase Postgres Best Practices, When to Apply
 
 ### Community 85 - "React Best Practices"
-Cohesion: 0.18
+Cohesion: 0.29
 Nodes (7): Findings & Decisions, Issues Encountered, Requirements, Research Findings, Resources, Technical Decisions, Visual/Browser Findings
 
 ### Community 86 - "package.json"
@@ -741,8 +740,8 @@ Cohesion: 0.40
 Nodes (3): badgeVariantStyles, Discussion, DISCUSSIONS
 
 ### Community 96 - "async-cheap-condition-before-await.md"
-Cohesion: 0.25
-Nodes (8): 1. Create Plan First, 2. The 2-Action Rule, 3. Read Before Decide, 4. Update After Act, 5. Log ALL Errors, 6. Never Repeat Failures, 7. Continue After Completion, Critical Rules
+Cohesion: 0.29
+Nodes (7): Principle 1: Design Around KV-Cache, Principle 2: Mask, Don't Remove, Principle 3: Filesystem as External Memory, Principle 4: Manipulate Attention Through Recitation, Principle 5: Keep the Wrong Stuff In, Principle 6: Don't Get Few-Shotted, The 6 Manus Principles
 
 ### Community 97 - "Prefer Statically Analyzable Paths"
 Cohesion: 0.20
@@ -769,8 +768,8 @@ Cohesion: 0.18
 Nodes (10): Configuration, Data Layer (Repositories), Dependency Injection & Components, Logging, Project Setup & Structure, Security, Service Layer, Spring Boot Best Practices (+2 more)
 
 ### Community 110 - "InsightsPage.tsx"
-Cohesion: 0.25
-Nodes (8): Autonomous and Gated Modes (v3), Gate decision table, Host capability tiers, Ledger contract summary, Runaway guards, The legacy invariant (promise), Trying it, What each mode does
+Cohesion: 0.33
+Nodes (6): Phase 1: Requirements & Discovery, Phase 2: Planning & Structure, Phase 3: Implementation, Phase 4: Testing & Verification, Phase 5: Delivery, Phases
 
 ### Community 118 - "ponytail.md"
 Cohesion: 0.29
@@ -789,8 +788,8 @@ Cohesion: 0.47
 Nodes (6): is_within_root(), resolve_from_active_file(), resolve_from_env(), resolve_latest_dir(), resolve-plan-dir.sh script, slug_is_valid()
 
 ### Community 156 - "async-api-routes.md"
-Cohesion: 0.06
-Nodes (34): 📜 Completed Resolutions Ledger, 📔 DJP Platform Technical Debt Resolution & Audit Log (Historical Ledger SSOT), [EXAMPLE] ID: DOC-001 — Missing `api-spec.yaml` (OpenAPI Contract), 📋 How to Use This Log (Agent & Developer Instructions), [RESOLVED] ID: ARCH-001 — Modular Monolith Architectural Shift, [RESOLVED] ID: CFG-001 / TEST-001 — Split Environment Profiles & Scaffold Integration Tests, [RESOLVED] ID: DATA-002 — Missing JPA Repository Interfaces & Custom Queries, [RESOLVED] ID: DATA-004 — H2 vs PostgreSQL Dialect Gaps & Connection Pool Settings Unverified (+26 more)
+Cohesion: 0.05
+Nodes (35): 📜 Completed Resolutions Ledger, 📔 DJP Platform Technical Debt Resolution & Audit Log (Historical Ledger SSOT), [EXAMPLE] ID: DOC-001 — Missing `api-spec.yaml` (OpenAPI Contract), 📋 How to Use This Log (Agent & Developer Instructions), [RESOLVED] ID: ARCH-001 — Modular Monolith Architectural Shift, [RESOLVED] ID: ARCH-004 — Frontend Shared Packages Are Empty Shells & Structure Discrepancy, [RESOLVED] ID: CFG-001 / TEST-001 — Split Environment Profiles & Scaffold Integration Tests, [RESOLVED] ID: DATA-002 — Missing JPA Repository Interfaces & Custom Queries (+27 more)
 
 ### Community 157 - "async-dependencies.md"
 Cohesion: 0.29
@@ -870,15 +869,15 @@ Nodes (5): 🚀 Active Sprint & Executing Tasks, 📋 Backlog & Planned Phases, 
 
 ### Community 190 - "JwtTokenProvider"
 Cohesion: 0.06
-Nodes (34): SecurityConfig, Component, FilterChain, Override, MdcFilter, Component, FilterChain, HttpServletRequest (+26 more)
+Nodes (38): SecurityConfig, ErrorResponse, GlobalExceptionHandler, HttpServletRequest, Logger, ResponseEntity, ResponseStatus, ResourceNotFoundException (+30 more)
 
 ### Community 191 - "rendering-script-defer-async.md"
 Cohesion: 0.40
 Nodes (5): 8.1 Do Not Put Effect Events in Dependency Arrays, 8.2 Initialize App Once, Not Per Mount, 8.3 Store Event Handlers in Refs, 8.4 useEffectEvent for Stable Callback Refs, 8. Advanced Patterns
 
 ### Community 192 - "📋 DJP-v1 Technical Debt Register"
-Cohesion: 0.29
-Nodes (7): Claude Code Turn-Loop Integration (v2.38.0+), Install scope: plugin vs skill-only (v2.42.0 clarification), `loop.md` template, Manual fallback when `/plan-goal` / `/plan-loop` are unavailable (v2.42.0), `/plan-goal` slash command, `/plan-loop` slash command, PreCompact hook (auto)
+Cohesion: 0.33
+Nodes (6): 1. 👤 Citizen First, 2. 🔁 Reuse Before Create, 3. 🧩 Composition Over Duplication, 4. 📁 Feature-Oriented Development, 5. 🛡️ Strict Type Safety, 📐 Engineering Principles
 
 ### Community 193 - "rendering-usetransition-loading.md"
 Cohesion: 0.33
@@ -909,8 +908,8 @@ Cohesion: 0.50
 Nodes (3): Communication Guardrails, DJP PROTOTYPE IDENTITY, Technical Profile
 
 ### Community 223 - "Issue"
-Cohesion: 0.07
-Nodes (3): Issue, Entity, Table
+Cohesion: 0.06
+Nodes (5): Issue, Entity, PrePersist, Table, PreUpdate
 
 ### Community 224 - "🤖 Instructions for the Agent"
 Cohesion: 0.22
@@ -925,7 +924,7 @@ Cohesion: 0.29
 Nodes (6): 1. What DJP Is, 2. Repository Layout & Core DJPv1 Files, 3. How to Run Frontend, 4. How to Run Backend, 5. Where Documentation Lives, DJP (Developer Journal Prompt & Workspace) - Version 1
 
 ### Community 241 - "AuthController"
-Cohesion: 0.20
+Cohesion: 0.22
 Nodes (8): AuthController, Authentication, CrossOrigin, RequestMapping, ResponseEntity, RestController, UserDto, GetMapping
 
 ### Community 243 - "DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy"
@@ -933,8 +932,8 @@ Cohesion: 0.25
 Nodes (7): 1. Team Hierarchy & Roles, 2. Visual Task Flow Across Todos, 3. Spec-Driven & Test-Driven Development (TDD) Flow, 4. Master Folder & Todo Architecture Structure, 5. Agent Commander Cheat Sheet, DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy, Summary Role Table
 
 ### Community 244 - "UserRepository"
-Cohesion: 0.20
-Nodes (13): IssueController, CrossOrigin, RequestMapping, RestController, AuditLogRepository, Repository, IssueRepository, Issue (+5 more)
+Cohesion: 0.15
+Nodes (17): IssueController, CrossOrigin, RequestMapping, RestController, AuditLogRepository, Repository, IssueRepository, Issue (+9 more)
 
 ### Community 245 - "DJP Documentation Sitemap & Organization Rules"
 Cohesion: 0.40
@@ -1065,7 +1064,7 @@ Cohesion: 0.25
 Nodes (7): 📊 DJP Platform Audit & Technical Debt Management System, 🔄 Dual-Loop Audit & Execution Architecture, Loop 1: Continuous Learning & Weekly Proactive Audit Loop (`debt.md`), Loop 2: Autonomous Execution & Replenishment Loop (`audit-recom.md`), 🏛️ Single Sources of Truth (SSOT), 📋 Standard Item Schema (`debt.md` & `audit-recom.md`), 🚀 Step-by-Step Operating Guide
 
 ### Community 336 - "IssueCreateRequestDto"
-Cohesion: 0.11
+Cohesion: 0.10
 Nodes (5): Authentication, Issue, ResponseEntity, IssueCreateRequestDto, PostMapping
 
 ### Community 337 - "vision-core-draft.md"
@@ -1077,41 +1076,37 @@ Cohesion: 0.20
 Nodes (9): 🚀 0. Mandatory Session Initialization Protocol, 🧠 1. Real Developer Mindset & Continuous Learning Mode (`Weekly Proactive Audits`), 📋 Standard Mandatory Steps for Every Completed Task, Step 1: Log the Resolution (`*-log.md` / `archive/todo.md`), Step 2: Git Commit Using Log Data (`Reversible Cloud Save`), Step 3: Auto-Fetch Replenishment ("One Goes Out, Auto-Fetches Next"), 🔄 The Universal Double-Loop Architecture, Universal Task & Commit Execution Loop (Reversible Cloud Save) (+1 more)
 
 ### Community 339 - "IssueIntegrationTest"
-Cohesion: 0.19
+Cohesion: 0.21
 Nodes (5): IssueIntegrationTest, AfterEach, AutoConfigureMockMvc, MockMvc, Test
 
 ### Community 340 - "OAuth2SuccessHandler"
-Cohesion: 0.11
+Cohesion: 0.12
 Nodes (4): AuditLog, Entity, PrePersist, Table
 
 ### Community 341 - "MaskingMessageConverter"
 Cohesion: 0.32
 Nodes (7): Override, MaskingMessageConverter, Test, LoggingMaskingTest, ClassicConverter, ILoggingEvent, Pattern
 
-### Community 343 - "AuditLogService"
-Cohesion: 0.43
-Nodes (4): AuditLogService, Logger, Service, Transactional
-
 ### Community 345 - "🔴 1. Critical Backend Debt (Active Blockers)"
 Cohesion: 0.18
 Nodes (11): 🔴 1. Critical Backend Debt (Active Blockers), 🟠 2. High Priority Backend Debt, ARCH-001 — Microservices Architecture Documented vs. Monolith Implemented, ARCH-002 — Layered Package Structure 86% Missing, ⚙️ Autonomous Execution & Replenishment Loop (`Backend Domain`), CFG-001 — Single `application.yml` Without Profile Separation, CFG-002 — Hardcoded Secret Default (`${SUPABASE_PASSWORD:secret-password}`), DATA-001 — No Database Migration Strategy (`ddl-auto: update` in Code) (+3 more)
 
 ## Knowledge Gaps
-- **1424 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1419 more)
+- **1422 isolated node(s):** `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script`, `set-active-plan.sh script`, `com.djp:backend` (+1417 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **131 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `User` connect `User` to `IssueCreateRequestDto`, `AuthController`, `IssueIntegrationTest`, `UserRepository`, `Example 1: Research Task`, `JwtTokenProvider`, `Issue`?**
+- **Why does `User` connect `User` to `IssueCreateRequestDto`, `GlobalExceptionHandler.java`, `IssueIntegrationTest`, `UserRepository`, `Issue`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `Issue` connect `Issue` to `.onUpdate`, `IssueCreateRequestDto`, `UserRepository`, `.onCreate`, `User`?**
+- **Why does `Issue` connect `Issue` to `IssueCreateRequestDto`, `User`, `UserRepository`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
-- **Why does `UserRepository` connect `UserRepository` to `rendering-usetransition-loading.md`, `IssueCreateRequestDto`, `AuthController`, `IssueIntegrationTest`, `Example 1: Research Task`, `User`, `JwtTokenProvider`?**
+- **Why does `UserRepository` connect `UserRepository` to `rendering-usetransition-loading.md`, `IssueCreateRequestDto`, `AuthController`, `GlobalExceptionHandler.java`, `IssueIntegrationTest`, `User`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script` to the rest of the system?**
-  _1464 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1462 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Test-Driven Development (TDD)` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Skill Creator` be split into smaller, more focused modules?**

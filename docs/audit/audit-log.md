@@ -48,6 +48,21 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: ARCH-004 — Frontend Shared Packages Are Empty Shells & Structure Discrepancy
+* **📅 Resolution Date:** 2026-07-19 12:58 UTC
+* **Found By:** Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🟠 High
+* **📂 Files Modified / Created:**
+  * `[MODIFY] docs/architecture/frontend/frontend.md` (Updated guide structure and dependency flows to reflect the single React SPA organization instead of the over-engineered multi-package monorepo workspace)
+* **📝 Resolution Summary:**
+  * Updated the frontend engineering guide to officially align with the Single Page Application (SPA) layout inside `frontend/apps/citizen/src/`, replacing the obsolete workspaces packages references with co-located folder setups.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (N/A - Documentation Fix)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `docs(frontend): resolve structural discrepancies in frontend guide (ARCH-004)`
+
 ### [RESOLVED] ID: XCUT-002 — Missing Audit Logging Infrastructure (Tracking WHO/WHEN/WHAT mutations)
 * **📅 Resolution Date:** 2026-07-19 12:51 UTC
 * **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)

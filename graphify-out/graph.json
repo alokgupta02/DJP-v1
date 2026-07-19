@@ -3241,7 +3241,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_dto_errorresponse",
-      "community": 82,
+      "community": 190,
       "norm_label": "errorresponse.java"
     },
     {
@@ -3251,7 +3251,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_dto_errorresponse_errorresponse",
-      "community": 82,
+      "community": 190,
       "norm_label": "errorresponse"
     },
     {
@@ -3411,7 +3411,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_globalexceptionhandler",
-      "community": 82,
+      "community": 190,
       "norm_label": "globalexceptionhandler.java"
     },
     {
@@ -3421,7 +3421,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_globalexceptionhandler_globalexceptionhandler",
-      "community": 82,
+      "community": 190,
       "norm_label": "globalexceptionhandler"
     },
     {
@@ -3431,7 +3431,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "restcontrolleradvice",
-      "community": 82,
+      "community": 190,
       "norm_label": "restcontrolleradvice"
     },
     {
@@ -3441,7 +3441,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_globalexceptionhandler_java_logger",
-      "community": 82,
+      "community": 190,
       "norm_label": "logger"
     },
     {
@@ -3451,7 +3451,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_globalexceptionhandler_globalexceptionhandler_handleresourcenotfoundexception",
-      "community": 82,
+      "community": 190,
       "norm_label": ".handleresourcenotfoundexception()"
     },
     {
@@ -3461,7 +3461,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_globalexceptionhandler_java_httpservletrequest",
-      "community": 82,
+      "community": 190,
       "norm_label": "httpservletrequest"
     },
     {
@@ -3471,7 +3471,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_globalexceptionhandler_java_responseentity",
-      "community": 82,
+      "community": 190,
       "norm_label": "responseentity"
     },
     {
@@ -3481,7 +3481,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "exceptionhandler",
-      "community": 82,
+      "community": 190,
       "norm_label": "exceptionhandler"
     },
     {
@@ -3491,7 +3491,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_globalexceptionhandler_globalexceptionhandler_handleunauthorizedexception",
-      "community": 82,
+      "community": 190,
       "norm_label": ".handleunauthorizedexception()"
     },
     {
@@ -3501,7 +3501,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_globalexceptionhandler_globalexceptionhandler_handlevalidationexception",
-      "community": 82,
+      "community": 190,
       "norm_label": ".handlevalidationexception()"
     },
     {
@@ -3511,7 +3511,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "methodargumentnotvalidexception",
-      "community": 82,
+      "community": 190,
       "norm_label": "methodargumentnotvalidexception"
     },
     {
@@ -3521,7 +3521,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_globalexceptionhandler_globalexceptionhandler_handleallexceptions",
-      "community": 82,
+      "community": 190,
       "norm_label": ".handleallexceptions()"
     },
     {
@@ -3531,7 +3531,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_globalexceptionhandler_globalexceptionhandler_builderrorresponse",
-      "community": 82,
+      "community": 190,
       "norm_label": ".builderrorresponse()"
     },
     {
@@ -3541,7 +3541,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "httpstatus",
-      "community": 82,
+      "community": 190,
       "norm_label": "httpstatus"
     },
     {
@@ -3551,7 +3551,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_resourcenotfoundexception",
-      "community": 82,
+      "community": 190,
       "norm_label": "resourcenotfoundexception.java"
     },
     {
@@ -3561,7 +3561,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_resourcenotfoundexception_resourcenotfoundexception",
-      "community": 82,
+      "community": 190,
       "norm_label": "resourcenotfoundexception"
     },
     {
@@ -3571,7 +3571,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_resourcenotfoundexception_java_responsestatus",
-      "community": 82,
+      "community": 190,
       "norm_label": "responsestatus"
     },
     {
@@ -3581,7 +3581,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_resourcenotfoundexception_resourcenotfoundexception_resourcenotfoundexception",
-      "community": 82,
+      "community": 190,
       "norm_label": ".resourcenotfoundexception()"
     },
     {
@@ -3591,7 +3591,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_unauthorizedexception",
-      "community": 82,
+      "community": 190,
       "norm_label": "unauthorizedexception.java"
     },
     {
@@ -3601,7 +3601,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_unauthorizedexception_unauthorizedexception",
-      "community": 82,
+      "community": 190,
       "norm_label": "unauthorizedexception"
     },
     {
@@ -3611,7 +3611,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_unauthorizedexception_java_responsestatus",
-      "community": 82,
+      "community": 190,
       "norm_label": "responsestatus"
     },
     {
@@ -3621,7 +3621,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_exception_unauthorizedexception_unauthorizedexception_unauthorizedexception",
-      "community": 82,
+      "community": 190,
       "norm_label": ".unauthorizedexception()"
     },
     {
@@ -3971,7 +3971,7 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_auditlog_auditlog_setdetails",
-      "community": 340,
+      "community": 190,
       "norm_label": ".setdetails()"
     },
     {
@@ -4051,7 +4051,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_issue_issue_oncreate",
-      "community": 344,
+      "community": 223,
       "norm_label": ".oncreate()"
     },
     {
@@ -4061,7 +4061,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_issue_java_prepersist",
-      "community": 344,
+      "community": 223,
       "norm_label": "prepersist"
     },
     {
@@ -4071,7 +4071,7 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_issue_issue_onupdate",
-      "community": 346,
+      "community": 223,
       "norm_label": ".onupdate()"
     },
     {
@@ -4081,7 +4081,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "preupdate",
-      "community": 346,
+      "community": 223,
       "norm_label": "preupdate"
     },
     {
@@ -4121,7 +4121,7 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_issue_issue_setauthor",
-      "community": 90,
+      "community": 223,
       "norm_label": ".setauthor()"
     },
     {
@@ -4431,7 +4431,7 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setemail",
-      "community": 342,
+      "community": 90,
       "norm_label": ".setemail()"
     },
     {
@@ -4451,7 +4451,7 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setname",
-      "community": 342,
+      "community": 90,
       "norm_label": ".setname()"
     },
     {
@@ -4471,7 +4471,7 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setprovider",
-      "community": 342,
+      "community": 90,
       "norm_label": ".setprovider()"
     },
     {
@@ -4491,7 +4491,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setproviderid",
-      "community": 342,
+      "community": 90,
       "norm_label": ".setproviderid()"
     },
     {
@@ -4551,7 +4551,7 @@
       "source_location": "L126",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setsubscriptionstatus",
-      "community": 342,
+      "community": 90,
       "norm_label": ".setsubscriptionstatus()"
     },
     {
@@ -4611,7 +4611,7 @@
       "source_location": "L150",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setonboardingcompleted",
-      "community": 342,
+      "community": 90,
       "norm_label": ".setonboardingcompleted()"
     },
     {
@@ -4651,7 +4651,7 @@
       "source_location": "L166",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_model_user_user_setrole",
-      "community": 339,
+      "community": 90,
       "norm_label": ".setrole()"
     },
     {
@@ -4781,7 +4781,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository_userrepository_findbyemail",
-      "community": 241,
+      "community": 336,
       "norm_label": ".findbyemail()"
     },
     {
@@ -4791,7 +4791,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_repository_userrepository_userrepository_findbyproviderandproviderid",
-      "community": 342,
+      "community": 90,
       "norm_label": ".findbyproviderandproviderid()"
     },
     {
@@ -5021,7 +5021,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler",
-      "community": 190,
+      "community": 82,
       "norm_label": "oauth2successhandler.java"
     },
     {
@@ -5031,7 +5031,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler",
-      "community": 190,
+      "community": 82,
       "norm_label": "oauth2successhandler"
     },
     {
@@ -5041,7 +5041,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "simpleurlauthenticationsuccesshandler",
-      "community": 190,
+      "community": 82,
       "norm_label": "simpleurlauthenticationsuccesshandler"
     },
     {
@@ -5051,7 +5051,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_component",
-      "community": 190,
+      "community": 82,
       "norm_label": "component"
     },
     {
@@ -5061,7 +5061,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_logger",
-      "community": 190,
+      "community": 82,
       "norm_label": "logger"
     },
     {
@@ -5081,7 +5081,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler_onauthenticationsuccess",
-      "community": 190,
+      "community": 82,
       "norm_label": ".onauthenticationsuccess()"
     },
     {
@@ -5091,7 +5091,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_httpservletrequest",
-      "community": 190,
+      "community": 82,
       "norm_label": "httpservletrequest"
     },
     {
@@ -5101,7 +5101,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_httpservletresponse",
-      "community": 190,
+      "community": 82,
       "norm_label": "httpservletresponse"
     },
     {
@@ -5111,7 +5111,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_authentication",
-      "community": 190,
+      "community": 82,
       "norm_label": "authentication"
     },
     {
@@ -5121,7 +5121,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_java_override",
-      "community": 190,
+      "community": 82,
       "norm_label": "override"
     },
     {
@@ -5131,7 +5131,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler_getproviderid",
-      "community": 190,
+      "community": 82,
       "norm_label": ".getproviderid()"
     },
     {
@@ -5141,7 +5141,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "oauth2user",
-      "community": 190,
+      "community": 82,
       "norm_label": "oauth2user"
     },
     {
@@ -5151,7 +5151,7 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler_getemail",
-      "community": 190,
+      "community": 82,
       "norm_label": ".getemail()"
     },
     {
@@ -5161,7 +5161,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler_getname",
-      "community": 190,
+      "community": 82,
       "norm_label": ".getname()"
     },
     {
@@ -5171,7 +5171,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_security_oauth2successhandler_oauth2successhandler_syncuserindatabase",
-      "community": 342,
+      "community": 90,
       "norm_label": ".syncuserindatabase()"
     },
     {
@@ -5181,7 +5181,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice",
-      "community": 343,
+      "community": 244,
       "norm_label": "auditlogservice.java"
     },
     {
@@ -5191,7 +5191,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice",
-      "community": 343,
+      "community": 244,
       "norm_label": "auditlogservice"
     },
     {
@@ -5201,7 +5201,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "service",
-      "community": 343,
+      "community": 244,
       "norm_label": "service"
     },
     {
@@ -5211,7 +5211,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_java_logger",
-      "community": 343,
+      "community": 244,
       "norm_label": "logger"
     },
     {
@@ -5221,7 +5221,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice_auditlogservice",
-      "community": 343,
+      "community": 244,
       "norm_label": ".auditlogservice()"
     },
     {
@@ -5231,7 +5231,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "backend_springboot_src_main_java_com_djp_backend_service_auditlogservice_auditlogservice_logaction",
-      "community": 343,
+      "community": 244,
       "norm_label": ".logaction()"
     },
     {
@@ -5241,7 +5241,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "transactional",
-      "community": 343,
+      "community": 244,
       "norm_label": "transactional"
     },
     {
@@ -6941,7 +6941,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage",
-      "community": 18,
+      "community": 344,
       "norm_label": "creatediscussionpage.tsx"
     },
     {
@@ -6951,7 +6951,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage_communities",
-      "community": 18,
+      "community": 344,
       "norm_label": "communities"
     },
     {
@@ -6961,7 +6961,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_discussions_creatediscussionpage_creatediscussionpage",
-      "community": 18,
+      "community": 344,
       "norm_label": "creatediscussionpage()"
     },
     {
@@ -7481,7 +7481,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage",
-      "community": 18,
+      "community": 343,
       "norm_label": "pollspage.tsx"
     },
     {
@@ -7491,7 +7491,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_filter_tabs",
-      "community": 18,
+      "community": 343,
       "norm_label": "filter_tabs"
     },
     {
@@ -7501,7 +7501,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_polls",
-      "community": 18,
+      "community": 343,
       "norm_label": "polls"
     },
     {
@@ -7511,7 +7511,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "frontend_apps_citizen_src_features_polls_pollspage_pollspage",
-      "community": 18,
+      "community": 343,
       "norm_label": "pollspage()"
     },
     {
@@ -11331,7 +11331,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill",
-      "community": 85,
+      "community": 342,
       "norm_label": "skill.md"
     },
     {
@@ -11401,7 +11401,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_critical_rules",
-      "community": 96,
+      "community": 32,
       "norm_label": "critical rules"
     },
     {
@@ -11411,7 +11411,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_1_create_plan_first",
-      "community": 96,
+      "community": 32,
       "norm_label": "1. create plan first"
     },
     {
@@ -11421,7 +11421,7 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_2_the_2_action_rule",
-      "community": 96,
+      "community": 32,
       "norm_label": "2. the 2-action rule"
     },
     {
@@ -11431,7 +11431,7 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_3_read_before_decide",
-      "community": 96,
+      "community": 32,
       "norm_label": "3. read before decide"
     },
     {
@@ -11441,7 +11441,7 @@
       "source_location": "L114",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_4_update_after_act",
-      "community": 96,
+      "community": 32,
       "norm_label": "4. update after act"
     },
     {
@@ -11451,7 +11451,7 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_5_log_all_errors",
-      "community": 96,
+      "community": 32,
       "norm_label": "5. log all errors"
     },
     {
@@ -11461,7 +11461,7 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_6_never_repeat_failures",
-      "community": 96,
+      "community": 32,
       "norm_label": "6. never repeat failures"
     },
     {
@@ -11471,7 +11471,7 @@
       "source_location": "L138",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_7_continue_after_completion",
-      "community": 96,
+      "community": 32,
       "norm_label": "7. continue after completion"
     },
     {
@@ -11551,7 +11551,7 @@
       "source_location": "L247",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_claude_code_turn_loop_integration_v2_38_0",
-      "community": 192,
+      "community": 32,
       "norm_label": "claude code turn-loop integration (v2.38.0+)"
     },
     {
@@ -11561,7 +11561,7 @@
       "source_location": "L251",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_install_scope_plugin_vs_skill_only_v2_42_0_clarification",
-      "community": 192,
+      "community": 32,
       "norm_label": "install scope: plugin vs skill-only (v2.42.0 clarification)"
     },
     {
@@ -11571,7 +11571,7 @@
       "source_location": "L264",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_precompact_hook_auto",
-      "community": 192,
+      "community": 32,
       "norm_label": "precompact hook (auto)"
     },
     {
@@ -11581,7 +11581,7 @@
       "source_location": "L274",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_plan_goal_slash_command",
-      "community": 192,
+      "community": 32,
       "norm_label": "`/plan-goal` slash command"
     },
     {
@@ -11591,7 +11591,7 @@
       "source_location": "L285",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_plan_loop_slash_command",
-      "community": 192,
+      "community": 32,
       "norm_label": "`/plan-loop` slash command"
     },
     {
@@ -11601,7 +11601,7 @@
       "source_location": "L297",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_manual_fallback_when_plan_goal_plan_loop_are_unavailable_v2_42_0",
-      "community": 192,
+      "community": 32,
       "norm_label": "manual fallback when `/plan-goal` / `/plan-loop` are unavailable (v2.42.0)"
     },
     {
@@ -11611,7 +11611,7 @@
       "source_location": "L320",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_loop_md_template",
-      "community": 192,
+      "community": 32,
       "norm_label": "`loop.md` template"
     },
     {
@@ -11621,7 +11621,7 @@
       "source_location": "L334",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_autonomous_and_gated_modes_v3",
-      "community": 110,
+      "community": 32,
       "norm_label": "autonomous and gated modes (v3)"
     },
     {
@@ -11631,7 +11631,7 @@
       "source_location": "L340",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_the_legacy_invariant_promise",
-      "community": 110,
+      "community": 32,
       "norm_label": "the legacy invariant (promise)"
     },
     {
@@ -11641,7 +11641,7 @@
       "source_location": "L344",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_what_each_mode_does",
-      "community": 110,
+      "community": 32,
       "norm_label": "what each mode does"
     },
     {
@@ -11651,7 +11651,7 @@
       "source_location": "L358",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_gate_decision_table",
-      "community": 110,
+      "community": 32,
       "norm_label": "gate decision table"
     },
     {
@@ -11661,7 +11661,7 @@
       "source_location": "L370",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_host_capability_tiers",
-      "community": 110,
+      "community": 32,
       "norm_label": "host capability tiers"
     },
     {
@@ -11671,7 +11671,7 @@
       "source_location": "L382",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_runaway_guards",
-      "community": 110,
+      "community": 32,
       "norm_label": "runaway guards"
     },
     {
@@ -11681,7 +11681,7 @@
       "source_location": "L391",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_ledger_contract_summary",
-      "community": 110,
+      "community": 32,
       "norm_label": "ledger contract summary"
     },
     {
@@ -11691,7 +11691,7 @@
       "source_location": "L397",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_skill_trying_it",
-      "community": 110,
+      "community": 32,
       "norm_label": "trying it"
     },
     {
@@ -11901,7 +11901,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference",
-      "community": 85,
+      "community": 342,
       "norm_label": "reference.md"
     },
     {
@@ -11921,7 +11921,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_the_6_manus_principles",
-      "community": 31,
+      "community": 96,
       "norm_label": "the 6 manus principles"
     },
     {
@@ -11931,7 +11931,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_1_design_around_kv_cache",
-      "community": 31,
+      "community": 96,
       "norm_label": "principle 1: design around kv-cache"
     },
     {
@@ -11941,7 +11941,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_2_mask_don_t_remove",
-      "community": 31,
+      "community": 96,
       "norm_label": "principle 2: mask, don't remove"
     },
     {
@@ -11951,7 +11951,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_3_filesystem_as_external_memory",
-      "community": 31,
+      "community": 96,
       "norm_label": "principle 3: filesystem as external memory"
     },
     {
@@ -11961,7 +11961,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_4_manipulate_attention_through_recitation",
-      "community": 31,
+      "community": 96,
       "norm_label": "principle 4: manipulate attention through recitation"
     },
     {
@@ -11971,7 +11971,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_5_keep_the_wrong_stuff_in",
-      "community": 31,
+      "community": 96,
       "norm_label": "principle 5: keep the wrong stuff in"
     },
     {
@@ -11981,7 +11981,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_reference_principle_6_don_t_get_few_shotted",
-      "community": 31,
+      "community": 96,
       "norm_label": "principle 6: don't get few-shotted"
     },
     {
@@ -12321,7 +12321,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_findings",
-      "community": 85,
+      "community": 342,
       "norm_label": "findings.md"
     },
     {
@@ -12481,7 +12481,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan",
-      "community": 85,
+      "community": 342,
       "norm_label": "task_plan.md"
     },
     {
@@ -12521,7 +12521,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phases",
-      "community": 78,
+      "community": 110,
       "norm_label": "phases"
     },
     {
@@ -12531,7 +12531,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phase_1_requirements_discovery",
-      "community": 78,
+      "community": 110,
       "norm_label": "phase 1: requirements & discovery"
     },
     {
@@ -12541,7 +12541,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phase_2_planning_structure",
-      "community": 78,
+      "community": 110,
       "norm_label": "phase 2: planning & structure"
     },
     {
@@ -12551,7 +12551,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phase_3_implementation",
-      "community": 78,
+      "community": 110,
       "norm_label": "phase 3: implementation"
     },
     {
@@ -12561,7 +12561,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phase_4_testing_verification",
-      "community": 78,
+      "community": 110,
       "norm_label": "phase 4: testing & verification"
     },
     {
@@ -12571,7 +12571,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "agents_skills_planning_with_files_templates_task_plan_phase_5_delivery",
-      "community": 78,
+      "community": 110,
       "norm_label": "phase 5: delivery"
     },
     {
@@ -21801,7 +21801,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend",
-      "community": 8,
+      "community": 102,
       "norm_label": "frontend.md"
     },
     {
@@ -21818,7 +21818,7 @@
       "label": "\ud83c\udfaf Purpose",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L13",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_purpose",
       "community": 8,
@@ -21828,7 +21828,7 @@
       "label": "\ud83c\udfc6 Objectives",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L22",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_objectives",
       "community": 8,
@@ -21838,7 +21838,7 @@
       "label": "\ud83d\udca1 Frontend Philosophy",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L36",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_frontend_philosophy",
       "community": 8,
@@ -21848,27 +21848,17 @@
       "label": "\ud83c\udfd7\ufe0f Architecture",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L46",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_architecture",
       "community": 8,
       "norm_label": "\ud83c\udfd7\ufe0f architecture"
     },
     {
-      "label": "\ud83d\udcf1 Application Internal Architecture (`apps/citizen/src`)",
-      "file_type": "document",
-      "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L72",
-      "_origin": "ast",
-      "id": "docs_architecture_frontend_frontend_application_internal_architecture_apps_citizen_src",
-      "community": 8,
-      "norm_label": "\ud83d\udcf1 application internal architecture (`apps/citizen/src`)"
-    },
-    {
       "label": "\ud83d\udea6 Architectural Boundary Rules",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L87",
+      "source_location": "L73",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_architectural_boundary_rules",
       "community": 8,
@@ -21878,7 +21868,7 @@
       "label": "\ud83d\udcf1 Applications",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L101",
+      "source_location": "L87",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_applications",
       "community": 8,
@@ -21888,97 +21878,77 @@
       "label": "1\ufe0f\u20e3 Citizen",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L103",
+      "source_location": "L89",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_1_citizen",
       "community": 8,
       "norm_label": "1\ufe0f\u20e3 citizen"
     },
     {
-      "label": "\ud83d\udce6 Shared Packages",
-      "file_type": "document",
-      "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L109",
-      "_origin": "ast",
-      "id": "docs_architecture_frontend_frontend_shared_packages",
-      "community": 8,
-      "norm_label": "\ud83d\udce6 shared packages"
-    },
-    {
       "label": "\ud83d\udcd0 Engineering Principles",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L123",
+      "source_location": "L95",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_engineering_principles",
-      "community": 8,
+      "community": 192,
       "norm_label": "\ud83d\udcd0 engineering principles"
     },
     {
       "label": "1. \ud83d\udc64 Citizen First",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L125",
+      "source_location": "L97",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_1_citizen_first",
-      "community": 8,
+      "community": 192,
       "norm_label": "1. \ud83d\udc64 citizen first"
     },
     {
       "label": "2. \ud83d\udd01 Reuse Before Create",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L128",
+      "source_location": "L100",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_2_reuse_before_create",
-      "community": 8,
+      "community": 192,
       "norm_label": "2. \ud83d\udd01 reuse before create"
     },
     {
       "label": "3. \ud83e\udde9 Composition Over Duplication",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L131",
+      "source_location": "L103",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_3_composition_over_duplication",
-      "community": 8,
+      "community": 192,
       "norm_label": "3. \ud83e\udde9 composition over duplication"
     },
     {
       "label": "4. \ud83d\udcc1 Feature-Oriented Development",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L134",
+      "source_location": "L106",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_4_feature_oriented_development",
-      "community": 8,
+      "community": 192,
       "norm_label": "4. \ud83d\udcc1 feature-oriented development"
     },
     {
       "label": "5. \ud83d\udee1\ufe0f Strict Type Safety",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L141",
+      "source_location": "L113",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_5_strict_type_safety",
-      "community": 8,
+      "community": 192,
       "norm_label": "5. \ud83d\udee1\ufe0f strict type safety"
-    },
-    {
-      "label": "\ud83d\udcc2 Folder Convention",
-      "file_type": "document",
-      "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L146",
-      "_origin": "ast",
-      "id": "docs_architecture_frontend_frontend_folder_convention",
-      "community": 8,
-      "norm_label": "\ud83d\udcc2 folder convention"
     },
     {
       "label": "\ud83e\uddf1 Component Guidelines",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L161",
+      "source_location": "L118",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_component_guidelines",
       "community": 8,
@@ -21988,7 +21958,7 @@
       "label": "\ud83c\udff7\ufe0f Naming Conventions",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L176",
+      "source_location": "L133",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_naming_conventions",
       "community": 8,
@@ -21998,7 +21968,7 @@
       "label": "\ud83d\udce5 Import Rules",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L188",
+      "source_location": "L145",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_import_rules",
       "community": 8,
@@ -22008,7 +21978,7 @@
       "label": "\ud83c\udfa8 Styling & Responsive Design",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L196",
+      "source_location": "L153",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_styling_responsive_design",
       "community": 8,
@@ -22018,7 +21988,7 @@
       "label": "\u267f Accessibility (WCAG 2.1 AA Mandatory)",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L204",
+      "source_location": "L161",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_accessibility_wcag_2_1_aa_mandatory",
       "community": 8,
@@ -22028,7 +21998,7 @@
       "label": "\ud83d\uddc3\ufe0f State Management, Forms & Routing",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L213",
+      "source_location": "L170",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_state_management_forms_routing",
       "community": 8,
@@ -22038,7 +22008,7 @@
       "label": "\u26a0\ufe0f Error Handling & Performance",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L224",
+      "source_location": "L181",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_error_handling_performance",
       "community": 8,
@@ -22048,7 +22018,7 @@
       "label": "\ud83d\uddbc\ufe0f Prototype Usage (`/prototype`)",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L234",
+      "source_location": "L191",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_prototype_usage_prototype",
       "community": 8,
@@ -22058,7 +22028,7 @@
       "label": "\ud83e\udd16 AI Agent Rules",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L240",
+      "source_location": "L197",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_ai_agent_rules",
       "community": 8,
@@ -22068,7 +22038,7 @@
       "label": "\ud83e\uddea Testing",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L250",
+      "source_location": "L207",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_testing",
       "community": 8,
@@ -22078,7 +22048,7 @@
       "label": "\u2705 Code Review & PR Checklist",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L258",
+      "source_location": "L215",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_code_review_pr_checklist",
       "community": 8,
@@ -22088,7 +22058,7 @@
       "label": "\ud83e\udded Engineering Decision Matrix",
       "file_type": "document",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L271",
+      "source_location": "L228",
       "_origin": "ast",
       "id": "docs_architecture_frontend_frontend_engineering_decision_matrix",
       "community": 8,
@@ -23055,20 +23025,10 @@
       "norm_label": "arch-003: contradictory directory structure across docs"
     },
     {
-      "label": "ARCH-004: Frontend Shared Packages Are Empty Shells & Structure Discrepancy",
-      "file_type": "document",
-      "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L199",
-      "_origin": "ast",
-      "id": "docs_audit_audit_debt_arch_004_frontend_shared_packages_are_empty_shells_structure_discrepancy",
-      "community": 6,
-      "norm_label": "arch-004: frontend shared packages are empty shells & structure discrepancy"
-    },
-    {
       "label": "ARCH-005: Missing API Gateway Implementation",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L210",
+      "source_location": "L200",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_arch_005_missing_api_gateway_implementation",
       "community": 6,
@@ -23078,7 +23038,7 @@
       "label": "ARCH-006: Undocumented Async Event Bus & pgvector Semantic Store Pipelines",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L221",
+      "source_location": "L211",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_arch_006_undocumented_async_event_bus_pgvector_semantic_store_pipelines",
       "community": 6,
@@ -23088,7 +23048,7 @@
       "label": "Part III: Documentation & Specifications (`DOC`)",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L234",
+      "source_location": "L224",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_part_iii_documentation_specifications_doc",
       "community": 6,
@@ -23098,7 +23058,7 @@
       "label": "DOC-005: Missing Operational Runbooks & Backend Deployment Guide",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L236",
+      "source_location": "L226",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_doc_005_missing_operational_runbooks_backend_deployment_guide",
       "community": 6,
@@ -23108,7 +23068,7 @@
       "label": "DOC-006: AI Service Lacks Architecture & API Documentation",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L247",
+      "source_location": "L237",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_doc_006_ai_service_lacks_architecture_api_documentation",
       "community": 6,
@@ -23118,7 +23078,7 @@
       "label": "DOC-007: Canonical Schema & OAuth Provider Contradictions Across Docs",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L258",
+      "source_location": "L248",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_doc_007_canonical_schema_oauth_provider_contradictions_across_docs",
       "community": 6,
@@ -23128,7 +23088,7 @@
       "label": "Part IV: Backend Core Implementation, Dependencies & Configuration (`IMPL`, `DEP`, `CFG`)",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L271",
+      "source_location": "L261",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_part_iv_backend_core_implementation_dependencies_configuration_impl_dep_cfg",
       "community": 6,
@@ -23138,7 +23098,7 @@
       "label": "IMPL-001: Phase 1 Core Tasks \u2014 0% Complete (6/6 Tasks Blocked)",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L273",
+      "source_location": "L263",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_impl_001_phase_1_core_tasks_0_complete_6_6_tasks_blocked",
       "community": 6,
@@ -23148,7 +23108,7 @@
       "label": "Part V: Database Layer, Migrations & Data Integrity (`DATA`)",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L286",
+      "source_location": "L276",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_part_v_database_layer_migrations_data_integrity_data",
       "community": 6,
@@ -23158,7 +23118,7 @@
       "label": "DATA-001: Missing Database Migration Engine (Flyway/Liquibase) vs Unsafe `ddl-auto: update`",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L288",
+      "source_location": "L278",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_data_001_missing_database_migration_engine_flyway_liquibase_vs_unsafe_ddl_auto_update",
       "community": 6,
@@ -23168,7 +23128,7 @@
       "label": "DATA-003: Missing Database Indexes & Performance Optimizations in Schema",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L300",
+      "source_location": "L290",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_data_003_missing_database_indexes_performance_optimizations_in_schema",
       "community": 6,
@@ -23178,7 +23138,7 @@
       "label": "Part VI: Security, Authentication & Fault Tolerance (`SEC`)",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L313",
+      "source_location": "L303",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_part_vi_security_authentication_fault_tolerance_sec",
       "community": 6,
@@ -23188,7 +23148,7 @@
       "label": "SEC-002: Undocumented/Missing JWT Key Rotation & Secret Management (`@Value` / KeyVault)",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L315",
+      "source_location": "L305",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_sec_002_undocumented_missing_jwt_key_rotation_secret_management_value_keyvault",
       "community": 6,
@@ -23198,7 +23158,7 @@
       "label": "Part VII: Testing Infrastructure & Quality Assurance (`TEST`)",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L329",
+      "source_location": "L319",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_part_vii_testing_infrastructure_quality_assurance_test",
       "community": 6,
@@ -23208,7 +23168,7 @@
       "label": "TEST-002: Frontend Test Stub Is Green Theater (`auth.test.js`) & Zero Playwright E2E Tests",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L331",
+      "source_location": "L321",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_test_002_frontend_test_stub_is_green_theater_auth_test_js_zero_playwright_e2e_tests",
       "community": 6,
@@ -23218,7 +23178,7 @@
       "label": "TEST-003: Missing Contract Testing, Pact/OpenAPI Verification & Frontend Unit Tests",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L342",
+      "source_location": "L332",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_test_003_missing_contract_testing_pact_openapi_verification_frontend_unit_tests",
       "community": 6,
@@ -23228,7 +23188,7 @@
       "label": "TEST-004: Missing Automated Coverage Gates & Jacoco/SonarQube Checks",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L353",
+      "source_location": "L343",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_test_004_missing_automated_coverage_gates_jacoco_sonarqube_checks",
       "community": 6,
@@ -23238,7 +23198,7 @@
       "label": "Part VIII: DevOps, Containerization & CI/CD Pipelines (`DEVOPS`)",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L366",
+      "source_location": "L356",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_part_viii_devops_containerization_ci_cd_pipelines_devops",
       "community": 6,
@@ -23248,7 +23208,7 @@
       "label": "DEVOPS-002: Missing Multi-Stage Dockerfile for Frontend & Local `docker-compose.yml`",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L368",
+      "source_location": "L358",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_devops_002_missing_multi_stage_dockerfile_for_frontend_local_docker_compose_yml",
       "community": 6,
@@ -23258,7 +23218,7 @@
       "label": "DEVOPS-003: Empty `.github/workflows/` Directory (No Automated CI/CD Pipeline)",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L379",
+      "source_location": "L369",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_devops_003_empty_github_workflows_directory_no_automated_ci_cd_pipeline",
       "community": 6,
@@ -23268,7 +23228,7 @@
       "label": "Part IX: Observability, Logging & Cross-Cutting Concerns (`OBS`, `XCUT`)",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L392",
+      "source_location": "L382",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_part_ix_observability_logging_cross_cutting_concerns_obs_xcut",
       "community": 6,
@@ -23278,7 +23238,7 @@
       "label": "OBS-002: Missing Actuator Readiness Probes (`/actuator/health`), Prometheus & Security Guards",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L394",
+      "source_location": "L384",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_obs_002_missing_actuator_readiness_probes_actuator_health_prometheus_security_guards",
       "community": 6,
@@ -23288,7 +23248,7 @@
       "label": "OBS-003: Missing Request/Response Logging, Exception Context & Distributed Tracing",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L405",
+      "source_location": "L395",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_obs_003_missing_request_response_logging_exception_context_distributed_tracing",
       "community": 6,
@@ -23298,7 +23258,7 @@
       "label": "OBS-004: Missing Centralized Alerting Rules (`prometheus-alerts.yaml` / Slack / PagerDuty)",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L416",
+      "source_location": "L406",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_obs_004_missing_centralized_alerting_rules_prometheus_alerts_yaml_slack_pagerduty",
       "community": 6,
@@ -23308,7 +23268,7 @@
       "label": "Part X: Master Execution Roadmap & Prioritized Remediation Summary",
       "file_type": "document",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L430",
+      "source_location": "L420",
       "_origin": "ast",
       "id": "docs_audit_audit_debt_part_x_master_execution_roadmap_prioritized_remediation_summary",
       "community": 6,
@@ -23365,10 +23325,20 @@
       "norm_label": "\ud83d\udcdc completed resolutions ledger"
     },
     {
-      "label": "[RESOLVED] ID: XCUT-002 \u2014 Missing Audit Logging Infrastructure (Tracking WHO/WHEN/WHAT mutations)",
+      "label": "[RESOLVED] ID: ARCH-004 \u2014 Frontend Shared Packages Are Empty Shells & Structure Discrepancy",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
       "source_location": "L51",
+      "_origin": "ast",
+      "id": "docs_audit_audit_log_resolved_id_arch_004_frontend_shared_packages_are_empty_shells_structure_discrepancy",
+      "community": 156,
+      "norm_label": "[resolved] id: arch-004 \u2014 frontend shared packages are empty shells & structure discrepancy"
+    },
+    {
+      "label": "[RESOLVED] ID: XCUT-002 \u2014 Missing Audit Logging Infrastructure (Tracking WHO/WHEN/WHAT mutations)",
+      "file_type": "document",
+      "source_file": "docs/audit/audit-log.md",
+      "source_location": "L66",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_xcut_002_missing_audit_logging_infrastructure_tracking_who_when_what_mutations",
       "community": 156,
@@ -23378,7 +23348,7 @@
       "label": "[RESOLVED] ID: XCUT-003 \u2014 Missing PII Masking in Logs & Exception Traces",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L71",
+      "source_location": "L86",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_xcut_003_missing_pii_masking_in_logs_exception_traces",
       "community": 156,
@@ -23388,7 +23358,7 @@
       "label": "[RESOLVED] ID: SEC-003 \u2014 Zero Bean Input Validation (@Valid, DTO annotations, OWASP Top 10)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L88",
+      "source_location": "L103",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_sec_003_zero_bean_input_validation_valid_dto_annotations_owasp_top_10",
       "community": 156,
@@ -23398,7 +23368,7 @@
       "label": "[RESOLVED] ID: DATA-002 \u2014 Missing JPA Repository Interfaces & Custom Queries",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L106",
+      "source_location": "L121",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_data_002_missing_jpa_repository_interfaces_custom_queries",
       "community": 156,
@@ -23408,7 +23378,7 @@
       "label": "[RESOLVED] ID: DOC-001 \u2014 backend-techstack.md vs backend-design.md Architectural Contradiction",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L123",
+      "source_location": "L138",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_doc_001_backend_techstack_md_vs_backend_design_md_architectural_contradiction",
       "community": 156,
@@ -23418,7 +23388,7 @@
       "label": "[RESOLVED] ID: SEC-005 \u2014 Graceful Shutdown & HTTP Security Headers Configuration",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L138",
+      "source_location": "L153",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_sec_005_graceful_shutdown_http_security_headers_configuration",
       "community": 156,
@@ -23428,7 +23398,7 @@
       "label": "[RESOLVED] ID: DATA-004 \u2014 H2 vs PostgreSQL Dialect Gaps & Connection Pool Settings Unverified",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L154",
+      "source_location": "L169",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_data_004_h2_vs_postgresql_dialect_gaps_connection_pool_settings_unverified",
       "community": 156,
@@ -23438,7 +23408,7 @@
       "label": "[RESOLVED] ID: SEC-001 (TECH-003) \u2014 Zero Authentication Implementation (SecurityConfig & JWT Flow)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L169",
+      "source_location": "L184",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_sec_001_tech_003_zero_authentication_implementation_securityconfig_jwt_flow",
       "community": 156,
@@ -23448,7 +23418,7 @@
       "label": "[RESOLVED] ID: TECH-006 \u2014 Missing Internal Layered Architecture (DTO, Service, Exception)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L193",
+      "source_location": "L208",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_tech_006_missing_internal_layered_architecture_dto_service_exception",
       "community": 156,
@@ -23458,7 +23428,7 @@
       "label": "[RESOLVED] ID: TECH-004 & SEC-003 \u2014 Missing Maven Dependencies & Resilience4j Configurations",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L211",
+      "source_location": "L226",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_tech_004_sec_003_missing_maven_dependencies_resilience4j_configurations",
       "community": 156,
@@ -23468,7 +23438,7 @@
       "label": "[RESOLVED] ID: DEVOPS-001 \u2014 No Backend Production Dockerfile",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L227",
+      "source_location": "L242",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_devops_001_no_backend_production_dockerfile",
       "community": 156,
@@ -23478,7 +23448,7 @@
       "label": "[RESOLVED] ID: SEC-001 \u2014 Missing Dependency Vulnerability Audit Process (OWASP / Dependabot)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L243",
+      "source_location": "L258",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_sec_001_missing_dependency_vulnerability_audit_process_owasp_dependabot",
       "community": 156,
@@ -23488,7 +23458,7 @@
       "label": "[RESOLVED] ID: DEP-002 \u2014 Spring Boot Version Drift (EOL 3.2.5 to 3.4.x)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L259",
+      "source_location": "L274",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_dep_002_spring_boot_version_drift_eol_3_2_5_to_3_4_x",
       "community": 156,
@@ -23498,7 +23468,7 @@
       "label": "[RESOLVED] ID: DOC-003 \u2014 Reference Links and Non-Existent Files in Architecture Design",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L274",
+      "source_location": "L289",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_doc_003_reference_links_and_non_existent_files_in_architecture_design",
       "community": 156,
@@ -23508,7 +23478,7 @@
       "label": "[RESOLVED] ID: DOC-002 \u2014 No Developer Onboarding / Environment Guide",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L292",
+      "source_location": "L307",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_doc_002_no_developer_onboarding_environment_guide",
       "community": 156,
@@ -23518,7 +23488,7 @@
       "label": "[RESOLVED] ID: OBS-001 \u2014 Zero Logging Configuration Exists",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L308",
+      "source_location": "L323",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_obs_001_zero_logging_configuration_exists",
       "community": 156,
@@ -23528,7 +23498,7 @@
       "label": "[RESOLVED] ID: TECH-002 \u2014 User Entity Missing 7 of 12 Fields from Spec",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L325",
+      "source_location": "L340",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_tech_002_user_entity_missing_7_of_12_fields_from_spec",
       "community": 156,
@@ -23538,7 +23508,7 @@
       "label": "[RESOLVED] ID: DOC-001 \u2014 Missing `api-spec.yaml` (OpenAPI Contract)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L340",
+      "source_location": "L355",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_doc_001_missing_api_spec_yaml_openapi_contract",
       "community": 156,
@@ -23548,7 +23518,7 @@
       "label": "[RESOLVED] ID: TECH-001 / ARCH-007 \u2014 Wildcard CORS & Base Path prefix in AuthController",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L355",
+      "source_location": "L370",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_tech_001_arch_007_wildcard_cors_base_path_prefix_in_authcontroller",
       "community": 156,
@@ -23558,7 +23528,7 @@
       "label": "[RESOLVED] ID: ARCH-001 \u2014 Modular Monolith Architectural Shift",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L370",
+      "source_location": "L385",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_arch_001_modular_monolith_architectural_shift",
       "community": 156,
@@ -23568,7 +23538,7 @@
       "label": "[RESOLVED] ID: LEAD-001 \u2014 Definition of Done (DoD) Quality Gate",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L386",
+      "source_location": "L401",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_lead_001_definition_of_done_dod_quality_gate",
       "community": 156,
@@ -23578,7 +23548,7 @@
       "label": "[RESOLVED] ID: CFG-001 / TEST-001 \u2014 Split Environment Profiles & Scaffold Integration Tests",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L401",
+      "source_location": "L416",
       "_origin": "ast",
       "id": "docs_audit_audit_log_resolved_id_cfg_001_test_001_split_environment_profiles_scaffold_integration_tests",
       "community": 156,
@@ -23588,7 +23558,7 @@
       "label": "[EXAMPLE] ID: DOC-001 \u2014 Missing `api-spec.yaml` (OpenAPI Contract)",
       "file_type": "document",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L421",
+      "source_location": "L436",
       "_origin": "ast",
       "id": "docs_audit_audit_log_example_id_doc_001_missing_api_spec_yaml_openapi_contract",
       "community": 156,
@@ -51558,63 +51528,13 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "contains",
+      "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L204",
+      "source_location": "L11",
       "weight": 1.0,
-      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
-      "target": "docs_architecture_frontend_frontend_accessibility_wcag_2_1_aa_mandatory",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L240",
-      "weight": 1.0,
-      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
-      "target": "docs_architecture_frontend_frontend_ai_agent_rules",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L101",
-      "weight": 1.0,
-      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
-      "target": "docs_architecture_frontend_frontend_applications",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L87",
-      "weight": 1.0,
-      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
-      "target": "docs_architecture_frontend_frontend_architectural_boundary_rules",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L46",
-      "weight": 1.0,
-      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
-      "target": "docs_architecture_frontend_frontend_architecture",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L258",
-      "weight": 1.0,
-      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
-      "target": "docs_architecture_frontend_frontend_code_review_pr_checklist",
+      "source": "docs_architecture_frontend_frontend",
+      "target": "docs_vision_decisions",
       "confidence_score": 1.0
     },
     {
@@ -51624,6 +51544,66 @@
       "source_location": "L161",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
+      "target": "docs_architecture_frontend_frontend_accessibility_wcag_2_1_aa_mandatory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/frontend/frontend.md",
+      "source_location": "L197",
+      "weight": 1.0,
+      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
+      "target": "docs_architecture_frontend_frontend_ai_agent_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/frontend/frontend.md",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
+      "target": "docs_architecture_frontend_frontend_applications",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/frontend/frontend.md",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
+      "target": "docs_architecture_frontend_frontend_architectural_boundary_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/frontend/frontend.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
+      "target": "docs_architecture_frontend_frontend_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/frontend/frontend.md",
+      "source_location": "L215",
+      "weight": 1.0,
+      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
+      "target": "docs_architecture_frontend_frontend_code_review_pr_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture/frontend/frontend.md",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_component_guidelines",
       "confidence_score": 1.0
     },
@@ -51631,7 +51611,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L271",
+      "source_location": "L228",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_engineering_decision_matrix",
@@ -51641,7 +51621,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L123",
+      "source_location": "L95",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_engineering_principles",
@@ -51651,7 +51631,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L224",
+      "source_location": "L181",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_error_handling_performance",
@@ -51661,17 +51641,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L146",
-      "weight": 1.0,
-      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
-      "target": "docs_architecture_frontend_frontend_folder_convention",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L36",
+      "source_location": "L35",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_frontend_philosophy",
@@ -51681,7 +51651,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L188",
+      "source_location": "L145",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_import_rules",
@@ -51691,7 +51661,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L176",
+      "source_location": "L133",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_naming_conventions",
@@ -51701,7 +51671,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L22",
+      "source_location": "L24",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_objectives",
@@ -51711,7 +51681,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L234",
+      "source_location": "L191",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_prototype_usage_prototype",
@@ -51721,7 +51691,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L13",
+      "source_location": "L15",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_purpose",
@@ -51731,17 +51701,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L109",
-      "weight": 1.0,
-      "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
-      "target": "docs_architecture_frontend_frontend_shared_packages",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L213",
+      "source_location": "L170",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_state_management_forms_routing",
@@ -51751,7 +51711,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L196",
+      "source_location": "L153",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_styling_responsive_design",
@@ -51761,7 +51721,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L250",
+      "source_location": "L207",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_frontend_engineering_guide",
       "target": "docs_architecture_frontend_frontend_testing",
@@ -51771,17 +51731,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L72",
-      "weight": 1.0,
-      "source": "docs_architecture_frontend_frontend_architecture",
-      "target": "docs_architecture_frontend_frontend_application_internal_architecture_apps_citizen_src",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L103",
+      "source_location": "L89",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_applications",
       "target": "docs_architecture_frontend_frontend_1_citizen",
@@ -51791,7 +51741,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L125",
+      "source_location": "L97",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_engineering_principles",
       "target": "docs_architecture_frontend_frontend_1_citizen_first",
@@ -51801,7 +51751,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L128",
+      "source_location": "L100",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_engineering_principles",
       "target": "docs_architecture_frontend_frontend_2_reuse_before_create",
@@ -51811,7 +51761,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L131",
+      "source_location": "L103",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_engineering_principles",
       "target": "docs_architecture_frontend_frontend_3_composition_over_duplication",
@@ -51821,7 +51771,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L134",
+      "source_location": "L106",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_engineering_principles",
       "target": "docs_architecture_frontend_frontend_4_feature_oriented_development",
@@ -51831,7 +51781,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/architecture/frontend/frontend.md",
-      "source_location": "L141",
+      "source_location": "L113",
       "weight": 1.0,
       "source": "docs_architecture_frontend_frontend_engineering_principles",
       "target": "docs_architecture_frontend_frontend_5_strict_type_safety",
@@ -52641,7 +52591,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L234",
+      "source_location": "L224",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_monorepo_master_technical_architectural_debt_register_ssot",
       "target": "docs_audit_audit_debt_part_iii_documentation_specifications_doc",
@@ -52651,7 +52601,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L271",
+      "source_location": "L261",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_monorepo_master_technical_architectural_debt_register_ssot",
       "target": "docs_audit_audit_debt_part_iv_backend_core_implementation_dependencies_configuration_impl_dep_cfg",
@@ -52661,7 +52611,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L392",
+      "source_location": "L382",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_monorepo_master_technical_architectural_debt_register_ssot",
       "target": "docs_audit_audit_debt_part_ix_observability_logging_cross_cutting_concerns_obs_xcut",
@@ -52671,7 +52621,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L286",
+      "source_location": "L276",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_monorepo_master_technical_architectural_debt_register_ssot",
       "target": "docs_audit_audit_debt_part_v_database_layer_migrations_data_integrity_data",
@@ -52681,7 +52631,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L313",
+      "source_location": "L303",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_monorepo_master_technical_architectural_debt_register_ssot",
       "target": "docs_audit_audit_debt_part_vi_security_authentication_fault_tolerance_sec",
@@ -52691,7 +52641,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L329",
+      "source_location": "L319",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_monorepo_master_technical_architectural_debt_register_ssot",
       "target": "docs_audit_audit_debt_part_vii_testing_infrastructure_quality_assurance_test",
@@ -52701,7 +52651,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L366",
+      "source_location": "L356",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_monorepo_master_technical_architectural_debt_register_ssot",
       "target": "docs_audit_audit_debt_part_viii_devops_containerization_ci_cd_pipelines_devops",
@@ -52711,7 +52661,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L430",
+      "source_location": "L420",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_monorepo_master_technical_architectural_debt_register_ssot",
       "target": "docs_audit_audit_debt_part_x_master_execution_roadmap_prioritized_remediation_summary",
@@ -52861,17 +52811,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L199",
-      "weight": 1.0,
-      "source": "docs_audit_audit_debt_part_ii_system_architecture_boundaries_technical_stack_arch",
-      "target": "docs_audit_audit_debt_arch_004_frontend_shared_packages_are_empty_shells_structure_discrepancy",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L210",
+      "source_location": "L200",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_ii_system_architecture_boundaries_technical_stack_arch",
       "target": "docs_audit_audit_debt_arch_005_missing_api_gateway_implementation",
@@ -52881,7 +52821,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L221",
+      "source_location": "L211",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_ii_system_architecture_boundaries_technical_stack_arch",
       "target": "docs_audit_audit_debt_arch_006_undocumented_async_event_bus_pgvector_semantic_store_pipelines",
@@ -52891,7 +52831,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L236",
+      "source_location": "L226",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_iii_documentation_specifications_doc",
       "target": "docs_audit_audit_debt_doc_005_missing_operational_runbooks_backend_deployment_guide",
@@ -52901,7 +52841,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L247",
+      "source_location": "L237",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_iii_documentation_specifications_doc",
       "target": "docs_audit_audit_debt_doc_006_ai_service_lacks_architecture_api_documentation",
@@ -52911,7 +52851,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L258",
+      "source_location": "L248",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_iii_documentation_specifications_doc",
       "target": "docs_audit_audit_debt_doc_007_canonical_schema_oauth_provider_contradictions_across_docs",
@@ -52921,7 +52861,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L273",
+      "source_location": "L263",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_iv_backend_core_implementation_dependencies_configuration_impl_dep_cfg",
       "target": "docs_audit_audit_debt_impl_001_phase_1_core_tasks_0_complete_6_6_tasks_blocked",
@@ -52931,7 +52871,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L288",
+      "source_location": "L278",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_v_database_layer_migrations_data_integrity_data",
       "target": "docs_audit_audit_debt_data_001_missing_database_migration_engine_flyway_liquibase_vs_unsafe_ddl_auto_update",
@@ -52941,7 +52881,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L300",
+      "source_location": "L290",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_v_database_layer_migrations_data_integrity_data",
       "target": "docs_audit_audit_debt_data_003_missing_database_indexes_performance_optimizations_in_schema",
@@ -52951,7 +52891,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L315",
+      "source_location": "L305",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_vi_security_authentication_fault_tolerance_sec",
       "target": "docs_audit_audit_debt_sec_002_undocumented_missing_jwt_key_rotation_secret_management_value_keyvault",
@@ -52961,7 +52901,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L331",
+      "source_location": "L321",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_vii_testing_infrastructure_quality_assurance_test",
       "target": "docs_audit_audit_debt_test_002_frontend_test_stub_is_green_theater_auth_test_js_zero_playwright_e2e_tests",
@@ -52971,7 +52911,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L342",
+      "source_location": "L332",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_vii_testing_infrastructure_quality_assurance_test",
       "target": "docs_audit_audit_debt_test_003_missing_contract_testing_pact_openapi_verification_frontend_unit_tests",
@@ -52981,7 +52921,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L353",
+      "source_location": "L343",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_vii_testing_infrastructure_quality_assurance_test",
       "target": "docs_audit_audit_debt_test_004_missing_automated_coverage_gates_jacoco_sonarqube_checks",
@@ -52991,7 +52931,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L368",
+      "source_location": "L358",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_viii_devops_containerization_ci_cd_pipelines_devops",
       "target": "docs_audit_audit_debt_devops_002_missing_multi_stage_dockerfile_for_frontend_local_docker_compose_yml",
@@ -53001,7 +52941,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L379",
+      "source_location": "L369",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_viii_devops_containerization_ci_cd_pipelines_devops",
       "target": "docs_audit_audit_debt_devops_003_empty_github_workflows_directory_no_automated_ci_cd_pipeline",
@@ -53011,7 +52951,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L394",
+      "source_location": "L384",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_ix_observability_logging_cross_cutting_concerns_obs_xcut",
       "target": "docs_audit_audit_debt_obs_002_missing_actuator_readiness_probes_actuator_health_prometheus_security_guards",
@@ -53021,7 +52961,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L405",
+      "source_location": "L395",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_ix_observability_logging_cross_cutting_concerns_obs_xcut",
       "target": "docs_audit_audit_debt_obs_003_missing_request_response_logging_exception_context_distributed_tracing",
@@ -53031,7 +52971,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-debt.md",
-      "source_location": "L416",
+      "source_location": "L406",
       "weight": 1.0,
       "source": "docs_audit_audit_debt_part_ix_observability_logging_cross_cutting_concerns_obs_xcut",
       "target": "docs_audit_audit_debt_obs_004_missing_centralized_alerting_rules_prometheus_alerts_yaml_slack_pagerduty",
@@ -53091,7 +53031,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L421",
+      "source_location": "L436",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_example_id_doc_001_missing_api_spec_yaml_openapi_contract",
@@ -53101,7 +53041,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L370",
+      "source_location": "L385",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_arch_001_modular_monolith_architectural_shift",
@@ -53111,7 +53051,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L401",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "docs_audit_audit_log_completed_resolutions_ledger",
+      "target": "docs_audit_audit_log_resolved_id_arch_004_frontend_shared_packages_are_empty_shells_structure_discrepancy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/audit/audit-log.md",
+      "source_location": "L416",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_cfg_001_test_001_split_environment_profiles_scaffold_integration_tests",
@@ -53121,7 +53071,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L106",
+      "source_location": "L121",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_data_002_missing_jpa_repository_interfaces_custom_queries",
@@ -53131,7 +53081,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L154",
+      "source_location": "L169",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_data_004_h2_vs_postgresql_dialect_gaps_connection_pool_settings_unverified",
@@ -53141,7 +53091,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L259",
+      "source_location": "L274",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_dep_002_spring_boot_version_drift_eol_3_2_5_to_3_4_x",
@@ -53151,7 +53101,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L227",
+      "source_location": "L242",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_devops_001_no_backend_production_dockerfile",
@@ -53161,7 +53111,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L123",
+      "source_location": "L138",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_doc_001_backend_techstack_md_vs_backend_design_md_architectural_contradiction",
@@ -53171,7 +53121,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L340",
+      "source_location": "L355",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_doc_001_missing_api_spec_yaml_openapi_contract",
@@ -53181,7 +53131,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L292",
+      "source_location": "L307",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_doc_002_no_developer_onboarding_environment_guide",
@@ -53191,7 +53141,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L274",
+      "source_location": "L289",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_doc_003_reference_links_and_non_existent_files_in_architecture_design",
@@ -53201,7 +53151,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L386",
+      "source_location": "L401",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_lead_001_definition_of_done_dod_quality_gate",
@@ -53211,7 +53161,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L308",
+      "source_location": "L323",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_obs_001_zero_logging_configuration_exists",
@@ -53221,7 +53171,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L243",
+      "source_location": "L258",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_sec_001_missing_dependency_vulnerability_audit_process_owasp_dependabot",
@@ -53231,7 +53181,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L169",
+      "source_location": "L184",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_sec_001_tech_003_zero_authentication_implementation_securityconfig_jwt_flow",
@@ -53241,7 +53191,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L88",
+      "source_location": "L103",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_sec_003_zero_bean_input_validation_valid_dto_annotations_owasp_top_10",
@@ -53251,7 +53201,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L138",
+      "source_location": "L153",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_sec_005_graceful_shutdown_http_security_headers_configuration",
@@ -53261,7 +53211,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L355",
+      "source_location": "L370",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_tech_001_arch_007_wildcard_cors_base_path_prefix_in_authcontroller",
@@ -53271,7 +53221,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L325",
+      "source_location": "L340",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_tech_002_user_entity_missing_7_of_12_fields_from_spec",
@@ -53281,7 +53231,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L211",
+      "source_location": "L226",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_tech_004_sec_003_missing_maven_dependencies_resilience4j_configurations",
@@ -53291,7 +53241,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L193",
+      "source_location": "L208",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_tech_006_missing_internal_layered_architecture_dto_service_exception",
@@ -53301,7 +53251,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L51",
+      "source_location": "L66",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_xcut_002_missing_audit_logging_infrastructure_tracking_who_when_what_mutations",
@@ -53311,7 +53261,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/audit/audit-log.md",
-      "source_location": "L71",
+      "source_location": "L86",
       "weight": 1.0,
       "source": "docs_audit_audit_log_completed_resolutions_ledger",
       "target": "docs_audit_audit_log_resolved_id_xcut_003_missing_pii_masking_in_logs_exception_traces",
@@ -56419,5 +56369,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8f1bbf93aaa72edeea0b4b43bd228a7af28dcac6"
+  "built_at_commit": "670972da2aa9e4d441f643222857c8f6904f9d2a"
 }

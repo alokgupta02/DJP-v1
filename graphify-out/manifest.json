@@ -2150,8 +2150,8 @@
     "semantic_hash": ""
   },
   "docs/architecture/frontend/frontend.md": {
-    "mtime": 1784225640.0712051,
-    "ast_hash": "2cd890514fec1f707f784e00be4319b4",
+    "mtime": 1784465841.8520606,
+    "ast_hash": "b5491e14a548d517a6e0263fc5fc3df5",
     "semantic_hash": ""
   },
   "docs/architecture/frontend/javascript.md": {
@@ -2200,8 +2200,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-log.md": {
-    "mtime": 1784465442.209345,
-    "ast_hash": "f194db10ca0593c7b2e1c87e8ad5afdb",
+    "mtime": 1784465849.5410473,
+    "ast_hash": "7b066ca44ff236f8f44f548d2bdd7f25",
     "semantic_hash": ""
   },
   "docs/audit/README.MD": {
@@ -2250,8 +2250,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-debt.md": {
-    "mtime": 1784465456.1121976,
-    "ast_hash": "b7d1cdd37ae16209af8c07d6dcf6d648",
+    "mtime": 1784465862.6690269,
+    "ast_hash": "e0e223f3659d5952ada4458f135fab25",
     "semantic_hash": ""
   },
   "backend/springboot/src/test/java/com/djp/backend/BackendApplicationTests.java": {

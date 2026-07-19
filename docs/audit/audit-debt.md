@@ -24,7 +24,7 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | :--- | :---: | :---: | :---: | :---: | :--- |
 | **1. Governance, Legal & Compliance (`GOV`)** | 2 | 5 | 0 | **7** | **Severely Exposed** — ECI legal standing & DPDPA data privacy frameworks missing. |
 | **2. Process, Leadership & Workflow (`LEAD`)** | 0 | 5 | 1 | **6** | **Moderate Drift** — Contribution and branching guidelines missing. |
-| **3. System Architecture & Boundaries (`ARCH`)** | 0 | 3 | 1 | **4** | **Improving** — Monolithic path standardized; package structure scaffolded. API Gateway debt remains. |
+| **3. System Architecture & Boundaries (`ARCH`)** | 0 | 2 | 1 | **3** | **Improving** — Monolithic path standardized; package structure scaffolded. API Gateway debt remains. |
 | **4. Documentation & Specifications (`DOC`)** | 0 | 2 | 1 | **3** | **Moderate** — OpenAPI contract live; runbooks and AI architecture docs missing. |
 | **5. Backend Core & Configuration (`IMPL/DEP/CFG`)** | 1 | 0 | 0 | **1** | **Passing Base** — Core setup profiles and dependencies configured. Tracking Phase 1 overall status. |
 | **6. Database Layer & Data Integrity (`DATA`)** | 1 | 1 | 0 | **2** | **Unsafe DDL** — Flyway database migration not initialized; ddl-auto: update active. |
@@ -32,7 +32,7 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **8. Testing & Quality Assurance (`TEST`)** | 2 | 1 | 0 | **3** | **Partial Base** — Backend test infrastructure scaffolded; E2E Playwright and frontend test suites missing. |
 | **9. DevOps, Containerization & CI/CD (`DEVOPS`)** | 2 | 0 | 0 | **2** | **Non-Existent** — Missing automated CI/CD pipeline and multi-stage Dockerfiles. |
 | **10. Observability & Cross-Cutting (`OBS/XCUT`)** | 3 | 0 | 0 | **3** | **Blind Spot** — Missing Actuator health probes, structured log format (JSON), and centralized alerting. PII log masking and DB audit logging are active. |
-| **TOTALS** | **11** | **18** | **3** | **32** | **Active Technical Debt Tracked and Scoped for Remediation.** |
+| **TOTALS** | **11** | **17** | **3** | **31** | **Active Technical Debt Tracked and Scoped for Remediation.** |
 
 ---
 
@@ -196,16 +196,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Standardize every doc on `backend/springboot/src/` as the single authoritative backend root per ADR-008 Modular Monolith decision. |
 | **Estimated Effort** | 1 hour across all markdown files |
 
-### ARCH-004: Frontend Shared Packages Are Empty Shells & Structure Discrepancy
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | 🟠 High |
-| **Found By** | `Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `docs/architecture/frontend/frontend.md` specifies a modular workspace with shared packages (`@djp/ui`, `@djp/config`, `@djp/utils`). |
-| **Impl Reality / Evidence** | `frontend/` contains only a monolithic React app (`src/components/`, `src/pages/`). No shared package layout or monorepo workspace (`pnpm-workspace.yaml` / `package.json` workspaces) exists. |
-| **Impact / Risk** | Architectural divergence between specification and reality; prevents clean sharing of UI design tokens across future web/mobile targets. |
-| **Remediation Action** | Update `frontend.md` to formally reflect the clean, single SPA structure (`frontend/src/`) per Lean Codebase rules, avoiding over-engineered workspaces for MVP. |
-| **Estimated Effort** | 1 hour |
 
 ### ARCH-005: Missing API Gateway Implementation
 | Aspect | Detail |

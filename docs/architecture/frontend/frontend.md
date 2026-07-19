@@ -7,6 +7,8 @@
 | **👑 Document Owner** | Frontend Team |
 | **👥 Audience** | Developers, Designers, AI Agents |
 | **📌 Status** | `Stable` |
+| **🏷️ Version** | `v2.0.0` |
+| **🔗 Dependencies** | [decisions.md](../../vision/decisions.md) |
 
 ---
 
@@ -23,64 +25,48 @@ This document defines the architecture, engineering standards, design principles
 
 The frontend must be:
 * ✅ **Production Ready**
-* 🧩 **Modular**
+* 🧩 **Modular** (organized by features)
 * 🛠️ **Maintainable**
-* 📈 **Scalable**
-* 🔁 **Reusable**
 * ♿ **Accessible**
 * 🤖 **AI-Friendly**
-* 🚀 **Independently Deployable**
 
 ---
 
 ## 💡 Frontend Philosophy
 
-The frontend is **a platform**, not a collection of pages.
-
-* The architecture is built on a shared engineering foundation supporting production applications and package boundaries.
-* Everything reusable belongs in **shared packages**.
-* Applications should assemble reusable building blocks instead of implementing custom solutions repeatedly.
+The frontend is built as a single, clean Single Page Application (SPA) structure per our **Lean Codebase Philosophy**, avoiding over-engineered multi-package monorepo workspaces for the MVP stage. All shared elements (UI components, hooks, constants) are co-located within the application structure under `src/shared/`.
 
 ---
 
 ## 🏗️ Architecture
 
 ```
-frontend/ (Production monorepo root)
+frontend/apps/citizen/ (React SPA Root)
 │
-├── apps/
-│   └── citizen/
-│
-├── packages/
-│   ├── api/
-│   ├── auth/
-│   ├── config/
-│   ├── constants/
-│   ├── hooks/
-│   ├── theme/
-│   ├── types/
-│   ├── ui/
-│   └── utils/
-│
+├── public/                    # Static public assets
+├── src/
+│   ├── app/                   # App-wide routing, layouts, and providers
+│   ├── features/              # Feature modules (independent domains)
+│   │   └── issues/            # Self-contained issue feature
+│   │       ├── api/           # Feature API client / queries
+│   │       ├── components/    # Feature-specific components
+│   │       ├── hooks/         # Feature-specific hooks
+│   │       ├── pages/         # Feature page routes
+│   │       └── types/         # Feature type interfaces
+│   ├── shared/                # App-scoped shared logic and UI components
+│   │   ├── api/               # Central HTTP client configurations
+│   │   ├── components/        # Reusable UI elements (Button, Card, Input)
+│   │   ├── hooks/             # App-wide custom hooks
+│   │   └── theme/             # Styling/theme configurations
+│   ├── App.tsx                # App base layout & providers entry
+│   ├── main.tsx               # App mounting entrypoint
+│   └── index.css              # Global styles
 ├── package.json
-└── README.md
+└── vite.config.ts
 ```
 
 > [!NOTE]
 > The active staging playground sandbox lives at the project root workspace under `/prototype`.
-
-### 📱 Application Internal Architecture (`apps/citizen/src`)
-
-```
-src/
-├── app/                      # App-wide wiring (Layouts, Router, Providers)
-├── features/                 # Domain-specific feature modules
-├── shared/                   # App-scoped static assets & config
-└── main.tsx                  # Application entry point
-```
-
-* **`/src/app` (Application Infrastructure)**: Contains application bootstrap wiring only (`/layouts`, `/router`, `/providers`). Must not contain domain business logic.
-* **`/src/features` (Feature Modules)**: Every business capability is isolated as an autonomous feature folder (e.g., `features/issues/`).
 
 ---
 
@@ -88,13 +74,13 @@ src/
 
 ```
 ✅ Allowed Dependency Flow:
-   [ Feature Layer ]  ──►  [ Shared App Config ]  ──►  [ Shared Workspace Packages (@djp/*) ]
+   [ Feature Layer ]  ──►  [ Shared App Config / UI Components ]
 
 ❌ Prohibited Flow (No Cross-Feature Direct Imports):
    [ Feature A ]  ──X──►  [ Feature B ]
 ```
 
-* Inter-feature communication must happen via shared packages, events, or state stores—never by directly importing files inside another feature's private directory.
+* Inter-feature communication must happen via shared application state or providers—never by directly importing files inside another feature's private directory.
 
 ---
 
@@ -106,27 +92,13 @@ src/
 
 ---
 
-## 📦 Shared Packages
-
-| Package | Purpose | Core Contents & Rules |
-| :--- | :--- | :--- |
-| **`@djp/ui`** | Reusable UI Components | Button, Card, Avatar, Badge, Modal, Drawer, Table, Input, Toast, Skeleton, Empty/Error states. *No business logic. React-compatible.* |
-| **`@djp/theme`** | Design Tokens | Colors, Typography, Font Sizes, Radius, Shadows, Spacing, Breakpoints, Motion. *Never hardcode visual values.* |
-| **`@djp/api`** | HTTP Communication | Axios instance, API services, Auth interceptors, retry policy, error mapping. *Never call `fetch()` directly from UI.* |
-| **`@djp/auth`** | Identity & Access | Session management, token storage, permissions, Route Guards, Auth utilities. |
-| **`@djp/types`** | Shared TypeScript Interfaces | `User`, `Issue`, `Poll`, `Discussion`, `Representative`, `Notification`. |
-| **`@djp/utils`** | Pure Helper Functions | `formatDate()`, `debounce()`, `slugify()`, storage helpers. *Must not depend on React.* |
-| **`@djp/hooks`** | Reusable React Hooks | `useDebounce`, `useInfiniteScroll`, `useLocalStorage`, `useWindowSize`. |
-
----
-
 ## 📐 Engineering Principles
 
 ### 1. 👤 Citizen First
 Every interface should reduce friction for citizen participation.
 
 ### 2. 🔁 Reuse Before Create
-Always search existing packages before creating a new component. Duplicate implementations are strictly prohibited.
+Always search existing shared components before creating a new component. Duplicate implementations are strictly prohibited.
 
 ### 3. 🧩 Composition Over Duplication
 Small reusable pieces over large monolithic components.
@@ -140,21 +112,6 @@ Organize code by feature, not by technical layer across the entire app:
 
 ### 5. 🛡️ Strict Type Safety
 TypeScript strict mode is mandatory. Avoid `any`. Prefer interfaces, discriminated unions, and generics.
-
----
-
-## 📂 Folder Convention
-
-```
-features/
-└── issues/
-    ├── api/
-    ├── components/
-    ├── hooks/
-    ├── pages/
-    ├── types/
-    └── index.ts
-```
 
 ---
 
@@ -187,7 +144,7 @@ Each component should:
 
 ## 📥 Import Rules
 
-* ✅ **Preferred:** Absolute shared imports (`import { Button } from "@djp/ui";`)
+* ✅ **Preferred:** Absolute shared imports (`import { Button } from "@/shared/components";`)
 * ❌ **Avoid:** Deeply nested relative imports (`../../../components/Button`)
 * *Relative imports should remain strictly within the same feature folder.*
 
@@ -196,7 +153,7 @@ Each component should:
 ## 🎨 Styling & Responsive Design
 
 * **Stack:** Tailwind CSS + shadcn/ui
-* **Rules:** Never invent colors, spacing, or typography. Use `@djp/theme` tokens only.
+* **Rules:** Never invent colors, spacing, or typography. Use `@/shared/theme` tokens or standard Tailwind utility classes.
 * **Breakpoints:** Mobile-First → Tablet (`md`) → Desktop (`lg`) → Large Desktop (`xl`).
 
 ---
@@ -263,7 +220,7 @@ Before merging any Pull Request:
 * [ ] Linter rules pass
 * [ ] Responsive layouts verified across breakpoints
 * [ ] Accessible via keyboard navigation and screen readers
-* [ ] Uses shared `@djp/ui` components & `@djp/theme` design tokens
+* [ ] Uses shared components & theme design tokens
 * [ ] Explicit Loading, Empty, and Error states implemented
 
 ---
@@ -276,5 +233,3 @@ When faced with multiple implementation options:
 3. Prefer **composition** over inheritance.
 4. Prefer **explicitness** over cleverness.
 5. Optimize for **readability** before performance optimization.
-
----
