@@ -960,8 +960,8 @@
     "semantic_hash": ""
   },
   "backend/springboot/pom.xml": {
-    "mtime": 1784443437.977046,
-    "ast_hash": "dd9aa491a1d33df50cc6f72b32802a6f",
+    "mtime": 1784464677.4146183,
+    "ast_hash": "23f8bb7a260f6a5a86df048a71092684",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/BackendApplication.java": {
@@ -2200,8 +2200,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-log.md": {
-    "mtime": 1784464605.776817,
-    "ast_hash": "e75dc69002590d8833e30fae93a194db",
+    "mtime": 1784464751.9494658,
+    "ast_hash": "a698cb746d70267da20272230887a483",
     "semantic_hash": ""
   },
   "docs/audit/README.MD": {
@@ -2250,8 +2250,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-debt.md": {
-    "mtime": 1784464616.025931,
-    "ast_hash": "dbb83179eefec6cfd5af112a89718378",
+    "mtime": 1784464764.614611,
+    "ast_hash": "e07edde1acef57a7e9b60d33a3b6d954",
     "semantic_hash": ""
   },
   "backend/springboot/src/test/java/com/djp/backend/BackendApplicationTests.java": {
@@ -2367,6 +2367,21 @@
   "backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java": {
     "mtime": 1784464530.0319858,
     "ast_hash": "f43045e2e164666333281fb37136511a",
+    "semantic_hash": ""
+  },
+  "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java": {
+    "mtime": 1784464688.1357393,
+    "ast_hash": "7ec73bec682f6788259bc471fd4eacb3",
+    "semantic_hash": ""
+  },
+  "backend/springboot/src/main/java/com/djp/backend/dto/IssueCreateRequestDto.java": {
+    "mtime": 1784464684.553699,
+    "ast_hash": "4e41ad99fd469dc04236feef358ca292",
+    "semantic_hash": ""
+  },
+  "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java": {
+    "mtime": 1784464694.9548166,
+    "ast_hash": "13cfff1c113af9c07dd843764c69c49d",
     "semantic_hash": ""
   }
 }

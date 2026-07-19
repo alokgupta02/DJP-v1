@@ -335,8 +335,10 @@
   "333": "NotificationsPage.tsx",
   "334": "SKILL.md",
   "335": "📋 DJP-v1 Technical Debt Register",
+  "336": "IssueCreateRequestDto",
   "337": "vision-core-draft.md",
   "338": "📋 Standard Mandatory Steps for Every Completed Task",
+  "339": "IssueIntegrationTest",
   "340": "OAuth2SuccessHandler",
   "345": "🔴 1. Critical Backend Debt (Active Blockers)"
 }

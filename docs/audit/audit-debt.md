@@ -28,11 +28,11 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **4. Documentation & Specifications (`DOC`)** | 0 | 2 | 1 | **3** | **Moderate** — OpenAPI contract live; runbooks and AI architecture docs missing. |
 | **5. Backend Core & Configuration (`IMPL/DEP/CFG`)** | 1 | 0 | 0 | **1** | **Passing Base** — Core setup profiles and dependencies configured. Tracking Phase 1 overall status. |
 | **6. Database Layer & Data Integrity (`DATA`)** | 1 | 1 | 0 | **2** | **Unsafe DDL** — Flyway database migration not initialized; ddl-auto: update active. |
-| **7. Security, Auth & Fault Tolerance (`SEC`)** | 1 | 1 | 0 | **2** | **Substantially Improved** — JWT Engine, Graceful Shutdown, and Security Filter Chain live. Missing input validation. |
+| **7. Security, Auth & Fault Tolerance (`SEC`)** | 0 | 1 | 0 | **1** | **Substantially Improved** — JWT Engine, Graceful Shutdown, Security Filter Chain, and input validation are live. |
 | **8. Testing & Quality Assurance (`TEST`)** | 2 | 1 | 0 | **3** | **Partial Base** — Backend test infrastructure scaffolded; E2E Playwright and frontend test suites missing. |
 | **9. DevOps, Containerization & CI/CD (`DEVOPS`)** | 2 | 0 | 0 | **2** | **Non-Existent** — Missing automated CI/CD pipeline and multi-stage Dockerfiles. |
 | **10. Observability & Cross-Cutting (`OBS/XCUT`)** | 3 | 2 | 0 | **5** | **Blind Spot** — Missing Actuator health probes, structured log format (JSON), and centralized alerting. |
-| **TOTALS** | **12** | **20** | **3** | **35** | **Active Technical Debt Tracked and Scoped for Remediation.** |
+| **TOTALS** | **11** | **20** | **3** | **34** | **Active Technical Debt Tracked and Scoped for Remediation.** |
 
 ---
 
@@ -323,16 +323,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Create `docs/architecture/security/secret-management.md` specifying JWKS (`/oauth2/jwks` endpoint) public key caching and external secret injection via `${JWT_SECRET_KEY}`. |
 | **Estimated Effort** | 2 hours |
 
-### SEC-003: Zero Bean Input Validation (`@Valid`, DTO annotations, OWASP Top 10)
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | 🔴 Critical |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:5.2` requires `spring-boot-starter-validation` with `@Valid` on all `@RequestBody` endpoints and strict constraints (`@NotBlank`, `@Size`, `@Email`, `@Pattern`) on DTOs. |
-| **Impl Reality / Evidence** | No `spring-boot-starter-validation` starter exists. `Issue.java` and `AuthController.java` accept unvalidated raw inputs without constraint checks. |
-| **Impact / Risk** | Vulnerable to SQL injection, XSS payloads, buffer overflows, and corrupted database entries from malicious payloads (`OWASP Top 10 A03: Injection`). |
-| **Remediation Action** | Add `spring-boot-starter-validation` to `pom.xml` during Phase 1/2 controller builds. Create request DTOs (`IssueCreateRequestDto`) annotated with `@NotBlank`, `@Size(max=500)`, and enforce `@Valid` in controllers. |
-| **Estimated Effort** | 2 hours |
 
 ---
 

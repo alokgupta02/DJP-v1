@@ -48,6 +48,24 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: SEC-003 — Zero Bean Input Validation (@Valid, DTO annotations, OWASP Top 10)
+* **📅 Resolution Date:** 2026-07-19 12:40 UTC
+* **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🔴 Critical
+* **📂 Files Modified / Created:**
+  * `[MODIFY] backend/springboot/pom.xml` (Added spring-boot-starter-validation dependency)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/dto/IssueCreateRequestDto.java` (Scaffolded create request payload structure with JSR-380 input validation constraints)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java` (Created controller enforcing @Valid request input parameter constraints validation)
+  * `[NEW] backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java` (Implemented integration tests asserting Bad Request returns on invalid inputs)
+* **📝 Resolution Summary:**
+  * Integrated Hibernate validator engine (`spring-boot-starter-validation`). Created `IssueCreateRequestDto` decorated with validation constraints (`@NotBlank`, `@Size`). Enabled parameter validation inside `IssueController` using `@Valid @RequestBody` and verified input boundaries through MockMvc test suites.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `feat(backend): implement spring validation starter and controller constraints validation (SEC-003)`
+
 ### [RESOLVED] ID: DATA-002 — Missing JPA Repository Interfaces & Custom Queries
 * **📅 Resolution Date:** 2026-07-19 12:37 UTC
 * **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
