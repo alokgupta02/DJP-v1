@@ -8,7 +8,7 @@
 | **📅 Last Updated** | 2026-07-19 |
 | **🏷️ Status / Version** | Active SSOT / v1.0.0 |
 | **👥 Owner / Worker** | `Worker/Who: [Tech Arch Agent | Antigravity (Gemini)]` |
-| **🔗 Upstream / Dependencies** | [`bmad/AGENTIC_WORKFLOW_GUIDE.md`](file:///home/ap/git-repo/DJP-v1/bmad/AGENTIC_WORKFLOW_GUIDE.md), [`bmad/dashboard.md`](file:///home/ap/git-repo/DJP-v1/bmad/dashboard.md) |
+| **🔗 Upstream / Dependencies** | [`bmad/dashboard.md`](file:///home/ap/git-repo/DJP-v1/bmad/dashboard.md) |
 
 ---
 
@@ -23,6 +23,3 @@ Always `cd` directly into the target subdirectory before running commands. Do **
 | **Backend** | `bmad/backend` | **Port `8082`** | `cd bmad/backend && ./mvnw spring-boot:run` |
 | **Frontend** | `bmad/frontend` | **Port `5175`** (`proxies -> 8082`) | `cd bmad/frontend && npm run dev` |
 | **QA Tests** | `bmad/tests` | Targets `localhost:8082` | `cd bmad/tests && node api-health.test.mjs` |
-
-> [!IMPORTANT]
-> **Full Agent Protocols & Architecture:** For our onboarding flowchart, Git strategy (`bmad` branch), and Reversible Cloud Save rules, see [`AGENTIC_WORKFLOW_GUIDE.md`](file:///home/ap/git-repo/DJP-v1/bmad/AGENTIC_WORKFLOW_GUIDE.md).

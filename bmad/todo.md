@@ -8,7 +8,7 @@
 | **📅 Last Updated** | 2026-07-19 |
 | **🏷️ Status / Version** | Active SSOT / v1.0.0 |
 | **👥 Owner / Worker** | `Worker/Who: [PM Agent / User | Antigravity (Gemini)]` |
-| **🔗 Upstream / Dependencies** | [`bmad/dashboard.md`](file:///home/ap/git-repo/DJP-v1/bmad/dashboard.md), [`bmad/AGENTIC_WORKFLOW_GUIDE.md`](file:///home/ap/git-repo/DJP-v1/bmad/AGENTIC_WORKFLOW_GUIDE.md) |
+| **🔗 Upstream / Dependencies** | [`bmad/dashboard.md`](file:///home/ap/git-repo/DJP-v1/bmad/dashboard.md) |
 
 ---
 
