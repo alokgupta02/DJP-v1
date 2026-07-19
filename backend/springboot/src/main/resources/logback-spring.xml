@@ -3,8 +3,14 @@
 
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
 
+    <conversionRule conversionWord="maskedMsg" converterClass="com.djp.backend.logging.MaskingMessageConverter" />
+
     <springProfile name="local">
-        <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%clr(%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %maskedMsg%n%wEx</pattern>
+            </encoder>
+        </appender>
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
         </root>
@@ -26,7 +32,7 @@
                             "trace_id": "%mdc{X-Correlation-ID}",
                             "thread": "%thread",
                             "logger": "%logger",
-                            "message": "%message",
+                            "message": "%maskedMsg",
                             "exception": "%ex"
                             }
                         </pattern>

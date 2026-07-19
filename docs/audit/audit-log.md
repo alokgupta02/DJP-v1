@@ -48,6 +48,23 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: XCUT-003 — Missing PII Masking in Logs & Exception Traces
+* **📅 Resolution Date:** 2026-07-19 12:43 UTC
+* **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🟠 High
+* **📂 Files Modified / Created:**
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/logging/MaskingMessageConverter.java` (Implemented custom ClassicConverter replacing email addresses and JSON/KV values of sensitive variables with asterisks)
+  * `[MODIFY] backend/springboot/src/main/resources/logback-spring.xml` (Registered MaskingMessageConverter conversionRule and configured appenders to mask message fields)
+  * `[NEW] backend/springboot/src/test/java/com/djp/backend/LoggingMaskingTest.java` (Wrote unit tests ensuring PII email patterns and secrets are correctly masked)
+* **📝 Resolution Summary:**
+  * Configured dynamic masking for sensitive fields in Spring Boot console and JSON logs. Created `MaskingMessageConverter` matching regex targets (`password`, `token`, `authorization`, `email`) and registered the converter within `logback-spring.xml`.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `feat(logging): implement Logback masking converter for sensitive PII parameters (XCUT-003)`
+
 ### [RESOLVED] ID: SEC-003 — Zero Bean Input Validation (@Valid, DTO annotations, OWASP Top 10)
 * **📅 Resolution Date:** 2026-07-19 12:40 UTC
 * **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)

@@ -31,8 +31,8 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **7. Security, Auth & Fault Tolerance (`SEC`)** | 0 | 1 | 0 | **1** | **Substantially Improved** — JWT Engine, Graceful Shutdown, Security Filter Chain, and input validation are live. |
 | **8. Testing & Quality Assurance (`TEST`)** | 2 | 1 | 0 | **3** | **Partial Base** — Backend test infrastructure scaffolded; E2E Playwright and frontend test suites missing. |
 | **9. DevOps, Containerization & CI/CD (`DEVOPS`)** | 2 | 0 | 0 | **2** | **Non-Existent** — Missing automated CI/CD pipeline and multi-stage Dockerfiles. |
-| **10. Observability & Cross-Cutting (`OBS/XCUT`)** | 3 | 2 | 0 | **5** | **Blind Spot** — Missing Actuator health probes, structured log format (JSON), and centralized alerting. |
-| **TOTALS** | **11** | **20** | **3** | **34** | **Active Technical Debt Tracked and Scoped for Remediation.** |
+| **10. Observability & Cross-Cutting (`OBS/XCUT`)** | 3 | 1 | 0 | **4** | **Blind Spot** — Missing Actuator health probes, structured log format (JSON), and centralized alerting. PII log masking active. |
+| **TOTALS** | **11** | **19** | **3** | **33** | **Active Technical Debt Tracked and Scoped for Remediation.** |
 
 ---
 
@@ -435,16 +435,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Enable `@EnableJpaAuditing` in Spring Boot config and create `AuditLogService` logging state transitions to `audit_logs` table (and structured JSON logs). |
 | **Estimated Effort** | 3 hours |
 
-### XCUT-003: Missing PII Masking in Logs & Exception Traces
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | 🟠 High |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:4.1` and DPDPA data privacy guidelines mandate zero Personally Identifiable Information (PII — passwords, tokens, full emails, locations) in application logs. |
-| **Impl Reality / Evidence** | No Logback masking patterns (`MaskingPatternLayout`) or custom serializer filters exist to redact sensitive fields from `toString()` representations or log outputs. |
-| **Impact / Risk** | Citizen political opinions, passwords, and JWT tokens leak into plaintext log files stored in cloud log aggregators, violating DPDPA 2023. |
-| **Remediation Action** | Configure `MaskingPatternLayout` in `logback-spring.xml` automatically masking `password`, `token`, `authorization`, and `email` JSON keys. Annotate DTO sensitive fields with `@ToString.Exclude`. |
-| **Estimated Effort** | 1-2 hours |
 
 ---
 

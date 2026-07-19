@@ -1,16 +1,16 @@
 # Graph Report - DJP-v1  (2026-07-19)
 
 ## Corpus Check
-- 420 files · ~258,852 words
+- 422 files · ~259,242 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2631 nodes · 2796 edges · 342 communities (211 shown, 131 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 40 edges (avg confidence: 0.77)
+- 2644 nodes · 2821 edges · 344 communities (213 shown, 131 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 46 edges (avg confidence: 0.77)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bc0fd6e8`
+- Built from commit: `cdf6ddcc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -325,13 +325,15 @@
 - 📋 Standard Mandatory Steps for Every Completed Task
 - IssueIntegrationTest
 - OAuth2SuccessHandler
+- MaskingMessageConverter
+- Example 1: Research Task
 - 🔴 1. Critical Backend Debt (Active Blockers)
 
 ## God Nodes (most connected - your core abstractions)
 1. `User` - 40 edges
 2. `Issue` - 35 edges
-3. `💻 **Frontend Engineering Guide**` - 22 edges
-4. `📜 Completed Resolutions Ledger` - 22 edges
+3. `📜 Completed Resolutions Ledger` - 23 edges
+4. `💻 **Frontend Engineering Guide**` - 22 edges
 5. `analyze_repo()` - 20 edges
 6. `UserRepository` - 20 edges
 7. `JwtTokenProvider` - 18 edges
@@ -354,7 +356,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (342 total, 131 thin omitted)
+## Communities (344 total, 131 thin omitted)
 
 ### Community 0 - "Test-Driven Development (TDD)"
 Cohesion: 0.05
@@ -382,7 +384,7 @@ Nodes (33): AppLayout(), Topbar(), TopbarProps, createAction, sidebarItems, Side
 
 ### Community 6 - "index.ts"
 Cohesion: 0.04
-Nodes (46): ARCH-003: Contradictory Directory Structure Across Docs, ARCH-004: Frontend Shared Packages Are Empty Shells & Structure Discrepancy, ARCH-005: Missing API Gateway Implementation, ARCH-006: Undocumented Async Event Bus & pgvector Semantic Store Pipelines, DATA-001: Missing Database Migration Engine (Flyway/Liquibase) vs Unsafe `ddl-auto: update`, DATA-003: Missing Database Indexes & Performance Optimizations in Schema, DEVOPS-002: Missing Multi-Stage Dockerfile for Frontend & Local `docker-compose.yml`, DEVOPS-003: Empty `.github/workflows/` Directory (No Automated CI/CD Pipeline) (+38 more)
+Nodes (45): ARCH-003: Contradictory Directory Structure Across Docs, ARCH-004: Frontend Shared Packages Are Empty Shells & Structure Discrepancy, ARCH-005: Missing API Gateway Implementation, ARCH-006: Undocumented Async Event Bus & pgvector Semantic Store Pipelines, DATA-001: Missing Database Migration Engine (Flyway/Liquibase) vs Unsafe `ddl-auto: update`, DATA-003: Missing Database Indexes & Performance Optimizations in Schema, DEVOPS-002: Missing Multi-Stage Dockerfile for Frontend & Local `docker-compose.yml`, DEVOPS-003: Empty `.github/workflows/` Directory (No Automated CI/CD Pipeline) (+37 more)
 
 ### Community 7 - "Process"
 Cohesion: 0.07
@@ -745,8 +747,8 @@ Cohesion: 0.20
 Nodes (9): 3-Layer Workflow (ALWAYS Follow), Examples, Knowledge Agents, Memory Search, Step 1: Search - Get Index with IDs, Step 2: Timeline - Get Context Around Interesting Results, Step 3: Fetch - Get Full Details ONLY for Filtered IDs, When to Use (+1 more)
 
 ### Community 98 - "server-hoist-static-io.md"
-Cohesion: 0.13
-Nodes (14): After (Correct), Before (Wrong), Example 1: Research Task, Example 2: Bug Fix Task, Example 3: Feature Development, Example 4: Error Recovery Pattern, Examples: Planning with Files in Action, Loop 1: Create Plan (+6 more)
+Cohesion: 0.20
+Nodes (9): After (Correct), Before (Wrong), Example 2: Bug Fix Task, Example 3: Feature Development, Example 4: Error Recovery Pattern, Examples: Planning with Files in Action, task_plan.md, The 3-File Pattern in Action (+1 more)
 
 ### Community 99 - "React + TypeScript + Vite"
 Cohesion: 0.50
@@ -786,7 +788,7 @@ Nodes (6): is_within_root(), resolve_from_active_file(), resolve_from_env(), res
 
 ### Community 156 - "async-api-routes.md"
 Cohesion: 0.06
-Nodes (32): 📜 Completed Resolutions Ledger, 📔 DJP Platform Technical Debt Resolution & Audit Log (Historical Ledger SSOT), [EXAMPLE] ID: DOC-001 — Missing `api-spec.yaml` (OpenAPI Contract), 📋 How to Use This Log (Agent & Developer Instructions), [RESOLVED] ID: ARCH-001 — Modular Monolith Architectural Shift, [RESOLVED] ID: CFG-001 / TEST-001 — Split Environment Profiles & Scaffold Integration Tests, [RESOLVED] ID: DATA-002 — Missing JPA Repository Interfaces & Custom Queries, [RESOLVED] ID: DATA-004 — H2 vs PostgreSQL Dialect Gaps & Connection Pool Settings Unverified (+24 more)
+Nodes (33): 📜 Completed Resolutions Ledger, 📔 DJP Platform Technical Debt Resolution & Audit Log (Historical Ledger SSOT), [EXAMPLE] ID: DOC-001 — Missing `api-spec.yaml` (OpenAPI Contract), 📋 How to Use This Log (Agent & Developer Instructions), [RESOLVED] ID: ARCH-001 — Modular Monolith Architectural Shift, [RESOLVED] ID: CFG-001 / TEST-001 — Split Environment Profiles & Scaffold Integration Tests, [RESOLVED] ID: DATA-002 — Missing JPA Repository Interfaces & Custom Queries, [RESOLVED] ID: DATA-004 — H2 vs PostgreSQL Dialect Gaps & Connection Pool Settings Unverified (+25 more)
 
 ### Community 157 - "async-dependencies.md"
 Cohesion: 0.29
@@ -1072,6 +1074,14 @@ Nodes (5): IssueIntegrationTest, AfterEach, AutoConfigureMockMvc, MockMvc, Test
 Cohesion: 0.27
 Nodes (9): Authentication, Component, HttpServletRequest, HttpServletResponse, Logger, Override, OAuth2SuccessHandler, OAuth2User (+1 more)
 
+### Community 341 - "MaskingMessageConverter"
+Cohesion: 0.32
+Nodes (7): Override, MaskingMessageConverter, Test, LoggingMaskingTest, ClassicConverter, ILoggingEvent, Pattern
+
+### Community 342 - "Example 1: Research Task"
+Cohesion: 0.40
+Nodes (5): Example 1: Research Task, Loop 1: Create Plan, Loop 2: Research, Loop 3: Synthesize, Loop 4: Deliver
+
 ### Community 345 - "🔴 1. Critical Backend Debt (Active Blockers)"
 Cohesion: 0.18
 Nodes (11): 🔴 1. Critical Backend Debt (Active Blockers), 🟠 2. High Priority Backend Debt, ARCH-001 — Microservices Architecture Documented vs. Monolith Implemented, ARCH-002 — Layered Package Structure 86% Missing, ⚙️ Autonomous Execution & Replenishment Loop (`Backend Domain`), CFG-001 — Single `application.yml` Without Profile Separation, CFG-002 — Hardcoded Secret Default (`${SUPABASE_PASSWORD:secret-password}`), DATA-001 — No Database Migration Strategy (`ddl-auto: update` in Code) (+3 more)
@@ -1084,11 +1094,11 @@ Nodes (11): 🔴 1. Critical Backend Debt (Active Blockers), 🟠 2. High Priori
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `UserRepository` connect `UserRepository` to `rendering-usetransition-loading.md`, `AuthController`, `IssueIntegrationTest`, `OAuth2SuccessHandler`, `User`?**
+- **Why does `Issue` connect `Issue` to `User`, `UserRepository`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **Why does `User` connect `User` to `rendering-usetransition-loading.md`, `AuthController`, `IssueIntegrationTest`, `UserRepository`, `OAuth2SuccessHandler`, `Issue`?**
-  _High betweenness centrality (0.003) - this node is a cross-community bridge._
-- **Why does `Issue` connect `Issue` to `User`, `UserRepository`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **Why does `UserRepository` connect `UserRepository` to `rendering-usetransition-loading.md`, `AuthController`, `IssueIntegrationTest`, `OAuth2SuccessHandler`, `User`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **What connects `attest-plan.sh script`, `gate-stop.sh script`, `ledger-summary.sh script` to the rest of the system?**
   _1464 weakly-connected nodes found - possible documentation gaps or missing edges._
