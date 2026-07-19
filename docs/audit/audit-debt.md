@@ -402,16 +402,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | **Adopt in Phases:**<br>**Phase 1 (Immediate Foundation):** Add `springdoc-openapi-starter-webmvc-ui` (OpenAPI/Swagger), `spring-boot-starter-actuator` (Actuator), `logstash-logback-encoder` (Logstash JSON logging), `resilience4j-spring-boot3` (Resilience4j), plus `validation`/`lombok` as controllers and DTOs are built.<br>**Phase 2+ (On-Demand per Feature):** Add `spring-boot-starter-security`, `oauth2-client`, `flyway-core`, `bucket4j`, `opentelemetry` strictly when their respective modules are implemented. |
 | **Estimated Effort** | 1 hour |
 
-### DEP-002: Spring Boot Version Drift (`3.2.5` EOL vs `3.4.x`)
+### DEP-002: Spring Boot Version Drift (`3.2.5` EOL vs `3.4.x`) [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🟠 High |
+| **Severity** | Resolved |
 | **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
 | **Docs Say / Spec** | `backend-techstack.md` specifies current LTS Spring Boot 3.x line (`3.3.x / 3.4.x`). |
-| **Impl Reality / Evidence** | `pom.xml` pins `spring-boot-starter-parent` to `3.2.5` (released Dec 2023, reached EOL Sept 2024). |
-| **Impact / Risk** | Operating on an unsupported EOL Spring Boot version exposes the backend to unpatched CVEs and compatibility bugs with modern Spring Security 6.x. |
-| **Remediation Action** | Upgrade `<parent>` POM `<version>` to the latest stable Spring Boot 3.4.x release (`3.4.1+`). Verify clean build via `mvn clean compile`. |
-| **Estimated Effort** | 30 minutes |
+| **Impl Reality / Evidence** | Upgraded `pom.xml` version to `3.4.1` on disk and ran passing contextual tests. |
+| **Impact / Risk** | Was high version drift and vulnerability risk. |
+| **Remediation Action** | Done: Upgraded POM parent module template to `3.4.1`. |
+| **Estimated Effort** | Completed |
 
 ### DEP-003: No Dependency Management Discipline (`<dependencyManagement>`, dependabot, SBOM)
 | Aspect | Detail |
