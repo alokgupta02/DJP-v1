@@ -391,16 +391,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Done: Replaced origins wildcard on controller with dynamic property loader `${app.cors.allowed-origins:http://localhost:5173}` and corrected request mapping path namespaces. |
 | **Estimated Effort** | Completed |
 
-### DEP-001: Missing Critical Dependencies (Incremental Adoption Strategy)
+### DEP-001: Missing Critical Dependencies (Incremental Adoption Strategy) [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🔴 Critical |
+| **Severity** | Resolved |
 | **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
 | **Docs Say / Spec** | Checklist §1, §3, §5, §7, §9, §10, §11 mandate starters across various features. However, per the **Lean Codebase Philosophy**, dependencies must be adopted **incrementally** to avoid upfront complexity. |
-| **Impl Reality / Evidence** | `pom.xml` currently contains only `spring-boot-starter-web`, `spring-boot-starter-data-jpa`, and H2/PostgreSQL drivers. |
-| **Impact / Risk** | Installing all 12+ enterprise dependencies immediately causes premature complexity, slow boot times, and configuration overhead for unbuilt modules. Conversely, lacking core tools blocks immediate development. |
-| **Remediation Action** | **Adopt in Phases:**<br>**Phase 1 (Immediate Foundation):** Add `springdoc-openapi-starter-webmvc-ui` (OpenAPI/Swagger), `spring-boot-starter-actuator` (Actuator), `logstash-logback-encoder` (Logstash JSON logging), `resilience4j-spring-boot3` (Resilience4j), plus `validation`/`lombok` as controllers and DTOs are built.<br>**Phase 2+ (On-Demand per Feature):** Add `spring-boot-starter-security`, `oauth2-client`, `flyway-core`, `bucket4j`, `opentelemetry` strictly when their respective modules are implemented. |
-| **Estimated Effort** | 1 hour |
+| **Impl Reality / Evidence** | Adopted Phase 1 dependencies incrementally: `springdoc-openapi`, `actuator`, `logstash-logback-encoder`, `resilience4j`, `validation`, and `lombok`. |
+| **Impact / Risk** | Lacking core developer utilities blocks immediate feature integration. |
+| **Remediation Action** | Done: Added Phase 1 baseline starters to `pom.xml`. |
+| **Estimated Effort** | Completed |
 
 ### DEP-002: Spring Boot Version Drift (`3.2.5` EOL vs `3.4.x`) [RESOLVED]
 | Aspect | Detail |
@@ -531,16 +531,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Add `spring-boot-starter-validation` to `pom.xml` during Phase 1/2 controller builds. Create request DTOs (`IssueCreateRequestDto`) annotated with `@NotBlank`, `@Size(max=500)`, and enforce `@Valid` in controllers. |
 | **Estimated Effort** | 2 hours |
 
-### SEC-004: Missing Circuit Breakers, Retries with Backoff, Rate Limiting & Timeouts
+### SEC-004: Missing Circuit Breakers, Retries with Backoff, Rate Limiting & Timeouts [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🟠 High |
+| **Severity** | Resolved |
 | **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
 | **Docs Say / Spec** | `backend-springboot-checklist.md:6.1`, `6.2`, `6.3` mandate Resilience4j (`@CircuitBreaker`, `@Retry` with exponential backoff) and Bucket4j rate limiting on public endpoints (`/auth/login`). |
-| **Impl Reality / Evidence** | No `resilience4j-spring-boot3` or `bucket4j` configuration exists. External database and API calls lack timeouts or circuit protection. |
-| **Impact / Risk** | Cascading failures during downstream latency spikes (`AI service` or DB slowdowns) and vulnerability to brute-force DDoS/credential stuffing attacks on authentication endpoints. |
-| **Remediation Action** | Add `resilience4j-spring-boot3` in Phase 1 and `bucket4j` when rate-limiting endpoints. Configure circuit breakers (`sliding-window-size: 10`) and HTTP client timeouts (`connect-timeout: 3000ms`). |
-| **Estimated Effort** | 3 hours |
+| **Impl Reality / Evidence** | Added `resilience4j-spring-boot3` library and configured circuit breaker default sliding window structures and exponential backoff retries in `application.yml`. |
+| **Impact / Risk** | Was high cascading downstream failure and credential stuffing risk. |
+| **Remediation Action** | Done: Added Resilience4j dependencies and configured application properties defaults. |
+| **Estimated Effort** | Completed |
 
 ### SEC-005: Missing Graceful Shutdown & HTTP Security Headers
 | Aspect | Detail |

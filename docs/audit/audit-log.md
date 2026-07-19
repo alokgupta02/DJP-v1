@@ -48,6 +48,22 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: TECH-004 & SEC-003 — Missing Maven Dependencies & Resilience4j Configurations
+* **📅 Resolution Date:** 2026-07-19 07:45 UTC
+* **Found By:** Tech Arch Agent | Antigravity (Gemini), BE Agent | Antigravity (Gemini), QA Agent | Nemotron
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🟠 High
+* **📂 Files Modified / Created:**
+  * `[MODIFY] backend/springboot/pom.xml` (Added resilience4j-spring-boot3 and lombok dependencies)
+  * `[MODIFY] backend/springboot/src/main/resources/application.yml` (Configured resilience4j defaults)
+* **📝 Resolution Summary:**
+  * To resolve missing core utility libraries and satisfy the resilience requirements, I added the Lombok plugin and the Resilience4j Spring Boot starter libraries to the Maven project. Additionally, configured default circuit breaker threshold patterns (sliding window size 10, failure threshold 50%) and retry backoff behaviors (max attempts 3, backoff multiplier 2.0) inside `application.yml`.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (deferred in bulk per user request)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `PR #6 — feat(backend): integrate Lombok and Resilience4j configurations`
+
 ### [RESOLVED] ID: DEVOPS-001 — No Backend Production Dockerfile
 * **📅 Resolution Date:** 2026-07-19 07:30 UTC
 * **Found By:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron

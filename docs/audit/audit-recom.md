@@ -57,16 +57,6 @@ This file (`audit-recom.md`) is the **Single Source of Truth (SSOT)** for active
 * **Severity:** 🟠 High
 * **Changes required:** Code (`backend/springboot/src/main/java/.../security/`), Config (`application.yml`)
 
-### SEC-003 — Missing Circuit Breakers and Retries (`Resilience4j`)
-* **Worker/Who:** QA Agent | Nemotron
-* **Severity:** 🟠 High
-* **Changes required:** Code (`backend/springboot/pom.xml`, `src/main/java/.../resilience/`)
-
-### TECH-004 — Missing 7 Critical Maven Dependencies
-* **Worker/Who:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron
-* **Severity:** 🟠 High
-* **Changes required:** Code (`backend/springboot/pom.xml`, `src/main/resources/application.yml`)
-
 ### TECH-006 — Missing Internal Layered Architecture (`DTO`, `Service`, `Exception`)
 * **Worker/Who:** QA Agent | Nemotron
 * **Severity:** 🟠 High
