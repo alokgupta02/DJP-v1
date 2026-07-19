@@ -222,6 +222,7 @@
   "220": "IssuesPage.tsx",
   "221": "todo.md",
   "222": "__init__.py",
+  "223": "Issue",
   "224": "🤖 Instructions for the Agent",
   "225": "routes.md",
   "226": "eslint.config.js",
@@ -242,6 +243,7 @@
   "241": "AuthController",
   "242": "Memory Search",
   "243": "DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy",
+  "244": "UserRepository",
   "245": "DJP Documentation Sitemap & Organization Rules",
   "246": "DJP Agent Team Operating Rules",
   "247": "BackendApplication",
@@ -336,7 +338,5 @@
   "337": "vision-core-draft.md",
   "338": "📋 Standard Mandatory Steps for Every Completed Task",
   "340": "OAuth2SuccessHandler",
-  "342": "SecurityConfig.java",
-  "345": "🔴 1. Critical Backend Debt (Active Blockers)",
-  "346": ".doFilter"
+  "345": "🔴 1. Critical Backend Debt (Active Blockers)"
 }

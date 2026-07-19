@@ -27,12 +27,12 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **3. System Architecture & Boundaries (`ARCH`)** | 0 | 3 | 1 | **4** | **Improving** — Monolithic path standardized; package structure scaffolded. API Gateway debt remains. |
 | **4. Documentation & Specifications (`DOC`)** | 0 | 2 | 1 | **3** | **Moderate** — OpenAPI contract live; runbooks and AI architecture docs missing. |
 | **5. Backend Core & Configuration (`IMPL/DEP/CFG`)** | 1 | 0 | 0 | **1** | **Passing Base** — Core setup profiles and dependencies configured. Tracking Phase 1 overall status. |
-| **6. Database Layer & Data Integrity (`DATA`)** | 2 | 1 | 0 | **3** | **Unsafe DDL** — Flyway database migration not initialized; ddl-auto: update active. |
+| **6. Database Layer & Data Integrity (`DATA`)** | 1 | 1 | 0 | **2** | **Unsafe DDL** — Flyway database migration not initialized; ddl-auto: update active. |
 | **7. Security, Auth & Fault Tolerance (`SEC`)** | 1 | 1 | 0 | **2** | **Substantially Improved** — JWT Engine, Graceful Shutdown, and Security Filter Chain live. Missing input validation. |
 | **8. Testing & Quality Assurance (`TEST`)** | 2 | 1 | 0 | **3** | **Partial Base** — Backend test infrastructure scaffolded; E2E Playwright and frontend test suites missing. |
 | **9. DevOps, Containerization & CI/CD (`DEVOPS`)** | 2 | 0 | 0 | **2** | **Non-Existent** — Missing automated CI/CD pipeline and multi-stage Dockerfiles. |
 | **10. Observability & Cross-Cutting (`OBS/XCUT`)** | 3 | 2 | 0 | **5** | **Blind Spot** — Missing Actuator health probes, structured log format (JSON), and centralized alerting. |
-| **TOTALS** | **13** | **20** | **3** | **36** | **Active Technical Debt Tracked and Scoped for Remediation.** |
+| **TOTALS** | **12** | **20** | **3** | **35** | **Active Technical Debt Tracked and Scoped for Remediation.** |
 
 ---
 
@@ -296,16 +296,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Add `flyway-core` to `pom.xml` (Phase 2 core). Create `src/main/resources/db/migration/V1__init.sql` codifying all 14 `users` table columns and canonical schemas from `db-design.md`. Set `ddl-auto: validate` in `application-prod.yml`. |
 | **Estimated Effort** | 2 hours |
 
-### DATA-002: Missing JPA Repository Interfaces & Custom Queries
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | 🔴 Critical |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-design.md:23` mandates a `repository/` layer extending `JpaRepository<T, ID>` for all entities. |
-| **Impl Reality / Evidence** | No `repository/` package exists. `Issue.java` entity exists with zero corresponding `IssueRepository.java`. |
-| **Impact / Risk** | Impossible to execute database CRUD operations, custom paginated search queries (`Pageable`), or civic filtering without repository boundaries. |
-| **Remediation Action** | Create `com.djp.repository.UserRepository` and `IssueRepository` extending `JpaRepository` and `JpaSpecificationExecutor` for dynamic filtering. |
-| **Estimated Effort** | 1 hour |
 
 ### DATA-003: Missing Database Indexes & Performance Optimizations in Schema
 | Aspect | Detail |

@@ -2200,8 +2200,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-log.md": {
-    "mtime": 1784464446.8060946,
-    "ast_hash": "cb4d74dd0b19306085314dd51b11c603",
+    "mtime": 1784464605.776817,
+    "ast_hash": "e75dc69002590d8833e30fae93a194db",
     "semantic_hash": ""
   },
   "docs/audit/README.MD": {
@@ -2250,8 +2250,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-debt.md": {
-    "mtime": 1784464459.7912319,
-    "ast_hash": "12784ddee74d0894da087d2e306a4d0b",
+    "mtime": 1784464616.025931,
+    "ast_hash": "dbb83179eefec6cfd5af112a89718378",
     "semantic_hash": ""
   },
   "backend/springboot/src/test/java/com/djp/backend/BackendApplicationTests.java": {
@@ -2315,8 +2315,8 @@
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/repository/UserRepository.java": {
-    "mtime": 1784443453.9643435,
-    "ast_hash": "873eed6f8b03d66865b218b73186849c",
+    "mtime": 1784464550.894213,
+    "ast_hash": "5d110e08e4e7dbdb9a70e4c6c51d8308",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/security/JwtAuthenticationFilter.java": {
@@ -2357,6 +2357,16 @@
   "docs/api/api-spec.yaml": {
     "mtime": 1784440763.8203323,
     "ast_hash": "5a44900cbc39889ee35bdad6875c5b2e",
+    "semantic_hash": ""
+  },
+  "backend/springboot/src/main/java/com/djp/backend/model/Issue.java": {
+    "mtime": 1784464527.6399598,
+    "ast_hash": "c6d8fa62480d2fd1089e776ac22b618b",
+    "semantic_hash": ""
+  },
+  "backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java": {
+    "mtime": 1784464530.0319858,
+    "ast_hash": "f43045e2e164666333281fb37136511a",
     "semantic_hash": ""
   }
 }

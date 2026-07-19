@@ -48,6 +48,23 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: DATA-002 — Missing JPA Repository Interfaces & Custom Queries
+* **📅 Resolution Date:** 2026-07-19 12:37 UTC
+* **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🔴 Critical
+* **📂 Files Modified / Created:**
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/model/Issue.java` (Scaffolded entity model matching the database issues schema with constraints and index mappings)
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/repository/IssueRepository.java` (Created Spring Data JpaRepository interface extending JpaSpecificationExecutor)
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/repository/UserRepository.java` (Wired JpaSpecificationExecutor to support dynamic filter/criteria specifications queries)
+* **📝 Resolution Summary:**
+  * Scaffolded the foundational database entity class `Issue.java` to match the target database schema structure (fields: title, description, category, priority, status, workflowStep, supportsCount, commentsCount, location). Registered both `UserRepository` and `IssueRepository` with `JpaSpecificationExecutor` to unblock future query filtering layers.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `feat(backend): implement Issue JPA entity and specification executor repositories (DATA-002)`
+
 ### [RESOLVED] ID: DOC-001 — backend-techstack.md vs backend-design.md Architectural Contradiction
 * **📅 Resolution Date:** 2026-07-19 12:35 UTC
 * **Found By:** Tech Arch Agent | Antigravity (Gemini), BE Agent | Antigravity (Gemini)
