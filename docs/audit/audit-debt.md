@@ -25,14 +25,14 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **1. Governance, Legal & Compliance (`GOV`)** | 2 | 5 | 0 | **7** | **Severely Exposed** — ECI legal standing & DPDPA data privacy frameworks missing. |
 | **2. Process, Leadership & Workflow (`LEAD`)** | 0 | 5 | 1 | **6** | **Moderate Drift** — Contribution and branching guidelines missing. |
 | **3. System Architecture & Boundaries (`ARCH`)** | 0 | 3 | 1 | **4** | **Improving** — Monolithic path standardized; package structure scaffolded. API Gateway debt remains. |
-| **4. Documentation & Specifications (`DOC`)** | 1 | 2 | 1 | **4** | **Moderate** — OpenAPI contract live; runbooks and AI architecture docs missing. |
+| **4. Documentation & Specifications (`DOC`)** | 0 | 2 | 1 | **3** | **Moderate** — OpenAPI contract live; runbooks and AI architecture docs missing. |
 | **5. Backend Core & Configuration (`IMPL/DEP/CFG`)** | 1 | 0 | 0 | **1** | **Passing Base** — Core setup profiles and dependencies configured. Tracking Phase 1 overall status. |
 | **6. Database Layer & Data Integrity (`DATA`)** | 2 | 1 | 0 | **3** | **Unsafe DDL** — Flyway database migration not initialized; ddl-auto: update active. |
 | **7. Security, Auth & Fault Tolerance (`SEC`)** | 1 | 1 | 0 | **2** | **Substantially Improved** — JWT Engine, Graceful Shutdown, and Security Filter Chain live. Missing input validation. |
 | **8. Testing & Quality Assurance (`TEST`)** | 2 | 1 | 0 | **3** | **Partial Base** — Backend test infrastructure scaffolded; E2E Playwright and frontend test suites missing. |
 | **9. DevOps, Containerization & CI/CD (`DEVOPS`)** | 2 | 0 | 0 | **2** | **Non-Existent** — Missing automated CI/CD pipeline and multi-stage Dockerfiles. |
 | **10. Observability & Cross-Cutting (`OBS/XCUT`)** | 3 | 2 | 0 | **5** | **Blind Spot** — Missing Actuator health probes, structured log format (JSON), and centralized alerting. |
-| **TOTALS** | **14** | **20** | **3** | **37** | **Active Technical Debt Tracked and Scoped for Remediation.** |
+| **TOTALS** | **13** | **20** | **3** | **36** | **Active Technical Debt Tracked and Scoped for Remediation.** |
 
 ---
 
@@ -232,17 +232,6 @@ This register represents our **360-degree holistic evaluation** combining deep d
 ---
 
 ## Part III: Documentation & Specifications (`DOC`)
-
-### DOC-001: `backend-techstack.md` vs `backend-design.md` Architectural Contradiction
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | 🔴 Critical |
-| **Found By** | `Tech Arch Agent \| Antigravity (Gemini), BE Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-techstack.md:31-35` → 3 microservices in `backend/auth-service`, `backend/core-service`, `backend/ai-service`.<br>`backend-design.md:23` → Single Spring Boot project in `backend/springboot/`. |
-| **Impl Reality / Evidence** | Two core SSOT architectural specifications directly contradict one another regarding fundamental service topology and repository layout. |
-| **Impact / Risk** | Developers and AI agents receiving tasks make conflicting structural decisions depending on which doc they read first. |
-| **Remediation Action** | Update `backend-techstack.md` to officially align with `backend-design.md` under the **Modular Monolith (`backend/springboot/`)** specification (ADR-008). |
-| **Estimated Effort** | 1 hour |
 
 ### DOC-005: Missing Operational Runbooks & Backend Deployment Guide
 | Aspect | Detail |

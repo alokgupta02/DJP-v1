@@ -48,6 +48,21 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: DOC-001 — backend-techstack.md vs backend-design.md Architectural Contradiction
+* **📅 Resolution Date:** 2026-07-19 12:35 UTC
+* **Found By:** Tech Arch Agent | Antigravity (Gemini), BE Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🔴 Critical
+* **📂 Files Modified / Created:**
+  * `[MODIFY] docs/architecture/backend/backend-techstack.md` (Rewritten to align stack matrix, event architecture, and repository directory structures under the modular monolith specification of ADR-008)
+* **📝 Resolution Summary:**
+  * Corrected the obsolete microservice design references in `backend-techstack.md` to conform with the single modular monolith setup at `backend/springboot/` per ADR-008. Replaced the microservice deployment ports and network components with internal Java packages matrix and Spring core events.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (N/A - Documentation Fix)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `docs: resolve architectural contradictions in backend-techstack.md (DOC-001)`
+
 ### [RESOLVED] ID: SEC-005 — Graceful Shutdown & HTTP Security Headers Configuration
 * **📅 Resolution Date:** 2026-07-19 08:45 UTC
 * **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)

@@ -222,7 +222,6 @@
   "220": "IssuesPage.tsx",
   "221": "todo.md",
   "222": "__init__.py",
-  "223": "README.md",
   "224": "🤖 Instructions for the Agent",
   "225": "routes.md",
   "226": "eslint.config.js",
@@ -243,7 +242,6 @@
   "241": "AuthController",
   "242": "Memory Search",
   "243": "DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy",
-  "244": "Technical Architecture: Spring Boot OAuth2 Login",
   "245": "DJP Documentation Sitemap & Organization Rules",
   "246": "DJP Agent Team Operating Rules",
   "247": "BackendApplication",
@@ -335,16 +333,10 @@
   "333": "NotificationsPage.tsx",
   "334": "SKILL.md",
   "335": "📋 DJP-v1 Technical Debt Register",
-  "336": "Backend Engineering Debt Register — DJP-v1",
   "337": "vision-core-draft.md",
   "338": "📋 Standard Mandatory Steps for Every Completed Task",
-  "339": "Universal Markdown Metadata Guardrail",
   "340": "OAuth2SuccessHandler",
-  "341": "Part V: DevOps, CI/CD & Observability",
   "342": "SecurityConfig.java",
-  "343": "Category 7: Observability Debt (Checklist §10 — 0/61 Items)",
-  "344": "Category 5: Data Layer Debt",
   "345": "🔴 1. Critical Backend Debt (Active Blockers)",
-  "346": ".doFilter",
-  "351": "Part IV: Testing, TDD & Quality Assurance"
+  "346": ".doFilter"
 }
