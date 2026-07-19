@@ -29,6 +29,24 @@ spring:
               - read:user
               - user:email
 
+# Spring Boot Actuator & Prometheus Observability Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: when_authorized
+    prometheus:
+      enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
 # Resilience4j Circuit Breaker & Retry Configurations
 resilience4j:
   circuitbreaker:

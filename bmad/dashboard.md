@@ -1,41 +1,27 @@
-# BMAD Executive Dashboard (`bmad/dashboard.md`)
-
-> **Role:** ⭐ **BMAD CONTROL CENTER & EXECUTIVE DASHBOARD**
-> Sourced dynamically from respective bmad domain execution todos ([`frontend/fe-todo.md`](file:///home/ap/git-repo/DJP-v1/bmad/frontend/fe-todo.md), [`backend/be-todo.md`](file:///home/ap/git-repo/DJP-v1/bmad/backend/be-todo.md), [`tests/test-todo.md`](file:///home/ap/git-repo/DJP-v1/bmad/tests/test-todo.md)).
+# DJP BMAD Executive Dashboard (`web-app = bmad`)
 
 ---
 
-## 🚀 Currently Executing Tasks (Active Control Panel)
-
-| Domain | Assigned Agent | Feature / Phase | Status |
-| :--- | :--- | :--- | :--- |
-| **Backend** | **BE Agent** | Phase 1 Setup | ✅ Complete |
-| **Frontend** | **FE Agent** | Phase 1 Setup | ✅ Complete |
-| **QA / Tests** | **QA Agent** | Phase 1 Verification | ✅ Complete |
-
----
-
-## ⚙️ Backend Roadmap (`bmad/backend/be-todo.md`)
-
-**Progress: 100%** Phase 1 complete — Port 8082, H2, dev-login, JWT, Issues API working.
+| Metadata | Value |
+| :--- | :--- |
+| **📌 Purpose** | Executive Dashboard aggregating status across `web-app = bmad`, backend (`port 8082`), and QA. |
+| **📅 Last Updated** | 2026-07-19 |
+| **🏷️ Status / Version** | Active SSOT / v1.0.0 |
+| **👥 Owner / Worker** | `Worker/Who: [PM Agent / TL Agent | Antigravity (Gemini)]` |
+| **🔗 Upstream / Dependencies** | [`bmad/AGENTIC_WORKFLOW_GUIDE.md`](file:///home/ap/git-repo/DJP-v1/bmad/AGENTIC_WORKFLOW_GUIDE.md), [`bmad/todo.md`](file:///home/ap/git-repo/DJP-v1/bmad/todo.md) |
 
 ---
 
-## 🎨 Frontend Roadmap (`bmad/frontend/fe-todo.md`)
+## 🚀 Domain Execution Scorecard
 
-**Progress: 100%** Phase 1 complete — Vite SPA on port 5175 proxying to 8082.
-
----
-
-## 🧪 QA & Test Suite (`bmad/tests/test-todo.md`)
-
-**Progress: 100%** Phase 1 complete — `api-health.test.mjs` targeting port 8082.
+| Domain | Target Environment | Assigned Agent | Tracker SSOT | Progress & Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **Frontend** | React / Vite (`port 5175`) | **FE Agent** | [`frontend/fe-todo.md`](file:///home/ap/git-repo/DJP-v1/bmad/frontend/fe-todo.md) | ✅ Phase 1 Complete (100%) |
+| **Backend** | Spring Boot (`port 8082`) | **BE Agent** | [`backend/be-todo.md`](file:///home/ap/git-repo/DJP-v1/bmad/backend/be-todo.md) | ✅ Phase 1 Complete (100%) |
+| **QA / Tests** | Automated Verification | **QA Agent** | [`tests/test-todo.md`](file:///home/ap/git-repo/DJP-v1/bmad/tests/test-todo.md) | ✅ Phase 1 Verified (100%) |
 
 ---
 
-## 🏛️ Infrastructure & Agentic Workflow Setup
-
-- [x] Backend copied from `prototype/` with port updated to `8082`
-- [x] Frontend copied from `prototype/` with port updated to `5175` and proxy target `8082`
-- [x] Tests copied from `prototype/` with base URL updated to `http://localhost:8082`
-- [x] All domain identity, rules, state, and todo files created
+## 🎯 Phase 2 Roadmap Overview
+* **Goal:** Copy and adapt `Discussions` (`/discussions`) and `Polls` (`/polls`) APIs and UI views from `prototype/` into `bmad/` (`web-app = bmad`).
+* **Replenishment Rule:** Pick up tasks from [`todo.md`](file:///home/ap/git-repo/DJP-v1/bmad/todo.md), execute in domain trackers, and archive completed items to `archive/archive-todo.md`.

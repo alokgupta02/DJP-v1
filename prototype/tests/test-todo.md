@@ -1,8 +1,14 @@
 # DJP Prototype QA & Test Suite Task Tracker (`prototype/tests/test-todo.md`)
 
-> **Domain Role:** ⭐ **SINGLE SOURCE OF TRUTH (SSOT)** for QA & Automated Testing Execution in Prototype
-> **Sprint Progress:** 100% `[████████████████████████████████]` Phase 1 Setup & Verification Completed
-> **Completed Tasks Archive:** All completed tasks are moved to [`prototype/archive/archive-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/archive/archive-todo.md).
+---
+
+| Metadata | Value |
+| :--- | :--- |
+| **📌 Purpose** | Single Source of Truth (SSOT) tracking verification checks for `web-app = prototype` (`port 5174/8081`). |
+| **📅 Last Updated** | 2026-07-19 |
+| **🏷️ Status / Version** | Active SSOT / v1.0.0 |
+| **👥 Owner / Worker** | `Worker/Who: [QA Agent | Antigravity (Gemini)]` |
+| **🔗 Upstream / Dependencies** | [`prototype/dashboard.md`](file:///home/ap/git-repo/DJP-v1/prototype/dashboard.md), [`prototype/todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/todo.md) |
 
 ---
 
@@ -10,22 +16,13 @@
 
 | Phase / Sprint | Task Description | Assigned Agent | Status |
 | :--- | :--- | :--- | :--- |
-| **Phase 2 — Progressive E2E & Domain Alignment** | Track and verify FE/BE integration for incoming prototype features | **QA Agent** | 🟢 Aligned & Ready |
+| **Phase 2 — Multi-Route Verification** | Add verification tests for `Discussions` and `Polls` endpoints as they are introduced | **QA Agent** | 🟢 Aligned & Ready |
 
 ---
 
-## 📋 Completed Phase 1 Tasks
-- [x] Create automated API health verification check (`prototype/tests/api-health.test.mjs`)
-- [x] Create prototype auth test suite adapted from root (`prototype/tests/auth.test.js`)
-- [x] Initialize prototype QA identity, rules, state, and README (`.djp_identity.md`, `.djp_rules.md`, `.djp_state.md`, `README.md`)
+## 📋 Task Backlog & Archive Reference
+- [x] Create automated API health check (`api-health.test.mjs`) verifying backend health and dev-login (`citizen@djp.org`) on port `8081`
+- [ ] Create progressive automated test scripts (`tests/`) whenever new routes or endpoints are added during Phase 2
 
-## 📋 Backlog & Planned Phases (Phase 2)
-- [ ] Create progressive automated tests (`tests/`) whenever new FE routes or BE endpoints are introduced in `prototype/`
-- [ ] Verify clean proxying (`localhost:5173 -> localhost:8081`) and JWT session persistence on every feature PR
-- [ ] Ensure 100% synchronization across `prototype/frontend/fe-todo.md`, `prototype/backend/be-todo.md`, and `prototype/todo.md`
-
----
-
-## 📝 Technical Notes & Architectural Reference
-- **TDD & Progressive Alignment:** Every new capability added to `prototype/frontend` or `prototype/backend` must have a corresponding verification test added here first or right alongside it.
-- **Commands:** Run `node prototype/tests/api-health.test.mjs` to verify basic backend health.
+> [!NOTE]
+> **Verification Command:** Run `cd prototype/tests && node api-health.test.mjs` to execute our health check suite.

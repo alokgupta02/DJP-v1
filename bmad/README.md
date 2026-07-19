@@ -1,53 +1,28 @@
-# BMAD Environment
-
-This folder (`bmad/`) is a **lightweight, fast-iteration development setup** mirroring the core production functionality of DJP (`/frontend` and `/backend`), copied from the battle-tested `prototype/` environment. It is designed to let developers and agents rapidly build, iterate, and verify functional features.
+# BMAD Environment (`web-app = bmad`)
 
 ---
 
-## 🏗️ Architecture Summary
-
-* **Frontend (`bmad/frontend/`)**: Standalone Vite + React 19 + Tailwind v4 application, running on port `5175`. Proxy pre-configured to forward API requests (`/djp/api/v1`) directly to the local bmad backend.
-* **Backend (`bmad/backend/`)**: Spring Boot 3.4.1 Java 21 service running on port `8082` with active `local` profile (`--spring.profiles.active=local`).
-* **Database**: Embedded **in-memory H2 database** (`jdbc:h2:mem:djpdb`) with auto-seeding (`data.sql`) populated with sample users (`citizen@djp.org`) and issues on every boot. H2 Console enabled at `http://localhost:8082/h2-console`.
-* **Security & Auth**: Includes a `/djp/api/v1/auth/dev-login` endpoint so the frontend can instantly authenticate and interact with APIs without requiring live external Google/GitHub OAuth API keys during iteration.
-
----
-
-## 🚀 Quickstart Guide
-
-### 1. Start the BMAD Backend
-From `bmad/backend/`:
-```bash
-cd bmad/backend
-mvn spring-boot:run
-```
-* Backend starts on **`http://localhost:8082`**.
-* H2 Database console accessible at `http://localhost:8082/h2-console` (`jdbc:h2:mem:djpdb`, username: `sa`, password: empty).
-
-### 2. Start the BMAD Frontend
-From `bmad/frontend/`:
-```bash
-cd bmad/frontend
-npm install   # first time only
-npm run dev
-```
-* Frontend starts on **`http://localhost:5175`**.
-* Automatically proxies `/djp/api/v1` to `http://localhost:8082`.
-
-### 3. Verify System Health
-From `bmad/tests/`:
-```bash
-node bmad/tests/api-health.test.mjs
-```
-This runs an automated check against the local backend to verify issues retrieval and dev authentication.
+| Metadata | Value |
+| :--- | :--- |
+| **📌 Purpose** | Quickstart and port reference for our fast-iteration BMAD Web App (`web-app = bmad`). |
+| **📅 Last Updated** | 2026-07-19 |
+| **🏷️ Status / Version** | Active SSOT / v1.0.0 |
+| **👥 Owner / Worker** | `Worker/Who: [Tech Arch Agent | Antigravity (Gemini)]` |
+| **🔗 Upstream / Dependencies** | [`bmad/AGENTIC_WORKFLOW_GUIDE.md`](file:///home/ap/git-repo/DJP-v1/bmad/AGENTIC_WORKFLOW_GUIDE.md), [`bmad/dashboard.md`](file:///home/ap/git-repo/DJP-v1/bmad/dashboard.md) |
 
 ---
 
-## 🛠️ Key Differences from Production and Prototype
+`bmad/` (`web-app = bmad`) is our fast-iteration web development environment on the **`bmad` Git branch**, mirrored from `prototype/` (`web-app = prototype`).
 
-| Aspect | Production (`/`) | Prototype (`prototype/`) | BMAD (`bmad/`) |
+## ⚡ Quickstart & Port Isolation Table
+
+Always `cd` directly into the target subdirectory before running commands. Do **NOT** change assigned ports.
+
+| Domain | Subdirectory | Target Port | Command to Run |
 | :--- | :--- | :--- | :--- |
-| **Ports** | `8080` (BE), `5173` (FE) | `8081` (BE), `5174` (FE) | `8082` (BE), `5175` (FE) |
-| **Auth** | OAuth2 (Google/GitHub keys) | Built-in `dev-login` + JWT | Built-in `dev-login` + JWT |
-| **Database** | Postgres | Embedded H2 + auto-seeded | Embedded H2 + auto-seeded |
-| **Source** | Production root | Production root | Copied from `prototype/` |
+| **Backend** | `bmad/backend` | **Port `8082`** | `cd bmad/backend && ./mvnw spring-boot:run` |
+| **Frontend** | `bmad/frontend` | **Port `5175`** (`proxies -> 8082`) | `cd bmad/frontend && npm run dev` |
+| **QA Tests** | `bmad/tests` | Targets `localhost:8082` | `cd bmad/tests && node api-health.test.mjs` |
+
+> [!IMPORTANT]
+> **Full Agent Protocols & Architecture:** For our onboarding flowchart, Git strategy (`bmad` branch), and Reversible Cloud Save rules, see [`AGENTIC_WORKFLOW_GUIDE.md`](file:///home/ap/git-repo/DJP-v1/bmad/AGENTIC_WORKFLOW_GUIDE.md).

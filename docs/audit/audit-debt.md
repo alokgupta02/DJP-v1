@@ -30,9 +30,9 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **6. Database Layer & Data Integrity (`DATA`)** | 1 | 1 | 0 | **2** | **Unsafe DDL** — Flyway database migration not initialized; ddl-auto: update active. |
 | **7. Security, Auth & Fault Tolerance (`SEC`)** | 0 | 1 | 0 | **1** | **Substantially Improved** — JWT Engine, Graceful Shutdown, Security Filter Chain, and input validation are live. |
 | **8. Testing & Quality Assurance (`TEST`)** | 2 | 1 | 0 | **3** | **Partial Base** — Backend test infrastructure scaffolded; E2E Playwright and frontend test suites missing. |
-| **9. DevOps, Containerization & CI/CD (`DEVOPS`)** | 2 | 0 | 0 | **2** | **Non-Existent** — Missing automated CI/CD pipeline and multi-stage Dockerfiles. |
-| **10. Observability & Cross-Cutting (`OBS/XCUT`)** | 3 | 0 | 0 | **3** | **Blind Spot** — Missing Actuator health probes, structured log format (JSON), and centralized alerting. PII log masking and DB audit logging are active. |
-| **TOTALS** | **11** | **17** | **3** | **31** | **Active Technical Debt Tracked and Scoped for Remediation.** |
+| **9. DevOps, Containerization & CI/CD (`DEVOPS`)** | 0 | 1 | 0 | **1** | **Partial Base** — GitHub Actions CI/CD workflow (`ci.yml`) live; missing multi-stage Dockerfile for Frontend & local `docker-compose.yml`. |
+| **10. Observability & Cross-Cutting (`OBS/XCUT`)** | 2 | 0 | 0 | **2** | **Improving** — Actuator health probes & Prometheus live; missing structured log format (JSON) and centralized alerting. PII log masking and DB audit logging are active. |
+| **TOTALS** | **9** | **17** | **3** | **29** | **Active Technical Debt Tracked and Scoped for Remediation.** |
 
 ---
 
@@ -366,31 +366,9 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Create `frontend/Dockerfile` (`node:20-alpine` builder → `nginx:alpine` runtime) and root `docker-compose.yml` provisioning PostgreSQL 16 (`postgres:16-alpine`), Spring Boot (`port 8080`), and Nginx/React (`port 3000`). |
 | **Estimated Effort** | 3 hours |
 
-### DEVOPS-003: Empty `.github/workflows/` Directory (No Automated CI/CD Pipeline)
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | 🔴 Critical |
-| **Found By** | `GitHub Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `AGENTS.md: §3 Git & CI/CD Section` assigns `GitHub Agent` responsibility for monitoring GitHub Actions CI/CD pipelines verifying builds, tests, and formatting on every pull request. |
-| **Impl Reality / Evidence** | `.github/workflows/` is completely empty. Zero GitHub Actions workflows (`ci.yml`, `pr-verify.yml`) exist in the repository. |
-| **Impact / Risk** | Pull requests are merged without automated build verification, unit/integration test execution, or vulnerability scanning. Broken code reaches `main` branch unchecked. |
-| **Remediation Action** | Create `.github/workflows/ci.yml` triggered on `push` to `main` and `pull_request`. Pipeline must execute: (1) `mvn clean verify` (Backend build & tests), (2) `npm test` & `npx playwright test` (Frontend & E2E), and (3) `graphify update .` check. |
-| **Estimated Effort** | 3 hours |
-
 ---
 
 ## Part IX: Observability, Logging & Cross-Cutting Concerns (`OBS`, `XCUT`)
-
-### OBS-002: Missing Actuator Readiness Probes (`/actuator/health`), Prometheus & Security Guards
-| Aspect | Detail |
-| :--- | :--- |
-| **Severity** | 🔴 Critical |
-| **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-springboot-checklist.md:4.2`, `4.3`, `4.4` mandate `spring-boot-starter-actuator` + `micrometer-registry-prometheus` exposing `/actuator/health/liveness` and `/readiness` for Kubernetes probes, restricted behind Spring Security or internal ports. |
-| **Impl Reality / Evidence** | No `spring-boot-starter-actuator` or Prometheus dependency exists in `pom.xml`. No health check endpoints exist to inform container orchestrators of service health. |
-| **Impact / Risk** | Kubernetes/ECS containers cannot perform self-healing or readiness routing. Furthermore, if actuator is added without security hardening, sensitive configuration details (`/actuator/env`) leak publicly. |
-| **Remediation Action** | Add `spring-boot-starter-actuator` and `micrometer-registry-prometheus` (Phase 1 core). Configure `application.yml` enabling `health`, `info`, `prometheus` and expose liveness/readiness groups. Restrict actuator access in `SecurityConfig`. |
-| **Estimated Effort** | 2 hours |
 
 ### OBS-003: Missing Request/Response Logging, Exception Context & Distributed Tracing
 | Aspect | Detail |

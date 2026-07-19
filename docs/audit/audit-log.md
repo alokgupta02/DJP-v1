@@ -48,6 +48,42 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: DEVOPS-003 — Empty `.github/workflows/` Directory (No Automated CI/CD Pipeline)
+* **📅 Resolution Date:** 2026-07-19 13:21 UTC
+* **Found By:** GitHub Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** GitHub Agent | Antigravity (Gemini)
+* **Severity:** 🔴 Critical
+* **📂 Files Modified / Created:**
+  * `[NEW] .github/workflows/ci.yml` (Created automated GitHub Actions pipeline executing on pushes and PRs across main/develop/feature branches)
+  * `[MODIFY] frontend/package.json` (Added `test` script and updated `lint`/`typecheck` scripts with `--if-present` flag for reliable multi-workspace CI checks)
+  * `[MODIFY] frontend/apps/citizen/src/features/discussions/CreateDiscussionPage.tsx` (Fixed synchronous `setState` inside `useEffect` draft loading by deferring state updates)
+  * `[MODIFY] frontend/apps/citizen/src/shared/components/sidebar/SidebarContext.tsx` (Added eslint disable comment for hook export to satisfy fast-refresh check)
+* **📝 Resolution Summary:**
+  * Created `.github/workflows/ci.yml` defining an automated multi-job pipeline: `backend-build-and-test` (`mvn -B clean verify` under JDK 21), `frontend-build-and-test` (`npm ci`, `npm test`, `npm run build:citizen`, plus E2E Playwright hook under Node 20), and `graphify-check` (`graphify update .` under Python 3.11). Fixed frontend ESLint errors and standardized package scripts (`--if-present`) so CI executes cleanly across all active monorepo workspaces.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean verify` and `npm test && npm run build:citizen`)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `ci(github): establish automated CI/CD verification pipeline (DEVOPS-003)`
+
+### [RESOLVED] ID: OBS-002 — Missing Actuator Readiness Probes (`/actuator/health`), Prometheus & Security Guards
+* **📅 Resolution Date:** 2026-07-19 13:16 UTC
+* **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** BE Agent | Antigravity (Gemini)
+* **Severity:** 🔴 Critical
+* **📂 Files Modified / Created:**
+  * `[MODIFY] backend/springboot/pom.xml` (Added `micrometer-registry-prometheus` dependency)
+  * `[MODIFY] backend/springboot/src/main/resources/application.yml` (Configured Actuator `health`, `info`, `prometheus` exposure, enabled Kubernetes liveness/readiness probes, and enabled Prometheus metrics export)
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/config/SecurityConfig.java` (Permitted `/actuator/health/**`, `/actuator/info`, and `/actuator/prometheus` without authentication while protecting other actuator endpoints)
+  * `[NEW] backend/springboot/src/test/java/com/djp/backend/ActuatorIntegrationTest.java` (Added integration test suite verifying health, liveness, readiness, and prometheus endpoints return HTTP 200 without authentication)
+* **📝 Resolution Summary:**
+  * Enabled Spring Boot Actuator health checks and liveness/readiness probes (`/actuator/health/liveness`, `/actuator/health/readiness`) along with Prometheus metrics export (`/actuator/prometheus`) for container orchestration readiness routing and Prometheus observability. Configured Spring Security (`SecurityConfig`) to allow probe endpoints publicly while keeping administrative actuator endpoints secured.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `feat(backend): enable Actuator readiness probes and Prometheus metrics (OBS-002)`
+
 ### [RESOLVED] ID: ARCH-004 — Frontend Shared Packages Are Empty Shells & Structure Discrepancy
 * **📅 Resolution Date:** 2026-07-19 12:58 UTC
 * **Found By:** Tech Arch Agent | Antigravity (Gemini)
