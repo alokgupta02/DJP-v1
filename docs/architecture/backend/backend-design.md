@@ -8,14 +8,14 @@
 | **📌 Status** | `Stable` |
 | **🏷️ Version** | `v1.0.0` |
 | **👥 Owner** | `Principal Technical Architect` |
-| **🔗 Dependencies** | [overview.md](overview.md), [db-design.md](db-design.md), [backend-techstack.md](backend-techstack.md), [backend-engineer-dev.md](backend-engineer-dev.md) |
+| **🔗 Dependencies** | [overview.md](overview.md), [db-design.md](db-design.md), [backend-techstack.md](backend-techstack.md), [backend-engineer-dev.md](backend-engineer-dev.md), [global-config.yaml](../../../global-config.yaml) |
 
 ---
 ## 1. Goal & Architecture Overview
 The objective is to implement a robust, lightweight, and test-driven backend for the citizen application using **Spring Boot 3.x** and **Java 21**, exposed via REST APIs.
 To support authentication, the system uses **OAuth2 (Google and LinkedIn)**. The application leverages standard Spring Security and Spring Data JPA to map database tables. For details on database tables and schema structures, refer to **[db-design.md](db-design.md)**.
 ### System Components
-* **Global Constants**: All base paths (`/djp/api/v1`), service ports, and security parameters are centralized in **[global-config.yaml](global-config.yaml)**.
+* **Global Constants**: All base paths (`/djp/api/v1`), service ports, and security parameters are centralized in **[global-config.yaml](../../../global-config.yaml)**.
 * **REST APIs**: Built with Spring Web (REST controllers), conforming to RESTful standards under the `/djp/api/v1` namespace.
 * **Security & Auth**: Spring Security configuration acting as an OAuth2 Login Client (Authorization Code Flow) that persists authenticated profiles and issues lightweight JWTs to the React frontend.
 ---
@@ -51,10 +51,10 @@ For complete details on database tables, column types, entity relations, constra
 
 ---
 ## 4. REST API Endpoint Contracts
-All controllers will map requests under `/djp/api/v1` (as configured by `network.base_url` in **[global-config.yaml](global-config.yaml)**). Secured endpoints require a valid Bearer JWT.
+All controllers will map requests under `/djp/api/v1` (as configured by `network.base_url` in **[global-config.yaml](../../../global-config.yaml)**). Secured endpoints require a valid Bearer JWT.
 
 > [!NOTE]
-> **API-First Development:** During the implementation phase, endpoint contracts (paths, schemas, DTOs, request/response bodies) will be created as an executable **`api-spec.yaml`** (OpenAPI 3.0 specification) file under `docs/architecture/` to auto-generate Spring Boot and React/Axios interfaces, avoiding manual text maintenance or drift.
+> **API-First Development:** During the implementation phase, endpoint contracts (paths, schemas, DTOs, request/response bodies) will be created as an executable **[api-spec.yaml](../../api/api-spec.yaml)** (OpenAPI 3.0 specification) file to auto-generate Spring Boot and React/Axios interfaces, avoiding manual text maintenance or drift.
 
 ---
 ## 5. Phased Implementation Plan

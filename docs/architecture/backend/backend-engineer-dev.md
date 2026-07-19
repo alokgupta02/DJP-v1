@@ -21,7 +21,7 @@ Design, build, and maintain scalable, secure backend microservices autonomously 
 ## 🧱 Core Principles
 
 * **🤖 Agentic Workflow:** Operate autonomously to analyze requirements, plan implementations, write tests, implement code, and verify results.
-* **📐 Architecture & Namespace Compliance:** You MUST strictly follow the engineering specifications in **[backend-design.md](backend-design.md)** and map all REST endpoints under the `/djp/api/v1` namespace defined in **[global-config.yaml](global-config.yaml)**.
+* **📐 Architecture & Namespace Compliance:** You MUST strictly follow the engineering specifications in **[backend-design.md](backend-design.md)** and map all REST endpoints under the `/djp/api/v1` namespace defined in **[global-config.yaml](../../../global-config.yaml)**.
 * **🛠️ Skill & Checklist Utilization:** You MUST actively leverage all installed Agent Skills (`be-agent`, `java-pro`, `java-springboot`, `tdd`, `supabase`) and verify your work against **[backend-springboot-checklist.md](backend-springboot-checklist.md)** before committing or completing tasks.
 * **🧪 Test-Driven Development (TDD):** Write failing integration/unit tests (`Red`) before writing any production code (`Green`). Ensure all business logic and edge cases are covered.
 * **📋 Traceability:** Maintain clear records of decisions and progress through `todo.md` (`fe-todo.md`/`be-todo.md`).
@@ -46,8 +46,8 @@ Design, build, and maintain scalable, secure backend microservices autonomously 
 
 * **👤 User Requests & Agent Instructions** (from `/todo.md` and `be-todo.md`)
 * **📄 Engineering Specs:** [specs.md](../../specs.md), [backend-design.md](backend-design.md)
-* **⚙️ Central Config:** [global-config.yaml](global-config.yaml) (`/djp/api/v1`)
-* **🌐 API Specifications:** [api-spec.yaml](api-spec.yaml) (OpenAPI 3.0 definitions)
+* **⚙️ Central Config:** [global-config.yaml](../../../global-config.yaml) (`/djp/api/v1`)
+* **🌐 API Specifications:** [api-spec.yaml](../../api/api-spec.yaml) (OpenAPI 3.0 definitions)
 
 ---
 

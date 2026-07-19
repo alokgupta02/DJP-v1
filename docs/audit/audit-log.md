@@ -48,6 +48,24 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: DOC-003 — Reference Links and Non-Existent Files in Architecture Design
+* **📅 Resolution Date:** 2026-07-19 06:55 UTC
+* **Found By:** Tech Arch Agent | Antigravity (Gemini), BE Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🟠 High
+* **📂 Files Modified / Created:**
+  * `[MODIFY] docs/architecture/backend/backend-design.md`
+  * `[MODIFY] docs/architecture/backend/backend-engineer-dev.md`
+  * `[MODIFY] docs/architecture/backend/backend-springboot-checklist.md`
+  * `[MODIFY] docs/architecture/backend/backend-techstack.md`
+* **📝 Resolution Summary:**
+  * I fixed the relative path link targets to `global-config.yaml` to point correctly to the root level `../../../global-config.yaml` across all backend architectural docs. I also replaced references to the non-existent `routes.md` with the canonical `api-spec.yaml` specification located at `../../api/api-spec.yaml`.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (deferred in bulk per user request)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `PR #6 — fix(docs): resolve broken relative links in backend specifications`
+
 ### [RESOLVED] ID: DOC-002 — No Developer Onboarding / Environment Guide
 * **📅 Resolution Date:** 2026-07-19 06:45 UTC
 * **Found By:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron

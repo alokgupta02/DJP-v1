@@ -8,13 +8,13 @@
 | **📌 Status** | `Stable` |
 | **🏷️ Version** | `v1.0.0` |
 | **👥 Owner** | `Principal Technical Architect` |
-| **🔗 Dependencies** | [overview.md](overview.md), [backend-design.md](backend-design.md), [global-config.yaml](global-config.yaml) |
+| **🔗 Dependencies** | [overview.md](overview.md), [backend-design.md](backend-design.md), [global-config.yaml](../../../global-config.yaml) |
 
 ---
 
 ## 1. Global Tech Stack & Constants
 
-Our backend is structured as **Modular Microservices** communicating via REST APIs under the standardized namespace defined in **[global-config.yaml](global-config.yaml)** (`/djp/api/v1`).
+Our backend is structured as **Modular Microservices** communicating via REST APIs under the standardized namespace defined in **[global-config.yaml](../../../global-config.yaml)** (`/djp/api/v1`).
 
 * **Core Language**: Java 21 (LTS)
 * **Application Framework**: Spring Boot 3.x (Spring Web, Spring Security OAuth2 Client, Spring Data JPA)
@@ -37,4 +37,4 @@ Our backend is structured as **Modular Microservices** communicating via REST AP
 ---
 
 > [!NOTE]
-> For complete engineering specifications, package structures, and REST API implementation plans, refer to **[backend-design.md](backend-design.md)**. For centralized service ports and base paths, see **[global-config.yaml](global-config.yaml)**.
+> For complete engineering specifications, package structures, and REST API implementation plans, refer to **[backend-design.md](backend-design.md)**. For centralized service ports and base paths, see **[global-config.yaml](../../../global-config.yaml)**.

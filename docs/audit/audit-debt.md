@@ -299,16 +299,16 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Done: Created `docs/api/api-spec.yaml` defining OAuth login redirect endpoints and active UserDTO schema. |
 | **Estimated Effort** | Completed |
 
-### DOC-003: `backend-design.md` & `backend-engineer-dev.md` Reference Non-Existent Files
+### DOC-003: `backend-design.md` & `backend-engineer-dev.md` Reference Non-Existent Files [RESOLVED]
 | Aspect | Detail |
 | :--- | :--- |
-| **Severity** | 🟠 High |
+| **Severity** | Resolved |
 | **Found By** | `BE Agent \| Antigravity (Gemini), Tech Arch Agent \| Antigravity (Gemini)` |
-| **Docs Say / Spec** | `backend-design.md:18` points to `[global-config.yaml](global-config.yaml)` inside `docs/architecture/backend/`.<br>`backend-engineer-dev.md:48` references input specifications from `routes.md`. |
-| **Impl Reality / Evidence** | `global-config.yaml` is located in root (`/home/ap/git-repo/DJP-v1/global-config.yaml`), making relative links broken. `routes.md` does not exist in `docs/architecture/backend/` or root. |
-| **Impact / Risk** | Markdown navigation links return 404 in IDEs and web portals; automated agents fail when attempting to read missing input specifications. |
-| **Remediation Action** | Fix link targets in `backend-design.md` to point to `../../global-config.yaml`. Remove references to non-existent `routes.md` and point to `api-spec.yaml`. |
-| **Estimated Effort** | 30 minutes |
+| **Docs Say / Spec** | `backend-design.md:18` points to `[global-config.yaml](global-config.yaml)` inside `docs/architecture/backend/`.`backend-engineer-dev.md:48` references input specifications from `routes.md`. |
+| **Impl Reality / Evidence** | Corrected relative link paths on disk. |
+| **Impact / Risk** | Was high documentation link drift risk. |
+| **Remediation Action** | Done: Updated links to point to the correct relative path `../../../global-config.yaml` and `../../api/api-spec.yaml`. |
+| **Estimated Effort** | Completed |
 
 ### DOC-004: Missing Developer Onboarding & Local Setup Guide [RESOLVED]
 | Aspect | Detail |

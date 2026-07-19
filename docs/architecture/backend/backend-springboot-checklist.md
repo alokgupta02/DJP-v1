@@ -8,7 +8,7 @@
 | **📌 Status** | `Stable` |
 | **🏷️ Version** | `v2.0.0` |
 | **👥 Owner** | `Backend Team Lead / BE Agent` |
-| **🔗 Dependencies** | [backend-engineer-dev.md](backend-engineer-dev.md), [backend-design.md](backend-design.md), [global-config.yaml](global-config.yaml) |
+| **🔗 Dependencies** | [backend-engineer-dev.md](backend-engineer-dev.md), [backend-design.md](backend-design.md), [global-config.yaml](../../../global-config.yaml) |
 
 ---
 
@@ -21,8 +21,8 @@
 ---
 
 ### 🌐 2. REST API & Namespace Contracts (`/djp/api/v1`)
-* [ ] **Global Namespace**: Ensure all controllers map under `/djp/api/v1` as defined in `network.base_url` of **[global-config.yaml](global-config.yaml)**.
-* [ ] **OpenAPI Contract Binding**: Verify endpoint paths, request bodies, and response codes exactly match **`api-spec.yaml`**.
+* [ ] **Global Namespace**: Ensure all controllers map under `/djp/api/v1` as defined in `network.base_url` of **[global-config.yaml](../../../global-config.yaml)**.
+* [ ] **OpenAPI Contract Binding**: Verify endpoint paths, request bodies, and response codes exactly match **[api-spec.yaml](../../api/api-spec.yaml)**.
 * [ ] **HTTP Semantics**: Return `200 OK` for success, `201 Created` for creations, `204 No Content` for deletions, and `400 Bad Request` for validation failures.
 * [ ] **Idempotency**: Ensure `PUT` and `DELETE` requests are idempotent.
 
