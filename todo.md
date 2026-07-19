@@ -18,3 +18,6 @@
 - [x] Fix DOC-003: Correct broken relative paths to global-config.yaml and api-spec.yaml in backend docs
 - [x] Fix DEP-002: Upgrade Spring Boot starter parent parent version from EOL 3.2.5 to stable 3.4.1
 - [x] Fix SEC-001: Configure weekly Dependabot scanning schedules and OWASP Dependency-Check GitHub Actions workflow
+- [x] Fix DEVOPS-001: Scaffold multi-stage production Dockerfile and corresponding .dockerignore targets
+- [x] Fix TECH-004 & SEC-003: Integrate Lombok and Resilience4j libraries and configure circuit breakers and retries
+- [x] Fix TECH-006: Scaffold layered exception classes, DTOs, and global RestControllerAdvice error handler
