@@ -127,7 +127,10 @@ class _IssuesFeedScreenState extends State<IssuesFeedScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 4,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -141,7 +144,6 @@ class _IssuesFeedScreenState extends State<IssuesFeedScreen> {
                               style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: catColor),
                             ),
                           ),
-                          const SizedBox(width: 8),
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                             decoration: BoxDecoration(
@@ -153,7 +155,6 @@ class _IssuesFeedScreenState extends State<IssuesFeedScreen> {
                               style: const TextStyle(fontSize: 10, color: Colors.black87),
                             ),
                           ),
-                          const Spacer(),
                           Text(
                             issue.status,
                             style: TextStyle(
