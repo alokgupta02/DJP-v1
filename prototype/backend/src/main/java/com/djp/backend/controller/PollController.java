@@ -5,6 +5,8 @@ import com.djp.backend.model.Poll;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.PollRepository;
 import com.djp.backend.repository.UserRepository;
+import com.djp.backend.service.AuditLogService;
+import com.djp.backend.service.SqlFilePersistenceService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +23,14 @@ public class PollController {
 
     private final PollRepository pollRepository;
     private final UserRepository userRepository;
-    private final com.djp.backend.service.AuditLogService auditLogService;
+    private final AuditLogService auditLogService;
+    private final SqlFilePersistenceService sqlFilePersistenceService;
 
-    public PollController(PollRepository pollRepository, UserRepository userRepository, com.djp.backend.service.AuditLogService auditLogService) {
+    public PollController(PollRepository pollRepository, UserRepository userRepository, AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService) {
         this.pollRepository = pollRepository;
         this.userRepository = userRepository;
         this.auditLogService = auditLogService;
+        this.sqlFilePersistenceService = sqlFilePersistenceService;
     }
 
     @GetMapping
@@ -59,10 +63,10 @@ public class PollController {
 
         Poll poll = new Poll(
                 author,
-                request.getQuestion(),
-                request.getDescription(),
-                request.getCategory(),
-                request.getOptionsJson()
+                request.question(),
+                request.description(),
+                request.category(),
+                request.optionsJson()
         );
 
         Poll saved = pollRepository.save(poll);
@@ -74,6 +78,8 @@ public class PollController {
                 saved.getId().toString(),
                 "Question: " + saved.getQuestion() + ", Category: " + saved.getCategory()
         );
+
+        sqlFilePersistenceService.appendPoll(saved);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }

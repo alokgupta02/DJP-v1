@@ -1,0 +1,6 @@
+-- Seed data for discussions in DJP Prototype H2 Database
+MERGE INTO discussions (id, author_id, title, description, category, votes_count, participant_count, proposal_count, proposal_preview, proposal_badge, proposal_badge_variant, created_at, updated_at)
+KEY (id)
+VALUES 
+    ('55555555-5555-5555-5555-555555555555', '11111111-1111-1111-1111-111111111111', 'Sustainable Multi-level Parking in Hauz Khas Village?', 'The current congestion is killing local businesses. We need a solution that balances foot traffic with environmental concerns and heritage preservation.', 'Infrastructure', 142, 48, 3, '"Implement an automated smart-stack parking system integrated with existing greenery..."', 'Top Draft', 'primary', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+    ('66666666-6666-6666-6666-666666666666', '11111111-1111-1111-1111-111111111111', 'Decentralized Waste Composting Units for Ward 42', 'Moving away from centralized landfills. Proposal for local RWA-managed composting zones to reduce trucking emissions.', 'Public Health', 89, 22, 1, '"Convert the derelict park corner into a modular biogas and composting facility..."', 'New', 'warning', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());

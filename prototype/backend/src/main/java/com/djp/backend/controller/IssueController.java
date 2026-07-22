@@ -5,11 +5,16 @@ import com.djp.backend.model.Issue;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.IssueRepository;
 import com.djp.backend.repository.UserRepository;
+import com.djp.backend.service.AuditLogService;
+import com.djp.backend.service.SqlFilePersistenceService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/djp/api/v1/issues")
@@ -18,21 +23,23 @@ public class IssueController {
 
     private final IssueRepository issueRepository;
     private final UserRepository userRepository;
-    private final com.djp.backend.service.AuditLogService auditLogService;
+    private final AuditLogService auditLogService;
+    private final SqlFilePersistenceService sqlFilePersistenceService;
 
-    public IssueController(IssueRepository issueRepository, UserRepository userRepository, com.djp.backend.service.AuditLogService auditLogService) {
+    public IssueController(IssueRepository issueRepository, UserRepository userRepository, AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService) {
         this.issueRepository = issueRepository;
         this.userRepository = userRepository;
         this.auditLogService = auditLogService;
+        this.sqlFilePersistenceService = sqlFilePersistenceService;
     }
 
     @GetMapping
-    public ResponseEntity<java.util.List<Issue>> getAllIssues() {
+    public ResponseEntity<List<Issue>> getAllIssues() {
         return ResponseEntity.ok(issueRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Issue> getIssueById(@PathVariable java.util.UUID id) {
+    public ResponseEntity<Issue> getIssueById(@PathVariable UUID id) {
         return issueRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -66,7 +73,6 @@ public class IssueController {
 
         Issue saved = issueRepository.save(issue);
 
-        // Audit the mutation
         auditLogService.logAction(
                 author.getId().toString(),
                 "CREATE_ISSUE",
@@ -74,6 +80,8 @@ public class IssueController {
                 saved.getId().toString(),
                 "Title: " + saved.getTitle() + ", Category: " + saved.getCategory()
         );
+
+        sqlFilePersistenceService.appendIssue(saved);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }

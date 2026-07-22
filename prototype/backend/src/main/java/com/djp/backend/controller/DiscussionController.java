@@ -5,6 +5,8 @@ import com.djp.backend.model.Discussion;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.DiscussionRepository;
 import com.djp.backend.repository.UserRepository;
+import com.djp.backend.service.AuditLogService;
+import com.djp.backend.service.SqlFilePersistenceService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +23,14 @@ public class DiscussionController {
 
     private final DiscussionRepository discussionRepository;
     private final UserRepository userRepository;
-    private final com.djp.backend.service.AuditLogService auditLogService;
+    private final AuditLogService auditLogService;
+    private final SqlFilePersistenceService sqlFilePersistenceService;
 
-    public DiscussionController(DiscussionRepository discussionRepository, UserRepository userRepository, com.djp.backend.service.AuditLogService auditLogService) {
+    public DiscussionController(DiscussionRepository discussionRepository, UserRepository userRepository, AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService) {
         this.discussionRepository = discussionRepository;
         this.userRepository = userRepository;
         this.auditLogService = auditLogService;
+        this.sqlFilePersistenceService = sqlFilePersistenceService;
     }
 
     @GetMapping
@@ -59,15 +63,15 @@ public class DiscussionController {
 
         Discussion discussion = new Discussion(
                 author,
-                request.getTitle(),
-                request.getDescription(),
-                request.getCategory()
+                request.title(),
+                request.description(),
+                request.category()
         );
-        if (request.getProposalPreview() != null) {
-            discussion.setProposalPreview(request.getProposalPreview());
+        if (request.proposalPreview() != null) {
+            discussion.setProposalPreview(request.proposalPreview());
         }
-        if (request.getProposalBadge() != null) {
-            discussion.setProposalBadge(request.getProposalBadge());
+        if (request.proposalBadge() != null) {
+            discussion.setProposalBadge(request.proposalBadge());
         }
 
         Discussion saved = discussionRepository.save(discussion);
@@ -79,6 +83,8 @@ public class DiscussionController {
                 saved.getId().toString(),
                 "Title: " + saved.getTitle() + ", Category: " + saved.getCategory()
         );
+
+        sqlFilePersistenceService.appendDiscussion(saved);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }

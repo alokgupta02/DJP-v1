@@ -39,6 +39,9 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private com.djp.backend.repository.PollRepository pollRepository;
 
+    @Autowired
+    private com.djp.backend.service.SqlFilePersistenceService sqlFilePersistenceService;
+
     @AfterEach
     public void cleanup() {
         auditLogRepository.deleteAll();
@@ -93,5 +96,51 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
         org.junit.jupiter.api.Assertions.assertEquals(user.getId().toString(), auditLog.getUserId());
         org.junit.jupiter.api.Assertions.assertEquals("CREATE_ISSUE", auditLog.getAction());
         org.junit.jupiter.api.Assertions.assertEquals("Issue", auditLog.getTargetType());
+    }
+
+    @Test
+    public void createIssue_appendsToSqlFile() throws Exception {
+        User user = new User("sql.issue." + java.util.UUID.randomUUID() + "@example.com", "SQL Tester", "GOOGLE", java.util.UUID.randomUUID().toString());
+        user = userRepository.save(user);
+        String token = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());
+
+        String uniqueTitle = "SQL Auto-Append Issue " + java.util.UUID.randomUUID();
+        String validJson = "{\n" +
+                "  \"title\": \"" + uniqueTitle + "\",\n" +
+                "  \"description\": \"Testing SQL file persistence.\",\n" +
+                "  \"category\": \"Water\",\n" +
+                "  \"priority\": \"HIGH\",\n" +
+                "  \"location\": \"Ward 12\"\n" +
+                "}";
+
+        java.nio.file.Path[] paths = {
+                java.nio.file.Path.of("src/main/resources/data/issues.sql"),
+                java.nio.file.Path.of("target/classes/data/issues.sql"),
+                java.nio.file.Path.of("src/main/resources/data/users.sql"),
+                java.nio.file.Path.of("target/classes/data/users.sql")
+        };
+        String[] origContents = new String[paths.length];
+        for (int i = 0; i < paths.length; i++) {
+            origContents[i] = java.nio.file.Files.exists(paths[i]) ? java.nio.file.Files.readString(paths[i]) : "";
+        }
+
+        try {
+            sqlFilePersistenceService.setEnabled(true);
+            mockMvc.perform(post("/djp/api/v1/issues")
+                    .header("Authorization", "Bearer " + token)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(validJson))
+                    .andExpect(status().isCreated());
+
+            String updatedContent = java.nio.file.Files.readString(paths[0]);
+            org.junit.jupiter.api.Assertions.assertTrue(updatedContent.contains(uniqueTitle), "issues.sql should contain the new issue title");
+        } finally {
+            sqlFilePersistenceService.setEnabled(false);
+            for (int i = 0; i < paths.length; i++) {
+                if (java.nio.file.Files.exists(paths[i]) && !origContents[i].isEmpty()) {
+                    java.nio.file.Files.writeString(paths[i], origContents[i]);
+                }
+            }
+        }
     }
 }

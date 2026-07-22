@@ -5,7 +5,7 @@
 | Metadata | Value |
 | :--- | :--- |
 | **📌 Purpose** | Primary User Intake Portal and task checklist for our Prototype Web App (`web-app = prototype`). |
-| **📅 Last Updated** | 2026-07-19 |
+| **📅 Last Updated** | 2026-07-22 |
 | **🏷️ Status / Version** | Active SSOT / v1.0.0 |
 | **👥 Owner / Worker** | `Worker/Who: [PM Agent / User | Antigravity (Gemini)]` |
 | **🔗 Upstream / Dependencies** | [`prototype/dashboard.md`](file:///home/ap/git-repo/DJP-v1/prototype/dashboard.md), [`prototype/AGENTIC_WORKFLOW_GUIDE.md`](file:///home/ap/git-repo/DJP-v1/prototype/AGENTIC_WORKFLOW_GUIDE.md) |
@@ -33,5 +33,5 @@
 - [x] Audit & Cleanup (GOV-001): Establish ECI registration structure and compliance roadmap (`docs/legal/registration-and-compliance.md`)
 - [x] Audit & Cleanup (GOV-002): Establish Data Privacy Policy under DPDPA 2023 (`docs/legal/data-privacy.md`) and add consent fields to `User.java`
 - [x] Audit & Cleanup (IMPL-001): Phase 1 Core Tasks for Spring Boot foundation (Project Structure, Config Profiles, Global Exception Handling, Security/JWT, Observability)
-- [-] Audit & Cleanup (DATA-001): Integrate `flyway-core` and create versioned migration scripts (`V1__init.sql`) — deferred to audit-debt.md for later pickup
 - [x] Create and maintain canonical Postman Collection JSON file (`docs/api/djp-postman_collection.json`) covering all prototype and backend endpoints
+- [x] Implement Discussion creation (`POST /discussions`), Poll creation (`POST /polls`), and auto-populated SQL persistence (`data/` folder with `users.sql`, `issues.sql`, `discussions.sql`, `polls.sql` plus runtime `SqlFilePersistenceService` append) in `prototype/backend` (`GOV-005` / `IMPL-002` / `DATA-004`)

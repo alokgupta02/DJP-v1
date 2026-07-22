@@ -56,7 +56,171 @@ paths:
                 $ref: '#/components/schemas/UserDTO'
         '401':
           description: Unauthorized session
+  /issues:
+    get:
+      summary: Get All Civic Issues
+      description: Returns a list of all civic issues reported on the platform.
+      responses:
+        '200':
+          description: List of issues
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IssueDTO'
+    post:
+      summary: Create a Civic Issue
+      description: Create a new civic issue report. Requires authentication.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueCreateRequestDTO'
+      responses:
+        '201':
+          description: Issue created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueDTO'
+        '401':
+          description: Unauthorized
+  /issues/{id}:
+    get:
+      summary: Get Issue by ID
+      description: Retrieve detailed information for a specific civic issue.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Issue details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueDTO'
+        '404':
+          description: Issue not found
+  /discussions:
+    get:
+      summary: Get All Discussions
+      description: Returns a list of all civic discussions and proposals.
+      responses:
+        '200':
+          description: List of discussions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DiscussionDTO'
+    post:
+      summary: Create a Discussion
+      description: Create a new civic discussion or proposal. Requires authentication.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscussionCreateRequestDTO'
+      responses:
+        '201':
+          description: Discussion created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscussionDTO'
+        '401':
+          description: Unauthorized
+  /discussions/{id}:
+    get:
+      summary: Get Discussion by ID
+      description: Retrieve detailed information for a specific civic discussion.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Discussion details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscussionDTO'
+        '404':
+          description: Discussion not found
+  /polls:
+    get:
+      summary: Get All Polls
+      description: Returns a list of all active civic polls.
+      responses:
+        '200':
+          description: List of polls
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PollDTO'
+    post:
+      summary: Create a Poll
+      description: Create a new civic poll. Requires authentication.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollCreateRequestDTO'
+      responses:
+        '201':
+          description: Poll created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollDTO'
+        '401':
+          description: Unauthorized
+  /polls/{id}:
+    get:
+      summary: Get Poll by ID
+      description: Retrieve detailed information for a specific civic poll.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Poll details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollDTO'
+        '404':
+          description: Poll not found
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     UserDTO:
       type: object
@@ -74,3 +238,106 @@ components:
         role:
           type: string
           example: CITIZEN
+    IssueDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        priority:
+          type: string
+        status:
+          type: string
+        location:
+          type: string
+    IssueCreateRequestDTO:
+      type: object
+      required:
+        - title
+        - description
+        - category
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        priority:
+          type: string
+        location:
+          type: string
+    DiscussionDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        votesCount:
+          type: integer
+        participantCount:
+          type: integer
+        proposalPreview:
+          type: string
+        proposalBadge:
+          type: string
+    DiscussionCreateRequestDTO:
+      type: object
+      required:
+        - title
+        - description
+        - category
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        proposalPreview:
+          type: string
+        proposalBadge:
+          type: string
+    PollDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        question:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        optionsJson:
+          type: string
+        votesCount:
+          type: integer
+    PollCreateRequestDTO:
+      type: object
+      required:
+        - question
+        - description
+        - category
+      properties:
+        question:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        optionsJson:
+          type: string

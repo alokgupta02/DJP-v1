@@ -1880,8 +1880,8 @@
     "semantic_hash": ""
   },
   "prototype/.djp_state.md": {
-    "mtime": 1784744329.0074518,
-    "ast_hash": "99912a60c27430032cf219e4a1122f4a",
+    "mtime": 1784749804.8629363,
+    "ast_hash": "528bf26ff44a98123d03b7ece92e64de",
     "semantic_hash": ""
   },
   "prototype/AGENTIC_WORKFLOW_GUIDE.md": {
@@ -1920,8 +1920,8 @@
     "semantic_hash": ""
   },
   "prototype/todo.md": {
-    "mtime": 1784747466.0589774,
-    "ast_hash": "ae5f511047a69de8b4e207c52a7e982f",
+    "mtime": 1784749793.7557566,
+    "ast_hash": "62f684e47342f0399afd8acd411e7ccf",
     "semantic_hash": ""
   },
   "docs/vision/vision-core-draft.md": {
@@ -2030,8 +2030,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-recom.md": {
-    "mtime": 1784746853.813619,
-    "ast_hash": "bed873d20e5fdcf19c4fc1881e9fef17",
+    "mtime": 1784747645.7677941,
+    "ast_hash": "bb133644b12c0ca08c2225dea2a60a86",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/resources/application.yml": {
@@ -2040,8 +2040,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-log.md": {
-    "mtime": 1784746132.491698,
-    "ast_hash": "bdf5b82bdd2e6b1a4d388c068adb250f",
+    "mtime": 1784747661.836036,
+    "ast_hash": "dd98d20a54e353b0aed470b58ad43acf",
     "semantic_hash": ""
   },
   "docs/audit/README.MD": {
@@ -2090,8 +2090,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-debt.md": {
-    "mtime": 1784467302.31397,
-    "ast_hash": "1a6f2fe4f5a42201898461ece0b1e5d1",
+    "mtime": 1784747622.6914442,
+    "ast_hash": "abaa1f5df5a3689b304bc0b168e3052f",
     "semantic_hash": ""
   },
   "backend/springboot/src/test/java/com/djp/backend/BackendApplicationTests.java": {
@@ -2195,8 +2195,8 @@
     "semantic_hash": ""
   },
   "docs/api/api-spec.yaml": {
-    "mtime": 1784440763.8203323,
-    "ast_hash": "5a44900cbc39889ee35bdad6875c5b2e",
+    "mtime": 1784749763.9072726,
+    "ast_hash": "2e0cb81aec127bcb7b5d2b3cdadb2ef6",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/model/Issue.java": {
@@ -3355,8 +3355,8 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/IssueController.java": {
-    "mtime": 1784471111.2506793,
-    "ast_hash": "08629e22b93205d976240d2df7369858",
+    "mtime": 1784749341.9261038,
+    "ast_hash": "3df81dfabe31db26c6dd846c443f0e92",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/dto/ErrorResponse.java": {
@@ -3449,11 +3449,6 @@
     "ast_hash": "08deafb05f32bf83e45d0c6efe30d60c",
     "semantic_hash": ""
   },
-  "prototype/backend/src/main/resources/data.sql": {
-    "mtime": 1784745928.1989405,
-    "ast_hash": "7bbd580b722fe1e106f40214de48393d",
-    "semantic_hash": ""
-  },
   "prototype/backend/src/test/java/com/djp/backend/ActuatorIntegrationTest.java": {
     "mtime": 1784470519.3771422,
     "ast_hash": "124e1f0403f1b25c813ec8e99adb37d4",
@@ -3470,13 +3465,13 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/test/java/com/djp/backend/BaseIntegrationTest.java": {
-    "mtime": 1784470519.3772285,
-    "ast_hash": "d7279060925da6f58500cf7bc1c121bc",
+    "mtime": 1784749498.1298428,
+    "ast_hash": "78479d4b27cb8a0fccc07e84b397e275",
     "semantic_hash": ""
   },
   "prototype/backend/src/test/java/com/djp/backend/IssueIntegrationTest.java": {
-    "mtime": 1784745202.6505828,
-    "ast_hash": "242009124acbf7cf4104757047294664",
+    "mtime": 1784749545.6146526,
+    "ast_hash": "f82d066a5335e7e92efee62a852c8170",
     "semantic_hash": ""
   },
   "prototype/backend/src/test/java/com/djp/backend/LoggingMaskingTest.java": {
@@ -4335,8 +4330,8 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/main/resources/application-local.yml": {
-    "mtime": 1784470871.872357,
-    "ast_hash": "808b2debb71e659064fb8435d206ba59",
+    "mtime": 1784749278.017944,
+    "ast_hash": "5730fb9e4f0682cd094b44a430a2dba6",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/resources/application-prod.yml": {
@@ -4650,23 +4645,23 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/DiscussionController.java": {
-    "mtime": 1784745093.6677763,
-    "ast_hash": "78bff977ec414d1b8e10ae84ff605ec5",
+    "mtime": 1784749349.9242473,
+    "ast_hash": "ce44227e711a92979c36126630b6dfd3",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/PollController.java": {
-    "mtime": 1784745101.451913,
-    "ast_hash": "81d89b274d66ca287ef7040629653138",
+    "mtime": 1784749357.681386,
+    "ast_hash": "39d96d68307392c236324cc4ba13b35c",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/dto/DiscussionCreateRequestDto.java": {
-    "mtime": 1784745079.540525,
-    "ast_hash": "d0391d4fc4b97bb16834af81d8f1276a",
+    "mtime": 1784749327.9028516,
+    "ast_hash": "059b10cca7a3339ce5ccc95f75fb9a39",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/dto/PollCreateRequestDto.java": {
-    "mtime": 1784745085.871638,
-    "ast_hash": "c87d14aef4da72c65c57f1714cf0dc08",
+    "mtime": 1784749327.9668527,
+    "ast_hash": "5cbf85a07af4e5a264f5268d67b9287f",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/model/Discussion.java": {
@@ -4690,8 +4685,8 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/test/java/com/djp/backend/DiscussionAndPollIntegrationTest.java": {
-    "mtime": 1784745213.46075,
-    "ast_hash": "961db9267d21440610a6cb317943d97b",
+    "mtime": 1784749574.5441418,
+    "ast_hash": "11b08d33d476dd06fd84431ea223f706",
     "semantic_hash": ""
   },
   "prototype/frontend/src/features/discussions/discussionsApi.ts": {
@@ -4742,6 +4737,36 @@
   "backend/springboot/src/test/java/com/djp/backend/OpenApiIntegrationTest.java": {
     "mtime": 1784747206.5944157,
     "ast_hash": "7d2e4a9fca5c37463b0423ff41d48c5b",
+    "semantic_hash": ""
+  },
+  "prototype/backend/src/main/java/com/djp/backend/service/SqlFilePersistenceService.java": {
+    "mtime": 1784749674.6338105,
+    "ast_hash": "1e19794b642aab50b154e431d6c84b72",
+    "semantic_hash": ""
+  },
+  "prototype/backend/src/main/resources/data/discussions.sql": {
+    "mtime": 1784749725.8456519,
+    "ast_hash": "6d0a46d1121529cacc6bee05cb434ba0",
+    "semantic_hash": ""
+  },
+  "prototype/backend/src/main/resources/data/issues.sql": {
+    "mtime": 1784749727.1016724,
+    "ast_hash": "666e7aea18800b31f57e8c4cf0091c2b",
+    "semantic_hash": ""
+  },
+  "prototype/backend/src/main/resources/data/polls.sql": {
+    "mtime": 1784749725.6426487,
+    "ast_hash": "2154133bac7437d66fc647b7651e46d5",
+    "semantic_hash": ""
+  },
+  "prototype/backend/src/main/resources/data/users.sql": {
+    "mtime": 1784749727.1026726,
+    "ast_hash": "ecff0329958a3a575e5a3576b1aef642",
+    "semantic_hash": ""
+  },
+  "prototype/backend/src/test/java/com/djp/backend/StartupSeedDataIntegrationTest.java": {
+    "mtime": 1784749199.9314895,
+    "ast_hash": "a2976ba3ef65f927c01d70f7488df10c",
     "semantic_hash": ""
   }
 }

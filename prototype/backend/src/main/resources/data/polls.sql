@@ -1,0 +1,6 @@
+-- Seed data for polls in DJP Prototype H2 Database
+MERGE INTO polls (id, author_id, question, description, category, options_json, votes_count, comments_count, expires_at, created_at, updated_at)
+KEY (id)
+VALUES 
+    ('77777777-7777-7777-7777-777777777777', '11111111-1111-1111-1111-111111111111', 'Should Ward 12 implement "No Car Sundays" on the Central Corridor?', 'This proposal aims to reduce local carbon emissions and promote pedestrian activity. The pilot would run for 6 months between 8 AM and 4 PM.', 'High Priority', '[{"label":"Yes, implement it","pct":64,"primary":true},{"label":"No, maintain current traffic","pct":36,"primary":false}]', 12402, 482, CURRENT_TIMESTAMP() + INTERVAL '7' DAY, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+    ('88888888-8888-8888-8888-888888888888', '11111111-1111-1111-1111-111111111111', 'Increase funding for Ward 12 Community Gardens?', 'Allocating budget from discretionary community funds to establish 5 new urban gardens.', 'Environment', '[{"label":"Yes, allocate funds","pct":82,"primary":true},{"label":"No, prioritize roads","pct":18,"primary":false}]', 4100, 115, CURRENT_TIMESTAMP() + INTERVAL '5' DAY, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
