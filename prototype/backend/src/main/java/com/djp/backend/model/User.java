@@ -48,6 +48,12 @@ public class User {
     @Column(name = "onboarding_completed", nullable = false)
     private Boolean onboardingCompleted = false;
 
+    @Column(name = "privacy_consent_given", nullable = false)
+    private Boolean privacyConsentGiven = false;
+
+    @Column(name = "privacy_consent_timestamp")
+    private OffsetDateTime privacyConsentTimestamp;
+
     @Column(name = "joined_date", nullable = false, updatable = false)
     private OffsetDateTime joinedDate = OffsetDateTime.now();
 
@@ -150,6 +156,22 @@ public class User {
 
     public void setOnboardingCompleted(Boolean onboardingCompleted) {
         this.onboardingCompleted = onboardingCompleted;
+    }
+
+    public Boolean getPrivacyConsentGiven() {
+        return privacyConsentGiven;
+    }
+
+    public void setPrivacyConsentGiven(Boolean privacyConsentGiven) {
+        this.privacyConsentGiven = privacyConsentGiven;
+    }
+
+    public OffsetDateTime getPrivacyConsentTimestamp() {
+        return privacyConsentTimestamp;
+    }
+
+    public void setPrivacyConsentTimestamp(OffsetDateTime privacyConsentTimestamp) {
+        this.privacyConsentTimestamp = privacyConsentTimestamp;
     }
 
     public OffsetDateTime getJoinedDate() {

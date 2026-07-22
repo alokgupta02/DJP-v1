@@ -26,19 +26,19 @@ This file (`audit-recom.md`) is the **Single Source of Truth (SSOT)** for active
 ## 🔴 1. Critical Debt (Active Blockers)
 *Must resolve immediately before any production release or feature development.*
 
-### GOV-001 — No Legal / Party Registration (ECI) Structure
-* **Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+### IMPL-001 — Phase 1 Core Tasks — 0% Complete (6/6 Tasks Blocked)
+* **Worker/Who:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
 * **Severity:** 🔴 Critical
-* **Changes required:** Doc (`docs/legal/registration-and-compliance.md`), Vision (`docs/vision/party-vision.md`)
-* **Why it matters:** Operating a civic/political party platform without Election Commission of India (ECI) compliance pathways creates severe regulatory liabilities.
-* **Recommended action:** Create `docs/legal/registration-and-compliance.md` outlining legal entity status and ECI compliance roadmap.
+* **Changes required:** Code (`backend/springboot/src/.../config/`, `exception/`, `security/`)
+* **Why it matters:** Every subsequent engineering phase (Issues, Discussions, Polls, AI) is completely blocked from entering production development until the Spring Boot foundation exists.
+* **Recommended action:** Execute Phase 1 tasks sequentially using TDD Red/Green loops (`QA Agent` writing tests first, `BE Agent` implementing minimal code).
 
-### GOV-002 — No Data Privacy Policy (DPDPA/GDPR Compliance)
-* **Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+### DATA-001 — Missing Database Migration Engine (Flyway/Liquibase) vs Unsafe `ddl-auto: update`
+* **Worker/Who:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
 * **Severity:** 🔴 Critical
-* **Changes required:** Doc (`docs/legal/data-privacy.md`), Backend (`backend/springboot/src/main/java/.../User.java`)
-* **Why it matters:** Collecting citizen geographic location and political activity without data minimization or consent checks violates India's DPDPA 2023.
-* **Recommended action:** Create `docs/legal/data-privacy.md` establishing consent workflows, data minimization policies, and right-to-be-forgotten deletion.
+* **Changes required:** Code & Config (`backend/springboot/pom.xml`, `src/main/resources/db/migration/V1__init.sql`, `application-prod.yml`)
+* **Why it matters:** Hibernate `ddl-auto: update` is non-deterministic across cluster nodes, drops/modifies columns unpredictably during refactors, and breaks audit traceability.
+* **Recommended action:** Add `flyway-core` to `pom.xml`. Create `src/main/resources/db/migration/V1__init.sql` codifying all 14 `users` table columns and canonical schemas from `db-design.md`. Set `ddl-auto: validate` in `application-prod.yml`.
 
 ---
 

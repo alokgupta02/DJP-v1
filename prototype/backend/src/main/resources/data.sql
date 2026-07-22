@@ -1,10 +1,10 @@
 -- Seed data for DJP Prototype H2 Database (local profile)
 
-MERGE INTO users (id, email, name, provider, provider_id, role, reputation_score, subscription_status, onboarding_completed, joined_date)
+MERGE INTO users (id, email, name, provider, provider_id, role, reputation_score, subscription_status, onboarding_completed, privacy_consent_given, privacy_consent_timestamp, joined_date)
 KEY (id)
 VALUES 
-    ('11111111-1111-1111-1111-111111111111', 'citizen@djp.org', 'Prototype Citizen', 'DEV', 'dev-citizen', 'CITIZEN', 0, 'ACTIVE', true, CURRENT_TIMESTAMP()),
-    ('22222222-2222-2222-2222-222222222222', 'admin@djp.org', 'Prototype Admin', 'DEV', 'dev-admin', 'LEADER', 100, 'ACTIVE', true, CURRENT_TIMESTAMP());
+    ('11111111-1111-1111-1111-111111111111', 'citizen@djp.org', 'Prototype Citizen', 'DEV', 'dev-citizen', 'CITIZEN', 0, 'ACTIVE', true, true, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+    ('22222222-2222-2222-2222-222222222222', 'admin@djp.org', 'Prototype Admin', 'DEV', 'dev-admin', 'LEADER', 100, 'ACTIVE', true, true, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
 MERGE INTO issues (id, author_id, title, description, category, priority, status, workflow_step, location, supports_count, comments_count, created_at, updated_at)
 KEY (id)

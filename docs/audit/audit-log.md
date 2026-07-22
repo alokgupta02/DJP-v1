@@ -48,6 +48,40 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: GOV-001 — No Legal / Party Registration (ECI) Structure
+* **📅 Resolution Date:** 2026-07-22 18:46 UTC
+* **Found By:** Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🔴 Critical
+* **📂 Files Modified / Created:**
+  * `[NEW] docs/legal/registration-and-compliance.md`
+  * `[MODIFY] docs/vision/party-vision.md`
+* **📝 Resolution Summary:**
+  * Established legal entity status and phased Election Commission of India (ECI) compliance pathway (Section 8 Company -> RUPP under Section 29A -> Recognized Party). Added interim civic disclaimers and linked SSOT to party vision documentation.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn test`)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `a3f20b0`
+
+### [RESOLVED] ID: GOV-002 — No Data Privacy Policy (DPDPA/GDPR Compliance)
+* **📅 Resolution Date:** 2026-07-22 18:46 UTC
+* **Found By:** Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🔴 Critical
+* **📂 Files Modified / Created:**
+  * `[NEW] docs/legal/data-privacy.md`
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/model/User.java`
+  * `[MODIFY] prototype/backend/src/main/java/com/djp/backend/model/User.java`
+  * `[MODIFY] prototype/backend/src/main/resources/data.sql`
+* **📝 Resolution Summary:**
+  * Formulated comprehensive citizen data privacy architecture under India's DPDPA 2023 and GDPR (`docs/legal/data-privacy.md`) establishing affirmative consent tracking, purpose limitation, ward-level minimization, and Right-to-be-Forgotten account erasure workflows. Updated User entity across backend modules with `privacyConsentGiven` and `privacyConsentTimestamp` attributes and verified with 18 passing integration tests.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn test`)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `a3f20b0`
+
 ### [RESOLVED] ID: DEVOPS-003 — Empty `.github/workflows/` Directory (No Automated CI/CD Pipeline)
 * **📅 Resolution Date:** 2026-07-19 13:21 UTC
 * **Found By:** GitHub Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)

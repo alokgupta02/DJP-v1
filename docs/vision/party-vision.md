@@ -4,11 +4,11 @@
 
 | Metadata | Value |
 | :--- | :--- |
-| **📅 Last Updated** | 2026-07-18 13:30 |
+| **📅 Last Updated** | 2026-07-22 |
 | **📌 Status** | `Stable` |
-| **🏷️ Version** | `v1.0.0` |
+| **🏷️ Version** | `v1.1.0` |
 | **👥 Owner** | `Founder` |
-| **🔗 Dependencies** | None |
+| **🔗 Dependencies** | [registration-and-compliance.md](../legal/registration-and-compliance.md) |
 
 ---
 
@@ -97,3 +97,4 @@ To nominate a candidate from the DJP to represent a ward in an upcoming official
 * **[Roadmap](roadmap.md)** — Versioned milestones and schedule
 * **[Decisions](decisions.md)** — Architectural decision log (ADRs)
 * **[Boundaries](../architecture/system-boundaries.md)** — System boundaries and agent rules
+* **[ECI Registration & Compliance](../legal/registration-and-compliance.md)** — Legal entity and ECI compliance pathway (`GOV-001`)
