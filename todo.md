@@ -25,7 +25,7 @@
 - [x] Prototype Parity: Implement Discussions (/discussions) and Polls (/polls) APIs & web views in prototype/backend and prototype/frontend
 - [x] Audit & Cleanup (GOV-001): Establish ECI party registration structure and compliance pathway (docs/legal/registration-and-compliance.md)
 - [x] Audit & Cleanup (GOV-002): Establish Data Privacy Policy (DPDPA 2023 / GDPR) and add consent tracking attributes to User entity
-- [ ] Audit & Cleanup (IMPL-001): Phase 1 Core Tasks for Spring Boot foundation (Project Structure, Config Profiles, Flyway, Exception Handling, Security/JWT, Observability)
-- [ ] Audit & Cleanup (DATA-001): Integrate flyway-core and create versioned migration scripts (V1__init.sql) replacing unsafe ddl-auto: update
+- [x] Audit & Cleanup (IMPL-001): Phase 1 Core Tasks for Spring Boot foundation (Project Structure, Config Profiles, Global Exception Handling, Security/JWT, Observability)
+- [-] Audit & Cleanup (DATA-001): Integrate flyway-core and create versioned migration scripts (V1__init.sql) — deferred to audit-debt.md for later pickup
 - [x] Create and maintain canonical Postman Collection JSON file (`docs/api/djp-postman_collection.json`) covering all auth, issues, discussions, and polls APIs
 

@@ -75,4 +75,14 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
                 .andExpect(jsonPath("$.provider").value("github"))
                 .andExpect(jsonPath("$.redirectUrl").value("/oauth2/authorization/github"));
     }
+
+    @Test
+    public void devLogin_returnsTokenAndUserDto() throws Exception {
+        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post("/djp/api/v1/auth/dev-login?email=test.dev@djp.org")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.token").exists())
+                .andExpect(jsonPath("$.user.email").value("test.dev@djp.org"))
+                .andExpect(jsonPath("$.user.role").value("CITIZEN"));
+    }
 }

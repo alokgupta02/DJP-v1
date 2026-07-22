@@ -775,8 +775,8 @@
     "semantic_hash": ""
   },
   "todo.md": {
-    "mtime": 1784746414.9577293,
-    "ast_hash": "7156c732f88655da8bc899792df824ca",
+    "mtime": 1784747465.8379736,
+    "ast_hash": "ebbfa6900b575e33a12ef4dcfa37d2eb",
     "semantic_hash": ""
   },
   "frontend/apps/admin/public/favicon.svg": {
@@ -830,8 +830,8 @@
     "semantic_hash": ""
   },
   "backend/springboot/pom.xml": {
-    "mtime": 1784466331.6455336,
-    "ast_hash": "39283b2a7febf4977de203a495755588",
+    "mtime": 1784747338.5958247,
+    "ast_hash": "370a0a3c58a2e861ab0801bbcdee21dc",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/BackendApplication.java": {
@@ -840,8 +840,8 @@
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/controller/AuthController.java": {
-    "mtime": 1784443500.552211,
-    "ast_hash": "de7a4d32db2e183e903d35bc5aee86ed",
+    "mtime": 1784747169.665702,
+    "ast_hash": "fb358d0900a190a20beb2e31b7b2d6ad",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/model/User.java": {
@@ -1920,8 +1920,8 @@
     "semantic_hash": ""
   },
   "prototype/todo.md": {
-    "mtime": 1784746420.3649695,
-    "ast_hash": "9eb63cb44766f323ad0f14e127609738",
+    "mtime": 1784747466.0589774,
+    "ast_hash": "ae5f511047a69de8b4e207c52a7e982f",
     "semantic_hash": ""
   },
   "docs/vision/vision-core-draft.md": {
@@ -1960,8 +1960,8 @@
     "semantic_hash": ""
   },
   "docs/architecture/backend/backend-springboot-checklist.md": {
-    "mtime": 1784442338.1718705,
-    "ast_hash": "9bf6d13d84893d54064b0526e1493c29",
+    "mtime": 1784747454.2907846,
+    "ast_hash": "aed0b5b4c7ab5e4a890b91a6792a1c27",
     "semantic_hash": ""
   },
   "docs/architecture/backend/backend-techstack.md": {
@@ -2030,8 +2030,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-recom.md": {
-    "mtime": 1784746108.4784985,
-    "ast_hash": "e5c12f4f8996f50ad4d4468c0e532d94",
+    "mtime": 1784746853.813619,
+    "ast_hash": "bed873d20e5fdcf19c4fc1881e9fef17",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/resources/application.yml": {
@@ -2120,18 +2120,18 @@
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/config/SecurityConfig.java": {
-    "mtime": 1784466356.6056092,
-    "ast_hash": "99dd98320bf106fc9ee445094433d084",
+    "mtime": 1784747237.5980005,
+    "ast_hash": "3552095f5485c979bbf002eee421e1cb",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/dto/ErrorResponse.java": {
-    "mtime": 1784442890.7379072,
-    "ast_hash": "afc0f3e65e8acd757f56d1d38cf6c967",
+    "mtime": 1784747141.3821423,
+    "ast_hash": "55982767eaeecef5bb6e3998f6994034",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/dto/UserDto.java": {
-    "mtime": 1784443497.7029397,
-    "ast_hash": "7f2f7b20f9aa593141dc8c65f138a063",
+    "mtime": 1784747135.5170248,
+    "ast_hash": "8062e8950545f81c00059e5a0974e7ba",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/exception/GlobalExceptionHandler.java": {
@@ -2175,8 +2175,8 @@
     "semantic_hash": ""
   },
   "backend/springboot/src/test/java/com/djp/backend/AuthIntegrationTest.java": {
-    "mtime": 1784443507.962349,
-    "ast_hash": "44310184660d7b6c099312adf3779ecd",
+    "mtime": 1784747212.721532,
+    "ast_hash": "1bc8fbe33f1744d3564c77805e6a900f",
     "semantic_hash": ""
   },
   ".github/dependabot.yml": {
@@ -2210,13 +2210,13 @@
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java": {
-    "mtime": 1784465314.0750263,
-    "ast_hash": "00bfd64953d8fea1bf16084fff27ce23",
+    "mtime": 1784747156.8404496,
+    "ast_hash": "8838eb4292d0fef6d4024a412047a35c",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/java/com/djp/backend/dto/IssueCreateRequestDto.java": {
-    "mtime": 1784464684.553699,
-    "ast_hash": "4e41ad99fd469dc04236feef358ca292",
+    "mtime": 1784747128.4738827,
+    "ast_hash": "c829b2edb65479e169a5faf060658688",
     "semantic_hash": ""
   },
   "backend/springboot/src/test/java/com/djp/backend/IssueIntegrationTest.java": {
@@ -4732,6 +4732,16 @@
   "prototype/docs/api/README.md": {
     "mtime": 1784746522.5881848,
     "ast_hash": "ccedafff47f78f3a4a795e7a4869a80a",
+    "semantic_hash": ""
+  },
+  "backend/springboot/src/main/java/com/djp/backend/config/OpenApiConfig.java": {
+    "mtime": 1784747106.0834262,
+    "ast_hash": "191652a4e519db58a41e896e754cd893",
+    "semantic_hash": ""
+  },
+  "backend/springboot/src/test/java/com/djp/backend/OpenApiIntegrationTest.java": {
+    "mtime": 1784747206.5944157,
+    "ast_hash": "7d2e4a9fca5c37463b0423ff41d48c5b",
     "semantic_hash": ""
   }
 }

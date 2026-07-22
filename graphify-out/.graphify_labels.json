@@ -587,8 +587,6 @@
   "585": "vK",
   "586": "aAS",
   "587": "aJZ",
-  "588": "apF",
-  "589": "zh",
   "590": "p5",
   "591": "Prototype API & Postman Collection Guide (`web-app = prototype`)",
   "592": "DJP MOBILE USER IDENTITY (`mobile = android/flutter`)",
@@ -601,7 +599,6 @@
   "599": "Step3About.js",
   "600": "Step3About.tsx",
   "601": "CreateDiscussionPage.js",
-  "602": "oB",
   "603": "InsightsPage.tsx",
   "604": "IssueDetailPage.tsx",
   "605": "RepresentativesPage.js",
@@ -669,10 +666,8 @@
   "667": "SignupPage.js",
   "668": "SignupPage.tsx",
   "669": "CreateIssuePage.js",
-  "670": "M",
   "671": "NotFoundPage.js",
   "672": "NotFoundPage.tsx",
-  "673": "a7F",
   "674": "IssuesPage.js",
   "675": "TODO: Delete this file — empty stub replaced by features/issues/IssuesPage.tsx",
   "676": "Input.js",
@@ -752,7 +747,5 @@
   "750": "sidebar.types.js",
   "751": "index.js",
   "752": "vite.config.ts",
-  "753": "auth.test.js",
-  "754": "Gr",
-  "755": "zk"
+  "753": "auth.test.js"
 }

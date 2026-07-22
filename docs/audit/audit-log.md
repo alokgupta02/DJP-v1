@@ -48,6 +48,28 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
 
 *(Append newly resolved items above this line in reverse chronological order — newest on top)*
 
+### [RESOLVED] ID: IMPL-001 — Phase 1 Core Tasks for Spring Boot Foundation
+* **📅 Resolution Date:** 2026-07-22 19:12 UTC
+* **Found By:** Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** BE Agent | Antigravity (Gemini)
+* **Severity:** 🔴 Critical
+* **📂 Files Modified / Created:**
+  * `[NEW] backend/springboot/src/main/java/com/djp/backend/config/OpenApiConfig.java`
+  * `[NEW] backend/springboot/src/test/java/com/djp/backend/OpenApiIntegrationTest.java`
+  * `[MODIFY] backend/springboot/pom.xml`
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/config/SecurityConfig.java`
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/controller/AuthController.java`
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/controller/IssueController.java`
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/dto/IssueCreateRequestDto.java`
+  * `[MODIFY] docs/architecture/backend/backend-springboot-checklist.md`
+* **📝 Resolution Summary:**
+  * Completed Phase 1 Spring Boot foundation audit and verification. Modernized `IssueCreateRequestDto` to a Java 21 record. Configured `springdoc-openapi` with `OpenApiConfig.java` (`BearerAuth` security definition) and `@Tag`/`@Operation` metadata across controllers (`AuthController`, `IssueController`), upgrading `springdoc-openapi-starter-webmvc-ui` to `2.8.3` for full Spring Boot 3.4.1 compatibility. Verified `SecurityConfig.java` public endpoints (`/dev-login`, `/actuator/health`, `/v3/api-docs/**`) and created `OpenApiIntegrationTest.java` confirming status `200 OK` and Swagger JSON specification. All 16 integration tests passing (`mvn clean test`).
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `62902fb`
+
 ### [RESOLVED] ID: GOV-001 — No Legal / Party Registration (ECI) Structure
 * **📅 Resolution Date:** 2026-07-22 18:46 UTC
 * **Found By:** Tech Arch Agent | Antigravity (Gemini)

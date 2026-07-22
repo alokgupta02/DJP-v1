@@ -26,29 +26,24 @@ This file (`audit-recom.md`) is the **Single Source of Truth (SSOT)** for active
 ## 🔴 1. Critical Debt (Active Blockers)
 *Must resolve immediately before any production release or feature development.*
 
-### IMPL-001 — Phase 1 Core Tasks — 0% Complete (6/6 Tasks Blocked)
-* **Worker/Who:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
-* **Severity:** 🔴 Critical
-* **Changes required:** Code (`backend/springboot/src/.../config/`, `exception/`, `security/`)
-* **Why it matters:** Every subsequent engineering phase (Issues, Discussions, Polls, AI) is completely blocked from entering production development until the Spring Boot foundation exists.
-* **Recommended action:** Execute Phase 1 tasks sequentially using TDD Red/Green loops (`QA Agent` writing tests first, `BE Agent` implementing minimal code).
-
-### DATA-001 — Missing Database Migration Engine (Flyway/Liquibase) vs Unsafe `ddl-auto: update`
-* **Worker/Who:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
-* **Severity:** 🔴 Critical
-* **Changes required:** Code & Config (`backend/springboot/pom.xml`, `src/main/resources/db/migration/V1__init.sql`, `application-prod.yml`)
-* **Why it matters:** Hibernate `ddl-auto: update` is non-deterministic across cluster nodes, drops/modifies columns unpredictably during refactors, and breaks audit traceability.
-* **Recommended action:** Add `flyway-core` to `pom.xml`. Create `src/main/resources/db/migration/V1__init.sql` codifying all 14 `users` table columns and canonical schemas from `db-design.md`. Set `ddl-auto: validate` in `application-prod.yml`.
+### SEC-002 — JWT Key & Rotation Strategy Undefined
+* **Worker/Who:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron
+* **Severity:** 🟠 High (Promoted to Active Blockers)
+* **Changes required:** Code (`backend/springboot/src/main/java/.../security/`), Config (`application.yml`)
+* **Why it matters:** Without explicit rotation, secret validation, or documented KeyVault integration, JWT signing secrets remain vulnerable to leakage or stale token exploitation across services.
+* **Recommended action:** Implement robust secret management/rotation configuration and document secret injection in `SecurityConfig.java` and deployment guides.
 
 ---
 
 ## 🟠 2. High Debt (Ready for Replenishment Queue)
 *As Critical items are resolved and removed above ("one goes out"), auto-fetch the following items from `debt.md`:*
 
-### SEC-002 — JWT Key & Rotation Strategy Undefined
-* **Worker/Who:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron
+### DATA-003 — Missing Database Indexes & Performance Optimizations in Schema
+* **Worker/Who:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
 * **Severity:** 🟠 High
-* **Changes required:** Code (`backend/springboot/src/main/java/.../security/`), Config (`application.yml`)
+* **Changes required:** Code (`backend/springboot/src/main/java/com/djp/backend/model/Issue.java`)
+* **Why it matters:** Full table scans during citizen issue filtering cause severe database latency and CPU bottlenecks under load.
+* **Recommended action:** Add `@Table(indexes={...})` declarations on `jurisdiction` and `status` in `Issue.java` and verify with JPA mapping verification.
 
 ---
 

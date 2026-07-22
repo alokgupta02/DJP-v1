@@ -42,6 +42,7 @@ public class SecurityConfig {
             )
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
+                    "/djp/api/v1/auth/dev-login",
                     "/djp/api/v1/auth/google",
                     "/djp/api/v1/auth/github",
                     "/login/**",
@@ -54,6 +55,7 @@ public class SecurityConfig {
                     "/actuator/info",
                     "/actuator/prometheus"
                 ).permitAll()
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/djp/api/v1/issues/**", "/djp/api/v1/discussions/**", "/djp/api/v1/polls/**").permitAll()
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2

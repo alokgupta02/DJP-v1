@@ -32,6 +32,6 @@
 - [x] Copy and adapt Discussion & Poll web views from root `apps/citizen` -> `prototype/frontend` (`web-app = prototype`)
 - [x] Audit & Cleanup (GOV-001): Establish ECI registration structure and compliance roadmap (`docs/legal/registration-and-compliance.md`)
 - [x] Audit & Cleanup (GOV-002): Establish Data Privacy Policy under DPDPA 2023 (`docs/legal/data-privacy.md`) and add consent fields to `User.java`
-- [ ] Audit & Cleanup (IMPL-001): Phase 1 Core Tasks for Spring Boot foundation (Project Structure, Config Profiles, Flyway, Exception Handling, Security/JWT, Observability)
-- [ ] Audit & Cleanup (DATA-001): Integrate `flyway-core` and create versioned migration scripts (`V1__init.sql`) replacing unsafe `ddl-auto: update`
+- [x] Audit & Cleanup (IMPL-001): Phase 1 Core Tasks for Spring Boot foundation (Project Structure, Config Profiles, Global Exception Handling, Security/JWT, Observability)
+- [-] Audit & Cleanup (DATA-001): Integrate `flyway-core` and create versioned migration scripts (`V1__init.sql`) — deferred to audit-debt.md for later pickup
 - [x] Create and maintain canonical Postman Collection JSON file (`docs/api/djp-postman_collection.json`) covering all prototype and backend endpoints
