@@ -33,6 +33,18 @@ public class User {
     @Column(name = "location", length = 150)
     private String location;
 
+    @Column(name = "pincode", length = 20)
+    private String pincode;
+
+    @Column(name = "occupation", length = 100)
+    private String occupation;
+
+    @Column(name = "bio", length = 1000)
+    private String bio;
+
+    @Column(name = "topics", length = 1000)
+    private String topics;
+
     @Column(name = "reputation_score", nullable = false)
     private Integer reputationScore = 0;
 
@@ -116,6 +128,38 @@ public class User {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getPincode() {
+        return pincode;
+    }
+
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getTopics() {
+        return topics;
+    }
+
+    public void setTopics(String topics) {
+        this.topics = topics;
     }
 
     public Integer getReputationScore() {

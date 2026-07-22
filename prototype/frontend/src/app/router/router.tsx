@@ -12,8 +12,10 @@ import OTPPage from "../../features/auth/OTPPage";
 import Step1BasicInfo from "../../features/auth/onboarding/Step1BasicInfo";
 import Step2Location from "../../features/auth/onboarding/Step2Location";
 import Step3About from "../../features/auth/onboarding/Step3About";
+import { OnboardingProvider } from "../../features/auth/onboarding/OnboardingContext";
 
 import FeedPage from "../../features/feed/FeedPage";
+
 import IssuesPage from "../../features/issues/IssuesPage";
 import IssueDetailPage from "../../features/issues/IssueDetailPage";
 import CreateIssuePage from "../../features/issues/CreateIssuePage";
@@ -111,9 +113,16 @@ export const router = createBrowserRouter([
     ],
   },
 
-  { path: "/onboarding/basic-info", element: <Step1BasicInfo /> },
-  { path: "/onboarding/location", element: <Step2Location /> },
-  { path: "/onboarding/about", element: <Step3About /> },
+  {
+    path: "/onboarding",
+    element: <OnboardingProvider />,
+    children: [
+      { path: "basic-info", element: <Step1BasicInfo /> },
+      { path: "location", element: <Step2Location /> },
+      { path: "about", element: <Step3About /> },
+    ],
+  },
+
 
   {
     path: "*",

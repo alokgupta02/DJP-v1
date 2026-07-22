@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import OnboardingLayout from "./OnboardingLayout";
+import { useOnboarding } from "./OnboardingContext";
+import { completeUserOnboarding } from "./onboardingApi";
 
 const TOPICS = [
   "Roads", "Garbage", "Water Supply", "Electricity",
@@ -12,8 +14,11 @@ const TOPICS = [
 
 export default function Step3About() {
   const navigate = useNavigate();
-  const [bio, setBio] = useState("");
-  const [selectedTopics, setSelectedTopics] = useState<Set<string>>(new Set(["Roads", "Water Supply", "Environment"]));
+  const { data, updateData, resetData } = useOnboarding();
+  const [bio, setBio] = useState(data.bio);
+  const [selectedTopics, setSelectedTopics] = useState<Set<string>>(new Set(data.topics));
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   function toggleTopic(topic: string) {
     setSelectedTopics((prev) => {
@@ -24,16 +29,54 @@ export default function Step3About() {
     });
   }
 
+  const handleFinish = async () => {
+    if (submitting) return;
+    setSubmitting(true);
+    setError("");
+
+    const topicsList = Array.from(selectedTopics);
+    updateData({ bio, topics: topicsList });
+
+    try {
+      await completeUserOnboarding({
+        name: data.displayName || "Citizen",
+        location: data.ward || data.city || "Bhopal",
+        pincode: data.pincode || "462016",
+        occupation: data.occupation || "Citizen",
+        bio,
+        topics: topicsList,
+        privacyConsentGiven: true,
+      });
+      resetData();
+      navigate("/feed");
+    } catch (err: any) {
+      console.error("Onboarding finish failed:", err);
+      setError(err.message || "Failed to save your profile. Please try again.");
+      setSubmitting(false);
+    }
+  };
+
+  const handleBack = () => {
+    updateData({ bio, topics: Array.from(selectedTopics) });
+    navigate("/onboarding/location");
+  };
+
   return (
     <OnboardingLayout
       currentStep={3}
-      onContinue={() => navigate("/feed")}
-      onBack={() => navigate("/onboarding/location")}
-      continueLabel="Finish Setup →"
+      onContinue={handleFinish}
+      onBack={handleBack}
+      continueLabel={submitting ? "Finishing Setup..." : "Finish Setup →"}
     >
+      {error && (
+        <div className="mb-6 p-4 rounded-xl bg-[var(--color-error)]/10 border border-[var(--color-error)] text-sm font-semibold text-[var(--color-error)]">
+          {error}
+        </div>
+      )}
       <p className="text-xs font-bold tracking-[3px] text-[var(--color-text-secondary)] mb-7">
         03 • ABOUT YOU
       </p>
+
 
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-1.5">

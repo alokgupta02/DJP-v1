@@ -213,9 +213,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PollDTO'
-        '404':
+         '404':
           description: Poll not found
+  /users/{userId}/onboarding:
+    patch:
+      summary: Complete User Onboarding Profile
+      description: Updates profile fields during civic onboarding and marks onboarding as complete.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OnboardingUpdateRequestDTO'
+      responses:
+        '200':
+          description: Onboarding successfully completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        '401':
+          description: Unauthorized
+        '404':
+          description: User not found
 components:
+
   securitySchemes:
     bearerAuth:
       type: http
@@ -238,7 +269,44 @@ components:
         role:
           type: string
           example: CITIZEN
+        location:
+          type: string
+        pincode:
+          type: string
+        occupation:
+          type: string
+        bio:
+          type: string
+        topics:
+          type: string
+        onboardingCompleted:
+          type: boolean
+    OnboardingUpdateRequestDTO:
+      type: object
+      required:
+        - name
+        - location
+        - pincode
+        - privacyConsentGiven
+      properties:
+        name:
+          type: string
+        location:
+          type: string
+        pincode:
+          type: string
+        occupation:
+          type: string
+        bio:
+          type: string
+        topics:
+          type: array
+          items:
+            type: string
+        privacyConsentGiven:
+          type: boolean
     IssueDTO:
+
       type: object
       properties:
         id:

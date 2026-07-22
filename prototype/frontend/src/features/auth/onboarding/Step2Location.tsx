@@ -1,17 +1,42 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingLayout from "./OnboardingLayout";
+import { useOnboarding } from "./OnboardingContext";
 
 export default function Step2Location() {
   const navigate = useNavigate();
-  const [pincode, setPincode] = useState("");
+  const { data, updateData } = useOnboarding();
+  const [pincode, setPincode] = useState(data.pincode);
+  const [occupation, setOccupation] = useState(data.occupation);
+
+  const handleContinue = () => {
+    updateData({
+      pincode,
+      occupation,
+      // Full location string formatted for backend
+      country: "India",
+      state: "Madhya Pradesh",
+      district: "Bhopal",
+      city: "Bhopal",
+      locality: "Arera Colony",
+      ward: "Ward 53, Bhopal",
+      constituency: "Bhopal South-West (Vidhan Sabha)"
+    });
+    navigate("/onboarding/about");
+  };
+
+  const handleBack = () => {
+    updateData({ pincode, occupation });
+    navigate("/onboarding/basic-info");
+  };
 
   return (
     <OnboardingLayout
       currentStep={2}
-      onContinue={() => navigate("/onboarding/about")}
-      onBack={() => navigate("/onboarding/basic-info")}
+      onContinue={handleContinue}
+      onBack={handleBack}
     >
+
       <p className="text-xs font-bold tracking-[3px] text-[var(--color-text-secondary)] mb-7">
         02 • LOCATION & CONSTITUENCY
       </p>
@@ -138,8 +163,11 @@ export default function Step2Location() {
           <input
             type="text"
             placeholder="Software Engineer"
+            value={occupation}
+            onChange={(e) => setOccupation(e.target.value)}
             className="h-[54px] rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] px-4 text-sm text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent transition-colors"
           />
+
         </div>
 
         <div className="flex flex-col gap-1.5">

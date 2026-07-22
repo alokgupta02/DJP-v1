@@ -69,9 +69,9 @@ public class SqlFilePersistenceService {
     public void appendUser(User user) {
         if (!enabled || user == null || user.getId() == null) return;
         String sql = String.format(
-                "MERGE INTO users (id, email, name, provider, provider_id, role, reputation_score, subscription_status, onboarding_completed, privacy_consent_given, privacy_consent_timestamp, joined_date)\n" +
+                "MERGE INTO users (id, email, name, provider, provider_id, role, reputation_score, subscription_status, onboarding_completed, privacy_consent_given, privacy_consent_timestamp, joined_date, location, pincode, occupation, bio, topics)\n" +
                 "KEY (id)\n" +
-                "VALUES ('%s', %s, %s, %s, %s, %s, %d, %s, %b, %b, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());",
+                "VALUES ('%s', %s, %s, %s, %s, %s, %d, %s, %b, %b, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), %s, %s, %s, %s, %s);",
                 user.getId(),
                 escapeSql(user.getEmail()),
                 escapeSql(user.getName()),
@@ -81,10 +81,16 @@ public class SqlFilePersistenceService {
                 user.getReputationScore() != null ? user.getReputationScore() : 0,
                 user.getSubscriptionStatus() != null ? "'" + user.getSubscriptionStatus() + "'" : "'ACTIVE'",
                 Boolean.TRUE.equals(user.getOnboardingCompleted()),
-                Boolean.TRUE.equals(user.getPrivacyConsentGiven())
+                Boolean.TRUE.equals(user.getPrivacyConsentGiven()),
+                escapeSql(user.getLocation()),
+                escapeSql(user.getPincode()),
+                escapeSql(user.getOccupation()),
+                escapeSql(user.getBio()),
+                escapeSql(user.getTopics())
         );
         appendToFiles("users.sql", sql);
     }
+
 
     public void appendIssue(Issue issue) {
         if (!enabled || issue == null || issue.getId() == null) return;

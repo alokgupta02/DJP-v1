@@ -45,13 +45,7 @@ public class AuthController {
                 .map(user -> {
                     Map<String, Object> response = new HashMap<>();
                     response.put("token", jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole()));
-                    response.put("user", new UserDto(
-                            user.getId(),
-                            user.getEmail(),
-                            user.getName(),
-                            null,
-                            user.getRole()
-                    ));
+                    response.put("user", UserDto.fromEntity(user));
                     return ResponseEntity.ok(response);
                 })
                 .orElseGet(() -> {
@@ -68,13 +62,7 @@ public class AuthController {
                     userRepository.save(newUser);
                     Map<String, Object> response = new HashMap<>();
                     response.put("token", jwtTokenProvider.createToken(newUser.getId(), newUser.getEmail(), newUser.getRole()));
-                    response.put("user", new UserDto(
-                            newUser.getId(),
-                            newUser.getEmail(),
-                            newUser.getName(),
-                            null,
-                            newUser.getRole()
-                    ));
+                    response.put("user", UserDto.fromEntity(newUser));
                     return ResponseEntity.ok(response);
                 });
     }
@@ -86,13 +74,8 @@ public class AuthController {
         }
         String email = authentication.getName();
         return userRepository.findByEmail(email)
-                .map(user -> ResponseEntity.ok(new UserDto(
-                        user.getId(),
-                        user.getEmail(),
-                        user.getName(),
-                        null,
-                        user.getRole()
-                )))
+                .map(user -> ResponseEntity.ok(UserDto.fromEntity(user)))
                 .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
     }
+
 }

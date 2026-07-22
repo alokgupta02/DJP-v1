@@ -2,22 +2,30 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import OnboardingLayout from "./OnboardingLayout";
+import { useOnboarding } from "./OnboardingContext";
 
 const GENDERS = ["Male", "Female", "Non-Binary", "Prefer not to say"];
 
 export default function Step1BasicInfo() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [email, setEmail] = useState("");
-  const [dob, setDob] = useState("");
-  const [gender, setGender] = useState("Male");
+  const { data, updateData } = useOnboarding();
+  const [username, setUsername] = useState(data.username);
+  const [displayName, setDisplayName] = useState(data.displayName);
+  const [email, setEmail] = useState(data.email);
+  const [dob, setDob] = useState(data.dob);
+  const [gender, setGender] = useState(data.gender);
+
+  const handleContinue = () => {
+    updateData({ username, displayName, email, dob, gender });
+    navigate("/onboarding/location");
+  };
 
   return (
     <OnboardingLayout
       currentStep={1}
-      onContinue={() => navigate("/onboarding/location")}
+      onContinue={handleContinue}
     >
+
       <p className="text-xs font-bold tracking-[3px] text-[var(--color-text-secondary)] mb-7">
         01 • BASIC INFORMATION
       </p>
