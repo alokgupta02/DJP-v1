@@ -22,7 +22,7 @@
 
 ## 📋 Task Backlog & Archive Reference
 - [x] Set up React SPA structure (`web-app = prototype`) on port `5174` proxying `/djp/api/v1 -> http://localhost:8081`
-- [ ] Connect `CreateIssuePage` form submission to live `POST /djp/api/v1/issues` endpoint
+- [x] Connect `CreateIssuePage` form submission to live `POST /djp/api/v1/issues` endpoint
 - [ ] Copy and adapt `Discussions` and `Polls` UI components from root `apps/citizen` (`web-app = prototype`)
 
 > [!NOTE]

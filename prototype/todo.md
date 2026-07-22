@@ -27,6 +27,6 @@
 ## 🚀 Phase 2: Progressive Microservice Expansion Backlog
 
 ### ✍️ User Input (Add your 1–2 line prototype task items below)
-- [ ] Connect `CreateIssuePage` and `IssuesPage` forms to live backend `POST /djp/api/v1/issues` route
+- [x] Connect `CreateIssuePage` and `IssuesPage` forms to live backend `POST /djp/api/v1/issues` route
 - [ ] Copy and adapt Discussions (`/discussions`) and Polls (`/polls`) APIs from root `/backend` -> `prototype/backend`
 - [ ] Copy and adapt Discussion & Poll web views from root `apps/citizen` -> `prototype/frontend` (`web-app = prototype`)

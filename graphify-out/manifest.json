@@ -1880,8 +1880,8 @@
     "semantic_hash": ""
   },
   "prototype/.djp_state.md": {
-    "mtime": 1784477407.7479353,
-    "ast_hash": "f333868a43b436342890153b993037ac",
+    "mtime": 1784744329.0074518,
+    "ast_hash": "99912a60c27430032cf219e4a1122f4a",
     "semantic_hash": ""
   },
   "prototype/AGENTIC_WORKFLOW_GUIDE.md": {
@@ -1910,8 +1910,8 @@
     "semantic_hash": ""
   },
   "prototype/frontend/fe-todo.md": {
-    "mtime": 1784477416.061623,
-    "ast_hash": "32171624dc6abc495a35640398127cc4",
+    "mtime": 1784744905.5510337,
+    "ast_hash": "9e0da5e2ed11c50d1929f9522f8285a9",
     "semantic_hash": ""
   },
   "prototype/tests/test-todo.md": {
@@ -1920,8 +1920,8 @@
     "semantic_hash": ""
   },
   "prototype/todo.md": {
-    "mtime": 1784477413.4867191,
-    "ast_hash": "d4643b29a5c22ea227d1aa37a89c6bc7",
+    "mtime": 1784744910.9661548,
+    "ast_hash": "17b6d03758fa665a4b0a1df2b8986239",
     "semantic_hash": ""
   },
   "docs/vision/vision-core-draft.md": {
@@ -3070,7 +3070,7 @@
     "semantic_hash": ""
   },
   "mobile/.dart_tool/flutter_build/dart_plugin_registrant.dart": {
-    "mtime": 1784475351.3294322,
+    "mtime": 1784572558.3496313,
     "ast_hash": "2b205a99ddacb13809534c881f4d7892",
     "semantic_hash": ""
   },
@@ -3115,7 +3115,7 @@
     "semantic_hash": ""
   },
   "mobile/ios/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage/Package.swift": {
-    "mtime": 1784477184.7927861,
+    "mtime": 1784646580.2781785,
     "ast_hash": "63bc00d19466662a75b7492ac07d5a97",
     "semantic_hash": ""
   },
@@ -3195,8 +3195,8 @@
     "semantic_hash": ""
   },
   "mobile/lib/screens/issues_feed_screen.dart": {
-    "mtime": 1784475325.3013887,
-    "ast_hash": "196b104b346c4c5a4378db31e719089f",
+    "mtime": 1784572541.0284014,
+    "ast_hash": "c640b047421dcc4fac054eb0fda1e797",
     "semantic_hash": ""
   },
   "mobile/lib/screens/login_screen.dart": {
@@ -3240,7 +3240,7 @@
     "semantic_hash": ""
   },
   "mobile/macos/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage/Package.swift": {
-    "mtime": 1784477184.8177845,
+    "mtime": 1784646580.3171816,
     "ast_hash": "61d013e6c93b3d917c4f6178b9f6c9cb",
     "semantic_hash": ""
   },
@@ -3450,8 +3450,8 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/main/resources/data.sql": {
-    "mtime": 1784470923.8421998,
-    "ast_hash": "a1028b28804d49da44da1a381f229b63",
+    "mtime": 1784744497.4425073,
+    "ast_hash": "89de34f5aed95b733442cc71220f444d",
     "semantic_hash": ""
   },
   "prototype/backend/src/test/java/com/djp/backend/ActuatorIntegrationTest.java": {
@@ -3460,8 +3460,8 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/test/java/com/djp/backend/AuthIntegrationTest.java": {
-    "mtime": 1784470519.3774033,
-    "ast_hash": "44310184660d7b6c099312adf3779ecd",
+    "mtime": 1784744600.5564451,
+    "ast_hash": "2d59e01f6ab5a4fd85f7e6b7eb84f3aa",
     "semantic_hash": ""
   },
   "prototype/backend/src/test/java/com/djp/backend/BackendApplicationTests.java": {
@@ -3475,8 +3475,8 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/test/java/com/djp/backend/IssueIntegrationTest.java": {
-    "mtime": 1784470519.3768492,
-    "ast_hash": "d9ad73e0d3aa73af6edad7b68d50f841",
+    "mtime": 1784744600.930458,
+    "ast_hash": "14e3a9f600b03497a153b2bb28cbfa70",
     "semantic_hash": ""
   },
   "prototype/backend/src/test/java/com/djp/backend/LoggingMaskingTest.java": {
@@ -3670,8 +3670,8 @@
     "semantic_hash": ""
   },
   "prototype/frontend/src/features/issues/CreateIssuePage.tsx": {
-    "mtime": 1784470596.7077062,
-    "ast_hash": "5ed1903ee7ee7b6b40ef421ad9d25964",
+    "mtime": 1784744775.2588284,
+    "ast_hash": "c9e84d14fafa1dda0e59f177300e8f1f",
     "semantic_hash": ""
   },
   "prototype/frontend/src/features/issues/IssueDetailPage.js": {
@@ -3690,8 +3690,8 @@
     "semantic_hash": ""
   },
   "prototype/frontend/src/features/issues/IssuesPage.tsx": {
-    "mtime": 1784470596.7077649,
-    "ast_hash": "721309ecc67a1e583be58ecc793a01d9",
+    "mtime": 1784744862.2830336,
+    "ast_hash": "f9562a6065c87019cbe50d835421abd0",
     "semantic_hash": ""
   },
   "prototype/frontend/src/features/notifications/NotificationsPage.js": {
@@ -4105,8 +4105,8 @@
     "semantic_hash": ""
   },
   "prototype/tests/api-health.test.mjs": {
-    "mtime": 1784470982.7251554,
-    "ast_hash": "1837fa61e69b4b46932e9d45688df0c8",
+    "mtime": 1784744677.5899956,
+    "ast_hash": "5f23aa2b22f76361e8b4f6730ba4ddea",
     "semantic_hash": ""
   },
   "prototype/tests/auth.test.js": {
@@ -4622,6 +4622,31 @@
   ".agents/skills/be-builder/SKILL.md": {
     "mtime": 1784485796.0195901,
     "ast_hash": "1bf8cead8507c40c3f12455a40b6c65c",
+    "semantic_hash": ""
+  },
+  "mobile/.dart_tool/flutter_build/b82eccce9d096b87ee2e3af06a6fea04/dart_build_result.json": {
+    "mtime": 1784647360.6907735,
+    "ast_hash": "b5d0d7ab24dc3c9e70ba5d9a0d2d2269",
+    "semantic_hash": ""
+  },
+  "mobile/.dart_tool/flutter_build/b82eccce9d096b87ee2e3af06a6fea04/native_assets.json": {
+    "mtime": 1784647360.7237742,
+    "ast_hash": "f3a664e105b4f792c6c7fe4e4d22c398",
+    "semantic_hash": ""
+  },
+  "mobile/.dart_tool/flutter_build/b82eccce9d096b87ee2e3af06a6fea04/outputs.json": {
+    "mtime": 1784647380.8062172,
+    "ast_hash": "d751713988987e9331980363e24189ce",
+    "semantic_hash": ""
+  },
+  ".agents/rules/git-branching-strategy.md": {
+    "mtime": 1784647935.9079332,
+    "ast_hash": "c72664059d9fb48787db130536b683e6",
+    "semantic_hash": ""
+  },
+  "prototype/frontend/src/features/issues/issuesApi.ts": {
+    "mtime": 1784744751.583179,
+    "ast_hash": "06ba0a340b41c93aec1e720b6a82251f",
     "semantic_hash": ""
   }
 }

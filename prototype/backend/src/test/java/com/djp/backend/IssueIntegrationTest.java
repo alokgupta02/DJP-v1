@@ -42,7 +42,7 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void createIssue_invalidInput_returns400() throws Exception {
-        User user = new User("jane.doe@example.com", "Jane Doe", "GOOGLE", "12345");
+        User user = new User("jane.issue.invalid." + java.util.UUID.randomUUID() + "@example.com", "Jane Doe", "GOOGLE", java.util.UUID.randomUUID().toString());
         user = userRepository.save(user);
         String token = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());
 
@@ -58,7 +58,7 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void createIssue_validInput_returns201() throws Exception {
-        User user = new User("jane.doe@example.com", "Jane Doe", "GOOGLE", "12345");
+        User user = new User("jane.issue.valid." + java.util.UUID.randomUUID() + "@example.com", "Jane Doe", "GOOGLE", java.util.UUID.randomUUID().toString());
         user = userRepository.save(user);
         String token = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());
 

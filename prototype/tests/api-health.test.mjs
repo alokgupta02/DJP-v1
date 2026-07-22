@@ -29,7 +29,7 @@ async function runTests() {
     failed++;
   }
 
-  // 2. Check Issues endpoint using the acquired JWT token
+  // 2. Check GET Issues endpoint using the acquired JWT token
   try {
     const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
     const res = await fetch(`${BASE_URL}/issues`, { headers });
@@ -44,6 +44,31 @@ async function runTests() {
     }
   } catch (err) {
     console.error(`❌ [FAIL] GET /issues -> Network/Connection error: ${err.message}`);
+    failed++;
+  }
+
+  // 3. Check POST /issues endpoint (Create new civic issue)
+  try {
+    const headers = token ? { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json' };
+    const payload = {
+      title: 'Broken streetlight on 5th Ave (API Test)',
+      description: 'Streetlight pole #102 has been out for over a week.',
+      category: 'Lighting',
+      priority: 'HIGH',
+      location: '5th Ave & Elm St'
+    };
+    const res = await fetch(`${BASE_URL}/issues`, { method: 'POST', headers, body: JSON.stringify(payload) });
+    if (res.status === 201 || res.ok) {
+      const data = await res.json();
+      console.log(`✅ [PASS] POST /issues (Create Issue) -> Status: ${res.status}, Created Issue ID: ${data.id || 'OK'}, Title: "${data.title}"`);
+      passed++;
+    } else {
+      const errText = await res.text();
+      console.error(`❌ [FAIL] POST /issues -> Status: ${res.status}, Error: ${errText}`);
+      failed++;
+    }
+  } catch (err) {
+    console.error(`❌ [FAIL] POST /issues -> Network/Connection error: ${err.message}`);
     failed++;
   }
 

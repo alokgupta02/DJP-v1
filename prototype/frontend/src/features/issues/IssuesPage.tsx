@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   ThumbsUp, MessageSquare, Plus, ChevronDown,
   Trash2, Droplet, Lightbulb, Users, AlertTriangle, Zap,
 } from "lucide-react";
 import clsx from "clsx";
+import { fetchIssues, type BackendIssueDto } from "./issuesApi";
 
 const FILTER_TABS = ["Near Me", "My Issues", "Needs Attention", "Resolved", "High Priority"];
 
@@ -83,6 +84,43 @@ const categoryIcons: Record<string, typeof Trash2> = {
 export default function IssuesPage() {
   const [activeTab, setActiveTab] = useState("Near Me");
   const [supported, setSupported] = useState<Set<string>>(new Set());
+  const [issuesList, setIssuesList] = useState<Issue[]>(ISSUES);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    fetchIssues()
+      .then((dtos) => {
+        if (dtos && dtos.length > 0) {
+          const mapped: Issue[] = dtos.map((dto: BackendIssueDto) => {
+            const priorityLower = (dto.priority || "medium").toLowerCase() as "high" | "medium" | "low" | "critical" | "urgent";
+            const priorityDisplay = dto.priority === "CRITICAL" ? "Critical" : dto.priority === "HIGH" ? "High Priority" : dto.priority === "LOW" ? "Low" : "Medium";
+            return {
+              id: dto.id,
+              category: dto.category || "General",
+              priority: priorityDisplay,
+              priorityLevel: ["high", "medium", "low", "critical", "urgent"].includes(priorityLower) ? priorityLower : "medium",
+              time: dto.createdAt ? new Date(dto.createdAt).toLocaleDateString() : "Just now",
+              title: dto.title,
+              description: dto.description,
+              workflow: dto.workflowStep || 0,
+              workflowLabels: ["Reported", "Verified", "Assigned", "In Progress", "Resolved"],
+              activeLabel: dto.status || "Reported",
+              comments: dto.commentsCount || 0,
+              supports: dto.supportsCount || 0,
+            };
+          });
+          const liveIds = new Set(mapped.map((m) => m.id));
+          const filteredSeed = ISSUES.filter((s) => !liveIds.has(s.id));
+          setIssuesList([...mapped, ...filteredSeed]);
+        }
+      })
+      .catch((err) => {
+        console.warn("Could not fetch live issues, using seed fallback:", err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   function toggleSupport(id: string) {
     setSupported((prev) => {
@@ -100,6 +138,15 @@ export default function IssuesPage() {
           <div>
             <h1 className="text-[var(--text-heading)] font-bold text-[var(--color-text-primary)] mb-1">Issues</h1>
             <p className="text-sm text-[var(--color-text-secondary)]">Join 12,402 citizens in monitoring and fixing ward problems.</p>
+            {loading ? (
+              <span className="text-xs text-[var(--color-brand)] animate-pulse font-semibold mt-1 block">
+                🔄 Refreshing live civic issues from server...
+              </span>
+            ) : (
+              <span className="text-xs text-[var(--color-text-secondary)] font-semibold mt-1 block opacity-80">
+                🟢 Live civic feed connected
+              </span>
+            )}
           </div>
           <Link to="/issues/new" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-brand)] text-[var(--color-text-inverse)] rounded-xl font-bold shadow-md hover:shadow-lg transition-all active:scale-95">
             <Plus size={18} />
@@ -141,7 +188,7 @@ export default function IssuesPage() {
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6">
-          {ISSUES.map((issue) => {
+          {issuesList.map((issue) => {
             const isSupported = supported.has(issue.id);
             return (
               <article

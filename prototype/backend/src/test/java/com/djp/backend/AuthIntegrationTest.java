@@ -28,8 +28,16 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
+    @Autowired
+    private com.djp.backend.repository.IssueRepository issueRepository;
+
+    @Autowired
+    private com.djp.backend.repository.AuditLogRepository auditLogRepository;
+
     @AfterEach
     public void cleanup() {
+        auditLogRepository.deleteAll();
+        issueRepository.deleteAll();
         userRepository.deleteAll();
     }
 
@@ -42,7 +50,8 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void getMe_withValidToken_returnsUserDto() throws Exception {
-        User user = new User("jane.doe@example.com", "Jane Doe", "GOOGLE", "12345");
+        String email = "jane.auth." + java.util.UUID.randomUUID() + "@example.com";
+        User user = new User(email, "Jane Doe", "GOOGLE", java.util.UUID.randomUUID().toString());
         user.setRole("CITIZEN");
         user = userRepository.save(user);
 
@@ -53,7 +62,7 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(user.getId().toString()))
-                .andExpect(jsonPath("$.email").value("jane.doe@example.com"))
+                .andExpect(jsonPath("$.email").value(email))
                 .andExpect(jsonPath("$.fullName").value("Jane Doe"))
                 .andExpect(jsonPath("$.role").value("CITIZEN"));
     }
