@@ -775,8 +775,8 @@
     "semantic_hash": ""
   },
   "todo.md": {
-    "mtime": 1784443739.4472504,
-    "ast_hash": "5fe8d6a73cba61dc44d556253461c60d",
+    "mtime": 1784746414.9577293,
+    "ast_hash": "7156c732f88655da8bc899792df824ca",
     "semantic_hash": ""
   },
   "frontend/apps/admin/public/favicon.svg": {
@@ -1920,8 +1920,8 @@
     "semantic_hash": ""
   },
   "prototype/todo.md": {
-    "mtime": 1784744910.9661548,
-    "ast_hash": "17b6d03758fa665a4b0a1df2b8986239",
+    "mtime": 1784746420.3649695,
+    "ast_hash": "9eb63cb44766f323ad0f14e127609738",
     "semantic_hash": ""
   },
   "docs/vision/vision-core-draft.md": {
@@ -2030,8 +2030,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-recom.md": {
-    "mtime": 1784443698.1317606,
-    "ast_hash": "148f9842dca34bb278aadaa83901e323",
+    "mtime": 1784746108.4784985,
+    "ast_hash": "e5c12f4f8996f50ad4d4468c0e532d94",
     "semantic_hash": ""
   },
   "backend/springboot/src/main/resources/application.yml": {
@@ -2040,8 +2040,8 @@
     "semantic_hash": ""
   },
   "docs/audit/audit-log.md": {
-    "mtime": 1784467314.1246476,
-    "ast_hash": "8449b09bd47ea16afd5d5d9178a2f998",
+    "mtime": 1784746132.491698,
+    "ast_hash": "bdf5b82bdd2e6b1a4d388c068adb250f",
     "semantic_hash": ""
   },
   "docs/audit/README.MD": {
@@ -4712,6 +4712,26 @@
   "docs/legal/registration-and-compliance.md": {
     "mtime": 1784745713.5539048,
     "ast_hash": "4ad92cf8651a7f5f5781574359ff9ec4",
+    "semantic_hash": ""
+  },
+  "docs/api/djp-postman_collection.json": {
+    "mtime": 1784746481.5605638,
+    "ast_hash": "678cce68f9602d189f5499df9168a7db",
+    "semantic_hash": ""
+  },
+  "prototype/docs/api/djp-prototype.postman_collection.json": {
+    "mtime": 1784746501.3833582,
+    "ast_hash": "678cce68f9602d189f5499df9168a7db",
+    "semantic_hash": ""
+  },
+  "docs/api/POSTMAN_GUIDE.md": {
+    "mtime": 1784746514.8708866,
+    "ast_hash": "50b7dc52c57ca17d070f7b0d0146f91a",
+    "semantic_hash": ""
+  },
+  "prototype/docs/api/README.md": {
+    "mtime": 1784746522.5881848,
+    "ast_hash": "ccedafff47f78f3a4a795e7a4869a80a",
     "semantic_hash": ""
   }
 }
