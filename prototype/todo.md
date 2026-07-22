@@ -28,5 +28,9 @@
 
 ### ✍️ User Input (Add your 1–2 line prototype task items below)
 - [x] Connect `CreateIssuePage` and `IssuesPage` forms to live backend `POST /djp/api/v1/issues` route
-- [ ] Copy and adapt Discussions (`/discussions`) and Polls (`/polls`) APIs from root `/backend` -> `prototype/backend`
-- [ ] Copy and adapt Discussion & Poll web views from root `apps/citizen` -> `prototype/frontend` (`web-app = prototype`)
+- [x] Copy and adapt Discussions (`/discussions`) and Polls (`/polls`) APIs from root `/backend` -> `prototype/backend`
+- [x] Copy and adapt Discussion & Poll web views from root `apps/citizen` -> `prototype/frontend` (`web-app = prototype`)
+- [x] Audit & Cleanup (GOV-001): Establish ECI registration structure and compliance roadmap (`docs/legal/registration-and-compliance.md`)
+- [x] Audit & Cleanup (GOV-002): Establish Data Privacy Policy under DPDPA 2023 (`docs/legal/data-privacy.md`) and add consent fields to `User.java`
+- [ ] Audit & Cleanup (IMPL-001): Phase 1 Core Tasks for Spring Boot foundation (Project Structure, Config Profiles, Flyway, Exception Handling, Security/JWT, Observability)
+- [ ] Audit & Cleanup (DATA-001): Integrate `flyway-core` and create versioned migration scripts (`V1__init.sql`) replacing unsafe `ddl-auto: update`

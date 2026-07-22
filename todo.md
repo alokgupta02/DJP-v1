@@ -22,4 +22,9 @@
 - [x] Fix TECH-004 & SEC-003: Integrate Lombok and Resilience4j libraries and configure circuit breakers and retries
 - [x] Fix TECH-006: Scaffold layered exception classes, DTOs, and global RestControllerAdvice error handler
 - [x] Fix TECH-003: Implement Spring Security configurations, OAuth2 client redirection, and JWT verification
+- [x] Prototype Parity: Implement Discussions (/discussions) and Polls (/polls) APIs & web views in prototype/backend and prototype/frontend
+- [x] Audit & Cleanup (GOV-001): Establish ECI party registration structure and compliance pathway (docs/legal/registration-and-compliance.md)
+- [x] Audit & Cleanup (GOV-002): Establish Data Privacy Policy (DPDPA 2023 / GDPR) and add consent tracking attributes to User entity
+- [ ] Audit & Cleanup (IMPL-001): Phase 1 Core Tasks for Spring Boot foundation (Project Structure, Config Profiles, Flyway, Exception Handling, Security/JWT, Observability)
+- [ ] Audit & Cleanup (DATA-001): Integrate flyway-core and create versioned migration scripts (V1__init.sql) replacing unsafe ddl-auto: update
 
