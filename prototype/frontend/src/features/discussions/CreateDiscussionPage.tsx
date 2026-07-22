@@ -16,6 +16,7 @@ import {
   FileText,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { createDiscussion } from "./discussionsApi";
 
 const COMMUNITIES = [
   "Ward 12 (North Delhi)",
@@ -209,10 +210,22 @@ export default function CreateDiscussionPage() {
     }
   };
 
-  const handlePost = (e: React.FormEvent) => {
+  const handlePost = async (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.removeItem(DRAFT_STORAGE_KEY);
-    navigate("/discussions");
+    try {
+      await createDiscussion({
+        title,
+        description: editorRef.current?.innerHTML || "No description provided.",
+        category: selectedCommunity || "Ward 12 (North Delhi)",
+        proposalPreview: "Drafting community proposal...",
+        proposalBadge: "New"
+      });
+      localStorage.removeItem(DRAFT_STORAGE_KEY);
+      navigate("/discussions");
+    } catch (err) {
+      console.error("Failed to post discussion:", err);
+      showStatus("Error posting discussion");
+    }
   };
 
   return (

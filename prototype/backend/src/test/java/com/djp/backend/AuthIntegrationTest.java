@@ -34,9 +34,17 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private com.djp.backend.repository.AuditLogRepository auditLogRepository;
 
+    @Autowired
+    private com.djp.backend.repository.DiscussionRepository discussionRepository;
+
+    @Autowired
+    private com.djp.backend.repository.PollRepository pollRepository;
+
     @AfterEach
     public void cleanup() {
         auditLogRepository.deleteAll();
+        discussionRepository.deleteAll();
+        pollRepository.deleteAll();
         issueRepository.deleteAll();
         userRepository.deleteAll();
     }

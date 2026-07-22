@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Plus, Vote, MessageSquare, Share2, ChevronRight, TrendingUp, Clock, AlertTriangle } from "lucide-react";
 import clsx from "clsx";
+import { fetchPolls, type BackendPollDto } from "./pollsApi";
 
 const FILTER_TABS = ["Open", "Closed", "My Polls", "Following", "Needs Your Vote", "Near Me"];
 
@@ -24,6 +25,46 @@ const POLLS = [
 
 export default function PollsPage() {
   const [activeTab, setActiveTab] = useState("Open");
+  const [livePolls, setLivePolls] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetchPolls()
+      .then((data) => {
+        const mapped = data.map((p: BackendPollDto) => {
+          let parsedOptions = [
+            { label: "Yes, support proposal", pct: 60, primary: true },
+            { label: "No, need modifications", pct: 40, primary: false }
+          ];
+          if (p.optionsJson) {
+            try {
+              parsedOptions = JSON.parse(p.optionsJson);
+            } catch {
+              // fallback
+            }
+          }
+          return {
+            id: p.id,
+            featured: false,
+            badge: p.category || "General",
+            badgeClass: "bg-[var(--color-brand)]",
+            timeLeft: "7d",
+            question: p.question,
+            description: p.description,
+            options: parsedOptions,
+            pct: parsedOptions[0]?.pct || 50,
+            votes: `${p.votesCount || 1}`,
+            comments: p.commentsCount || 0
+          };
+        });
+        setLivePolls(mapped);
+      })
+      .catch((err) => console.warn("Could not fetch live polls:", err));
+  }, []);
+
+  const combinedPolls = [
+    ...livePolls,
+    ...POLLS.filter(p => !livePolls.some(lp => lp.id === p.id && lp.question === p.question))
+  ];
 
   return (
     <div className="flex-1 flex min-h-0">
@@ -76,7 +117,7 @@ export default function PollsPage() {
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-          {POLLS.map((poll) => {
+          {combinedPolls.map((poll) => {
             if (poll.featured) {
               return (
                 <div key={poll.id} className="group bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-6 rounded-xl hover:shadow-xl transition-all duration-300 xl:col-span-2">
@@ -96,7 +137,7 @@ export default function PollsPage() {
                   <p className="text-sm text-[var(--color-text-secondary)] mb-6 line-clamp-2">{poll.description}</p>
 
                   <div className="space-y-4 mb-6">
-                    {poll.options!.map((opt) => (
+                    {poll.options?.map((opt: any) => (
                       <div key={opt.label} className="space-y-2">
                         <div className="flex justify-between text-sm">
                           <span className="font-bold text-[var(--color-text-primary)]">{opt.label}</span>

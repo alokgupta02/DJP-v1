@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronUp, ChevronDown, Plus } from "lucide-react";
 import clsx from "clsx";
+import { fetchDiscussions, type BackendDiscussionDto } from "./discussionsApi";
 
 interface Discussion {
   id: string;
@@ -33,6 +34,33 @@ const badgeVariantStyles: Record<string, string> = {
 
 export default function DiscussionsPage() {
   const [votes, setVotes] = useState<Record<string, "up" | "down" | null>>({});
+  const [liveDiscussions, setLiveDiscussions] = useState<Discussion[]>([]);
+
+  useEffect(() => {
+    fetchDiscussions()
+      .then((data) => {
+        const mapped: Discussion[] = data.map((d: BackendDiscussionDto) => ({
+          id: d.id,
+          category: d.category || "Infrastructure",
+          time: "Just now",
+          title: d.title,
+          description: d.description,
+          votes: d.votesCount || 1,
+          participantCount: d.participantCount || 1,
+          proposalCount: d.proposalCount || 0,
+          proposalPreview: d.proposalPreview || '"Community proposal in drafting stage..."',
+          proposalBadge: d.proposalBadge || "New",
+          proposalBadgeVariant: (d.proposalBadgeVariant as any) || "primary"
+        }));
+        setLiveDiscussions(mapped);
+      })
+      .catch((err) => console.warn("Could not fetch live discussions:", err));
+  }, []);
+
+  const combinedDiscussions = [
+    ...liveDiscussions,
+    ...DISCUSSIONS.filter(d => !liveDiscussions.some(ld => ld.id === d.id && ld.title === d.title))
+  ];
 
   function handleVote(id: string, dir: "up" | "down") {
     setVotes((prev) => {
@@ -97,7 +125,7 @@ export default function DiscussionsPage() {
 
       <div className="px-8 py-6 w-full">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 pb-20">
-          {DISCUSSIONS.map((discussion) => (
+          {combinedDiscussions.map((discussion) => (
             <div
               key={discussion.id}
               className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-2xl p-5 hover:shadow-lg transition-shadow cursor-pointer flex flex-col gap-4 group"
