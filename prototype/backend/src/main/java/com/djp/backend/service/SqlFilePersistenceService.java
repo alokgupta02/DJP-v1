@@ -69,9 +69,9 @@ public class SqlFilePersistenceService {
     public void appendUser(User user) {
         if (!enabled || user == null || user.getId() == null) return;
         String sql = String.format(
-                "MERGE INTO users (id, email, name, provider, provider_id, role, reputation_score, subscription_status, onboarding_completed, privacy_consent_given, privacy_consent_timestamp, joined_date, location, pincode, occupation, bio, topics)\n" +
+                "MERGE INTO users (id, email, name, provider, provider_id, role, reputation_score, subscription_status, onboarding_completed, privacy_consent_given, privacy_consent_timestamp, joined_date, location, pincode, country, state, district, city, locality, ward, constituency, occupation, bio, topics, dob, gender, phone_number)\n" +
                 "KEY (id)\n" +
-                "VALUES ('%s', %s, %s, %s, %s, %s, %d, %s, %b, %b, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), %s, %s, %s, %s, %s);",
+                "VALUES ('%s', %s, %s, %s, %s, %s, %d, %s, %b, %b, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);",
                 user.getId(),
                 escapeSql(user.getEmail()),
                 escapeSql(user.getName()),
@@ -84,9 +84,19 @@ public class SqlFilePersistenceService {
                 Boolean.TRUE.equals(user.getPrivacyConsentGiven()),
                 escapeSql(user.getLocation()),
                 escapeSql(user.getPincode()),
+                escapeSql(user.getCountry()),
+                escapeSql(user.getState()),
+                escapeSql(user.getDistrict()),
+                escapeSql(user.getCity()),
+                escapeSql(user.getLocality()),
+                escapeSql(user.getWard()),
+                escapeSql(user.getConstituency()),
                 escapeSql(user.getOccupation()),
                 escapeSql(user.getBio()),
-                escapeSql(user.getTopics())
+                escapeSql(user.getTopics()),
+                escapeSql(user.getDob()),
+                escapeSql(user.getGender()),
+                escapeSql(user.getPhoneNumber())
         );
         appendToFiles("users.sql", sql);
     }

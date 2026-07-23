@@ -2,7 +2,7 @@ package com.djp.backend.dto;
 
 import java.util.List;
 
-public record OnboardingUpdateRequestDto(
+public record ProfileUpdateRequestDto(
     String name,
     String dob,
     String gender,
@@ -18,6 +18,5 @@ public record OnboardingUpdateRequestDto(
     String constituency,
     String occupation,
     String bio,
-    List<String> topics,
-    Boolean privacyConsentGiven
+    List<String> topics
 ) {}

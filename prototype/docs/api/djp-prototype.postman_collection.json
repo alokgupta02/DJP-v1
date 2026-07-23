@@ -378,6 +378,79 @@
       ]
     },
     {
+      "name": "6. Profiles",
+      "description": "Endpoints for retrieving and updating user profiles.",
+      "item": [
+        {
+          "name": "Get Profile By ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwtToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/profiles/11111111-1111-1111-1111-111111111111",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "profiles",
+                "11111111-1111-1111-1111-111111111111"
+              ]
+            },
+            "description": "Fetches a citizen's public profile."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwtToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bio\": \"Updated bio\",\n  \"occupation\": \"Software Engineer\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/profiles/11111111-1111-1111-1111-111111111111",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "profiles",
+                "11111111-1111-1111-1111-111111111111"
+              ]
+            },
+            "description": "Updates a citizen's profile."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "name": "5. System & Observability",
       "description": "Spring Boot Actuator and system health check endpoints.",
       "item": [

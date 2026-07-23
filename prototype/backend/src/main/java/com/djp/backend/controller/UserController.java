@@ -39,4 +39,5 @@ public class UserController {
         User updatedUser = userService.completeOnboarding(userId, dto);
         return ResponseEntity.ok(UserDto.fromEntity(updatedUser));
     }
+
 }

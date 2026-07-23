@@ -1,34 +1,37 @@
 package com.djp.backend.service;
 
-import com.djp.backend.dto.OnboardingUpdateRequestDto;
+import com.djp.backend.dto.ProfileUpdateRequestDto;
 import com.djp.backend.exception.ResourceNotFoundException;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Service
-public class UserService {
+public class ProfileService {
 
     private final UserRepository userRepository;
     private final SqlFilePersistenceService sqlFilePersistenceService;
 
-    public UserService(UserRepository userRepository, SqlFilePersistenceService sqlFilePersistenceService) {
+    public ProfileService(UserRepository userRepository, SqlFilePersistenceService sqlFilePersistenceService) {
         this.userRepository = userRepository;
         this.sqlFilePersistenceService = sqlFilePersistenceService;
     }
 
+    @Transactional(readOnly = true)
+    public User getProfile(UUID userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User profile not found with id: " + userId));
+    }
+
     @Transactional
-    public User completeOnboarding(UUID userId, OnboardingUpdateRequestDto dto) {
+    public User updateProfile(UUID userId, ProfileUpdateRequestDto dto) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
 
-        if (dto.name() != null && !dto.name().isBlank()) {
-            user.setName(dto.name().trim());
-        }
+        if (dto.name() != null && !dto.name().isBlank()) user.setName(dto.name().trim());
         if (dto.dob() != null) user.setDob(dto.dob().trim());
         if (dto.gender() != null) user.setGender(dto.gender().trim());
         if (dto.phoneNumber() != null) user.setPhoneNumber(dto.phoneNumber().trim());
@@ -47,15 +50,8 @@ public class UserService {
             user.setTopics(String.join(", ", dto.topics()));
         }
 
-        user.setOnboardingCompleted(true);
-        if (Boolean.TRUE.equals(dto.privacyConsentGiven())) {
-            user.setPrivacyConsentGiven(true);
-            user.setPrivacyConsentTimestamp(OffsetDateTime.now());
-        }
-
         User savedUser = userRepository.save(user);
         sqlFilePersistenceService.appendUser(savedUser);
         return savedUser;
     }
-
 }

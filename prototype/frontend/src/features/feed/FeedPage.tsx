@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Search, MapPin, Flame, ThumbsUp, MessageSquare, Users, Landmark,
   Clock, CheckCircle2, User, AlertTriangle, Trash2, Droplet,
-  Lightbulb, Plus, Image, ChevronDown, Vote,
+  Lightbulb, Plus, Image, ChevronDown, Vote, X
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -512,9 +512,64 @@ function TrendCard({ item }: { item: typeof TRENDING[number] }) {
 }
 
 export default function FeedPage() {
+  const [isBannerHidden, setIsBannerHidden] = useState(false);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("djp_hide_completion_banner") === "true") {
+      setIsBannerHidden(true);
+    }
+  }, []);
+
+  const handleDismissBanner = () => {
+    setIsBannerHidden(true);
+    sessionStorage.setItem("djp_hide_completion_banner", "true");
+  };
+
+  const userStr = localStorage.getItem("djp_user");
+  const user = userStr ? JSON.parse(userStr) : null;
+  
+  let completion = 100;
+  if (user) {
+    const fields = [
+      'fullName', 'email', 'dob', 'gender', 'phoneNumber',
+      'location', 'country', 'state', 'city',
+      'ward', 'occupation', 'bio', 'topics'
+    ];
+    let filled = 0;
+    fields.forEach(f => {
+      if (user[f] && String(user[f]).trim() !== "" && String(user[f]) !== "null") filled++;
+    });
+    completion = Math.round((filled / fields.length) * 100);
+  }
+
   return (
     <div className="flex flex-col h-full">
       <div className="px-8 pt-8 w-full">
+        {user && completion < 100 && !isBannerHidden && (
+          <div className="bg-[var(--color-brand-light)] border border-[var(--color-brand)] rounded-xl p-4 mb-6 flex items-center justify-between shadow-sm relative pr-10">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow text-[var(--color-brand)]">
+                <AlertTriangle size={20} />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-[var(--color-brand)]">Complete your Civic Profile</h3>
+                <p className="text-xs text-[var(--color-brand)] mt-1">
+                  You are at {completion}% completion. Unlock full participation by finishing your profile.
+                </p>
+              </div>
+            </div>
+            <Link to="/profile" className="bg-[var(--color-brand)] text-white px-4 py-2 rounded-lg text-sm font-bold shadow hover:shadow-lg transition">
+              Complete Now
+            </Link>
+            <button 
+              onClick={handleDismissBanner}
+              className="absolute top-2 right-2 text-[var(--color-brand)] hover:text-black transition-colors"
+              aria-label="Dismiss banner"
+            >
+              <X size={18} />
+            </button>
+          </div>
+        )}
         <FeedFilterBar />
       </div>
 

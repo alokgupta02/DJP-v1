@@ -17,6 +17,7 @@
 ## 📋 Backlog & Planned Phases
 
 ### Phase 2 — Core E2E & API Test Automation (TDD Red Phase)
+- [x] Write Playwright QA test for Profile Completion Banner & Edit Modal (`profile-completion.spec.js`)
 - [ ] Write failing Playwright E2E tests for core authentication flow (`login -> oauth -> feed`)
 - [ ] Write failing API integration tests for microservice `/api/v1` routes (`auth`, `issues`, `discussions`)
 - [ ] Verify TDD Red Phase failure state before handing off to FE/BE agents

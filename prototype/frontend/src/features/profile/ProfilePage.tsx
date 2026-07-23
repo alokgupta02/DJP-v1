@@ -1,33 +1,79 @@
-import { MapPin, Edit3, Share2, Phone, Mail, Home, ShieldCheck } from "lucide-react";
-import clsx from "clsx";
+import { useState, useEffect } from "react";
+import { MapPin, Edit3, Share2, Phone, Mail, Home, ShieldCheck, X } from "lucide-react";
+
+import { fetchUser, updateProfile } from "./usersApi";
+import type { UserDto } from "./usersApi";
 
 export default function ProfilePage() {
+  const [user, setUser] = useState<UserDto | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        let userId = "00000000-0000-0000-0000-000000000001"; // Fallback dev user ID
+        const userStr = localStorage.getItem("djp_user");
+        if (userStr) {
+          const parsed = JSON.parse(userStr);
+          if (parsed.id) {
+            userId = parsed.id;
+          }
+        }
+        
+        const data = await fetchUser(userId);
+        setUser(data);
+        localStorage.setItem("djp_user", JSON.stringify(data));
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchProfile();
+  }, []);
+
+  if (loading) {
+    return <div className="p-8 text-center text-[var(--color-text-secondary)]">Loading profile...</div>;
+  }
+
+  if (!user) {
+    return <div className="p-8 text-center text-[var(--color-error)]">Failed to load profile.</div>;
+  }
+
+  const initials = user.fullName?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U';
+
   return (
-    <div className="flex-1 p-8 overflow-y-auto">
+    <div className="flex-1 p-8 overflow-y-auto relative">
       <header className="w-full bg-[var(--color-bg-muted)] rounded-xl p-6 flex items-center justify-between border border-[var(--color-border)] shadow-sm overflow-hidden relative">
         <div className="flex items-center gap-6 z-10">
           <div className="relative">
             <div className="w-28 h-28 rounded-full border-4 border-[var(--color-brand)] p-1 bg-[var(--color-bg-page)]">
-              <div className="w-full h-full rounded-full bg-[var(--color-brand-light)] flex items-center justify-center text-3xl font-bold text-[var(--color-brand)]">AM</div>
+              <div className="w-full h-full rounded-full bg-[var(--color-brand-light)] flex items-center justify-center text-3xl font-bold text-[var(--color-brand)]">{initials}</div>
             </div>
             <div className="absolute bottom-0 right-0 bg-[var(--color-brand)] text-white p-1.5 rounded-full border-2 border-[var(--color-bg-page)]">
               <ShieldCheck size={14} />
             </div>
           </div>
           <div>
-            <h2 className="text-[var(--text-display)] font-bold text-[var(--color-text-primary)]">Arjun Malhotra</h2>
+            <h2 className="text-[var(--text-display)] font-bold text-[var(--color-text-primary)]">{user.fullName || 'Citizen'}</h2>
             <div className="flex items-center gap-2 mt-1">
               <MapPin size={16} className="text-[var(--color-brand)]" />
-              <p className="text-base text-[var(--color-text-secondary)]">Ward 42 - South Delhi</p>
+              <p className="text-base text-[var(--color-text-secondary)]">
+                {user.ward ? user.ward : user.location || 'Location Not Set'}
+              </p>
             </div>
             <div className="flex gap-2 mt-3">
               <span className="bg-[var(--color-brand-light)] text-[var(--color-brand)] px-3 py-1 rounded-full text-[11px] font-bold">ACTIVE CITIZEN</span>
-              <span className="bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)] px-3 py-1 rounded-full text-[11px] font-bold">PLATINUM MEMBER</span>
+              {user.onboardingCompleted && (
+                <span className="bg-[var(--color-bg-subtle)] text-[var(--color-success)] px-3 py-1 rounded-full text-[11px] font-bold">VERIFIED</span>
+              )}
             </div>
           </div>
         </div>
         <div className="z-10 flex flex-col gap-2">
-          <button className="bg-[var(--color-brand)] text-white px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:shadow-lg transition-all active:scale-95 text-sm">
+          <button onClick={() => setIsEditing(true)} className="bg-[var(--color-brand)] text-white px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:shadow-lg transition-all active:scale-95 text-sm">
             <Edit3 size={16} />
             Edit Profile
           </button>
@@ -38,6 +84,7 @@ export default function ProfilePage() {
           <button
             onClick={() => {
               localStorage.removeItem("djp_user");
+              localStorage.removeItem("djp_token");
               window.location.href = "/login";
             }}
             className="bg-red-50 text-red-600 border border-red-200 px-6 py-2 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-red-100 transition-all active:scale-95 text-sm"
@@ -51,17 +98,10 @@ export default function ProfilePage() {
         <div className="col-span-12 md:col-span-6 lg:col-span-4 rounded-xl bg-gradient-to-br from-[var(--color-brand)] to-[var(--color-brand-hover)] p-6 text-white shadow-md hover:scale-[1.02] transition-transform cursor-default">
           <div className="flex justify-between items-start">
             <span className="text-3xl font-bold opacity-80">📢</span>
-            <span className="bg-white/20 text-white px-3 py-1 rounded-full text-[11px]">+2 this month</span>
           </div>
           <div className="mt-6">
-            <h3 className="text-[56px] leading-tight font-bold">12</h3>
+            <h3 className="text-[56px] leading-tight font-bold">0</h3>
             <p className="text-lg opacity-90">Issues Reported</p>
-          </div>
-          <div className="mt-4 flex gap-2">
-            <div className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
-              <div className="h-full bg-white w-[75%] rounded-full" />
-            </div>
-            <span className="text-[11px]">8 Resolved</span>
           </div>
         </div>
 
@@ -71,12 +111,9 @@ export default function ProfilePage() {
               <MessageSquareIcon />
             </div>
             <div>
-              <h3 className="text-[var(--text-display)] leading-none font-bold text-[var(--color-text-primary)]">05</h3>
+              <h3 className="text-[var(--text-display)] leading-none font-bold text-[var(--color-text-primary)]">0</h3>
               <p className="text-sm text-[var(--color-text-secondary)]">Discussions Created</p>
             </div>
-          </div>
-          <div className="mt-4 pt-4 border-t border-[var(--color-border)]/30">
-            <p className="text-[11px] text-[var(--color-text-secondary)] italic">"Arjun's discussion on Waste Management reached 45 neighbors."</p>
           </div>
         </div>
 
@@ -86,50 +123,22 @@ export default function ProfilePage() {
               <VoteIcon />
             </div>
             <div>
-              <h3 className="text-[var(--text-display)] leading-none font-bold text-[var(--color-text-primary)]">08</h3>
+              <h3 className="text-[var(--text-display)] leading-none font-bold text-[var(--color-text-primary)]">0</h3>
               <p className="text-sm text-[var(--color-text-secondary)]">Polls Created</p>
             </div>
-          </div>
-          <div className="mt-4 flex -space-x-2 items-center">
-            <div className="w-8 h-8 rounded-full border-2 border-white bg-[var(--color-bg-subtle)]" />
-            <div className="w-8 h-8 rounded-full border-2 border-white bg-[var(--color-bg-muted)]" />
-            <div className="w-8 h-8 rounded-full border-2 border-white bg-[var(--color-brand-light)] flex items-center justify-center text-[10px] font-bold text-[var(--color-brand)]">120+</div>
-            <p className="ml-4 text-[11px] text-[var(--color-text-secondary)] self-center">Participated in your polls</p>
           </div>
         </div>
       </section>
 
       <div className="grid grid-cols-12 gap-6 mt-6">
-        <section className="col-span-12 lg:col-span-7">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-[var(--color-text-primary)]">Achievements</h3>
-            <button className="text-[var(--color-brand)] font-bold text-xs hover:underline">View All</button>
-          </div>
-          <div className="grid grid-cols-3 gap-4">
-            {[
-              { icon: "🏆", title: "Civic Hero", desc: "First 10 verified issues reported", color: "bg-[var(--color-brand-light)]" },
-              { icon: "⭐", title: "Top Contributor", desc: "Awarded by Ward Councilor", color: "bg-[var(--color-bg-subtle)]" },
-              { icon: "🏅", title: "Poll Master", desc: "Engaged over 500 citizens", color: "bg-[var(--color-bg-subtle)]" },
-            ].map((badge) => (
-              <div key={badge.title} className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-6 rounded-xl flex flex-col items-center text-center shadow-sm hover:border-[var(--color-brand)] transition-colors cursor-pointer group">
-                <div className={clsx("w-16 h-16 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform", badge.color)}>
-                  <span className="text-2xl">{badge.icon}</span>
-                </div>
-                <h4 className="text-sm font-bold text-[var(--color-text-primary)]">{badge.title}</h4>
-                <p className="text-[11px] text-[var(--color-text-secondary)] mt-2 leading-tight">{badge.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section className="col-span-12 lg:col-span-5">
           <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">Account Details</h3>
           <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 shadow-sm">
             <div className="space-y-5">
               {[
-                { icon: Phone, label: "Mobile Number", value: "+91 98765 43210" },
-                { icon: Mail, label: "Email Address", value: "arjun.m@civicmail.in" },
-                { icon: Home, label: "Primary Address", value: "Flat 402, Block C, Green View Apartments, Saket, New Delhi 110017" },
+                { icon: Phone, label: "Mobile Number", value: user.phoneNumber || "Not set" },
+                { icon: Mail, label: "Email Address", value: user.email },
+                { icon: Home, label: "Primary Address", value: `${user.locality || ''}, ${user.city || ''}, ${user.state || ''}`.replace(/^, | ,|, $/g, '').trim() || user.location || "Not set" },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
                   <item.icon size={18} className="text-[var(--color-text-secondary)] shrink-0 mt-0.5" />
@@ -137,7 +146,6 @@ export default function ProfilePage() {
                     <p className="text-[11px] text-[var(--color-text-secondary)]">{item.label}</p>
                     <div className="flex justify-between items-center mt-1">
                       <span className="text-sm text-[var(--color-text-primary)]">{item.value}</span>
-                      <Edit3 size={14} className="text-[var(--color-brand)] cursor-pointer hover:scale-110 transition-transform shrink-0 ml-2" />
                     </div>
                   </div>
                 </div>
@@ -147,58 +155,205 @@ export default function ProfilePage() {
                 <div className="flex-grow">
                   <p className="text-[11px] text-[var(--color-text-secondary)]">Registered Ward</p>
                   <div className="mt-1 flex items-center justify-between">
-                    <span className="text-sm font-bold text-[var(--color-text-primary)]">Ward 42 (South Delhi)</span>
+                    <span className="text-sm font-bold text-[var(--color-text-primary)]">{user.ward || "Not set"}</span>
                     <span className="bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)] px-3 py-1 rounded text-[11px]">LOCKED</span>
                   </div>
                   <p className="text-[11px] text-[var(--color-text-secondary)] mt-1">Ward changes require address verification.</p>
                 </div>
               </div>
             </div>
-            <button className="w-full mt-6 border-2 border-[var(--color-border)] text-[var(--color-text-primary)] py-3 rounded-full font-bold hover:bg-[var(--color-bg-subtle)] transition-all active:scale-95 text-sm">
-              Download Citizen Profile PDF
-            </button>
+          </div>
+        </section>
+        
+        <section className="col-span-12 lg:col-span-7">
+          <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">About Me</h3>
+          <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 shadow-sm h-full">
+            <div className="mb-4">
+                <p className="text-sm font-bold text-[var(--color-text-primary)] mb-1">Occupation</p>
+                <p className="text-sm text-[var(--color-text-secondary)]">{user.occupation || "Not set"}</p>
+            </div>
+            <div className="mb-4">
+                <p className="text-sm font-bold text-[var(--color-text-primary)] mb-1">Bio</p>
+                <p className="text-sm text-[var(--color-text-secondary)]">{user.bio || "No bio provided."}</p>
+            </div>
+            <div>
+                <p className="text-sm font-bold text-[var(--color-text-primary)] mb-2">Topics of Interest</p>
+                <div className="flex flex-wrap gap-2">
+                    {user.topics ? user.topics.split(',').map(t => (
+                        <span key={t.trim()} className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] text-xs px-2 py-1 rounded-md text-[var(--color-text-secondary)]">
+                            {t.trim()}
+                        </span>
+                    )) : <span className="text-sm text-[var(--color-text-secondary)]">None selected</span>}
+                </div>
+            </div>
           </div>
         </section>
       </div>
 
-      <section className="mt-8 mb-10">
-        <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">Recent Activity</h3>
-        <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl overflow-hidden">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-[var(--color-bg-subtle)] border-b border-[var(--color-border)]">
-                <th className="px-6 py-4 text-xs font-bold text-[var(--color-text-secondary)]">Date</th>
-                <th className="px-6 py-4 text-xs font-bold text-[var(--color-text-secondary)]">Activity</th>
-                <th className="px-6 py-4 text-xs font-bold text-[var(--color-text-secondary)]">Status</th>
-                <th className="px-6 py-4 text-xs font-bold text-[var(--color-text-secondary)] text-right">Action</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[var(--color-border)]/30">
-              {[
-                { date: "Oct 24, 2023", icon: "⚠️", text: 'Reported "Pothole on Main Market Road"', status: "IN REVIEW", statusClass: "bg-[var(--color-bg-muted)] text-[var(--color-text-primary)]" },
-                { date: "Oct 21, 2023", icon: "🗳️", text: 'New Poll: "Proposed Park Renovation Plan"', status: "LIVE", statusClass: "bg-[var(--color-brand-light)] text-[var(--color-brand)]" },
-                { date: "Oct 18, 2023", icon: "✅", text: 'Issue Resolved: "Street Light Outage"', status: "COMPLETED", statusClass: "bg-green-100 text-green-800" },
-              ].map((row) => (
-                <tr key={row.date} className="hover:bg-[var(--color-bg-subtle)] transition-colors">
-                  <td className="px-6 py-4 text-sm text-[var(--color-text-primary)]">{row.date}</td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
-                      <span>{row.icon}</span>
-                      <span className="text-sm text-[var(--color-text-primary)]">{row.text}</span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className={clsx("px-3 py-1 rounded-full text-[11px] font-bold", row.statusClass)}>{row.status}</span>
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <button className="text-[var(--color-brand)] hover:underline font-bold text-sm">Details</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      {isEditing && (
+        <EditProfileModal user={user} onClose={() => setIsEditing(false)} onSave={(updatedUser) => {
+          setUser({ ...user, ...updatedUser });
+          localStorage.setItem("djp_user", JSON.stringify({ ...user, ...updatedUser }));
+          setIsEditing(false);
+        }} />
+      )}
+    </div>
+  );
+}
+
+function EditProfileModal({ user, onClose, onSave }: { user: UserDto, onClose: () => void, onSave: (u: Partial<UserDto>) => void }) {
+  const [fullName, setFullName] = useState(user.fullName || "");
+  const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber || "");
+  const [dob, setDob] = useState(user.dob || "");
+  const [gender, setGender] = useState(user.gender || "");
+  const [location, setLocation] = useState(user.location || "");
+  const [city, setCity] = useState(user.city || "");
+  const [state, setState] = useState(user.state || "");
+  const [country, setCountry] = useState(user.country || "");
+  const [ward, setWard] = useState(user.ward || "");
+  const [bio, setBio] = useState(user.bio || "");
+  const [occupation, setOccupation] = useState(user.occupation || "");
+  const [topics, setTopics] = useState(user.topics ? user.topics.split(',').map(t => t.trim()).join(', ') : "");
+  const [saving, setSaving] = useState(false);
+
+  const handleSave = async () => {
+    setSaving(true);
+    try {
+      const updated = await updateProfile(user.id, {
+        name: fullName,
+        phoneNumber,
+        dob,
+        gender,
+        location,
+        city,
+        state,
+        country,
+        ward,
+        bio,
+        occupation,
+        topics: topics.split(',').map(t => t.trim()).filter(Boolean)
+      });
+      onSave(updated);
+    } catch (e) {
+      console.error(e);
+      alert("Failed to update profile");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div className="bg-[var(--color-bg-page)] rounded-xl w-full max-w-2xl shadow-xl flex flex-col max-h-[90vh]">
+        <div className="p-4 border-b border-[var(--color-border)] flex justify-between items-center shrink-0">
+          <h2 className="font-bold text-lg text-[var(--color-text-primary)]">Edit Profile</h2>
+          <button onClick={onClose} className="p-1 hover:bg-[var(--color-bg-subtle)] rounded-full text-[var(--color-text-secondary)]">
+            <X size={20} />
+          </button>
         </div>
-      </section>
+        <div className="p-6 overflow-y-auto space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">Full Name</label>
+                    <input 
+                        type="text" value={fullName} onChange={e => setFullName(e.target.value)} 
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">Phone Number</label>
+                    <input 
+                        type="text" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} 
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">Date of Birth</label>
+                    <input 
+                        type="date" value={dob} onChange={e => setDob(e.target.value)} 
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">Gender</label>
+                    <select 
+                        value={gender} onChange={e => setGender(e.target.value)} 
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                    >
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div className="md:col-span-2">
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">Address / Location</label>
+                    <input 
+                        type="text" value={location} onChange={e => setLocation(e.target.value)} 
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">City</label>
+                    <input 
+                        type="text" value={city} onChange={e => setCity(e.target.value)} 
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">Ward</label>
+                    <input 
+                        type="text" value={ward} onChange={e => setWard(e.target.value)} 
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">State</label>
+                    <input 
+                        type="text" value={state} onChange={e => setState(e.target.value)} 
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">Country</label>
+                    <input 
+                        type="text" value={country} onChange={e => setCountry(e.target.value)} 
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                    />
+                </div>
+                <div className="md:col-span-2">
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">Occupation</label>
+                    <input 
+                        type="text" value={occupation} onChange={e => setOccupation(e.target.value)} 
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                        placeholder="e.g. Software Engineer"
+                    />
+                </div>
+                <div className="md:col-span-2">
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">Bio</label>
+                    <textarea 
+                        value={bio} onChange={e => setBio(e.target.value)} rows={3}
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                        placeholder="Tell your neighbors about yourself..."
+                    />
+                </div>
+                <div className="md:col-span-2">
+                    <label className="block text-sm font-bold text-[var(--color-text-primary)] mb-1">Topics of Interest</label>
+                    <input 
+                        type="text" value={topics} onChange={e => setTopics(e.target.value)} 
+                        className="w-full px-3 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] text-sm focus:outline-none focus:border-[var(--color-brand)]"
+                        placeholder="Comma separated: Roads, Water, Education"
+                    />
+                </div>
+            </div>
+        </div>
+        <div className="p-4 border-t border-[var(--color-border)] flex justify-end gap-3 shrink-0">
+          <button onClick={onClose} className="px-4 py-2 font-bold text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)] rounded-lg text-sm">Cancel</button>
+          <button onClick={handleSave} disabled={saving} className="px-4 py-2 bg-[var(--color-brand)] text-white font-bold rounded-lg text-sm disabled:opacity-50 flex items-center gap-2 hover:shadow-md">
+            {saving ? "Saving..." : "Save Changes"}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -3,12 +3,9 @@ package com.djp.backend.dto;
 import com.djp.backend.model.User;
 import java.util.UUID;
 
-public record UserDto(
+public record ProfileDto(
     UUID id,
-    String email,
     String fullName,
-    String avatarUrl,
-    String role,
     String dob,
     String gender,
     String phoneNumber,
@@ -24,17 +21,13 @@ public record UserDto(
     String occupation,
     String bio,
     String topics,
-    Boolean onboardingCompleted,
-    Integer reputationScore
+    Boolean onboardingCompleted
 ) {
-    public static UserDto fromEntity(User user) {
+    public static ProfileDto fromEntity(User user) {
         if (user == null) return null;
-        return new UserDto(
+        return new ProfileDto(
             user.getId(),
-            user.getEmail(),
             user.getName(),
-            null,
-            user.getRole(),
             user.getDob(),
             user.getGender(),
             user.getPhoneNumber(),
@@ -50,8 +43,7 @@ public record UserDto(
             user.getOccupation(),
             user.getBio(),
             user.getTopics(),
-            user.getOnboardingCompleted(),
-            user.getReputationScore()
+            user.getOnboardingCompleted()
         );
     }
 }
