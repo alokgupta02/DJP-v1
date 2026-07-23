@@ -24,6 +24,7 @@
 - [x] Set up React SPA structure (`web-app = prototype`) on port `5174` proxying `/djp/api/v1 -> http://localhost:8081`
 - [x] Connect `CreateIssuePage` form submission to live `POST /djp/api/v1/issues` endpoint
 - [ ] Copy and adapt `Discussions` and `Polls` UI components from root `apps/citizen` (`web-app = prototype`)
+- [x] Connect Profile editing form to new separated Profile API backend endpoints.
 
 > [!NOTE]
 > **Completed Items Archive:** All completed historical items are archived to [`prototype/archive/archive-todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/archive/archive-todo.md).

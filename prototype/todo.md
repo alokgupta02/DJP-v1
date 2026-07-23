@@ -36,5 +36,7 @@
 - [x] Create and maintain canonical Postman Collection JSON file (`docs/api/djp-postman_collection.json`) covering all prototype and backend endpoints
 - [x] Implement Discussion creation (`POST /discussions`), Poll creation (`POST /polls`), and auto-populated SQL persistence (`data/` folder with `users.sql`, `issues.sql`, `discussions.sql`, `polls.sql` plus runtime `SqlFilePersistenceService` append) in `prototype/backend` (`GOV-005` / `IMPL-002` / `DATA-004`)
 - [x] Integrate Onboarding HTML designs (`frontend/prototype/onboarding/*.html`) into React (`prototype/frontend`) with live `PATCH /djp/api/v1/users/{userId}/onboarding` API and persistence (`data/users.sql`) (`IMPL-003`)
+- [x] Separate Profile CRUD API from User Auth API (Backend controllers/services/DTOs) and connect frontend profile editing to new API.
+- [x] Set up multiple local Spring Boot configurations (dummy and actual data profiles) via `application-local.yml` and `application-dummy.yml`.
 
 
