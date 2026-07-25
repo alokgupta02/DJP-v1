@@ -73,7 +73,7 @@ export async function fetchUser(userId: string): Promise<UserDto> {
   const headers: Record<string, string> = {};
   if (token) headers["Authorization"] = `Bearer ${token}`;
 
-  const res = await fetch(`${BASE_URL}/users/${userId}`, { headers });
+  const res = await fetch(`${BASE_URL}/profiles/${userId}`, { headers });
   if (!res.ok) {
     throw new Error(`Failed to fetch user: Status ${res.status}`);
   }

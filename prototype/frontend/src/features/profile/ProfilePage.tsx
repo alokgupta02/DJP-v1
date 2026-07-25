@@ -12,7 +12,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        let userId = "00000000-0000-0000-0000-000000000001"; // Fallback dev user ID
+        let userId = "11111111-1111-1111-1111-111111111111"; // Fallback dev user ID
         const userStr = localStorage.getItem("djp_user");
         if (userStr) {
           const parsed = JSON.parse(userStr);
