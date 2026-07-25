@@ -18,7 +18,7 @@ type CommentData = {
 const DISCUSSIONS_DATA: Record<string, {
   id: string; tags: { label: string; variant: string }[];
   title: string; subtitle: string;
-  author: string; time: string; supports: number; commentsCount: number;
+  author: string; time: string; supports: number; commentsCount: number; participants: number;
   sections: { title: string; content: string[] }[];
   aiSummary: string; aiCommon: string[]; aiAlt: string[];
   comments: CommentData[];
@@ -41,6 +41,7 @@ const DISCUSSIONS_DATA: Record<string, {
     time: "Posted 8 hours ago",
     supports: 624,
     commentsCount: 184,
+    participants: 5324,
     sections: [
       {
         title: "Background",
@@ -113,6 +114,7 @@ const DISCUSSIONS_DATA: Record<string, {
     time: "Posted 2 hours ago",
     supports: 184,
     commentsCount: 92,
+    participants: 1240,
     sections: [
       {
         title: "Background",
@@ -359,6 +361,9 @@ export default function DiscussionDetailPage() {
                   <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <Share2 size={16} /> Share
                   </button>
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 ml-auto text-[var(--color-brand)] font-bold text-sm bg-[var(--color-brand)]/10 rounded-full border border-[var(--color-brand)]/20">
+                    <Users size={16} /> {discussion.participants.toLocaleString()}
+                  </div>
                 </div>
               </div>
 
