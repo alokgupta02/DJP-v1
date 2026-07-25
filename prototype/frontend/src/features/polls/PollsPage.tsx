@@ -75,7 +75,7 @@ export default function PollsPage() {
             <h1 className="text-[var(--text-display)] font-bold text-[var(--color-text-primary)]">Polls</h1>
             <p className="text-sm text-[var(--color-text-secondary)] max-w-xl">Vote on civic decisions that matter to your community. Your voice directly influences policy and administrative actions.</p>
           </div>
-          <Link to="/polls/new" className="px-8 py-3 bg-[var(--color-brand)] text-[var(--color-text-inverse)] font-bold rounded-full flex items-center gap-2 hover:opacity-90 transition-all shadow-md">
+          <Link to="/submit?type=poll" className="px-8 py-3 bg-[var(--color-brand)] text-[var(--color-text-inverse)] font-bold rounded-full flex items-center gap-2 hover:opacity-90 transition-all shadow-md">
             <Plus size={18} />
             Create Poll
           </Link>

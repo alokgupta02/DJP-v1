@@ -123,47 +123,14 @@ export default function Topbar({
           </button>
         </div>
 
-        {/* Create Dropdown */}
-        <div className="relative flex items-center" ref={menuRef}>
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="flex items-center gap-1.5 h-10 px-3 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition font-semibold text-[15px]"
-          >
-            <PlusSquare size={22} className="stroke-[1.5]" />
-            <span className="hidden xl:inline">Create</span>
-          </button>
-          
-          {menuOpen && (
-            <div 
-              className="absolute top-full mt-2 right-0 z-50 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-lg flex flex-col py-2 w-52 animate-in fade-in slide-in-from-top-2"
-            >
-              <Link 
-                to="/issues/new" 
-                onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition-colors group"
-              >
-                <TriangleAlert size={18} className="shrink-0" />
-                <span className="text-sm font-semibold">Report Issue</span>
-              </Link>
-              <Link 
-                to="/discussions/new" 
-                onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition-colors group"
-              >
-                <MessagesSquare size={18} className="shrink-0" />
-                <span className="text-sm font-semibold">New Discussion</span>
-              </Link>
-              <Link 
-                to="/polls/new" 
-                onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition-colors group"
-              >
-                <Vote size={18} className="shrink-0" />
-                <span className="text-sm font-semibold">Create Poll</span>
-              </Link>
-            </div>
-          )}
-        </div>
+        {/* Create Button */}
+        <Link
+          to="/submit"
+          className="flex items-center gap-1.5 h-10 px-3 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition font-semibold text-[15px]"
+        >
+          <PlusSquare size={22} className="stroke-[1.5]" />
+          <span className="hidden xl:inline">Create</span>
+        </Link>
 
         {/* Notifications */}
         <button
