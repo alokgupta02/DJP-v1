@@ -36,10 +36,6 @@ export default function PetitionsPage() {
             <h1 className="text-[var(--text-heading)] font-bold text-[var(--color-text-primary)]">Petitions</h1>
             <p className="text-sm text-[var(--color-text-secondary)] mt-1">Add your voice to community petitions or start a new one.</p>
           </div>
-          <button className="flex items-center gap-2 px-6 py-2.5 bg-[var(--color-brand)] text-[var(--color-text-inverse)] rounded-full font-bold hover:opacity-90 transition-all shadow-md text-sm">
-            <Plus size={18} />
-            Start Petition
-          </button>
         </div>
 
         <div className="flex gap-2 overflow-x-auto pb-4">

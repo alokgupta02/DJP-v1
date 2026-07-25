@@ -85,10 +85,6 @@ export default function DiscussionsPage() {
           <h1 className="text-[var(--text-heading)] font-bold text-[var(--color-text-primary)]">Discussions</h1>
           <p className="text-sm text-[var(--color-text-secondary)] mt-1">Collaborate with your community to explore civic problems and solutions.</p>
         </div>
-        <Link to="/submit?type=discussion" className="bg-[var(--color-brand)] text-[var(--color-text-inverse)] px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 hover:opacity-90 transition-all shadow-md">
-          <Plus size={18} />
-          Start Discussion
-        </Link>
       </div>
 
       <div className="border-y border-[var(--color-border)] bg-[var(--color-bg-surface)] sticky top-0 z-20">

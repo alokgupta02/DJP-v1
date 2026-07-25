@@ -149,10 +149,6 @@ export default function IssuesPage() {
               </span>
             )}
           </div>
-          <Link to="/submit?type=issue" className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-brand)] text-[var(--color-text-inverse)] rounded-xl font-bold shadow-md hover:shadow-lg transition-all active:scale-95">
-            <Plus size={18} />
-            Report Issue
-          </Link>
         </div>
 
         <div className="space-y-4 mb-8">
