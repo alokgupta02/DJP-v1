@@ -1,5 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { Search, Bell, ChevronDown, Menu, Plus, TriangleAlert, MessagesSquare, Vote } from "lucide-react";
+import { 
+  Search, Bell, ChevronDown, Menu, TriangleAlert, 
+  MessagesSquare, Vote, Sparkles, MessageCircleMore, 
+  Megaphone, PlusSquare 
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 import { useSidebar } from "../sidebar";
@@ -18,7 +22,7 @@ export interface TopbarProps {
 export default function Topbar({
   ward = "Ward 42 — South Delhi",
   notificationCount = 0,
-  searchPlaceholder = "Search issues, discussions or polls...",
+  searchPlaceholder = "Find anything",
   searchValue = "",
   onSearchChange,
   userInitials = "U",
@@ -45,66 +49,99 @@ export default function Topbar({
   return (
     <header
       className={clsx(
-        "h-16 bg-[var(--color-bg-surface)] border-b border-[var(--color-border)]",
-        "flex items-center justify-between px-4 md:px-6 shrink-0 z-30"
+        "h-[56px] bg-[var(--color-bg-surface)] border-b border-[var(--color-border)]",
+        "flex items-center justify-between px-4 md:px-5 shrink-0 z-30 shadow-sm"
       )}
     >
-      {/* Mobile: logo + menu toggle */}
-      <div className="flex items-center gap-3 md:hidden">
+      {/* Left: Mobile Toggle & Logo */}
+      <div className="flex items-center gap-3 md:w-[280px] shrink-0">
         <button
           onClick={toggleMobile}
-          className="p-2 rounded-lg hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition"
+          className="md:hidden p-1.5 -ml-1.5 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition"
           aria-label="Toggle Menu"
         >
-          <Menu size={22} />
+          <Menu size={24} />
         </button>
-        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-brand)] text-sm font-bold text-[var(--color-text-inverse)]">
-          DJ
-        </div>
-        <span className="text-md font-bold text-[var(--color-brand)] tracking-wide">
-          Digital Janta
-        </span>
+        
+        <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition">
+          <span className="text-[26px] font-black text-[var(--color-brand)] tracking-tighter lowercase">
+            digitaljanta
+          </span>
+        </Link>
       </div>
 
-      {/* Desktop: search */}
-      <div className="hidden md:flex items-center gap-4 flex-1 min-w-0 pl-2">
-        <div className="relative w-full max-w-lg">
-          <Search
-            size={16}
-            className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-text-secondary)]"
-          />
+      {/* Center: Search Bar (Sleek Reddit Style) */}
+      <div className="hidden md:flex flex-1 max-w-[660px] px-2 justify-center">
+        <div className="flex items-center h-[42px] w-full rounded-full border border-[var(--color-brand)] bg-[var(--color-bg-surface)] hover:bg-[var(--color-bg-subtle)] focus-within:bg-[var(--color-bg-surface)] focus-within:ring-1 focus-within:ring-[var(--color-brand)] transition-all overflow-hidden group shadow-sm">
+          {/* Left Icon inside Search (simulate reddit brand face) */}
+          <div className="pl-3 pr-2 flex items-center justify-center">
+            <div className="h-[26px] w-[26px] rounded-full bg-[var(--color-brand)] text-[var(--color-text-inverse)] flex items-center justify-center">
+              <Search size={14} className="stroke-[3]" />
+            </div>
+          </div>
+          
+          {/* Input */}
           <input
             type="search"
             value={searchValue}
             onChange={(e) => onSearchChange?.(e.target.value)}
-            placeholder={searchPlaceholder || "Search issues, discussions or polls..."}
-            className={clsx(
-              "h-10 w-full rounded-full border border-[var(--color-border)] bg-[var(--color-bg-subtle)]",
-              "pl-10 pr-4 text-sm text-[var(--color-text-primary)]",
-              "placeholder:text-[var(--color-text-secondary)]",
-              "focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent",
-              "transition-all duration-150"
-            )}
+            placeholder={searchPlaceholder}
+            className="flex-1 h-full bg-transparent text-[15px] font-medium text-[var(--color-text-primary)] placeholder:text-[var(--color-text-secondary)] placeholder:font-normal focus:outline-none"
             aria-label={searchPlaceholder}
           />
+          
+          {/* Right Action */}
+          <div className="flex items-center h-full pr-1.5 py-1.5">
+            <div className="h-full w-[1px] bg-[var(--color-border)] mx-1.5" />
+            <button className="flex items-center gap-1.5 px-3 h-full rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-sm transition">
+              <Sparkles size={16} className="text-[var(--color-brand)]" />
+              <span>Ask</span>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Right side */}
-      <div className="flex items-center gap-2 md:gap-4">
+      {/* Right side: Actions & Profile */}
+      <div className="flex items-center justify-end gap-1 sm:gap-2 md:w-[280px] shrink-0">
+        
+        {/* Desktop Ward Selector */}
+        {ward && (
+          <button
+            className={clsx(
+              "hidden lg:flex items-center gap-1.5 px-3 h-9 rounded-full",
+              "hover:bg-[var(--color-bg-subtle)]",
+              "transition-colors text-sm font-semibold text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+            )}
+            aria-label="Select ward"
+          >
+            <span className="truncate max-w-[110px]">{ward}</span>
+            <ChevronDown size={14} className="shrink-0" />
+          </button>
+        )}
+
+        {/* Action Icons (Like Reddit) */}
+        <div className="hidden sm:flex items-center gap-0.5 mr-1">
+          <button className="p-2 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition" title="Announcements">
+            <Megaphone size={22} className="stroke-[1.5]" />
+          </button>
+          <button className="p-2 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition" title="Chat">
+            <MessageCircleMore size={22} className="stroke-[1.5]" />
+          </button>
+        </div>
+
         {/* Create Dropdown */}
-        <div className="relative" ref={menuRef}>
+        <div className="relative flex items-center" ref={menuRef}>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="flex items-center gap-2 h-9 px-4 rounded-full bg-[var(--color-brand)] text-[var(--color-text-inverse)] hover:bg-[var(--color-brand-hover)] transition-colors shadow-sm font-semibold text-sm"
+            className="flex items-center gap-1.5 h-10 px-3 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition font-semibold text-[15px]"
           >
-            <Plus size={16} className={clsx("shrink-0 transition-transform duration-300", menuOpen && "rotate-45")} />
-            <span className="hidden sm:inline">Create</span>
+            <PlusSquare size={22} className="stroke-[1.5]" />
+            <span className="hidden xl:inline">Create</span>
           </button>
           
           {menuOpen && (
             <div 
-              className="absolute top-full mt-2 right-0 z-50 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-lg flex flex-col py-2 w-48 overflow-hidden animate-in fade-in slide-in-from-top-2"
+              className="absolute top-full mt-2 right-0 z-50 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-lg flex flex-col py-2 w-52 animate-in fade-in slide-in-from-top-2"
             >
               <Link 
                 to="/issues/new" 
@@ -134,39 +171,27 @@ export default function Topbar({
           )}
         </div>
 
-        {/* Desktop: ward selector */}
-        {ward && (
-          <button
-            className={clsx(
-              "hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full",
-              "bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)]",
-              "transition-colors text-sm font-medium text-[var(--color-text-primary)]"
-            )}
-            aria-label="Select ward"
-          >
-            <span className="truncate max-w-36">{ward}</span>
-            <ChevronDown size={14} className="shrink-0 text-[var(--color-text-secondary)]" />
-          </button>
-        )}
-
         {/* Notifications */}
         <button
-          className="relative p-2 rounded-lg hover:bg-[var(--color-bg-subtle)] transition"
+          className="relative p-2 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition mr-1"
           aria-label="Notifications"
         >
-          <Bell size={20} className="text-[var(--color-text-secondary)]" />
+          <Bell size={22} className="stroke-[1.5]" />
           {notificationCount > 0 && (
             <span
               className={clsx(
-                "absolute top-1.5 right-1.5 h-2 w-2 rounded-full",
-                "bg-[var(--color-error)] ring-2 ring-[var(--color-bg-surface)]"
+                "absolute top-1.5 right-1.5 h-2.5 w-2.5 rounded-full",
+                "bg-[var(--color-error)] border-2 border-[var(--color-bg-surface)]"
               )}
             />
           )}
         </button>
 
-        {/* User avatar */}
-        <Avatar initials={userInitials} src={userAvatar} size="sm" />
+        {/* User avatar with status dot */}
+        <div className="relative cursor-pointer hover:opacity-80 transition">
+          <Avatar initials={userInitials} src={userAvatar} size="sm" />
+          <span className="absolute bottom-0 -right-0.5 h-3 w-3 rounded-full bg-green-500 border-2 border-[var(--color-bg-surface)]" />
+        </div>
       </div>
     </header>
   );
