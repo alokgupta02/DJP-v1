@@ -1,7 +1,7 @@
 import { useSidebar } from "./SidebarContext";
 
 export default function SidebarHeader() {
-  const { collapsed } = useSidebar();
+  const { collapsed, toggleCollapsed } = useSidebar();
 
   return (
     <div
