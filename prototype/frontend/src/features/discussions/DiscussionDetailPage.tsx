@@ -252,8 +252,8 @@ function CommentThread({ comment }: { comment: CommentData }) {
             onClick={() => setIsCollapsed(true)}
           >
             <div className="w-[2px] bg-[var(--color-border)] grow mt-1 mb-1 group-hover:bg-[var(--color-brand)] transition-colors" />
-            <div className="absolute top-2 opacity-0 group-hover:opacity-100 bg-[var(--color-bg-surface)] text-[var(--color-brand)] transition-opacity">
-              <Minus size={14} />
+            <div className="absolute top-2 opacity-0 group-hover:opacity-100 bg-[var(--color-bg-surface)] border border-[var(--color-border)] text-[var(--color-text-secondary)] shadow-sm rounded-full p-0.5 transition-all hover:bg-[var(--color-brand)] hover:text-white hover:border-[var(--color-brand)]">
+              <Minus size={12} strokeWidth={3} />
             </div>
           </div>
 
