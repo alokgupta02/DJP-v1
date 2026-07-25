@@ -171,7 +171,7 @@ function FeedFilterBar() {
 
   return (
     <div className="mb-6">
-      <div className="inline-flex flex-wrap items-center gap-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-2 rounded-xl">
+      <div className="flex flex-wrap items-center gap-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-2 rounded-xl">
         {CONTENT_TYPES.map((type) => (
           <button
             key={type}
@@ -498,11 +498,11 @@ export default function FeedPage() {
             </button>
           </div>
         )}
-        <FeedFilterBar />
       </div>
 
       <div className="flex-1 flex gap-8 overflow-hidden px-8 pb-8 w-full">
         <div className="flex-1 overflow-y-auto min-w-0">
+          <FeedFilterBar />
           <div className="space-y-6 pb-32">
             {ISSUES.map((issue) => (
               <IssueCard key={issue.id} issue={issue} />
