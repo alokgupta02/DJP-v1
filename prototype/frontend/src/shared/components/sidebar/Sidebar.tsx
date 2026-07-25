@@ -34,8 +34,8 @@ export default function Sidebar() {
           onClick={toggleCollapsed}
           className="
             hidden md:flex absolute top-[30px] -right-3.5 z-50 h-7 w-7 items-center justify-center
-            rounded-full border border-[var(--color-border)] bg-[var(--color-bg-surface)] text-[var(--color-text-secondary)] shadow-sm
-            transition-all duration-300 hover:bg-[var(--color-bg-subtle)] hover:text-[var(--color-text-primary)] cursor-pointer
+            rounded-full border border-[var(--color-border)] bg-[var(--color-bg-surface)] text-[var(--color-brand)] shadow-sm
+            transition-all duration-300 hover:bg-[var(--color-bg-subtle)] cursor-pointer
           "
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
