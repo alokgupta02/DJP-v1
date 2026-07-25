@@ -217,43 +217,53 @@ function CommentThread({ comment }: { comment: CommentData }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <div className="flex gap-2 mt-4 text-sm">
-      {/* Thread column */}
-      <div className="flex flex-col items-center">
-        <div className="relative">
-          {isCollapsed ? (
-             <button onClick={() => setIsCollapsed(false)} className="w-8 h-8 flex items-center justify-center text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)] rounded-full transition-colors">
-               <Plus size={16} />
-             </button>
-          ) : (
-            <div className={clsx("w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 cursor-pointer hover:opacity-80 transition-opacity", comment.bg, comment.textColor)} onClick={() => setIsCollapsed(true)}>
-              {comment.initials}
-            </div>
-          )}
+    <div className="mt-4 text-sm">
+      {/* Header Row */}
+      <div className="flex items-center gap-2 mb-1">
+        <div 
+          className={clsx("w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0 cursor-pointer hover:opacity-80 transition-opacity", comment.bg, comment.textColor)} 
+          onClick={() => setIsCollapsed(!isCollapsed)}
+        >
+          {comment.initials}
         </div>
-        {!isCollapsed && (
-          <div 
-            className="w-[2px] bg-[var(--color-border)] grow mt-2 mb-1 cursor-pointer hover:bg-[var(--color-brand)] transition-colors"
-            onClick={() => setIsCollapsed(true)}
-          />
+        <span 
+          className="font-bold text-[var(--color-text-primary)] text-xs cursor-pointer hover:underline"
+          onClick={() => setIsCollapsed(!isCollapsed)}
+        >
+          {comment.name}
+        </span>
+        <span className="text-[var(--color-text-secondary)] text-xs">• {comment.time}</span>
+        {isCollapsed && (
+          <button 
+            onClick={() => setIsCollapsed(false)}
+            className="ml-1 text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)] rounded-full p-1 transition-colors"
+          >
+            <Plus size={14} />
+          </button>
         )}
       </div>
 
-      {/* Content column */}
-      <div className="flex-1 pb-2">
-        <div className="flex items-center gap-2 mb-1">
-          <span className="font-semibold text-[var(--color-text-primary)] text-xs">{comment.name}</span>
-          <span className="text-[var(--color-text-secondary)] text-xs">• {comment.time}</span>
-        </div>
-        
-        {!isCollapsed && (
-           <>
+      {/* Body Row */}
+      {!isCollapsed && (
+        <div className="flex">
+          {/* Thread Line Column */}
+          <div 
+            className="flex flex-col items-center w-7 shrink-0 cursor-pointer group"
+            onClick={() => setIsCollapsed(true)}
+          >
+            <div className="w-[2px] bg-[var(--color-border)] grow mt-1 mb-1 group-hover:bg-[var(--color-brand)] transition-colors" />
+          </div>
+
+          {/* Content Column */}
+          <div className="flex-1 pl-2 pb-2">
              <p className="text-[var(--color-text-primary)] mb-2 leading-relaxed">{comment.text}</p>
-             <div className="flex flex-wrap items-center gap-1 -ml-2 text-[var(--color-text-secondary)] font-semibold text-xs">
-                <div className="flex items-center rounded-full bg-[var(--color-bg-subtle)] ml-2">
-                  <button className="p-1.5 hover:bg-[var(--color-border)] hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={16} /></button>
+             
+             {/* Action Bar */}
+             <div className="flex flex-wrap items-center gap-1 -ml-2 text-[var(--color-text-secondary)] font-bold text-xs">
+                <div className="flex items-center rounded-full hover:bg-[var(--color-bg-subtle)] transition-colors ml-2">
+                  <button className="p-1.5 hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={16} /></button>
                   <span className="px-1 text-[var(--color-text-primary)]">{comment.score}</span>
-                  <button className="p-1.5 hover:bg-[var(--color-border)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={16} /></button>
+                  <button className="p-1.5 hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={16} /></button>
                 </div>
                 <button className="flex items-center gap-1.5 px-3 py-1.5 hover:bg-[var(--color-bg-subtle)] rounded-full transition-colors">
                   <MessageSquare size={16} /> Reply
@@ -265,15 +275,15 @@ function CommentThread({ comment }: { comment: CommentData }) {
              
              {/* Nested replies */}
              {comment.replies && comment.replies.length > 0 && (
-               <div className="mt-2">
+               <div className="mt-1">
                  {comment.replies.map(reply => (
                    <CommentThread key={reply.id} comment={reply} />
                  ))}
                </div>
              )}
-           </>
-        )}
-      </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
