@@ -1,15 +1,14 @@
-import { ChevronLeft } from "lucide-react";
 import { useSidebar } from "./SidebarContext";
 
 export default function SidebarHeader() {
-  const { collapsed, toggleCollapsed } = useSidebar();
+  const { collapsed } = useSidebar();
 
   return (
     <div
       className={`flex w-full transition-all duration-300 ${
         collapsed
           ? "flex-col items-center gap-2.5"
-          : "items-center justify-between"
+          : "items-center"
       }`}
     >
       <div className="flex items-center">
@@ -45,21 +44,6 @@ export default function SidebarHeader() {
           </p>
         </div>
       </div>
-
-      <button
-        onClick={toggleCollapsed}
-        className="
-          hidden md:flex h-7 w-7 shrink-0 items-center justify-center
-          rounded-full border border-[var(--color-border)] bg-[var(--color-bg-surface)] text-[var(--color-text-secondary)] shadow-sm
-          transition-all duration-300 hover:bg-[var(--color-bg-subtle)] hover:text-[var(--color-text-primary)] cursor-pointer
-        "
-        aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-      >
-        <ChevronLeft
-          size={14}
-          className={`transition-transform duration-300 ${collapsed ? "rotate-180" : ""}`}
-        />
-      </button>
     </div>
   );
 }
