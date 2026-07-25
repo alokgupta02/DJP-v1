@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Bell, ChevronDown, Menu, Plus, TriangleAlert, MessagesSquare, Vote } from "lucide-react";
+import { Search, Bell, ChevronDown, Menu, Plus, TriangleAlert, MessagesSquare, Vote } from "lucide-react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 import { useSidebar } from "../sidebar";
@@ -18,6 +18,9 @@ export interface TopbarProps {
 export default function Topbar({
   ward = "Ward 42 — South Delhi",
   notificationCount = 0,
+  searchPlaceholder = "Search issues, discussions or polls...",
+  searchValue = "",
+  onSearchChange,
   userInitials = "U",
   userAvatar,
 }: TopbarProps) {
@@ -63,8 +66,29 @@ export default function Topbar({
         </span>
       </div>
 
-      {/* Spacer to push right-side items to the right */}
-      <div className="flex-1" />
+      {/* Desktop: search */}
+      <div className="hidden md:flex items-center gap-4 flex-1 min-w-0 pl-2">
+        <div className="relative w-full max-w-lg">
+          <Search
+            size={16}
+            className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-text-secondary)]"
+          />
+          <input
+            type="search"
+            value={searchValue}
+            onChange={(e) => onSearchChange?.(e.target.value)}
+            placeholder={searchPlaceholder || "Search issues, discussions or polls..."}
+            className={clsx(
+              "h-10 w-full rounded-full border border-[var(--color-border)] bg-[var(--color-bg-subtle)]",
+              "pl-10 pr-4 text-sm text-[var(--color-text-primary)]",
+              "placeholder:text-[var(--color-text-secondary)]",
+              "focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent",
+              "transition-all duration-150"
+            )}
+            aria-label={searchPlaceholder}
+          />
+        </div>
+      </div>
 
       {/* Right side */}
       <div className="flex items-center gap-2 md:gap-4">

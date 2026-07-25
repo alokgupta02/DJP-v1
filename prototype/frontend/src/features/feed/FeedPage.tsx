@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
-  Search, MapPin, Flame, ThumbsUp, MessageSquare, Users, Landmark,
+  MapPin, Flame, ThumbsUp, MessageSquare, Users, Landmark,
   Clock, CheckCircle2, User, AlertTriangle, Trash2, Droplet,
-  Lightbulb, Image, ChevronDown, Vote, X
+  Lightbulb, ChevronDown, Vote, X
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -178,23 +178,8 @@ function FeedFilterBar() {
 
   return (
     <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-4 mb-6 rounded-xl">
-      {/* Row 1: Search, Scope, Sort */}
-      <div className="flex flex-wrap items-center gap-3">
-        <div className="flex-1 min-w-[260px]">
-          <div className="relative">
-            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-text-secondary)] pointer-events-none" />
-            <input
-              type="text"
-              placeholder="Search issues, discussions or polls..."
-              className="h-11 w-full rounded-full border border-[var(--color-border)] bg-[var(--color-bg-subtle)] pl-11 pr-4 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)] focus:border-transparent transition-colors"
-            />
-          </div>
-        </div>
-        <button className="flex items-center gap-2 h-11 px-4 rounded-full border border-[var(--color-border)] hover:bg-[var(--color-bg-subtle)] transition-colors text-sm font-medium text-[var(--color-text-primary)]">
-          <MapPin size={16} className="text-[var(--color-brand)]" />
-          My Area
-          <ChevronDown size={14} className="text-[var(--color-text-secondary)]" />
-        </button>
+      {/* Row 1: Sort */}
+      <div className="flex flex-wrap items-center justify-end gap-3">
         <button className="flex items-center gap-2 h-11 px-4 rounded-full border border-[var(--color-border)] hover:bg-[var(--color-bg-subtle)] transition-colors text-sm font-medium text-[var(--color-text-primary)]">
           <Flame size={16} />
           Trending
@@ -242,7 +227,6 @@ function FeedFilterBar() {
       <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-[var(--color-text-secondary)] border-t border-[var(--color-border)] pt-3">
         <span className="font-medium text-[var(--color-text-primary)]">Showing:</span>
         <span className="px-2 py-1 rounded bg-[var(--color-brand-light)] text-[var(--color-brand)] text-xs font-medium">{activeContent}</span>
-        <span className="px-2 py-1 rounded bg-[var(--color-bg-subtle)] text-xs">📍 My Area</span>
         <span className="px-2 py-1 rounded bg-[var(--color-bg-subtle)] text-xs">{activeTopic}</span>
         <span className="px-2 py-1 rounded bg-[var(--color-bg-subtle)] text-xs">🔥 Trending</span>
         <span className="ml-auto text-xs">124 results</span>
@@ -321,18 +305,6 @@ function IssueCard({ issue }: { issue: typeof ISSUES[number] }) {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="relative shrink-0 hidden sm:block">
-          <img
-            src={issue.image}
-            alt="Issue evidence"
-            className="w-48 h-36 rounded-xl object-cover border border-[var(--color-border)]"
-            loading="lazy"
-          />
-          <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded-full flex items-center gap-1 text-xs">
-            <Image size={14} />
-            {issue.imageCount}
           </div>
         </div>
       </div>
