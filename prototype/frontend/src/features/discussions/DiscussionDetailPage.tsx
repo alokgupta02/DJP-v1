@@ -358,12 +358,13 @@ export default function DiscussionDetailPage() {
                     <MessageSquare size={16} />
                     {discussion.commentsCount}
                   </button>
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)] cursor-default">
+                    <Users size={16} />
+                    {discussion.participants.toLocaleString()}
+                  </div>
                   <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <Share2 size={16} /> Share
                   </button>
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 ml-auto text-[var(--color-brand)] font-bold text-sm bg-[var(--color-brand)]/10 rounded-full border border-[var(--color-brand)]/20">
-                    <Users size={16} /> {discussion.participants.toLocaleString()}
-                  </div>
                 </div>
               </div>
 
