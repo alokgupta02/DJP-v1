@@ -37,6 +37,9 @@ export default function CreatePostPage() {
   const [selectedCommunity, setSelectedCommunity] = useState("");
   const [communityDropdownOpen, setCommunityDropdownOpen] = useState(false);
 
+  const [impactScope, setImpactScope] = useState("🏘️ Neighborhood (10–50 people)");
+  const [priorityReason, setPriorityReason] = useState("Health & Hygiene Concern");
+
   // Close dropdown on outside click (simplified for prototype)
   useEffect(() => {
     const handleClick = () => setCommunityDropdownOpen(false);
@@ -53,55 +56,98 @@ export default function CreatePostPage() {
           <h1 className="text-xl font-bold text-[var(--color-text-primary)]">Create post</h1>
         </div>
 
-        {/* Top bar: Community Selector */}
-        <div className="mb-6 relative w-64" onClick={(e) => e.stopPropagation()}>
-          <button
-            type="button"
-            onClick={() => setCommunityDropdownOpen(!communityDropdownOpen)}
-            className="w-full flex items-center justify-between px-4 py-2.5 rounded-full bg-[var(--color-bg-surface)] border border-[var(--color-border)] text-[var(--color-text-primary)] font-bold text-sm shadow-sm hover:border-[var(--color-brand)] transition-all cursor-pointer"
-          >
-            <span className="truncate">{selectedCommunity || "Select Community"}</span>
-            <ChevronDown size={16} className="text-[var(--color-text-secondary)] shrink-0" />
-          </button>
+        {/* Top bar: Selectors */}
+        <div className="mb-6 flex flex-col md:flex-row gap-8 items-end" onClick={(e) => e.stopPropagation()}>
+          
+          {/* Branch / Community */}
+          <div className="relative w-full md:w-72 shrink-0">
+            <h3 className="text-sm font-bold text-[var(--color-text-primary)] mb-3">Branch & Community</h3>
+            <button
+              type="button"
+              onClick={() => setCommunityDropdownOpen(!communityDropdownOpen)}
+              className="w-full flex items-center justify-between px-4 py-2.5 rounded-full bg-[var(--color-bg-surface)] border border-[var(--color-border)] text-[var(--color-text-primary)] font-bold text-sm shadow-sm hover:border-[var(--color-brand)] transition-all cursor-pointer"
+            >
+              <span className="truncate">{selectedCommunity || "Select Community"}</span>
+              <ChevronDown size={16} className="text-[var(--color-text-secondary)] shrink-0" />
+            </button>
 
-          {communityDropdownOpen && (
-            <div className="absolute top-full left-0 mt-2 w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] shadow-xl z-50 py-1 max-h-64 overflow-y-auto">
-              <div className="px-3 py-1.5 text-xs font-bold text-[var(--color-text-secondary)] uppercase tracking-wider">
-                Branches
+            {communityDropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] shadow-xl z-50 py-1 max-h-64 overflow-y-auto">
+                <div className="px-3 py-1.5 text-xs font-bold text-[var(--color-text-secondary)] uppercase tracking-wider">
+                  Branches
+                </div>
+                {COMMUNITIES.slice(0, 3).map((comm) => (
+                  <button
+                    key={comm}
+                    type="button"
+                    onClick={() => {
+                      setSelectedCommunity(comm);
+                      setCommunityDropdownOpen(false);
+                    }}
+                    className="w-full text-left px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)] flex items-center justify-between transition-colors cursor-pointer"
+                  >
+                    <span>{comm}</span>
+                    {selectedCommunity === comm && <Check size={15} className="text-[var(--color-brand)]" />}
+                  </button>
+                ))}
+                <div className="px-3 py-1.5 mt-2 text-xs font-bold text-[var(--color-text-secondary)] uppercase tracking-wider">
+                  Local
+                </div>
+                {COMMUNITIES.slice(3).map((comm) => (
+                  <button
+                    key={comm}
+                    type="button"
+                    onClick={() => {
+                      setSelectedCommunity(comm);
+                      setCommunityDropdownOpen(false);
+                    }}
+                    className="w-full text-left px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)] flex items-center justify-between transition-colors cursor-pointer"
+                  >
+                    <span>{comm}</span>
+                    {selectedCommunity === comm && <Check size={15} className="text-[var(--color-brand)]" />}
+                  </button>
+                ))}
               </div>
-              {COMMUNITIES.slice(0, 3).map((comm) => (
-                <button
-                  key={comm}
-                  type="button"
-                  onClick={() => {
-                    setSelectedCommunity(comm);
-                    setCommunityDropdownOpen(false);
-                  }}
-                  className="w-full text-left px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)] flex items-center justify-between transition-colors cursor-pointer"
+            )}
+          </div>
+
+          {/* Impact & Priority */}
+          <div className="flex-1 w-full">
+            <h3 className="text-sm font-bold text-[var(--color-text-primary)] mb-3">Impact & Priority</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-[var(--color-text-secondary)] mb-1">Impact Scope *</label>
+                <select
+                  value={impactScope}
+                  onChange={(e) => setImpactScope(e.target.value)}
+                  className="w-full p-2.5 text-sm border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] cursor-pointer focus:ring-1 focus:ring-[var(--color-brand)] outline-none"
                 >
-                  <span>{comm}</span>
-                  {selectedCommunity === comm && <Check size={15} className="text-[var(--color-brand)]" />}
-                </button>
-              ))}
-              <div className="px-3 py-1.5 mt-2 text-xs font-bold text-[var(--color-text-secondary)] uppercase tracking-wider">
-                Local
+                  <option value="🏘️ Neighborhood (10–50 people)">🏘️ Neighborhood (10–50 people)</option>
+                  <option value="📍 Locality (50–500 people)">📍 Locality (50–500 people)</option>
+                  <option value="🏛️ Ward">🏛️ Ward</option>
+                  <option value="🌆 City">🌆 City</option>
+                  <option value="🏢 District">🏢 District</option>
+                  <option value="🌐 State">🌐 State</option>
+                </select>
               </div>
-              {COMMUNITIES.slice(3).map((comm) => (
-                <button
-                  key={comm}
-                  type="button"
-                  onClick={() => {
-                    setSelectedCommunity(comm);
-                    setCommunityDropdownOpen(false);
-                  }}
-                  className="w-full text-left px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)] flex items-center justify-between transition-colors cursor-pointer"
+              <div>
+                <label className="block text-xs font-semibold text-[var(--color-text-secondary)] mb-1">Priority / Risk</label>
+                <select
+                  value={priorityReason}
+                  onChange={(e) => setPriorityReason(e.target.value)}
+                  className="w-full p-2.5 text-sm border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)] cursor-pointer focus:ring-1 focus:ring-[var(--color-brand)] outline-none"
                 >
-                  <span>{comm}</span>
-                  {selectedCommunity === comm && <Check size={15} className="text-[var(--color-brand)]" />}
-                </button>
-              ))}
+                  <option value="Minor inconvenience">Minor inconvenience</option>
+                  <option value="Health & Hygiene Concern">Health & Hygiene Concern</option>
+                  <option value="Safety Risk">Safety Risk</option>
+                  <option value="Environmental Damage">Environmental Damage</option>
+                  <option value="Traffic Disruption">Traffic Disruption</option>
+                  <option value="Financial Loss">Financial Loss</option>
+                  <option value="Public Service Disruption">Public Service Disruption</option>
+                </select>
+              </div>
             </div>
-          )}
+          </div>
         </div>
 
         {/* Unified Form Area (Reddit style tabs) */}
@@ -129,7 +175,7 @@ export default function CreatePostPage() {
 
           {/* Active Form */}
           <div className="p-6">
-            {activeTab === "issue" && <CreateIssueForm community={selectedCommunity} />}
+            {activeTab === "issue" && <CreateIssueForm community={selectedCommunity} impactScope={impactScope} priorityReason={priorityReason} />}
             {activeTab === "discussion" && <CreateDiscussionForm community={selectedCommunity} />}
             {activeTab === "poll" && <CreatePollForm community={selectedCommunity} />}
             {activeTab === "petition" && <CreatePetitionForm community={selectedCommunity} />}

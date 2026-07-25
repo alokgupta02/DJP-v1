@@ -6,16 +6,16 @@ import RichEditor from "../../../shared/components/ui/RichEditor";
 
 interface CreateIssueFormProps {
   community: string;
+  impactScope: string;
+  priorityReason: string;
 }
 
-export default function CreateIssueForm({ community }: CreateIssueFormProps) {
+export default function CreateIssueForm({ community, impactScope, priorityReason }: CreateIssueFormProps) {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [descriptionHtml, setDescriptionHtml] = useState("");
   const [address, setAddress] = useState("");
   const [pincode, setPincode] = useState("");
-  const [impactScope, setImpactScope] = useState("🏘️ Neighborhood (10–50 people)");
-  const [priorityReason, setPriorityReason] = useState("Health & Hygiene Concern");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -111,43 +111,6 @@ export default function CreateIssueForm({ community }: CreateIssueFormProps) {
           <MapPin size={14} />
           Use Current Location
         </button>
-      </div>
-
-      <div className="pt-4 border-t border-[var(--color-border)]">
-        <h3 className="text-sm font-bold text-[var(--color-text-primary)] mb-3">Impact & Priority</h3>
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-xs font-semibold text-[var(--color-text-secondary)] mb-1">Impact Scope *</label>
-            <select
-              value={impactScope}
-              onChange={(e) => setImpactScope(e.target.value)}
-              className="w-full p-2.5 text-sm border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)]"
-            >
-              <option value="🏘️ Neighborhood (10–50 people)">🏘️ Neighborhood (10–50 people)</option>
-              <option value="📍 Locality (50–500 people)">📍 Locality (50–500 people)</option>
-              <option value="🏛️ Ward">🏛️ Ward</option>
-              <option value="🌆 City">🌆 City</option>
-              <option value="🏢 District">🏢 District</option>
-              <option value="🌐 State">🌐 State</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-[var(--color-text-secondary)] mb-1">Priority / Risk</label>
-            <select
-              value={priorityReason}
-              onChange={(e) => setPriorityReason(e.target.value)}
-              className="w-full p-2.5 text-sm border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)]"
-            >
-              <option value="Minor inconvenience">Minor inconvenience</option>
-              <option value="Health & Hygiene Concern">Health & Hygiene Concern</option>
-              <option value="Safety Risk">Safety Risk</option>
-              <option value="Environmental Damage">Environmental Damage</option>
-              <option value="Traffic Disruption">Traffic Disruption</option>
-              <option value="Financial Loss">Financial Loss</option>
-              <option value="Public Service Disruption">Public Service Disruption</option>
-            </select>
-          </div>
-        </div>
       </div>
 
       <div className="pt-4 border-t border-[var(--color-border)] flex items-center justify-end">
