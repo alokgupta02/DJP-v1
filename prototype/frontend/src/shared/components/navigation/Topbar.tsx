@@ -50,14 +50,14 @@ export default function Topbar({
     <header
       className={clsx(
         "h-[56px] bg-[var(--color-bg-surface)] border-b border-[var(--color-border)]",
-        "flex items-center justify-between px-4 md:px-5 shrink-0 z-30 shadow-sm"
+        "flex items-center justify-between px-4 md:px-8 shrink-0 z-30 shadow-sm"
       )}
     >
       {/* Left: Mobile Toggle */}
-      <div className="flex items-center shrink-0 pl-1">
+      <div className="md:hidden flex items-center shrink-0 pl-1">
         <button
           onClick={toggleMobile}
-          className="md:hidden p-1.5 -ml-1.5 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition"
+          className="p-1.5 -ml-1.5 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition"
           aria-label="Toggle Menu"
         >
           <Menu size={24} />
@@ -65,7 +65,7 @@ export default function Topbar({
       </div>
 
       {/* Center: Search Bar (Sleek Reddit Style) */}
-      <div className="hidden md:flex flex-1 max-w-[660px] px-2 justify-center">
+      <div className="hidden md:flex flex-1 max-w-[660px] mr-4">
         <div className="flex items-center h-[42px] w-full rounded-full border border-[var(--color-brand)] bg-[var(--color-bg-surface)] hover:bg-[var(--color-bg-subtle)] focus-within:bg-[var(--color-bg-surface)] focus-within:ring-1 focus-within:ring-[var(--color-brand)] transition-all overflow-hidden group shadow-sm">
           {/* Left Icon inside Search (simulate reddit brand face) */}
           <div className="pl-3 pr-2 flex items-center justify-center">
