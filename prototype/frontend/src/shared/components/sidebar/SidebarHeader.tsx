@@ -12,7 +12,8 @@ export default function SidebarHeader() {
       }`}
     >
       <div className="flex items-center">
-        <div
+        <button
+          onClick={toggleCollapsed}
           className="
             flex
             h-11
@@ -25,10 +26,13 @@ export default function SidebarHeader() {
             text-lg
             font-bold
             text-[var(--color-text-inverse)]
+            cursor-pointer
+            hover:opacity-90
+            transition-opacity
           "
         >
           DJ
-        </div>
+        </button>
 
         <div
           className={`

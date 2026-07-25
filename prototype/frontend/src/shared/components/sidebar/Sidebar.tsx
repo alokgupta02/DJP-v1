@@ -6,7 +6,7 @@ import { useSidebar } from "./SidebarContext";
 import "./sidebar.css";
 
 export default function Sidebar() {
-  const { collapsed, mobileOpen, closeMobile, isMobile, toggleCollapsed } = useSidebar();
+  const { collapsed, trueCollapsed, mobileOpen, closeMobile, isMobile, toggleCollapsed, setIsHovered } = useSidebar();
   const isCollapsed = collapsed && !isMobile;
 
   return (
@@ -21,27 +21,29 @@ export default function Sidebar() {
       />
 
       <aside
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         className={`
           relative fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col bg-[var(--color-bg-surface)] border-r border-[var(--color-border)]
           transition-all duration-300 ease-in-out
-          md:relative md:z-auto
+          md:relative md:z-50
           ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
           ${collapsed ? "md:w-20" : "md:w-64"}
         `}
       >
-        {/* Border Toggle Button */}
         <button
           onClick={toggleCollapsed}
-          className="
+          className={`
             hidden md:flex absolute top-[30px] -right-3.5 z-50 h-7 w-7 items-center justify-center
             rounded-full border border-[var(--color-border)] bg-[var(--color-bg-surface)] text-[var(--color-brand)] shadow-sm
             transition-all duration-300 hover:bg-[var(--color-bg-subtle)] cursor-pointer
-          "
-          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+            ${trueCollapsed ? "opacity-0 pointer-events-none" : "opacity-100"}
+          `}
+          aria-label={trueCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           <ChevronLeft
             size={14}
-            className={`transition-transform duration-300 ${collapsed ? "rotate-180" : ""}`}
+            className={`transition-transform duration-300 ${trueCollapsed ? "rotate-180" : ""}`}
           />
         </button>
 

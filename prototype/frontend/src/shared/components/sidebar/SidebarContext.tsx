@@ -2,8 +2,11 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface SidebarContextType {
   collapsed: boolean;
-  setCollapsed: (val: boolean) => void;
+  trueCollapsed: boolean;
+  setTrueCollapsed: (val: boolean) => void;
   toggleCollapsed: () => void;
+  isHovered: boolean;
+  setIsHovered: (val: boolean) => void;
   mobileOpen: boolean;
   setMobileOpen: (val: boolean) => void;
   toggleMobile: () => void;
@@ -14,7 +17,7 @@ interface SidebarContextType {
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
 export function SidebarProvider({ children }: { children: React.ReactNode }) {
-  const [collapsed, setCollapsed] = useState<boolean>(() => {
+  const [trueCollapsed, setTrueCollapsed] = useState<boolean>(() => {
     try {
       const saved = localStorage.getItem("djp-sidebar-collapsed");
       return saved ? JSON.parse(saved) : false;
@@ -22,8 +25,11 @@ export function SidebarProvider({ children }: { children: React.ReactNode }) {
       return false;
     }
   });
+  const [isHovered, setIsHovered] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  const collapsed = trueCollapsed && !isHovered;
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,13 +42,13 @@ export function SidebarProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem("djp-sidebar-collapsed", JSON.stringify(collapsed));
+      localStorage.setItem("djp-sidebar-collapsed", JSON.stringify(trueCollapsed));
     } catch (e) {
       console.warn("localStorage item set failed:", e);
     }
-  }, [collapsed]);
+  }, [trueCollapsed]);
 
-  const toggleCollapsed = () => setCollapsed((prev) => !prev);
+  const toggleCollapsed = () => setTrueCollapsed((prev) => !prev);
   const toggleMobile = () => setMobileOpen((prev) => !prev);
   const closeMobile = () => setMobileOpen(false);
 
@@ -58,7 +64,7 @@ export function SidebarProvider({ children }: { children: React.ReactNode }) {
           return;
         }
         e.preventDefault();
-        setCollapsed((prev) => !prev);
+        setTrueCollapsed((prev) => !prev);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -69,8 +75,11 @@ export function SidebarProvider({ children }: { children: React.ReactNode }) {
     <SidebarContext.Provider
       value={{
         collapsed,
-        setCollapsed,
+        trueCollapsed,
+        setTrueCollapsed,
         toggleCollapsed,
+        isHovered,
+        setIsHovered,
         mobileOpen,
         setMobileOpen,
         toggleMobile,
