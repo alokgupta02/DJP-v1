@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   Search, MapPin, Flame, ThumbsUp, MessageSquare, Users, Landmark,
   Clock, CheckCircle2, User, AlertTriangle, Trash2, Droplet,
-  Lightbulb, Plus, Image, ChevronDown, Vote, X
+  Lightbulb, Image, ChevronDown, Vote, X
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -637,32 +637,6 @@ export default function FeedPage() {
         </div>
       </div>
 
-      <div className="fixed bottom-8 right-8 z-[100] flex flex-col items-end gap-3 group">
-        <div className="flex flex-col items-end gap-3 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto mb-4">
-          <Link to="/issues/new" className="flex items-center gap-3 px-4 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-full hover:bg-[var(--color-bg-subtle)] transition-colors shadow-lg">
-            <span className="text-sm font-bold text-[var(--color-text-primary)]">Report Issue</span>
-            <span className="w-8 h-8 rounded-full bg-[var(--color-brand-light)] flex items-center justify-center text-[var(--color-brand)]">
-              <AlertTriangle size={16} />
-            </span>
-          </Link>
-          <Link to="/discussions/new" className="flex items-center gap-3 px-4 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-full hover:bg-[var(--color-bg-subtle)] transition-colors shadow-lg">
-            <span className="text-sm font-bold text-[var(--color-text-primary)]">Start Discussion</span>
-            <span className="w-8 h-8 rounded-full bg-[var(--color-bg-subtle)] flex items-center justify-center text-[var(--color-text-secondary)]">
-              <MessageSquare size={16} />
-            </span>
-          </Link>
-          <Link to="/polls/new" className="flex items-center gap-3 px-4 py-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-full hover:bg-[var(--color-bg-subtle)] transition-colors shadow-lg">
-            <span className="text-sm font-bold text-[var(--color-text-primary)]">Create Poll</span>
-            <span className="w-8 h-8 rounded-full bg-[var(--color-bg-subtle)] flex items-center justify-center text-[var(--color-text-secondary)]">
-              <Vote size={16} />
-            </span>
-          </Link>
-        </div>
-        <button className="flex items-center gap-3 h-14 pl-4 pr-6 bg-[var(--color-brand)] text-[var(--color-text-inverse)] rounded-[1.25rem] shadow-xl hover:shadow-2xl active:scale-95 transition-all duration-200">
-          <Plus size={24} />
-          <span className="font-bold text-sm tracking-wider">CREATE</span>
-        </button>
-      </div>
     </div>
   );
 }
