@@ -170,10 +170,8 @@ function FeedFilterBar() {
   const [activeContent, setActiveContent] = useState("All");
 
   return (
-    <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-4 mb-6 rounded-xl">
-
-      {/* Content type */}
-      <div className="flex flex-wrap items-center gap-2">
+    <div className="mb-6">
+      <div className="inline-flex flex-wrap items-center gap-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-2 rounded-xl">
         {CONTENT_TYPES.map((type) => (
           <button
             key={type}
@@ -189,7 +187,6 @@ function FeedFilterBar() {
           </button>
         ))}
       </div>
-
     </div>
   );
 }
