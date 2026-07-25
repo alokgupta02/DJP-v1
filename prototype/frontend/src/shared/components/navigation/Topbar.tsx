@@ -53,8 +53,8 @@ export default function Topbar({
         "flex items-center justify-between px-4 md:px-5 shrink-0 z-30 shadow-sm"
       )}
     >
-      {/* Left: Mobile Toggle & Logo */}
-      <div className="flex items-center gap-3 shrink-0 pl-1">
+      {/* Left: Mobile Toggle */}
+      <div className="flex items-center shrink-0 pl-1">
         <button
           onClick={toggleMobile}
           className="md:hidden p-1.5 -ml-1.5 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition"
@@ -62,12 +62,6 @@ export default function Topbar({
         >
           <Menu size={24} />
         </button>
-        
-        <Link to="/" className="flex items-center hover:opacity-90 transition">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--color-brand)] text-sm font-bold text-[var(--color-text-inverse)] shadow-sm">
-            DJ
-          </div>
-        </Link>
       </div>
 
       {/* Center: Search Bar (Sleek Reddit Style) */}
