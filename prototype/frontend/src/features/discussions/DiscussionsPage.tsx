@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronUp, ChevronDown, Plus } from "lucide-react";
 import clsx from "clsx";
+import { TopicFilterBar } from "../../shared/components/navigation";
 import { fetchDiscussions, type BackendDiscussionDto } from "./discussionsApi";
 
 interface Discussion {
@@ -124,6 +125,7 @@ export default function DiscussionsPage() {
       </div>
 
       <div className="px-8 py-6 w-full">
+        <TopicFilterBar />
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 pb-20">
           {combinedDiscussions.map((discussion) => (
             <div

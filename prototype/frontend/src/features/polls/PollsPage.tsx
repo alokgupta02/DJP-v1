@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Plus, Vote, MessageSquare, Share2, ChevronRight, TrendingUp, Clock, AlertTriangle } from "lucide-react";
 import clsx from "clsx";
+import { TopicFilterBar } from "../../shared/components/navigation";
 import { fetchPolls, type BackendPollDto } from "./pollsApi";
 
 const FILTER_TABS = ["Open", "Closed", "My Polls", "Following", "Needs Your Vote", "Near Me"];
@@ -81,6 +82,7 @@ export default function PollsPage() {
         </div>
 
         <div className="flex flex-col gap-4">
+          <TopicFilterBar />
           <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
             {FILTER_TABS.map((tab) => (
               <button

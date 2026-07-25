@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
-  MapPin, Flame, ThumbsUp, MessageSquare, Users, Landmark,
+  MapPin, ThumbsUp, MessageSquare, Users, Landmark,
   Clock, CheckCircle2, User, AlertTriangle, Trash2, Droplet,
-  Lightbulb, ChevronDown, Vote, X
+  Lightbulb, Vote, X
 } from "lucide-react";
 import clsx from "clsx";
-
-const TOPICS = [
-  "All Topics", "Roads", "Garbage", "Water", "Electricity",
-  "Judiciary", "Education", "Healthcare", "Police", "Environment",
-  "Economy", "More",
-];
 
 const CONTENT_TYPES = ["All", "Issues", "Discussions", "Polls", "Petitions"];
 
@@ -173,40 +167,13 @@ function SeverityBadge({ severity }: { severity: string }) {
 }
 
 function FeedFilterBar() {
-  const [activeTopic, setActiveTopic] = useState("All Topics");
   const [activeContent, setActiveContent] = useState("All");
 
   return (
     <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-4 mb-6 rounded-xl">
-      {/* Row 1: Sort */}
-      <div className="flex flex-wrap items-center justify-end gap-3">
-        <button className="flex items-center gap-2 h-11 px-4 rounded-full border border-[var(--color-border)] hover:bg-[var(--color-bg-subtle)] transition-colors text-sm font-medium text-[var(--color-text-primary)]">
-          <Flame size={16} />
-          Trending
-          <ChevronDown size={14} className="text-[var(--color-text-secondary)]" />
-        </button>
-      </div>
 
-      {/* Row 2: Topic chips */}
-      <div className="mt-3 flex flex-wrap gap-2">
-        {TOPICS.map((topic) => (
-          <button
-            key={topic}
-            onClick={() => setActiveTopic(topic)}
-            className={clsx(
-              "px-3 py-1.5 rounded-full text-sm transition-colors",
-              activeTopic === topic
-                ? "bg-[var(--color-brand-light)] text-[var(--color-brand)] font-semibold"
-                : "border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)]"
-            )}
-          >
-            {topic}
-          </button>
-        ))}
-      </div>
-
-      {/* Row 3: Content type */}
-      <div className="mt-4 flex flex-wrap items-center gap-2">
+      {/* Content type */}
+      <div className="flex flex-wrap items-center gap-2">
         {CONTENT_TYPES.map((type) => (
           <button
             key={type}
@@ -223,14 +190,6 @@ function FeedFilterBar() {
         ))}
       </div>
 
-      {/* Row 4: Current context */}
-      <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-[var(--color-text-secondary)] border-t border-[var(--color-border)] pt-3">
-        <span className="font-medium text-[var(--color-text-primary)]">Showing:</span>
-        <span className="px-2 py-1 rounded bg-[var(--color-brand-light)] text-[var(--color-brand)] text-xs font-medium">{activeContent}</span>
-        <span className="px-2 py-1 rounded bg-[var(--color-bg-subtle)] text-xs">{activeTopic}</span>
-        <span className="px-2 py-1 rounded bg-[var(--color-bg-subtle)] text-xs">🔥 Trending</span>
-        <span className="ml-auto text-xs">124 results</span>
-      </div>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import {
   Trash2, Droplet, Lightbulb, Users, AlertTriangle, Zap,
 } from "lucide-react";
 import clsx from "clsx";
+import { TopicFilterBar } from "../../shared/components/navigation";
 import { fetchIssues, type BackendIssueDto } from "./issuesApi";
 
 const FILTER_TABS = ["Near Me", "My Issues", "Needs Attention", "Resolved", "High Priority"];
@@ -155,6 +156,7 @@ export default function IssuesPage() {
         </div>
 
         <div className="space-y-4 mb-8">
+          <TopicFilterBar />
           <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
             {FILTER_TABS.map((tab) => (
               <button
