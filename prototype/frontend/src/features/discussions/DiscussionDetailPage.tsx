@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ThumbsUp, MessageSquare, Share2, ArrowLeft, ExternalLink, Users, ArrowBigUp, ArrowBigDown, Plus, Search } from "lucide-react";
+import { ThumbsUp, MessageSquare, Share2, ArrowLeft, ExternalLink, Users, ArrowBigUp, ArrowBigDown, Plus, Minus, Search } from "lucide-react";
 import clsx from "clsx";
 
 type CommentData = {
@@ -248,10 +248,13 @@ function CommentThread({ comment }: { comment: CommentData }) {
         <div className="flex">
           {/* Thread Line Column */}
           <div 
-            className="flex flex-col items-center w-7 shrink-0 cursor-pointer group"
+            className="relative flex flex-col items-center w-7 shrink-0 cursor-pointer group"
             onClick={() => setIsCollapsed(true)}
           >
             <div className="w-[2px] bg-[var(--color-border)] grow mt-1 mb-1 group-hover:bg-[var(--color-brand)] transition-colors" />
+            <div className="absolute top-2 opacity-0 group-hover:opacity-100 bg-[var(--color-bg-surface)] text-[var(--color-brand)] transition-opacity">
+              <Minus size={14} />
+            </div>
           </div>
 
           {/* Content Column */}
