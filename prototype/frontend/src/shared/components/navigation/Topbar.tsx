@@ -54,7 +54,7 @@ export default function Topbar({
       )}
     >
       {/* Left: Mobile Toggle & Logo */}
-      <div className="flex items-center gap-3 md:w-[280px] shrink-0">
+      <div className="flex items-center gap-3 shrink-0 pl-1">
         <button
           onClick={toggleMobile}
           className="md:hidden p-1.5 -ml-1.5 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition"
@@ -63,10 +63,10 @@ export default function Topbar({
           <Menu size={24} />
         </button>
         
-        <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition">
-          <span className="text-[26px] font-black text-[var(--color-brand)] tracking-tighter lowercase">
-            digitaljanta
-          </span>
+        <Link to="/" className="flex items-center hover:opacity-90 transition">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--color-brand)] text-sm font-bold text-[var(--color-text-inverse)] shadow-sm">
+            DJ
+          </div>
         </Link>
       </div>
 
@@ -86,7 +86,7 @@ export default function Topbar({
             value={searchValue}
             onChange={(e) => onSearchChange?.(e.target.value)}
             placeholder={searchPlaceholder}
-            className="flex-1 h-full bg-transparent text-[15px] font-medium text-[var(--color-text-primary)] placeholder:text-[var(--color-text-secondary)] placeholder:font-normal focus:outline-none"
+            className="flex-1 h-full bg-transparent text-[15px] font-medium text-[var(--color-text-primary)] placeholder:text-[var(--color-text-secondary)] placeholder:font-normal focus:outline-none text-center"
             aria-label={searchPlaceholder}
           />
           
@@ -102,7 +102,7 @@ export default function Topbar({
       </div>
 
       {/* Right side: Actions & Profile */}
-      <div className="flex items-center justify-end gap-1 sm:gap-2 md:w-[280px] shrink-0">
+      <div className="flex items-center justify-end gap-1 sm:gap-2 shrink-0">
         
         {/* Desktop Ward Selector */}
         {ward && (
