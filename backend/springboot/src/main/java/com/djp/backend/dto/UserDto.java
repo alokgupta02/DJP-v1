@@ -5,7 +5,7 @@ import java.util.UUID;
 
 @Schema(description = "Citizen profile data transfer object returned on authentication and profile queries.")
 public record UserDto(
-    @Schema(description = "Unique citizen UUID", example = "33333333-3333-3333-3333-333333333333")
+    @Schema(description = "Unique citizen UUID", example = "990671fe-24d5-480f-9da5-76352b8cefd4")
     UUID id,
 
     @Schema(description = "Registered citizen or developer email address", example = "citizen@djp.org")

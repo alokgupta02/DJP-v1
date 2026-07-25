@@ -7,7 +7,7 @@ server:
 
 spring:
   profiles:
-    active: dummy
+    active: "local,dummy"
   application:
     name: backend
   lifecycle:

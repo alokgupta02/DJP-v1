@@ -165,13 +165,13 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/issues/33333333-3333-3333-3333-333333333333",
+              "raw": "{{baseUrl}}/issues/990671fe-24d5-480f-9da5-76352b8cefd4",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "issues",
-                "33333333-3333-3333-3333-333333333333"
+                "990671fe-24d5-480f-9da5-76352b8cefd4"
               ]
             },
             "description": "Fetches detailed information for a specific civic issue UUID."
@@ -245,13 +245,13 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/discussions/55555555-5555-5555-5555-555555555555",
+              "raw": "{{baseUrl}}/discussions/0cf5ae96-9ca5-4887-b654-5612acdc649f",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "discussions",
-                "55555555-5555-5555-5555-555555555555"
+                "0cf5ae96-9ca5-4887-b654-5612acdc649f"
               ]
             },
             "description": "Fetches detailed information for a specific discussion thread UUID."
@@ -325,13 +325,13 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/polls/77777777-7777-7777-7777-777777777777",
+              "raw": "{{baseUrl}}/polls/66d52ce0-f22e-481a-97a5-845cc610e83d",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "polls",
-                "77777777-7777-7777-7777-777777777777"
+                "66d52ce0-f22e-481a-97a5-845cc610e83d"
               ]
             },
             "description": "Fetches detailed information and voting options for a specific poll UUID."

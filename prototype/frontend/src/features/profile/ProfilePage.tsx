@@ -39,7 +39,21 @@ export default function ProfilePage() {
   }
 
   if (!user) {
-    return <div className="p-8 text-center text-[var(--color-error)]">Failed to load profile.</div>;
+    return (
+      <div className="p-8 text-center text-[var(--color-error)] flex flex-col items-center justify-center gap-4">
+        <p>Failed to load profile.</p>
+        <button 
+          onClick={() => {
+            localStorage.removeItem("djp_user");
+            localStorage.removeItem("djp_token");
+            window.location.href = "/";
+          }}
+          className="bg-red-50 text-red-600 px-6 py-2 rounded-lg font-bold border border-red-200 hover:bg-red-100 transition-colors"
+        >
+          Reset Session
+        </button>
+      </div>
+    );
   }
 
   const initials = user.fullName?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U';

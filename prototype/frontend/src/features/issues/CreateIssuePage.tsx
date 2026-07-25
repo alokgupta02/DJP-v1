@@ -10,7 +10,7 @@ export default function CreateIssuePage() {
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
   const [pincode, setPincode] = useState("");
-  const [impactScope, setImpactScope] = useState("🏘️ My neighborhood (10–50 people)");
+  const [impactScope, setImpactScope] = useState("🏘️ Neighborhood (10–50 people)");
   const [priorityReason, setPriorityReason] = useState("Health & Hygiene Concern");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -153,15 +153,15 @@ export default function CreateIssuePage() {
               onChange={(e) => setImpactScope(e.target.value)}
               className="w-full p-3 border border-[var(--color-border)] rounded-lg bg-transparent text-[var(--color-text-primary)]"
             >
-              <option value="👤 Just me">👤 Just me</option>
-              <option value="👨‍👩‍👧 My household / Family">👨‍👩‍👧 My household / Family</option>
-              <option value="🏘️ My neighborhood (10–50 people)">🏘️ My neighborhood (10–50 people)</option>
-              <option value="📍 My locality (50–500 people)">📍 My locality (50–500 people)</option>
-              <option value="🏛️ Entire Ward">🏛️ Entire Ward</option>
-              <option value="🌆 Entire City">🌆 Entire City</option>
-              <option value="🏢 Entire District">🏢 Entire District</option>
-              <option value="🌐 Entire State">🌐 Entire State</option>
-              <option value="🇮🇳 Nationwide">🇮🇳 Nationwide</option>
+              {/* <option value="👤 Just me">👤 Just me</option> */}
+              {/* <option value="👨‍👩‍👧 My household / Family">👨‍👩‍👧 My household / Family</option> */}
+              <option value="🏘️ Neighborhood (10–50 people)">🏘️ Neighborhood (10–50 people)</option>
+              <option value="📍 Locality (50–500 people)">📍 Locality (50–500 people)</option>
+              <option value="🏛️ Ward">🏛️ Ward</option>
+              <option value="🌆 City">🌆 City</option>
+              <option value="🏢 District">🏢 District</option>
+              <option value="🌐 State">🌐 State</option>
+              <option value="🇮🇳 Country">🇮🇳 Country</option>
               <option value="❓ Not Sure">❓ Not Sure</option>
             </select>
           </div>

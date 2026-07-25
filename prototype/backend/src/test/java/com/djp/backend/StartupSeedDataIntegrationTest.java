@@ -7,6 +7,9 @@ import com.djp.backend.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.test.context.ActiveProfiles;
+
+@ActiveProfiles({"local", "dummy"})
 public class StartupSeedDataIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
