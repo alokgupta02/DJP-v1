@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Plus, AlertCircle, MessageSquare, BarChart2 } from "lucide-react";
+import { Plus, TriangleAlert, MessagesSquare, Vote } from "lucide-react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 import { useSidebar } from "./SidebarContext";
@@ -73,25 +73,25 @@ export default function SidebarFooter() {
             <Link 
               to="/issues/new" 
               onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-3 px-4 py-3 hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition-colors"
+              className="flex items-center gap-3 px-4 py-3 hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition-colors group"
             >
-              <AlertCircle size={18} className="text-[var(--color-brand)]" />
+              <TriangleAlert size={18} className="shrink-0" />
               <span className="text-sm font-semibold">Report Issue</span>
             </Link>
             <Link 
               to="/discussions/new" 
               onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-3 px-4 py-3 hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition-colors"
+              className="flex items-center gap-3 px-4 py-3 hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition-colors group"
             >
-              <MessageSquare size={18} className="text-[var(--color-brand)]" />
+              <MessagesSquare size={18} className="shrink-0" />
               <span className="text-sm font-semibold">New Discussion</span>
             </Link>
             <Link 
               to="/polls/new" 
               onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-3 px-4 py-3 hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition-colors"
+              className="flex items-center gap-3 px-4 py-3 hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition-colors group"
             >
-              <BarChart2 size={18} className="text-[var(--color-brand)]" />
+              <Vote size={18} className="shrink-0" />
               <span className="text-sm font-semibold">Create Poll</span>
             </Link>
           </div>
