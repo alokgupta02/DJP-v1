@@ -18,12 +18,10 @@ import FeedPage from "../../features/feed/FeedPage";
 
 import IssuesPage from "../../features/issues/IssuesPage";
 import IssueDetailPage from "../../features/issues/IssueDetailPage";
-import CreateIssuePage from "../../features/issues/CreateIssuePage";
+import CreatePostPage from "../../features/create/CreatePostPage";
 import DiscussionsPage from "../../features/discussions/DiscussionsPage";
 import DiscussionDetailPage from "../../features/discussions/DiscussionDetailPage";
-import CreateDiscussionPage from "../../features/discussions/CreateDiscussionPage";
 import PollsPage from "../../features/polls/PollsPage";
-import CreatePollPage from "../../features/polls/CreatePollPage";
 import RepresentativesPage from "../../features/representatives/RepresentativesPage";
 import NotificationsPage from "../../features/notifications/NotificationsPage";
 import PetitionsPage from "../../features/petitions/PetitionsPage";
@@ -45,6 +43,10 @@ export const router = createBrowserRouter([
         path: "/feed",
         element: <FeedPage />,
       },
+      {
+        path: "/submit",
+        element: <CreatePostPage />,
+      },
 
       {
         path: "/issues",
@@ -52,7 +54,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/issues/new",
-        element: <CreateIssuePage />,
+        element: <Navigate to="/submit?type=issue" replace />,
       },
       {
         path: "/issues/:id",
@@ -65,7 +67,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/discussions/new",
-        element: <CreateDiscussionPage />,
+        element: <Navigate to="/submit?type=discussion" replace />,
       },
       {
         path: "/discussions/:id",
@@ -78,7 +80,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/polls/new",
-        element: <CreatePollPage />,
+        element: <Navigate to="/submit?type=poll" replace />,
       },
 
       {
