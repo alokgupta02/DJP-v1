@@ -251,7 +251,7 @@ function CommentThread({ comment }: { comment: CommentData }) {
              <p className="text-[var(--color-text-primary)] mb-2 leading-relaxed">{comment.text}</p>
              <div className="flex flex-wrap items-center gap-1 -ml-2 text-[var(--color-text-secondary)] font-semibold text-xs">
                 <div className="flex items-center rounded-full bg-[var(--color-bg-subtle)] ml-2">
-                  <button className="p-1.5 hover:bg-[var(--color-border)] hover:text-red-500 rounded-l-full transition-colors"><ArrowBigUp size={16} /></button>
+                  <button className="p-1.5 hover:bg-[var(--color-border)] hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={16} /></button>
                   <span className="px-1 text-[var(--color-text-primary)]">{comment.score}</span>
                   <button className="p-1.5 hover:bg-[var(--color-border)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={16} /></button>
                 </div>
@@ -292,146 +292,152 @@ export default function DiscussionDetailPage() {
         </Link>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-6">
-            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-7 shadow-sm">
-              <div className="flex flex-wrap gap-2 mb-4">
-                {discussion.tags.map((tag) => (
-                  <span key={tag.label} className={clsx("px-3 py-1 rounded-full text-xs font-semibold", tagVariantMap[tag.variant])}>
-                    {tag.label}
-                  </span>
-                ))}
-              </div>
-              <h1 className="text-3xl font-bold leading-tight text-[var(--color-text-primary)]">{discussion.title}</h1>
-              <p className="mt-4 text-[var(--color-text-secondary)] leading-7">{discussion.subtitle}</p>
-              
-              <div className="border-t border-[var(--color-border)] my-6" />
-              
-              <div className="flex flex-wrap items-center justify-between text-sm">
-                <div className="flex items-center gap-6 text-[var(--color-text-secondary)]">
-                  <div className="flex items-center gap-2">
-                    <Users size={16} />
-                    <span className="font-medium text-[var(--color-text-primary)]">{discussion.author}</span>
+          <div className="lg:col-span-2 space-y-4">
+            {/* Unified Post Container */}
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-sm overflow-hidden">
+              {/* Main Post Area */}
+              <div className="p-4 sm:p-5">
+                {/* Author Metadata */}
+                <div className="flex items-center gap-2 mb-3 text-xs text-[var(--color-text-secondary)]">
+                  <div className="w-6 h-6 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-[10px]">
+                    {discussion.author.charAt(0)}
                   </div>
-                  <div className="hidden sm:block text-[var(--color-text-secondary)]">
-                    {discussion.time}
-                  </div>
+                  <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{discussion.author}</span>
+                  <span>•</span>
+                  <span>{discussion.time}</span>
+                </div>
+
+                {/* Title */}
+                <h1 className="text-xl sm:text-2xl font-bold leading-snug text-[var(--color-text-primary)] mb-2">{discussion.title}</h1>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {discussion.tags.map((tag) => (
+                    <span key={tag.label} className={clsx("px-2.5 py-0.5 rounded-full text-xs font-semibold", tagVariantMap[tag.variant])}>
+                      {tag.label}
+                    </span>
+                  ))}
                 </div>
                 
-                <div className="flex items-center gap-2">
+                {/* Content */}
+                <div className="text-[var(--color-text-primary)] text-sm leading-relaxed space-y-4 mb-4">
+                  <p>{discussion.subtitle}</p>
+                  {discussion.sections.map((section) => (
+                    <div key={section.title}>
+                      <h3 className="font-semibold mb-1">{section.title}</h3>
+                      {section.content.map((p, i) => (
+                        <p key={i} className="mb-2 last:mb-0">{p}</p>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Bottom Action Bar */}
+                <div className="flex items-center gap-2 mt-2 pt-2">
                    <div className="flex items-center rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)]">
-                    <button className="p-2 hover:bg-[var(--color-border)] hover:text-red-500 rounded-l-full transition-colors"><ArrowBigUp size={16} /></button>
-                    <span className="px-2">{discussion.supports}</span>
-                    <button className="p-2 hover:bg-[var(--color-border)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={16} /></button>
+                    <button className="p-1.5 px-2 hover:bg-[var(--color-bg-muted)] hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={18} /></button>
+                    <span className="px-1">{discussion.supports}</span>
+                    <button className="p-1.5 px-2 hover:bg-[var(--color-bg-muted)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={18} /></button>
                   </div>
-                  <button className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <MessageSquare size={16} />
                     {discussion.commentsCount}
                   </button>
-                  <button className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <Share2 size={16} /> Share
                   </button>
                 </div>
               </div>
-            </div>
 
-            {/* Description & Content */}
-            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-sm p-7">
-              {discussion.sections.map((section) => (
-                <section key={section.title} className="mt-6 first:mt-0">
-                  <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-3">{section.title}</h3>
-                  {section.content.map((p, i) => (
-                    <p key={i} className="text-[var(--color-text-secondary)] leading-relaxed mb-3 last:mb-0">{p}</p>
-                  ))}
-                </section>
-              ))}
-            </div>
-
-            {/* Reddit-style comments section */}
-            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-sm p-4 sm:p-7">
-              <CommentInput />
-              
-              {/* Comments Header (Sort & Search) */}
-              <div className="mb-6">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-[var(--color-text-secondary)] text-sm">Sort by:</span>
-                    <select className="font-bold text-[var(--color-text-primary)] bg-transparent focus:outline-none cursor-pointer">
-                      <option>Best</option>
-                      <option>Newest</option>
-                      <option>Oldest</option>
-                    </select>
+              {/* Reddit-style comments section */}
+              <div className="px-4 sm:px-5 pb-5">
+                <CommentInput />
+                
+                {/* Comments Header (Sort & Search) */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-[var(--color-text-secondary)] text-sm">Sort by:</span>
+                      <select className="font-bold text-[var(--color-text-primary)] bg-transparent focus:outline-none cursor-pointer">
+                        <option>Best</option>
+                        <option>Newest</option>
+                        <option>Oldest</option>
+                      </select>
+                    </div>
+                    <div className="relative w-full max-w-xs hidden sm:block">
+                      <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-secondary)]" />
+                      <input 
+                        type="text" 
+                        placeholder="Search Comments" 
+                        className="w-full pl-9 pr-4 py-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-surface)] text-sm focus:outline-none focus:ring-1 focus:ring-[var(--color-brand)]" 
+                      />
+                    </div>
                   </div>
-                  <div className="relative w-full max-w-xs hidden sm:block">
-                    <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-secondary)]" />
-                    <input 
-                      type="text" 
-                      placeholder="Search Comments" 
-                      className="w-full pl-9 pr-4 py-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-surface)] text-sm focus:outline-none focus:ring-1 focus:ring-[var(--color-brand)]" 
-                    />
-                  </div>
+                  <hr className="border-[var(--color-border)]" />
                 </div>
-                <hr className="border-[var(--color-border)]" />
-              </div>
-              
-              {/* Threaded Comments List */}
-              <div className="space-y-4">
-                {discussion.comments.map((comment) => (
-                  <CommentThread key={comment.id} comment={comment} />
-                ))}
+                
+                {/* Threaded Comments List */}
+                <div className="space-y-4">
+                  {discussion.comments.map((comment) => (
+                    <CommentThread key={comment.id} comment={comment} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
           {/* Sidebar */}
-          <aside className="space-y-6 lg:sticky lg:top-6 h-fit">
+          <aside className="space-y-4 lg:sticky lg:top-6 h-fit">
             {/* AI Summary Widget */}
-            <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-xl border border-amber-200 dark:border-amber-900 shadow-sm p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-2xl">✨</span>
-                <h3 className="font-bold text-lg text-[var(--color-text-primary)]">AI Summary</h3>
+            <div className="bg-[var(--color-bg-surface)] rounded-xl border border-[var(--color-border)] shadow-sm overflow-hidden">
+              <div className="bg-orange-50 dark:bg-orange-950/20 px-4 py-3 border-b border-orange-100 dark:border-orange-900/30 flex items-center gap-2">
+                <span className="text-lg">✨</span>
+                <h3 className="font-bold text-sm text-[var(--color-text-primary)] uppercase tracking-wide">AI Summary</h3>
               </div>
-              <div className="text-[var(--color-text-primary)] text-sm leading-relaxed mb-4">{discussion.aiSummary}</div>
-              <div className="space-y-3">
-                <div className="rounded-lg bg-white/60 dark:bg-black/20 p-3">
-                  <h4 className="font-bold text-xs text-green-700 dark:text-green-400 mb-2 uppercase tracking-wider">Common Viewpoints</h4>
-                  <ul className="space-y-2 text-sm text-[var(--color-text-primary)]">
-                    {discussion.aiCommon.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+              <div className="p-4">
+                <div className="text-[var(--color-text-primary)] text-sm leading-relaxed mb-4">{discussion.aiSummary}</div>
+                <div className="space-y-3">
+                  <div className="rounded-lg bg-[var(--color-bg-subtle)] p-3">
+                    <h4 className="font-bold text-xs text-[var(--color-text-primary)] mb-2 uppercase tracking-wider">Common Viewpoints</h4>
+                    <ul className="space-y-2 text-sm text-[var(--color-text-primary)]">
+                      {discussion.aiCommon.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-blue-600 text-lg">🗳</span>
-                <h3 className="font-bold text-lg text-[var(--color-text-primary)]">Attached Poll</h3>
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-sm overflow-hidden">
+              <div className="px-4 py-3 border-b border-[var(--color-border)] flex items-center gap-2">
+                <h3 className="font-bold text-sm text-[var(--color-text-primary)] uppercase tracking-wide">Attached Poll</h3>
               </div>
-              <h4 className="font-semibold text-sm leading-relaxed text-[var(--color-text-primary)]">{discussion.poll.question}</h4>
-              <div className="mt-5 space-y-3">
-                {discussion.poll.options.map((opt) => (
-                  <div key={opt.label} className="relative">
-                    <div className="h-8 rounded-lg bg-[var(--color-bg-subtle)] overflow-hidden relative">
-                      <div className={clsx("absolute h-8 rounded-lg", opt.color)} style={{ width: `${opt.percent}%` }} />
-                      <div className="relative flex justify-between items-center h-8 px-3 text-xs">
-                        <span className="text-[var(--color-text-primary)]">{opt.label}</span>
-                        <span className="font-semibold text-[var(--color-text-primary)]">{opt.percent}%</span>
+              <div className="p-4">
+                <h4 className="font-semibold text-sm leading-relaxed text-[var(--color-text-primary)]">{discussion.poll.question}</h4>
+                <div className="mt-4 space-y-3">
+                  {discussion.poll.options.map((opt) => (
+                    <div key={opt.label} className="relative">
+                      <div className="h-8 rounded-lg bg-[var(--color-bg-subtle)] overflow-hidden relative">
+                        <div className={clsx("absolute h-8 rounded-lg", opt.color)} style={{ width: `${opt.percent}%` }} />
+                        <div className="relative flex justify-between items-center h-8 px-3 text-xs">
+                          <span className="text-[var(--color-text-primary)]">{opt.label}</span>
+                          <span className="font-semibold text-[var(--color-text-primary)]">{opt.percent}%</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
             
-            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-green-600 text-lg">🏷</span>
-                <h3 className="font-bold text-lg text-[var(--color-text-primary)]">Topics</h3>
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-sm overflow-hidden">
+              <div className="px-4 py-3 border-b border-[var(--color-border)] flex items-center gap-2">
+                <h3 className="font-bold text-sm text-[var(--color-text-primary)] uppercase tracking-wide">Topics</h3>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="p-4 flex flex-wrap gap-2">
                 {discussion.topics.map((topic) => (
-                  <span key={topic} className="px-3 py-1 rounded-full bg-[var(--color-bg-subtle)] text-xs text-[var(--color-text-primary)]">
+                  <span key={topic} className="px-3 py-1 rounded-full bg-[var(--color-bg-subtle)] text-xs font-medium text-[var(--color-text-primary)] hover:bg-[var(--color-border)] cursor-pointer transition-colors">
                     {topic}
                   </span>
                 ))}
