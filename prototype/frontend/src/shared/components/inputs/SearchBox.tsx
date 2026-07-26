@@ -44,7 +44,7 @@ const SearchBox = forwardRef<HTMLInputElement, SearchBoxProps>(
               onChange("");
               onClear?.();
             }}
-            className="absolute right-2.5 flex items-center justify-center rounded text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+            className="absolute right-0 w-11 h-11 flex items-center justify-center rounded text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
             aria-label="Clear search"
           >
             <XIcon size={14} />

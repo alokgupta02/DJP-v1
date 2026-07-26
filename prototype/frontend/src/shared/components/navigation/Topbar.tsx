@@ -58,7 +58,7 @@ export default function Topbar({
       <div className="md:hidden flex items-center shrink-0 pl-1">
         <button
           onClick={toggleMobile}
-          className="p-1.5 -ml-1.5 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition"
+          className="w-11 h-11 -ml-2 rounded-full flex items-center justify-center hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition"
           aria-label="Toggle Menu"
         >
           <Menu size={24} />
@@ -116,10 +116,10 @@ export default function Topbar({
 
         {/* Action Icons (Like Reddit) */}
         <div className="hidden sm:flex items-center gap-0.5 mr-1">
-          <button className="p-2 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition" title="Announcements">
+          <button aria-label="Announcements" className="w-11 h-11 rounded-full flex items-center justify-center hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition" title="Announcements">
             <Megaphone size={22} className="stroke-[1.5]" />
           </button>
-          <button className="p-2 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition" title="Chat">
+          <button aria-label="Chat" className="w-11 h-11 rounded-full flex items-center justify-center hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition" title="Chat">
             <MessageCircleMore size={22} className="stroke-[1.5]" />
           </button>
         </div>
@@ -137,10 +137,10 @@ export default function Topbar({
         <NotificationBar />
 
         {/* User avatar with status dot */}
-        <div className="relative cursor-pointer hover:opacity-80 transition">
+        <button aria-label="User Profile" className="relative cursor-pointer hover:opacity-80 transition ml-1 w-11 h-11 flex items-center justify-center rounded-full">
           <Avatar initials={userInitials} src={userAvatar} size="sm" />
-          <span className="absolute bottom-0 -right-0.5 h-3 w-3 rounded-full bg-green-500 border-2 border-[var(--color-bg-surface)]" />
-        </div>
+          <span className="absolute bottom-1 right-1 h-3 w-3 rounded-full bg-green-500 border-2 border-[var(--color-bg-surface)]" />
+        </button>
       </div>
     </header>
   );

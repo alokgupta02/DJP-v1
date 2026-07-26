@@ -51,7 +51,7 @@ export function CommentInput({ entityId, entityType, parentId, onCommentAdded }:
             disabled={isSubmitting}
           />
           <div className="flex justify-between items-center bg-[var(--color-bg-subtle)] px-4 py-2 border-t border-[var(--color-border)]">
-            <button className="text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors"><ExternalLink size={18} /></button>
+            <button aria-label="Open in full page" className="min-w-[44px] min-h-[44px] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors"><ExternalLink size={18} /></button>
             <div className="flex gap-2">
               <button 
                 onClick={() => setIsExpanded(false)} 
@@ -89,6 +89,14 @@ export function CommentThread({ comment }: { comment: CommentData }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [score, setScore] = useState(comment.score || 0);
   const [isReplying, setIsReplying] = useState(false);
+
+  const hasMultipleBranches = (c: CommentData): boolean => {
+    if (!c.replies || c.replies.length === 0) return false;
+    if (c.replies.length > 1) return true;
+    return hasMultipleBranches(c.replies[0]);
+  };
+
+  const showTreeUI = hasMultipleBranches(comment);
 
   const handleVote = async (value: number) => {
     if (!comment.entityId || !comment.entityType) return;
@@ -133,8 +141,9 @@ export function CommentThread({ comment }: { comment: CommentData }) {
         <span className="text-[var(--color-text-secondary)] text-xs">• {comment.time}</span>
         {isCollapsed && (
           <button 
+            aria-label="Expand comment"
             onClick={() => setIsCollapsed(false)}
-            className="ml-1 text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)] rounded-full p-1 transition-colors"
+            className="ml-1 text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)] rounded-full min-w-[32px] min-h-[32px] flex items-center justify-center transition-colors"
           >
             <Plus size={14} />
           </button>
@@ -146,10 +155,10 @@ export function CommentThread({ comment }: { comment: CommentData }) {
         <div className="flex">
           {/* Thread Line Column */}
           <div 
-            className={`relative flex flex-col items-center w-7 shrink-0 ${comment.replies && comment.replies.length > 0 ? "cursor-pointer group" : ""}`}
-            onClick={() => comment.replies && comment.replies.length > 0 && setIsCollapsed(true)}
+            className={`relative flex flex-col items-center w-7 shrink-0 ${showTreeUI ? "cursor-pointer group" : ""}`}
+            onClick={() => showTreeUI && setIsCollapsed(true)}
           >
-            {comment.replies && comment.replies.length > 0 && (
+            {showTreeUI && (
               <>
                 <div className="w-[2px] bg-[var(--color-border)] grow mt-1 mb-1 group-hover:bg-[var(--color-brand)] transition-colors" />
                 <div className="absolute top-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] text-[var(--color-brand)] shadow-sm rounded-full p-0.5 transition-all hover:bg-[var(--color-brand)] hover:text-white hover:border-[var(--color-brand)]">
@@ -166,17 +175,18 @@ export function CommentThread({ comment }: { comment: CommentData }) {
              {/* Action Bar */}
              <div className="flex flex-wrap items-center gap-1 -ml-2 text-[var(--color-text-secondary)] font-bold text-xs">
                 <div className="flex items-center rounded-full hover:bg-[var(--color-bg-subtle)] transition-colors ml-2">
-                  <button onClick={() => handleVote(1)} className="p-1.5 hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={16} /></button>
+                  <button aria-label="Upvote" onClick={() => handleVote(1)} className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={16} /></button>
                   <span className="px-1 text-[var(--color-text-primary)]">{score}</span>
-                  <button onClick={() => handleVote(-1)} className="p-1.5 hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={16} /></button>
+                  <button aria-label="Downvote" onClick={() => handleVote(-1)} className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={16} /></button>
                 </div>
                 <button 
+                  aria-label="Reply"
                   onClick={() => setIsReplying(!isReplying)}
-                  className="flex items-center gap-1.5 px-3 py-1.5 hover:bg-[var(--color-bg-subtle)] rounded-full transition-colors"
+                  className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] hover:bg-[var(--color-bg-subtle)] rounded-full transition-colors"
                 >
                   <MessageSquare size={16} /> Reply
                 </button>
-                <button onClick={handleShare} className="flex items-center gap-1.5 px-3 py-1.5 hover:bg-[var(--color-bg-subtle)] rounded-full transition-colors">
+                <button aria-label="Share" onClick={handleShare} className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] hover:bg-[var(--color-bg-subtle)] rounded-full transition-colors">
                   <Share2 size={16} /> Share
                 </button>
              </div>

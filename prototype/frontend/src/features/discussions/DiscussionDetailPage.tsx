@@ -8,7 +8,8 @@ import { type CommentData, CommentInput, CommentThread } from "../../shared/comp
 const DISCUSSIONS_DATA: Record<string, {
   id: string; tags: { label: string; variant: string }[];
   title: string; subtitle: string;
-  author: string; time: string; supports: number; commentsCount: number; participants: number;
+  author: string; authorInitials?: string; authorBg?: string; authorColor?: string;
+  time: string; supports: number; commentsCount: number; participants: number;
   sections: { title: string; content: string[] }[];
   aiSummary: string; aiCommon: string[]; aiAlt: string[];
   comments: CommentData[];
@@ -28,6 +29,9 @@ const DISCUSSIONS_DATA: Record<string, {
     title: "Did the Supreme Court's action against the NCERT chapter on judicial corruption strike the right balance between protecting judicial reputation and preserving academic freedom?",
     subtitle: "A debate on judicial accountability, academic freedom and the limits of institutional criticism in educational material.",
     author: "Alok G.",
+    authorInitials: "AG",
+    authorBg: "bg-blue-100",
+    authorColor: "text-blue-700",
     time: "Posted 8 hours ago",
     supports: 624,
     commentsCount: 184,
@@ -101,6 +105,9 @@ const DISCUSSIONS_DATA: Record<string, {
     title: "To whom is the higher judiciary accountable?",
     subtitle: "Research and public commentary have raised questions about judicial appointments, the collegium system, and the prevalence of family connections in India's higher judiciary.",
     author: "Alok G.",
+    authorInitials: "AG",
+    authorBg: "bg-blue-100",
+    authorColor: "text-blue-700",
     time: "Posted 2 hours ago",
     supports: 184,
     commentsCount: 92,
@@ -196,7 +203,10 @@ export default function DiscussionDetailPage() {
           supports: data.votesCount || 0,
           participants: data.participantCount || 0,
           commentsCount: data.commentsCount || 0,
-          author: (meta as any).author || prev.author,
+          author: (meta as any).author || prev.author || "Anonymous",
+          authorInitials: (meta as any).authorInitials || prev.authorInitials || "AN",
+          authorBg: (meta as any).authorBg || prev.authorBg || "bg-gray-100",
+          authorColor: (meta as any).authorColor || prev.authorColor || "text-gray-700",
           time: data.createdAt ? new Date(data.createdAt).toLocaleDateString() : prev.time,
         }));
       })
@@ -208,7 +218,7 @@ export default function DiscussionDetailPage() {
   return (
     <div className="flex-1 p-8 overflow-y-auto">
       <div className="max-w-6xl mx-auto w-full">
-        <Link to="/discussions" className="inline-flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] mb-6 transition-colors">
+        <Link to="/discussions" aria-label="Back to Discussions" className="inline-flex items-center gap-2 px-3 min-h-[44px] -ml-3 rounded-lg text-sm text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)] hover:text-[var(--color-brand)] mb-4 transition-colors">
           <ArrowLeft size={16} />
           Back to Discussions
         </Link>
@@ -221,7 +231,9 @@ export default function DiscussionDetailPage() {
               <div className="p-4 sm:p-5">
                 {/* Author Metadata */}
                 <div className="flex items-center gap-1.5 mb-3 text-xs text-[var(--color-text-secondary)]">
-                  <User size={16} />
+                  <div className={clsx("w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-[8px]", discussion.authorBg || "bg-blue-100", discussion.authorColor || "text-blue-700")}>
+                    {discussion.authorInitials || "AG"}
+                  </div>
                   <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{discussion.author}</span>
                   <button title="Does it affect you? if yes, then Follow" className="ml-1 px-3 py-0.5 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[10px] font-bold hover:opacity-80 transition-opacity">Follow</button>
                   <span>•</span>
@@ -256,19 +268,19 @@ export default function DiscussionDetailPage() {
                 {/* Bottom Action Bar */}
                 <div className="flex items-center gap-2 mt-2 pt-2">
                    <div className="flex items-center rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)]">
-                    <button className="p-1.5 px-2 hover:bg-[var(--color-bg-muted)] hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={18} /></button>
+                    <button aria-label="Upvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={18} /></button>
                     <span className="px-1">{discussion.supports}</span>
-                    <button className="p-1.5 px-2 hover:bg-[var(--color-bg-muted)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={18} /></button>
+                    <button aria-label="Downvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={18} /></button>
                   </div>
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button aria-label="Comments" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <MessageSquare size={16} />
                     {discussion.commentsCount}
                   </button>
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)] cursor-default">
+                  <div aria-label="Participants" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)] cursor-default">
                     <Users size={16} />
                     {discussion.participants.toLocaleString()}
                   </div>
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button aria-label="Share" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <Share2 size={16} /> Share
                   </button>
                 </div>

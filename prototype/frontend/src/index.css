@@ -106,8 +106,18 @@ body {
   display: none;
 }
 
-/* ─── Focus Ring ──────────────────────────────────────────── */
-:focus-visible {
-  outline: 2px solid var(--color-brand);
-  outline-offset: 2px;
+/* ─── Global Base Styles & Accessibility ────────────────────── */
+@layer base {
+  /* Provide a global focus ring that respects border radius */
+  *:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+    transition: box-shadow var(--duration-fast) var(--ease-default);
+  }
+
+  /* Add smooth transitions to all interactive elements globally by default */
+  button, a {
+    transition: all var(--duration-fast) var(--ease-default);
+    cursor: pointer;
+  }
 }

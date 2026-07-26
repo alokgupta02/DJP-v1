@@ -28,7 +28,7 @@ export default function TopicFilterBar() {
             className={clsx(
               "px-3 py-1.5 rounded-full text-sm transition-colors",
               activeTopic === topic
-                ? "bg-[var(--color-brand-light)] text-[var(--color-brand)] font-semibold"
+                ? "bg-[var(--color-brand)] text-[var(--color-text-inverse)] font-semibold shadow-sm"
                 : "border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)]"
             )}
           >

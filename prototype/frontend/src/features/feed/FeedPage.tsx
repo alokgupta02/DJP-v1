@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   MapPin, ThumbsUp, MessageSquare, Users, Landmark,
   Clock, CheckCircle2, User, AlertTriangle, Trash2, Droplet,
-  Lightbulb, Vote, X, Share2
+  Lightbulb, Vote, X, Share2, AlertCircle, MessageCircle, BarChart2, Flame
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -74,8 +74,8 @@ function IssueCard({ issue }: { issue: any }) {
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-3">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="px-2 py-1 rounded-full bg-[var(--color-error-bg)] text-[var(--color-error)] text-[11px] font-semibold">
-            📢 Issue
+          <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-[var(--color-error-bg)] text-[var(--color-error)] text-[11px] font-semibold">
+            <AlertCircle size={12} /> Issue
           </span>
           <span className="px-2 py-1 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)] text-[11px] font-semibold">
             {issue.category}
@@ -83,9 +83,11 @@ function IssueCard({ issue }: { issue: any }) {
           <SeverityBadge severity={issue.severity} />
         </div>
         <div className="flex items-center gap-3 shrink-0">
-          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
-            <User size={12} />
-            {issue.author}
+          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+            <div className={clsx("w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 font-bold text-[6px]", issue.authorBg || "bg-blue-100", issue.authorColor || "text-blue-700")}>
+              {issue.authorInitials || "AG"}
+            </div>
+            {issue.author || "Anonymous"}
           </div>
           <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
             <Clock size={12} />
@@ -156,8 +158,8 @@ function DiscussionCard({ discussion }: { discussion: any }) {
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-3">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="px-2 py-1 rounded-full bg-[var(--color-brand-light)] text-[var(--color-brand)] text-[11px] font-semibold">
-            💬 Discussion
+          <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-[var(--color-brand-light)] text-[var(--color-brand)] text-[11px] font-semibold">
+            <MessageCircle size={12} /> Discussion
           </span>
           {discussion.tags.map((tag, i) => (
             <span
@@ -172,9 +174,11 @@ function DiscussionCard({ discussion }: { discussion: any }) {
           ))}
         </div>
         <div className="flex items-center gap-3 shrink-0">
-          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
-            <User size={12} />
-            {discussion.author}
+          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+            <div className={clsx("w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 font-bold text-[6px]", discussion.authorBg || "bg-blue-100", discussion.authorColor || "text-blue-700")}>
+              {discussion.authorInitials || "AG"}
+            </div>
+            {discussion.author || "Anonymous"}
           </div>
           <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
             <Clock size={12} />
@@ -215,9 +219,9 @@ function DiscussionCard({ discussion }: { discussion: any }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--color-text-secondary)]">
-          <Users size={14} />
-          <span>{discussion.participantCount.toLocaleString()} Participants</span>
+        <div className="flex items-center gap-1.5 text-xs font-semibold text-orange-500">
+          <Flame size={14} />
+          <span>{discussion.participantCount.toLocaleString()}</span>
         </div>
       </div>
     </Link>
@@ -233,17 +237,19 @@ function PollCard({ poll }: { poll: any }) {
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-3">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="px-2 py-1 rounded-full bg-[var(--color-brand-light)] text-[var(--color-brand)] text-[11px] font-semibold">
-            📊 Poll
+          <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-[var(--color-brand-light)] text-[var(--color-brand)] text-[11px] font-semibold">
+            <BarChart2 size={12} /> Poll
           </span>
           <span className="px-2 py-1 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)] text-[11px] font-semibold">
             🏛 Ward
           </span>
         </div>
         <div className="flex items-center gap-3 shrink-0">
-          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
-            <User size={12} />
-            {poll.author}
+          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+            <div className={clsx("w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 font-bold text-[6px]", poll.authorBg || "bg-blue-100", poll.authorColor || "text-blue-700")}>
+              {poll.authorInitials || "AG"}
+            </div>
+            {poll.author || "Anonymous"}
           </div>
           <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
             <Clock size={12} />

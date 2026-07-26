@@ -7,7 +7,8 @@ import { type CommentData, CommentInput, CommentThread } from "../../shared/comp
 const POLLS_DATA: Record<string, {
   id: string; category: string;
   title: string; description: string;
-  author: string; time: string;
+  author: string; authorInitials?: string; authorBg?: string; authorColor?: string;
+  time: string;
   supports: number; commentsCount: number; participants: number;
   options: { label: string; pct: number; primary: boolean; color: string }[];
   aiSummary: string; aiCommon: string[];
@@ -17,7 +18,7 @@ const POLLS_DATA: Record<string, {
     id: "1", category: "High Priority",
     title: 'Should Ward 12 implement "No Car Sundays" on the Central Corridor?',
     description: "This proposal aims to reduce local carbon emissions and promote pedestrian activity. The pilot would run for 6 months between 8 AM and 4 PM. We want to gather community feedback before the municipal committee makes a final decision on the zoning changes.",
-    author: "Ward 12 Office", time: "2 days remaining",
+    author: "Ward 12 Office", authorInitials: "W12", authorBg: "bg-orange-100", authorColor: "text-orange-700", time: "2 days remaining",
     supports: 12402, commentsCount: 482, participants: 15300,
     options: [
       { label: "Yes, implement it", pct: 64, primary: true, color: "bg-[var(--color-brand)]" },
@@ -72,7 +73,10 @@ export default function PollDetailPage() {
           participants: data.votesCount || 0,
           commentsCount: data.commentsCount || 0,
           category: data.category || prev.category,
-          author: (meta as any).author || prev.author,
+          author: (meta as any).author || prev.author || "Anonymous",
+          authorInitials: (meta as any).authorInitials || prev.authorInitials || "AN",
+          authorBg: (meta as any).authorBg || prev.authorBg || "bg-gray-100",
+          authorColor: (meta as any).authorColor || prev.authorColor || "text-gray-700",
           options: parsedOptions ? parsedOptions.map((opt: any, i: number) => ({
              ...opt,
              color: i === 0 ? "bg-[var(--color-brand)]" : "bg-[var(--color-text-secondary)]"
@@ -87,7 +91,7 @@ export default function PollDetailPage() {
   return (
     <div className="flex-1 p-8 overflow-y-auto">
       <div className="max-w-6xl mx-auto w-full">
-        <Link to="/polls" className="inline-flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] mb-6 transition-colors">
+        <Link to="/polls" aria-label="Back to Polls" className="inline-flex items-center gap-2 px-3 min-h-[44px] -ml-3 rounded-lg text-sm text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)] hover:text-[var(--color-brand)] mb-4 transition-colors">
           <ArrowLeft size={16} />
           Back to Polls
         </Link>
@@ -102,7 +106,9 @@ export default function PollDetailPage() {
                 {/* Author Metadata */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-1.5 text-xs text-[var(--color-text-secondary)]">
-                    <User size={16} />
+                    <div className={clsx("w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-[8px]", poll.authorBg || "bg-blue-100", poll.authorColor || "text-blue-700")}>
+                      {poll.authorInitials || "AG"}
+                    </div>
                     <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{poll.author}</span>
                     <button title="Does it affect you? if yes, then Follow" className="ml-1 px-3 py-0.5 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[10px] font-bold hover:opacity-80 transition-opacity">Follow</button>
                     <span>•</span>
@@ -149,20 +155,20 @@ export default function PollDetailPage() {
                 {/* Bottom Action Bar */}
                 <div className="flex items-center gap-2 mt-4 pt-2">
                    <div className="flex items-center rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)]">
-                    <button className="p-1.5 px-2 hover:bg-[var(--color-bg-muted)] hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={18} /></button>
+                    <button aria-label="Upvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={18} /></button>
                     <span className="px-1">{poll.supports}</span>
-                    <button className="p-1.5 px-2 hover:bg-[var(--color-bg-muted)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={18} /></button>
+                    <button aria-label="Downvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={18} /></button>
                   </div>
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button aria-label="Comments" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <MessageSquare size={16} />
                     {poll.commentsCount}
                   </button>
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)] cursor-default">
+                  <div aria-label="Participants" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)] cursor-default">
                     <Vote size={16} />
                     {poll.participants.toLocaleString()} Votes
                   </div>
                   <div className="grow" />
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button aria-label="Share" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <Share2 size={16} /> Share
                   </button>
                 </div>

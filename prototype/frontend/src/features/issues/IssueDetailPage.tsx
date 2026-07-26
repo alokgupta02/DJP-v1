@@ -9,8 +9,7 @@ const ISSUES_DATA: Record<string, {
   location: string; address: string; distance: string; time: string; govLevel: string;
   supports: number; commentsCount: number; affected: string; image: string; imageCount: number;
   verified: boolean; iconBg: string; iconColor: string; icon: React.ElementType;
-  timeline: string[]; comments: CommentData[];
-  health: [string, string][]; related: { title: string; dist: string }[]; author?: string;
+  health: [string, string][]; related: { title: string; dist: string }[]; author?: string; authorInitials?: string; authorBg?: string; authorColor?: string;
 }> = {
   pothole: {
     id: "pothole", category: "Road", severity: "Critical",
@@ -80,7 +79,7 @@ const ISSUES_DATA: Record<string, {
     title: "Garbage Dump on Balewadi Street near Parke Serene",
     description: "A large pile of household and construction waste has accumulated beside the entrance to Parke Serene Society over the past week. The garbage obstructs pedestrians, emits foul odor, and attracts stray animals. Residents report that municipal collection has been missed multiple times.",
     location: "Balewadi • Ward 23", address: "Near Parke Serene Society, Balewadi, Pune.",
-    distance: "780 m away", time: "Reported 15h ago", govLevel: "Ward", author: "Priya S.",
+    distance: "780 m away", time: "Reported 15h ago", govLevel: "Ward", author: "Priya S.", authorInitials: "PS", authorBg: "bg-purple-100", authorColor: "text-purple-700",
     supports: 42, commentsCount: 18, affected: "120–200",
     image: "https://images.unsplash.com/photo-1503596476-1c12a8ba09a9?w=1000",
     imageCount: 6, verified: true,
@@ -146,6 +145,9 @@ export default function IssueDetailPage() {
           distance: (meta as any).distance || prev.distance,
           govLevel: (meta as any).govLevel || prev.govLevel,
           author: (meta as any).author || prev.author || "Anonymous",
+          authorInitials: (meta as any).authorInitials || prev.authorInitials || "AN",
+          authorBg: (meta as any).authorBg || prev.authorBg || "bg-gray-100",
+          authorColor: (meta as any).authorColor || prev.authorColor || "text-gray-700",
           image: (meta as any).image || prev.image,
           imageCount: (meta as any).imageCount || prev.imageCount,
           verified: (meta as any).verified !== undefined ? (meta as any).verified : prev.verified,
@@ -173,7 +175,7 @@ export default function IssueDetailPage() {
   return (
     <div className="flex-1 p-8 overflow-y-auto">
       <div className="max-w-6xl mx-auto w-full">
-        <Link to="/issues" className="inline-flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] mb-6 transition-colors">
+        <Link to="/issues" aria-label="Back to Issues" className="inline-flex items-center gap-2 px-3 min-h-[44px] -ml-3 rounded-lg text-sm text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)] hover:text-[var(--color-brand)] mb-4 transition-colors">
           <ArrowLeft size={16} />
           Back to Issues
         </Link>
@@ -215,7 +217,9 @@ export default function IssueDetailPage() {
                 {/* Meta details */}
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-xs text-[var(--color-text-secondary)] font-medium mb-4">
                   <div className="flex items-center gap-1.5">
-                    <User size={14} /> 
+                    <div className={clsx("w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-[8px]", issue.authorBg || "bg-blue-100", issue.authorColor || "text-blue-700")}>
+                      {issue.authorInitials || "AG"}
+                    </div>
                     <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{issue.author}</span>
                     <button title="Does it affect you? if yes, then Follow" className="ml-1 px-3 py-0.5 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[10px] font-bold hover:opacity-80 transition-opacity">Follow</button>
                   </div>
@@ -245,20 +249,20 @@ export default function IssueDetailPage() {
 
                 {/* Bottom Action Bar */}
                 <div className="flex items-center gap-2 mt-4 pt-2">
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-brand)] hover:text-white text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button aria-label="Support" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-brand)] hover:text-white text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <ThumbsUp size={16} />
                     {issue.supports} Supports
                   </button>
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button aria-label="Comments" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <MessageSquare size={16} />
                     {issue.commentsCount}
                   </button>
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)] cursor-default">
+                  <div aria-label="Affected" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)] cursor-default">
                     <Users size={16} />
                     {issue.affected} Affected
                   </div>
                   <div className="grow" />
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button aria-label="Share" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <Share2 size={16} /> Share
                   </button>
                 </div>
