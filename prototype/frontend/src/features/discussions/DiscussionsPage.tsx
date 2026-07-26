@@ -87,11 +87,14 @@ export default function DiscussionsPage() {
         </div>
       </div>
 
-      <div className="border-y border-[var(--color-border)] bg-[var(--color-bg-surface)] sticky top-0 z-20">
-        <div className="px-8 py-4 w-full flex items-center gap-4">
+
+
+      <div className="flex w-full items-start">
+        <div className="flex-1 px-8 pb-6 min-w-0">
+        <TopicFilterBar topics={["All Discussions", "Proposals", "Questions", "Debates", "Feedback", "Announcements"]}>
           <div className="flex items-center gap-2">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-text-secondary)]">Filters:</span>
-            <select className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm focus:ring-1 focus:ring-[var(--color-brand)] outline-none text-[var(--color-text-primary)]">
+            <select className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm focus:ring-1 focus:ring-[var(--color-brand)] outline-none text-[var(--color-text-primary)] cursor-pointer">
               <option>Domain: All</option>
               <option>Infrastructure</option>
               <option>Judiciary</option>
@@ -100,32 +103,19 @@ export default function DiscussionsPage() {
               <option>Healthcare</option>
               <option>Environment</option>
             </select>
-            <select className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm focus:ring-1 focus:ring-[var(--color-brand)] outline-none text-[var(--color-text-primary)]">
+            <select className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm focus:ring-1 focus:ring-[var(--color-brand)] outline-none text-[var(--color-text-primary)] cursor-pointer">
               <option>Gov Level: All</option>
               <option>MCD</option>
               <option>Delhi Govt</option>
               <option>Central</option>
             </select>
-            <select className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm focus:ring-1 focus:ring-[var(--color-brand)] outline-none text-[var(--color-text-primary)]">
+            <select className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm focus:ring-1 focus:ring-[var(--color-brand)] outline-none text-[var(--color-text-primary)] cursor-pointer">
               <option>Status: All Active</option>
               <option>Deliberating</option>
               <option>Consensus Reached</option>
             </select>
           </div>
-          <div className="ml-auto flex items-center gap-2">
-            <span className="text-xs font-bold text-[var(--color-text-secondary)]">Sort By:</span>
-            <select className="bg-transparent border-none text-sm font-bold text-[var(--color-brand)] outline-none cursor-pointer">
-              <option>Trending Now</option>
-              <option>Newest First</option>
-              <option>Most Proposals</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex w-full items-start">
-        <div className="flex-1 px-8 py-6 min-w-0">
-        <TopicFilterBar topics={["All Discussions", "Proposals", "Questions", "Debates", "Feedback", "Announcements"]} />
+        </TopicFilterBar>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 pb-20">
           {combinedDiscussions.map((discussion) => (
             <Link to={`/discussions/${discussion.id}`} key={discussion.id} className="block">
@@ -186,7 +176,7 @@ export default function DiscussionsPage() {
       </div>
 
       <aside className="hidden lg:flex flex-col w-80 border-l border-[var(--color-border)] bg-[var(--color-bg-surface)] shrink-0 self-stretch sticky top-[100px] max-h-[calc(100vh-100px)] overflow-y-auto">
-        <div className="p-6 space-y-8">
+        <div className="px-6 pb-6 space-y-8">
           <div>
             <h4 className="text-[11px] font-bold uppercase tracking-widest text-[var(--color-text-primary)] mb-4">Trending Topics</h4>
             <div className="flex flex-wrap gap-2">

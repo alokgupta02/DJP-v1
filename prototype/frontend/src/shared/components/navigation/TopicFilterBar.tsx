@@ -10,9 +10,10 @@ export const DEFAULT_TOPICS = [
 
 interface TopicFilterBarProps {
   topics?: string[];
+  children?: React.ReactNode;
 }
 
-export default function TopicFilterBar({ topics = DEFAULT_TOPICS }: TopicFilterBarProps) {
+export default function TopicFilterBar({ topics = DEFAULT_TOPICS, children }: TopicFilterBarProps) {
   const [activeTopic, setActiveTopic] = useState(topics[0] || "All Topics");
 
   return (
@@ -40,6 +41,11 @@ export default function TopicFilterBar({ topics = DEFAULT_TOPICS }: TopicFilterB
           </button>
         ))}
       </div>
+      {children && (
+        <div className="mt-4 pt-4 border-t border-[var(--color-border)]">
+          {children}
+        </div>
+      )}
     </div>
   );
 }
