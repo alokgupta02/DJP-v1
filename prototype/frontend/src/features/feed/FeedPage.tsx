@@ -9,135 +9,7 @@ import clsx from "clsx";
 
 const CONTENT_TYPES = ["All", "Issues", "Discussions", "Polls", "Petitions"];
 
-const ISSUES = [
-  {
-    id: "pothole",
-    category: "Road",
-    severity: "Critical",
-    title: "Large Pothole Near Balewadi High Street Junction",
-    location: "Balewadi High Street • Ward 23",
-    distance: "140 m",
-    time: "2h",
-    status: "Open",
-    supports: 96,
-    comments: 24,
-    affected: "500+",
-    govLevel: "Ward",
-    author: "Rohan K.",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=350&h=240&fit=crop",
-    imageCount: 14,
-    verified: true,
-  },
-  {
-    id: "garbage",
-    category: "Garbage",
-    severity: "High",
-    title: "Garbage Dump on Balewadi Street near Parke Serene",
-    location: "Balewadi • Ward 23",
-    distance: "780 m",
-    time: "15h",
-    status: "Open",
-    supports: 42,
-    comments: 18,
-    affected: "120–200",
-    govLevel: "Ward",
-    author: "Priya S.",
-    image: "https://images.unsplash.com/photo-1503596476-1c12a8ba09a9?w=350&h=240&fit=crop",
-    imageCount: 6,
-    verified: true,
-  },
-  {
-    id: "water",
-    category: "Water Supply",
-    severity: "High",
-    title: "Water Main Leakage on Main Street",
-    location: "Main Street • Ward 12",
-    distance: "320 m",
-    time: "5h",
-    status: "Open",
-    supports: 58,
-    comments: 11,
-    affected: "300–500",
-    govLevel: "Ward",
-    author: "Aman V.",
-    image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=350&h=240&fit=crop",
-    imageCount: 9,
-    verified: true,
-  },
-];
-
-const DISCUSSIONS = [
-  {
-    id: "community-park",
-    tags: ["Proposal", "Ward"],
-    tagVariant: ["brand", "secondary"] as const,
-    title: "Convert the Abandoned Plot Near 5th Cross into a Community Park",
-    description: "The vacant municipal plot has become an informal dumping ground. This proposal suggests converting it into a low-maintenance public park with walking paths, native trees, children's play equipment and seating areas for senior citizens.",
-    author: "Alok G.",
-    time: "3h ago",
-    participants: ["JD", "MK"],
-    participantCount: 21,
-    supports: 142,
-    comments: 56,
-  },
-  {
-    id: "judiciary",
-    tags: ["Question", "Judiciary"],
-    tagVariant: ["brand", "secondary"] as const,
-    title: "To whom is the higher judiciary accountable?",
-    description: "Research and public commentary have raised questions about judicial appointments, the collegium system, and the prevalence of family connections in India's higher judiciary. Unlike the Legislature and Executive, which are politically accountable to voters through elections, what mechanisms ensure accountability of the Judiciary?",
-    author: "Alok G.",
-    time: "2h ago",
-    participants: ["RS", "MK"],
-    participantCount: 37,
-    supports: 184,
-    comments: 92,
-  },
-  {
-    id: "ncert",
-    tags: ["Debate", "Judiciary", "India"],
-    tagVariant: ["error", "secondary", "brand"] as const,
-    title: "Did the Supreme Court's action against the NCERT chapter on judicial corruption strike the right balance?",
-    description: "The Supreme Court's intervention regarding an NCERT chapter discussing judicial corruption has revived an important constitutional debate. Should courts be able to restrict educational material concerning the judiciary?",
-    author: "Alok G.",
-    time: "8h ago",
-    participants: ["RS", "NP"],
-    participantCount: 52,
-    supports: 624,
-    comments: 184,
-  },
-];
-
-const POLLS = [
-  {
-    id: "no-car-sunday",
-    question: "Should Ward 42 implement No-Car Sundays in the Market Area?",
-    description: "This poll seeks public opinion on introducing vehicle-free Sundays in the market area to improve pedestrian safety, local business activity and public spaces.",
-    options: [
-      { label: "Yes", percent: 68, primary: true },
-      { label: "No", percent: 32, primary: false },
-    ],
-    author: "Alok G.",
-    time: "Ends in 2 days",
-    votes: 1842,
-    comments: 63,
-  },
-  {
-    id: "public-transport",
-    question: "How should Pune improve its public transport over the next five years?",
-    description: "The Maharashtra Government is seeking citizen feedback on which transport initiative should receive the highest priority.",
-    options: [
-      { label: "Expand Metro Network", percent: 41, primary: true },
-      { label: "Increase PMPML Bus Fleet", percent: 29, primary: false },
-      { label: "Build More Cycling Tracks", percent: 18, primary: false },
-      { label: "Improve Existing Roads First", percent: 12, primary: false },
-    ],
-    author: "Transport Action Forum",
-    time: "Ends in 4 days",
-    votes: 5284,
-    comments: 147,
-  },
-];
+// Removed hardcoded ISSUES, DISCUSSIONS, POLLS arrays
 
 const CATEGORIES = [
   { label: "Garbage", icon: Trash2, count: 91 },
@@ -169,8 +41,7 @@ function SeverityBadge({ severity }: { severity: string }) {
   );
 }
 
-function FeedFilterBar() {
-  const [activeContent, setActiveContent] = useState("All");
+function FeedFilterBar({ activeContent, setActiveContent }: { activeContent: string, setActiveContent: (val: string) => void }) {
 
   return (
     <div className="mb-6">
@@ -194,7 +65,7 @@ function FeedFilterBar() {
   );
 }
 
-function IssueCard({ issue }: { issue: typeof ISSUES[number] }) {
+function IssueCard({ issue }: { issue: any }) {
   return (
     <Link
       to={`/issues/${issue.id}`}
@@ -220,6 +91,12 @@ function IssueCard({ issue }: { issue: typeof ISSUES[number] }) {
             <Clock size={12} />
             {issue.time}
           </div>
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+            className="ml-1 px-3 py-1 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[11px] font-bold hover:opacity-80 transition-opacity"
+          >
+            Follow
+          </button>
         </div>
       </div>
 
@@ -263,7 +140,7 @@ function IssueCard({ issue }: { issue: typeof ISSUES[number] }) {
   );
 }
 
-function DiscussionCard({ discussion }: { discussion: typeof DISCUSSIONS[number] }) {
+function DiscussionCard({ discussion }: { discussion: any }) {
   const variantMap: Record<string, string> = {
     brand: "bg-[var(--color-brand-light)] text-[var(--color-brand)]",
     secondary: "bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]",
@@ -302,6 +179,12 @@ function DiscussionCard({ discussion }: { discussion: typeof DISCUSSIONS[number]
             <Clock size={12} />
             {discussion.time}
           </div>
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+            className="ml-1 px-3 py-1 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[11px] font-bold hover:opacity-80 transition-opacity"
+          >
+            Follow
+          </button>
         </div>
       </div>
 
@@ -339,7 +222,7 @@ function DiscussionCard({ discussion }: { discussion: typeof DISCUSSIONS[number]
   );
 }
 
-function PollCard({ poll }: { poll: typeof POLLS[number] }) {
+function PollCard({ poll }: { poll: any }) {
   return (
     <Link
       to={`/polls/${poll.id}`}
@@ -364,6 +247,12 @@ function PollCard({ poll }: { poll: typeof POLLS[number] }) {
             <Clock size={12} />
             {poll.time}
           </div>
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+            className="ml-1 px-3 py-1 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[11px] font-bold hover:opacity-80 transition-opacity"
+          >
+            Follow
+          </button>
         </div>
       </div>
 
@@ -440,9 +329,93 @@ function TrendCard({ item }: { item: typeof TRENDING[number] }) {
 }
 
 export default function FeedPage() {
+  const [activeContent, setActiveContent] = useState("All");
   const [isBannerHidden, setIsBannerHidden] = useState(false);
+  const [issues, setIssues] = useState<any[]>([]);
+  const [discussions, setDiscussions] = useState<any[]>([]);
+  const [polls, setPolls] = useState<any[]>([]);
 
   useEffect(() => {
+    // Fetch issues
+    fetch("http://localhost:8081/djp/api/v1/issues")
+      .then(res => res.json())
+      .then(data => {
+        setIssues(data.map((item: any) => {
+          let meta = {};
+          if (item.metadata) {
+             try { meta = JSON.parse(item.metadata); } catch(e) {}
+          }
+          return {
+            ...meta,
+            id: item.id,
+            title: item.title,
+            category: item.category,
+            severity: item.priority === 'CRITICAL' ? 'Critical' : 'High', // Mapping from priority
+            location: item.location || "Unknown Location",
+            time: item.createdAt ? new Date(item.createdAt).toLocaleDateString() : "Recently",
+            status: item.status || "Open",
+            supports: item.supportsCount || 0,
+            comments: item.commentsCount || 0,
+          };
+        }));
+      })
+      .catch(console.error);
+
+    // Fetch discussions
+    fetch("http://localhost:8081/djp/api/v1/discussions")
+      .then(res => res.json())
+      .then(data => {
+        setDiscussions(data.map((item: any) => {
+          let meta = {};
+          if (item.metadata) {
+             try { meta = JSON.parse(item.metadata); } catch(e) {}
+          }
+          return {
+            ...meta,
+            id: item.id,
+            title: item.title,
+            description: item.description,
+            time: item.createdAt ? new Date(item.createdAt).toLocaleDateString() : "Recently",
+            supports: item.votesCount || 0,
+            participantCount: item.participantCount || 0,
+            comments: item.commentsCount || 0,
+            tags: (meta as any).tags || ["General"],
+            tagVariant: (meta as any).tagVariant || ["secondary"],
+            participants: (meta as any).participants || [],
+            author: (meta as any).author || "Anonymous"
+          };
+        }));
+      })
+      .catch(console.error);
+
+    // Fetch polls
+    fetch("http://localhost:8081/djp/api/v1/polls")
+      .then(res => res.json())
+      .then(data => {
+        setPolls(data.map((item: any) => {
+          let meta = {};
+          if (item.metadata) {
+             try { meta = JSON.parse(item.metadata); } catch(e) {}
+          }
+          let options = [];
+          if (item.optionsJson) {
+             try { options = JSON.parse(item.optionsJson); } catch(e) {}
+          }
+          return {
+            ...meta,
+            id: item.id,
+            question: item.question,
+            description: item.description,
+            options: options,
+            time: item.expiresAt ? "Ends " + new Date(item.expiresAt).toLocaleDateString() : "Ongoing",
+            votes: item.votesCount || 0,
+            comments: item.commentsCount || 0,
+            author: (meta as any).author || "Anonymous"
+          };
+        }));
+      })
+      .catch(console.error);
+
     if (sessionStorage.getItem("djp_hide_completion_banner") === "true") {
       setIsBannerHidden(true);
     }
@@ -502,15 +475,15 @@ export default function FeedPage() {
 
       <div className="flex-1 flex gap-8 overflow-hidden px-8 pb-8 w-full">
         <div className="flex-1 overflow-y-auto min-w-0">
-          <FeedFilterBar />
+          <FeedFilterBar activeContent={activeContent} setActiveContent={setActiveContent} />
           <div className="space-y-6 pb-32">
-            {ISSUES.map((issue) => (
+            {(activeContent === "All" || activeContent === "Issues") && issues.map((issue) => (
               <IssueCard key={issue.id} issue={issue} />
             ))}
-            {DISCUSSIONS.map((discussion) => (
+            {(activeContent === "All" || activeContent === "Discussions") && discussions.map((discussion) => (
               <DiscussionCard key={discussion.id} discussion={discussion} />
             ))}
-            {POLLS.map((poll) => (
+            {(activeContent === "All" || activeContent === "Polls") && polls.map((poll) => (
               <PollCard key={poll.id} poll={poll} />
             ))}
           </div>
