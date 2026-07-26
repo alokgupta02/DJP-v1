@@ -41,31 +41,55 @@ public class IssueService {
         return issueRepository.findById(id).map(issueMapper::toDto);
     }
 
+    @com.djp.backend.aspect.AuditLog(action = "CREATE_ISSUE", entityType = "Issue")
     public IssueResponseDto createIssue(IssueCreateRequestDto request, User author) {
         Issue issue = new Issue(
                 author,
-                request.getTitle(),
-                request.getDescription(),
-                request.getCategory(),
-                request.getPriority()
+                request.title(),
+                request.description(),
+                request.category(),
+                request.priority()
         );
-        issue.setLocation(request.getLocation());
-        issue.setLatitude(request.getLatitude());
-        issue.setLongitude(request.getLongitude());
-        issue.setGovLevel(request.getGovLevel());
+        issue.setLocation(request.location());
+        issue.setLatitude(request.latitude());
+        issue.setLongitude(request.longitude());
+        issue.setGovLevel(request.govLevel());
 
         Issue saved = issueRepository.save(issue);
-
-        auditLogService.logAction(
-                author.getId().toString(),
-                "CREATE_ISSUE",
-                "Issue",
-                saved.getId().toString(),
-                "Title: " + saved.getTitle() + ", Category: " + saved.getCategory()
-        );
-
         sqlFilePersistenceService.appendIssue(saved);
-
         return issueMapper.toDto(saved);
+    }
+
+    @com.djp.backend.aspect.AuditLog(action = "UPDATE_ISSUE", entityType = "Issue")
+    public IssueResponseDto updateIssue(UUID id, com.djp.backend.dto.IssueUpdateRequestDto request, User author) {
+        Issue issue = issueRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Issue not found"));
+        
+        if (!issue.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
+            throw new org.springframework.security.access.AccessDeniedException("Not authorized to update this issue");
+        }
+
+        if (request.title() != null) issue.setTitle(request.title());
+        if (request.description() != null) issue.setDescription(request.description());
+        if (request.category() != null) issue.setCategory(request.category());
+        if (request.priority() != null) issue.setPriority(request.priority());
+        if (request.location() != null) issue.setLocation(request.location());
+        if (request.latitude() != null) issue.setLatitude(request.latitude());
+        if (request.longitude() != null) issue.setLongitude(request.longitude());
+        if (request.govLevel() != null) issue.setGovLevel(request.govLevel());
+
+        return issueMapper.toDto(issueRepository.save(issue));
+    }
+
+    @com.djp.backend.aspect.AuditLog(action = "DELETE_ISSUE", entityType = "Issue")
+    public void deleteIssue(UUID id, User author) {
+        Issue issue = issueRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Issue not found"));
+        
+        if (!issue.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
+            throw new org.springframework.security.access.AccessDeniedException("Not authorized to delete this issue");
+        }
+        
+        issueRepository.delete(issue);
     }
 }

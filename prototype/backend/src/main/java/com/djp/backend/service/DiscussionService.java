@@ -41,13 +41,13 @@ public class DiscussionService {
         return discussionRepository.findById(id).map(discussionMapper::toDto);
     }
 
+    @com.djp.backend.aspect.AuditLog(action = "CREATE_DISCUSSION", entityType = "Discussion")
     public DiscussionResponseDto createDiscussion(DiscussionCreateRequestDto request, User author) {
         Discussion discussion = new Discussion();
         discussion.setAuthor(author);
         discussion.setTitle(request.title());
         discussion.setDescription(request.description());
         discussion.setCategory(request.category());
-        discussion.setAuthor(author);
         discussion.setProposalPreview(request.proposalPreview());
         discussion.setProposalBadge(request.proposalBadge());
         discussion.setLocation(request.location());
@@ -56,17 +56,39 @@ public class DiscussionService {
         discussion.setGovLevel(request.govLevel());
 
         Discussion saved = discussionRepository.save(discussion);
-
-        auditLogService.logAction(
-                author.getId().toString(),
-                "CREATE_DISCUSSION",
-                "Discussion",
-                saved.getId().toString(),
-                "Title: " + saved.getTitle() + ", Category: " + saved.getCategory()
-        );
-
         sqlFilePersistenceService.appendDiscussion(saved);
-
         return discussionMapper.toDto(saved);
+    }
+
+    @com.djp.backend.aspect.AuditLog(action = "UPDATE_DISCUSSION", entityType = "Discussion")
+    public DiscussionResponseDto updateDiscussion(UUID id, com.djp.backend.dto.DiscussionUpdateRequestDto request, User author) {
+        Discussion discussion = discussionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Discussion not found"));
+        
+        if (!discussion.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
+            throw new org.springframework.security.access.AccessDeniedException("Not authorized to update this discussion");
+        }
+
+        if (request.title() != null) discussion.setTitle(request.title());
+        if (request.content() != null) discussion.setDescription(request.content()); // Assuming content maps to description based on typical usage, wait, Create uses description
+        if (request.category() != null) discussion.setCategory(request.category());
+        if (request.location() != null) discussion.setLocation(request.location());
+        if (request.latitude() != null) discussion.setLatitude(request.latitude());
+        if (request.longitude() != null) discussion.setLongitude(request.longitude());
+        if (request.govLevel() != null) discussion.setGovLevel(request.govLevel());
+
+        return discussionMapper.toDto(discussionRepository.save(discussion));
+    }
+
+    @com.djp.backend.aspect.AuditLog(action = "DELETE_DISCUSSION", entityType = "Discussion")
+    public void deleteDiscussion(UUID id, User author) {
+        Discussion discussion = discussionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Discussion not found"));
+        
+        if (!discussion.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
+            throw new org.springframework.security.access.AccessDeniedException("Not authorized to delete this discussion");
+        }
+        
+        discussionRepository.delete(discussion);
     }
 }

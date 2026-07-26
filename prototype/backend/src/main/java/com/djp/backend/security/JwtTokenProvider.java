@@ -26,14 +26,12 @@ public class JwtTokenProvider {
             @Value("${app.jwt.secret:defaultSecretKeyThatIsAtLeast256BitsLongAndSecure}") String jwtSecret,
             @Value("${app.jwt.expiration-ms:86400000}") long tokenValidityInMilliseconds) {
         
-        byte[] keyBytes;
         if (jwtSecret.length() < 32) {
-            log.warn("JWT secret is less than 256 bits. Generating a secure key for runtime.");
-            this.key = Keys.secretKeyFor(io.jsonwebtoken.SignatureAlgorithm.HS256);
-        } else {
-            keyBytes = jwtSecret.getBytes(StandardCharsets.UTF_8);
-            this.key = Keys.hmacShaKeyFor(keyBytes);
+            log.error("JWT secret is less than 256 bits (32 characters). This is insecure.");
+            throw new IllegalArgumentException("JWT secret must be at least 32 characters long. Set app.jwt.secret property.");
         }
+        byte[] keyBytes = jwtSecret.getBytes(StandardCharsets.UTF_8);
+        this.key = Keys.hmacShaKeyFor(keyBytes);
         this.tokenValidityInMilliseconds = tokenValidityInMilliseconds;
     }
 

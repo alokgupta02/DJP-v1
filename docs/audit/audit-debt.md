@@ -313,6 +313,28 @@ This register represents our **360-degree holistic evaluation** combining deep d
 | **Remediation Action** | Create `docs/architecture/security/secret-management.md` specifying JWKS (`/oauth2/jwks` endpoint) public key caching and external secret injection via `${JWT_SECRET_KEY}`. |
 | **Estimated Effort** | 2 hours |
 
+### SEC-003: No Refresh Token / Token Rotation
+| Aspect | Detail |
+| :--- | :--- |
+| **Severity** | 🟡 Medium (Deferred) |
+| **Found By** | `Tech Arch Agent \| Antigravity (Gemini)` |
+| **Docs Say / Spec** | Security best practices mandate short-lived access tokens with secure refresh token rotation. |
+| **Impl Reality / Evidence** | Backend currently issues a single access token on login without any refresh mechanism. |
+| **Impact / Risk** | Session hijacking risk is elevated; users are forced to re-login frequently if tokens expire, or security is degraded if tokens are long-lived. |
+| **Remediation Action** | Implement a secure refresh token mechanism (e.g., HTTP-only cookies) and a `/auth/refresh` endpoint. |
+| **Estimated Effort** | 1 day |
+
+### SEC-004: OAuth2 Incomplete
+| Aspect | Detail |
+| :--- | :--- |
+| **Severity** | 🟡 Medium (Deferred) |
+| **Found By** | `Tech Arch Agent \| Antigravity (Gemini)` |
+| **Docs Say / Spec** | Social logins (Google/GitHub) are intended for easier user onboarding. |
+| **Impl Reality / Evidence** | OAuth2 implementation is incomplete; token exchange and user mapping are not fully implemented. |
+| **Impact / Risk** | Users cannot log in via social providers, leading to a degraded onboarding experience. |
+| **Remediation Action** | Fully implement token exchange and user mapping for Google/GitHub logins, or remove the endpoints if unused. |
+| **Estimated Effort** | 1-2 days |
+
 
 ---
 

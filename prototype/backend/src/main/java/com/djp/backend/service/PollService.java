@@ -41,6 +41,7 @@ public class PollService {
         return pollRepository.findById(id).map(pollMapper::toDto);
     }
 
+    @com.djp.backend.aspect.AuditLog(action = "CREATE_POLL", entityType = "Poll")
     public PollResponseDto createPoll(PollCreateRequestDto request, User author) {
         Poll poll = new Poll();
         poll.setQuestion(request.question());
@@ -54,17 +55,46 @@ public class PollService {
         poll.setGovLevel(request.govLevel());
 
         Poll saved = pollRepository.save(poll);
-
-        auditLogService.logAction(
-                author.getId().toString(),
-                "CREATE_POLL",
-                "Poll",
-                saved.getId().toString(),
-                "Question: " + saved.getQuestion() + ", Category: " + saved.getCategory()
-        );
-
         sqlFilePersistenceService.appendPoll(saved);
-
         return pollMapper.toDto(saved);
+    }
+
+    @com.djp.backend.aspect.AuditLog(action = "UPDATE_POLL", entityType = "Poll")
+    public PollResponseDto updatePoll(UUID id, com.djp.backend.dto.PollUpdateRequestDto request, User author) {
+        Poll poll = pollRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
+        
+        if (!poll.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
+            throw new org.springframework.security.access.AccessDeniedException("Not authorized to update this poll");
+        }
+
+        if (request.question() != null) poll.setQuestion(request.question());
+        if (request.description() != null) poll.setDescription(request.description());
+        if (request.category() != null) poll.setCategory(request.category());
+        if (request.location() != null) poll.setLocation(request.location());
+        if (request.latitude() != null) poll.setLatitude(request.latitude());
+        if (request.longitude() != null) poll.setLongitude(request.longitude());
+        if (request.govLevel() != null) poll.setGovLevel(request.govLevel());
+        if (request.options() != null) {
+            try {
+                poll.setOptionsJson(new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(request.options()));
+            } catch (com.fasterxml.jackson.core.JsonProcessingException e) {
+                throw new RuntimeException("Failed to serialize options", e);
+            }
+        }
+
+        return pollMapper.toDto(pollRepository.save(poll));
+    }
+
+    @com.djp.backend.aspect.AuditLog(action = "DELETE_POLL", entityType = "Poll")
+    public void deletePoll(UUID id, User author) {
+        Poll poll = pollRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
+        
+        if (!poll.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
+            throw new org.springframework.security.access.AccessDeniedException("Not authorized to delete this poll");
+        }
+        
+        pollRepository.delete(poll);
     }
 }

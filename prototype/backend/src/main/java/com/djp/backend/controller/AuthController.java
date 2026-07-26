@@ -48,23 +48,7 @@ public class AuthController {
                     response.put("user", UserDto.fromEntity(user));
                     return ResponseEntity.ok(response);
                 })
-                .orElseGet(() -> {
-                    com.djp.backend.model.User newUser = new com.djp.backend.model.User(
-                            email,
-                            "Prototype Dev User",
-                            "DEV",
-                            "dev-" + email
-                    );
-                    newUser.setRole("CITIZEN");
-                    newUser.setOnboardingCompleted(true);
-                    newUser.setSubscriptionStatus("ACTIVE");
-                    newUser.setReputationScore(0);
-                    userRepository.save(newUser);
-                    Map<String, Object> response = new HashMap<>();
-                    response.put("token", jwtTokenProvider.createToken(newUser.getId(), newUser.getEmail(), newUser.getRole()));
-                    response.put("user", UserDto.fromEntity(newUser));
-                    return ResponseEntity.ok(response);
-                });
+                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
     }
 
     @GetMapping("/me")
