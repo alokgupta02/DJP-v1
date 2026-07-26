@@ -170,7 +170,7 @@ export default function PollDetailPage() {
 
               {/* Reddit-style comments section */}
               <div className="px-4 sm:px-5 pb-5">
-                <CommentInput />
+                <CommentInput entityId={id} entityType="POLL" />
                 
                 {/* Comments Header (Sort & Search) */}
                 <div className="mb-6">
