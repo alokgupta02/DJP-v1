@@ -42,14 +42,6 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private com.djp.backend.service.SqlFilePersistenceService sqlFilePersistenceService;
 
-    @AfterEach
-    public void cleanup() {
-        auditLogRepository.deleteAll();
-        discussionRepository.deleteAll();
-        pollRepository.deleteAll();
-        issueRepository.deleteAll();
-        userRepository.deleteAll();
-    }
 
     @Test
     public void createIssue_invalidInput_returns400() throws Exception {
@@ -113,16 +105,11 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
                 "  \"location\": \"Ward 12\"\n" +
                 "}";
 
-        java.nio.file.Path[] paths = {
-                java.nio.file.Path.of("src/main/resources/data/issues.sql"),
-                java.nio.file.Path.of("target/classes/data/issues.sql"),
-                java.nio.file.Path.of("src/main/resources/data/users.sql"),
-                java.nio.file.Path.of("target/classes/data/users.sql")
-        };
-        String[] origContents = new String[paths.length];
-        for (int i = 0; i < paths.length; i++) {
-            origContents[i] = java.nio.file.Files.exists(paths[i]) ? java.nio.file.Files.readString(paths[i]) : "";
-        }
+        // SqlFilePersistenceService now only writes to target/classes/data/ (never src/)
+        java.nio.file.Path targetIssues = java.nio.file.Path.of("target/classes/data/issues.sql");
+        java.nio.file.Path targetUsers = java.nio.file.Path.of("target/classes/data/users.sql");
+        String origIssues = java.nio.file.Files.exists(targetIssues) ? java.nio.file.Files.readString(targetIssues) : "";
+        String origUsers = java.nio.file.Files.exists(targetUsers) ? java.nio.file.Files.readString(targetUsers) : "";
 
         try {
             sqlFilePersistenceService.setEnabled(true);
@@ -132,14 +119,16 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
                     .content(validJson))
                     .andExpect(status().isCreated());
 
-            String updatedContent = java.nio.file.Files.readString(paths[0]);
-            org.junit.jupiter.api.Assertions.assertTrue(updatedContent.contains(uniqueTitle), "issues.sql should contain the new issue title");
+            String updatedContent = java.nio.file.Files.readString(targetIssues);
+            org.junit.jupiter.api.Assertions.assertTrue(updatedContent.contains(uniqueTitle), "target/classes/data/issues.sql should contain the new issue title");
         } finally {
             sqlFilePersistenceService.setEnabled(false);
-            for (int i = 0; i < paths.length; i++) {
-                if (java.nio.file.Files.exists(paths[i]) && !origContents[i].isEmpty()) {
-                    java.nio.file.Files.writeString(paths[i], origContents[i]);
-                }
+            // Restore original target files to avoid polluting other tests
+            if (java.nio.file.Files.exists(targetIssues) && !origIssues.isEmpty()) {
+                java.nio.file.Files.writeString(targetIssues, origIssues);
+            }
+            if (java.nio.file.Files.exists(targetUsers) && !origUsers.isEmpty()) {
+                java.nio.file.Files.writeString(targetUsers, origUsers);
             }
         }
     }

@@ -24,6 +24,12 @@ public class IssueCreateRequestDto {
     @Size(max = 150, message = "Location must not exceed 150 characters")
     private String location;
 
+    private Double latitude;
+    private Double longitude;
+
+    @Size(max = 50, message = "GovLevel must not exceed 50 characters")
+    private String govLevel;
+
     public IssueCreateRequestDto() {}
 
     public IssueCreateRequestDto(String title, String description, String category, String priority, String location) {
@@ -72,5 +78,29 @@ public class IssueCreateRequestDto {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getGovLevel() {
+        return govLevel;
+    }
+
+    public void setGovLevel(String govLevel) {
+        this.govLevel = govLevel;
     }
 }

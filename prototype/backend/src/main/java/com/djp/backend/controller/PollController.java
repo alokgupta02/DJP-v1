@@ -68,6 +68,10 @@ public class PollController {
                 request.category(),
                 request.optionsJson()
         );
+        poll.setLocation(request.location());
+        poll.setLatitude(request.latitude());
+        poll.setLongitude(request.longitude());
+        poll.setGovLevel(request.govLevel());
 
         Poll saved = pollRepository.save(poll);
 

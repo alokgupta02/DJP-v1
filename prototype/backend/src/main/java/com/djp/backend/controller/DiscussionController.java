@@ -73,6 +73,10 @@ public class DiscussionController {
         if (request.proposalBadge() != null) {
             discussion.setProposalBadge(request.proposalBadge());
         }
+        discussion.setLocation(request.location());
+        discussion.setLatitude(request.latitude());
+        discussion.setLongitude(request.longitude());
+        discussion.setGovLevel(request.govLevel());
 
         Discussion saved = discussionRepository.save(discussion);
 

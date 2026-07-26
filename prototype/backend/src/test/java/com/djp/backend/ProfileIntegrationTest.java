@@ -41,14 +41,6 @@ public class ProfileIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private com.djp.backend.repository.IssueRepository issueRepository;
 
-    @AfterEach
-    public void cleanup() {
-        auditLogRepository.deleteAll();
-        discussionRepository.deleteAll();
-        pollRepository.deleteAll();
-        issueRepository.deleteAll();
-        userRepository.deleteAll();
-    }
 
     @Test
     public void getProfile_returnsProfileData() throws Exception {

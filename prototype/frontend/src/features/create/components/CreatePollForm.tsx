@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPoll } from "../../polls/pollsApi";
 import RichEditor from "../../../shared/components/ui/RichEditor";
+import LocationPicker, { type LocationData } from "../../../shared/components/ui/LocationPicker";
 
 interface CreatePollFormProps {
   community: string;
@@ -13,6 +14,12 @@ export default function CreatePollForm({ community }: CreatePollFormProps) {
   const [descriptionHtml, setDescriptionHtml] = useState("");
   const [opt1, setOpt1] = useState("");
   const [opt2, setOpt2] = useState("");
+  const [locationData, setLocationData] = useState<LocationData>({
+    latitude: null,
+    longitude: null,
+    address: "",
+    govLevel: ""
+  });
   const [visibility, setVisibility] = useState("Public");
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -39,7 +46,11 @@ export default function CreatePollForm({ community }: CreatePollFormProps) {
         question,
         description: descriptionHtml || "Community poll for " + (community || "General"),
         category: community || "General",
-        optionsJson: JSON.stringify(optionsArray)
+        optionsJson: JSON.stringify(optionsArray),
+        location: locationData.address.trim() || undefined,
+        latitude: locationData.latitude || undefined,
+        longitude: locationData.longitude || undefined,
+        govLevel: locationData.govLevel.trim() || undefined,
       });
       navigate("/polls");
     } catch (err) {
@@ -94,6 +105,8 @@ export default function CreatePollForm({ community }: CreatePollFormProps) {
           />
         </div>
       </div>
+
+      <LocationPicker value={locationData} onChange={setLocationData} />
 
       <div className="pt-4 border-t border-[var(--color-border)]">
         <div className="grid grid-cols-2 gap-4">

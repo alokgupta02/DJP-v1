@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { ThumbsUp, MessageSquare, Users, CheckCircle2, Share2, ImagePlus, ArrowLeft, AlertTriangle, Trash2, Droplet, Search, User } from "lucide-react";
 import clsx from "clsx";
 import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";
+import { getComments, toggleVote, toggleFollow } from "../interactions/interactionsApi";
 
 const ISSUES_DATA: Record<string, {
   id: string; category: string; severity: string; title: string; description: string;
@@ -10,6 +11,7 @@ const ISSUES_DATA: Record<string, {
   supports: number; commentsCount: number; affected: string; image: string; imageCount: number;
   verified: boolean; iconBg: string; iconColor: string; icon: React.ElementType;
   health: [string, string][]; related: { title: string; dist: string }[]; author?: string; authorInitials?: string; authorBg?: string; authorColor?: string;
+  timeline: string[]; comments: CommentData[];
 }> = {
   pothole: {
     id: "pothole", category: "Road", severity: "Critical",
@@ -118,10 +120,55 @@ export default function IssueDetailPage() {
   
   const mockKey = id && UUID_TO_MOCK_KEY[id] ? UUID_TO_MOCK_KEY[id] : "pothole";
   const [issue, setIssue] = useState<any>(ISSUES_DATA[mockKey] || ISSUES_DATA["pothole"]);
+  const [comments, setComments] = useState<CommentData[]>(issue.comments || []);
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const fetchComments = () => {
+    if (!id) return;
+    getComments(id, "ISSUE").then(dtoList => {
+      const mapped: CommentData[] = dtoList.map(dto => ({
+        id: dto.id,
+        initials: dto.author?.name ? dto.author.name.substring(0, 2).toUpperCase() : "U",
+        bg: "bg-gray-100",
+        textColor: "text-gray-700",
+        name: dto.author?.name || "Unknown",
+        time: new Date(dto.createdAt).toLocaleString(),
+        text: dto.content,
+        score: dto.score,
+        entityId: id,
+        entityType: "ISSUE",
+      }));
+      setComments(mapped);
+    }).catch(console.error);
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, [id]);
+
+  const handleSupport = async () => {
+    if (!id) return;
+    try {
+      await toggleVote(id, "ISSUE", 1);
+      setIssue((prev: any) => ({ ...prev, supports: prev.supports + 1 }));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleFollow = async () => {
+    if (!id) return;
+    try {
+      await toggleFollow(id, "ISSUE");
+      setIsFollowing(!isFollowing);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://localhost:8081/djp/api/v1/issues/${id}`)
+    fetch(`/djp/api/v1/issues/${id}`)
       .then(res => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();
@@ -216,12 +263,14 @@ export default function IssueDetailPage() {
                 
                 {/* Meta details */}
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-xs text-[var(--color-text-secondary)] font-medium mb-4">
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-1.5 mb-3 text-xs text-[var(--color-text-secondary)]">
                     <div className={clsx("w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-[8px]", issue.authorBg || "bg-blue-100", issue.authorColor || "text-blue-700")}>
                       {issue.authorInitials || "AG"}
                     </div>
                     <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{issue.author}</span>
-                    <button title="Does it affect you? if yes, then Follow" className="ml-1 px-3 py-0.5 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[10px] font-bold hover:opacity-80 transition-opacity">Follow</button>
+                    <button onClick={handleFollow} title="Does it affect you? if yes, then Follow" className={clsx("shrink-0 ml-1 px-3 py-1 rounded-full border border-[var(--color-border)] text-[11px] font-bold transition-colors", isFollowing ? "bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]" : "text-[var(--color-text-primary)] bg-transparent hover:bg-[var(--color-bg-subtle)]")}>
+                      {isFollowing ? "Following" : "Follow"}
+                    </button>
                   </div>
                   <span className="flex items-center gap-1">📍 {issue.location}</span>
                   <span className="flex items-center gap-1">📏 {issue.distance}</span>
@@ -249,7 +298,7 @@ export default function IssueDetailPage() {
 
                 {/* Bottom Action Bar */}
                 <div className="flex items-center gap-2 mt-4 pt-2">
-                  <button aria-label="Support" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-brand)] hover:text-white text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button onClick={handleSupport} aria-label="Support" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-brand)] hover:text-white text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <ThumbsUp size={16} />
                     {issue.supports} Supports
                   </button>
@@ -270,7 +319,7 @@ export default function IssueDetailPage() {
 
               {/* Reddit-style comments section */}
               <div className="px-4 sm:px-5 pb-5">
-                <CommentInput entityId={id} entityType="ISSUE" />
+                <CommentInput entityId={id} entityType="ISSUE" onCommentAdded={fetchComments} />
                 
                 {/* Comments Header (Sort & Search) */}
                 <div className="mb-6">
@@ -296,7 +345,7 @@ export default function IssueDetailPage() {
                 
                 {/* Threaded Comments List */}
                 <div className="space-y-4">
-                  {issue.comments.map((comment) => (
+                  {comments.map((comment) => (
                     <CommentThread key={comment.id} comment={comment} />
                   ))}
                 </div>

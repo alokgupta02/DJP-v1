@@ -65,20 +65,20 @@ public class InteractionService {
     }
 
     @Transactional
-    public Vote toggleVote(UUID entityId, String entityType, int value, UUID userId) {
+    public Vote toggleVote(UUID entityId, String entityType, int voteValue, UUID userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
         Optional<Vote> existing = voteRepository.findByUserIdAndEntityIdAndEntityType(userId, entityId, entityType);
         if (existing.isPresent()) {
             Vote vote = existing.get();
-            if (vote.getValue() == value) {
+            if (vote.getVoteValue() == voteValue) {
                 // Clicking same vote removes it
                 voteRepository.delete(vote);
                 return null; // indicates removed
             } else {
                 // Changing vote
-                vote.setValue(value);
+                vote.setVoteValue(voteValue);
                 return voteRepository.save(vote);
             }
         } else {
@@ -87,7 +87,7 @@ public class InteractionService {
             vote.setUser(user);
             vote.setEntityId(entityId);
             vote.setEntityType(entityType);
-            vote.setValue(value);
+            vote.setVoteValue(voteValue);
             return voteRepository.save(vote);
         }
     }

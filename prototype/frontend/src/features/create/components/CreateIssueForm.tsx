@@ -3,6 +3,7 @@ import { MapPin, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createIssue } from "../../issues/issuesApi";
 import RichEditor from "../../../shared/components/ui/RichEditor";
+import LocationPicker, { type LocationData } from "../../../shared/components/ui/LocationPicker";
 
 interface CreateIssueFormProps {
   community: string;
@@ -14,8 +15,12 @@ export default function CreateIssueForm({ community, impactScope, priorityReason
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [descriptionHtml, setDescriptionHtml] = useState("");
-  const [address, setAddress] = useState("");
-  const [pincode, setPincode] = useState("");
+  const [locationData, setLocationData] = useState<LocationData>({
+    latitude: null,
+    longitude: null,
+    address: "",
+    govLevel: ""
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,13 +43,16 @@ export default function CreateIssueForm({ community, impactScope, priorityReason
     setError(null);
 
     try {
-      const locationStr = [address.trim(), pincode.trim()].filter(Boolean).join(", ") || "Locality / Ward";
+      const locationStr = locationData.address.trim() || "Locality / Ward";
       await createIssue({
         title: title.trim(),
         description: descriptionHtml || "No description provided.",
         category: community || "General",
         priority: mapPriorityToApi(priorityReason),
         location: locationStr,
+        latitude: locationData.latitude || undefined,
+        longitude: locationData.longitude || undefined,
+        govLevel: locationData.govLevel.trim() || undefined,
       });
       navigate("/issues");
     } catch (err: any) {
@@ -78,40 +86,7 @@ export default function CreateIssueForm({ community, impactScope, priorityReason
         placeholder="Describe the issue in detail including duration and impact..."
       />
 
-      <div className="pt-4 mt-4 border-t border-[var(--color-border)]">
-        <h3 className="text-sm font-bold text-[var(--color-text-primary)] mb-3">Location</h3>
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-xs font-semibold text-[var(--color-text-secondary)] mb-1">Address / Landmark</label>
-            <input
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className="w-full p-2.5 text-sm border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)]"
-              placeholder="e.g. Ward 4 High St"
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-[var(--color-text-secondary)] mb-1">PIN Code</label>
-            <input
-              value={pincode}
-              onChange={(e) => setPincode(e.target.value)}
-              className="w-full p-2.5 text-sm border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-surface)] text-[var(--color-text-primary)]"
-              placeholder="e.g. 560001"
-            />
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={() => {
-            setAddress("High St Ward 4 near Market");
-            setPincode("560001");
-          }}
-          className="mt-2 flex items-center gap-1.5 text-[var(--color-brand)] font-semibold hover:opacity-80 transition-opacity text-xs"
-        >
-          <MapPin size={14} />
-          Use Current Location
-        </button>
-      </div>
+      <LocationPicker value={locationData} onChange={setLocationData} />
 
       <div className="pt-4 border-t border-[var(--color-border)] flex items-center justify-end">
         <button

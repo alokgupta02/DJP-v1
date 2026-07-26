@@ -34,30 +34,24 @@ public class SqlFilePersistenceService {
             return;
         }
 
-        String[] basePaths = {
-                "src/main/resources/data/" + filename,
-                "target/classes/data/" + filename
-        };
-
-        for (String basePath : basePaths) {
-            Path path = Path.of(basePath);
-            try {
-                if (Files.exists(path)) {
-                    String content = Files.readString(path);
-                    if (!content.contains(sqlStatement.trim())) {
-                        Files.writeString(path, "\n" + sqlStatement, StandardOpenOption.APPEND);
-                        log.info("Successfully appended SQL to: {}", basePath);
-                    }
-                } else {
-                    log.warn("SQL file not found at path: {}, creating it.", basePath);
-                    if (path.getParent() != null) {
-                        Files.createDirectories(path.getParent());
-                    }
-                    Files.writeString(path, sqlStatement, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+        // Only write to target/classes — NEVER to src/main/resources which is version-controlled
+        Path path = Path.of("target/classes/data/" + filename);
+        try {
+            if (Files.exists(path)) {
+                String content = Files.readString(path);
+                if (!content.contains(sqlStatement.trim())) {
+                    Files.writeString(path, "\n" + sqlStatement, StandardOpenOption.APPEND);
+                    log.info("Successfully appended SQL to: {}", path);
                 }
-            } catch (Exception e) {
-                log.error("Failed to append SQL to {}: {}", basePath, e.getMessage(), e);
+            } else {
+                log.warn("SQL file not found at path: {}, creating it.", path);
+                if (path.getParent() != null) {
+                    Files.createDirectories(path.getParent());
+                }
+                Files.writeString(path, sqlStatement, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
             }
+        } catch (Exception e) {
+            log.error("Failed to append SQL to {}: {}", path, e.getMessage(), e);
         }
     }
 

@@ -185,8 +185,8 @@ export default function IssuesPage() {
           {issuesList.map((issue) => {
             const isSupported = supported.has(issue.id);
             return (
+              <Link to={`/issues/${issue.id}`} key={issue.id} className="block">
               <article
-                key={issue.id}
                 className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5 hover:shadow-md transition-shadow group"
               >
                 <div className="flex justify-between items-start mb-4">
@@ -203,7 +203,7 @@ export default function IssuesPage() {
                   <span className="text-[11px] text-[var(--color-text-secondary)]">{issue.time}</span>
                 </div>
 
-                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-brand)] transition-colors cursor-pointer">{issue.title}</h3>
+                <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-brand)] transition-colors">{issue.title}</h3>
                 <p className="text-sm text-[var(--color-text-secondary)] mb-6 line-clamp-2">{issue.description}</p>
 
                 <div className="mb-6">
@@ -222,7 +222,7 @@ export default function IssuesPage() {
                     </div>
                   </div>
                   <button
-                    onClick={() => toggleSupport(issue.id)}
+                    onClick={(e) => { e.preventDefault(); toggleSupport(issue.id); }}
                     className={clsx(
                       "px-4 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1",
                       isSupported
@@ -235,6 +235,7 @@ export default function IssuesPage() {
                   </button>
                 </div>
               </article>
+              </Link>
             );
           })}
         </div>

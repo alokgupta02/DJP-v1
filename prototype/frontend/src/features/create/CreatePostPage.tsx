@@ -7,12 +7,14 @@ import CreateDiscussionForm from "./components/CreateDiscussionForm";
 import CreatePollForm from "./components/CreatePollForm";
 import CreatePetitionForm from "./components/CreatePetitionForm";
 
-const COMMUNITIES = [
-  "Executive Branch",
-  "Legislative Branch",
-  "Judiciary Branch",
-  "Ward 12 (North Delhi)",
-  "Ward 45 (Central Delhi)",
+const ISSUE_TYPES = [
+  "Garbage & Waste",
+  "Roads & Potholes",
+  "Water Supply",
+  "Streetlights & Power",
+  "Public Safety",
+  "Parks & Recreation",
+  "Public Transport",
 ];
 
 const TABS = [
@@ -34,15 +36,15 @@ export default function CreatePostPage() {
     TABS.find((t) => t.id === initialType)?.id || "issue"
   );
   
-  const [selectedCommunity, setSelectedCommunity] = useState("");
-  const [communityDropdownOpen, setCommunityDropdownOpen] = useState(false);
+  const [selectedIssueType, setSelectedIssueType] = useState("");
+  const [issueTypeDropdownOpen, setIssueTypeDropdownOpen] = useState(false);
 
   const [impactScope, setImpactScope] = useState("🏘️ Neighborhood (10–50 people)");
   const [priorityReason, setPriorityReason] = useState("Health & Hygiene Concern");
 
   // Close dropdown on outside click (simplified for prototype)
   useEffect(() => {
-    const handleClick = () => setCommunityDropdownOpen(false);
+    const handleClick = () => setIssueTypeDropdownOpen(false);
     window.addEventListener("click", handleClick);
     return () => window.removeEventListener("click", handleClick);
   }, []);
@@ -59,52 +61,35 @@ export default function CreatePostPage() {
         {/* Top bar: Selectors */}
         <div className="mb-6 flex flex-col md:flex-row gap-8 items-end" onClick={(e) => e.stopPropagation()}>
           
-          {/* Branch / Community */}
+          {/* Issue Type */}
           <div className="relative w-full md:w-72 shrink-0">
-            <h3 className="text-sm font-bold text-[var(--color-text-primary)] mb-3">Branch & Community</h3>
+            <h3 className="text-sm font-bold text-[var(--color-text-primary)] mb-3">Issue Type</h3>
             <button
               type="button"
-              onClick={() => setCommunityDropdownOpen(!communityDropdownOpen)}
+              onClick={() => setIssueTypeDropdownOpen(!issueTypeDropdownOpen)}
               className="w-full flex items-center justify-between px-4 py-2.5 rounded-full bg-[var(--color-bg-surface)] border border-[var(--color-border)] text-[var(--color-text-primary)] font-bold text-sm shadow-sm hover:border-[var(--color-brand)] transition-all cursor-pointer"
             >
-              <span className="truncate">{selectedCommunity || "Select Community"}</span>
+              <span className="truncate">{selectedIssueType || "Select Issue Type"}</span>
               <ChevronDown size={16} className="text-[var(--color-text-secondary)] shrink-0" />
             </button>
 
-            {communityDropdownOpen && (
+            {issueTypeDropdownOpen && (
               <div className="absolute top-full left-0 mt-2 w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-surface)] shadow-xl z-50 py-1 max-h-64 overflow-y-auto">
                 <div className="px-3 py-1.5 text-xs font-bold text-[var(--color-text-secondary)] uppercase tracking-wider">
-                  Branches
+                  Categories
                 </div>
-                {COMMUNITIES.slice(0, 3).map((comm) => (
+                {ISSUE_TYPES.map((type) => (
                   <button
-                    key={comm}
+                    key={type}
                     type="button"
                     onClick={() => {
-                      setSelectedCommunity(comm);
-                      setCommunityDropdownOpen(false);
+                      setSelectedIssueType(type);
+                      setIssueTypeDropdownOpen(false);
                     }}
                     className="w-full text-left px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)] flex items-center justify-between transition-colors cursor-pointer"
                   >
-                    <span>{comm}</span>
-                    {selectedCommunity === comm && <Check size={15} className="text-[var(--color-brand)]" />}
-                  </button>
-                ))}
-                <div className="px-3 py-1.5 mt-2 text-xs font-bold text-[var(--color-text-secondary)] uppercase tracking-wider">
-                  Local
-                </div>
-                {COMMUNITIES.slice(3).map((comm) => (
-                  <button
-                    key={comm}
-                    type="button"
-                    onClick={() => {
-                      setSelectedCommunity(comm);
-                      setCommunityDropdownOpen(false);
-                    }}
-                    className="w-full text-left px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)] flex items-center justify-between transition-colors cursor-pointer"
-                  >
-                    <span>{comm}</span>
-                    {selectedCommunity === comm && <Check size={15} className="text-[var(--color-brand)]" />}
+                    <span>{type}</span>
+                    {selectedIssueType === type && <Check size={15} className="text-[var(--color-brand)]" />}
                   </button>
                 ))}
               </div>
@@ -175,10 +160,10 @@ export default function CreatePostPage() {
 
           {/* Active Form */}
           <div className="p-6">
-            {activeTab === "issue" && <CreateIssueForm community={selectedCommunity} impactScope={impactScope} priorityReason={priorityReason} />}
-            {activeTab === "discussion" && <CreateDiscussionForm community={selectedCommunity} />}
-            {activeTab === "poll" && <CreatePollForm community={selectedCommunity} />}
-            {activeTab === "petition" && <CreatePetitionForm community={selectedCommunity} />}
+            {activeTab === "issue" && <CreateIssueForm community={selectedIssueType} impactScope={impactScope} priorityReason={priorityReason} />}
+            {activeTab === "discussion" && <CreateDiscussionForm community={selectedIssueType} />}
+            {activeTab === "poll" && <CreatePollForm community={selectedIssueType} />}
+            {activeTab === "petition" && <CreatePetitionForm community={selectedIssueType} />}
           </div>
         </div>
       </div>

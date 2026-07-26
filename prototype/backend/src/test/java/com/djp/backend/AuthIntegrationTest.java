@@ -40,14 +40,6 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private com.djp.backend.repository.PollRepository pollRepository;
 
-    @AfterEach
-    public void cleanup() {
-        auditLogRepository.deleteAll();
-        discussionRepository.deleteAll();
-        pollRepository.deleteAll();
-        issueRepository.deleteAll();
-        userRepository.deleteAll();
-    }
 
     @Test
     public void getMe_withoutToken_returns401() throws Exception {

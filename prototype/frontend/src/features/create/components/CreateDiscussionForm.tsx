@@ -3,6 +3,7 @@ import { Tag as TagIcon, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createDiscussion } from "../../discussions/discussionsApi";
 import RichEditor from "../../../shared/components/ui/RichEditor";
+import LocationPicker, { type LocationData } from "../../../shared/components/ui/LocationPicker";
 
 interface CreateDiscussionFormProps {
   community: string;
@@ -12,6 +13,12 @@ export default function CreateDiscussionForm({ community }: CreateDiscussionForm
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [descriptionHtml, setDescriptionHtml] = useState("");
+  const [locationData, setLocationData] = useState<LocationData>({
+    latitude: null,
+    longitude: null,
+    address: "",
+    govLevel: ""
+  });
   const [tags, setTags] = useState<string[]>([]);
   const [tagInputOpen, setTagInputOpen] = useState(false);
   const [newTag, setNewTag] = useState("");
@@ -43,7 +50,11 @@ export default function CreateDiscussionForm({ community }: CreateDiscussionForm
         description: descriptionHtml || "No description provided.",
         category: community || "General",
         proposalPreview: "Drafting community proposal...",
-        proposalBadge: "New"
+        proposalBadge: "New",
+        location: locationData.address.trim() || undefined,
+        latitude: locationData.latitude || undefined,
+        longitude: locationData.longitude || undefined,
+        govLevel: locationData.govLevel.trim() || undefined,
       });
       navigate("/discussions");
     } catch (err) {
@@ -136,6 +147,8 @@ export default function CreateDiscussionForm({ community }: CreateDiscussionForm
         onChange={setDescriptionHtml}
         placeholder="Body text (optional)"
       />
+
+      <LocationPicker value={locationData} onChange={setLocationData} />
 
       <div className="pt-4 flex items-center justify-end">
         <button

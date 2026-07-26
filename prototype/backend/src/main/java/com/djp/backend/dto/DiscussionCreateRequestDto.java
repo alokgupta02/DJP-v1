@@ -17,5 +17,9 @@ public record DiscussionCreateRequestDto(
         String category,
 
         String proposalPreview,
-        String proposalBadge
+        String proposalBadge,
+        String location,
+        Double latitude,
+        Double longitude,
+        String govLevel
 ) {}

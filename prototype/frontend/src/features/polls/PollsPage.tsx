@@ -116,7 +116,8 @@ export default function PollsPage() {
           {combinedPolls.map((poll) => {
             if (poll.featured) {
               return (
-                <div key={poll.id} className="group bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-6 rounded-xl hover:shadow-xl transition-all duration-300 xl:col-span-2">
+                <Link to={`/polls/${poll.id}`} key={poll.id} className="block xl:col-span-2">
+                <div className="group bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-6 rounded-xl hover:shadow-xl transition-all duration-300">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <span className="bg-[var(--color-brand-light)] text-[var(--color-brand)] px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider">{poll.category}</span>
@@ -159,11 +160,13 @@ export default function PollsPage() {
                     </div>
                   </div>
                 </div>
+                </Link>
               );
             }
 
             return (
-              <div key={poll.id} className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-6 rounded-xl hover:border-[var(--color-brand)] transition-colors flex flex-col">
+              <Link to={`/polls/${poll.id}`} key={poll.id} className="block">
+              <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-6 rounded-xl hover:border-[var(--color-brand)] transition-colors flex flex-col h-full">
                 <div className="flex items-center gap-2 mb-4">
                   <span className={clsx("text-white px-2 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-tight", poll.badgeClass)}>{poll.badge}</span>
                   <span className="text-[var(--color-text-secondary)] text-[11px] ml-auto">{poll.timeLeft} left</span>
@@ -181,6 +184,7 @@ export default function PollsPage() {
                   </div>
                 </div>
               </div>
+              </Link>
             );
           })}
         </div>

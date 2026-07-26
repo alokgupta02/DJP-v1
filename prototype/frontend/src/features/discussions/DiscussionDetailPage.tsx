@@ -4,7 +4,7 @@ import { ThumbsUp, MessageSquare, Share2, ArrowLeft, ExternalLink, Users, ArrowB
 import clsx from "clsx";
 
 import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";
-
+import { getComments, toggleVote, toggleFollow } from "../interactions/interactionsApi";
 const DISCUSSIONS_DATA: Record<string, {
   id: string; tags: { label: string; variant: string }[];
   title: string; subtitle: string;
@@ -182,10 +182,55 @@ export default function DiscussionDetailPage() {
   
   const mockKey = id && UUID_TO_MOCK_KEY[id] ? UUID_TO_MOCK_KEY[id] : "judiciary";
   const [discussion, setDiscussion] = useState<any>(DISCUSSIONS_DATA[mockKey] || DISCUSSIONS_DATA["judiciary"]);
+  const [comments, setComments] = useState<CommentData[]>(discussion.comments || []);
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const fetchComments = () => {
+    if (!id) return;
+    getComments(id, "DISCUSSION").then(dtoList => {
+      const mapped: CommentData[] = dtoList.map(dto => ({
+        id: dto.id,
+        initials: dto.author?.name ? dto.author.name.substring(0, 2).toUpperCase() : "U",
+        bg: "bg-gray-100",
+        textColor: "text-gray-700",
+        name: dto.author?.name || "Unknown",
+        time: new Date(dto.createdAt).toLocaleString(),
+        text: dto.content,
+        score: dto.score,
+        entityId: id,
+        entityType: "DISCUSSION",
+      }));
+      setComments(mapped);
+    }).catch(console.error);
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, [id]);
+
+  const handleVote = async (value: number) => {
+    if (!id) return;
+    try {
+      await toggleVote(id, "DISCUSSION", value);
+      setDiscussion((prev: any) => ({ ...prev, supports: prev.supports + value }));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleFollow = async () => {
+    if (!id) return;
+    try {
+      await toggleFollow(id, "DISCUSSION");
+      setIsFollowing(!isFollowing);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://localhost:8081/djp/api/v1/discussions/${id}`)
+    fetch(`/djp/api/v1/discussions/${id}`)
       .then(res => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();
@@ -235,7 +280,9 @@ export default function DiscussionDetailPage() {
                     {discussion.authorInitials || "AG"}
                   </div>
                   <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{discussion.author}</span>
-                  <button title="Does it affect you? if yes, then Follow" className="ml-1 px-3 py-0.5 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[10px] font-bold hover:opacity-80 transition-opacity">Follow</button>
+                  <button onClick={handleFollow} title="Does it affect you? if yes, then Follow" className={clsx("shrink-0 ml-1 px-3 py-1 rounded-full border border-[var(--color-border)] text-[11px] font-bold transition-colors", isFollowing ? "bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]" : "text-[var(--color-text-primary)] bg-transparent hover:bg-[var(--color-bg-subtle)]")}>
+                    {isFollowing ? "Following" : "Follow"}
+                  </button>
                   <span>•</span>
                   <span>{discussion.time}</span>
                 </div>
@@ -268,9 +315,9 @@ export default function DiscussionDetailPage() {
                 {/* Bottom Action Bar */}
                 <div className="flex items-center gap-2 mt-2 pt-2">
                    <div className="flex items-center rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)]">
-                    <button aria-label="Upvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={18} /></button>
+                    <button onClick={() => handleVote(1)} aria-label="Upvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={18} /></button>
                     <span className="px-1">{discussion.supports}</span>
-                    <button aria-label="Downvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={18} /></button>
+                    <button onClick={() => handleVote(-1)} aria-label="Downvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={18} /></button>
                   </div>
                   <button aria-label="Comments" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <MessageSquare size={16} />
@@ -288,7 +335,7 @@ export default function DiscussionDetailPage() {
 
               {/* Reddit-style comments section */}
               <div className="px-4 sm:px-5 pb-5">
-                <CommentInput entityId={id} entityType="DISCUSSION" />
+                <CommentInput entityId={id} entityType="DISCUSSION" onCommentAdded={fetchComments} />
                 
                 {/* Comments Header (Sort & Search) */}
                 <div className="mb-6">
@@ -296,7 +343,7 @@ export default function DiscussionDetailPage() {
                     <div className="flex items-center gap-2">
                       <span className="font-semibold text-[var(--color-text-secondary)] text-sm">Sort by:</span>
                       <select className="font-bold text-[var(--color-text-primary)] bg-transparent focus:outline-none cursor-pointer">
-                        <option>Best</option>
+                        <option>Top Comments</option>
                         <option>Newest</option>
                         <option>Oldest</option>
                       </select>
@@ -315,7 +362,7 @@ export default function DiscussionDetailPage() {
                 
                 {/* Threaded Comments List */}
                 <div className="space-y-4">
-                  {discussion.comments.map((comment) => (
+                  {comments.map((comment: any) => (
                     <CommentThread key={comment.id} comment={comment} />
                   ))}
                 </div>

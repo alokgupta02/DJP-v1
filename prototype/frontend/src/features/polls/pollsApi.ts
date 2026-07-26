@@ -8,6 +8,10 @@ export interface BackendPollDto {
   optionsJson?: string;
   votesCount: number;
   commentsCount: number;
+  location?: string;
+  latitude?: number;
+  longitude?: number;
+  govLevel?: string;
   expiresAt?: string;
   createdAt?: string;
   updatedAt?: string;
@@ -18,6 +22,10 @@ export interface CreatePollPayload {
   description: string;
   category: string;
   optionsJson?: string;
+  location?: string;
+  latitude?: number;
+  longitude?: number;
+  govLevel?: string;
 }
 
 const BASE_URL = "/djp/api/v1";

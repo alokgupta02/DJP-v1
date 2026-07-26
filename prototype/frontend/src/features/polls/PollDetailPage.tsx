@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Vote, MessageSquare, Share2, ArrowLeft, ArrowBigUp, ArrowBigDown, Users, Search, User } from "lucide-react";
 import clsx from "clsx";
 import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";
-
+import { getComments, toggleVote, toggleFollow } from "../interactions/interactionsApi";
 const POLLS_DATA: Record<string, {
   id: string; category: string;
   title: string; description: string;
@@ -44,10 +44,55 @@ export default function PollDetailPage() {
   
   const mockKey = id && UUID_TO_MOCK_KEY[id] ? UUID_TO_MOCK_KEY[id] : "1";
   const [poll, setPoll] = useState<any>(POLLS_DATA[mockKey] || POLLS_DATA["1"]);
+  const [comments, setComments] = useState<CommentData[]>(poll.comments || []);
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const fetchComments = () => {
+    if (!id) return;
+    getComments(id, "POLL").then(dtoList => {
+      const mapped: CommentData[] = dtoList.map(dto => ({
+        id: dto.id,
+        initials: dto.author?.name ? dto.author.name.substring(0, 2).toUpperCase() : "U",
+        bg: "bg-gray-100",
+        textColor: "text-gray-700",
+        name: dto.author?.name || "Unknown",
+        time: new Date(dto.createdAt).toLocaleString(),
+        text: dto.content,
+        score: dto.score,
+        entityId: id,
+        entityType: "POLL",
+      }));
+      setComments(mapped);
+    }).catch(console.error);
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, [id]);
+
+  const handleVote = async (value: number) => {
+    if (!id) return;
+    try {
+      await toggleVote(id, "POLL", value);
+      setPoll((prev: any) => ({ ...prev, supports: prev.supports + value }));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleFollow = async () => {
+    if (!id) return;
+    try {
+      await toggleFollow(id, "POLL");
+      setIsFollowing(!isFollowing);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://localhost:8081/djp/api/v1/polls/${id}`)
+    fetch(`/djp/api/v1/polls/${id}`)
       .then(res => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();
@@ -110,7 +155,9 @@ export default function PollDetailPage() {
                       {poll.authorInitials || "AG"}
                     </div>
                     <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{poll.author}</span>
-                    <button title="Does it affect you? if yes, then Follow" className="ml-1 px-3 py-0.5 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[10px] font-bold hover:opacity-80 transition-opacity">Follow</button>
+                    <button onClick={handleFollow} title="Does it affect you? if yes, then Follow" className={clsx("shrink-0 ml-1 px-3 py-1 rounded-full border border-[var(--color-border)] text-[11px] font-bold transition-colors", isFollowing ? "bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]" : "text-[var(--color-text-primary)] bg-transparent hover:bg-[var(--color-bg-subtle)]")}>
+                      {isFollowing ? "Following" : "Follow"}
+                    </button>
                     <span>•</span>
                     <span className="text-[var(--color-brand)] font-semibold">{poll.time}</span>
                   </div>
@@ -155,9 +202,9 @@ export default function PollDetailPage() {
                 {/* Bottom Action Bar */}
                 <div className="flex items-center gap-2 mt-4 pt-2">
                    <div className="flex items-center rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)]">
-                    <button aria-label="Upvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={18} /></button>
+                    <button onClick={() => handleVote(1)} aria-label="Upvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={18} /></button>
                     <span className="px-1">{poll.supports}</span>
-                    <button aria-label="Downvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={18} /></button>
+                    <button onClick={() => handleVote(-1)} aria-label="Downvote" className="min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-[var(--color-bg-muted)] hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={18} /></button>
                   </div>
                   <button aria-label="Comments" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <MessageSquare size={16} />
@@ -176,7 +223,7 @@ export default function PollDetailPage() {
 
               {/* Reddit-style comments section */}
               <div className="px-4 sm:px-5 pb-5">
-                <CommentInput entityId={id} entityType="POLL" />
+                <CommentInput entityId={id} entityType="POLL" onCommentAdded={fetchComments} />
                 
                 {/* Comments Header (Sort & Search) */}
                 <div className="mb-6">
@@ -202,7 +249,7 @@ export default function PollDetailPage() {
                 
                 {/* Threaded Comments List */}
                 <div className="space-y-4">
-                  {poll.comments.map((comment) => (
+                  {comments.map((comment: any) => (
                     <CommentThread key={comment.id} comment={comment} />
                   ))}
                 </div>

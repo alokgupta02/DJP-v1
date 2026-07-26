@@ -8,12 +8,39 @@ import { Button } from "../../shared/components/buttons";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e?: React.FormEvent) => {
+  const handleLogin = async (e?: React.FormEvent) => {
     e?.preventDefault();
-    localStorage.setItem("djp_user", JSON.stringify({ email: email || "citizen@djp.in" }));
-    navigate("/feed", { replace: true });
+    setError("");
+    setLoading(true);
+    const loginEmail = email || "citizen@djp.org";
+    try {
+      const res = await fetch(`/djp/api/v1/auth/dev-login?email=${encodeURIComponent(loginEmail)}`, {
+        method: "POST",
+      });
+      if (!res.ok) throw new Error("Login failed");
+      const data = await res.json();
+      if (data.token) {
+        localStorage.setItem("djp_token", data.token);
+      }
+      if (data.user) {
+        localStorage.setItem("djp_user", JSON.stringify(data.user));
+      } else {
+        localStorage.setItem("djp_user", JSON.stringify({ email: loginEmail }));
+      }
+      navigate("/feed", { replace: true });
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("Could not connect to server. Check that the backend is running on port 8081.");
+      // Fallback: allow local-only access
+      localStorage.setItem("djp_user", JSON.stringify({ email: loginEmail }));
+      navigate("/feed", { replace: true });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -47,14 +74,19 @@ export default function LoginPage() {
           leftIcon={<Lock size={18} />}
         />
 
+        {error && (
+          <p className="text-sm text-red-500 bg-red-50 p-2 rounded">{error}</p>
+        )}
+
         <Button
           type="submit"
           fullWidth
           size="lg"
           rightIcon={<ArrowRight size={18} />}
           className="mt-2"
+          disabled={loading}
         >
-          Login
+          {loading ? "Logging in..." : "Login"}
         </Button>
       </form>
 

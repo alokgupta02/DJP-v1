@@ -44,6 +44,15 @@ public class Issue {
     @Column(name = "location", length = 150)
     private String location;
 
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
+
+    @Column(name = "gov_level", length = 50)
+    private String govLevel;
+
     @Column(name = "supports_count", nullable = false)
     private Integer supportsCount = 0;
 
@@ -151,6 +160,30 @@ public class Issue {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getGovLevel() {
+        return govLevel;
+    }
+
+    public void setGovLevel(String govLevel) {
+        this.govLevel = govLevel;
     }
 
     public Integer getSupportsCount() {

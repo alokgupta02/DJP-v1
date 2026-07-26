@@ -24,8 +24,8 @@ public class Vote {
     @Column(name = "entity_id", nullable = false)
     private UUID entityId;
 
-    @Column(nullable = false)
-    private int value; // 1 for upvote, -1 for downvote
+    @Column(name = "vote_value", nullable = false)
+    private int voteValue; // 1 for upvote, -1 for downvote
 
     // Getters and Setters
 
@@ -41,6 +41,6 @@ public class Vote {
     public UUID getEntityId() { return entityId; }
     public void setEntityId(UUID entityId) { this.entityId = entityId; }
 
-    public int getValue() { return value; }
-    public void setValue(int value) { this.value = value; }
+    public int getVoteValue() { return voteValue; }
+    public void setVoteValue(int voteValue) { this.voteValue = voteValue; }
 }

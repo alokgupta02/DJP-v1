@@ -11,6 +11,10 @@ export interface BackendDiscussionDto {
   proposalPreview?: string;
   proposalBadge?: string;
   proposalBadgeVariant?: string;
+  location?: string;
+  latitude?: number;
+  longitude?: number;
+  govLevel?: string;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -21,6 +25,10 @@ export interface CreateDiscussionPayload {
   category: string;
   proposalPreview?: string;
   proposalBadge?: string;
+  location?: string;
+  latitude?: number;
+  longitude?: number;
+  govLevel?: string;
 }
 
 const BASE_URL = "/djp/api/v1";

@@ -8,6 +8,9 @@ export interface BackendIssueDto {
   status: string;
   workflowStep: number;
   location?: string;
+  latitude?: number;
+  longitude?: number;
+  govLevel?: string;
   supportsCount: number;
   commentsCount: number;
   createdAt?: string;
@@ -20,6 +23,9 @@ export interface CreateIssuePayload {
   category: string;
   priority: string;
   location?: string;
+  latitude?: number;
+  longitude?: number;
+  govLevel?: string;
 }
 
 const BASE_URL = "/djp/api/v1";

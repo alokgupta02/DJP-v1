@@ -127,9 +127,9 @@ export default function DiscussionsPage() {
         <TopicFilterBar topics={["All Discussions", "Proposals", "Questions", "Debates", "Feedback", "Announcements"]} />
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 pb-20">
           {combinedDiscussions.map((discussion) => (
+            <Link to={`/discussions/${discussion.id}`} key={discussion.id} className="block">
             <div
-              key={discussion.id}
-              className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-2xl p-5 hover:shadow-lg transition-shadow cursor-pointer flex flex-col gap-4 group"
+              className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-2xl p-5 hover:shadow-lg transition-shadow flex flex-col gap-4 group"
             >
               <div className="flex gap-4">
                 <div className="flex flex-col items-center bg-[var(--color-bg-subtle)] rounded-xl px-3 py-2 shrink-0 h-fit">
@@ -179,6 +179,7 @@ export default function DiscussionsPage() {
                 <p className="text-sm text-[var(--color-text-secondary)] italic line-clamp-2">{discussion.proposalPreview}</p>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </div>

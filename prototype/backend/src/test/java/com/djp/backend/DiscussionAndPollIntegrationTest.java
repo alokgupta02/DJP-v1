@@ -3,7 +3,7 @@ package com.djp.backend;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.*;
 import com.djp.backend.security.JwtTokenProvider;
-import org.junit.jupiter.api.AfterEach;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -42,14 +42,6 @@ public class DiscussionAndPollIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private com.djp.backend.service.SqlFilePersistenceService sqlFilePersistenceService;
 
-    @AfterEach
-    public void cleanup() {
-        auditLogRepository.deleteAll();
-        discussionRepository.deleteAll();
-        pollRepository.deleteAll();
-        issueRepository.deleteAll();
-        userRepository.deleteAll();
-    }
 
     @Test
     public void getAllDiscussions_returns200() throws Exception {
@@ -121,16 +113,11 @@ public class DiscussionAndPollIntegrationTest extends BaseIntegrationTest {
                 "  \"category\": \"Technology\"\n" +
                 "}";
 
-        java.nio.file.Path[] paths = {
-                java.nio.file.Path.of("src/main/resources/data/discussions.sql"),
-                java.nio.file.Path.of("target/classes/data/discussions.sql"),
-                java.nio.file.Path.of("src/main/resources/data/users.sql"),
-                java.nio.file.Path.of("target/classes/data/users.sql")
-        };
-        String[] origContents = new String[paths.length];
-        for (int i = 0; i < paths.length; i++) {
-            origContents[i] = java.nio.file.Files.exists(paths[i]) ? java.nio.file.Files.readString(paths[i]) : "";
-        }
+        // SqlFilePersistenceService now only writes to target/classes/data/ (never src/)
+        java.nio.file.Path targetDisc = java.nio.file.Path.of("target/classes/data/discussions.sql");
+        java.nio.file.Path targetUsers = java.nio.file.Path.of("target/classes/data/users.sql");
+        String origDisc = java.nio.file.Files.exists(targetDisc) ? java.nio.file.Files.readString(targetDisc) : "";
+        String origUsers = java.nio.file.Files.exists(targetUsers) ? java.nio.file.Files.readString(targetUsers) : "";
 
         try {
             sqlFilePersistenceService.setEnabled(true);
@@ -140,14 +127,15 @@ public class DiscussionAndPollIntegrationTest extends BaseIntegrationTest {
                     .content(json))
                     .andExpect(status().isCreated());
 
-            String updatedContent = java.nio.file.Files.readString(paths[0]);
-            org.junit.jupiter.api.Assertions.assertTrue(updatedContent.contains(uniqueTitle), "discussions.sql should contain the new discussion title");
+            String updatedContent = java.nio.file.Files.readString(targetDisc);
+            org.junit.jupiter.api.Assertions.assertTrue(updatedContent.contains(uniqueTitle), "target/classes/data/discussions.sql should contain the new discussion title");
         } finally {
             sqlFilePersistenceService.setEnabled(false);
-            for (int i = 0; i < paths.length; i++) {
-                if (java.nio.file.Files.exists(paths[i]) && !origContents[i].isEmpty()) {
-                    java.nio.file.Files.writeString(paths[i], origContents[i]);
-                }
+            if (java.nio.file.Files.exists(targetDisc) && !origDisc.isEmpty()) {
+                java.nio.file.Files.writeString(targetDisc, origDisc);
+            }
+            if (java.nio.file.Files.exists(targetUsers) && !origUsers.isEmpty()) {
+                java.nio.file.Files.writeString(targetUsers, origUsers);
             }
         }
     }
@@ -166,16 +154,11 @@ public class DiscussionAndPollIntegrationTest extends BaseIntegrationTest {
                 "  \"optionsJson\": \"[{\\\"label\\\":\\\"Yes\\\",\\\"pct\\\":50},{\\\"label\\\":\\\"No\\\",\\\"pct\\\":50}]\"\n" +
                 "}";
 
-        java.nio.file.Path[] paths = {
-                java.nio.file.Path.of("src/main/resources/data/polls.sql"),
-                java.nio.file.Path.of("target/classes/data/polls.sql"),
-                java.nio.file.Path.of("src/main/resources/data/users.sql"),
-                java.nio.file.Path.of("target/classes/data/users.sql")
-        };
-        String[] origContents = new String[paths.length];
-        for (int i = 0; i < paths.length; i++) {
-            origContents[i] = java.nio.file.Files.exists(paths[i]) ? java.nio.file.Files.readString(paths[i]) : "";
-        }
+        // SqlFilePersistenceService now only writes to target/classes/data/ (never src/)
+        java.nio.file.Path targetPolls = java.nio.file.Path.of("target/classes/data/polls.sql");
+        java.nio.file.Path targetUsers = java.nio.file.Path.of("target/classes/data/users.sql");
+        String origPolls = java.nio.file.Files.exists(targetPolls) ? java.nio.file.Files.readString(targetPolls) : "";
+        String origUsers = java.nio.file.Files.exists(targetUsers) ? java.nio.file.Files.readString(targetUsers) : "";
 
         try {
             sqlFilePersistenceService.setEnabled(true);
@@ -185,14 +168,15 @@ public class DiscussionAndPollIntegrationTest extends BaseIntegrationTest {
                     .content(json))
                     .andExpect(status().isCreated());
 
-            String updatedContent = java.nio.file.Files.readString(paths[0]);
-            org.junit.jupiter.api.Assertions.assertTrue(updatedContent.contains(uniqueQuestion), "polls.sql should contain the new poll question");
+            String updatedContent = java.nio.file.Files.readString(targetPolls);
+            org.junit.jupiter.api.Assertions.assertTrue(updatedContent.contains(uniqueQuestion), "target/classes/data/polls.sql should contain the new poll question");
         } finally {
             sqlFilePersistenceService.setEnabled(false);
-            for (int i = 0; i < paths.length; i++) {
-                if (java.nio.file.Files.exists(paths[i]) && !origContents[i].isEmpty()) {
-                    java.nio.file.Files.writeString(paths[i], origContents[i]);
-                }
+            if (java.nio.file.Files.exists(targetPolls) && !origPolls.isEmpty()) {
+                java.nio.file.Files.writeString(targetPolls, origPolls);
+            }
+            if (java.nio.file.Files.exists(targetUsers) && !origUsers.isEmpty()) {
+                java.nio.file.Files.writeString(targetUsers, origUsers);
             }
         }
     }

@@ -6,6 +6,20 @@ import {
   Lightbulb, Vote, X, Share2, AlertCircle, MessageCircle, BarChart2, Flame
 } from "lucide-react";
 import clsx from "clsx";
+import { toggleFollow } from "../interactions/interactionsApi";
+
+// Haversine distance helper
+function getDistanceInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * (Math.PI / 180);
+  const dLon = (lon2 - lon1) * (Math.PI / 180);
+  const a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2); 
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  return R * c;
+}
 
 const CONTENT_TYPES = ["All", "Issues", "Discussions", "Polls", "Petitions"];
 
@@ -31,11 +45,14 @@ function IssueIcon({ category }: { category: string }) {
 }
 
 function SeverityBadge({ severity }: { severity: string }) {
-  const color = severity === "Critical"
-    ? "bg-[var(--color-error-bg)] text-[var(--color-error)]"
-    : "bg-[var(--color-warning-bg)] text-[var(--color-warning)]";
+  const s = severity?.toLowerCase() || "";
+  let color = "bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]";
+  if (s === "critical") color = "bg-[var(--color-error-bg)] text-[var(--color-error)]";
+  else if (s === "high" || s === "urgent") color = "bg-orange-100 text-orange-700";
+  else if (s === "medium") color = "bg-yellow-100 text-yellow-700";
+  else if (s === "low") color = "bg-green-100 text-green-700";
   return (
-    <span className={clsx("inline-flex items-center justify-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase leading-none", color)}>
+    <span className={clsx("inline-flex items-center justify-center px-2 py-1 rounded-full text-[10px] font-bold uppercase leading-none tracking-wider", color)}>
       {severity}
     </span>
   );
@@ -66,77 +83,81 @@ function FeedFilterBar({ activeContent, setActiveContent }: { activeContent: str
 }
 
 function IssueCard({ issue }: { issue: any }) {
+  const [isFollowing, setIsFollowing] = useState(false);
+  const handleFollow = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!issue.id) return;
+    try {
+      await toggleFollow(issue.id, "ISSUE");
+      setIsFollowing(!isFollowing);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <Link
       to={`/issues/${issue.id}`}
-      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 md:p-7 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
+      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5 md:p-6 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
     >
-      {/* Header */}
+      {/* Header (Metadata Line) */}
       <div className="flex items-start justify-between gap-4 mb-3">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-[var(--color-error-bg)] text-[var(--color-error)] text-[11px] font-semibold">
-            <AlertCircle size={12} /> Issue
-          </span>
-          <span className="px-2 py-1 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)] text-[11px] font-semibold">
-            {issue.category}
-          </span>
-          <SeverityBadge severity={issue.severity} />
-        </div>
-        <div className="flex items-center gap-3 shrink-0">
-          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[var(--color-text-secondary)]">
-            <div className={clsx("w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 font-bold text-[6px]", issue.authorBg || "bg-blue-100", issue.authorColor || "text-blue-700")}>
-              {issue.authorInitials || "AG"}
-            </div>
-            {issue.author || "Anonymous"}
+        <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+          <div className={clsx("w-4 h-4 rounded-full flex items-center justify-center shrink-0 font-bold text-[7px]", issue.authorBg || "bg-blue-100", issue.authorColor || "text-blue-700")}>
+            {issue.authorInitials || "AG"}
           </div>
-          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
-            <Clock size={12} />
-            {issue.time}
-          </div>
-          <button
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-            title="Does it affect you? if yes, then Follow"
-            className="ml-1 px-3 py-1 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[11px] font-bold hover:opacity-80 transition-opacity"
-          >
-            Follow
-          </button>
+          <span className="text-[var(--color-text-primary)]">{issue.author || "Anonymous"}</span>
+          <span className="opacity-50">•</span>
+          <span>{issue.time}</span>
+          <span className="opacity-50">•</span>
+          <span>📍 {issue.location} {issue.distance ? `(${issue.distance})` : ""}</span>
         </div>
+        <button
+          onClick={handleFollow}
+          title="Does it affect you? if yes, then Follow"
+          className="shrink-0 ml-1 px-3 py-1 rounded-full border border-[var(--color-border)] text-[var(--color-text-primary)] bg-transparent hover:bg-[var(--color-bg-subtle)] text-[11px] font-bold transition-colors"
+        >
+          {isFollowing ? "Following" : "Follow"}
+        </button>
       </div>
 
       {/* Body */}
-      <h3 className="font-bold text-xl text-[var(--color-text-primary)] leading-snug mb-3">
+      <h3 className="font-bold text-lg md:text-xl text-[var(--color-text-primary)] leading-snug mb-2">
         {issue.title}
       </h3>
-      <div className="flex flex-wrap items-center gap-2 mt-2 text-sm text-[var(--color-text-secondary)]">
-        <span className="flex items-center gap-1 px-2 py-1 rounded-md bg-[var(--color-bg-subtle)]">
-          <MapPin size={14} />
-          <span className="text-xs">{issue.location} ({issue.distance})</span>
+      
+      {/* Post Flairs */}
+      <div className="flex flex-wrap items-center gap-2 mb-1">
+        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]">
+          🗑️ {issue.category}
         </span>
-        <span className="flex items-center gap-1 px-2 py-1 rounded-md bg-[var(--color-bg-subtle)]">
-          <Landmark size={14} />
-          <span className="text-xs">{issue.govLevel}</span>
-        </span>
+        <SeverityBadge severity={issue.severity || "Medium"} />
+        {issue.govLevel && (
+          <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]">
+            🏛️ {issue.govLevel}
+          </span>
+        )}
       </div>
 
-      {/* Footer */}
-      <div className="flex items-center justify-between mt-5 pt-4 border-t border-[var(--color-border)]/50">
-        <div className="flex items-center gap-6 text-sm">
-          <div className="flex items-center gap-1.5 text-[var(--color-brand)]">
-            <ThumbsUp size={16} />
-            <span className="font-semibold">{issue.supports}</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
-            <MessageSquare size={16} />
-            <span>{issue.comments}</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
-            <Share2 size={16} />
-            <span className="hidden sm:inline">Share</span>
-          </div>
+      {/* Footer (Pill Actions) */}
+      <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-[var(--color-border)]/40 text-xs font-semibold">
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)]">
+          <ThumbsUp size={14} className="text-[var(--color-brand)]" />
+          <span>{issue.supports}</span>
         </div>
-        <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--color-text-secondary)]">
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)]">
+          <MessageSquare size={14} />
+          <span>{issue.comments}</span>
+        </div>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)] hidden sm:flex">
+          <Share2 size={14} />
+          <span>Share</span>
+        </div>
+        
+        <div className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]">
           <Users size={14} />
-          <span>{issue.affected} Affected</span>
+          <span>{issue.affected || 0} Affected</span>
         </div>
       </div>
     </Link>
@@ -149,79 +170,90 @@ function DiscussionCard({ discussion }: { discussion: any }) {
     secondary: "bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]",
     error: "bg-[var(--color-error-bg)] text-[var(--color-error)]",
   };
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const handleFollow = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!discussion.id) return;
+    try {
+      await toggleFollow(discussion.id, "DISCUSSION");
+      setIsFollowing(!isFollowing);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <Link
       to={`/discussions/${discussion.id}`}
-      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 md:p-7 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
+      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5 md:p-6 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
     >
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-3">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-[var(--color-brand-light)] text-[var(--color-brand)] text-[11px] font-semibold">
-            <MessageCircle size={12} /> Discussion
-          </span>
-          {discussion.tags.map((tag, i) => (
-            <span
-              key={tag}
-              className={clsx(
-                "px-2 py-1 rounded-full text-[11px] font-semibold",
-                variantMap[discussion.tagVariant[i]] || "bg-[var(--color-bg-subtle)]"
-              )}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <div className="flex items-center gap-3 shrink-0">
-          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[var(--color-text-secondary)]">
-            <div className={clsx("w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 font-bold text-[6px]", discussion.authorBg || "bg-blue-100", discussion.authorColor || "text-blue-700")}>
-              {discussion.authorInitials || "AG"}
-            </div>
-            {discussion.author || "Anonymous"}
+        <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+          <div className={clsx("w-4 h-4 rounded-full flex items-center justify-center shrink-0 font-bold text-[7px]", discussion.authorBg || "bg-blue-100", discussion.authorColor || "text-blue-700")}>
+            {discussion.authorInitials || "AG"}
           </div>
-          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
-            <Clock size={12} />
-            {discussion.time}
-          </div>
-          <button
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-            title="Does it affect you? if yes, then Follow"
-            className="ml-1 px-3 py-1 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[11px] font-bold hover:opacity-80 transition-opacity"
-          >
-            Follow
-          </button>
+          <span className="text-[var(--color-text-primary)]">{discussion.author || "Anonymous"}</span>
+          <span className="opacity-50">•</span>
+          <span>{discussion.time}</span>
+          <span className="opacity-50">•</span>
+          <span>📍 {discussion.location || "Unknown"} {discussion.distance ? `(${discussion.distance})` : ""}</span>
         </div>
+        <button
+          onClick={handleFollow}
+          title="Does it affect you? if yes, then Follow"
+          className="shrink-0 ml-1 px-3 py-1 rounded-full border border-[var(--color-border)] text-[var(--color-text-primary)] bg-transparent hover:bg-[var(--color-bg-subtle)] text-[11px] font-bold transition-colors"
+        >
+          {isFollowing ? "Following" : "Follow"}
+        </button>
       </div>
 
       {/* Body */}
-      <h3 className="font-bold text-xl text-[var(--color-text-primary)] leading-snug">
+      <h3 className="font-bold text-lg md:text-xl text-[var(--color-text-primary)] leading-snug">
         {discussion.title}
       </h3>
+      
+      {/* Post Flairs */}
+      <div className="flex flex-wrap items-center gap-2 mt-2">
+        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-blue-50 text-blue-700">
+          💬 Discussion
+        </span>
+        {discussion.tags?.map((tag: string, i: number) => (
+          <span
+            key={tag}
+            className={clsx(
+              "px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide",
+              variantMap[discussion.tagVariant?.[i]] || "bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]"
+            )}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
       <p className="text-[var(--color-text-secondary)] mt-3 line-clamp-3 text-sm">
         {discussion.description}
       </p>
 
       {/* Footer */}
-      <div className="flex items-center justify-between mt-5 pt-4 border-t border-[var(--color-border)]/50">
-        <div className="flex items-center gap-6 text-sm">
-          <div className="flex items-center gap-1.5 text-[var(--color-brand)]">
-            <ThumbsUp size={16} />
-            <span className="font-semibold">{discussion.supports}</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
-            <MessageSquare size={16} />
-            <span>{discussion.comments}</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
-            <Share2 size={16} />
-            <span className="hidden sm:inline">Share</span>
-          </div>
+      <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-[var(--color-border)]/40 text-xs font-semibold">
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)]">
+          <ThumbsUp size={14} className="text-[var(--color-brand)]" />
+          <span>{discussion.supports}</span>
         </div>
-
-        <div className="flex items-center gap-1.5 text-xs font-semibold text-orange-500">
-          <Flame size={14} />
-          <span>{discussion.participantCount.toLocaleString()}</span>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)]">
+          <MessageSquare size={14} />
+          <span>{discussion.comments}</span>
+        </div>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)] hidden sm:flex">
+          <Share2 size={14} />
+          <span>Share</span>
+        </div>
+        <div className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]">
+          <Flame size={14} className="text-orange-500" />
+          <span>{discussion.participantCount?.toLocaleString() || 0} Participating</span>
         </div>
       </div>
     </Link>
@@ -229,65 +261,80 @@ function DiscussionCard({ discussion }: { discussion: any }) {
 }
 
 function PollCard({ poll }: { poll: any }) {
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const handleFollow = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!poll.id) return;
+    try {
+      await toggleFollow(poll.id, "POLL");
+      setIsFollowing(!isFollowing);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <Link
       to={`/polls/${poll.id}`}
-      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 md:p-7 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
+      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5 md:p-6 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
     >
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-3">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-[var(--color-brand-light)] text-[var(--color-brand)] text-[11px] font-semibold">
-            <BarChart2 size={12} /> Poll
-          </span>
-          <span className="px-2 py-1 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)] text-[11px] font-semibold">
-            🏛 Ward
-          </span>
-        </div>
-        <div className="flex items-center gap-3 shrink-0">
-          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[var(--color-text-secondary)]">
-            <div className={clsx("w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 font-bold text-[6px]", poll.authorBg || "bg-blue-100", poll.authorColor || "text-blue-700")}>
-              {poll.authorInitials || "AG"}
-            </div>
-            {poll.author || "Anonymous"}
+        <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+          <div className={clsx("w-4 h-4 rounded-full flex items-center justify-center shrink-0 font-bold text-[7px]", poll.authorBg || "bg-blue-100", poll.authorColor || "text-blue-700")}>
+            {poll.authorInitials || "AG"}
           </div>
-          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
-            <Clock size={12} />
-            {poll.time}
-          </div>
-          <button
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-            title="Does it affect you? if yes, then Follow"
-            className="ml-1 px-3 py-1 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[11px] font-bold hover:opacity-80 transition-opacity"
-          >
-            Follow
-          </button>
+          <span className="text-[var(--color-text-primary)]">{poll.author || "Anonymous"}</span>
+          <span className="opacity-50">•</span>
+          <span>{poll.time}</span>
+          <span className="opacity-50">•</span>
+          <span>📍 {poll.location || "Unknown"} {poll.distance ? `(${poll.distance})` : ""}</span>
         </div>
+        <button
+          onClick={handleFollow}
+          title="Does it affect you? if yes, then Follow"
+          className="shrink-0 ml-1 px-3 py-1 rounded-full border border-[var(--color-border)] text-[var(--color-text-primary)] bg-transparent hover:bg-[var(--color-bg-subtle)] text-[11px] font-bold transition-colors"
+        >
+          {isFollowing ? "Following" : "Follow"}
+        </button>
       </div>
 
       {/* Body */}
-      <h3 className="font-bold text-xl text-[var(--color-text-primary)] leading-snug">
+      <h3 className="font-bold text-lg md:text-xl text-[var(--color-text-primary)] leading-snug">
         {poll.question}
       </h3>
+      
+      {/* Post Flairs */}
+      <div className="flex flex-wrap items-center gap-2 mt-2">
+        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-purple-50 text-purple-700">
+          📊 Poll
+        </span>
+        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]">
+          🏛️ {poll.govLevel || "Ward"}
+        </span>
+      </div>
+
       <p className="text-[var(--color-text-secondary)] mt-3 line-clamp-3 text-sm mb-4">
         {poll.description}
       </p>
 
       <div className="space-y-3">
-        {poll.options.map((opt) => (
+        {poll.options?.map((opt: any) => (
           <div key={opt.label} className="relative">
-            <div className="w-full h-11 rounded-lg bg-[var(--color-bg-subtle)] overflow-hidden relative">
+            <div className="w-full h-10 rounded-lg bg-[var(--color-bg-subtle)] overflow-hidden relative">
               <div
                 className={clsx(
-                  "absolute left-0 top-0 h-full rounded-lg",
+                  "absolute left-0 top-0 h-full rounded-lg transition-all",
                   opt.primary ? "bg-[var(--color-brand)]/15" : "bg-[var(--color-text-primary)]/5"
                 )}
-                style={{ width: `${opt.percent}%` }}
+                style={{ width: `${opt.percent || opt.pct || 0}%` }}
               />
-              <div className="relative flex items-center justify-between h-full px-4 text-sm">
+              <div className="relative flex items-center justify-between h-full px-4 text-xs sm:text-sm">
                 <span className="font-medium text-[var(--color-text-primary)]">{opt.label}</span>
                 <span className={clsx("font-semibold", opt.primary && "text-[var(--color-brand)]")}>
-                  {opt.percent}%
+                  {opt.percent || opt.pct || 0}%
                 </span>
               </div>
             </div>
@@ -296,20 +343,18 @@ function PollCard({ poll }: { poll: any }) {
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between mt-5 pt-4 border-t border-[var(--color-border)]/50">
-        <div className="flex items-center gap-6 text-sm">
-          <div className="flex items-center gap-1.5 text-[var(--color-brand)]">
-            <Vote size={16} />
-            <span className="font-semibold">{poll.votes.toLocaleString()}</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
-            <MessageSquare size={16} />
-            <span>{poll.comments}</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
-            <Share2 size={16} />
-            <span className="hidden sm:inline">Share</span>
-          </div>
+      <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-[var(--color-border)]/40 text-xs font-semibold">
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)]">
+          <Vote size={14} className="text-[var(--color-brand)]" />
+          <span>{poll.votes?.toLocaleString() || 0} Votes</span>
+        </div>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)]">
+          <MessageSquare size={14} />
+          <span>{poll.comments}</span>
+        </div>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)] hidden sm:flex">
+          <Share2 size={14} />
+          <span>Share</span>
         </div>
       </div>
     </Link>
@@ -343,10 +388,23 @@ export default function FeedPage() {
   const [issues, setIssues] = useState<any[]>([]);
   const [discussions, setDiscussions] = useState<any[]>([]);
   const [polls, setPolls] = useState<any[]>([]);
+  const [userCoords, setUserCoords] = useState<{lat: number, lng: number} | null>(null);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setUserCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        },
+        (err) => console.log("Geolocation error:", err),
+        { enableHighAccuracy: true }
+      );
+    }
+  }, []);
 
   useEffect(() => {
     // Fetch issues
-    fetch("http://localhost:8081/djp/api/v1/issues")
+    fetch("/djp/api/v1/issues")
       .then(res => res.json())
       .then(data => {
         setIssues(data.map((item: any) => {
@@ -371,7 +429,7 @@ export default function FeedPage() {
       .catch(console.error);
 
     // Fetch discussions
-    fetch("http://localhost:8081/djp/api/v1/discussions")
+    fetch("/djp/api/v1/discussions")
       .then(res => res.json())
       .then(data => {
         setDiscussions(data.map((item: any) => {
@@ -391,14 +449,17 @@ export default function FeedPage() {
             tags: (meta as any).tags || ["General"],
             tagVariant: (meta as any).tagVariant || ["secondary"],
             participants: (meta as any).participants || [],
-            author: (meta as any).author || "Anonymous"
+            author: (meta as any).author || "Anonymous",
+            location: item.location || "Unknown Location",
+            latitude: item.latitude,
+            longitude: item.longitude,
           };
         }));
       })
       .catch(console.error);
 
     // Fetch polls
-    fetch("http://localhost:8081/djp/api/v1/polls")
+    fetch("/djp/api/v1/polls")
       .then(res => res.json())
       .then(data => {
         setPolls(data.map((item: any) => {
@@ -419,7 +480,11 @@ export default function FeedPage() {
             time: item.expiresAt ? "Ends " + new Date(item.expiresAt).toLocaleDateString() : "Ongoing",
             votes: item.votesCount || 0,
             comments: item.commentsCount || 0,
-            author: (meta as any).author || "Anonymous"
+            author: (meta as any).author || "Anonymous",
+            location: item.location || "Unknown Location",
+            latitude: item.latitude,
+            longitude: item.longitude,
+            govLevel: item.govLevel,
           };
         }));
       })
@@ -428,7 +493,27 @@ export default function FeedPage() {
     if (sessionStorage.getItem("djp_hide_completion_banner") === "true") {
       setIsBannerHidden(true);
     }
-  }, []);
+  }, [userCoords]); // Re-fetch or re-evaluate when userCoords changes so we can attach distance
+
+  const processWithDistance = (items: any[]) => {
+    return items.map(item => {
+      let distanceStr = "";
+      if (userCoords && item.latitude && item.longitude) {
+        const d = getDistanceInKm(userCoords.lat, userCoords.lng, item.latitude, item.longitude);
+        if (d < 1) distanceStr = Math.round(d * 1000) + " m away";
+        else distanceStr = d.toFixed(1) + " km away";
+      }
+      return { ...item, distance: distanceStr };
+    }).sort((a, b) => {
+      // Sort by distance if available
+      if (a.distance && b.distance) {
+        const distA = getDistanceInKm(userCoords!.lat, userCoords!.lng, a.latitude, a.longitude);
+        const distB = getDistanceInKm(userCoords!.lat, userCoords!.lng, b.latitude, b.longitude);
+        return distA - distB;
+      }
+      return 0;
+    });
+  };
 
   const handleDismissBanner = () => {
     setIsBannerHidden(true);
@@ -486,13 +571,13 @@ export default function FeedPage() {
         <div className="flex-1 overflow-y-auto min-w-0">
           <FeedFilterBar activeContent={activeContent} setActiveContent={setActiveContent} />
           <div className="space-y-6 pb-32">
-            {(activeContent === "All" || activeContent === "Issues") && issues.map((issue) => (
+            {(activeContent === "All" || activeContent === "Issues") && processWithDistance(issues).map((issue) => (
               <IssueCard key={issue.id} issue={issue} />
             ))}
-            {(activeContent === "All" || activeContent === "Discussions") && discussions.map((discussion) => (
+            {(activeContent === "All" || activeContent === "Discussions") && processWithDistance(discussions).map((discussion) => (
               <DiscussionCard key={discussion.id} discussion={discussion} />
             ))}
-            {(activeContent === "All" || activeContent === "Polls") && polls.map((poll) => (
+            {(activeContent === "All" || activeContent === "Polls") && processWithDistance(polls).map((poll) => (
               <PollCard key={poll.id} poll={poll} />
             ))}
           </div>

@@ -70,6 +70,9 @@ public class IssueController {
                 request.getPriority()
         );
         issue.setLocation(request.getLocation());
+        issue.setLatitude(request.getLatitude());
+        issue.setLongitude(request.getLongitude());
+        issue.setGovLevel(request.getGovLevel());
 
         Issue saved = issueRepository.save(issue);
 

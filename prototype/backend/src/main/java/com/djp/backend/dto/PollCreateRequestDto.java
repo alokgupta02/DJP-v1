@@ -16,5 +16,9 @@ public record PollCreateRequestDto(
         @Size(max = 50, message = "Category must not exceed 50 characters")
         String category,
 
-        String optionsJson
+        String optionsJson,
+        String location,
+        Double latitude,
+        Double longitude,
+        String govLevel
 ) {}
