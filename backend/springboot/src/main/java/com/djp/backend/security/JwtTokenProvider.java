@@ -23,7 +23,7 @@ public class JwtTokenProvider {
     private final long tokenValidityInMilliseconds;
 
     public JwtTokenProvider(
-            @Value("${app.jwt.secret:defaultSecretKeyThatIsAtLeast256BitsLongAndSecure}") String jwtSecret,
+            @Value("${app.jwt.secret}") String jwtSecret,
             @Value("${app.jwt.expiration-ms:86400000}") long tokenValidityInMilliseconds) {
         
         byte[] keyBytes;

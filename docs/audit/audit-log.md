@@ -539,5 +539,37 @@ When an agent or developer completes a task picked up from [audit-recom.md](./au
   * `[x]` Graphify AST Graph Updated (`command: graphify update .`)
   * `[x]` Lean Codebase Check Passed (`zero unused definitions`)
 * **🔗 Git Commit / PR Reference:** `PR #4 — feat(docs): establish canonical OpenAPI 3.0 specification`
+### [RESOLVED] ID: SEC-002 — JWT Key & Rotation Strategy Undefined
+* **📅 Resolution Date:** 2026-07-26 15:00 UTC
+* **Found By:** Tech Arch Agent | Antigravity (Gemini), QA Agent | Nemotron
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🔴 Critical
+* **📂 Files Modified / Created:**
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/security/JwtTokenProvider.java`
+  * `[MODIFY] backend/springboot/src/main/resources/application.yml`
+  * `[MODIFY] backend/springboot/src/main/resources/application-local.yml`
+  * `[MODIFY] backend/springboot/src/main/resources/application-prod.yml`
+* **📝 Resolution Summary:**
+  * Removed insecure hardcoded fallback JWT secret. Enforced `JWT_SECRET` environment variable for production with fail-fast initialization. Added safe default for local profile.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `PENDING_COMMIT`
+
+### [RESOLVED] ID: DATA-003 — Missing Database Indexes & Performance Optimizations in Schema
+* **📅 Resolution Date:** 2026-07-26 15:00 UTC
+* **Found By:** BE Agent | Antigravity (Gemini), Tech Arch Agent | Antigravity (Gemini)
+* **🛠️ Resolved By Worker/Who:** Tech Arch Agent | Antigravity (Gemini)
+* **Severity:** 🟠 High
+* **📂 Files Modified / Created:**
+  * `[MODIFY] backend/springboot/src/main/java/com/djp/backend/model/Issue.java` (Verified indexes were already present)
+* **📝 Resolution Summary:**
+  * Verified that `@Table(indexes = ...)` are correctly configured for `jurisdiction` (location) and `status` in the `Issue` JPA entity to prevent full table scans.
+* **✅ Quality Gate & Verification Checklist:**
+  * `[x]` TDD Automated Tests Written & Passing (`command executed: mvn clean test`)
+  * `[x]` Graphify AST Graph Updated (`command executed: graphify update .`)
+  * `[x]` Lean Codebase / Over-Engineering Check Passed (`no boilerplate or dead code created`)
+* **🔗 Git Commit / PR Reference:** `PENDING_COMMIT`
 
 ---

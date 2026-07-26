@@ -72,3 +72,9 @@ resilience4j:
     instances:
       authServiceRetry:
         baseConfig: default
+
+# Application Specific Properties
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-ms: 86400000

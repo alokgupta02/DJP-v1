@@ -21,3 +21,8 @@ spring:
     hibernate:
       ddl-auto: validate  # Safety guard: never drop/update schemas automatically
     show-sql: false
+
+# Enforce JWT_SECRET env var is provided in production
+app:
+  jwt:
+    secret: ${JWT_SECRET} # Startup will fail if JWT_SECRET is not provided
