@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   MapPin, ThumbsUp, MessageSquare, Users, Landmark,
   Clock, CheckCircle2, User, AlertTriangle, Trash2, Droplet,
-  Lightbulb, Vote, X
+  Lightbulb, Vote, X, Share2
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -197,71 +197,59 @@ function IssueCard({ issue }: { issue: typeof ISSUES[number] }) {
       to={`/issues/${issue.id}`}
       className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 md:p-7 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
     >
-      <div className="flex gap-5">
-        <div className="flex-1 min-w-0">
-          <div className="flex items-start gap-4">
-            <div className="relative shrink-0">
-              <div className="w-12 h-12 rounded-full bg-[var(--color-brand-light)] flex items-center justify-center text-[var(--color-brand)]">
-                <IssueIcon category={issue.category} />
-              </div>
-              {issue.verified && (
-                <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-cyan-500 flex items-center justify-center">
-                  <CheckCircle2 size={12} className="text-white" />
-                </div>
-              )}
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs uppercase tracking-wider font-semibold text-[var(--color-brand)]">
-                      {issue.category}
-                    </span>
-                    <SeverityBadge severity={issue.severity} />
-                  </div>
-                  <h3 className="font-bold text-lg text-[var(--color-text-primary)] leading-snug">
-                    {issue.title}
-                  </h3>
-                </div>
-              </div>
-              <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-[var(--color-text-secondary)]">
-                <div className="flex items-center gap-1">
-                  <MapPin size={16} />
-                  {issue.location}
-                </div>
-                <div className="flex items-center gap-1">
-                  <MapPin size={16} />
-                  {issue.distance}
-                </div>
-                <div className="flex items-center gap-1">
-                  <Clock size={16} />
-                  {issue.time}
-                </div>
-                <div className="flex items-center gap-1">
-                  <CheckCircle2 size={16} className="text-[var(--color-success)]" />
-                  {issue.status}
-                </div>
-              </div>
-              <div className="flex flex-wrap items-center gap-6 mt-2 text-sm">
-                <div className="flex items-center gap-1.5 text-[var(--color-brand)]">
-                  <ThumbsUp size={16} />
-                  <span className="font-semibold">{issue.supports}</span>
-                </div>
-                <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)]">
-                  <MessageSquare size={16} />
-                  {issue.comments}
-                </div>
-                <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)]">
-                  <Users size={16} />
-                  {issue.affected}
-                </div>
-                <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)]">
-                  <Landmark size={16} />
-                  {issue.govLevel}
-                </div>
-              </div>
-            </div>
+      {/* Header */}
+      <div className="flex items-start justify-between gap-4 mb-3">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="px-2 py-1 rounded-full bg-[var(--color-error-bg)] text-[var(--color-error)] text-[11px] font-semibold">
+            📢 Issue
+          </span>
+          <span className="px-2 py-1 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)] text-[11px] font-semibold">
+            {issue.category}
+          </span>
+        </div>
+        <div className="flex items-center gap-3 shrink-0">
+          <SeverityBadge severity={issue.severity} />
+          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+            <Clock size={12} />
+            {issue.time}
           </div>
+        </div>
+      </div>
+
+      {/* Body */}
+      <h3 className="font-bold text-xl text-[var(--color-text-primary)] leading-snug mb-3">
+        {issue.title}
+      </h3>
+      <div className="flex flex-wrap items-center gap-2 mt-2 text-sm text-[var(--color-text-secondary)]">
+        <span className="flex items-center gap-1 px-2 py-1 rounded-md bg-[var(--color-bg-subtle)]">
+          <MapPin size={14} />
+          <span className="text-xs">{issue.location} ({issue.distance})</span>
+        </span>
+        <span className="flex items-center gap-1 px-2 py-1 rounded-md bg-[var(--color-bg-subtle)]">
+          <Landmark size={14} />
+          <span className="text-xs">{issue.govLevel}</span>
+        </span>
+      </div>
+
+      {/* Footer */}
+      <div className="flex items-center justify-between mt-5 pt-4 border-t border-[var(--color-border)]/50">
+        <div className="flex items-center gap-6 text-sm">
+          <div className="flex items-center gap-1.5 text-[var(--color-brand)]">
+            <ThumbsUp size={16} />
+            <span className="font-semibold">{issue.supports}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
+            <MessageSquare size={16} />
+            <span>{issue.comments}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
+            <Share2 size={16} />
+            <span className="hidden sm:inline">Share</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--color-text-secondary)]">
+          <Users size={14} />
+          <span>{issue.affected} Affected</span>
         </div>
       </div>
     </Link>
@@ -280,65 +268,75 @@ function DiscussionCard({ discussion }: { discussion: typeof DISCUSSIONS[number]
       to={`/discussions/${discussion.id}`}
       className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 md:p-7 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
     >
-      <div className="flex items-center gap-2 mb-3">
-        {discussion.tags.map((tag, i) => (
-          <span
-            key={tag}
-            className={clsx(
-              "px-2 py-1 rounded-full text-[11px] font-semibold",
-              variantMap[discussion.tagVariant[i]] || "bg-[var(--color-bg-subtle)]"
-            )}
-          >
-            {tag}
+      {/* Header */}
+      <div className="flex items-start justify-between gap-4 mb-3">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="px-2 py-1 rounded-full bg-[var(--color-brand-light)] text-[var(--color-brand)] text-[11px] font-semibold">
+            💬 Discussion
           </span>
-        ))}
+          {discussion.tags.map((tag, i) => (
+            <span
+              key={tag}
+              className={clsx(
+                "px-2 py-1 rounded-full text-[11px] font-semibold",
+                variantMap[discussion.tagVariant[i]] || "bg-[var(--color-bg-subtle)]"
+              )}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+            <User size={12} />
+            {discussion.author}
+          </div>
+          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+            <Clock size={12} />
+            {discussion.time}
+          </div>
+        </div>
       </div>
 
+      {/* Body */}
       <h3 className="font-bold text-xl text-[var(--color-text-primary)] leading-snug">
         {discussion.title}
       </h3>
-
       <p className="text-[var(--color-text-secondary)] mt-3 line-clamp-3 text-sm">
         {discussion.description}
       </p>
 
-      <div className="flex items-center gap-4 mt-4 text-sm text-[var(--color-text-secondary)]">
-        <div className="flex items-center gap-1">
-          <User size={16} />
-          {discussion.author}
-        </div>
-        <div className="flex items-center gap-1">
-          <Clock size={16} />
-          {discussion.time}
-        </div>
-      </div>
-
-      <div className="flex items-center justify-between mt-5">
-        <div className="flex items-center gap-3">
-          <div className="flex -space-x-2">
-            {discussion.participants.map((p) => (
-              <div
-                key={p}
-                className="w-8 h-8 rounded-full border-2 border-white bg-[var(--color-bg-subtle)] flex items-center justify-center text-[10px] font-bold text-[var(--color-text-primary)]"
-              >
-                {p}
-              </div>
-            ))}
-            <div className="w-8 h-8 rounded-full border-2 border-white bg-[var(--color-bg-muted)] flex items-center justify-center text-[10px] font-bold text-[var(--color-text-secondary)]">
-              +{discussion.participantCount}
-            </div>
-          </div>
-          <span className="text-sm text-[var(--color-text-secondary)]">discussing</span>
-        </div>
-
+      {/* Footer */}
+      <div className="flex items-center justify-between mt-5 pt-4 border-t border-[var(--color-border)]/50">
         <div className="flex items-center gap-6 text-sm">
           <div className="flex items-center gap-1.5 text-[var(--color-brand)]">
             <ThumbsUp size={16} />
             <span className="font-semibold">{discussion.supports}</span>
           </div>
-          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)]">
+          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
             <MessageSquare size={16} />
-            {discussion.comments}
+            <span>{discussion.comments}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
+            <Share2 size={16} />
+            <span className="hidden sm:inline">Share</span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <span className="text-xs font-semibold text-[var(--color-text-secondary)]">discussing</span>
+          <div className="flex -space-x-2">
+            {discussion.participants.map((p) => (
+              <div
+                key={p}
+                className="w-7 h-7 rounded-full border-2 border-[var(--color-bg-surface)] bg-[var(--color-bg-subtle)] flex items-center justify-center text-[9px] font-bold text-[var(--color-text-primary)]"
+              >
+                {p}
+              </div>
+            ))}
+            <div className="w-7 h-7 rounded-full border-2 border-[var(--color-bg-surface)] bg-[var(--color-bg-muted)] flex items-center justify-center text-[9px] font-bold text-[var(--color-text-secondary)]">
+              +{discussion.participantCount}
+            </div>
           </div>
         </div>
       </div>
@@ -352,24 +350,37 @@ function PollCard({ poll }: { poll: typeof POLLS[number] }) {
       to={`/polls/${poll.id}`}
       className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 md:p-7 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
     >
-      <div className="flex items-center gap-2 mb-3">
-        <span className="px-2 py-1 rounded-full bg-[var(--color-brand-light)] text-[var(--color-brand)] text-[11px] font-semibold">
-          📊 Poll
-        </span>
-        <span className="px-2 py-1 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)] text-[11px] font-semibold">
-          🏛 Ward
-        </span>
+      {/* Header */}
+      <div className="flex items-start justify-between gap-4 mb-3">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="px-2 py-1 rounded-full bg-[var(--color-brand-light)] text-[var(--color-brand)] text-[11px] font-semibold">
+            📊 Poll
+          </span>
+          <span className="px-2 py-1 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)] text-[11px] font-semibold">
+            🏛 Ward
+          </span>
+        </div>
+        <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+            <User size={12} />
+            {poll.author}
+          </div>
+          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+            <Clock size={12} />
+            {poll.time}
+          </div>
+        </div>
       </div>
 
+      {/* Body */}
       <h3 className="font-bold text-xl text-[var(--color-text-primary)] leading-snug">
         {poll.question}
       </h3>
-
-      <p className="text-[var(--color-text-secondary)] mt-3 line-clamp-3 text-sm">
+      <p className="text-[var(--color-text-secondary)] mt-3 line-clamp-3 text-sm mb-4">
         {poll.description}
       </p>
 
-      <div className="mt-5 space-y-3">
+      <div className="space-y-3">
         {poll.options.map((opt) => (
           <div key={opt.label} className="relative">
             <div className="w-full h-11 rounded-lg bg-[var(--color-bg-subtle)] overflow-hidden relative">
@@ -391,26 +402,20 @@ function PollCard({ poll }: { poll: typeof POLLS[number] }) {
         ))}
       </div>
 
-      <div className="flex items-center gap-4 mt-5 text-sm text-[var(--color-text-secondary)]">
-        <div className="flex items-center gap-1">
-          <User size={16} />
-          {poll.author}
-        </div>
-        <div className="flex items-center gap-1">
-          <Clock size={16} />
-          {poll.time}
-        </div>
-      </div>
-
-      <div className="flex items-center justify-between mt-5">
+      {/* Footer */}
+      <div className="flex items-center justify-between mt-5 pt-4 border-t border-[var(--color-border)]/50">
         <div className="flex items-center gap-6 text-sm">
           <div className="flex items-center gap-1.5 text-[var(--color-brand)]">
             <Vote size={16} />
             <span className="font-semibold">{poll.votes.toLocaleString()}</span>
           </div>
-          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)]">
+          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
             <MessageSquare size={16} />
-            {poll.comments}
+            <span>{poll.comments}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
+            <Share2 size={16} />
+            <span className="hidden sm:inline">Share</span>
           </div>
         </div>
       </div>
