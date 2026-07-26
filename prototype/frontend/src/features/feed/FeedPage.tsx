@@ -330,21 +330,9 @@ function DiscussionCard({ discussion }: { discussion: typeof DISCUSSIONS[number]
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          <span className="text-xs font-semibold text-[var(--color-text-secondary)]">discussing</span>
-          <div className="flex -space-x-2">
-            {discussion.participants.map((p) => (
-              <div
-                key={p}
-                className="w-7 h-7 rounded-full border-2 border-[var(--color-bg-surface)] bg-[var(--color-bg-subtle)] flex items-center justify-center text-[9px] font-bold text-[var(--color-text-primary)]"
-              >
-                {p}
-              </div>
-            ))}
-            <div className="w-7 h-7 rounded-full border-2 border-[var(--color-bg-surface)] bg-[var(--color-bg-muted)] flex items-center justify-center text-[9px] font-bold text-[var(--color-text-secondary)]">
-              +{discussion.participantCount}
-            </div>
-          </div>
+        <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--color-text-secondary)]">
+          <Users size={14} />
+          <span>{discussion.participantCount.toLocaleString()} Participants</span>
         </div>
       </div>
     </Link>
