@@ -1,13 +1,15 @@
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ThumbsUp, MessageSquare, Users, CheckCircle2, Share2, ImagePlus, ArrowLeft, AlertTriangle, Trash2, Droplet } from "lucide-react";
+import { ThumbsUp, MessageSquare, Users, CheckCircle2, Share2, ImagePlus, ArrowLeft, AlertTriangle, Trash2, Droplet, Search, User } from "lucide-react";
 import clsx from "clsx";
+import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";
 
 const ISSUES_DATA: Record<string, {
   id: string; category: string; severity: string; title: string; description: string;
   location: string; address: string; distance: string; time: string; govLevel: string;
-  supports: number; comments: number; affected: string; image: string; imageCount: number;
+  supports: number; commentsCount: number; affected: string; image: string; imageCount: number;
   verified: boolean; iconBg: string; iconColor: string; icon: React.ElementType;
-  timeline: string[]; commenters: { name: string; text: string }[];
+  timeline: string[]; comments: CommentData[];
   health: [string, string][]; related: { title: string; dist: string }[];
 }> = {
   pothole: {
@@ -16,7 +18,7 @@ const ISSUES_DATA: Record<string, {
     description: "A deep pothole has formed near the Balewadi High Street junction following recent rainfall. Vehicles frequently swerve to avoid it, increasing the risk of accidents and traffic congestion. Motorcyclists are particularly vulnerable during night hours because of poor visibility.",
     location: "Balewadi High Street • Ward 23", address: "Balewadi High Street Junction, Ward 23, Pune",
     distance: "140 m away", time: "Reported 2 hours ago", govLevel: "Ward",
-    supports: 96, comments: 24, affected: "500+",
+    supports: 96, commentsCount: 24, affected: "500+",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200",
     imageCount: 14, verified: true,
     iconBg: "bg-amber-100", iconColor: "text-amber-700", icon: AlertTriangle,
@@ -27,9 +29,9 @@ const ISSUES_DATA: Record<string, {
       "✅ Community verification completed.",
       "📝 Issue reported.",
     ],
-    commenters: [
-      { name: "Aman", text: "This pothole has become much deeper after yesterday's rain." },
-      { name: "Priya", text: "Several vehicles are suddenly changing lanes to avoid it." },
+    comments: [
+      { id: "c1", initials: "AM", bg: "bg-blue-100", textColor: "text-blue-700", name: "Aman", time: "1 hour ago", text: "This pothole has become much deeper after yesterday's rain.", score: 12 },
+      { id: "c2", initials: "PR", bg: "bg-purple-100", textColor: "text-purple-700", name: "Priya", time: "30 mins ago", text: "Several vehicles are suddenly changing lanes to avoid it. It's very dangerous.", score: 8 },
     ],
     health: [
       ["✅", "Community Verified"], ["👍", "96 Citizens Support"],
@@ -48,7 +50,7 @@ const ISSUES_DATA: Record<string, {
     description: "A continuous leak from an underground water main has been observed on Main Street since early morning. Water is flowing across the carriageway, creating slippery conditions, wasting treated water and reducing water pressure in nearby residential buildings.",
     location: "Main Street • Ward 12", address: "Main Street, Ward 12",
     distance: "320 m away", time: "5h ago", govLevel: "Ward",
-    supports: 58, comments: 11, affected: "300–500",
+    supports: 58, commentsCount: 11, affected: "300–500",
     image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=1200",
     imageCount: 9, verified: true,
     iconBg: "bg-cyan-100", iconColor: "text-cyan-700", icon: Droplet,
@@ -58,9 +60,9 @@ const ISSUES_DATA: Record<string, {
       "👍 Support crossed 50.",
       "📝 Issue reported.",
     ],
-    commenters: [
-      { name: "Rahul", text: "Water pressure has dropped in our apartments." },
-      { name: "Sneha", text: "The road is becoming slippery for two-wheelers." },
+    comments: [
+      { id: "c1", initials: "RH", bg: "bg-teal-100", textColor: "text-teal-700", name: "Rahul", time: "2 hours ago", text: "Water pressure has dropped in our apartments.", score: 5 },
+      { id: "c2", initials: "SN", bg: "bg-rose-100", textColor: "text-rose-700", name: "Sneha", time: "1 hour ago", text: "The road is becoming slippery for two-wheelers.", score: 3 },
     ],
     health: [
       ["✅", "Community Verified"], ["👍", "58 Support"],
@@ -78,8 +80,8 @@ const ISSUES_DATA: Record<string, {
     title: "Garbage Dump on Balewadi Street near Parke Serene",
     description: "A large pile of household and construction waste has accumulated beside the entrance to Parke Serene Society over the past week. The garbage obstructs pedestrians, emits foul odor, and attracts stray animals. Residents report that municipal collection has been missed multiple times.",
     location: "Balewadi • Ward 23", address: "Near Parke Serene Society, Balewadi, Pune.",
-    distance: "780 m away", time: "Reported 15h ago", govLevel: "Ward",
-    supports: 42, comments: 18, affected: "120–200",
+    distance: "780 m away", time: "Reported 15h ago", govLevel: "Ward", author: "Priya S.",
+    supports: 42, commentsCount: 18, affected: "120–200",
     image: "https://images.unsplash.com/photo-1503596476-1c12a8ba09a9?w=1000",
     imageCount: 6, verified: true,
     iconBg: "bg-emerald-100", iconColor: "text-emerald-700", icon: Trash2,
@@ -89,9 +91,9 @@ const ISSUES_DATA: Record<string, {
       "👍 Support count crossed 40.",
       "📝 Original issue reported.",
     ],
-    commenters: [
-      { name: "Alok G.", text: "Garbage has increased after the weekend market." },
-      { name: "Riya K.", text: "The collection truck skipped this street again today." },
+    comments: [
+      { id: "c1", initials: "AG", bg: "bg-indigo-100", textColor: "text-indigo-700", name: "Alok G.", time: "4 hours ago", text: "Garbage has increased after the weekend market.", score: 7 },
+      { id: "c2", initials: "RK", bg: "bg-amber-100", textColor: "text-amber-700", name: "Riya K.", time: "2 hours ago", text: "The collection truck skipped this street again today.", score: 5 },
     ],
     health: [
       ["✅", "Community Verified"], ["👍", "42 Citizens Support"],
@@ -106,9 +108,53 @@ const ISSUES_DATA: Record<string, {
   },
 };
 
+const UUID_TO_MOCK_KEY: Record<string, string> = {
+  "a1111111-1111-1111-1111-111111111111": "pothole",
+  "b2222222-2222-2222-2222-222222222222": "garbage",
+  "c3333333-3333-3333-3333-333333333333": "water",
+};
+
 export default function IssueDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const issue = id ? ISSUES_DATA[id] : undefined;
+  
+  const mockKey = id && UUID_TO_MOCK_KEY[id] ? UUID_TO_MOCK_KEY[id] : "pothole";
+  const [issue, setIssue] = useState<any>(ISSUES_DATA[mockKey] || ISSUES_DATA["pothole"]);
+
+  useEffect(() => {
+    if (!id) return;
+    fetch(`http://localhost:8081/djp/api/v1/issues/${id}`)
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to fetch");
+        return res.json();
+      })
+      .then(data => {
+        let meta = {};
+        if (data.metadata) {
+          try { meta = JSON.parse(data.metadata); } catch(e) {}
+        }
+        
+        setIssue((prev: any) => ({
+          ...prev,
+          title: data.title,
+          description: data.description,
+          supports: data.supportsCount || 0,
+          commentsCount: data.commentsCount || 0,
+          category: data.category || prev.category,
+          severity: data.priority === 'CRITICAL' ? 'Critical' : (data.priority === 'HIGH' ? 'HIGH' : prev.severity),
+          location: data.location || prev.location,
+          affected: (meta as any).affected || prev.affected,
+          distance: (meta as any).distance || prev.distance,
+          govLevel: (meta as any).govLevel || prev.govLevel,
+          author: (meta as any).author || prev.author || "Anonymous",
+          image: (meta as any).image || prev.image,
+          imageCount: (meta as any).imageCount || prev.imageCount,
+          verified: (meta as any).verified !== undefined ? (meta as any).verified : prev.verified,
+          time: data.createdAt ? new Date(data.createdAt).toLocaleDateString() : prev.time,
+        }));
+      })
+      .catch(console.error);
+  }, [id]);
+
   const Icon = issue?.icon || AlertTriangle;
 
   if (!issue) {
@@ -126,130 +172,196 @@ export default function IssueDetailPage() {
 
   return (
     <div className="flex-1 p-8 overflow-y-auto">
-      <div className="w-full">
-        <Link to="/issues" className="inline-flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] mb-4 transition-colors">
+      <div className="max-w-6xl mx-auto w-full">
+        <Link to="/issues" className="inline-flex items-center gap-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] mb-6 transition-colors">
           <ArrowLeft size={16} />
           Back to Issues
         </Link>
 
-        <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-6 shadow-sm">
-          <div className="flex justify-between items-start">
-            <div className="flex gap-4">
-              <div className="relative shrink-0">
-                <div className={clsx("w-14 h-14 rounded-full flex items-center justify-center", issue.iconBg)}>
-                  <Icon size={24} className={issue.iconColor} />
-                </div>
-                {issue.verified && (
-                  <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-cyan-500 flex items-center justify-center">
-                    <CheckCircle2 size={12} className="text-white" />
+        <div className="grid lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-4">
+            {/* Unified Post Container */}
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-sm overflow-hidden">
+              
+              {/* Main Post Area */}
+              <div className="p-4 sm:p-5">
+                {/* Header (Icon + Status + Tags) */}
+                <div className="flex justify-between items-start mb-4">
+                  <div className="relative shrink-0">
+                    <div className={clsx("w-12 h-12 rounded-full flex items-center justify-center", issue.iconBg)}>
+                      <Icon size={22} className={issue.iconColor} />
+                    </div>
+                    {issue.verified && (
+                      <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-cyan-500 flex items-center justify-center border-2 border-[var(--color-bg-surface)]">
+                        <CheckCircle2 size={12} className="text-white" />
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-              <div>
-                <div className="flex gap-2 mb-2">
-                  <span className="text-xs uppercase tracking-wider font-semibold text-[var(--color-brand)]">{issue.category}</span>
-                  <span className={clsx("px-2 py-0.5 rounded-full text-[10px] font-bold uppercase", issue.severity === "Critical" ? "bg-[var(--color-error-bg)] text-[var(--color-error)]" : "bg-[var(--color-warning-bg)] text-[var(--color-warning)]")}>
-                    {issue.severity}
-                  </span>
-                </div>
-                <h1 className="text-3xl font-bold text-[var(--color-text-primary)]">{issue.title}</h1>
-                <p className="mt-3 text-[var(--color-text-secondary)] max-w-4xl leading-relaxed">{issue.description}</p>
-                <div className="flex flex-wrap gap-6 mt-4 text-sm text-[var(--color-text-secondary)]">
-                  <span>📍 {issue.location}</span>
-                  <span>📏{issue.distance}</span>
-                  <span>🕒{issue.time}</span>
-                  <span>🏛{issue.govLevel}</span>
-                </div>
-                <div className="flex gap-6 mt-4">
-                  <button className="flex items-center gap-1.5 text-[var(--color-brand)] font-semibold hover:underline">
-                    <ThumbsUp size={16} /> {issue.supports}
-                  </button>
-                  <button className="flex items-center gap-1.5 text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors">
-                    <MessageSquare size={16} /> {issue.comments}
-                  </button>
-                  <div className="flex items-center gap-1.5 text-[var(--color-text-secondary)]">
-                    <Users size={16} /> {issue.affected}
+                  <div className="flex gap-2">
+                    <span className="px-2.5 py-0.5 rounded-full text-xs uppercase tracking-wider font-semibold bg-[var(--color-bg-subtle)] text-[var(--color-brand)] border border-[var(--color-border)]">
+                      {issue.category}
+                    </span>
+                    <span className={clsx("px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase border", issue.severity === "Critical" ? "bg-[var(--color-error-bg)] text-[var(--color-error)] border-red-200" : "bg-[var(--color-warning-bg)] text-[var(--color-warning)] border-orange-200")}>
+                      {issue.severity}
+                    </span>
                   </div>
                 </div>
-              </div>
-            </div>
-            <button className="flex items-center gap-2 border border-[var(--color-border)] rounded-lg px-4 py-2 text-sm text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)] transition-colors shrink-0">
-              <Share2 size={16} />
-              Share
-            </button>
-          </div>
-        </div>
 
-        <div className="grid grid-cols-3 gap-6 mt-6">
-          <div className="col-span-3 lg:col-span-2 space-y-6">
-            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5">
-              <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-4">Evidence</h2>
-              <img src={issue.image} alt="Issue evidence" className="w-full h-96 rounded-lg object-cover" />
-              <div className="grid grid-cols-5 gap-3 mt-4">
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <div key={i} className="bg-[var(--color-bg-muted)] h-20 rounded" />
-                ))}
-                <button className="border-2 border-dashed border-[var(--color-border)] rounded flex items-center justify-center text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)] transition-colors">
-                  <ImagePlus size={20} />
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5">
-              <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Location</h2>
-              <div className="h-72 bg-[var(--color-bg-muted)] rounded flex items-center justify-center text-[var(--color-text-secondary)]">
-                Map Placeholder
-              </div>
-              <p className="mt-3 text-[var(--color-text-secondary)]">{issue.address}</p>
-            </div>
-
-            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5">
-              <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-3">Citizen Activity Timeline</h2>
-              <ul className="space-y-3 text-[var(--color-text-primary)]">
-                {issue.timeline.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5">
-              <h2 className="text-xl font-bold text-[var(--color-text-primary)] mb-4">Discussion</h2>
-              {issue.commenters.map((c) => (
-                <div key={c.name} className="border-b border-[var(--color-border)] pb-3 mb-3">
-                  <b className="text-[var(--color-text-primary)]">{c.name}</b>
-                  <p className="text-[var(--color-text-secondary)] mt-1">{c.text}</p>
+                {/* Title */}
+                <h1 className="text-xl sm:text-2xl font-bold leading-snug text-[var(--color-text-primary)] mb-2">
+                  {issue.title}
+                </h1>
+                
+                {/* Meta details */}
+                <div className="flex flex-wrap gap-x-4 gap-y-2 mt-2 text-xs text-[var(--color-text-secondary)] font-medium mb-4">
+                  <span className="flex items-center gap-1.5"><User size={14} /> <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{issue.author}</span></span>
+                  <span className="flex items-center gap-1">📍 {issue.location}</span>
+                  <span className="flex items-center gap-1">📏 {issue.distance}</span>
+                  <span className="flex items-center gap-1">🕒 {issue.time}</span>
+                  <span className="flex items-center gap-1">🏛 {issue.govLevel}</span>
                 </div>
-              ))}
-              <textarea
-                className="w-full border border-[var(--color-border)] rounded-lg p-3 bg-transparent text-[var(--color-text-primary)] mt-4 resize-none"
-                rows={4}
-                placeholder="Join the discussion..."
-              />
-              <button className="mt-3 bg-[var(--color-brand)] text-[var(--color-text-inverse)] px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                Post Comment
-              </button>
+
+                {/* Content */}
+                <div className="text-[var(--color-text-primary)] text-sm leading-relaxed space-y-4 mb-4">
+                  <p>{issue.description}</p>
+                </div>
+
+                {/* Evidence embedded in main post */}
+                <div className="mb-4">
+                  <h3 className="font-semibold text-sm mb-2 text-[var(--color-text-primary)]">Evidence</h3>
+                  <div className="rounded-xl overflow-hidden border border-[var(--color-border)] relative">
+                     <img src={issue.image} alt="Issue evidence" className="w-full h-64 sm:h-80 object-cover" />
+                     {issue.imageCount > 1 && (
+                        <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs font-bold px-2.5 py-1 rounded-md backdrop-blur-sm">
+                           +{issue.imageCount - 1} photos
+                        </div>
+                     )}
+                  </div>
+                </div>
+
+                {/* Bottom Action Bar */}
+                <div className="flex items-center gap-2 mt-4 pt-2">
+                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-brand)] hover:text-white text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                    <ThumbsUp size={16} />
+                    {issue.supports} Supports
+                  </button>
+                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                    <MessageSquare size={16} />
+                    {issue.commentsCount}
+                  </button>
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] font-semibold text-xs border border-[var(--color-border)] cursor-default">
+                    <Users size={16} />
+                    {issue.affected} Affected
+                  </div>
+                  <div className="grow" />
+                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                    <Share2 size={16} /> Share
+                  </button>
+                </div>
+              </div>
+
+              {/* Reddit-style comments section */}
+              <div className="px-4 sm:px-5 pb-5">
+                <CommentInput />
+                
+                {/* Comments Header (Sort & Search) */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-[var(--color-text-secondary)] text-sm">Sort by:</span>
+                      <select className="font-bold text-[var(--color-text-primary)] bg-transparent focus:outline-none cursor-pointer">
+                        <option>Top Comments</option>
+                        <option>Newest First</option>
+                      </select>
+                    </div>
+                    <div className="relative w-full max-w-xs hidden sm:block">
+                      <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-secondary)]" />
+                      <input 
+                        type="text" 
+                        placeholder="Search Discussions" 
+                        className="w-full pl-9 pr-4 py-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-surface)] text-sm focus:outline-none focus:ring-1 focus:ring-[var(--color-brand)]" 
+                      />
+                    </div>
+                  </div>
+                  <hr className="border-[var(--color-border)]" />
+                </div>
+                
+                {/* Threaded Comments List */}
+                <div className="space-y-4">
+                  {issue.comments.map((comment) => (
+                    <CommentThread key={comment.id} comment={comment} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="col-span-3 lg:col-span-1 space-y-6">
-            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5">
-              <h3 className="font-bold text-[var(--color-text-primary)] mb-3">Issue Health</h3>
-              <ul className="space-y-2 text-sm text-[var(--color-text-primary)]">
-                {issue.health.map(([icon, text]) => (
-                  <li key={text}>{icon} {text}</li>
-                ))}
-              </ul>
+          {/* Sidebar */}
+          <aside className="space-y-4 lg:sticky lg:top-6 h-fit">
+            
+            {/* Issue Health Widget */}
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-sm overflow-hidden">
+              <div className="px-4 py-3 border-b border-[var(--color-border)] flex items-center gap-2">
+                <h3 className="font-bold text-sm text-[var(--color-text-primary)] uppercase tracking-wide">Issue Health</h3>
+              </div>
+              <div className="p-4">
+                <ul className="space-y-3 text-sm text-[var(--color-text-primary)] font-medium">
+                  {issue.health.map(([icon, text]) => (
+                    <li key={text} className="flex items-center gap-2">
+                      <span className="w-5 text-center">{icon}</span> {text}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5">
-              <h3 className="font-bold text-[var(--color-text-primary)] mb-3">Related Issues</h3>
-              <ul className="space-y-3 text-sm text-[var(--color-text-secondary)]">
-                {issue.related.map((r) => (
-                  <li key={r.title}>{r.title}{r.dist && <span> ({r.dist})</span>}</li>
-                ))}
-              </ul>
+            {/* Location Widget */}
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-sm overflow-hidden">
+              <div className="px-4 py-3 border-b border-[var(--color-border)] flex items-center gap-2">
+                <h3 className="font-bold text-sm text-[var(--color-text-primary)] uppercase tracking-wide">Location</h3>
+              </div>
+              <div className="p-4">
+                <div className="h-40 bg-[var(--color-bg-muted)] rounded-lg flex items-center justify-center text-[var(--color-text-secondary)] border border-[var(--color-border)] overflow-hidden">
+                   <div className="text-xs font-semibold uppercase tracking-wider">Map Placeholder</div>
+                </div>
+                <p className="mt-3 text-[var(--color-text-secondary)] text-sm">{issue.address}</p>
+              </div>
             </div>
-          </div>
+
+            {/* Citizen Timeline Widget */}
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-sm overflow-hidden">
+              <div className="px-4 py-3 border-b border-[var(--color-border)] flex items-center gap-2">
+                <h3 className="font-bold text-sm text-[var(--color-text-primary)] uppercase tracking-wide">Activity Timeline</h3>
+              </div>
+              <div className="p-4">
+                <ul className="space-y-3 text-sm text-[var(--color-text-primary)]">
+                  {issue.timeline.map((item, i) => (
+                    <li key={i} className="flex gap-2 items-start">
+                      <span className="text-[var(--color-text-secondary)] mt-0.5">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Related Issues Widget */}
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl shadow-sm overflow-hidden">
+              <div className="px-4 py-3 border-b border-[var(--color-border)] flex items-center gap-2">
+                <h3 className="font-bold text-sm text-[var(--color-text-primary)] uppercase tracking-wide">Related Issues</h3>
+              </div>
+              <div className="p-4">
+                <ul className="space-y-3 text-sm text-[var(--color-text-secondary)]">
+                  {issue.related.map((r) => (
+                    <li key={r.title} className="hover:text-[var(--color-brand)] cursor-pointer transition-colors">
+                      {r.title}{r.dist && <span className="opacity-70"> ({r.dist})</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+          </aside>
         </div>
       </div>
     </div>

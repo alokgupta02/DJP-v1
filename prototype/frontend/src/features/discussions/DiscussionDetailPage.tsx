@@ -1,19 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ThumbsUp, MessageSquare, Share2, ArrowLeft, ExternalLink, Users, ArrowBigUp, ArrowBigDown, Plus, Minus, Search } from "lucide-react";
 import clsx from "clsx";
 
-type CommentData = {
-  id: string;
-  initials: string;
-  bg: string;
-  textColor: string;
-  name: string;
-  time: string;
-  text: string;
-  score: number;
-  replies?: CommentData[];
-};
+import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";
 
 const DISCUSSIONS_DATA: Record<string, {
   id: string; tags: { label: string; variant: string }[];
@@ -173,130 +163,47 @@ const tagVariantMap: Record<string, string> = {
   brand: "bg-[var(--color-brand-light)] text-[var(--color-brand)]",
 };
 
-function CommentInput() {
-  const [isExpanded, setIsExpanded] = useState(false);
-  
-  return (
-    <div className="mb-6">
-      {isExpanded ? (
-        <div className="border border-[var(--color-brand)] rounded-xl overflow-hidden bg-[var(--color-bg-surface)] shadow-sm focus-within:ring-1 focus-within:ring-[var(--color-brand)]">
-          <textarea 
-            autoFocus
-            placeholder="What are your thoughts?" 
-            className="w-full p-4 bg-transparent resize-none text-[var(--color-text-primary)] outline-none min-h-[120px]"
-          />
-          <div className="flex justify-between items-center bg-[var(--color-bg-subtle)] px-4 py-2 border-t border-[var(--color-border)]">
-            <button className="text-[var(--color-text-secondary)] hover:text-[var(--color-brand)] transition-colors"><ExternalLink size={18} /></button>
-            <div className="flex gap-2">
-              <button 
-                onClick={() => setIsExpanded(false)} 
-                className="px-4 py-1.5 rounded-full text-sm font-semibold text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-muted)] transition-colors"
-              >
-                Cancel
-              </button>
-              <button className="px-4 py-1.5 rounded-full text-sm font-semibold bg-[var(--color-brand)] text-[var(--color-text-inverse)] hover:opacity-90 transition-opacity">
-                Comment
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div 
-          onClick={() => setIsExpanded(true)}
-          className="flex items-center gap-3 border border-[var(--color-border)] rounded-full px-4 py-3 bg-[var(--color-bg-surface)] hover:bg-[var(--color-bg-subtle)] transition-colors cursor-text"
-        >
-          <div className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-xs shrink-0">
-            U
-          </div>
-          <span className="text-[var(--color-text-secondary)] text-sm">Join the conversation</span>
-        </div>
-      )}
-    </div>
-  );
-}
 
-function CommentThread({ comment }: { comment: CommentData }) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-
-  return (
-    <div className="mt-4 text-sm">
-      {/* Header Row */}
-      <div className="flex items-center gap-2 mb-1">
-        <div 
-          className={clsx("w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0 cursor-pointer hover:opacity-80 transition-opacity", comment.bg, comment.textColor)} 
-          onClick={() => setIsCollapsed(!isCollapsed)}
-        >
-          {comment.initials}
-        </div>
-        <span 
-          className="font-bold text-[var(--color-text-primary)] text-xs cursor-pointer hover:underline"
-          onClick={() => setIsCollapsed(!isCollapsed)}
-        >
-          {comment.name}
-        </span>
-        <span className="text-[var(--color-text-secondary)] text-xs">• {comment.time}</span>
-        {isCollapsed && (
-          <button 
-            onClick={() => setIsCollapsed(false)}
-            className="ml-1 text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)] rounded-full p-1 transition-colors"
-          >
-            <Plus size={14} />
-          </button>
-        )}
-      </div>
-
-      {/* Body Row */}
-      {!isCollapsed && (
-        <div className="flex">
-          {/* Thread Line Column */}
-          <div 
-            className="relative flex flex-col items-center w-7 shrink-0 cursor-pointer group"
-            onClick={() => setIsCollapsed(true)}
-          >
-            <div className="w-[2px] bg-[var(--color-border)] grow mt-1 mb-1 group-hover:bg-[var(--color-brand)] transition-colors" />
-            <div className="absolute top-2 bg-[var(--color-bg-surface)] border border-[var(--color-border)] text-[var(--color-brand)] shadow-sm rounded-full p-0.5 transition-all hover:bg-[var(--color-brand)] hover:text-white hover:border-[var(--color-brand)]">
-              <Minus size={12} strokeWidth={3} />
-            </div>
-          </div>
-
-          {/* Content Column */}
-          <div className="flex-1 pl-2 pb-2">
-             <p className="text-[var(--color-text-primary)] mb-2 leading-relaxed">{comment.text}</p>
-             
-             {/* Action Bar */}
-             <div className="flex flex-wrap items-center gap-1 -ml-2 text-[var(--color-text-secondary)] font-bold text-xs">
-                <div className="flex items-center rounded-full hover:bg-[var(--color-bg-subtle)] transition-colors ml-2">
-                  <button className="p-1.5 hover:text-orange-500 rounded-l-full transition-colors"><ArrowBigUp size={16} /></button>
-                  <span className="px-1 text-[var(--color-text-primary)]">{comment.score}</span>
-                  <button className="p-1.5 hover:text-blue-500 rounded-r-full transition-colors"><ArrowBigDown size={16} /></button>
-                </div>
-                <button className="flex items-center gap-1.5 px-3 py-1.5 hover:bg-[var(--color-bg-subtle)] rounded-full transition-colors">
-                  <MessageSquare size={16} /> Reply
-                </button>
-                <button className="flex items-center gap-1.5 px-3 py-1.5 hover:bg-[var(--color-bg-subtle)] rounded-full transition-colors">
-                  <Share2 size={16} /> Share
-                </button>
-             </div>
-             
-             {/* Nested replies */}
-             {comment.replies && comment.replies.length > 0 && (
-               <div className="mt-1">
-                 {comment.replies.map(reply => (
-                   <CommentThread key={reply.id} comment={reply} />
-                 ))}
-               </div>
-             )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+const UUID_TO_MOCK_KEY: Record<string, string> = {
+  "d4444444-4444-4444-4444-444444444444": "community-park",
+  "e5555555-5555-5555-5555-555555555555": "judiciary",
+  "f6666666-6666-6666-6666-666666666666": "ncert",
+};
 
 export default function DiscussionDetailPage() {
   const { id } = useParams<{ id: string }>();
-  // default to judiciary if not found for the prototype
-  const discussion = id && DISCUSSIONS_DATA[id] ? DISCUSSIONS_DATA[id] : DISCUSSIONS_DATA["judiciary"];
+  
+  const mockKey = id && UUID_TO_MOCK_KEY[id] ? UUID_TO_MOCK_KEY[id] : "judiciary";
+  const [discussion, setDiscussion] = useState<any>(DISCUSSIONS_DATA[mockKey] || DISCUSSIONS_DATA["judiciary"]);
+
+  useEffect(() => {
+    if (!id) return;
+    fetch(`http://localhost:8081/djp/api/v1/discussions/${id}`)
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to fetch");
+        return res.json();
+      })
+      .then(data => {
+        let meta = {};
+        if (data.metadata) {
+          try { meta = JSON.parse(data.metadata); } catch(e) {}
+        }
+        
+        setDiscussion((prev: any) => ({
+          ...prev,
+          title: data.title,
+          subtitle: data.description,
+          supports: data.votesCount || 0,
+          participants: data.participantCount || 0,
+          commentsCount: data.commentsCount || 0,
+          author: (meta as any).author || prev.author,
+          time: data.createdAt ? new Date(data.createdAt).toLocaleDateString() : prev.time,
+        }));
+      })
+      .catch(console.error);
+  }, [id]);
+
+  if (!discussion) return <div>Loading...</div>;
 
   return (
     <div className="flex-1 p-8 overflow-y-auto">
@@ -313,10 +220,8 @@ export default function DiscussionDetailPage() {
               {/* Main Post Area */}
               <div className="p-4 sm:p-5">
                 {/* Author Metadata */}
-                <div className="flex items-center gap-2 mb-3 text-xs text-[var(--color-text-secondary)]">
-                  <div className="w-6 h-6 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-[10px]">
-                    {discussion.author.charAt(0)}
-                  </div>
+                <div className="flex items-center gap-1.5 mb-3 text-xs text-[var(--color-text-secondary)]">
+                  <User size={16} />
                   <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{discussion.author}</span>
                   <span>•</span>
                   <span>{discussion.time}</span>
