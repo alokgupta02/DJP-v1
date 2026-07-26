@@ -25,8 +25,9 @@ export default function SidebarNavItem({ item }: SidebarNavItemProps) {
         clsx(
           "group relative flex items-center h-11 rounded-xl transition-all duration-200",
           isCollapsed ? "justify-center px-0" : "px-3 gap-3",
-          "text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)]",
-          isActive && "bg-[var(--color-brand)] text-[var(--color-text-inverse)] shadow-sm hover:bg-[var(--color-brand-hover)]"
+          isActive 
+            ? "bg-[var(--color-brand)] text-[var(--color-text-inverse)] shadow-sm hover:bg-[var(--color-brand-hover)]"
+            : "text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)]"
         )
       }
     >
