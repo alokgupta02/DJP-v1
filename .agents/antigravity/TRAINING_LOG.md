@@ -38,3 +38,7 @@
 * **Incident:** When adding a "Follow" button to post cards in the feed, I forgot to also add the same button to the individual detail pages (`IssueDetailPage`, `DiscussionDetailPage`, `PollDetailPage`).
 * **User Feedback:** *"it is not present inside detail page, add this to @[.agents/antigravity/TRAINING_LOG.md]"*
 * **Correction/Learning:** **Apply UI features universally.** Whenever a user requests a new interaction or button (like "Follow" or author icons) for a specific domain/entity, I must proactively search the repository for all occurrences of that entity (e.g. detail pages, feeds, sidebars) and apply the change everywhere to maintain UI consistency.
+
+### 7. Missing Component Props / Silent Failures (`-1 Point`)
+* **Incident:** The CommentInput component was not being passed the entityId (the specific issue, discussion, or poll ID) and entityType ("ISSUE", "DISCUSSION", or "POLL") in the frontend code. Without this information, the submit button failed silently to prevent empty data from being sent to the backend.
+* **Correction/Learning:** **Verify required props for shared components.** I must ensure that all required props are passed correctly to shared components (`IssueDetailPage.tsx`, `DiscussionDetailPage.tsx`, and `PollDetailPage.tsx`). Silent UI failures are hard to debug, so I should always double-check the integration layer between a parent page and a shared interactive component.
