@@ -217,7 +217,7 @@ export default function IssueDetailPage() {
                   <div className="flex items-center gap-1.5">
                     <User size={14} /> 
                     <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{issue.author}</span>
-                    <button className="ml-1 px-3 py-0.5 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[10px] font-bold hover:opacity-80 transition-opacity">Follow</button>
+                    <button title="Does it affect you? if yes, then Follow" className="ml-1 px-3 py-0.5 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[10px] font-bold hover:opacity-80 transition-opacity">Follow</button>
                   </div>
                   <span className="flex items-center gap-1">📍 {issue.location}</span>
                   <span className="flex items-center gap-1">📏 {issue.distance}</span>

@@ -93,6 +93,7 @@ function IssueCard({ issue }: { issue: any }) {
           </div>
           <button
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+            title="Does it affect you? if yes, then Follow"
             className="ml-1 px-3 py-1 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[11px] font-bold hover:opacity-80 transition-opacity"
           >
             Follow
@@ -181,6 +182,7 @@ function DiscussionCard({ discussion }: { discussion: any }) {
           </div>
           <button
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+            title="Does it affect you? if yes, then Follow"
             className="ml-1 px-3 py-1 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[11px] font-bold hover:opacity-80 transition-opacity"
           >
             Follow
@@ -249,6 +251,7 @@ function PollCard({ poll }: { poll: any }) {
           </div>
           <button
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+            title="Does it affect you? if yes, then Follow"
             className="ml-1 px-3 py-1 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[11px] font-bold hover:opacity-80 transition-opacity"
           >
             Follow
