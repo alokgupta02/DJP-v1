@@ -104,6 +104,7 @@ export default function PollDetailPage() {
                   <div className="flex items-center gap-1.5 text-xs text-[var(--color-text-secondary)]">
                     <User size={16} />
                     <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{poll.author}</span>
+                    <button className="ml-1 px-3 py-0.5 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[10px] font-bold hover:opacity-80 transition-opacity">Follow</button>
                     <span>•</span>
                     <span className="text-[var(--color-brand)] font-semibold">{poll.time}</span>
                   </div>

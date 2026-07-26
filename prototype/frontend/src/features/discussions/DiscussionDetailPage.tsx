@@ -223,6 +223,7 @@ export default function DiscussionDetailPage() {
                 <div className="flex items-center gap-1.5 mb-3 text-xs text-[var(--color-text-secondary)]">
                   <User size={16} />
                   <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{discussion.author}</span>
+                  <button className="ml-1 px-3 py-0.5 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[10px] font-bold hover:opacity-80 transition-opacity">Follow</button>
                   <span>•</span>
                   <span>{discussion.time}</span>
                 </div>

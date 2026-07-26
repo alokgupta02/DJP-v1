@@ -213,8 +213,12 @@ export default function IssueDetailPage() {
                 </h1>
                 
                 {/* Meta details */}
-                <div className="flex flex-wrap gap-x-4 gap-y-2 mt-2 text-xs text-[var(--color-text-secondary)] font-medium mb-4">
-                  <span className="flex items-center gap-1.5"><User size={14} /> <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{issue.author}</span></span>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-xs text-[var(--color-text-secondary)] font-medium mb-4">
+                  <div className="flex items-center gap-1.5">
+                    <User size={14} /> 
+                    <span className="font-semibold text-[var(--color-text-primary)] hover:underline cursor-pointer">{issue.author}</span>
+                    <button className="ml-1 px-3 py-0.5 rounded-full bg-[var(--color-text-primary)] text-[var(--color-bg-surface)] text-[10px] font-bold hover:opacity-80 transition-opacity">Follow</button>
+                  </div>
                   <span className="flex items-center gap-1">📍 {issue.location}</span>
                   <span className="flex items-center gap-1">📏 {issue.distance}</span>
                   <span className="flex items-center gap-1">🕒 {issue.time}</span>
