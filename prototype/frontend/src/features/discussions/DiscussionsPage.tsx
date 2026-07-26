@@ -123,7 +123,8 @@ export default function DiscussionsPage() {
         </div>
       </div>
 
-      <div className="px-8 py-6 w-full">
+      <div className="flex w-full items-start">
+        <div className="flex-1 px-8 py-6 min-w-0">
         <TopicFilterBar topics={["All Discussions", "Proposals", "Questions", "Debates", "Feedback", "Announcements"]} />
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 pb-20">
           {combinedDiscussions.map((discussion) => (
@@ -184,7 +185,9 @@ export default function DiscussionsPage() {
         </div>
       </div>
 
-      <aside className="hidden lg:flex flex-col w-80 border-l border-[var(--color-border)] bg-[var(--color-bg-surface)] shrink-0 overflow-y-auto">
+        </div>
+
+        <aside className="hidden lg:flex flex-col w-80 border-l border-[var(--color-border)] bg-[var(--color-bg-surface)] shrink-0 self-stretch sticky top-[100px] max-h-[calc(100vh-100px)] overflow-y-auto">
         <div className="p-6 space-y-8">
           <div>
             <h4 className="text-[11px] font-bold uppercase tracking-widest text-[var(--color-text-primary)] mb-4">Trending Topics</h4>
@@ -250,6 +253,7 @@ export default function DiscussionsPage() {
           </div>
         </div>
       </aside>
+      </div>
     </div>
   );
 }

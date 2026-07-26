@@ -1,19 +1,18 @@
 package com.djp.backend.controller;
 
 import com.djp.backend.dto.IssueCreateRequestDto;
-import com.djp.backend.model.Issue;
+import com.djp.backend.dto.IssueResponseDto;
 import com.djp.backend.model.User;
-import com.djp.backend.repository.IssueRepository;
 import com.djp.backend.repository.UserRepository;
-import com.djp.backend.service.AuditLogService;
-import com.djp.backend.service.SqlFilePersistenceService;
+import com.djp.backend.service.IssueService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -21,32 +20,28 @@ import java.util.UUID;
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
 public class IssueController {
 
-    private final IssueRepository issueRepository;
+    private final IssueService issueService;
     private final UserRepository userRepository;
-    private final AuditLogService auditLogService;
-    private final SqlFilePersistenceService sqlFilePersistenceService;
 
-    public IssueController(IssueRepository issueRepository, UserRepository userRepository, AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService) {
-        this.issueRepository = issueRepository;
+    public IssueController(IssueService issueService, UserRepository userRepository) {
+        this.issueService = issueService;
         this.userRepository = userRepository;
-        this.auditLogService = auditLogService;
-        this.sqlFilePersistenceService = sqlFilePersistenceService;
     }
 
     @GetMapping
-    public ResponseEntity<List<Issue>> getAllIssues() {
-        return ResponseEntity.ok(issueRepository.findAll());
+    public ResponseEntity<Page<IssueResponseDto>> getAllIssues(Pageable pageable) {
+        return ResponseEntity.ok(issueService.getIssues(pageable));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Issue> getIssueById(@PathVariable UUID id) {
-        return issueRepository.findById(id)
+    public ResponseEntity<IssueResponseDto> getIssueById(@PathVariable UUID id) {
+        return issueService.getIssueById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Issue> createIssue(
+    public ResponseEntity<IssueResponseDto> createIssue(
             @Valid @RequestBody IssueCreateRequestDto request,
             Authentication authentication) {
 
@@ -55,36 +50,13 @@ public class IssueController {
         }
 
         String email = authentication.getName();
-        User author = userRepository.findByEmail(email)
-                .orElse(null);
+        User author = userRepository.findByEmail(email).orElse(null);
 
         if (author == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
-        Issue issue = new Issue(
-                author,
-                request.getTitle(),
-                request.getDescription(),
-                request.getCategory(),
-                request.getPriority()
-        );
-        issue.setLocation(request.getLocation());
-        issue.setLatitude(request.getLatitude());
-        issue.setLongitude(request.getLongitude());
-        issue.setGovLevel(request.getGovLevel());
-
-        Issue saved = issueRepository.save(issue);
-
-        auditLogService.logAction(
-                author.getId().toString(),
-                "CREATE_ISSUE",
-                "Issue",
-                saved.getId().toString(),
-                "Title: " + saved.getTitle() + ", Category: " + saved.getCategory()
-        );
-
-        sqlFilePersistenceService.appendIssue(saved);
+        IssueResponseDto saved = issueService.createIssue(request, author);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
