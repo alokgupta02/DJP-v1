@@ -23,6 +23,7 @@ const ISSUES = [
     comments: 24,
     affected: "500+",
     govLevel: "Ward",
+    author: "Rohan K.",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=350&h=240&fit=crop",
     imageCount: 14,
     verified: true,
@@ -40,6 +41,7 @@ const ISSUES = [
     comments: 18,
     affected: "120–200",
     govLevel: "Ward",
+    author: "Priya S.",
     image: "https://images.unsplash.com/photo-1503596476-1c12a8ba09a9?w=350&h=240&fit=crop",
     imageCount: 6,
     verified: true,
@@ -57,6 +59,7 @@ const ISSUES = [
     comments: 11,
     affected: "300–500",
     govLevel: "Ward",
+    author: "Aman V.",
     image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=350&h=240&fit=crop",
     imageCount: 9,
     verified: true,
@@ -206,9 +209,13 @@ function IssueCard({ issue }: { issue: typeof ISSUES[number] }) {
           <span className="px-2 py-1 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)] text-[11px] font-semibold">
             {issue.category}
           </span>
+          <SeverityBadge severity={issue.severity} />
         </div>
         <div className="flex items-center gap-3 shrink-0">
-          <SeverityBadge severity={issue.severity} />
+          <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
+            <User size={12} />
+            {issue.author}
+          </div>
           <div className="flex items-center gap-1 text-[11px] font-semibold text-[var(--color-text-secondary)]">
             <Clock size={12} />
             {issue.time}
