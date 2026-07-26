@@ -14,11 +14,11 @@
             theme: {
                 extend: {
                     "colors": {
-                        "primary": "#bb0311",
+                        "primary": "#a31621",
                         "primary-container": "#e02a27",
                         "on-primary-container": "#fffbff",
-                        "background": "#fff8f6",
-                        "surface": "#fff8f6",
+                        "background": "#f5f6f8",
+                        "surface": "#f5f6f8",
                         "surface-container": "#ffe9e5",
                         "surface-container-low": "#fff0ee",
                         "surface-container-lowest": "#ffffff",
@@ -57,13 +57,14 @@
         }
     </script>
 <style>
+        header, main { transition: none !important; }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             display: inline-block;
             line-height: 1;
         }
         body {
-            background-color: #fff8f6;
+            background-color: #f5f6f8;
             color: #291713;
             -webkit-font-smoothing: antialiased;
         }
@@ -85,10 +86,10 @@
         
         /* Sidebar Transition styles */
         #sidebar {
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: none !important;
         }
         #main-content {
-            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: none !important;
         }
         .nav-label, .sidebar-header-text, .user-details, .index-header {
             transition: opacity 0.2s ease, visibility 0.2s ease;
@@ -122,9 +123,9 @@
 <aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-stack-lg z-50" id="sidebar">
 <div class="px-6 mb-8 flex items-center justify-between">
 <div class="flex items-center gap-3 overflow-hidden">
-<div class="shrink-0 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center font-black text-xl">DJ</div>
+<div class="shrink-0 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center font-black text-2xl">DJ</div>
 <div class="sidebar-header-text whitespace-nowrap">
-<h1 class="font-headline-lg text-xl font-black text-primary">Digital Janta</h1>
+<h1 class="font-headline-lg text-2xl font-black text-primary">Digital Janta</h1>
 <p class="font-label-md text-[10px] text-on-surface-variant opacity-70 uppercase tracking-widest">Civic Platform</p>
 </div>
 </div>
@@ -134,34 +135,34 @@
 </div>
 <nav class="flex-1 overflow-y-auto custom-scrollbar px-2 space-y-6">
 <ul class="space-y-1">
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="overview.html"><span class="nav-icon text-lg">📊</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Dashboard</span></a></li>
-<li><a class="nav-item bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="judiciary.html"><span class="nav-icon text-lg">⚖️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Judiciary</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="legislatures.html"><span class="nav-icon text-lg">🏛️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Legislatures</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="governments.html"><span class="nav-icon text-lg">🏢</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Governments</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="rep-index.html"><span class="nav-icon text-lg">👥</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Representatives</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="states.html"><span class="nav-icon text-lg">🗺️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">States</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="municipalities.html"><span class="nav-icon text-lg">🏙️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Municipalities</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="parties.html"><span class="nav-icon text-lg">🎯</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Parties</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="elections.html"><span class="nav-icon text-lg">🗳️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Elections</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="overview.html"><span class="nav-icon text-sm">📊</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Dashboard</span></a></li>
+<li><a class="nav-item bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="judiciary.html"><span class="nav-icon text-sm">⚖️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Judiciary</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="legislatures.html"><span class="nav-icon text-sm">🏛️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Legislatures</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="governments.html"><span class="nav-icon text-sm">🏢</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Governments</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="rep-index.html"><span class="nav-icon text-sm">👥</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Representatives</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="states.html"><span class="nav-icon text-sm">🗺️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">States</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="municipalities.html"><span class="nav-icon text-sm">🏙️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Municipalities</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="parties.html"><span class="nav-icon text-sm">🎯</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Parties</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="elections.html"><span class="nav-icon text-sm">🗳️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Elections</span></a></li>
 </ul>
 <div class="index-section">
 <div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Leadership Indices</div>
 <ul class="space-y-1">
 <li class="relative">
 <a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#senate-minister">
-<span class="nav-icon text-lg">⭐</span>
+<span class="nav-icon text-sm">⭐</span>
 <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Senate Minister</span>
 <span class="live-badge absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-0.5 rounded-full text-[8px] font-black">LIVE</span>
 </a>
 </li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#chief-minister"><span class="nav-icon text-lg">⭐</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Chief Minister</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#chief-minister"><span class="nav-icon text-sm">⭐</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Chief Minister</span></a></li>
 </ul>
 </div>
 <div class="utility-section">
 <div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Utilities</div>
 <ul class="space-y-1">
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#support"><span class="nav-icon text-lg">💬</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Support</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#archive"><span class="nav-icon text-lg">📁</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Archive</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#support"><span class="nav-icon text-sm">💬</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Support</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#archive"><span class="nav-icon text-sm">📁</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Archive</span></a></li>
 </ul>
 </div>
 </nav>
@@ -346,15 +347,15 @@
 <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5">
 <h5 class="font-label-md font-black text-on-surface-variant uppercase tracking-widest text-[11px] mb-4">Critical Insights</h5>
 <div class="space-y-4">
-<div class="relative pl-4 border-l-4 border-primary">
+<div class="relative pl-4 border border-outline-variant/30">
 <p class="text-[10px] font-black text-primary uppercase tracking-tighter">Alarm: High Backlog</p>
 <p class="text-[12px] text-on-surface font-medium leading-tight mt-1">Maharashtra District Courts show a 12% spike in pending civil suits over 5 years.</p>
 </div>
-<div class="relative pl-4 border-l-4 border-green-600">
+<div class="relative pl-4 border border-outline-variant/30 border-green-600">
 <p class="text-[10px] font-black text-green-600 uppercase tracking-tighter">Optimization Opportunity</p>
 <p class="text-[12px] text-on-surface font-medium leading-tight mt-1">District office in Delhi has reduced processing time by 15 days on average.</p>
 </div>
-<div class="relative pl-4 border-l-4 border-amber-500">
+<div class="relative pl-4 border border-outline-variant/30 border-amber-500">
 <p class="text-[10px] font-black text-amber-500 uppercase tracking-tighter">Resource Allocation</p>
 <p class="text-[12px] text-on-surface font-medium leading-tight mt-1">Karnataka requires 14 additional benches to meet disposal targets by Q4.</p>
 </div>
@@ -425,8 +426,8 @@
                     {
                         label: 'Filing',
                         data: [30, 35, 33, 40, 42, 38, 45, 50, 48, 52, 55, 60],
-                        borderColor: '#bb0311',
-                        backgroundColor: '#bb0311',
+                        borderColor: '#a31621',
+                        backgroundColor: '#a31621',
                         borderWidth: 2,
                         tension: 0.4,
                         pointRadius: 0,

@@ -17,7 +17,7 @@
                     "surface-dim": "#f4d3cc",
                     "on-primary-fixed": "#410002",
                     "on-tertiary-fixed": "#111d26",
-                    "surface-bright": "#fff8f6",
+                    "surface-bright": "#f5f6f8",
                     "secondary-container": "#e2e2e2",
                     "surface-container-lowest": "#ffffff",
                     "on-tertiary-fixed-variant": "#3c4852",
@@ -27,7 +27,7 @@
                     "on-primary-container": "#fffbff",
                     "tertiary-fixed": "#d7e4f0",
                     "inverse-primary": "#ffb4ab",
-                    "surface": "#fff8f6",
+                    "surface": "#f5f6f8",
                     "on-secondary-container": "#646464",
                     "surface-container-high": "#ffe2dc",
                     "surface-tint": "#bf0813",
@@ -35,7 +35,7 @@
                     "tertiary-container": "#697681",
                     "surface-container-low": "#fff0ee",
                     "surface-container-highest": "#fddbd4",
-                    "primary": "#bb0311",
+                    "primary": "#a31621",
                     "on-primary": "#ffffff",
                     "outline-variant": "#e7bdb4",
                     "on-primary-fixed-variant": "#93000a",
@@ -43,7 +43,7 @@
                     "on-secondary-fixed": "#1b1b1b",
                     "on-surface": "#291713",
                     "on-tertiary": "#ffffff",
-                    "background": "#fff8f6",
+                    "background": "#f5f6f8",
                     "on-error": "#ffffff",
                     "on-error-container": "#93000a",
                     "secondary-fixed-dim": "#c6c6c6",
@@ -100,13 +100,14 @@
       }
     </script>
 <style>
+        header, main { transition: none !important; }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             vertical-align: middle;
         }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
-        body { min-height: 100vh; background-color: #fff8f6; }
-        #sidebar { transition: width 0.3s ease; }
+        body { min-height: 100vh; background-color: #f5f6f8; }
+        #sidebar { transition: none !important; }
         .sidebar-collapsed .nav-label, .sidebar-collapsed .sidebar-header-text { display: none; }
     </style>
 </head>
@@ -116,9 +117,9 @@
 <div class="flex items-center gap-6">
 <div class="flex items-center gap-2">
 <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-<span class="material-symbols-outlined text-white text-xl">account_balance</span>
+<span class="material-symbols-outlined text-white text-2xl">account_balance</span>
 </div>
-<span class="font-headline-lg text-lg text-on-surface">Digital Janta</span>
+<span class="font-headline-lg text-on-surface">Digital Janta</span>
 </div>
 <div class="h-10 w-[400px] bg-surface-container-low rounded-full px-4 flex items-center border border-transparent focus-within:border-primary transition-all">
 <span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
@@ -273,7 +274,7 @@
 </div>
 </div>
 <!-- Proposal Snapshot -->
-<div class="bg-surface-container p-3 rounded-xl border-l-4 border-primary/40">
+<div class="bg-surface-container p-3 rounded-xl border border-outline-variant/30/40">
 <div class="flex items-center justify-between mb-1">
 <span class="text-label-sm font-bold text-primary">3 Proposals</span>
 <span class="text-[10px] bg-primary/10 text-primary px-1.5 rounded uppercase font-bold">Top Draft</span>
@@ -305,7 +306,7 @@
 </div>
 </div>
 </div>
-<div class="bg-surface-container p-3 rounded-xl border-l-4 border-primary/40">
+<div class="bg-surface-container p-3 rounded-xl border border-outline-variant/30/40">
 <div class="flex items-center justify-between mb-1">
 <span class="text-label-sm font-bold text-primary">1 Proposal</span>
 <span class="text-[10px] bg-primary/10 text-primary px-1.5 rounded uppercase font-bold">New</span>
@@ -339,7 +340,7 @@
 </div>
 </div>
 </div>
-<div class="bg-surface-container p-3 rounded-xl border-l-4 border-primary/40">
+<div class="bg-surface-container p-3 rounded-xl border border-outline-variant/30/40">
 <div class="flex items-center justify-between mb-1">
 <span class="text-label-sm font-bold text-primary">5 Proposals</span>
 <span class="text-[10px] bg-primary/10 text-primary px-1.5 rounded uppercase font-bold">Controversial</span>
@@ -371,7 +372,7 @@
 </div>
 </div>
 </div>
-<div class="bg-surface-container p-3 rounded-xl border-l-4 border-primary/40">
+<div class="bg-surface-container p-3 rounded-xl border border-outline-variant/30/40">
 <div class="flex items-center justify-between mb-1">
 <span class="text-label-sm font-bold text-primary">2 Proposals</span>
 <span class="text-[10px] bg-primary/10 text-primary px-1.5 rounded uppercase font-bold">Drafting</span>
@@ -444,7 +445,7 @@
 <div class="flex gap-3">
 <div class="w-10 h-12 bg-surface-bright rounded-lg flex flex-col items-center justify-center border border-outline-variant shrink-0">
 <span class="text-[10px] font-bold text-primary uppercase">OCT</span>
-<span class="text-lg font-bold leading-none">14</span>
+<span class="text-sm font-bold leading-none">14</span>
 </div>
 <div class="min-w-0">
 <p class="text-label-md font-bold text-on-surface truncate">Ward 42 Budget Review</p>
@@ -454,7 +455,7 @@
 <div class="flex gap-3">
 <div class="w-10 h-12 bg-surface-bright rounded-lg flex flex-col items-center justify-center border border-outline-variant shrink-0">
 <span class="text-[10px] font-bold text-primary uppercase">OCT</span>
-<span class="text-lg font-bold leading-none">16</span>
+<span class="text-sm font-bold leading-none">16</span>
 </div>
 <div class="min-w-0">
 <p class="text-label-md font-bold text-on-surface truncate">Waste Policy Draft</p>
@@ -467,20 +468,39 @@
 </aside>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
     const toggleIcon = document.getElementById('toggleIcon');
+    const header = document.querySelector('header');
+    const mainContent = document.getElementById('main-content') || document.querySelector('main');
+    
     if (sidebarToggle) {
       sidebarToggle.addEventListener('click', () => {
         if (sidebar.classList.contains('sidebar-collapsed')) {
           sidebar.classList.remove('sidebar-collapsed');
           sidebar.style.width = '16rem';
-          toggleIcon.style.transform = 'rotate(0deg)';
+          if (toggleIcon) toggleIcon.style.transform = 'rotate(0deg)';
+          if (header) {
+            header.classList.remove('left-20');
+            header.classList.add('left-64');
+          }
+          if (mainContent) {
+            mainContent.classList.remove('ml-20');
+            mainContent.classList.add('ml-64');
+          }
         } else {
           sidebar.classList.add('sidebar-collapsed');
           sidebar.style.width = '80px';
-          toggleIcon.style.transform = 'rotate(180deg)';
+          if (toggleIcon) toggleIcon.style.transform = 'rotate(180deg)';
+          if (header) {
+            header.classList.remove('left-64');
+            header.classList.add('left-20');
+          }
+          if (mainContent) {
+            mainContent.classList.remove('ml-64');
+            mainContent.classList.add('ml-20');
+          }
         }
       });
     }

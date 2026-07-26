@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ThumbsUp, MessageSquare, Share2, ArrowLeft, ExternalLink, Users, ArrowBigUp, ArrowBigDown, Plus, Minus, Search } from "lucide-react";
+import { ThumbsUp, MessageSquare, Share2, ArrowLeft, ExternalLink, Users, ArrowBigUp, ArrowBigDown, Plus, Minus, Search, User } from "lucide-react";
 import clsx from "clsx";
 
 import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";

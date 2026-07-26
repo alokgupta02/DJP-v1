@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><!DOCTYPE html>
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
@@ -6,7 +6,7 @@
 <title>Digital Janta | Arjun Malhotra Profile</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
       tailwind.config = {
@@ -39,17 +39,17 @@
                     "surface-tint": "#bf0813",
                     "on-tertiary-container": "#fcfcff",
                     "surface-variant": "#fddbd4",
-                    "surface-bright": "#fff8f6",
+                    "surface-bright": "#f5f6f8",
                     "on-tertiary-fixed": "#111d26",
                     "on-error-container": "#93000a",
                     "surface-container-high": "#ffe2dc",
-                    "background": "#fff8f6",
+                    "background": "#f5f6f8",
                     "primary-fixed-dim": "#ffb4ab",
                     "on-error": "#ffffff",
                     "inverse-primary": "#ffb4ab",
                     "surface-container-highest": "#fddbd4",
                     "on-surface": "#291713",
-                    "primary": "#bb0311",
+                    "primary": "#a31621",
                     "tertiary-fixed-dim": "#bbc8d4",
                     "secondary-fixed-dim": "#c6c6c6",
                     "tertiary": "#515e68",
@@ -60,7 +60,7 @@
                     "primary-container": "#e02a27",
                     "outline-variant": "#e7bdb4",
                     "error": "#ba1a1a",
-                    "surface": "#fff8f6"
+                    "surface": "#f5f6f8"
             },
             "borderRadius": {
                     "DEFAULT": "1rem",
@@ -102,11 +102,12 @@
       }
     </script>
 <style>
+        header, main { transition: none !important; }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         body {
-            background-color: #fff8f6;
+            background-color: #f5f6f8;
             color: #291713;
         }
         .bento-grid {
@@ -115,9 +116,9 @@
             gap: 16px;
         }
         .stats-gradient {
-            background: linear-gradient(135deg, #bb0311 0%, #e02a27 100%);
+            background: linear-gradient(135deg, #a31621 0%, #e02a27 100%);
         }
-        #sidebar { transition: width 0.3s ease; }
+        #sidebar { transition: none !important; }
         .sidebar-collapsed .nav-label, .sidebar-collapsed .sidebar-header-text { display: none; }
     </style>
 </head>
@@ -446,20 +447,39 @@
         });
     </script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
     const toggleIcon = document.getElementById('toggleIcon');
+    const header = document.querySelector('header');
+    const mainContent = document.getElementById('main-content') || document.querySelector('main');
+    
     if (sidebarToggle) {
       sidebarToggle.addEventListener('click', () => {
         if (sidebar.classList.contains('sidebar-collapsed')) {
           sidebar.classList.remove('sidebar-collapsed');
           sidebar.style.width = '16rem';
-          toggleIcon.style.transform = 'rotate(0deg)';
+          if (toggleIcon) toggleIcon.style.transform = 'rotate(0deg)';
+          if (header) {
+            header.classList.remove('left-20');
+            header.classList.add('left-64');
+          }
+          if (mainContent) {
+            mainContent.classList.remove('ml-20');
+            mainContent.classList.add('ml-64');
+          }
         } else {
           sidebar.classList.add('sidebar-collapsed');
           sidebar.style.width = '80px';
-          toggleIcon.style.transform = 'rotate(180deg)';
+          if (toggleIcon) toggleIcon.style.transform = 'rotate(180deg)';
+          if (header) {
+            header.classList.remove('left-64');
+            header.classList.add('left-20');
+          }
+          if (mainContent) {
+            mainContent.classList.remove('ml-64');
+            mainContent.classList.add('ml-20');
+          }
         }
       });
     }

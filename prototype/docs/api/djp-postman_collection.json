@@ -1,0 +1,408 @@
+{
+  "info": {
+    "_postman_id": "djp-platform-collection-v1",
+    "name": "DJP Prototype & Spring Boot REST API Collection",
+    "description": "Canonical Postman Collection for Digital Janata Party (DJP) platform APIs (`web-app = prototype` and Spring Boot backend). Includes automatic JWT token storage via test scripts on Dev Login.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "djp-agents"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8081/djp/api/v1",
+      "type": "string",
+      "description": "Base URL for DJP backend API endpoints"
+    },
+    {
+      "key": "jwtToken",
+      "value": "",
+      "type": "string",
+      "description": "JWT Auth Token (automatically set when running Dev Login request)"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Auth & Identity",
+      "description": "Authentication endpoints for developer login and session verification.",
+      "item": [
+        {
+          "name": "Dev Login (Issues JWT Token)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    var jsonResponse = pm.response.json();",
+                  "    if (jsonResponse.token) {",
+                  "        pm.collectionVariables.set('jwtToken', jsonResponse.token);",
+                  "        console.log('JWT token automatically stored in collection variable jwtToken');",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/dev-login?email=citizen@djp.org",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "dev-login"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "citizen@djp.org",
+                  "description": "Email to issue developer JWT for (e.g. citizen@djp.org or admin@djp.org)"
+                }
+              ]
+            },
+            "description": "Logs in via development authentication provider and automatically extracts and sets `jwtToken` collection variable."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current Profile (/auth/me)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwtToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            },
+            "description": "Returns the currently authenticated citizen's user profile using the stored Bearer token."
+          },
+          "response": []
+        },
+        {
+          "name": "Initiate Google OAuth2 Login",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/google",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "google"
+              ]
+            },
+            "description": "Returns redirect URL for Google OAuth2 authentication flow."
+          },
+          "response": []
+        },
+        {
+          "name": "Initiate GitHub OAuth2 Login",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/github",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "github"
+              ]
+            },
+            "description": "Returns redirect URL for GitHub OAuth2 authentication flow."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Civic Issues",
+      "description": "Endpoints for reporting, listing, and inspecting civic issues across municipal wards.",
+      "item": [
+        {
+          "name": "List All Issues",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/issues",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "issues"
+              ]
+            },
+            "description": "Retrieves public list of civic issues across all wards."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Issue By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/issues/990671fe-24d5-480f-9da5-76352b8cefd4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "issues",
+                "990671fe-24d5-480f-9da5-76352b8cefd4"
+              ]
+            },
+            "description": "Fetches detailed information for a specific civic issue UUID."
+          },
+          "response": []
+        },
+        {
+          "name": "Create New Issue",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwtToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Broken Streetlight near Ward 12 Market\",\n  \"description\": \"Streetlight pillar #44 has been blinking and sparking at night, causing safety hazards for pedestrians.\",\n  \"category\": \"Electricity\",\n  \"priority\": \"HIGH\",\n  \"location\": \"Ward 12 Market Square\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/issues",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "issues"
+              ]
+            },
+            "description": "Creates a new civic issue. Requires valid Bearer JWT token."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Discussions",
+      "description": "Endpoints for civic deliberation, policy proposals, and community threads.",
+      "item": [
+        {
+          "name": "List All Discussions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/discussions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "discussions"
+              ]
+            },
+            "description": "Retrieves public list of community discussion threads."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Discussion By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/discussions/0cf5ae96-9ca5-4887-b654-5612acdc649f",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "discussions",
+                "0cf5ae96-9ca5-4887-b654-5612acdc649f"
+              ]
+            },
+            "description": "Fetches detailed information for a specific discussion thread UUID."
+          },
+          "response": []
+        },
+        {
+          "name": "Create New Discussion Thread",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwtToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Proposal: Solar Rooftop Subsidies for Housing Societies in Ward 12\",\n  \"description\": \"To accelerate clean energy adoption across North Delhi, we should petition for municipal property tax rebates tied to rooftop solar generation capacity.\",\n  \"category\": \"Environment\",\n  \"proposalPreview\": \"Introduce a tiered property tax rebate program up to 15% for residential complexes generating >10kW solar power.\",\n  \"proposalBadge\": \"Policy Draft\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/discussions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "discussions"
+              ]
+            },
+            "description": "Creates a new civic discussion thread with optional policy proposal details. Requires valid Bearer JWT token."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4. Polls & Voting",
+      "description": "Endpoints for community referendums, ward priority polls, and structured options voting.",
+      "item": [
+        {
+          "name": "List All Polls",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/polls",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "polls"
+              ]
+            },
+            "description": "Retrieves public list of community polls and vote breakdowns."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Poll By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/polls/66d52ce0-f22e-481a-97a5-845cc610e83d",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "polls",
+                "66d52ce0-f22e-481a-97a5-845cc610e83d"
+              ]
+            },
+            "description": "Fetches detailed information and voting options for a specific poll UUID."
+          },
+          "response": []
+        },
+        {
+          "name": "Create New Poll",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwtToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"Should Ward 12 allocate 30% of discretionary budget to green parks expansion?\",\n  \"description\": \"A referendum on re-routing local road maintenance reserves into establishing 4 urban pocket parks.\",\n  \"category\": \"High Priority\",\n  \"optionsJson\": \"[{\\\"label\\\":\\\"Yes, prioritize parks\\\",\\\"pct\\\":0,\\\"primary\\\":true},{\\\"label\\\":\\\"No, prioritize roads\\\",\\\"pct\\\":0,\\\"primary\\\":false}]\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/polls",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "polls"
+              ]
+            },
+            "description": "Creates a new community poll with JSON-encoded voting options. Requires valid Bearer JWT token."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "5. System & Observability",
+      "description": "Spring Boot Actuator and system health check endpoints.",
+      "item": [
+        {
+          "name": "Health Check (/actuator/health)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/actuator/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "actuator",
+                "health"
+              ]
+            },
+            "description": "Returns Spring Boot application and database connection health status (`UP`/`DOWN`)."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

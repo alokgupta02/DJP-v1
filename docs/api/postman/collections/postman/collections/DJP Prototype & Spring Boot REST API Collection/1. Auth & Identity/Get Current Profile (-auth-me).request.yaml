@@ -1,0 +1,11 @@
+$kind: http-request
+name: Get Current Profile (/auth/me)
+description: Returns the currently authenticated citizen's user profile using
+  the stored Bearer token.
+url: "{{baseUrl}}/auth/me"
+method: GET
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwtToken}}"
+order: 2000

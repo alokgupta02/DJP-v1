@@ -22,6 +22,7 @@ import CreatePostPage from "../../features/create/CreatePostPage";
 import DiscussionsPage from "../../features/discussions/DiscussionsPage";
 import DiscussionDetailPage from "../../features/discussions/DiscussionDetailPage";
 import PollsPage from "../../features/polls/PollsPage";
+import PollDetailPage from "../../features/polls/PollDetailPage";
 import RepresentativesPage from "../../features/representatives/RepresentativesPage";
 import NotificationsPage from "../../features/notifications/NotificationsPage";
 import PetitionsPage from "../../features/petitions/PetitionsPage";
@@ -82,9 +83,17 @@ export const router = createBrowserRouter([
         path: "/polls/new",
         element: <Navigate to="/submit?type=poll" replace />,
       },
+      {
+        path: "/polls/:id",
+        element: <PollDetailPage />,
+      },
 
       {
         path: "/profile",
+        element: <ProfilePage />,
+      },
+      {
+        path: "/profile/:id",
         element: <ProfilePage />,
       },
       {

@@ -1,0 +1,5 @@
+$kind: http-request
+description: Retrieves public list of community polls and vote breakdowns.
+url: "{{baseUrl}}/polls"
+method: GET
+order: 1000

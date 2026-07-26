@@ -109,9 +109,9 @@ public class SqlFilePersistenceService {
         }
         String authorId = issue.getAuthor() != null ? "'" + issue.getAuthor().getId() + "'" : "NULL";
         String sql = String.format(
-                "MERGE INTO issues (id, author_id, title, description, category, priority, status, workflow_step, location, supports_count, comments_count, created_at, updated_at)\n" +
+                "MERGE INTO issues (id, author_id, title, description, category, priority, status, workflow_step, location, supports_count, comments_count, metadata, created_at, updated_at)\n" +
                 "KEY (id)\n" +
-                "VALUES ('%s', %s, %s, %s, %s, %s, %s, %d, %s, %d, %d, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());",
+                "VALUES ('%s', %s, %s, %s, %s, %s, %s, %d, %s, %d, %d, %s, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());",
                 issue.getId(),
                 authorId,
                 escapeSql(issue.getTitle()),
@@ -122,7 +122,8 @@ public class SqlFilePersistenceService {
                 issue.getWorkflowStep(),
                 escapeSql(issue.getLocation()),
                 issue.getSupportsCount(),
-                issue.getCommentsCount()
+                issue.getCommentsCount(),
+                escapeSql(issue.getMetadata())
         );
         appendToFiles("issues.sql", sql);
     }
@@ -134,9 +135,9 @@ public class SqlFilePersistenceService {
         }
         String authorId = discussion.getAuthor() != null ? "'" + discussion.getAuthor().getId() + "'" : "NULL";
         String sql = String.format(
-                "MERGE INTO discussions (id, author_id, title, description, category, votes_count, participant_count, proposal_count, proposal_preview, proposal_badge, proposal_badge_variant, created_at, updated_at)\n" +
+                "MERGE INTO discussions (id, author_id, title, description, category, votes_count, participant_count, proposal_count, proposal_preview, proposal_badge, proposal_badge_variant, comments_count, metadata, created_at, updated_at)\n" +
                 "KEY (id)\n" +
-                "VALUES ('%s', %s, %s, %s, %s, %d, %d, %d, %s, %s, %s, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());",
+                "VALUES ('%s', %s, %s, %s, %s, %d, %d, %d, %s, %s, %s, %d, %s, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());",
                 discussion.getId(),
                 authorId,
                 escapeSql(discussion.getTitle()),
@@ -147,7 +148,9 @@ public class SqlFilePersistenceService {
                 discussion.getProposalCount(),
                 escapeSql(discussion.getProposalPreview()),
                 escapeSql(discussion.getProposalBadge()),
-                escapeSql(discussion.getProposalBadgeVariant())
+                escapeSql(discussion.getProposalBadgeVariant()),
+                discussion.getCommentsCount(),
+                escapeSql(discussion.getMetadata())
         );
         appendToFiles("discussions.sql", sql);
     }
@@ -159,9 +162,9 @@ public class SqlFilePersistenceService {
         }
         String authorId = poll.getAuthor() != null ? "'" + poll.getAuthor().getId() + "'" : "NULL";
         String sql = String.format(
-                "MERGE INTO polls (id, author_id, question, description, category, options_json, votes_count, comments_count, expires_at, created_at, updated_at)\n" +
+                "MERGE INTO polls (id, author_id, question, description, category, options_json, votes_count, comments_count, metadata, expires_at, created_at, updated_at)\n" +
                 "KEY (id)\n" +
-                "VALUES ('%s', %s, %s, %s, %s, %s, %d, %d, CURRENT_TIMESTAMP() + INTERVAL '7' DAY, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());",
+                "VALUES ('%s', %s, %s, %s, %s, %s, %d, %d, %s, CURRENT_TIMESTAMP() + INTERVAL '7' DAY, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());",
                 poll.getId(),
                 authorId,
                 escapeSql(poll.getQuestion()),
@@ -169,7 +172,8 @@ public class SqlFilePersistenceService {
                 escapeSql(poll.getCategory()),
                 escapeSql(poll.getOptionsJson()),
                 poll.getVotesCount(),
-                poll.getCommentsCount()
+                poll.getCommentsCount(),
+                escapeSql(poll.getMetadata())
         );
         appendToFiles("polls.sql", sql);
     }

@@ -14,11 +14,11 @@
             theme: {
                 extend: {
                     "colors": {
-                        "primary": "#bb0311",
+                        "primary": "#a31621",
                         "primary-container": "#e02a27",
                         "on-primary-container": "#fffbff",
-                        "background": "#fff8f6",
-                        "surface": "#fff8f6",
+                        "background": "#f5f6f8",
+                        "surface": "#f5f6f8",
                         "surface-container": "#ffe9e5",
                         "surface-container-low": "#fff0ee",
                         "surface-container-lowest": "#ffffff",
@@ -57,13 +57,14 @@
         }
     </script>
     <style>
+        header, main { transition: none !important; }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             display: inline-block;
             line-height: 1;
         }
         body {
-            background-color: #fff8f6;
+            background-color: #f5f6f8;
             color: #291713;
             -webkit-font-smoothing: antialiased;
         }
@@ -85,10 +86,10 @@
         
         /* Sidebar Transition styles */
         #sidebar {
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: none !important;
         }
         #main-content {
-            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: none !important;
         }
         .nav-label, .sidebar-header-text, .user-details, .index-header {
             transition: opacity 0.2s ease, visibility 0.2s ease;
@@ -127,14 +128,14 @@
         .metric-value { font-size: 36px; font-weight: 700; color: #333; margin-bottom: 16px; }
         .chart-info { font-size: 12px; color: #999; margin-top: 12px; display: flex; align-items: center; justify-content: space-between; }
         .chart-info-text { flex: 1; }
-        .view-report { color: #bb0311; text-decoration: none; font-weight: 500; cursor: pointer; }
+        .view-report { color: #a31621; text-decoration: none; font-weight: 500; cursor: pointer; }
         .view-report:hover { text-decoration: underline; }
         .layout-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
         .section { background: white; padding: 24px; border-radius: 8px; border: 1px solid #e8ecf1; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
         .section-title { font-size: 16px; font-weight: 600; color: #333; text-transform: uppercase; }
-        .view-all-link { color: #bb0311; text-decoration: none; font-size: 12px; font-weight: 500; cursor: pointer; }
-        .insight-item { display: flex; gap: 12px; padding: 16px; border-radius: 6px; margin-bottom: 12px; background-color: #fafbfc; border-left: 4px solid #bb0311; }
+        .view-all-link { color: #a31621; text-decoration: none; font-size: 12px; font-weight: 500; cursor: pointer; }
+        .insight-item { display: flex; gap: 12px; padding: 16px; border-radius: 6px; margin-bottom: 12px; background-color: #fafbfc; border: 1px solid #e8ecf1; }
         .insight-item.success { border-left-color: #52c41a; background-color: #f6ffed; }
         .insight-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; background-color: #ffe7e0; flex-shrink: 0; }
         .insight-icon.success { background-color: #f6ffed; color: #52c41a; }
@@ -162,7 +163,7 @@
         .user-info { flex: 1; }
         .user-name { font-size: 14px; font-weight: 600; color: #333; }
         .user-role { font-size: 12px; color: #999; }
-        .add-btn { width: 40px; height: 40px; border-radius: 50%; background-color: #bb0311; color: white; border: none; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .add-btn { width: 40px; height: 40px; border-radius: 50%; background-color: #a31621; color: white; border: none; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .add-btn:hover { background-color: #93000a; }
         .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
         .page-title-section h1 { font-size: 28px; font-weight: 700; color: #333; margin-bottom: 4px; }
@@ -170,9 +171,9 @@
         .page-controls { display: flex; align-items: center; gap: 16px; }
         .date-range-btn { background: white; border: 1px solid #e8ecf1; padding: 8px 16px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 500; color: #666; }
         .date-range-btn:hover { background-color: #f5f6f8; }
-        .date-range-btn.active { background-color: #bb0311; color: white; border-color: #bb0311; }
+        .date-range-btn.active { background-color: #a31621; color: white; border-color: #a31621; }
         .notification-bell { width: 32px; height: 32px; border-radius: 50%; background-color: #f5f6f8; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; position: relative; }
-        .notification-bell::after { content: ''; position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background-color: #bb0311; border-radius: 50%; }
+        .notification-bell::after { content: ''; position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background-color: #a31621; border-radius: 50%; }
     </style>
 </head>
 <body class="overflow-hidden h-screen flex">
@@ -180,9 +181,9 @@
 <aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-stack-lg z-50" id="sidebar">
 <div class="px-6 mb-8 flex items-center justify-between">
 <div class="flex items-center gap-3 overflow-hidden">
-<div class="shrink-0 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center font-black text-xl">DJ</div>
+<div class="shrink-0 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center font-black text-2xl">DJ</div>
 <div class="sidebar-header-text whitespace-nowrap">
-<h1 class="font-headline-lg text-xl font-black text-primary">Digital Janta</h1>
+<h1 class="font-headline-lg text-2xl font-black text-primary">Digital Janta</h1>
 <p class="font-label-md text-[10px] text-on-surface-variant opacity-70 uppercase tracking-widest">Civic Platform</p>
 </div>
 </div>
@@ -192,34 +193,34 @@
 </div>
 <nav class="flex-1 overflow-y-auto custom-scrollbar px-2 space-y-6">
 <ul class="space-y-1">
-<li><a class="nav-item bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="overview.html"><span class="nav-icon text-lg">📊</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Dashboard</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="judiciary.html"><span class="nav-icon text-lg">⚖️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Judiciary</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="legislatures.html"><span class="nav-icon text-lg">🏛️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Legislatures</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="governments.html"><span class="nav-icon text-lg">🏢</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Governments</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="rep-index.html"><span class="nav-icon text-lg">👥</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Representatives</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="states.html"><span class="nav-icon text-lg">🗺️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">States</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="municipalities.html"><span class="nav-icon text-lg">🏙️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Municipalities</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="parties.html"><span class="nav-icon text-lg">🎯</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Parties</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="elections.html"><span class="nav-icon text-lg">🗳️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Elections</span></a></li>
+<li><a class="nav-item bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="overview.html"><span class="nav-icon text-sm">📊</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Dashboard</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="judiciary.html"><span class="nav-icon text-sm">⚖️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Judiciary</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="legislatures.html"><span class="nav-icon text-sm">🏛️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Legislatures</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="governments.html"><span class="nav-icon text-sm">🏢</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Governments</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="rep-index.html"><span class="nav-icon text-sm">👥</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Representatives</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="states.html"><span class="nav-icon text-sm">🗺️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">States</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="municipalities.html"><span class="nav-icon text-sm">🏙️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Municipalities</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="parties.html"><span class="nav-icon text-sm">🎯</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Parties</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="elections.html"><span class="nav-icon text-sm">🗳️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Elections</span></a></li>
 </ul>
 <div class="index-section">
 <div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Leadership Indices</div>
 <ul class="space-y-1">
 <li class="relative">
 <a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#senate-minister">
-<span class="nav-icon text-lg">⭐</span>
+<span class="nav-icon text-sm">⭐</span>
 <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Senate Minister</span>
 <span class="live-badge absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-0.5 rounded-full text-[8px] font-black">LIVE</span>
 </a>
 </li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#chief-minister"><span class="nav-icon text-lg">⭐</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Chief Minister</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#chief-minister"><span class="nav-icon text-sm">⭐</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Chief Minister</span></a></li>
 </ul>
 </div>
 <div class="utility-section">
 <div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Utilities</div>
 <ul class="space-y-1">
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#support"><span class="nav-icon text-lg">💬</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Support</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#archive"><span class="nav-icon text-lg">📁</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Archive</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#support"><span class="nav-icon text-sm">💬</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Support</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#archive"><span class="nav-icon text-sm">📁</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Archive</span></a></li>
 </ul>
 </div>
 </nav>
@@ -447,7 +448,7 @@
                 datasets: [{
                     label: 'Case Filings',
                     data: [65, 72, 58],
-                    borderColor: '#ff6b5b',
+                    borderColor: '#a31621',
                     backgroundColor: 'rgba(255, 107, 91, 0.1)',
                     fill: true,
                     tension: 0.4,
@@ -494,7 +495,7 @@
                 datasets: [{
                     label: 'Active Proceedings',
                     data: [45, 50, 55],
-                    borderColor: '#ff6b5b',
+                    borderColor: '#a31621',
                     backgroundColor: 'rgba(255, 107, 91, 0.1)',
                     fill: true,
                     tension: 0.4,

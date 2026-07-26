@@ -1,9 +1,12 @@
 -- Seed data for issues in DJP Prototype H2 Database
-MERGE INTO issues (id, author_id, title, description, category, priority, status, workflow_step, location, supports_count, comments_count, created_at, updated_at)
-KEY (id)
+INSERT INTO issues (id, author_id, title, description, category, priority, status, workflow_step, location, supports_count, comments_count, metadata, created_at, updated_at)
 VALUES 
-    ('990671fe-24d5-480f-9da5-76352b8cefd4', '1f4c2da8-eedd-4523-b541-7c818c237fff', 'Overflowing bin on High St (Prototype)', 'Main waste collection point hasn''t been cleared for 3 days.', 'Garbage', 'HIGH', 'REPORTED', 0, 'High St Ward 4', 45, 12, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-    ('51512996-3ffb-4205-8930-072ea7e94f1e', '1f4c2da8-eedd-4523-b541-7c818c237fff', 'Deep pothole near Junction 4 (Prototype)', 'Hazardous pothole causing traffic slowdowns.', 'Pothole', 'MEDIUM', 'VERIFIED', 1, 'Junction 4', 102, 8, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
-MERGE INTO issues (id, author_id, title, description, category, priority, status, workflow_step, location, supports_count, comments_count, created_at, updated_at)
-KEY (id)
-VALUES ('8392c5bd-4455-4dd0-a934-33c7b760e473', '1f4c2da8-eedd-4523-b541-7c818c237fff', 'Broken streetlight on 5th Ave (API Test)', 'Streetlight pole #102 has been out for over a week.', 'Lighting', 'HIGH', 'REPORTED', 0, '5th Ave & Elm St', 0, 0, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+    -- Issue reported by Arjun Patil (Aspiring Ward Leader)
+    ('a1111111-1111-1111-1111-111111111111', '66666666-ffff-ffff-ffff-666666666666', 'Large Pothole Near Balewadi High Street Junction', 'Hazardous pothole causing traffic slowdowns. Let''s get this fixed!', 'Road', 'CRITICAL', 'REPORTED', 0, 'Balewadi High Street • Ward 23', 96, 24, '{"distance":"140 m","affected":"500+","govLevel":"Ward","author":"Arjun Patil","image":"https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=350&h=240&fit=crop","imageCount":14,"verified":true}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    
+    -- Issue reported by Ananya Sharma (Concerned Citizen)
+    ('b2222222-2222-2222-2222-222222222222', '11111111-aaaa-aaaa-aaaa-111111111111', 'Garbage Dump on Balewadi Street near Parke Serene', 'Main waste collection point hasn''t been cleared for 4 days.', 'Garbage', 'HIGH', 'REPORTED', 0, 'Balewadi • Ward 23', 42, 18, '{"distance":"780 m","affected":"120–200","govLevel":"Ward","author":"Ananya Sharma","image":"https://images.unsplash.com/photo-1503596476-1c12a8ba09a9?w=350&h=240&fit=crop","imageCount":6,"verified":true}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    
+    -- Issue reported by Sunita Devi (First-Time Digital User)
+    ('c3333333-3333-3333-3333-333333333333', '55555555-eeee-eeee-eeee-555555555555', 'Broken Streetlight in Sector 7', 'Streetlight is broken, very dark at night.', 'Infrastructure', 'HIGH', 'REPORTED', 0, 'Sector 7, Dwarka • Ward 38', 58, 11, '{"distance":"320 m","affected":"300–500","govLevel":"Ward","author":"Sunita Devi","image":"https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=350&h=240&fit=crop","imageCount":2,"verified":true}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+ON CONFLICT (id) DO NOTHING;

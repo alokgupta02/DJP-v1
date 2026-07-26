@@ -1,29 +1,42 @@
 import { useState, useEffect } from "react";
-import { MapPin, Edit3, Share2, Phone, Mail, Home, ShieldCheck, X } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { MapPin, Edit3, Share2, Phone, Mail, Home, ShieldCheck, X, UserPlus, UserMinus } from "lucide-react";
 
 import { fetchUser, updateProfile } from "./usersApi";
+import { toggleFollow } from "../interactions/interactionsApi";
 import type { UserDto } from "./usersApi";
+import clsx from "clsx";
 
 export default function ProfilePage() {
+  const { id: paramId } = useParams<{ id: string }>();
   const [user, setUser] = useState<UserDto | null>(null);
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
 
+  const [isFollowing, setIsFollowing] = useState(false); // we might fetch this from user object or another API later
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        let userId = "1f4c2da8-eedd-4523-b541-7c818c237fff"; // Fallback dev user ID
+        let loggedInId = "1f4c2da8-eedd-4523-b541-7c818c237fff"; // Fallback dev user ID
         const userStr = localStorage.getItem("djp_user");
         if (userStr) {
           const parsed = JSON.parse(userStr);
           if (parsed.id) {
-            userId = parsed.id;
+            loggedInId = parsed.id;
           }
         }
+        setCurrentUserId(loggedInId);
         
-        const data = await fetchUser(userId);
+        const targetUserId = paramId || loggedInId;
+        const data = await fetchUser(targetUserId);
         setUser(data);
-        localStorage.setItem("djp_user", JSON.stringify(data));
+        
+        // Only update local storage if it's our own profile
+        if (!paramId || paramId === loggedInId) {
+          localStorage.setItem("djp_user", JSON.stringify(data));
+        }
       } catch (err) {
         console.error(err);
       } finally {
@@ -32,7 +45,17 @@ export default function ProfilePage() {
     };
     
     fetchProfile();
-  }, []);
+  }, [paramId]);
+
+  const handleFollowToggle = async () => {
+    if (!user) return;
+    try {
+      await toggleFollow(user.id, "USER");
+      setIsFollowing(!isFollowing);
+    } catch (e) {
+      console.error("Failed to follow", e);
+    }
+  };
 
   if (loading) {
     return <div className="p-8 text-center text-[var(--color-text-secondary)]">Loading profile...</div>;
@@ -87,24 +110,41 @@ export default function ProfilePage() {
           </div>
         </div>
         <div className="z-10 flex flex-col gap-2">
-          <button onClick={() => setIsEditing(true)} className="bg-[var(--color-brand)] text-white px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:shadow-lg transition-all active:scale-95 text-sm">
-            <Edit3 size={16} />
-            Edit Profile
-          </button>
-          <button className="bg-[var(--color-bg-surface)] text-[var(--color-brand)] border border-[var(--color-brand)] px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:bg-[var(--color-bg-subtle)] transition-all active:scale-95 text-sm">
-            <Share2 size={16} />
-            Share Stats
-          </button>
-          <button
-            onClick={() => {
-              localStorage.removeItem("djp_user");
-              localStorage.removeItem("djp_token");
-              window.location.href = "/login";
-            }}
-            className="bg-red-50 text-red-600 border border-red-200 px-6 py-2 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-red-100 transition-all active:scale-95 text-sm"
-          >
-            Logout
-          </button>
+          {(!paramId || paramId === currentUserId) ? (
+            <>
+              <button onClick={() => setIsEditing(true)} className="bg-[var(--color-brand)] text-white px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:shadow-lg transition-all active:scale-95 text-sm">
+                <Edit3 size={16} />
+                Edit Profile
+              </button>
+              <button className="bg-[var(--color-bg-surface)] text-[var(--color-brand)] border border-[var(--color-brand)] px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:bg-[var(--color-bg-subtle)] transition-all active:scale-95 text-sm">
+                <Share2 size={16} />
+                Share Stats
+              </button>
+              <button
+                onClick={() => {
+                  localStorage.removeItem("djp_user");
+                  localStorage.removeItem("djp_token");
+                  window.location.href = "/login";
+                }}
+                className="bg-red-50 text-red-600 border border-red-200 px-6 py-2 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-red-100 transition-all active:scale-95 text-sm"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button 
+                onClick={handleFollowToggle} 
+                className={clsx(
+                  "px-6 py-2 rounded-full font-bold flex items-center justify-center gap-2 transition-all active:scale-95 text-sm",
+                  isFollowing ? "bg-[var(--color-bg-surface)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:bg-[var(--color-bg-subtle)]" : "bg-[var(--color-brand)] text-white hover:shadow-lg"
+                )}
+              >
+                {isFollowing ? <UserMinus size={16} /> : <UserPlus size={16} />}
+                {isFollowing ? "Unfollow" : "Follow"}
+              </button>
+            </>
+          )}
         </div>
       </header>
 

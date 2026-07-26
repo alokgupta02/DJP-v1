@@ -1,0 +1,422 @@
+{
+  "api/djp-postman_collection.json": {
+    "mtime": 1784986882.978774,
+    "ast_hash": "c2eef2818c70186875de3300366a8e0d",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1784222800.4941657,
+    "ast_hash": "10f7ff5e9f673c9df7db665061c4271d",
+    "semantic_hash": ""
+  },
+  "api/.postman/resources.yaml": {
+    "mtime": 1784961402.9830246,
+    "ast_hash": "1017572af6f54b6a5132b056807c05d4",
+    "semantic_hash": ""
+  },
+  "api/POSTMAN_GUIDE.md": {
+    "mtime": 1784746514.8708866,
+    "ast_hash": "50b7dc52c57ca17d070f7b0d0146f91a",
+    "semantic_hash": ""
+  },
+  "api/api-spec.yaml": {
+    "mtime": 1784751713.0056036,
+    "ast_hash": "3bf7dabbf09695332010895189c2024f",
+    "semantic_hash": ""
+  },
+  "api/postman/POSTMAN_GUIDE.md": {
+    "mtime": 1784746514.8708866,
+    "ast_hash": "50b7dc52c57ca17d070f7b0d0146f91a",
+    "semantic_hash": ""
+  },
+  "api/postman/api-spec.yaml": {
+    "mtime": 1784751713.0056036,
+    "ast_hash": "3bf7dabbf09695332010895189c2024f",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/.postman/resources.yaml": {
+    "mtime": 1784973072.381178,
+    "ast_hash": "51b34e6597e95b72944c29a9e4b5b8bc",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/.resources/definition.yaml": {
+    "mtime": 1784973072.360178,
+    "ast_hash": "9e3e7e2d8e7cc0f5656b006d43578ef1",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/1. Auth & Identity/.resources/definition.yaml": {
+    "mtime": 1784973072.363178,
+    "ast_hash": "8637c6017758cf7dd979b406d1dbb11e",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/1. Auth & Identity/Dev Login (Issues JWT Token).request.yaml": {
+    "mtime": 1784973072.360178,
+    "ast_hash": "d11d191e449019e952ea9c94d1ffe05d",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/1. Auth & Identity/Get Current Profile (-auth-me).request.yaml": {
+    "mtime": 1784973072.361178,
+    "ast_hash": "759bacd72e30d9fe1e6dcfec6aac74a4",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/1. Auth & Identity/Initiate GitHub OAuth2 Login.request.yaml": {
+    "mtime": 1784973072.361178,
+    "ast_hash": "0632634f4bb89c05233b273c82cffe6d",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/1. Auth & Identity/Initiate Google OAuth2 Login.request.yaml": {
+    "mtime": 1784973072.361178,
+    "ast_hash": "72b9f799a04e40f8aa187cf5de5c1150",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/2. Civic Issues/.resources/definition.yaml": {
+    "mtime": 1784973072.358178,
+    "ast_hash": "a63fe364e61a6757d7874ff53d8033da",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/2. Civic Issues/Create New Issue.request.yaml": {
+    "mtime": 1784973072.361178,
+    "ast_hash": "3f52a6c15e93738f5ed14b929ecb6fae",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/2. Civic Issues/Get Issue By ID.request.yaml": {
+    "mtime": 1784986882.9843314,
+    "ast_hash": "7d1b2fef42266fe06c48b9079f0e390a",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/2. Civic Issues/List All Issues.request.yaml": {
+    "mtime": 1784973072.361178,
+    "ast_hash": "670b375da3f8867b1beae557d5513c60",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/3. Discussions/.resources/definition.yaml": {
+    "mtime": 1784973072.3591778,
+    "ast_hash": "c767b40dd1d2dbaf374a7efbd69ec48e",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/3. Discussions/Create New Discussion Thread.request.yaml": {
+    "mtime": 1784973072.361178,
+    "ast_hash": "e8abe8ba1d9f1a7424350141b691d6ab",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/3. Discussions/Get Discussion By ID.request.yaml": {
+    "mtime": 1784986882.9882524,
+    "ast_hash": "28d5d323afd4626c0144b6d048c50261",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/3. Discussions/List All Discussions.request.yaml": {
+    "mtime": 1784973072.361178,
+    "ast_hash": "a6f5abff72f2fc3c0d2a83719646cf9c",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/4. Polls & Voting/.resources/definition.yaml": {
+    "mtime": 1784973072.3591778,
+    "ast_hash": "a25562eae948214a07a2c8e703eddb9c",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/4. Polls & Voting/Create New Poll.request.yaml": {
+    "mtime": 1784973072.361178,
+    "ast_hash": "8f7ae714b8c5cee382726978bdbdc12e",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/4. Polls & Voting/Get Poll By ID.request.yaml": {
+    "mtime": 1784986882.9830043,
+    "ast_hash": "e7515bcc771fc7cb04969e094a85960b",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/4. Polls & Voting/List All Polls.request.yaml": {
+    "mtime": 1784973072.361178,
+    "ast_hash": "07e5f8fe955f349d2e73425b84a3bbd0",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/5. System & Observability/.resources/definition.yaml": {
+    "mtime": 1784973072.360178,
+    "ast_hash": "da95cc2fb43445214e27fe5e35fe720d",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/5. System & Observability/Health Check (-actuator-health).request.yaml": {
+    "mtime": 1784973072.361178,
+    "ast_hash": "80787bcac33ebd455f5b543062f6d039",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/6. Profiles/.resources/definition.yaml": {
+    "mtime": 1784973072.360178,
+    "ast_hash": "a995bc9fdf6189c1eb8b51f366ce0b39",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/6. Profiles/Get Profile By ID.request.yaml": {
+    "mtime": 1784981777.82615,
+    "ast_hash": "caff6f79ed1b32c560047ea33cb8d952",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/6. Profiles/Update Profile.request.yaml": {
+    "mtime": 1784981777.8262782,
+    "ast_hash": "5c4973b435b7d091d7469c3243da8165",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/DJP Prototype & Spring Boot REST API Collection/New Request.request.yaml": {
+    "mtime": 1784975152.6701894,
+    "ast_hash": "921aab3e646bf243309a07381a2f05fb",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/collections/New Collection/.resources/definition.yaml": {
+    "mtime": 1784972241.8051438,
+    "ast_hash": "522de03f762ea98e1b1472e51692051d",
+    "semantic_hash": ""
+  },
+  "api/postman/collections/postman/globals/workspace.globals.yaml": {
+    "mtime": 1784972159.498329,
+    "ast_hash": "1f31f0e4d6a7b594d17c1e596c93528c",
+    "semantic_hash": ""
+  },
+  "api/postman/globals/workspace.globals.yaml": {
+    "mtime": 1784961400.9185042,
+    "ast_hash": "1f31f0e4d6a7b594d17c1e596c93528c",
+    "semantic_hash": ""
+  },
+  "architecture/ai/ai-assistant.md": {
+    "mtime": 1783776170.264706,
+    "ast_hash": "fc495003790712f6365bdb524bfa0066",
+    "semantic_hash": ""
+  },
+  "architecture/backend/backend-design.md": {
+    "mtime": 1784442322.317588,
+    "ast_hash": "6f0d618f23f47ad0b584222ffd49dda5",
+    "semantic_hash": ""
+  },
+  "architecture/backend/backend-engineer-dev.md": {
+    "mtime": 1784442327.920688,
+    "ast_hash": "cd81dedafbe4f7f687f51cd129b02ff3",
+    "semantic_hash": ""
+  },
+  "architecture/backend/backend-springboot-checklist.md": {
+    "mtime": 1784747454.2907846,
+    "ast_hash": "aed0b5b4c7ab5e4a890b91a6792a1c27",
+    "semantic_hash": ""
+  },
+  "architecture/backend/backend-techstack.md": {
+    "mtime": 1784464440.103024,
+    "ast_hash": "183509bf31e63e660d0ec3f952a2e1cd",
+    "semantic_hash": ""
+  },
+  "architecture/backend/be-audit-log.md": {
+    "mtime": 1784411652.9590416,
+    "ast_hash": "55ae5f9b2889fa14880b69eba5060ce5",
+    "semantic_hash": ""
+  },
+  "architecture/backend/be-audit-recom.md": {
+    "mtime": 1784439597.3894966,
+    "ast_hash": "608bcb7c105a8e65072bb1bf8f365556",
+    "semantic_hash": ""
+  },
+  "architecture/backend/be-debt.md": {
+    "mtime": 1784440110.1531267,
+    "ast_hash": "df5f50d6ee12ffd3f342c85d4101193b",
+    "semantic_hash": ""
+  },
+  "architecture/database/db-design.md": {
+    "mtime": 1784316624.137625,
+    "ast_hash": "c2be1744bffc37a3aafbae82586a47d7",
+    "semantic_hash": ""
+  },
+  "architecture/database/submission-model.md": {
+    "mtime": 1783776142.442188,
+    "ast_hash": "5cc85808ca10a5049dc3ddedf6e94714",
+    "semantic_hash": ""
+  },
+  "architecture/frontend/colors-typography.md": {
+    "mtime": 1783776092.8433533,
+    "ast_hash": "ed2ee99f192808530f7e9685dd3a391e",
+    "semantic_hash": ""
+  },
+  "architecture/frontend/components.md": {
+    "mtime": 1783776054.1770203,
+    "ast_hash": "40702e624349e0594aef6d919f5f29af",
+    "semantic_hash": ""
+  },
+  "architecture/frontend/frontend.md": {
+    "mtime": 1784465841.8520606,
+    "ast_hash": "b5491e14a548d517a6e0263fc5fc3df5",
+    "semantic_hash": ""
+  },
+  "architecture/frontend/javascript.md": {
+    "mtime": 1783776126.4702938,
+    "ast_hash": "2fd55a899a0daa5f64b71561a643c639",
+    "semantic_hash": ""
+  },
+  "architecture/frontend/layout.md": {
+    "mtime": 1783776071.0500524,
+    "ast_hash": "ea045100cdf18871b347b4ff1e5072e9",
+    "semantic_hash": ""
+  },
+  "architecture/frontend/navigation.md": {
+    "mtime": 1783776110.1103597,
+    "ast_hash": "f3396de296a24eace4e5ba630621ce97",
+    "semantic_hash": ""
+  },
+  "architecture/frontend/onboarding.md": {
+    "mtime": 1784316630.7947485,
+    "ast_hash": "c3b88c1aa01961d787a78d4f2a802254",
+    "semantic_hash": ""
+  },
+  "architecture/global-config.yaml": {
+    "mtime": 1784227772.14019,
+    "ast_hash": "e12ca113c57c20091b8a48cd7ac23090",
+    "semantic_hash": ""
+  },
+  "architecture/overview.md": {
+    "mtime": 1784316618.9375303,
+    "ast_hash": "019b8c6e5591f587d2e4314c8d717812",
+    "semantic_hash": ""
+  },
+  "architecture/system/oauth-login-architecture.md": {
+    "mtime": 1784316628.8687124,
+    "ast_hash": "e1f8c6bdb8562b788f6b91302f8a8665",
+    "semantic_hash": ""
+  },
+  "architecture/system/routes.md": {
+    "mtime": 1783360466.926544,
+    "ast_hash": "c0ab52a7db547cad8cdfd0b686254671",
+    "semantic_hash": ""
+  },
+  "architecture/system/system-boundaries.md": {
+    "mtime": 1784440392.277432,
+    "ast_hash": "636bb571b74f07fc7d2e8f0dbc5de103",
+    "semantic_hash": ""
+  },
+  "audit/README.MD": {
+    "mtime": 1784407707.414621,
+    "ast_hash": "bc2fc5e4c4936ac1bd0a852f0e41158c",
+    "semantic_hash": ""
+  },
+  "audit/audit-debt.md": {
+    "mtime": 1784747622.6914442,
+    "ast_hash": "abaa1f5df5a3689b304bc0b168e3052f",
+    "semantic_hash": ""
+  },
+  "audit/audit-log.md": {
+    "mtime": 1784747661.836036,
+    "ast_hash": "dd98d20a54e353b0aed470b58ad43acf",
+    "semantic_hash": ""
+  },
+  "audit/audit-recom.md": {
+    "mtime": 1784747645.7677941,
+    "ast_hash": "bb133644b12c0ca08c2225dea2a60a86",
+    "semantic_hash": ""
+  },
+  "deployment/deployment.md": {
+    "mtime": 1783776360.0668945,
+    "ast_hash": "8c5425c0d3129541aea108c4e3ec8fba",
+    "semantic_hash": ""
+  },
+  "development/DoD.md": {
+    "mtime": 1784440376.2616153,
+    "ast_hash": "51578e1841c4d54b8ece97098915f6cf",
+    "semantic_hash": ""
+  },
+  "development/oauth-login-specs.md": {
+    "mtime": 1783869774.51498,
+    "ast_hash": "d924d6834bf3a0da54cea0be70ca2341",
+    "semantic_hash": ""
+  },
+  "documentation/DJ Decision Docx.md": {
+    "mtime": 1784998759.73426,
+    "ast_hash": "74d8e5520cbdb0684dbe679d365434a3",
+    "semantic_hash": ""
+  },
+  "documentation/app-documentation-process.md": {
+    "mtime": 1784998768.7423565,
+    "ast_hash": "8e4f45b9de415adab0ca7548dab71dfe",
+    "semantic_hash": ""
+  },
+  "execution/README.md": {
+    "mtime": 1783967559.1290152,
+    "ast_hash": "d2807c29209e9d210f9ed849bc9604d8",
+    "semantic_hash": ""
+  },
+  "execution/_template/todo.md": {
+    "mtime": 1784408219.389042,
+    "ast_hash": "cd781f58784591e96b4c469e96eb8750",
+    "semantic_hash": ""
+  },
+  "execution/discussions/ui-components.md": {
+    "mtime": 1784386922.8557954,
+    "ast_hash": "2f6ff265aacd15b8ccb85601131d40df",
+    "semantic_hash": ""
+  },
+  "execution/issues/ui-components.md": {
+    "mtime": 1784227155.147456,
+    "ast_hash": "c7af85169b3590b0eab9035b5d80c657",
+    "semantic_hash": ""
+  },
+  "execution/oauth-login/PRD.md": {
+    "mtime": 1784227075.0356944,
+    "ast_hash": "a4d6fdd5af20de827d92d063149057cd",
+    "semantic_hash": ""
+  },
+  "execution/polls/ui-components.md": {
+    "mtime": 1784386924.1518009,
+    "ast_hash": "52f266455c824550e0ecee4b786b264b",
+    "semantic_hash": ""
+  },
+  "legal/data-privacy.md": {
+    "mtime": 1784745779.602557,
+    "ast_hash": "6dd09318dc37e925740f3d55e4c15935",
+    "semantic_hash": ""
+  },
+  "legal/registration-and-compliance.md": {
+    "mtime": 1784745713.5539048,
+    "ast_hash": "4ad92cf8651a7f5f5781574359ff9ec4",
+    "semantic_hash": ""
+  },
+  "md-file/README.md": {
+    "mtime": 1784386689.4569652,
+    "ast_hash": "39b64ea5ee73772138cd8f66a641ebd4",
+    "semantic_hash": ""
+  },
+  "md-file/improvedlearning.md": {
+    "mtime": 1784386925.697807,
+    "ast_hash": "5440d2b5c6411bbde76ce6ced5cd09f3",
+    "semantic_hash": ""
+  },
+  "md-file/prompt-refiner-agent.md": {
+    "mtime": 1784386925.5498066,
+    "ast_hash": "21d4dfcfd5ef69346cbbae21d7fe8496",
+    "semantic_hash": ""
+  },
+  "md-file/sdlc.md": {
+    "mtime": 1784386925.5788066,
+    "ast_hash": "4aa1a94af37ef789cf9e9b87da97186d",
+    "semantic_hash": ""
+  },
+  "ux/design-principles.md": {
+    "mtime": 1783776241.5393798,
+    "ast_hash": "8e54dd1f188497ffd2ac64c4cc80c01c",
+    "semantic_hash": ""
+  },
+  "vision/decisions.md": {
+    "mtime": 1784440368.9492402,
+    "ast_hash": "baff6b259716521c241898ce78f4d6b6",
+    "semantic_hash": ""
+  },
+  "vision/party-vision.md": {
+    "mtime": 1784745745.675225,
+    "ast_hash": "475b7ed8903653824b97ec5a206797cd",
+    "semantic_hash": ""
+  },
+  "vision/roadmap.md": {
+    "mtime": 1784317108.8251336,
+    "ast_hash": "42888eb49cdc858f2727db7fdf9b346b",
+    "semantic_hash": ""
+  },
+  "vision/vision-core-draft.md": {
+    "mtime": 1784317113.434271,
+    "ast_hash": "731128136e6c407fff79d204e7a3cde2",
+    "semantic_hash": ""
+  },
+  "architecture/images/djp_architecture.jpg": {
+    "mtime": 1784224118.3828173,
+    "ast_hash": "569a496b6fc1f0b21da23f8aa362523d",
+    "semantic_hash": ""
+  }
+}

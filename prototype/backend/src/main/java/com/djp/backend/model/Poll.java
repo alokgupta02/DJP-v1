@@ -44,6 +44,9 @@ public class Poll {
     @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt = OffsetDateTime.now();
 
+    @Column(columnDefinition = "TEXT")
+    private String metadata;
+
     public Poll() {}
 
     public Poll(User author, String question, String description, String category, String optionsJson) {
@@ -155,5 +158,13 @@ public class Poll {
 
     public void setUpdatedAt(OffsetDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(String metadata) {
+        this.metadata = metadata;
     }
 }

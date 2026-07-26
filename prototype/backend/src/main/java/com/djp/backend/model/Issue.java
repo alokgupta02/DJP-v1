@@ -56,6 +56,9 @@ public class Issue {
     @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt = OffsetDateTime.now();
 
+    @Column(columnDefinition = "TEXT")
+    private String metadata;
+
     public Issue() {}
 
     public Issue(User author, String title, String description, String category, String priority) {
@@ -180,5 +183,13 @@ public class Issue {
 
     public void setUpdatedAt(OffsetDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(String metadata) {
+        this.metadata = metadata;
     }
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><!DOCTYPE html>
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
@@ -6,7 +6,7 @@
 <title>Digital Janta | Municipalities Analytics</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
       tailwind.config = {
@@ -25,7 +25,7 @@
                     "surface-container-lowest": "#ffffff",
                     "on-tertiary-fixed-variant": "#3c4852",
                     "on-primary-container": "#fffbff",
-                    "background": "#fff8f6",
+                    "background": "#f5f6f8",
                     "on-error": "#ffffff",
                     "inverse-on-surface": "#ffede9",
                     "error": "#ba1a1a",
@@ -34,14 +34,14 @@
                     "on-primary-fixed-variant": "#93000a",
                     "secondary-fixed": "#e2e2e2",
                     "on-tertiary-fixed": "#111d26",
-                    "surface": "#fff8f6",
+                    "surface": "#f5f6f8",
                     "on-secondary": "#ffffff",
-                    "primary": "#bb0311",
+                    "primary": "#a31621",
                     "inverse-primary": "#ffb4ab",
                     "primary-fixed": "#ffdad6",
                     "tertiary-fixed": "#d7e4f0",
                     "surface-variant": "#fddbd4",
-                    "surface-bright": "#fff8f6",
+                    "surface-bright": "#f5f6f8",
                     "on-secondary-container": "#646464",
                     "inverse-surface": "#402b27",
                     "tertiary-container": "#697681",
@@ -100,8 +100,9 @@
       }
     </script>
 <style>
+        header, main { transition: none !important; }
         body {
-            background-color: #fff8f6;
+            background-color: #f5f6f8;
             color: #291713;
             overflow-x: hidden;
         }
@@ -119,10 +120,10 @@
         
         /* Sidebar Transition styles */
         #sidebar {
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: none !important;
         }
         #main-content {
-            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: none !important;
         }
         .nav-label, .sidebar-header-text, .user-details, .index-header {
             transition: opacity 0.2s ease, visibility 0.2s ease;
@@ -156,9 +157,9 @@
 <aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-stack-lg z-50" id="sidebar">
 <div class="px-6 mb-8 flex items-center justify-between">
 <div class="flex items-center gap-3 overflow-hidden">
-<div class="shrink-0 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center font-black text-xl">DJ</div>
+<div class="shrink-0 w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center font-black text-2xl">DJ</div>
 <div class="sidebar-header-text whitespace-nowrap">
-<h1 class="font-headline-lg text-xl font-black text-primary">Digital Janta</h1>
+<h1 class="font-headline-lg text-2xl font-black text-primary">Digital Janta</h1>
 <p class="font-label-md text-[10px] text-on-surface-variant opacity-70 uppercase tracking-widest">Civic Platform</p>
 </div>
 </div>
@@ -168,34 +169,34 @@
 </div>
 <nav class="flex-1 overflow-y-auto custom-scrollbar px-2 space-y-6">
 <ul class="space-y-1">
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="overview.html"><span class="nav-icon text-lg">📊</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Dashboard</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="judiciary.html"><span class="nav-icon text-lg">⚖️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Judiciary</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="legislatures.html"><span class="nav-icon text-lg">🏛️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Legislatures</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="governments.html"><span class="nav-icon text-lg">🏢</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Governments</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="rep-index.html"><span class="nav-icon text-lg">👥</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Representatives</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="states.html"><span class="nav-icon text-lg">🗺️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">States</span></a></li>
-<li><a class="nav-item bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="municipalities.html"><span class="nav-icon text-lg">🏙️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Municipalities</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="parties.html"><span class="nav-icon text-lg">🎯</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Parties</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="elections.html"><span class="nav-icon text-lg">🗳️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Elections</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="overview.html"><span class="nav-icon text-sm">📊</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Dashboard</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="judiciary.html"><span class="nav-icon text-sm">⚖️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Judiciary</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="legislatures.html"><span class="nav-icon text-sm">🏛️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Legislatures</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="governments.html"><span class="nav-icon text-sm">🏢</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Governments</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="rep-index.html"><span class="nav-icon text-sm">👥</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Representatives</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="states.html"><span class="nav-icon text-sm">🗺️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">States</span></a></li>
+<li><a class="nav-item bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="municipalities.html"><span class="nav-icon text-sm">🏙️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Municipalities</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="parties.html"><span class="nav-icon text-sm">🎯</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Parties</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="elections.html"><span class="nav-icon text-sm">🗳️</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Elections</span></a></li>
 </ul>
 <div class="index-section">
 <div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Leadership Indices</div>
 <ul class="space-y-1">
 <li class="relative">
 <a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#senate-minister">
-<span class="nav-icon text-lg">⭐</span>
+<span class="nav-icon text-sm">⭐</span>
 <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Senate Minister</span>
 <span class="live-badge absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white px-2 py-0.5 rounded-full text-[8px] font-black">LIVE</span>
 </a>
 </li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#chief-minister"><span class="nav-icon text-lg">⭐</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Chief Minister</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#chief-minister"><span class="nav-icon text-sm">⭐</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Chief Minister</span></a></li>
 </ul>
 </div>
 <div class="utility-section">
 <div class="index-header px-4 mb-2 text-[10px] font-black text-on-surface-variant opacity-60 uppercase tracking-widest whitespace-nowrap">Utilities</div>
 <ul class="space-y-1">
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#support"><span class="nav-icon text-lg">💬</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Support</span></a></li>
-<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#archive"><span class="nav-icon text-lg">📁</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Archive</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#support"><span class="nav-icon text-sm">💬</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Support</span></a></li>
+<li><a class="nav-item text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-2.5 flex items-center gap-3 transition-all" href="#archive"><span class="nav-icon text-sm">📁</span> <span class="nav-label font-title-lg text-sm uppercase tracking-wider whitespace-nowrap">Archive</span></a></li>
 </ul>
 </div>
 </nav>

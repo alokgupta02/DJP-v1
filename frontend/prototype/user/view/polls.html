@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><!DOCTYPE html>
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
@@ -6,7 +6,7 @@
 <title>CivicPortal | Digital Janta Polls Dashboard</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -19,7 +19,7 @@
                         "secondary-container": "#e2e2e2",
                         "primary-fixed": "#ffdad6",
                         "primary-container": "#e02a27",
-                        "surface": "#fff8f6",
+                        "surface": "#f5f6f8",
                         "outline": "#926f68",
                         "on-secondary-fixed": "#1b1b1b",
                         "on-tertiary-fixed": "#111d26",
@@ -33,14 +33,14 @@
                         "inverse-primary": "#ffb4ab",
                         "surface-container-low": "#fff0ee",
                         "surface-container-high": "#ffe2dc",
-                        "primary": "#bb0311",
+                        "primary": "#a31621",
                         "on-error-container": "#93000a",
                         "secondary-fixed": "#e2e2e2",
                         "on-tertiary-container": "#fcfcff",
                         "tertiary-container": "#697681",
-                        "surface-bright": "#fff8f6",
+                        "surface-bright": "#f5f6f8",
                         "outline-variant": "#e7bdb4",
-                        "background": "#fff8f6",
+                        "background": "#f5f6f8",
                         "surface-tint": "#bf0813",
                         "surface-container-lowest": "#ffffff",
                         "surface-dim": "#f4d3cc",
@@ -91,13 +91,14 @@
         }
     </script>
 <style>
+        header, main { transition: none !important; }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        body { font-family: 'Noto Sans', sans-serif; background-color: #fff8f6; }
+        body { font-family: 'Noto Sans', sans-serif; background-color: #f5f6f8; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        #sidebar { transition: width 0.3s ease; }
+        #sidebar { transition: none !important; }
         .sidebar-collapsed .nav-label, .sidebar-collapsed .sidebar-header-text { display: none; }
     </style>
 </head>
@@ -342,11 +343,11 @@
 <section class="space-y-stack-md">
 <h3 class="font-label-md font-bold uppercase text-outline tracking-widest">Closing Soon</h3>
 <div class="space-y-3">
-<div class="p-3 bg-surface border-l-4 border-error rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="p-3 bg-surface border border-outline-variant/30 border-error rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
 <p class="font-label-md font-bold text-on-surface line-clamp-1">Metro Expansion Plan B</p>
 <p class="font-label-sm text-error">Closing in 1h 45m</p>
 </div>
-<div class="p-3 bg-surface border-l-4 border-primary-container rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="p-3 bg-surface border border-outline-variant/30 rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
 <p class="font-label-md font-bold text-on-surface line-clamp-1">Youth Center Grant Allocation</p>
 <p class="font-label-sm text-on-surface-variant">Closing in 4h</p>
 </div>
@@ -398,20 +399,39 @@
 </aside>
 </main>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
     const toggleIcon = document.getElementById('toggleIcon');
+    const header = document.querySelector('header');
+    const mainContent = document.getElementById('main-content') || document.querySelector('main');
+    
     if (sidebarToggle) {
       sidebarToggle.addEventListener('click', () => {
         if (sidebar.classList.contains('sidebar-collapsed')) {
           sidebar.classList.remove('sidebar-collapsed');
           sidebar.style.width = '16rem';
-          toggleIcon.style.transform = 'rotate(0deg)';
+          if (toggleIcon) toggleIcon.style.transform = 'rotate(0deg)';
+          if (header) {
+            header.classList.remove('left-20');
+            header.classList.add('left-64');
+          }
+          if (mainContent) {
+            mainContent.classList.remove('ml-20');
+            mainContent.classList.add('ml-64');
+          }
         } else {
           sidebar.classList.add('sidebar-collapsed');
           sidebar.style.width = '80px';
-          toggleIcon.style.transform = 'rotate(180deg)';
+          if (toggleIcon) toggleIcon.style.transform = 'rotate(180deg)';
+          if (header) {
+            header.classList.remove('left-64');
+            header.classList.add('left-20');
+          }
+          if (mainContent) {
+            mainContent.classList.remove('ml-64');
+            mainContent.classList.add('ml-20');
+          }
         }
       });
     }

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import clsx from "clsx";
 import { useSidebar } from "../sidebar";
 import { Avatar } from "../ui";
+import { NotificationBar } from "../notifications/NotificationBar";
 
 export interface TopbarProps {
   ward?: string;
@@ -133,20 +134,7 @@ export default function Topbar({
         </Link>
 
         {/* Notifications */}
-        <button
-          className="relative p-2 rounded-full hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-primary)] transition mr-1"
-          aria-label="Notifications"
-        >
-          <Bell size={22} className="stroke-[1.5]" />
-          {notificationCount > 0 && (
-            <span
-              className={clsx(
-                "absolute top-1.5 right-1.5 h-2.5 w-2.5 rounded-full",
-                "bg-[var(--color-error)] border-2 border-[var(--color-bg-surface)]"
-              )}
-            />
-          )}
-        </button>
+        <NotificationBar />
 
         {/* User avatar with status dot */}
         <div className="relative cursor-pointer hover:opacity-80 transition">

@@ -1,0 +1,22 @@
+$kind: http-request
+description: Creates a new civic discussion thread with optional policy proposal
+  details. Requires valid Bearer JWT token.
+url: "{{baseUrl}}/discussions"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: >-
+    {
+      "title": "Proposal: Solar Rooftop Subsidies for Housing Societies in Ward 12",
+      "description": "To accelerate clean energy adoption across North Delhi, we should petition for municipal property tax rebates tied to rooftop solar generation capacity.",
+      "category": "Environment",
+      "proposalPreview": "Introduce a tiered property tax rebate program up to 15% for residential complexes generating >10kW solar power.",
+      "proposalBadge": "Policy Draft"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwtToken}}"
+order: 3000

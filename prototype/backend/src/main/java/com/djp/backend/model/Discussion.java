@@ -44,6 +44,12 @@ public class Discussion {
     @Column(name = "proposal_badge_variant", length = 20)
     private String proposalBadgeVariant = "primary"; // 'primary', 'warning', 'info', 'muted'
 
+    @Column(name = "comments_count", nullable = false)
+    private Integer commentsCount = 0;
+
+    @Column(columnDefinition = "TEXT")
+    private String metadata;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private OffsetDateTime createdAt = OffsetDateTime.now();
 
@@ -173,5 +179,21 @@ public class Discussion {
 
     public void setUpdatedAt(OffsetDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Integer getCommentsCount() {
+        return commentsCount;
+    }
+
+    public void setCommentsCount(Integer commentsCount) {
+        this.commentsCount = commentsCount;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(String metadata) {
+        this.metadata = metadata;
     }
 }

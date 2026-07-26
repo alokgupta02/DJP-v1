@@ -1,0 +1,7 @@
+$kind: collection
+description: Canonical Postman Collection for Digital Janata Party (DJP)
+  platform APIs (`web-app = prototype` and Spring Boot backend). Includes
+  automatic JWT token storage via test scripts on Dev Login.
+variables:
+  baseUrl: http://localhost:8081/djp/api/v1
+  jwtToken: ""

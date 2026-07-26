@@ -13,11 +13,11 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#bb0311",
+                        primary: "#a31621",
                         "primary-container": "#e02a27",
                         "on-primary-container": "#fffbff",
-                        background: "#fff8f6",
-                        surface: "#fff8f6",
+                        background: "#f5f6f8",
+                        surface: "#f5f6f8",
                         "surface-container": "#ffe9e5",
                         "surface-container-low": "#fff0ee",
                         "surface-container-lowest": "#ffffff",
@@ -47,7 +47,7 @@
     </script>
     <style>
         body { font-family: 'Noto Sans', sans-serif; }
-        .font-headline { font-family: 'Hanken Grotesk', sans-serif; }
+        .font-headline { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
         .progress-ring-circle {
             transition: stroke-dashoffset 0.5s ease;
             transform: rotate(-90deg);
@@ -68,7 +68,7 @@
             animation: pulse-dot 1.5s ease-in-out infinite;
         }
         .progress-bar-fill {
-            transition: width 0.8s ease;
+            transition: none !important;
         }
     </style>
 </head>
@@ -105,7 +105,7 @@
                 <div class="relative shrink-0">
                     <svg width="160" height="160" viewBox="0 0 160 160" class="sm:w-[180px] sm:h-[180px]">
                         <circle cx="80" cy="80" r="68" fill="none" stroke="#fddbd4" stroke-width="10"/>
-                        <circle id="overallRing" cx="80" cy="80" r="68" fill="none" stroke="#bb0311" stroke-width="10"
+                        <circle id="overallRing" cx="80" cy="80" r="68" fill="none" stroke="#a31621" stroke-width="10"
                             stroke-linecap="round" class="progress-ring-circle"
                             stroke-dasharray="427.26" stroke-dashoffset="427.26"/>
                     </svg>
@@ -222,7 +222,7 @@
                 id: "structure",
                 name: "Documentation Structure & Organization",
                 emoji: "📂",
-                color: "#bb0311",
+                color: "#a31621",
                 bgColor: "#ffe9e5",
                 tasks: [
                     { id: "D-05", title: "Reorganize documentation folders", status: "in-progress", estTime: "30 min" },
@@ -438,7 +438,7 @@
                     label: "Total Remaining",
                     value: hours > 0 ? `${hours}h ${mins}m` : `${mins}m`,
                     sub: `${pending.length} pending + ${inProgress.length} in progress`,
-                    color: "#bb0311"
+                    color: "#a31621"
                 },
                 ...catTimes.map(cat => ({
                     emoji: cat.emoji,

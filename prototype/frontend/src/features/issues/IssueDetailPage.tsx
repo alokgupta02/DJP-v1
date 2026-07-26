@@ -10,7 +10,7 @@ const ISSUES_DATA: Record<string, {
   supports: number; commentsCount: number; affected: string; image: string; imageCount: number;
   verified: boolean; iconBg: string; iconColor: string; icon: React.ElementType;
   timeline: string[]; comments: CommentData[];
-  health: [string, string][]; related: { title: string; dist: string }[];
+  health: [string, string][]; related: { title: string; dist: string }[]; author?: string;
 }> = {
   pothole: {
     id: "pothole", category: "Road", severity: "Critical",

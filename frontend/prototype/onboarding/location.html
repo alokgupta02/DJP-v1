@@ -6,17 +6,14 @@
 
     <title>DJ • Complete Profile</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    
 
     <style>
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Inter, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       }
 
       body {
@@ -40,7 +37,7 @@
       .logo {
         font-size: 26px;
         font-weight: 800;
-        color: #ff6b5b;
+        color: #a31621;
       }
 
       .step {
@@ -104,7 +101,7 @@
       }
 
       .active {
-        background: #ff6b5b;
+        background: #a31621;
         color: white;
       }
 
@@ -128,13 +125,29 @@
         margin-top: 40px;
         width: 100%;
         padding: 15px;
-        background: #ff6b5b;
+        background: #a31621;
         border: none;
         color: white;
         font-size: 15px;
         font-weight: 700;
         border-radius: 10px;
         cursor: pointer;
+      }
+
+      .skip-link {
+        display: block;
+        text-align: center;
+        margin-top: 16px;
+        color: #999;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        transition: color 0.15s ease-in-out;
+      }
+
+      .skip-link:hover {
+        color: #a31621;
+        text-decoration: underline;
       }
 
       .back {
@@ -207,7 +220,7 @@
       input:focus,
       select:focus,
       textarea:focus {
-        border-color: #ff6b5b;
+        border-color: #a31621;
       }
 
       .note {
@@ -238,7 +251,12 @@
         }
       }
     </style>
-  </head>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <style>
+      body { font-family: 'Noto Sans', sans-serif; }
+      h1, h2, h3, h4, h5, h6 { font-family: 'Hanken Grotesk', sans-serif; }
+    </style>
+</head>
 
   <body>
     <div class="wrapper">
@@ -287,7 +305,7 @@
           </div>
 
           <button class="btn">Continue →</button>
-
+          <a href="../user/view/user-dashboard.html" class="skip-link">Skip for Now</a>
           <a href="#" class="back"> ← Back </a>
         </aside>
 

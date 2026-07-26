@@ -57,7 +57,7 @@ export default function PollDetailPage() {
           try { meta = JSON.parse(data.metadata); } catch(e) {}
         }
         
-        let parsedOptions = prev => prev.options;
+        let parsedOptions: any[] | null = null;
         if (data.optionsJson) {
            try {
               parsedOptions = JSON.parse(data.optionsJson);
@@ -73,10 +73,10 @@ export default function PollDetailPage() {
           commentsCount: data.commentsCount || 0,
           category: data.category || prev.category,
           author: (meta as any).author || prev.author,
-          options: parsedOptions !== prev?.options ? parsedOptions.map((opt: any, i: number) => ({
+          options: parsedOptions ? parsedOptions.map((opt: any, i: number) => ({
              ...opt,
              color: i === 0 ? "bg-[var(--color-brand)]" : "bg-[var(--color-text-secondary)]"
-          })) : prev.options
+          })) : prev?.options || []
         }));
       })
       .catch(console.error);

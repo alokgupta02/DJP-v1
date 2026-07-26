@@ -1,0 +1,5 @@
+$kind: http-request
+description: Fetches detailed information and voting options for a specific poll UUID.
+url: "{{baseUrl}}/polls/66d52ce0-f22e-481a-97a5-845cc610e83d"
+method: GET
+order: 2000

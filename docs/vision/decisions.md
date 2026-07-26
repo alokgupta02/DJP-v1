@@ -4,7 +4,7 @@
 
 | Metadata | Value |
 | :--- | :--- |
-| **📅 Last Updated** | 2026-07-18 01:08 |
+| **📅 Last Updated** | 2026-07-26 13:10 |
 | **📌 Status** | `Stable` |
 | **🏷️ Version** | `v1.0.0` |
 | **👥 Owner** | `Principal Technical Architect` |
@@ -24,6 +24,7 @@
 | **ADR-006** | **Modular Microservices Backend** | `Superseded` | Scales domains independently vs. adds network complexity |
 | **ADR-007** | **Dynamic Ranks & Paid Leader Gate** | `Accepted` | Filters spam / locks inactive leaders vs. introduces billing gates |
 | **ADR-008** | **Modular Monolith for MVP** | `Accepted` | Reduces deployment & network overhead vs. limits independent scaling |
+| **ADR-009** | **Postgres-Maximalist Architecture** | `Accepted` | Single DB engine (JSONB+PostGIS) vs. limits extreme NoSQL horizontal scaling |
 
 ---
 
@@ -105,6 +106,16 @@
 * **Consequences:**
   * ✅ **Positive:** Simplifies deployment, logging, and database transactions for the MVP.
   * ⚠️ **Trade-off:** Prevents independent scaling of individual domains, but remains easily decomposable if needed in future releases.
+
+---
+
+### 📌 ADR-009: Postgres-Maximalist Architecture
+* **Status:** `Accepted`
+* **Context:** The application handles a mix of highly relational data (Users, Votes) and unstructured/flexible data (Metadata, Settings). Evaluating whether to use Polyglot Persistence (e.g., Postgres + MongoDB).
+* **Decision:** Adopt a "Postgres-Maximalist" architecture. Use standard SQL tables for core relational data, native `JSONB` for schema-less document data, and `PostGIS` for geospatial features.
+* **Consequences:**
+  * ✅ **Positive:** Eliminates the operational complexity of managing multiple database engines; preserves transactional integrity across all data types.
+  * ⚠️ **Trade-off:** May not scale horizontally as effortlessly as specialized NoSQL databases for unstructured data, but sufficient for early-to-mid scale.
 
 ---
 
