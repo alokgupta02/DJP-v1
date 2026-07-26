@@ -139,20 +139,16 @@ export default function IssuesPage() {
           <div>
             <h1 className="text-[var(--text-heading)] font-bold text-[var(--color-text-primary)] mb-1">Issues</h1>
             <p className="text-sm text-[var(--color-text-secondary)]">Join 12,402 citizens in monitoring and fixing ward problems.</p>
-            {loading ? (
+            {loading && (
               <span className="text-xs text-[var(--color-brand)] animate-pulse font-semibold mt-1 block">
                 🔄 Refreshing live civic issues from server...
-              </span>
-            ) : (
-              <span className="text-xs text-[var(--color-text-secondary)] font-semibold mt-1 block opacity-80">
-                🟢 Live civic feed connected
               </span>
             )}
           </div>
         </div>
 
         <div className="space-y-4 mb-8">
-          <TopicFilterBar />
+          <TopicFilterBar topics={["All Categories", "Roads & Traffic", "Garbage & Sanitation", "Water & Drainage", "Electricity", "Public Infrastructure", "Safety"]} />
           <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
             {FILTER_TABS.map((tab) => (
               <button

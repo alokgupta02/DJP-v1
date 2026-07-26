@@ -92,10 +92,13 @@ export default function DiscussionsPage() {
           <div className="flex items-center gap-2">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-text-secondary)]">Filters:</span>
             <select className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm focus:ring-1 focus:ring-[var(--color-brand)] outline-none text-[var(--color-text-primary)]">
-              <option>Category: All</option>
+              <option>Domain: All</option>
               <option>Infrastructure</option>
+              <option>Judiciary</option>
+              <option>Economy</option>
+              <option>Education</option>
+              <option>Healthcare</option>
               <option>Environment</option>
-              <option>Safety</option>
             </select>
             <select className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm focus:ring-1 focus:ring-[var(--color-brand)] outline-none text-[var(--color-text-primary)]">
               <option>Gov Level: All</option>
@@ -121,7 +124,7 @@ export default function DiscussionsPage() {
       </div>
 
       <div className="px-8 py-6 w-full">
-        <TopicFilterBar />
+        <TopicFilterBar topics={["All Discussions", "Proposals", "Questions", "Debates", "Feedback", "Announcements"]} />
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 pb-20">
           {combinedDiscussions.map((discussion) => (
             <div

@@ -78,7 +78,7 @@ export default function PollsPage() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <TopicFilterBar />
+          <TopicFilterBar topics={["All Domains", "Infrastructure", "Education", "Healthcare", "Economy", "Environment", "Judiciary", "Safety"]} />
           <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
             {FILTER_TABS.map((tab) => (
               <button
@@ -105,9 +105,7 @@ export default function PollsPage() {
             <select className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm text-[var(--color-text-secondary)] focus:ring-[var(--color-brand)] outline-none min-w-[140px]">
               <option>Ward 12</option>
             </select>
-            <select className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-full px-4 py-1.5 text-sm text-[var(--color-text-secondary)] focus:ring-[var(--color-brand)] outline-none min-w-[140px]">
-              <option>Category</option>
-            </select>
+
             <div className="ml-auto flex items-center gap-2 text-[var(--color-text-secondary)] text-xs">
               <span>Sorted by: Recent</span>
             </div>

@@ -2,14 +2,18 @@ import { useState } from "react";
 import { Flame, ChevronDown } from "lucide-react";
 import clsx from "clsx";
 
-export const TOPICS = [
+export const DEFAULT_TOPICS = [
   "All Topics", "Roads", "Garbage", "Water", "Electricity",
   "Judiciary", "Education", "Healthcare", "Police", "Environment",
   "Economy", "More",
 ];
 
-export default function TopicFilterBar() {
-  const [activeTopic, setActiveTopic] = useState("All Topics");
+interface TopicFilterBarProps {
+  topics?: string[];
+}
+
+export default function TopicFilterBar({ topics = DEFAULT_TOPICS }: TopicFilterBarProps) {
+  const [activeTopic, setActiveTopic] = useState(topics[0] || "All Topics");
 
   return (
     <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-4 mb-6 rounded-xl relative">
@@ -21,7 +25,7 @@ export default function TopicFilterBar() {
         </button>
       </div>
       <div className="flex flex-wrap gap-2 pr-40">
-        {TOPICS.map((topic) => (
+        {topics.map((topic) => (
           <button
             key={topic}
             onClick={() => setActiveTopic(topic)}
