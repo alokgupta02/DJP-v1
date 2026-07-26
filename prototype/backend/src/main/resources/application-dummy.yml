@@ -6,11 +6,3 @@ server:
 
 spring:
 
-  sql:
-    init:
-      mode: always
-      data-locations:
-        - classpath:data/users.sql
-        - classpath:data/issues.sql
-        - classpath:data/discussions.sql
-        - classpath:data/polls.sql

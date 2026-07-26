@@ -185,9 +185,7 @@ export default function DiscussionsPage() {
         </div>
       </div>
 
-        </div>
-
-        <aside className="hidden lg:flex flex-col w-80 border-l border-[var(--color-border)] bg-[var(--color-bg-surface)] shrink-0 self-stretch sticky top-[100px] max-h-[calc(100vh-100px)] overflow-y-auto">
+      <aside className="hidden lg:flex flex-col w-80 border-l border-[var(--color-border)] bg-[var(--color-bg-surface)] shrink-0 self-stretch sticky top-[100px] max-h-[calc(100vh-100px)] overflow-y-auto">
         <div className="p-6 space-y-8">
           <div>
             <h4 className="text-[11px] font-bold uppercase tracking-widest text-[var(--color-text-primary)] mb-4">Trending Topics</h4>
