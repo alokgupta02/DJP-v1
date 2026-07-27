@@ -54,8 +54,8 @@ public class ProfileIntegrationTest extends BaseIntegrationTest {
         mockMvc.perform(get("/djp/api/v1/profiles/" + user.getId())
                 .header("Authorization", "Bearer " + token))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(user.getId().toString()))
-                .andExpect(jsonPath("$.bio").value("Initial bio"));
+                .andExpect(jsonPath("$.data.id").value(user.getId().toString()))
+                .andExpect(jsonPath("$.data.bio").value("Initial bio"));
     }
 
     @Test
@@ -79,9 +79,9 @@ public class ProfileIntegrationTest extends BaseIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(user.getId().toString()))
-                .andExpect(jsonPath("$.bio").value("Updated bio text"))
-                .andExpect(jsonPath("$.occupation").value("Teacher"))
-                .andExpect(jsonPath("$.topics").value("Education, Roads"));
+                .andExpect(jsonPath("$.data.id").value(user.getId().toString()))
+                .andExpect(jsonPath("$.data.bio").value("Updated bio text"))
+                .andExpect(jsonPath("$.data.occupation").value("Teacher"))
+                .andExpect(jsonPath("$.data.topics").value("Education, Roads"));
     }
 }

@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.dto.ApiResponse;
 import com.djp.backend.dto.UserDto;
 import com.djp.backend.repository.UserRepository;
 import org.springframework.http.HttpStatus;
@@ -24,42 +25,45 @@ public class AuthController {
     }
 
     @GetMapping("/google")
-    public ResponseEntity<Map<String, String>> initiateGoogleLogin() {
+    public ResponseEntity<ApiResponse<Map<String, String>>> initiateGoogleLogin() {
         Map<String, String> response = new HashMap<>();
         response.put("provider", "google");
         response.put("redirectUrl", "/oauth2/authorization/google");
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(ApiResponse.success(response, "Google login initiated."));
     }
 
     @GetMapping("/github")
-    public ResponseEntity<Map<String, String>> initiateGithubLogin() {
+    public ResponseEntity<ApiResponse<Map<String, String>>> initiateGithubLogin() {
         Map<String, String> response = new HashMap<>();
         response.put("provider", "github");
         response.put("redirectUrl", "/oauth2/authorization/github");
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(ApiResponse.success(response, "Github login initiated."));
     }
 
     @PostMapping("/dev-login")
-    public ResponseEntity<Map<String, Object>> devLogin(@RequestParam(defaultValue = "citizen@djp.org") String email) {
+    public ResponseEntity<ApiResponse<Map<String, Object>>> devLogin(@RequestParam(defaultValue = "citizen@djp.org") String email) {
         return userRepository.findByEmail(email)
                 .map(user -> {
                     Map<String, Object> response = new HashMap<>();
                     response.put("token", jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole()));
                     response.put("user", UserDto.fromEntity(user));
-                    return ResponseEntity.ok(response);
+                    return ResponseEntity.ok(ApiResponse.success(response, "Login successful."));
                 })
-                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Invalid credentials.")));
     }
 
     @GetMapping("/me")
-    public ResponseEntity<UserDto> getMe(Authentication authentication) {
+    public ResponseEntity<ApiResponse<UserDto>> getMe(Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
         }
         String email = authentication.getName();
         return userRepository.findByEmail(email)
-                .map(user -> ResponseEntity.ok(UserDto.fromEntity(user)))
-                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+                .map(user -> ResponseEntity.ok(ApiResponse.success(UserDto.fromEntity(user), "User fetched successfully.")))
+                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found.")));
     }
 
 }

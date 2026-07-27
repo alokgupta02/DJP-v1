@@ -80,14 +80,14 @@ public class UserOnboardingIntegrationTest extends BaseIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(user.getId().toString()))
-                .andExpect(jsonPath("$.fullName").value("Citizen Updated"))
-                .andExpect(jsonPath("$.location").value("Ward 12, Indrapuri, Bhopal"))
-                .andExpect(jsonPath("$.pincode").value("462021"))
-                .andExpect(jsonPath("$.occupation").value("Software Engineer"))
-                .andExpect(jsonPath("$.bio").value("Passionate about civic transparency and clean roads."))
-                .andExpect(jsonPath("$.topics").value("Roads, Water Supply, Digital Governance"))
-                .andExpect(jsonPath("$.onboardingCompleted").value(true));
+                .andExpect(jsonPath("$.data.id").value(user.getId().toString()))
+                .andExpect(jsonPath("$.data.fullName").value("Citizen Updated"))
+                .andExpect(jsonPath("$.data.location").value("Ward 12, Indrapuri, Bhopal"))
+                .andExpect(jsonPath("$.data.pincode").value("462021"))
+                .andExpect(jsonPath("$.data.occupation").value("Software Engineer"))
+                .andExpect(jsonPath("$.data.bio").value("Passionate about civic transparency and clean roads."))
+                .andExpect(jsonPath("$.data.topics").value("Roads, Water Supply, Digital Governance"))
+                .andExpect(jsonPath("$.data.onboardingCompleted").value(true));
     }
 
     @Test

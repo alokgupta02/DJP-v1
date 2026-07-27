@@ -78,9 +78,9 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(validJson))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.title").value("Water leakage in ward 12"))
-                .andExpect(jsonPath("$.status").value("REPORTED"));
+                .andExpect(jsonPath("$.data.id").exists())
+                .andExpect(jsonPath("$.data.title").value("Water leakage in ward 12"))
+                .andExpect(jsonPath("$.data.status").value("REPORTED"));
 
         // Assert that the mutation was audited
         org.junit.jupiter.api.Assertions.assertEquals(1, auditLogRepository.count());

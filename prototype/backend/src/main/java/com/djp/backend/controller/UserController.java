@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.dto.ApiResponse;
 import com.djp.backend.dto.OnboardingUpdateRequestDto;
 import com.djp.backend.dto.UserDto;
 import com.djp.backend.exception.ResourceNotFoundException;
@@ -25,19 +26,19 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserDto> getUserById(@PathVariable UUID userId) {
+    public ResponseEntity<ApiResponse<UserDto>> getUserById(@PathVariable UUID userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
-        return ResponseEntity.ok(UserDto.fromEntity(user));
+        return ResponseEntity.ok(ApiResponse.success(UserDto.fromEntity(user), "User fetched successfully."));
     }
 
     @PatchMapping("/{userId}/onboarding")
-    public ResponseEntity<UserDto> completeOnboarding(
+    public ResponseEntity<ApiResponse<UserDto>> completeOnboarding(
             @PathVariable UUID userId,
             @RequestBody OnboardingUpdateRequestDto dto
     ) {
         User updatedUser = userService.completeOnboarding(userId, dto);
-        return ResponseEntity.ok(UserDto.fromEntity(updatedUser));
+        return ResponseEntity.ok(ApiResponse.success(UserDto.fromEntity(updatedUser), "Onboarding completed successfully."));
     }
 
 }

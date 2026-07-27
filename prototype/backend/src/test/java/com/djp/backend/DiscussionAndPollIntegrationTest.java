@@ -67,8 +67,8 @@ public class DiscussionAndPollIntegrationTest extends BaseIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.title").value("Sustainable Multi-level Parking?"));
+                .andExpect(jsonPath("$.data.id").exists())
+                .andExpect(jsonPath("$.data.title").value("Sustainable Multi-level Parking?"));
     }
 
     @Test
@@ -96,8 +96,8 @@ public class DiscussionAndPollIntegrationTest extends BaseIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.question").value("Should Ward 12 implement No Car Sundays?"));
+                .andExpect(jsonPath("$.data.id").exists())
+                .andExpect(jsonPath("$.data.question").value("Should Ward 12 implement No Car Sundays?"));
     }
 
     @Test

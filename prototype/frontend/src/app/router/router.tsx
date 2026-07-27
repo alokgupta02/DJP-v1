@@ -2,34 +2,83 @@ import {
   createBrowserRouter,
   Navigate,
 } from "react-router-dom";
+import { Suspense, lazy } from "react";
 
 import { AppLayout } from "../../shared/components/layout";
 import AuthLayout from "../../app/layouts/AuthLayout";
 
-import LoginPage from "../../features/auth/LoginPage";
-import SignupPage from "../../features/auth/SignupPage";
-import OTPPage from "../../features/auth/OTPPage";
-import Step1BasicInfo from "../../features/auth/onboarding/Step1BasicInfo";
-import Step2Location from "../../features/auth/onboarding/Step2Location";
-import Step3About from "../../features/auth/onboarding/Step3About";
-import { OnboardingProvider } from "../../features/auth/onboarding/OnboardingProvider";
+// Lazy-loaded route components for code splitting
+const LoginPage = lazy(() => import("../../features/auth/LoginPage"));
+const SignupPage = lazy(() => import("../../features/auth/SignupPage"));
+const OTPPage = lazy(() => import("../../features/auth/OTPPage"));
+const Step1BasicInfo = lazy(() => import("../../features/auth/onboarding/Step1BasicInfo"));
+const Step2Location = lazy(() => import("../../features/auth/onboarding/Step2Location"));
+const Step3About = lazy(() => import("../../features/auth/onboarding/Step3About"));
+const OnboardingProvider = lazy(() => import("../../features/auth/onboarding/OnboardingProvider"));
 
-import FeedPage from "../../features/feed/FeedPage";
+const FeedPage = lazy(() => import("../../features/feed/FeedPage"));
 
-import IssuesPage from "../../features/issues/IssuesPage";
-import IssueDetailPage from "../../features/issues/IssueDetailPage";
-import CreatePostPage from "../../features/create/CreatePostPage";
-import DiscussionsPage from "../../features/discussions/DiscussionsPage";
-import DiscussionDetailPage from "../../features/discussions/DiscussionDetailPage";
-import PollsPage from "../../features/polls/PollsPage";
-import PollDetailPage from "../../features/polls/PollDetailPage";
-import RepresentativesPage from "../../features/representatives/RepresentativesPage";
-import NotificationsPage from "../../features/notifications/NotificationsPage";
-import PetitionsPage from "../../features/petitions/PetitionsPage";
-import InsightsPage from "../../features/insights/InsightsPage";
-import ProfilePage from "../../features/profile/ProfilePage";
+const IssuesPage = lazy(() => import("../../features/issues/IssuesPage"));
+const IssueDetailPage = lazy(() => import("../../features/issues/IssueDetailPage"));
+const CreatePostPage = lazy(() => import("../../features/create/CreatePostPage"));
+const DiscussionsPage = lazy(() => import("../../features/discussions/DiscussionsPage"));
+const DiscussionDetailPage = lazy(() => import("../../features/discussions/DiscussionDetailPage"));
+const PollsPage = lazy(() => import("../../features/polls/PollsPage"));
+const PollDetailPage = lazy(() => import("../../features/polls/PollDetailPage"));
+const RepresentativesPage = lazy(() => import("../../features/representatives/RepresentativesPage"));
+const NotificationsPage = lazy(() => import("../../features/notifications/NotificationsPage"));
+const PetitionsPage = lazy(() => import("../../features/petitions/PetitionsPage"));
+const InsightsPage = lazy(() => import("../../features/insights/InsightsPage"));
+const ProfilePage = lazy(() => import("../../features/profile/ProfilePage"));
 
-import NotFoundPage from "../../features/NotFoundPage";
+const NotFoundPage = lazy(() => import("../../features/NotFoundPage"));
+
+// Skeleton loader for lazy loading
+function PageSkeleton() {
+  return (
+    <div className="flex-1 p-8 flex items-center justify-center">
+      <div className="animate-pulse space-y-6 w-full max-w-3xl">
+        <div className="h-8 bg-[var(--color-bg-subtle)] rounded w-1/4"></div>
+        <div className="h-4 bg-[var(--color-bg-subtle)] rounded w-1/2"></div>
+        <div className="h-4 bg-[var(--color-bg-subtle)] rounded w-1/3"></div>
+        <div className="h-4 bg-[var(--color-bg-subtle)] rounded w-full"></div>
+        <div className="h-4 bg-[var(--color-bg-subtle)] rounded w-full"></div>
+        <div className="h-4 bg-[var(--color-bg-subtle)] rounded w-3/4"></div>
+      </div>
+    </div>
+  );
+}
+
+// Wrapper to add Suspense boundary
+function withSuspense(Component: React.ComponentType) {
+  return () => (
+    <Suspense fallback={<PageSkeleton />}>
+      <Component />
+    </Suspense>
+  );
+}
+
+const FeedPageWithSuspense = withSuspense(FeedPage);
+const IssuesPageWithSuspense = withSuspense(IssuesPage);
+const IssueDetailPageWithSuspense = withSuspense(IssueDetailPage);
+const CreatePostPageWithSuspense = withSuspense(CreatePostPage);
+const DiscussionsPageWithSuspense = withSuspense(DiscussionsPage);
+const DiscussionDetailPageWithSuspense = withSuspense(DiscussionDetailPage);
+const PollsPageWithSuspense = withSuspense(PollsPage);
+const PollDetailPageWithSuspense = withSuspense(PollDetailPage);
+const RepresentativesPageWithSuspense = withSuspense(RepresentativesPage);
+const NotificationsPageWithSuspense = withSuspense(NotificationsPage);
+const PetitionsPageWithSuspense = withSuspense(PetitionsPage);
+const InsightsPageWithSuspense = withSuspense(InsightsPage);
+const ProfilePageWithSuspense = withSuspense(ProfilePage);
+const LoginPageWithSuspense = withSuspense(LoginPage);
+const SignupPageWithSuspense = withSuspense(SignupPage);
+const OTPPageWithSuspense = withSuspense(OTPPage);
+const Step1BasicInfoWithSuspense = withSuspense(Step1BasicInfo);
+const Step2LocationWithSuspense = withSuspense(Step2Location);
+const Step3AboutWithSuspense = withSuspense(Step3About);
+const OnboardingProviderWithSuspense = withSuspense(OnboardingProvider);
+const NotFoundPageWithSuspense = withSuspense(NotFoundPage);
 
 export const router = createBrowserRouter([
   {
@@ -42,16 +91,16 @@ export const router = createBrowserRouter([
 
       {
         path: "/feed",
-        element: <FeedPage />,
+        element: <FeedPageWithSuspense />,
       },
       {
         path: "/submit",
-        element: <CreatePostPage />,
+        element: <CreatePostPageWithSuspense />,
       },
 
       {
         path: "/issues",
-        element: <IssuesPage />,
+        element: <IssuesPageWithSuspense />,
       },
       {
         path: "/issues/new",
@@ -59,12 +108,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/issues/:id",
-        element: <IssueDetailPage />,
+        element: <IssueDetailPageWithSuspense />,
       },
 
       {
         path: "/discussions",
-        element: <DiscussionsPage />,
+        element: <DiscussionsPageWithSuspense />,
       },
       {
         path: "/discussions/new",
@@ -72,12 +121,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/discussions/:id",
-        element: <DiscussionDetailPage />,
+        element: <DiscussionDetailPageWithSuspense />,
       },
 
       {
         path: "/polls",
-        element: <PollsPage />,
+        element: <PollsPageWithSuspense />,
       },
       {
         path: "/polls/new",
@@ -85,32 +134,32 @@ export const router = createBrowserRouter([
       },
       {
         path: "/polls/:id",
-        element: <PollDetailPage />,
+        element: <PollDetailPageWithSuspense />,
       },
 
       {
         path: "/profile",
-        element: <ProfilePage />,
+        element: <ProfilePageWithSuspense />,
       },
       {
         path: "/profile/:id",
-        element: <ProfilePage />,
+        element: <ProfilePageWithSuspense />,
       },
       {
         path: "/representatives",
-        element: <RepresentativesPage />,
+        element: <RepresentativesPageWithSuspense />,
       },
       {
         path: "/notifications",
-        element: <NotificationsPage />,
+        element: <NotificationsPageWithSuspense />,
       },
       {
         path: "/petitions",
-        element: <PetitionsPage />,
+        element: <PetitionsPageWithSuspense />,
       },
       {
         path: "/insights",
-        element: <InsightsPage />,
+        element: <InsightsPageWithSuspense />,
       }
     ],
   },
@@ -118,25 +167,25 @@ export const router = createBrowserRouter([
   {
     element: <AuthLayout />,
     children: [
-      { path: "/login", element: <LoginPage /> },
-      { path: "/signup", element: <SignupPage /> },
-      { path: "/otp", element: <OTPPage /> },
+      { path: "/login", element: <LoginPageWithSuspense /> },
+      { path: "/signup", element: <SignupPageWithSuspense /> },
+      { path: "/otp", element: <OTPPageWithSuspense /> },
     ],
   },
 
   {
     path: "/onboarding",
-    element: <OnboardingProvider />,
+    element: <OnboardingProviderWithSuspense />,
     children: [
-      { path: "basic-info", element: <Step1BasicInfo /> },
-      { path: "location", element: <Step2Location /> },
-      { path: "about", element: <Step3About /> },
+      { path: "basic-info", element: <Step1BasicInfoWithSuspense /> },
+      { path: "location", element: <Step2LocationWithSuspense /> },
+      { path: "about", element: <Step3AboutWithSuspense /> },
     ],
   },
 
 
   {
     path: "*",
-    element: <NotFoundPage />,
+    element: <NotFoundPageWithSuspense />,
   },
 ]);

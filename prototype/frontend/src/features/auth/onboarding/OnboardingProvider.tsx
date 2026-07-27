@@ -5,7 +5,7 @@ import { type OnboardingData, DEFAULT_DATA } from "./OnboardingTypes";
 
 const STORAGE_KEY = "djp_onboarding_draft";
 
-export function OnboardingProvider({ children }: { children?: React.ReactNode }) {
+export default function OnboardingProvider({ children }: { children?: React.ReactNode }) {
   const [data, setData] = useState<OnboardingData>(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {

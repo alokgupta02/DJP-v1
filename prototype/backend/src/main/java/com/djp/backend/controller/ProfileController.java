@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.dto.ApiResponse;
 import com.djp.backend.dto.ProfileDto;
 import com.djp.backend.dto.ProfileUpdateRequestDto;
 import com.djp.backend.model.User;
@@ -26,16 +27,16 @@ public class ProfileController {
     @GetMapping("/{id}")
     @PreAuthorize("#id.toString() == authentication.principal or hasRole('ADMIN')")
     @Operation(summary = "Get a user profile by ID")
-    public ResponseEntity<ProfileDto> getProfile(@PathVariable UUID id) {
+    public ResponseEntity<ApiResponse<ProfileDto>> getProfile(@PathVariable UUID id) {
         User user = profileService.getProfile(id);
-        return ResponseEntity.ok(ProfileDto.fromEntity(user));
+        return ResponseEntity.ok(ApiResponse.success(ProfileDto.fromEntity(user), "Profile fetched successfully."));
     }
 
     @PatchMapping("/{id}")
     @PreAuthorize("#id.toString() == authentication.principal or hasRole('ADMIN')")
     @Operation(summary = "Update a user profile")
-    public ResponseEntity<ProfileDto> updateProfile(@PathVariable UUID id, @RequestBody ProfileUpdateRequestDto request) {
+    public ResponseEntity<ApiResponse<ProfileDto>> updateProfile(@PathVariable UUID id, @RequestBody ProfileUpdateRequestDto request) {
         User updatedUser = profileService.updateProfile(id, request);
-        return ResponseEntity.ok(ProfileDto.fromEntity(updatedUser));
+        return ResponseEntity.ok(ApiResponse.success(ProfileDto.fromEntity(updatedUser), "Profile updated successfully."));
     }
 }

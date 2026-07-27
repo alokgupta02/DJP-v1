@@ -1,6 +1,6 @@
 package com.djp.backend.exception;
 
-import com.djp.backend.dto.ErrorResponse;
+import com.djp.backend.dto.ApiResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,57 +12,39 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-    private static final String MDC_CORRELATION_ID_KEY = "X-Correlation-ID";
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException ex, HttpServletRequest request) {
+    public ResponseEntity<ApiResponse<Void>> handleResourceNotFoundException(ResourceNotFoundException ex, HttpServletRequest request) {
         log.warn("Resource not found: {}", ex.getMessage());
-        ErrorResponse errorResponse = buildErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), request, null);
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(ApiResponse.error(HttpStatus.NOT_FOUND.value(), ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(UnauthorizedException.class)
-    public ResponseEntity<ErrorResponse> handleUnauthorizedException(UnauthorizedException ex, HttpServletRequest request) {
+    public ResponseEntity<ApiResponse<Void>> handleUnauthorizedException(UnauthorizedException ex, HttpServletRequest request) {
         log.warn("Unauthorized access: {}", ex.getMessage());
-        ErrorResponse errorResponse = buildErrorResponse(HttpStatus.UNAUTHORIZED, ex.getMessage(), request, null);
-        return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), ex.getMessage()), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponse> handleValidationException(MethodArgumentNotValidException ex, HttpServletRequest request) {
+    public ResponseEntity<ApiResponse<Void>> handleValidationException(MethodArgumentNotValidException ex, HttpServletRequest request) {
         log.warn("Validation failure on request: {}", request.getRequestURI());
-        Map<String, String> validationErrors = new HashMap<>();
+        List<ApiResponse.ValidationError> validationErrors = new ArrayList<>();
         for (FieldError error : ex.getBindingResult().getFieldErrors()) {
-            validationErrors.put(error.getField(), error.getDefaultMessage());
+            validationErrors.add(new ApiResponse.ValidationError(error.getField(), error.getDefaultMessage()));
         }
-        ErrorResponse errorResponse = buildErrorResponse(HttpStatus.BAD_REQUEST, "Validation failed", request, validationErrors);
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ApiResponse.error(HttpStatus.BAD_REQUEST.value(), "Validation failed", validationErrors), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleAllExceptions(Exception ex, HttpServletRequest request) {
+    public ResponseEntity<ApiResponse<Void>> handleAllExceptions(Exception ex, HttpServletRequest request) {
         log.error("Unhandled internal server error occurred", ex);
-        ErrorResponse errorResponse = buildErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", request, null);
-        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    private ErrorResponse buildErrorResponse(HttpStatus status, String message, HttpServletRequest request, Map<String, String> validationErrors) {
-        String correlationId = MDC.get(MDC_CORRELATION_ID_KEY);
-        return new ErrorResponse(
-            System.currentTimeMillis(),
-            status.value(),
-            status.getReasonPhrase(),
-            message,
-            request.getRequestURI(),
-            correlationId,
-            validationErrors
-        );
+        return new ResponseEntity<>(ApiResponse.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), "An unexpected error occurred"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

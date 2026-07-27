@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import {
   ThumbsUp, MessageSquare, Users,
   AlertTriangle, Trash2,
@@ -8,6 +9,7 @@ import {
 import clsx from "clsx";
 import { toggleFollow } from "../interactions/interactionsApi";
 import type { FeedIssue, FeedDiscussion, FeedPoll, FeedPollOption } from "./feedTypes";
+import { fetchIssues, fetchDiscussions, fetchPolls } from "./feedApi";
 
 // Haversine distance helper
 function getDistanceInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
@@ -379,111 +381,22 @@ function TrendCard({ item }: { item: typeof TRENDING[number] }) {
 export default function FeedPage() {
   const [activeContent, setActiveContent] = useState("All");
   const [isBannerHidden, setIsBannerHidden] = useState(() => sessionStorage.getItem("djp_hide_completion_banner") === "true");
-  const [issues, setIssues] = useState<FeedIssue[]>([]);
-  const [discussions, setDiscussions] = useState<FeedDiscussion[]>([]);
-  const [polls, setPolls] = useState<FeedPoll[]>([]);
   const [userCoords, setUserCoords] = useState<{lat: number, lng: number} | null>(null);
+
+  // TanStack Query - data fetching with caching, deduping, retries
+  const { data: issues = [] } = useQuery({ queryKey: ["feed", "issues"], queryFn: fetchIssues });
+  const { data: discussions = [] } = useQuery({ queryKey: ["feed", "discussions"], queryFn: fetchDiscussions });
+  const { data: polls = [] } = useQuery({ queryKey: ["feed", "polls"], queryFn: fetchPolls });
 
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          setUserCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-        },
+        (pos) => { setUserCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude }); },
         (err) => console.log("Geolocation error:", err),
         { enableHighAccuracy: true }
       );
     }
   }, []);
-
-  useEffect(() => {
-    // Fetch issues
-    fetch("/djp/api/v1/issues")
-      .then(res => res.json())
-      .then(data => {
-        setIssues(data.map((item: { id: string; title: string; category: string; priority?: string; location?: string; createdAt?: string; status?: string; supportsCount?: number; commentsCount?: number; metadata?: string }) => {
-          let meta: Record<string, unknown> = {};
-          if (item.metadata) {
-            try { meta = JSON.parse(item.metadata); } catch (e) { console.warn("Failed to parse issue metadata:", e); }
-          }
-          return {
-            ...meta,
-            id: item.id,
-            title: item.title,
-            category: item.category,
-            severity: item.priority === 'CRITICAL' ? 'Critical' : 'High',
-            location: item.location || "Unknown Location",
-            time: item.createdAt ? new Date(item.createdAt).toLocaleDateString() : "Recently",
-            status: item.status || "Open",
-            supports: item.supportsCount || 0,
-            comments: item.commentsCount || 0,
-          };
-        }));
-      })
-      .catch((err) => console.error("Failed to fetch issues:", err));
-
-    // Fetch discussions
-    fetch("/djp/api/v1/discussions")
-      .then(res => res.json())
-      .then(data => {
-        setDiscussions(data.map((item: { id: string; title: string; description: string; createdAt?: string; votesCount?: number; participantCount?: number; commentsCount?: number; location?: string; latitude?: number; longitude?: number; metadata?: string }) => {
-          let meta: Record<string, unknown> = {};
-          if (item.metadata) {
-            try { meta = JSON.parse(item.metadata); } catch (e) { console.warn("Failed to parse discussion metadata:", e); }
-          }
-          return {
-            ...meta,
-            id: item.id,
-            title: item.title,
-            description: item.description,
-            time: item.createdAt ? new Date(item.createdAt).toLocaleDateString() : "Recently",
-            supports: item.votesCount || 0,
-            participantCount: item.participantCount || 0,
-            comments: item.commentsCount || 0,
-            tags: (meta.tags as string[]) || ["General"],
-            tagVariant: (meta.tagVariant as string[]) || ["secondary"],
-            participants: (meta.participants as string[]) || [],
-            author: (meta.author as string) || "Anonymous",
-            location: item.location || "Unknown Location",
-            latitude: item.latitude,
-            longitude: item.longitude,
-          };
-        }));
-      })
-      .catch((err) => console.error("Failed to fetch discussions:", err));
-
-    // Fetch polls
-    fetch("/djp/api/v1/polls")
-      .then(res => res.json())
-      .then(data => {
-        setPolls(data.map((item: { id: string; question: string; description: string; expiresAt?: string; votesCount?: number; commentsCount?: number; location?: string; latitude?: number; longitude?: number; govLevel?: string; metadata?: string; optionsJson?: string }) => {
-          let meta: Record<string, unknown> = {};
-          if (item.metadata) {
-            try { meta = JSON.parse(item.metadata); } catch (e) { console.warn("Failed to parse poll metadata:", e); }
-          }
-          let options: Array<{ label: string; pct: number; primary?: boolean }> = [];
-          if (item.optionsJson) {
-            try { options = JSON.parse(item.optionsJson); } catch (e) { console.warn("Failed to parse poll options:", e); }
-          }
-          return {
-            ...meta,
-            id: item.id,
-            question: item.question,
-            description: item.description,
-            options: options,
-            time: item.expiresAt ? "Ends " + new Date(item.expiresAt).toLocaleDateString() : "Ongoing",
-            votes: item.votesCount || 0,
-            comments: item.commentsCount || 0,
-            author: (meta.author as string) || "Anonymous",
-            location: item.location || "Unknown Location",
-            latitude: item.latitude,
-            longitude: item.longitude,
-            govLevel: item.govLevel,
-          };
-        }));
-      })
-      .catch((err) => console.error("Failed to fetch polls:", err));
-  }, [userCoords]); // Re-fetch or re-evaluate when userCoords changes so we can attach distance
 
   const processWithDistance = <T extends { latitude?: number; longitude?: number }>(items: T[]) => {
     return items.map(item => {

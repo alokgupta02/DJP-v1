@@ -61,10 +61,10 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
                 .header("Authorization", "Bearer " + token)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(user.getId().toString()))
-                .andExpect(jsonPath("$.email").value(email))
-                .andExpect(jsonPath("$.fullName").value("Jane Doe"))
-                .andExpect(jsonPath("$.role").value("CITIZEN"));
+                .andExpect(jsonPath("$.data.id").value(user.getId().toString()))
+                .andExpect(jsonPath("$.data.email").value(email))
+                .andExpect(jsonPath("$.data.fullName").value("Jane Doe"))
+                .andExpect(jsonPath("$.data.role").value("CITIZEN"));
     }
 
     @Test
@@ -72,8 +72,8 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
         mockMvc.perform(get("/djp/api/v1/auth/google")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.provider").value("google"))
-                .andExpect(jsonPath("$.redirectUrl").value("/oauth2/authorization/google"));
+                .andExpect(jsonPath("$.data.provider").value("google"))
+                .andExpect(jsonPath("$.data.redirectUrl").value("/oauth2/authorization/google"));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
         mockMvc.perform(get("/djp/api/v1/auth/github")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.provider").value("github"))
-                .andExpect(jsonPath("$.redirectUrl").value("/oauth2/authorization/github"));
+                .andExpect(jsonPath("$.data.provider").value("github"))
+                .andExpect(jsonPath("$.data.redirectUrl").value("/oauth2/authorization/github"));
     }
 }
