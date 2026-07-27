@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MapPin, Edit3, Share2, Phone, Mail, Home, ShieldCheck, X, UserPlus, UserMinus } from "lucide-react";
 
-import { fetchUser, updateProfile } from "./usersApi";
+import { fetchUser, updateProfile, fetchUserStats } from "./usersApi";
 import { toggleFollow } from "../interactions/interactionsApi";
-import type { UserDto } from "./usersApi";
+import { shareContent } from "../../shared/lib/share";
+import type { UserDto, UserStats } from "./usersApi";
 import clsx from "clsx";
 
 export default function ProfilePage() {
@@ -12,6 +13,7 @@ export default function ProfilePage() {
   const [user, setUser] = useState<UserDto | null>(null);
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
+  const [stats, setStats] = useState<UserStats>({ issuesReported: 0, discussionsCreated: 0, pollsCreated: 0 });
 
   const [isFollowing, setIsFollowing] = useState(false); // we might fetch this from user object or another API later
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
@@ -30,8 +32,12 @@ export default function ProfilePage() {
         setCurrentUserId(loggedInId);
         
         const targetUserId = paramId || loggedInId;
-        const data = await fetchUser(targetUserId);
+        const [data, userStats] = await Promise.all([
+          fetchUser(targetUserId),
+          fetchUserStats(targetUserId),
+        ]);
         setUser(data);
+        setStats(userStats);
         
         // Only update local storage if it's our own profile
         if (!paramId || paramId === loggedInId) {
@@ -116,7 +122,7 @@ export default function ProfilePage() {
                 <Edit3 size={16} />
                 Edit Profile
               </button>
-              <button className="bg-[var(--color-bg-surface)] text-[var(--color-brand)] border border-[var(--color-brand)] px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:bg-[var(--color-bg-subtle)] transition-all active:scale-95 text-sm">
+              <button onClick={() => shareContent("My DJP Civic Profile")} className="bg-[var(--color-bg-surface)] text-[var(--color-brand)] border border-[var(--color-brand)] px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:bg-[var(--color-bg-subtle)] transition-all active:scale-95 text-sm">
                 <Share2 size={16} />
                 Share Stats
               </button>
@@ -154,7 +160,7 @@ export default function ProfilePage() {
             <span className="text-3xl font-bold opacity-80">📢</span>
           </div>
           <div className="mt-6">
-            <h3 className="text-[56px] leading-tight font-bold">0</h3>
+            <h3 className="text-[56px] leading-tight font-bold">{stats.issuesReported}</h3>
             <p className="text-lg opacity-90">Issues Reported</p>
           </div>
         </div>
@@ -165,7 +171,7 @@ export default function ProfilePage() {
               <MessageSquareIcon />
             </div>
             <div>
-              <h3 className="text-[var(--text-display)] leading-none font-bold text-[var(--color-text-primary)]">0</h3>
+              <h3 className="text-[var(--text-display)] leading-none font-bold text-[var(--color-text-primary)]">{stats.discussionsCreated}</h3>
               <p className="text-sm text-[var(--color-text-secondary)]">Discussions Created</p>
             </div>
           </div>
@@ -177,7 +183,7 @@ export default function ProfilePage() {
               <VoteIcon />
             </div>
             <div>
-              <h3 className="text-[var(--text-display)] leading-none font-bold text-[var(--color-text-primary)]">0</h3>
+              <h3 className="text-[var(--text-display)] leading-none font-bold text-[var(--color-text-primary)]">{stats.pollsCreated}</h3>
               <p className="text-sm text-[var(--color-text-secondary)]">Polls Created</p>
             </div>
           </div>

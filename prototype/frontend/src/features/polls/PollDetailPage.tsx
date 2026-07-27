@@ -4,6 +4,8 @@ import { Vote, MessageSquare, Share2, ArrowLeft, Search, ArrowBigUp, ArrowBigDow
 import clsx from "clsx";
 import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";
 import { getComments, toggleVote, toggleFollow } from "../interactions/interactionsApi";
+import { shareContent } from "../../shared/lib/share";
+import { castPollVote } from "./pollsApi";
 import type { PollData, PollOption, PollMeta } from "./pollTypes";
 
 const POLLS_DATA: Record<string, PollData> = {
@@ -39,6 +41,9 @@ export default function PollDetailPage() {
   const [poll, setPoll] = useState<PollData>(POLLS_DATA[mockKey] || POLLS_DATA["1"]);
   const [comments, setComments] = useState<CommentData[]>(poll.comments || []);
   const [isFollowing, setIsFollowing] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [voting, setVoting] = useState(false);
+  const [hasVoted, setHasVoted] = useState(false);
 
   const fetchComments = () => {
     if (!id) return;
@@ -173,8 +178,13 @@ export default function PollDetailPage() {
                 <div className="mb-6 p-5 border border-[var(--color-border)] rounded-xl bg-[var(--color-bg-subtle)]">
                   <h3 className="font-bold text-[var(--color-text-primary)] mb-4">Cast your vote</h3>
                   <div className="space-y-4 mb-6">
-                    {poll.options.map((opt) => (
-                      <div key={opt.label} className="space-y-2">
+                    {poll.options.map((opt, i) => (
+                      <div key={opt.label}
+                        onClick={() => { if (!hasVoted) setSelectedOption(i); }}
+                        className={clsx("space-y-2 p-3 rounded-xl cursor-pointer transition-colors",
+                          selectedOption === i ? "bg-[var(--color-brand)]/10 border border-[var(--color-brand)]" : "hover:bg-[var(--color-bg-surface)]"
+                        )}
+                      >
                         <div className="flex justify-between text-sm">
                           <span className="font-bold text-[var(--color-text-primary)]">{opt.label}</span>
                           <span className={opt.primary ? "text-[var(--color-brand)] font-bold" : "text-[var(--color-text-secondary)]"}>{opt.pct}%</span>
@@ -186,8 +196,24 @@ export default function PollDetailPage() {
                     ))}
                   </div>
                   <div className="flex justify-center">
-                    <button className="px-8 py-2.5 bg-[var(--color-brand)] text-[var(--color-text-inverse)] font-bold rounded-full hover:scale-105 transition-transform text-sm shadow-md">
-                      Vote Now
+                    <button
+                      onClick={async () => {
+                        if (selectedOption === null || !id || hasVoted) return;
+                        setVoting(true);
+                        try {
+                          const updated = await castPollVote(id, selectedOption);
+                          setPoll((prev) => ({ ...prev, supports: updated.votesCount || prev.supports }));
+                          setHasVoted(true);
+                        } catch (e) {
+                          console.error("Failed to cast vote:", e);
+                        } finally {
+                          setVoting(false);
+                        }
+                      }}
+                      disabled={selectedOption === null || voting || hasVoted}
+                      className="px-8 py-2.5 bg-[var(--color-brand)] text-[var(--color-text-inverse)] font-bold rounded-full hover:scale-105 transition-transform text-sm shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {voting ? "Voting..." : hasVoted ? "Voted ✓" : "Vote Now"}
                     </button>
                   </div>
                 </div>
@@ -208,7 +234,7 @@ export default function PollDetailPage() {
                     {poll.participants.toLocaleString()} Votes
                   </div>
                   <div className="grow" />
-                  <button aria-label="Share" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button onClick={() => shareContent(poll.title)} aria-label="Share" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <Share2 size={16} /> Share
                   </button>
                 </div>

@@ -4,6 +4,7 @@ import { ChevronUp, ChevronDown } from "lucide-react";
 import clsx from "clsx";
 import { TopicFilterBar } from "../../shared/components/navigation";
 import { fetchDiscussions, type BackendDiscussionDto } from "./discussionsApi";
+import { toggleVote } from "../interactions/interactionsApi";
 
 interface Discussion {
   id: string;
@@ -64,11 +65,14 @@ export default function DiscussionsPage() {
   ];
 
   function handleVote(id: string, dir: "up" | "down") {
-    setVotes((prev) => {
-      const current = prev[id];
-      if (current === dir) return { ...prev, [id]: null };
-      return { ...prev, [id]: dir };
-    });
+    const value = dir === "up" ? 1 : -1;
+    toggleVote(id, "DISCUSSION", value).then(() => {
+      setVotes((prev) => {
+        const current = prev[id];
+        if (current === dir) return { ...prev, [id]: null };
+        return { ...prev, [id]: dir };
+      });
+    }).catch(console.error);
   }
 
   function getVoteCount(base: number, id: string): number {

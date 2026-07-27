@@ -5,6 +5,7 @@ import clsx from "clsx";
 
 import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";
 import { getComments, toggleVote, toggleFollow } from "../interactions/interactionsApi";
+import { shareContent } from "../../shared/lib/share";
 import type { DiscussionData, DiscussionMeta } from "./discussionTypes";
 const DISCUSSIONS_DATA: Record<string, DiscussionData> = {
   "ncert": {
@@ -315,7 +316,7 @@ export default function DiscussionDetailPage() {
                     <Users size={16} />
                     {discussion.participants.toLocaleString()}
                   </div>
-                  <button aria-label="Share" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button onClick={() => shareContent(discussion.title)} aria-label="Share" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <Share2 size={16} /> Share
                   </button>
                 </div>

@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -40,6 +41,34 @@ public class PollController {
                 .map(poll -> ResponseEntity.ok(ApiResponse.success(poll, "Poll fetched successfully.")))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND)
                         .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Poll not found.")));
+    }
+
+    @PostMapping("/{id}/vote")
+    public ResponseEntity<ApiResponse<PollResponseDto>> castVote(
+            @PathVariable UUID id,
+            @RequestBody Map<String, Integer> payload,
+            Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
+        }
+        User user = userRepository.findByEmail(authentication.getName()).orElse(null);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
+        }
+        int optionIndex = payload.getOrDefault("optionIndex", -1);
+        if (optionIndex < 0) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(ApiResponse.error(HttpStatus.BAD_REQUEST.value(), "Invalid option index."));
+        }
+        try {
+            PollResponseDto result = pollService.castVote(id, optionIndex, user);
+            return ResponseEntity.ok(ApiResponse.success(result, "Vote cast successfully."));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body(ApiResponse.error(HttpStatus.CONFLICT.value(), e.getMessage()));
+        }
     }
 
     @PostMapping

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPoll } from "../../polls/pollsApi";
 import RichEditor from "../../../shared/components/ui/RichEditor";
+import ImageUpload from "../../../shared/components/ui/ImageUpload";
 import LocationPicker, { type LocationData } from "../../../shared/components/ui/LocationPicker";
 
 interface CreatePollFormProps {
@@ -12,6 +13,7 @@ export default function CreatePollForm({ community }: CreatePollFormProps) {
   const navigate = useNavigate();
   const [question, setQuestion] = useState("");
   const [descriptionHtml, setDescriptionHtml] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [opt1, setOpt1] = useState("");
   const [opt2, setOpt2] = useState("");
   const [locationData, setLocationData] = useState<LocationData>({
@@ -78,6 +80,8 @@ export default function CreatePollForm({ community }: CreatePollFormProps) {
           placeholder="Poll Question*" 
         />
       </div>
+
+      <ImageUpload onUpload={setImageUrl} onRemove={() => setImageUrl("")} currentUrl={imageUrl} />
 
       <RichEditor 
         value={descriptionHtml}

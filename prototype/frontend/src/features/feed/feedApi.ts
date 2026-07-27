@@ -79,6 +79,36 @@ export async function fetchDiscussions(): Promise<FeedDiscussion[]> {
   return Array.isArray(data) ? data.map(mapDiscussion) : [];
 }
 
+export interface FeedPetition {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  signatures: number;
+  goal: number;
+  author: string;
+  daysLeft: number;
+  time: string;
+}
+
+export async function fetchPetitions(): Promise<FeedPetition[]> {
+  const res = await fetch("/djp/api/v1/petitions");
+  if (!res.ok) throw new Error("Failed to fetch petitions");
+  const responseJson = await res.json();
+  const items = responseJson.data || responseJson;
+  return Array.isArray(items) ? items.map((item: FeedPetition) => ({
+    id: item.id,
+    title: item.title,
+    description: item.description,
+    category: item.category || "General",
+    signatures: item.signatures || 0,
+    goal: item.signatureGoal || 100,
+    author: item.author || "Anonymous",
+    daysLeft: item.expiresAt ? Math.max(0, Math.ceil((new Date(item.expiresAt).getTime() - Date.now()) / 86400000)) : 30,
+    time: item.createdAt ? new Date(item.createdAt).toLocaleDateString() : "Recently",
+  })) : [];
+}
+
 export async function fetchPolls(): Promise<FeedPoll[]> {
   const res = await fetch("/djp/api/v1/polls");
   if (!res.ok) throw new Error("Failed to fetch polls");

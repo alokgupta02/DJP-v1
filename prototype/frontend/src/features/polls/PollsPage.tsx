@@ -4,6 +4,7 @@ import { Vote, MessageSquare, Share2, ChevronRight, TrendingUp, Clock, AlertTria
 import clsx from "clsx";
 import { TopicFilterBar } from "../../shared/components/navigation";
 import { fetchPolls, type BackendPollDto } from "./pollsApi";
+import { shareContent } from "../../shared/lib/share";
 
 const FILTER_TABS = ["Open", "Closed", "My Polls", "Following", "Needs Your Vote", "Near Me"];
 
@@ -175,7 +176,7 @@ export default function PollsPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <button className="px-6 py-2 bg-[var(--color-brand)] text-[var(--color-text-inverse)] font-bold rounded-full hover:scale-105 transition-transform text-sm">Vote Now</button>
-                      <button className="p-2 border border-[var(--color-border)] rounded-full text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)]">
+                      <button onClick={(e) => { e.preventDefault(); shareContent(poll.question); }} className="p-2 border border-[var(--color-border)] rounded-full text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-subtle)]">
                         <Share2 size={16} />
                       </button>
                     </div>

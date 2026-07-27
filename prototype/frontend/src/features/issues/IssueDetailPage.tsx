@@ -4,6 +4,7 @@ import { ThumbsUp, MessageSquare, Share2, ArrowLeft, AlertTriangle, Trash2, Drop
 import clsx from "clsx";
 import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";
 import { getComments, toggleVote, toggleFollow } from "../interactions/interactionsApi";
+import { shareContent } from "../../shared/lib/share";
 import type { IssueData, IssueMeta } from "./issueTypes";
 
 const ISSUES_DATA: Record<string, IssueData> = {
@@ -305,7 +306,7 @@ export default function IssueDetailPage() {
                     {issue.affected} Affected
                   </div>
                   <div className="grow" />
-                  <button aria-label="Share" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
+                  <button onClick={() => shareContent(issue.title)} aria-label="Share" className="flex items-center justify-center gap-1.5 px-4 min-h-[44px] rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-border)] text-[var(--color-text-primary)] font-semibold text-xs transition-colors border border-[var(--color-border)]">
                     <Share2 size={16} /> Share
                   </button>
                 </div>

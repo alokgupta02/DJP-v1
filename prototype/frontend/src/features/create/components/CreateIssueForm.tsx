@@ -3,6 +3,7 @@ import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createIssue } from "../../issues/issuesApi";
 import RichEditor from "../../../shared/components/ui/RichEditor";
+import ImageUpload from "../../../shared/components/ui/ImageUpload";
 import LocationPicker, { type LocationData } from "../../../shared/components/ui/LocationPicker";
 
 interface CreateIssueFormProps {
@@ -14,6 +15,7 @@ export default function CreateIssueForm({ community, priorityReason }: CreateIss
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [descriptionHtml, setDescriptionHtml] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [locationData, setLocationData] = useState<LocationData>({
     latitude: null,
     longitude: null,
@@ -78,6 +80,8 @@ export default function CreateIssueForm({ community, priorityReason }: CreateIss
           placeholder="Title*"
         />
       </div>
+
+      <ImageUpload onUpload={setImageUrl} onRemove={() => setImageUrl("")} currentUrl={imageUrl} />
 
       <RichEditor 
         value={descriptionHtml}

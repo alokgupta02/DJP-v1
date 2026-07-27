@@ -1,9 +1,25 @@
-import { TrendingDown, Star, TrendingUp, Minus, CheckCircle, AlertTriangle, Lightbulb, Heart } from "lucide-react";
+import { TrendingDown, Star, TrendingUp, Minus, CheckCircle, AlertTriangle, Lightbulb, Heart, Loader2 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
-
-const BARS = [24, 32, 40, 28, 52, 44, 60, 48, 36, 24, 40, 56];
+import { fetchInsights } from "./insightsApi";
 
 export default function InsightsPage() {
+  const { data: insights, isLoading } = useQuery({
+    queryKey: ["insights"],
+    queryFn: fetchInsights,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex-1 flex items-center justify-center">
+        <Loader2 className="animate-spin text-[var(--color-brand)]" size={32} />
+      </div>
+    );
+  }
+
+  if (!insights) return null;
+
+  const BARS = insights.resolutionTrends;
   return (
     <div className="flex-1 p-8 overflow-y-auto">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
@@ -33,20 +49,20 @@ export default function InsightsPage() {
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-12 lg:col-span-9 grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
           <div className="bg-[var(--color-bg-subtle)] p-4 rounded-xl flex flex-col items-center justify-center text-center">
-            <div className="relative w-20 h-20 mb-3">
-              <svg className="w-full h-full -rotate-90">
-                <circle cx="40" cy="40" r="32" fill="transparent" stroke="var(--color-border)" strokeWidth="6" />
-                <circle cx="40" cy="40" r="32" fill="transparent" stroke="var(--color-brand)" strokeWidth="6" strokeLinecap="round" strokeDasharray="201" strokeDashoffset="32" />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center text-base font-bold text-[var(--color-text-primary)]">84%</div>
-            </div>
+              <div className="relative w-20 h-20 mb-3">
+                <svg className="w-full h-full -rotate-90">
+                  <circle cx="40" cy="40" r="32" fill="transparent" stroke="var(--color-border)" strokeWidth="6" />
+                  <circle cx="40" cy="40" r="32" fill="transparent" stroke="var(--color-brand)" strokeWidth="6" strokeLinecap="round" strokeDasharray="201" strokeDashoffset={201 - (insights.resolutionRate / 100) * 201} />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center text-base font-bold text-[var(--color-text-primary)]">{insights.resolutionRate}%</div>
+              </div>
             <span className="text-xs text-[var(--color-text-secondary)]">Resolution Rate</span>
           </div>
 
           {[
-            { label: "Avg Response Time", value: "3.2", unit: "Days", trend: "12% improvement", up: true },
-            { label: "Citizen Satisfaction", value: "4.6", unit: "/ 5", stars: true },
-            { label: "Issues Reported", value: "12,402", quota: "67% of monthly quota" },
+            { label: "Avg Response Time", value: String(insights.avgResponseTimeDays), unit: "Days", trend: "12% improvement", up: true },
+            { label: "Citizen Satisfaction", value: String(insights.citizenSatisfaction), unit: "/ 5", stars: true },
+            { label: "Issues Reported", value: insights.issuesReported.toLocaleString(), quota: "67% of monthly quota" },
           ].map((metric) => (
             <div key={metric.label} className="bg-[var(--color-bg-subtle)] p-4 rounded-xl">
               <span className="text-[11px] text-[var(--color-text-secondary)] uppercase tracking-wider">{metric.label}</span>
@@ -102,19 +118,14 @@ export default function InsightsPage() {
           <div className="bg-[var(--color-bg-subtle)] p-6 rounded-xl">
             <h4 className="text-base font-bold text-[var(--color-text-primary)] mb-6">Category Breakdown</h4>
             <div className="space-y-4">
-              {[
-                { label: "Garbage Collection", count: "4,203", pct: 80 },
-                { label: "Potholes & Roads", count: "2,841", pct: 55 },
-                { label: "Water Supply", count: "2,104", pct: 40 },
-                { label: "Street Lights", count: "1,562", pct: 30 },
-              ].map((cat) => (
+              {insights.categoryBreakdown.length > 0 ? insights.categoryBreakdown.map((cat) => (
                 <div key={cat.label} className="space-y-1">
-                  <div className="flex justify-between text-sm"><span className="text-[var(--color-text-primary)]">{cat.label}</span><span className="text-[var(--color-text-secondary)]">{cat.count}</span></div>
+                  <div className="flex justify-between text-sm"><span className="text-[var(--color-text-primary)]">{cat.label}</span><span className="text-[var(--color-text-secondary)]">{cat.count.toLocaleString()}</span></div>
                   <div className="w-full h-2 bg-[var(--color-bg-muted)] rounded-full overflow-hidden">
                     <div className="h-full bg-[var(--color-brand)] rounded-full" style={{ width: `${cat.pct}%` }} />
                   </div>
                 </div>
-              ))}
+              )) : <p className="text-sm text-[var(--color-text-secondary)]">No data</p>}
             </div>
           </div>
 
@@ -129,11 +140,7 @@ export default function InsightsPage() {
                 </tr>
               </thead>
               <tbody className="text-sm">
-                {[
-                  { dept: "Sanitation", rate: 92, trend: "up" },
-                  { dept: "Public Works", rate: 78, trend: "flat" },
-                  { dept: "Electricity", rate: 85, trend: "up" },
-                ].map((row) => (
+                {insights.departmentEfficiency.map((row) => (
                   <tr key={row.dept} className="border-b border-[var(--color-border)]/30">
                     <td className="py-3 text-[var(--color-text-primary)]">{row.dept}</td>
                     <td className="py-3">
@@ -163,10 +170,10 @@ export default function InsightsPage() {
             </div>
             <ul className="space-y-4">
               {[
-                { icon: CheckCircle, text: "Sanitation response time improved by 24% following the new route optimization." },
-                { icon: AlertTriangle, text: "Water supply issues in Ward 12 are trending upwards; check pump maintenance logs." },
-                { icon: Lightbulb, text: "Volunteer engagement is at an all-time high, perfect for a community cleanup event." },
-              ].map((item) => (
+                { icon: CheckCircle, text: insights.aiInsights[0] || "No insights available." },
+                { icon: AlertTriangle, text: insights.aiInsights[1] || "" },
+                { icon: Lightbulb, text: insights.aiInsights[2] || "" },
+              ].filter(i => i.text).map((item) => (
                 <li key={item.text} className="flex gap-3">
                   <item.icon size={16} className="text-[var(--color-brand)] shrink-0 mt-0.5" />
                   <p className="text-sm text-[var(--color-text-primary)]">{item.text}</p>
@@ -178,13 +185,9 @@ export default function InsightsPage() {
           <section className="bg-[var(--color-bg-subtle)] p-6 rounded-xl">
             <h4 className="text-base font-bold text-[var(--color-text-primary)] mb-6">Top Active Wards</h4>
             <div className="space-y-4">
-              {[
-                { rank: 1, name: "Central Ward", interactions: "2.4k", first: true },
-                { rank: 2, name: "Lakeview East", interactions: "1.9k", first: false },
-                { rank: 3, name: "Hillcrest Heights", interactions: "1.1k", first: false },
-              ].map((ward) => (
+              {insights.topWards.map((ward) => (
                 <div key={ward.name} className="flex items-center gap-4">
-                  <div className={clsx("w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm", ward.first ? "bg-[var(--color-brand)] text-white" : "bg-[var(--color-bg-muted)] text-[var(--color-text-primary)]")}>{ward.rank}</div>
+                  <div className={clsx("w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm", ward.rank === 1 ? "bg-[var(--color-brand)] text-white" : "bg-[var(--color-bg-muted)] text-[var(--color-text-primary)]")}>{ward.rank}</div>
                   <div className="flex-1">
                     <p className="text-sm font-medium text-[var(--color-text-primary)]">{ward.name}</p>
                     <p className="text-[11px] text-[var(--color-text-secondary)]">{ward.interactions} Interactions</p>
@@ -199,11 +202,11 @@ export default function InsightsPage() {
               <h4 className="text-base font-bold mb-1">Community Impact</h4>
               <div className="mt-4">
                 <p className="text-[11px] uppercase tracking-widest opacity-80">Volunteer Hours</p>
-                <h3 className="text-[40px] font-bold leading-tight">4,820</h3>
+                <h3 className="text-[40px] font-bold leading-tight">{insights.volunteerHours.toLocaleString()}</h3>
               </div>
               <div className="mt-4 flex items-center gap-2">
                 <Heart size={16} className="text-[var(--color-brand-light)]" />
-                <span className="text-sm">12 active projects</span>
+                <span className="text-sm">{insights.activeProjects} active projects</span>
               </div>
             </div>
             <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-[var(--color-brand)]/20 rounded-full blur-2xl" />

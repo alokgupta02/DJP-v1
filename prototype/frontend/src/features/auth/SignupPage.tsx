@@ -1,15 +1,53 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { User, Mail, Lock } from "lucide-react";
 import { Card } from "../../shared/components/cards";
 import { Input } from "../../shared/components/inputs";
 import { Button } from "../../shared/components/buttons";
 
 export default function SignupPage() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    if (!name.trim() || !email.trim()) {
+      setError("Name and email are required.");
+      return;
+    }
+    if (password && password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await fetch("/djp/api/v1/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email }),
+      });
+      if (!res.ok) {
+        const body = await res.json();
+        throw new Error(body.message || "Registration failed");
+      }
+      const responseJson = await res.json();
+      const data = responseJson.data;
+      if (data?.token) localStorage.setItem("djp_token", data.token);
+      if (data?.user) localStorage.setItem("djp_user", JSON.stringify(data.user));
+      navigate("/onboarding/basic-info", { replace: true });
+    } catch (err) {
+      console.error("Registration error:", err);
+      setError(err instanceof Error ? err.message : "Registration failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Card noPadding className="w-full max-w-[460px] p-8 sm:p-10">
@@ -21,9 +59,13 @@ export default function SignupPage() {
       </p>
 
       <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={handleSubmit}
         className="flex flex-col gap-4"
       >
+        {error && (
+          <p className="text-sm text-red-500 bg-red-50 p-2 rounded">{error}</p>
+        )}
+
         <Input
           label="Full Name"
           placeholder="Full Name"
@@ -59,8 +101,8 @@ export default function SignupPage() {
           leftIcon={<Lock size={18} />}
         />
 
-        <Button type="submit" fullWidth size="lg" className="mt-2">
-          Continue
+        <Button type="submit" fullWidth size="lg" className="mt-2" disabled={loading}>
+          {loading ? "Creating Account..." : "Continue"}
         </Button>
       </form>
 

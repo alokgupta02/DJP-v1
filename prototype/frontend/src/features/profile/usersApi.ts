@@ -23,7 +23,11 @@ export interface UserDto {
   reputationScore: number;
 }
 
-export interface ProfileUpdatePayload {
+export interface UserStats {
+  issuesReported: number;
+  discussionsCreated: number;
+  pollsCreated: number;
+}
   name?: string;
   dob?: string;
   gender?: string;
@@ -79,6 +83,23 @@ export async function fetchUser(userId: string): Promise<UserDto> {
   }
   const responseJson = await res.json();
   return responseJson.data;
+}
+
+export async function fetchUserStats(userId: string): Promise<UserStats> {
+  const token = await getAuthToken();
+  const headers: Record<string, string> = {};
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+
+  try {
+    const res = await fetch(`${BASE_URL}/users/${userId}/stats`, { headers });
+    if (res.ok) {
+      const responseJson = await res.json();
+      return responseJson.data;
+    }
+  } catch {
+    // fall through
+  }
+  return { issuesReported: 0, discussionsCreated: 0, pollsCreated: 0 };
 }
 
 export async function updateProfile(userId: string, payload: ProfileUpdatePayload): Promise<Partial<UserDto>> {

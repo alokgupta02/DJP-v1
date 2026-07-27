@@ -5,7 +5,9 @@ import com.djp.backend.dto.PollResponseDto;
 import com.djp.backend.mapper.PollMapper;
 import com.djp.backend.model.Poll;
 import com.djp.backend.model.User;
+import com.djp.backend.model.PollVote;
 import com.djp.backend.repository.PollRepository;
+import com.djp.backend.repository.PollVoteRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,13 +21,16 @@ import java.util.UUID;
 public class PollService {
 
     private final PollRepository pollRepository;
+    private final PollVoteRepository pollVoteRepository;
     private final PollMapper pollMapper;
     private final AuditLogService auditLogService;
     private final SqlFilePersistenceService sqlFilePersistenceService;
 
-    public PollService(PollRepository pollRepository, PollMapper pollMapper, 
+    public PollService(PollRepository pollRepository, PollVoteRepository pollVoteRepository,
+                       PollMapper pollMapper, 
                        AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService) {
         this.pollRepository = pollRepository;
+        this.pollVoteRepository = pollVoteRepository;
         this.pollMapper = pollMapper;
         this.auditLogService = auditLogService;
         this.sqlFilePersistenceService = sqlFilePersistenceService;
@@ -83,6 +88,18 @@ public class PollService {
             }
         }
 
+        return pollMapper.toDto(pollRepository.save(poll));
+    }
+
+    @Transactional
+    public PollResponseDto castVote(UUID pollId, int optionIndex, User user) {
+        if (pollVoteRepository.existsByUserIdAndPollId(user.getId(), pollId)) {
+            throw new IllegalArgumentException("User has already voted on this poll");
+        }
+        Poll poll = pollRepository.findById(pollId)
+                .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
+        pollVoteRepository.save(new PollVote(user, poll, optionIndex));
+        poll.setVotesCount(poll.getVotesCount() + 1);
         return pollMapper.toDto(pollRepository.save(poll));
     }
 

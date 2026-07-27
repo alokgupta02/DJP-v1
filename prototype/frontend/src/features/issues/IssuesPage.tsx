@@ -7,6 +7,7 @@ import {
 import clsx from "clsx";
 import { TopicFilterBar } from "../../shared/components/navigation";
 import { fetchIssues, type BackendIssueDto } from "./issuesApi";
+import { toggleVote } from "../interactions/interactionsApi";
 
 const FILTER_TABS = ["Near Me", "My Issues", "Needs Attention", "Resolved", "High Priority"];
 
@@ -124,12 +125,14 @@ export default function IssuesPage() {
   }, []);
 
   function toggleSupport(id: string) {
-    setSupported((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
+    toggleVote(id, "ISSUE", 1).then(() => {
+      setSupported((prev) => {
+        const next = new Set(prev);
+        if (next.has(id)) next.delete(id);
+        else next.add(id);
+        return next;
+      });
+    }).catch(console.error);
   }
 
   return (

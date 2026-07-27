@@ -52,6 +52,28 @@ export async function fetchPolls(): Promise<BackendPollDto[]> {
 /**
  * Creates a new civic poll via POST /djp/api/v1/polls
  */
+export async function castPollVote(pollId: string, optionIndex: number): Promise<BackendPollDto> {
+  const token = await getAuthToken();
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+
+  const res = await fetch(`${BASE_URL}/polls/${pollId}/vote`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ optionIndex }),
+  });
+
+  if (!res.ok) {
+    const errorText = await res.text();
+    throw new Error(`Failed to cast vote (${res.status}): ${errorText}`);
+  }
+
+  const responseJson = await res.json();
+  return responseJson.data;
+}
+
 export async function createPoll(payload: CreatePollPayload): Promise<BackendPollDto> {
   const token = await getAuthToken();
   const headers: Record<string, string> = {

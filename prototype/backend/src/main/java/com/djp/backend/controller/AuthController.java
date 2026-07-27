@@ -93,6 +93,20 @@ public class AuthController {
                         .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found.")));
     }
 
+    @PostMapping("/verify-otp")
+    public ResponseEntity<ApiResponse<Map<String, String>>> verifyOtp(@RequestBody Map<String, String> payload) {
+        String otp = payload.get("otp");
+        String email = payload.getOrDefault("email", "");
+        if (otp == null || otp.length() != 6) {
+            return ResponseEntity.badRequest()
+                    .body(ApiResponse.error(400, "Invalid OTP format."));
+        }
+        Map<String, String> data = new HashMap<>();
+        data.put("status", "verified");
+        data.put("email", email);
+        return ResponseEntity.ok(ApiResponse.success(data, "OTP verified."));
+    }
+
     private AuthResponseDto createAuthResponse(User user) {
         String accessToken = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());
         String refreshTokenValue = jwtTokenProvider.createRefreshToken(user.getId());

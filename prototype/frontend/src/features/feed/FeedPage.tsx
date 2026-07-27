@@ -4,12 +4,14 @@ import { useQuery } from "@tanstack/react-query";
 import {
   ThumbsUp, MessageSquare, Users,
   AlertTriangle, Trash2,
-  Lightbulb, Vote, X, Share2, Flame
+  Lightbulb, Vote, X, Share2, FileText, Clock, Loader2
 } from "lucide-react";
 import clsx from "clsx";
 import { toggleFollow } from "../interactions/interactionsApi";
 import type { FeedIssue, FeedDiscussion, FeedPoll, FeedPollOption } from "./feedTypes";
-import { fetchIssues, fetchDiscussions, fetchPolls } from "./feedApi";
+import { fetchIssues, fetchDiscussions, fetchPolls, fetchPetitions, type FeedPetition } from "./feedApi";
+import { fetchInsights } from "../insights/insightsApi";
+import { shareContent } from "../../shared/lib/share";
 
 // Haversine distance helper
 function getDistanceInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
@@ -26,19 +28,12 @@ function getDistanceInKm(lat1: number, lon1: number, lat2: number, lon2: number)
 
 const CONTENT_TYPES = ["All", "Issues", "Discussions", "Polls", "Petitions"];
 
-// Removed hardcoded ISSUES, DISCUSSIONS, POLLS arrays
-
-const CATEGORIES = [
-  { label: "Garbage", icon: Trash2, count: 91 },
-  { label: "Potholes", icon: AlertTriangle, count: 38 },
-  { label: "Streetlights", icon: Lightbulb, count: 14 },
-];
-
-const TRENDING = [
-  { type: "Issue", label: "Issue", location: "Ward 23", title: "Garbage Dump near Parke Serene", trend: "↑ +42 supports today", variant: "error" as const },
-  { type: "Discussion", label: "Discussion", location: "India", title: "Who is Accountable for the Judiciary?", trend: "↑ +31 supports today", variant: "secondary" as const },
-  { type: "Poll", label: "Poll", location: "Pune", title: "How should Pune improve public transport?", trend: "Ends in 4 days", variant: "brand" as const },
-];
+const ICON_MAP: Record<string, typeof Trash2> = {
+  Garbage: Trash2, Trash: Trash2, Waste: Trash2,
+  "Potholes & Roads": AlertTriangle, Infrastructure: AlertTriangle,
+  "Street Lights": Lightbulb, Electricity: Lightbulb,
+  "Water Supply": AlertTriangle,
+};
 
 function SeverityBadge({ severity }: { severity: string }) {
   const s = severity?.toLowerCase() || "";
@@ -146,10 +141,13 @@ function IssueCard({ issue }: { issue: FeedIssue }) {
           <MessageSquare size={14} />
           <span>{issue.comments}</span>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)] hidden sm:flex">
+        <button
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); shareContent(issue.title, window.location.origin + '/issues/' + issue.id); }}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)] hidden sm:flex cursor-pointer"
+        >
           <Share2 size={14} />
           <span>Share</span>
-        </div>
+        </button>
         
         <div className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]">
           <Users size={14} />
@@ -243,10 +241,13 @@ function DiscussionCard({ discussion }: { discussion: FeedDiscussion }) {
           <MessageSquare size={14} />
           <span>{discussion.comments}</span>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)] hidden sm:flex">
+        <button
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); shareContent(discussion.title, window.location.origin + '/discussions/' + discussion.id); }}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)] hidden sm:flex cursor-pointer"
+        >
           <Share2 size={14} />
           <span>Share</span>
-        </div>
+        </button>
         <div className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]">
           <Flame size={14} className="text-orange-500" />
           <span>{discussion.participantCount?.toLocaleString() || 0} Participating</span>
@@ -348,32 +349,47 @@ function PollCard({ poll }: { poll: FeedPoll }) {
           <MessageSquare size={14} />
           <span>{poll.comments}</span>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)] hidden sm:flex">
+        <button
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); shareContent(poll.question, window.location.origin + '/polls/' + poll.id); }}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-bg-subtle)] hover:bg-[var(--color-bg-muted)] transition-colors text-[var(--color-text-primary)] hidden sm:flex cursor-pointer"
+        >
           <Share2 size={14} />
           <span>Share</span>
-        </div>
+        </button>
       </div>
     </Link>
   );
 }
 
-function TrendCard({ item }: { item: typeof TRENDING[number] }) {
-  const badgeColors: Record<string, string> = {
-    error: "bg-[var(--color-error-bg)] text-[var(--color-error)]",
-    secondary: "bg-[var(--color-bg-subtle)] text-[var(--color-text-secondary)]",
-    brand: "bg-[var(--color-brand-light)] text-[var(--color-brand)]",
-  };
-
+function PetitionCard({ petition }: { petition: FeedPetition }) {
+  const pct = petition.goal > 0 ? Math.min(100, Math.round((petition.signatures / petition.goal) * 100)) : 0;
   return (
-    <Link to="#" className="block rounded-lg p-3 hover:bg-[var(--color-bg-subtle)] transition">
-      <div className="flex items-center gap-2 mb-1">
-        <span className={clsx("px-2 py-0.5 rounded-full text-[10px] font-semibold", badgeColors[item.variant])}>
-          {item.label}
+    <Link
+      to={`/petitions/${petition.id}`}
+      className="block bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5 md:p-6 hover:shadow-lg hover:border-[var(--color-brand)] transition-all duration-300"
+    >
+      <div className="flex items-center gap-2 mb-3">
+        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-[var(--color-brand-light)] text-[var(--color-brand)]">
+          {petition.category}
         </span>
-        <span className="text-xs text-[var(--color-text-secondary)]">📍 {item.location}</span>
+        <span className="flex items-center gap-1 text-[11px] text-[var(--color-text-secondary)]">
+          <Clock size={12} />
+          {petition.daysLeft} days left
+        </span>
       </div>
-      <p className="font-semibold text-sm text-[var(--color-text-primary)] leading-snug">{item.title}</p>
-      <p className="text-xs text-[var(--color-brand)] mt-1">{item.trend}</p>
+      <h3 className="font-bold text-lg text-[var(--color-text-primary)] leading-snug mb-2">{petition.title}</h3>
+      <p className="text-sm text-[var(--color-text-secondary)] line-clamp-2 mb-4">{petition.description}</p>
+      <div className="flex justify-between text-xs mb-1">
+        <span className="font-semibold">{petition.signatures.toLocaleString()} signatures</span>
+        <span className="text-[var(--color-text-secondary)]">Goal: {petition.goal.toLocaleString()}</span>
+      </div>
+      <div className="w-full h-2 bg-[var(--color-bg-muted)] rounded-full overflow-hidden">
+        <div className="h-full bg-[var(--color-brand)] rounded-full" style={{ width: `${pct}%` }} />
+      </div>
+      <div className="flex items-center gap-2 mt-4 pt-3 border-t border-[var(--color-border)]/40 text-xs font-semibold text-[var(--color-text-secondary)]">
+        <FileText size={14} />
+        <span>{petition.author}</span>
+      </div>
     </Link>
   );
 }
@@ -384,9 +400,13 @@ export default function FeedPage() {
   const [userCoords, setUserCoords] = useState<{lat: number, lng: number} | null>(null);
 
   // TanStack Query - data fetching with caching, deduping, retries
-  const { data: issues = [] } = useQuery({ queryKey: ["feed", "issues"], queryFn: fetchIssues });
-  const { data: discussions = [] } = useQuery({ queryKey: ["feed", "discussions"], queryFn: fetchDiscussions });
-  const { data: polls = [] } = useQuery({ queryKey: ["feed", "polls"], queryFn: fetchPolls });
+  const { data: issues = [], isLoading: loadingIssues, error: errIssues } = useQuery({ queryKey: ["feed", "issues"], queryFn: fetchIssues });
+  const { data: discussions = [], isLoading: loadingDiscs, error: errDiscs } = useQuery({ queryKey: ["feed", "discussions"], queryFn: fetchDiscussions });
+  const { data: polls = [], isLoading: loadingPolls, error: errPolls } = useQuery({ queryKey: ["feed", "polls"], queryFn: fetchPolls });
+  const { data: petitions = [], isLoading: loadingPetitions, error: errPetitions } = useQuery({ queryKey: ["feed", "petitions"], queryFn: fetchPetitions });
+  const { data: insights, isLoading: loadingInsights, error: errInsights } = useQuery({ queryKey: ["insights"], queryFn: fetchInsights });
+  const feedLoading = loadingIssues || loadingDiscs || loadingPolls || loadingPetitions || loadingInsights;
+  const feedError = errIssues || errDiscs || errPolls || errPetitions || errInsights;
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -473,7 +493,17 @@ export default function FeedPage() {
       <div className="flex-1 flex gap-8 overflow-hidden px-8 pb-8 w-full">
         <div className="flex-1 overflow-y-auto min-w-0">
           <FeedFilterBar activeContent={activeContent} setActiveContent={setActiveContent} />
+          {feedError && (
+            <div className="p-4 mb-4 rounded-xl bg-[var(--color-error)]/10 border border-[var(--color-error)] text-sm text-[var(--color-error)]">
+              Failed to load feed data. Please try again later.
+            </div>
+          )}
           <div className="space-y-6 pb-32">
+            {feedLoading && issues.length === 0 && discussions.length === 0 && polls.length === 0 && petitions.length === 0 && (
+              <div className="flex items-center justify-center py-20">
+                <Loader2 className="animate-spin text-[var(--color-brand)]" size={32} />
+              </div>
+            )}
             {(activeContent === "All" || activeContent === "Issues") && processWithDistance(issues).map((issue) => (
               <IssueCard key={issue.id} issue={issue} />
             ))}
@@ -483,56 +513,92 @@ export default function FeedPage() {
             {(activeContent === "All" || activeContent === "Polls") && processWithDistance(polls).map((poll) => (
               <PollCard key={poll.id} poll={poll} />
             ))}
+            {(activeContent === "All" || activeContent === "Petitions") && petitions.map((petition) => (
+              <PetitionCard key={petition.id} petition={petition} />
+            ))}
           </div>
         </div>
 
-        <div className="w-80 shrink-0 overflow-y-auto space-y-5 hidden lg:block">
-          <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5">
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <h5 className="text-xs font-black uppercase tracking-widest text-[var(--color-text-secondary)]">
-                  📍 Your Area
-                </h5>
-                <p className="text-sm text-[var(--color-text-secondary)] mt-1">Balewadi • Ward 23</p>
+          <div className="w-80 shrink-0 overflow-y-auto space-y-5 hidden lg:block">
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h5 className="text-xs font-black uppercase tracking-widest text-[var(--color-text-secondary)]">
+                    📍 Your Area
+                  </h5>
+                  <p className="text-sm text-[var(--color-text-secondary)] mt-1">Balewadi • Ward 23</p>
+                </div>
+                <button className="text-[var(--color-brand)] text-sm font-semibold hover:underline">Explore</button>
               </div>
-              <button className="text-[var(--color-brand)] text-sm font-semibold hover:underline">Explore</button>
+
+              <div className="bg-[var(--color-bg-subtle)] rounded-xl p-4 mb-4">
+                <p className="text-xs uppercase tracking-wide font-semibold text-[var(--color-text-secondary)]">Active Issues</p>
+                <p className="text-4xl font-black text-[var(--color-brand)] mt-1">{issues.length || insights?.issuesReported || 0}</p>
+              </div>
+
+              <div className="space-y-1">
+                {(insights?.categoryBreakdown ?? []).length > 0
+                  ? insights!.categoryBreakdown.slice(0, 5).map((cat) => {
+                      const Icon = ICON_MAP[cat.label] || AlertTriangle;
+                      return (
+                        <div key={cat.label} className="flex items-center justify-between rounded-lg px-3 py-3">
+                          <div className="flex items-center gap-3">
+                            <Icon size={18} className="text-[var(--color-brand)]" />
+                            <span className="font-medium text-sm text-[var(--color-text-primary)]">{cat.label}</span>
+                          </div>
+                          <span className="font-bold text-[var(--color-brand)]">{cat.count.toLocaleString()}</span>
+                        </div>
+                      );
+                    })
+                  : [
+                      { label: "Garbage", icon: Trash2, count: 91 },
+                      { label: "Potholes", icon: AlertTriangle, count: 38 },
+                      { label: "Streetlights", icon: Lightbulb, count: 14 },
+                    ].map((cat) => (
+                      <div key={cat.label} className="flex items-center justify-between rounded-lg px-3 py-3">
+                        <div className="flex items-center gap-3">
+                          <cat.icon size={18} className="text-[var(--color-brand)]" />
+                          <span className="font-medium text-sm text-[var(--color-text-primary)]">{cat.label}</span>
+                        </div>
+                        <span className="font-bold text-[var(--color-brand)]">{cat.count}</span>
+                      </div>
+                    ))
+                }
+              </div>
             </div>
 
-            <div className="bg-[var(--color-bg-subtle)] rounded-xl p-4 mb-4">
-              <p className="text-xs uppercase tracking-wide font-semibold text-[var(--color-text-secondary)]">Active Issues</p>
-              <p className="text-4xl font-black text-[var(--color-brand)] mt-1">124</p>
-            </div>
-
-            <div className="space-y-1">
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat.label}
-                  className="w-full flex items-center justify-between rounded-lg px-3 py-3 hover:bg-[var(--color-bg-subtle)] transition"
-                >
-                  <div className="flex items-center gap-3">
-                    <cat.icon size={18} className="text-[var(--color-brand)]" />
-                    <span className="font-medium text-sm text-[var(--color-text-primary)]">{cat.label}</span>
-                  </div>
-                  <span className="font-bold text-[var(--color-brand)]">{cat.count}</span>
-                </button>
-              ))}
+            <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5">
+              <div className="flex items-center justify-between mb-4">
+                <h5 className="text-xs font-black uppercase tracking-widest text-[var(--color-text-secondary)]">
+                  🔥 Trending
+                </h5>
+                <button className="text-[var(--color-brand)] text-sm font-semibold hover:underline">View All</button>
+              </div>
+              <div className="space-y-1">
+                {issues.slice(0, 2).map((issue) => (
+                  <Link key={issue.id} to={`/issues/${issue.id}`} className="block rounded-xl p-3 hover:bg-[var(--color-bg-subtle)] transition">
+                    <p className="text-xs font-semibold text-[var(--color-error)] uppercase tracking-wide">Issue</p>
+                    <p className="text-sm font-semibold text-[var(--color-text-primary)] mt-0.5">{issue.title}</p>
+                    <p className="text-[11px] text-[var(--color-text-secondary)] mt-1">{issue.location} ↑ {issue.supports} supports</p>
+                  </Link>
+                ))}
+                {discussions.slice(0, 2).map((d) => (
+                  <Link key={d.id} to={`/discussions/${d.id}`} className="block rounded-xl p-3 hover:bg-[var(--color-bg-subtle)] transition">
+                    <p className="text-xs font-semibold text-[var(--color-text-secondary)] uppercase tracking-wide">Discussion</p>
+                    <p className="text-sm font-semibold text-[var(--color-text-primary)] mt-0.5">{d.title}</p>
+                    <p className="text-[11px] text-[var(--color-text-secondary)] mt-1">{d.location} ↑ {d.supports} supports</p>
+                  </Link>
+                ))}
+                {polls.slice(0, 1).map((poll) => (
+                  <Link key={poll.id} to={`/polls/${poll.id}`} className="block rounded-xl p-3 hover:bg-[var(--color-bg-subtle)] transition">
+                    <p className="text-xs font-semibold text-[var(--color-brand)] uppercase tracking-wide">Poll</p>
+                    <p className="text-sm font-semibold text-[var(--color-text-primary)] mt-0.5">{poll.question}</p>
+                    <p className="text-[11px] text-[var(--color-text-secondary)] mt-1">{poll.time}</p>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
-
-          <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] rounded-xl p-5">
-            <div className="flex items-center justify-between mb-4">
-              <h5 className="text-xs font-black uppercase tracking-widest text-[var(--color-text-secondary)]">
-                🔥 Trending
-              </h5>
-              <button className="text-[var(--color-brand)] text-sm font-semibold hover:underline">View All</button>
-            </div>
-            <div className="space-y-1">
-              {TRENDING.map((item) => (
-                <TrendCard key={item.title} item={item} />
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
 
     </div>

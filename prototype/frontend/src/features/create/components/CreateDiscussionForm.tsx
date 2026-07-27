@@ -3,6 +3,7 @@ import { Tag as TagIcon, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createDiscussion } from "../../discussions/discussionsApi";
 import RichEditor from "../../../shared/components/ui/RichEditor";
+import ImageUpload from "../../../shared/components/ui/ImageUpload";
 import LocationPicker, { type LocationData } from "../../../shared/components/ui/LocationPicker";
 
 interface CreateDiscussionFormProps {
@@ -141,6 +142,8 @@ export default function CreateDiscussionForm({ community }: CreateDiscussionForm
           </div>
         )}
       </div>
+
+      <ImageUpload onUpload={(url) => {}} onRemove={() => {}} />
 
       <RichEditor 
         value={descriptionHtml}

@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Loader2 } from "lucide-react";
+import { createPetition } from "../../petitions/petitionsApi";
 import RichEditor from "../../../shared/components/ui/RichEditor";
+import ImageUpload from "../../../shared/components/ui/ImageUpload";
 
 export default function CreatePetitionForm() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [descriptionHtml, setDescriptionHtml] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [targetGoal, setTargetGoal] = useState("");
   const [signatureTarget, setSignatureTarget] = useState("100");
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,12 +21,22 @@ export default function CreatePetitionForm() {
       setStatusMessage("Please provide a Title.");
       return;
     }
-    
-    // For now we don't have a petitionsApi, just simulating
+    setSubmitting(true);
     setStatusMessage("Creating petition...");
-    setTimeout(() => {
+    try {
+      await createPetition({
+        title,
+        description: descriptionHtml,
+        targetAuthority: targetGoal || undefined,
+        signatureGoal: parseInt(signatureTarget, 10),
+      });
       navigate("/petitions");
-    }, 1000);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Failed to create petition";
+      setStatusMessage(msg);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -42,6 +57,8 @@ export default function CreatePetitionForm() {
           required
         />
       </div>
+
+      <ImageUpload onUpload={setImageUrl} onRemove={() => setImageUrl("")} currentUrl={imageUrl} />
 
       <RichEditor 
         value={descriptionHtml}
