@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ChevronUp, ChevronDown, Plus } from "lucide-react";
+import { ChevronUp, ChevronDown } from "lucide-react";
 import clsx from "clsx";
 import { TopicFilterBar } from "../../shared/components/navigation";
 import { fetchDiscussions, type BackendDiscussionDto } from "./discussionsApi";
@@ -51,7 +51,7 @@ export default function DiscussionsPage() {
           proposalCount: d.proposalCount || 0,
           proposalPreview: d.proposalPreview || '"Community proposal in drafting stage..."',
           proposalBadge: d.proposalBadge || "New",
-          proposalBadgeVariant: (d.proposalBadgeVariant as any) || "primary"
+          proposalBadgeVariant: (d.proposalBadgeVariant as "primary" | "warning" | "info" | "muted") || "primary"
         }));
         setLiveDiscussions(mapped);
       })

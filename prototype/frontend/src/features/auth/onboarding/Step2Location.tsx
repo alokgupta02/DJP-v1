@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingLayout from "./OnboardingLayout";
-import { useOnboarding } from "./OnboardingContext";
+import { useOnboarding } from "./useOnboarding";
 
 export default function Step2Location() {
   const navigate = useNavigate();

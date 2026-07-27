@@ -53,13 +53,13 @@ export async function getAuthToken(): Promise<string> {
       method: "POST",
     });
     if (res.ok) {
-      const data = await res.json();
-      if (data.token) {
-        localStorage.setItem("djp_token", data.token);
-        if (data.user) {
-          localStorage.setItem("djp_user", JSON.stringify(data.user));
+      const responseJson = await res.json();
+      if (responseJson.data?.token) {
+        localStorage.setItem("djp_token", responseJson.data.token);
+        if (responseJson.data.user) {
+          localStorage.setItem("djp_user", JSON.stringify(responseJson.data.user));
         }
-        return data.token;
+        return responseJson.data.token;
       }
     }
   } catch (err) {
@@ -77,7 +77,8 @@ export async function fetchUser(userId: string): Promise<UserDto> {
   if (!res.ok) {
     throw new Error(`Failed to fetch user: Status ${res.status}`);
   }
-  return await res.json();
+  const responseJson = await res.json();
+  return responseJson.data;
 }
 
 export async function updateProfile(userId: string, payload: ProfileUpdatePayload): Promise<Partial<UserDto>> {
@@ -98,5 +99,6 @@ export async function updateProfile(userId: string, payload: ProfileUpdatePayloa
     throw new Error(`Failed to update profile (${res.status}): ${errorText}`);
   }
 
-  return await res.json();
+  const responseJson = await res.json();
+  return responseJson.data;
 }

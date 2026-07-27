@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import OnboardingLayout from "./OnboardingLayout";
-import { useOnboarding } from "./OnboardingContext";
+import { useOnboarding } from "./useOnboarding";
 
 const GENDERS = ["Male", "Female", "Non-Binary", "Prefer not to say"];
 

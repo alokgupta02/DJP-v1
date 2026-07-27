@@ -17,8 +17,8 @@ export async function fetchNotifications(): Promise<NotificationDto[]> {
   if (token) headers["Authorization"] = `Bearer ${token}`;
 
   const res = await fetch(`${BASE_URL}`, { headers });
-  if (!res.ok) throw new Error("Failed to fetch notifications");
-  return res.json();
+  const responseJson = await res.json();
+  return responseJson.data;
 }
 
 export async function getUnreadCount(): Promise<number> {
@@ -31,8 +31,8 @@ export async function getUnreadCount(): Promise<number> {
   const res = await fetch(`${BASE_URL}/unread-count`, { headers });
   if (!res.ok) return 0;
   
-  const data = await res.json();
-  return data.count;
+  const responseJson = await res.json();
+  return responseJson.data.count;
 }
 
 export async function markAsRead(id: string): Promise<void> {

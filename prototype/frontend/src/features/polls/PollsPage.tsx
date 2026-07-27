@@ -1,13 +1,34 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Plus, Vote, MessageSquare, Share2, ChevronRight, TrendingUp, Clock, AlertTriangle } from "lucide-react";
+import { Vote, MessageSquare, Share2, ChevronRight, TrendingUp, Clock, AlertTriangle } from "lucide-react";
 import clsx from "clsx";
 import { TopicFilterBar } from "../../shared/components/navigation";
 import { fetchPolls, type BackendPollDto } from "./pollsApi";
 
 const FILTER_TABS = ["Open", "Closed", "My Polls", "Following", "Needs Your Vote", "Near Me"];
 
-const POLLS = [
+interface PollOption {
+  label: string;
+  pct: number;
+  primary: boolean;
+}
+
+interface Poll {
+  id: string;
+  featured: boolean;
+  badge?: string;
+  badgeClass?: string;
+  timeLeft: string;
+  question: string;
+  description?: string;
+  options?: PollOption[];
+  pct?: number;
+  votes: string;
+  comments?: number;
+  category?: string;
+}
+
+const POLLS: Poll[] = [
   {
     id: "1", featured: true, category: "High Priority", timeLeft: "2 days remaining",
     question: 'Should Ward 12 implement "No Car Sundays" on the Central Corridor?',
@@ -26,7 +47,7 @@ const POLLS = [
 
 export default function PollsPage() {
   const [activeTab, setActiveTab] = useState("Open");
-  const [livePolls, setLivePolls] = useState<any[]>([]);
+  const [livePolls, setLivePolls] = useState<Poll[]>([]);
 
   useEffect(() => {
     fetchPolls()
@@ -134,7 +155,7 @@ export default function PollsPage() {
                   <p className="text-sm text-[var(--color-text-secondary)] mb-6 line-clamp-2">{poll.description}</p>
 
                   <div className="space-y-4 mb-6">
-                    {poll.options?.map((opt: any) => (
+                    {poll.options?.map((opt: PollOption) => (
                       <div key={opt.label} className="space-y-2">
                         <div className="flex justify-between text-sm">
                           <span className="font-bold text-[var(--color-text-primary)]">{opt.label}</span>

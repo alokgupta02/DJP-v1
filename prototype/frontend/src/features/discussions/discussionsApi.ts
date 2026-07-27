@@ -45,8 +45,11 @@ export async function fetchDiscussions(): Promise<BackendDiscussionDto[]> {
   if (!res.ok) {
     throw new Error(`Failed to fetch discussions: Status ${res.status}`);
   }
-  const data = await res.json();
-  return Array.isArray(data) ? data : data.content || [];
+  const responseJson = await res.json();
+  if (responseJson.success) {
+    return Array.isArray(responseJson.data) ? responseJson.data : [];
+  }
+  return [];
 }
 
 /**
@@ -70,5 +73,6 @@ export async function createDiscussion(payload: CreateDiscussionPayload): Promis
     throw new Error(`Failed to create discussion (${res.status}): ${errorText}`);
   }
 
-  return await res.json();
+  const responseJson = await res.json();
+  return responseJson.data;
 }

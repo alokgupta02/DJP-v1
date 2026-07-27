@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { Flame, ChevronDown } from "lucide-react";
 import clsx from "clsx";
-
-export const DEFAULT_TOPICS = [
-  "All Topics", "Roads", "Garbage", "Water", "Electricity",
-  "Judiciary", "Education", "Healthcare", "Police", "Environment",
-  "Economy", "More",
-];
+import { DEFAULT_TOPICS } from "./TopicFilterBar.constants";
 
 interface TopicFilterBarProps {
   topics?: string[];

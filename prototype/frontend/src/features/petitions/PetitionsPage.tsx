@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FileText, Clock, Plus } from "lucide-react";
+import { FileText, Clock } from "lucide-react";
 import clsx from "clsx";
 
 const PETITIONS = [

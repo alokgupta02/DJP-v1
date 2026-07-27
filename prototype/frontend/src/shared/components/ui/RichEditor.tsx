@@ -37,6 +37,14 @@ export default function RichEditor({
     orderedList: false,
   });
 
+  const checkEditorEmpty = () => {
+    if (!editorRef.current) return;
+    const text = editorRef.current.innerText.trim();
+    const html = editorRef.current.innerHTML.trim();
+    const hasTags = /<(ul|ol|li|img|blockquote|table|h[1-6])/i.test(html);
+    setEditorEmpty(text === "" && !hasTags);
+  };
+
   // Initialize content once
   useEffect(() => {
     if (editorRef.current && editorRef.current.innerHTML !== value) {
@@ -45,14 +53,6 @@ export default function RichEditor({
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Only on mount or controlled override, but we don't want cursor jumps
-
-  const checkEditorEmpty = () => {
-    if (!editorRef.current) return;
-    const text = editorRef.current.innerText.trim();
-    const html = editorRef.current.innerHTML.trim();
-    const hasTags = /<(ul|ol|li|img|blockquote|table|h[1-6])/i.test(html);
-    setEditorEmpty(text === "" && !hasTags);
-  };
 
   const checkActiveFormats = () => {
     setActiveFormats({

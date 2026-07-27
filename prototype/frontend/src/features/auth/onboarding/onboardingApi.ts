@@ -10,7 +10,21 @@ export interface OnboardingUpdateRequest {
   privacyConsentGiven: boolean;
 }
 
-export async function completeUserOnboarding(payload: OnboardingUpdateRequest): Promise<any> {
+export interface OnboardingResponse {
+  id: string;
+  name: string;
+  email: string;
+  avatarUrl: string | null;
+  location: string;
+  pincode: string;
+  occupation: string;
+  bio: string;
+  topics: string[];
+  privacyConsentGiven: boolean;
+  onboardingCompleted: boolean;
+}
+
+export async function completeUserOnboarding(payload: OnboardingUpdateRequest): Promise<OnboardingResponse> {
   const token = await getAuthToken();
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
@@ -31,7 +45,8 @@ export async function completeUserOnboarding(payload: OnboardingUpdateRequest): 
   if (!userId) {
     const meRes = await fetch("/djp/api/v1/auth/me", { headers });
     if (meRes.ok) {
-      const u = await meRes.json();
+      const responseJson = await meRes.json();
+      const u = responseJson.data;
       userId = u.id;
       localStorage.setItem("djp_user", JSON.stringify(u));
     } else {
@@ -50,7 +65,8 @@ export async function completeUserOnboarding(payload: OnboardingUpdateRequest): 
     throw new Error(`Onboarding update failed: ${res.status} ${text}`);
   }
 
-  const updatedUser = await res.json();
+  const responseJson = await res.json();
+  const updatedUser: OnboardingResponse = responseJson.data;
   localStorage.setItem("djp_user", JSON.stringify(updatedUser));
   return updatedUser;
 }

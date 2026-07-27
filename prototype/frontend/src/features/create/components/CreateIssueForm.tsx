@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MapPin, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createIssue } from "../../issues/issuesApi";
 import RichEditor from "../../../shared/components/ui/RichEditor";
@@ -7,11 +7,10 @@ import LocationPicker, { type LocationData } from "../../../shared/components/ui
 
 interface CreateIssueFormProps {
   community: string;
-  impactScope: string;
   priorityReason: string;
 }
 
-export default function CreateIssueForm({ community, impactScope, priorityReason }: CreateIssueFormProps) {
+export default function CreateIssueForm({ community, priorityReason }: CreateIssueFormProps) {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [descriptionHtml, setDescriptionHtml] = useState("");
@@ -55,8 +54,8 @@ export default function CreateIssueForm({ community, impactScope, priorityReason
         govLevel: locationData.govLevel.trim() || undefined,
       });
       navigate("/issues");
-    } catch (err: any) {
-      setError(err.message || "Failed to submit issue. Please try again.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to submit issue. Please try again.");
     } finally {
       setLoading(false);
     }

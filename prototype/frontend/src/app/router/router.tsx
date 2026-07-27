@@ -12,7 +12,7 @@ import OTPPage from "../../features/auth/OTPPage";
 import Step1BasicInfo from "../../features/auth/onboarding/Step1BasicInfo";
 import Step2Location from "../../features/auth/onboarding/Step2Location";
 import Step3About from "../../features/auth/onboarding/Step3About";
-import { OnboardingProvider } from "../../features/auth/onboarding/OnboardingContext";
+import { OnboardingProvider } from "../../features/auth/onboarding/OnboardingProvider";
 
 import FeedPage from "../../features/feed/FeedPage";
 

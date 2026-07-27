@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { 
-  Search, Bell, ChevronDown, Menu, TriangleAlert, 
-  MessagesSquare, Vote, Sparkles, MessageCircleMore, 
+  Search, ChevronDown, Menu, 
+  Sparkles, MessageCircleMore, 
   Megaphone, PlusSquare 
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -12,7 +12,6 @@ import { NotificationBar } from "../notifications/NotificationBar";
 
 export interface TopbarProps {
   ward?: string;
-  notificationCount?: number;
   searchPlaceholder?: string;
   searchValue?: string;
   onSearchChange?: (value: string) => void;
@@ -22,7 +21,6 @@ export interface TopbarProps {
 
 export default function Topbar({
   ward = "Ward 42 — South Delhi",
-  notificationCount = 0,
   searchPlaceholder = "Find anything",
   searchValue = "",
   onSearchChange,

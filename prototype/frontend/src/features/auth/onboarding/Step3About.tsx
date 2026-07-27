@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import OnboardingLayout from "./OnboardingLayout";
-import { useOnboarding } from "./OnboardingContext";
+import { useOnboarding } from "./useOnboarding";
 import { completeUserOnboarding } from "./onboardingApi";
 
 const TOPICS = [
@@ -49,9 +49,9 @@ export default function Step3About() {
       });
       resetData();
       navigate("/feed");
-    } catch (err: any) {
+    } catch (err) {
       console.error("Onboarding finish failed:", err);
-      setError(err.message || "Failed to save your profile. Please try again.");
+      setError(err instanceof Error ? err.message : "Failed to save your profile. Please try again.");
       setSubmitting(false);
     }
   };

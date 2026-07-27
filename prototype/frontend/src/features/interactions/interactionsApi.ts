@@ -23,7 +23,7 @@ export async function addComment(
   };
   if (token) headers["Authorization"] = `Bearer ${token}`;
 
-  const body: any = { content, entityId, entityType };
+  const body: { content: string; entityId: string; entityType: string; parentId?: string } = { content, entityId, entityType };
   if (parentId) body.parentId = parentId;
 
   const res = await fetch(`${BASE_URL}/comments`, {
@@ -33,16 +33,18 @@ export async function addComment(
   });
 
   if (!res.ok) throw new Error("Failed to add comment");
-  return res.json();
+  const responseJson = await res.json();
+  return responseJson.data;
 }
 
 export async function getComments(entityId: string, entityType: string): Promise<CommentDto[]> {
   const res = await fetch(`${BASE_URL}/comments?entityId=${entityId}&entityType=${entityType}`);
   if (!res.ok) throw new Error("Failed to fetch comments");
-  return res.json();
+  const responseJson = await res.json();
+  return responseJson.data;
 }
 
-export async function toggleVote(entityId: string, entityType: string, value: number): Promise<any> {
+export async function toggleVote(entityId: string, entityType: string, value: number): Promise<{ success: boolean }> {
   const token = await getAuthToken();
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
@@ -56,10 +58,11 @@ export async function toggleVote(entityId: string, entityType: string, value: nu
   });
 
   if (!res.ok) throw new Error("Failed to vote");
-  return res.json();
+  const responseJson = await res.json();
+  return responseJson.data;
 }
 
-export async function toggleFollow(targetId: string, targetType: string): Promise<any> {
+export async function toggleFollow(targetId: string, targetType: string): Promise<{ following: boolean }> {
   const token = await getAuthToken();
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
@@ -73,5 +76,6 @@ export async function toggleFollow(targetId: string, targetType: string): Promis
   });
 
   if (!res.ok) throw new Error("Failed to follow");
-  return res.json();
+  const responseJson = await res.json();
+  return responseJson.data;
 }

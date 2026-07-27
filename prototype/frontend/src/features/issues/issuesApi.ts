@@ -42,13 +42,13 @@ export async function getAuthToken(): Promise<string> {
       method: "POST",
     });
     if (res.ok) {
-      const data = await res.json();
-      if (data.token) {
-        localStorage.setItem("djp_token", data.token);
-        if (data.user) {
-          localStorage.setItem("djp_user", JSON.stringify(data.user));
+      const responseJson = await res.json();
+      if (responseJson.data?.token) {
+        localStorage.setItem("djp_token", responseJson.data.token);
+        if (responseJson.data.user) {
+          localStorage.setItem("djp_user", JSON.stringify(responseJson.data.user));
         }
-        return data.token;
+        return responseJson.data.token;
       }
     }
   } catch (err) {
@@ -69,8 +69,11 @@ export async function fetchIssues(): Promise<BackendIssueDto[]> {
   if (!res.ok) {
     throw new Error(`Failed to fetch issues: Status ${res.status}`);
   }
-  const data = await res.json();
-  return Array.isArray(data) ? data : data.content || [];
+  const responseJson = await res.json();
+  if (responseJson.success) {
+    return Array.isArray(responseJson.data) ? responseJson.data : [];
+  }
+  return [];
 }
 
 /**
@@ -94,5 +97,6 @@ export async function createIssue(payload: CreateIssuePayload): Promise<BackendI
     throw new Error(`Failed to create issue (${res.status}): ${errorText}`);
   }
 
-  return await res.json();
+  const responseJson = await res.json();
+  return responseJson.data;
 }

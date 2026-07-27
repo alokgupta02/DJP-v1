@@ -1,24 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ThumbsUp, MessageSquare, Share2, ArrowLeft, ExternalLink, Users, ArrowBigUp, ArrowBigDown, Plus, Minus, Search, User } from "lucide-react";
+import { MessageSquare, Share2, ArrowLeft, Search, ArrowBigUp, ArrowBigDown, Users } from "lucide-react";
 import clsx from "clsx";
 
 import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";
 import { getComments, toggleVote, toggleFollow } from "../interactions/interactionsApi";
-const DISCUSSIONS_DATA: Record<string, {
-  id: string; tags: { label: string; variant: string }[];
-  title: string; subtitle: string;
-  author: string; authorInitials?: string; authorBg?: string; authorColor?: string;
-  time: string; supports: number; commentsCount: number; participants: number;
-  sections: { title: string; content: string[] }[];
-  aiSummary: string; aiCommon: string[]; aiAlt: string[];
-  comments: CommentData[];
-  status: [string, string][];
-  poll: { question: string; options: { label: string; percent: number; color: string }[]; votes: string };
-  related: { title: string; meta: string }[];
-  topics: string[];
-  trending: [string, string][];
-}> = {
+import type { DiscussionData, DiscussionMeta } from "./discussionTypes";
+const DISCUSSIONS_DATA: Record<string, DiscussionData> = {
   "ncert": {
     id: "ncert",
     tags: [
@@ -181,7 +169,7 @@ export default function DiscussionDetailPage() {
   const { id } = useParams<{ id: string }>();
   
   const mockKey = id && UUID_TO_MOCK_KEY[id] ? UUID_TO_MOCK_KEY[id] : "judiciary";
-  const [discussion, setDiscussion] = useState<any>(DISCUSSIONS_DATA[mockKey] || DISCUSSIONS_DATA["judiciary"]);
+  const [discussion, setDiscussion] = useState<DiscussionData>(DISCUSSIONS_DATA[mockKey] || DISCUSSIONS_DATA["judiciary"]);
   const [comments, setComments] = useState<CommentData[]>(discussion.comments || []);
   const [isFollowing, setIsFollowing] = useState(false);
 
@@ -212,9 +200,9 @@ export default function DiscussionDetailPage() {
     if (!id) return;
     try {
       await toggleVote(id, "DISCUSSION", value);
-      setDiscussion((prev: any) => ({ ...prev, supports: prev.supports + value }));
-    } catch (e) {
-      console.error(e);
+      setDiscussion((prev) => ({ ...prev, supports: prev.supports + value }));
+    } catch (err) {
+      console.error("Failed to vote:", err);
     }
   };
 
@@ -223,8 +211,8 @@ export default function DiscussionDetailPage() {
     try {
       await toggleFollow(id, "DISCUSSION");
       setIsFollowing(!isFollowing);
-    } catch (e) {
-      console.error(e);
+    } catch (err) {
+      console.error("Failed to follow:", err);
     }
   };
 
@@ -236,22 +224,22 @@ export default function DiscussionDetailPage() {
         return res.json();
       })
       .then(data => {
-        let meta = {};
+        let meta: DiscussionMeta = {};
         if (data.metadata) {
-          try { meta = JSON.parse(data.metadata); } catch(e) {}
+          try { meta = JSON.parse(data.metadata); } catch (err) { console.warn("Failed to parse discussion metadata:", err); }
         }
         
-        setDiscussion((prev: any) => ({
+        setDiscussion((prev) => ({
           ...prev,
           title: data.title,
           subtitle: data.description,
           supports: data.votesCount || 0,
           participants: data.participantCount || 0,
           commentsCount: data.commentsCount || 0,
-          author: (meta as any).author || prev.author || "Anonymous",
-          authorInitials: (meta as any).authorInitials || prev.authorInitials || "AN",
-          authorBg: (meta as any).authorBg || prev.authorBg || "bg-gray-100",
-          authorColor: (meta as any).authorColor || prev.authorColor || "text-gray-700",
+          author: meta.author || prev.author || "Anonymous",
+          authorInitials: meta.authorInitials || prev.authorInitials || "AN",
+          authorBg: meta.authorBg || prev.authorBg || "bg-gray-100",
+          authorColor: meta.authorColor || prev.authorColor || "text-gray-700",
           time: data.createdAt ? new Date(data.createdAt).toLocaleDateString() : prev.time,
         }));
       })
@@ -362,7 +350,7 @@ export default function DiscussionDetailPage() {
                 
                 {/* Threaded Comments List */}
                 <div className="space-y-4">
-                  {comments.map((comment: any) => (
+                  {comments.map((comment: CommentData) => (
                     <CommentThread key={comment.id} comment={comment} />
                   ))}
                 </div>

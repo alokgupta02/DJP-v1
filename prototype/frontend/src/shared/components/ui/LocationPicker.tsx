@@ -42,7 +42,7 @@ export default function LocationPicker({ value, onChange }: LocationPickerProps)
         });
         setLoading(false);
       },
-      (err) => {
+      () => {
         setError("Unable to retrieve your location. Please enter it manually.");
         setLoading(false);
         setManualMode(true);

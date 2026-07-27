@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
-  ThumbsUp, MessageSquare, Plus, ChevronDown,
+  ThumbsUp, MessageSquare, ChevronDown,
   Trash2, Droplet, Lightbulb, Users, AlertTriangle, Zap,
 } from "lucide-react";
 import clsx from "clsx";

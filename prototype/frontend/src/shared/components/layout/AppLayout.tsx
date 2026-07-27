@@ -3,6 +3,7 @@ import { Outlet, Navigate } from "react-router-dom";
 import Sidebar, { SidebarProvider } from "../sidebar";
 import { Topbar } from "../navigation";
 import { fetchUser } from "../../../features/profile/usersApi";
+import type { UserDto } from "../../../features/profile/usersApi";
 
 function getInitials(name?: string): string {
   if (!name) return "AG";
@@ -12,12 +13,14 @@ function getInitials(name?: string): string {
 }
 
 function AppLayoutContent() {
-  const [user, setUser] = useState<any>(() => {
+  const [user, setUser] = useState<UserDto | null>(() => {
     const userStr = localStorage.getItem("djp_user");
     if (userStr) {
       try {
         return JSON.parse(userStr);
-      } catch (e) {}
+      } catch (err) {
+        console.warn("Failed to parse user from localStorage:", err);
+      }
     }
     return null;
   });
@@ -32,7 +35,9 @@ function AppLayoutContent() {
       try {
         const parsed = JSON.parse(userStr);
         if (parsed.id) loggedInId = parsed.id;
-      } catch (e) {}
+      } catch (err) {
+        console.warn("Failed to parse user from localStorage:", err);
+      }
     }
     fetchUser(loggedInId)
       .then(data => {
@@ -46,7 +51,7 @@ function AppLayoutContent() {
     return <Navigate to="/login" replace />;
   }
 
-  const userInitials = getInitials(user?.fullName || user?.name);
+  const userInitials = getInitials(user?.fullName);
   const userAvatar = user?.avatarUrl || undefined;
   const ward = user?.ward || "Ward 53, Bhopal";
 

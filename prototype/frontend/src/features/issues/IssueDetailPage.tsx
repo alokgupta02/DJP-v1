@@ -1,18 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ThumbsUp, MessageSquare, Users, CheckCircle2, Share2, ImagePlus, ArrowLeft, AlertTriangle, Trash2, Droplet, Search, User } from "lucide-react";
+import { ThumbsUp, MessageSquare, Share2, ArrowLeft, AlertTriangle, Trash2, Droplet, Search, CheckCircle2, Users } from "lucide-react";
 import clsx from "clsx";
 import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";
 import { getComments, toggleVote, toggleFollow } from "../interactions/interactionsApi";
+import type { IssueData, IssueMeta } from "./issueTypes";
 
-const ISSUES_DATA: Record<string, {
-  id: string; category: string; severity: string; title: string; description: string;
-  location: string; address: string; distance: string; time: string; govLevel: string;
-  supports: number; commentsCount: number; affected: string; image: string; imageCount: number;
-  verified: boolean; iconBg: string; iconColor: string; icon: React.ElementType;
-  health: [string, string][]; related: { title: string; dist: string }[]; author?: string; authorInitials?: string; authorBg?: string; authorColor?: string;
-  timeline: string[]; comments: CommentData[];
-}> = {
+const ISSUES_DATA: Record<string, IssueData> = {
   pothole: {
     id: "pothole", category: "Road", severity: "Critical",
     title: "Large Pothole Near Balewadi High Street Junction",
@@ -119,7 +113,7 @@ export default function IssueDetailPage() {
   const { id } = useParams<{ id: string }>();
   
   const mockKey = id && UUID_TO_MOCK_KEY[id] ? UUID_TO_MOCK_KEY[id] : "pothole";
-  const [issue, setIssue] = useState<any>(ISSUES_DATA[mockKey] || ISSUES_DATA["pothole"]);
+  const [issue, setIssue] = useState<IssueData>(ISSUES_DATA[mockKey] || ISSUES_DATA["pothole"]);
   const [comments, setComments] = useState<CommentData[]>(issue.comments || []);
   const [isFollowing, setIsFollowing] = useState(false);
 
@@ -139,7 +133,7 @@ export default function IssueDetailPage() {
         entityType: "ISSUE",
       }));
       setComments(mapped);
-    }).catch(console.error);
+    }).catch((err) => console.error("Failed to fetch comments:", err));
   };
 
   useEffect(() => {
@@ -150,9 +144,9 @@ export default function IssueDetailPage() {
     if (!id) return;
     try {
       await toggleVote(id, "ISSUE", 1);
-      setIssue((prev: any) => ({ ...prev, supports: prev.supports + 1 }));
-    } catch (e) {
-      console.error(e);
+      setIssue((prev) => ({ ...prev, supports: prev.supports + 1 }));
+    } catch {
+      console.error("Failed to support issue");
     }
   };
 
@@ -161,8 +155,8 @@ export default function IssueDetailPage() {
     try {
       await toggleFollow(id, "ISSUE");
       setIsFollowing(!isFollowing);
-    } catch (e) {
-      console.error(e);
+    } catch {
+      console.error("Failed to follow issue");
     }
   };
 
@@ -174,12 +168,12 @@ export default function IssueDetailPage() {
         return res.json();
       })
       .then(data => {
-        let meta = {};
+        let meta: IssueMeta = {};
         if (data.metadata) {
-          try { meta = JSON.parse(data.metadata); } catch(e) {}
+          try { meta = JSON.parse(data.metadata); } catch (err) { console.warn("Failed to parse issue metadata:", err); }
         }
         
-        setIssue((prev: any) => ({
+        setIssue((prev) => ({
           ...prev,
           title: data.title,
           description: data.description,
@@ -188,16 +182,16 @@ export default function IssueDetailPage() {
           category: data.category || prev.category,
           severity: data.priority === 'CRITICAL' ? 'Critical' : (data.priority === 'HIGH' ? 'HIGH' : prev.severity),
           location: data.location || prev.location,
-          affected: (meta as any).affected || prev.affected,
-          distance: (meta as any).distance || prev.distance,
-          govLevel: (meta as any).govLevel || prev.govLevel,
-          author: (meta as any).author || prev.author || "Anonymous",
-          authorInitials: (meta as any).authorInitials || prev.authorInitials || "AN",
-          authorBg: (meta as any).authorBg || prev.authorBg || "bg-gray-100",
-          authorColor: (meta as any).authorColor || prev.authorColor || "text-gray-700",
-          image: (meta as any).image || prev.image,
-          imageCount: (meta as any).imageCount || prev.imageCount,
-          verified: (meta as any).verified !== undefined ? (meta as any).verified : prev.verified,
+          affected: meta.affected || prev.affected,
+          distance: meta.distance || prev.distance,
+          govLevel: meta.govLevel || prev.govLevel,
+          author: meta.author || prev.author || "Anonymous",
+          authorInitials: meta.authorInitials || prev.authorInitials || "AN",
+          authorBg: meta.authorBg || prev.authorBg || "bg-gray-100",
+          authorColor: meta.authorColor || prev.authorColor || "text-gray-700",
+          image: meta.image || prev.image,
+          imageCount: meta.imageCount || prev.imageCount,
+          verified: meta.verified !== undefined ? meta.verified : prev.verified,
           time: data.createdAt ? new Date(data.createdAt).toLocaleDateString() : prev.time,
         }));
       })

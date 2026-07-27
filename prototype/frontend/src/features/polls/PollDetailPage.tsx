@@ -1,19 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Vote, MessageSquare, Share2, ArrowLeft, ArrowBigUp, ArrowBigDown, Users, Search, User } from "lucide-react";
+import { Vote, MessageSquare, Share2, ArrowLeft, Search, ArrowBigUp, ArrowBigDown } from "lucide-react";
 import clsx from "clsx";
 import { type CommentData, CommentInput, CommentThread } from "../../shared/components/comments";
 import { getComments, toggleVote, toggleFollow } from "../interactions/interactionsApi";
-const POLLS_DATA: Record<string, {
-  id: string; category: string;
-  title: string; description: string;
-  author: string; authorInitials?: string; authorBg?: string; authorColor?: string;
-  time: string;
-  supports: number; commentsCount: number; participants: number;
-  options: { label: string; pct: number; primary: boolean; color: string }[];
-  aiSummary: string; aiCommon: string[];
-  topics: string[]; comments: CommentData[];
-}> = {
+import type { PollData, PollOption, PollMeta } from "./pollTypes";
+
+const POLLS_DATA: Record<string, PollData> = {
   "1": {
     id: "1", category: "High Priority",
     title: 'Should Ward 12 implement "No Car Sundays" on the Central Corridor?',
@@ -43,7 +36,7 @@ export default function PollDetailPage() {
   const { id } = useParams<{ id: string }>();
   
   const mockKey = id && UUID_TO_MOCK_KEY[id] ? UUID_TO_MOCK_KEY[id] : "1";
-  const [poll, setPoll] = useState<any>(POLLS_DATA[mockKey] || POLLS_DATA["1"]);
+  const [poll, setPoll] = useState<PollData>(POLLS_DATA[mockKey] || POLLS_DATA["1"]);
   const [comments, setComments] = useState<CommentData[]>(poll.comments || []);
   const [isFollowing, setIsFollowing] = useState(false);
 
@@ -74,9 +67,9 @@ export default function PollDetailPage() {
     if (!id) return;
     try {
       await toggleVote(id, "POLL", value);
-      setPoll((prev: any) => ({ ...prev, supports: prev.supports + value }));
-    } catch (e) {
-      console.error(e);
+      setPoll((prev) => ({ ...prev, supports: prev.supports + value }));
+    } catch {
+      console.error("Failed to vote on poll");
     }
   };
 
@@ -85,8 +78,8 @@ export default function PollDetailPage() {
     try {
       await toggleFollow(id, "POLL");
       setIsFollowing(!isFollowing);
-    } catch (e) {
-      console.error(e);
+    } catch {
+      console.error("Failed to follow poll");
     }
   };
 
@@ -98,31 +91,31 @@ export default function PollDetailPage() {
         return res.json();
       })
       .then(data => {
-        let meta = {};
+        let meta: PollMeta = {};
         if (data.metadata) {
-          try { meta = JSON.parse(data.metadata); } catch(e) {}
+          try { meta = JSON.parse(data.metadata); } catch (err) { console.warn("Failed to parse poll metadata:", err); }
         }
         
-        let parsedOptions: any[] | null = null;
+        let parsedOptions: PollOption[] | null = null;
         if (data.optionsJson) {
-           try {
-              parsedOptions = JSON.parse(data.optionsJson);
-           } catch(e) {}
+          try {
+            parsedOptions = JSON.parse(data.optionsJson);
+          } catch (err) { console.warn("Failed to parse poll options:", err); }
         }
 
-        setPoll((prev: any) => ({
+        setPoll((prev) => ({
           ...prev,
           title: data.question,
           description: data.description,
-          supports: data.votesCount || 0, // In polls, votes are mapped to supports mostly, or participants
+          supports: data.votesCount || 0,
           participants: data.votesCount || 0,
           commentsCount: data.commentsCount || 0,
           category: data.category || prev.category,
-          author: (meta as any).author || prev.author || "Anonymous",
-          authorInitials: (meta as any).authorInitials || prev.authorInitials || "AN",
-          authorBg: (meta as any).authorBg || prev.authorBg || "bg-gray-100",
-          authorColor: (meta as any).authorColor || prev.authorColor || "text-gray-700",
-          options: parsedOptions ? parsedOptions.map((opt: any, i: number) => ({
+          author: meta.author || prev.author || "Anonymous",
+          authorInitials: meta.authorInitials || prev.authorInitials || "AN",
+          authorBg: meta.authorBg || prev.authorBg || "bg-gray-100",
+          authorColor: meta.authorColor || prev.authorColor || "text-gray-700",
+          options: parsedOptions ? parsedOptions.map((opt: PollOption, i: number) => ({
              ...opt,
              color: i === 0 ? "bg-[var(--color-brand)]" : "bg-[var(--color-text-secondary)]"
           })) : prev?.options || []
@@ -249,7 +242,7 @@ export default function PollDetailPage() {
                 
                 {/* Threaded Comments List */}
                 <div className="space-y-4">
-                  {comments.map((comment: any) => (
+                  {comments.map((comment: CommentData) => (
                     <CommentThread key={comment.id} comment={comment} />
                   ))}
                 </div>

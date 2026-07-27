@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, ChevronDown, Check } from "lucide-react";
+import { useLocation } from "react-router-dom";
+import { Check, ChevronDown } from "lucide-react";
 
 import CreateIssueForm from "./components/CreateIssueForm";
 import CreateDiscussionForm from "./components/CreateDiscussionForm";
@@ -25,7 +25,6 @@ const TABS = [
 ];
 
 export default function CreatePostPage() {
-  const navigate = useNavigate();
   const location = useLocation();
   
   // Parse '?type=' from URL to set initial tab if desired
@@ -160,10 +159,10 @@ export default function CreatePostPage() {
 
           {/* Active Form */}
           <div className="p-6">
-            {activeTab === "issue" && <CreateIssueForm community={selectedIssueType} impactScope={impactScope} priorityReason={priorityReason} />}
+            {activeTab === "issue" && <CreateIssueForm community={selectedIssueType} priorityReason={priorityReason} />}
             {activeTab === "discussion" && <CreateDiscussionForm community={selectedIssueType} />}
             {activeTab === "poll" && <CreatePollForm community={selectedIssueType} />}
-            {activeTab === "petition" && <CreatePetitionForm community={selectedIssueType} />}
+            {activeTab === "petition" && <CreatePetitionForm />}
           </div>
         </div>
       </div>

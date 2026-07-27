@@ -22,11 +22,12 @@ export default function LoginPage() {
         method: "POST",
       });
       if (!res.ok) throw new Error("Login failed");
-      const data = await res.json();
-      if (data.token) {
+      const responseJson = await res.json();
+      const data = responseJson.data;
+      if (data?.token) {
         localStorage.setItem("djp_token", data.token);
       }
-      if (data.user) {
+      if (data?.user) {
         localStorage.setItem("djp_user", JSON.stringify(data.user));
       } else {
         localStorage.setItem("djp_user", JSON.stringify({ email: loginEmail }));

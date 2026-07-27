@@ -2,11 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RichEditor from "../../../shared/components/ui/RichEditor";
 
-interface CreatePetitionFormProps {
-  community: string;
-}
-
-export default function CreatePetitionForm({ community }: CreatePetitionFormProps) {
+export default function CreatePetitionForm() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [descriptionHtml, setDescriptionHtml] = useState("");
