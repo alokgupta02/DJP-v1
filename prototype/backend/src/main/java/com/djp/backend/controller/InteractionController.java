@@ -1,15 +1,19 @@
 package com.djp.backend.controller;
 
-import com.djp.backend.dto.ApiResponse;
+import com.djp.backend.dto.*;
 import com.djp.backend.model.Comment;
 import com.djp.backend.model.Follow;
+import com.djp.backend.model.User;
 import com.djp.backend.model.Vote;
+import com.djp.backend.repository.UserRepository;
 import com.djp.backend.service.InteractionService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -18,39 +22,35 @@ import java.util.UUID;
 public class InteractionController {
 
     private final InteractionService interactionService;
-    private final com.djp.backend.repository.UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    public InteractionController(InteractionService interactionService, com.djp.backend.repository.UserRepository userRepository) {
+    public InteractionController(InteractionService interactionService, UserRepository userRepository) {
         this.interactionService = interactionService;
         this.userRepository = userRepository;
     }
 
-    private UUID getUserId(org.springframework.security.core.Authentication authentication) {
+    private User getUser(Authentication authentication) {
         if (authentication == null || authentication.getName() == null) {
-            throw new org.springframework.security.access.AccessDeniedException("Not authenticated");
+            throw new AccessDeniedException("Not authenticated");
         }
-        com.djp.backend.model.User user = userRepository.findByEmail(authentication.getName())
+        return userRepository.findByEmail(authentication.getName())
             .orElseThrow(() -> new IllegalArgumentException("User not found"));
-        return user.getId();
     }
 
     @PostMapping("/comments")
     public ResponseEntity<ApiResponse<Comment>> addComment(
-            @RequestBody Map<String, String> payload,
-            org.springframework.security.core.Authentication authentication) {
-        
+            @Valid @RequestBody AddCommentRequest payload,
+            Authentication authentication) {
         try {
-            UUID userId = getUserId(authentication);
-            String content = payload.get("content");
-            UUID entityId = UUID.fromString(payload.get("entityId"));
-            String entityType = payload.get("entityType");
-            UUID parentId = payload.containsKey("parentId") && payload.get("parentId") != null ? 
-                    UUID.fromString(payload.get("parentId")) : null;
-
-            Comment comment = interactionService.addComment(content, entityId, entityType, parentId, userId);
+            User user = getUser(authentication);
+            Comment comment = interactionService.addComment(
+                payload.content(), payload.entityId(), payload.entityType(),
+                payload.parentId(), user.getId());
             return ResponseEntity.ok(ApiResponse.success(comment, "Comment added successfully."));
-        } catch (org.springframework.security.access.AccessDeniedException e) {
+        } catch (AccessDeniedException e) {
             return ResponseEntity.status(401).body(ApiResponse.error(401, "Not authenticated"));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(ApiResponse.error(400, e.getMessage()));
         }
     }
 
@@ -58,40 +58,34 @@ public class InteractionController {
     public ResponseEntity<ApiResponse<List<Comment>>> getComments(
             @RequestParam UUID entityId,
             @RequestParam String entityType) {
-        return ResponseEntity.ok(ApiResponse.success(interactionService.getComments(entityId, entityType), "Comments retrieved successfully."));
+        return ResponseEntity.ok(ApiResponse.success(
+            interactionService.getComments(entityId, entityType), "Comments retrieved successfully."));
     }
 
     @PostMapping("/votes")
     public ResponseEntity<ApiResponse<Vote>> toggleVote(
-            @RequestBody Map<String, Object> payload,
-            org.springframework.security.core.Authentication authentication) {
-        
+            @Valid @RequestBody ToggleVoteRequest payload,
+            Authentication authentication) {
         try {
-            UUID userId = getUserId(authentication);
-            UUID entityId = UUID.fromString(payload.get("entityId").toString());
-            String entityType = payload.get("entityType").toString();
-            int value = Integer.parseInt(payload.get("value").toString());
-
-            Vote vote = interactionService.toggleVote(entityId, entityType, value, userId);
+            User user = getUser(authentication);
+            Vote vote = interactionService.toggleVote(
+                payload.entityId(), payload.entityType(), payload.value(), user.getId());
             return ResponseEntity.ok(ApiResponse.success(vote, "Vote toggled successfully."));
-        } catch (org.springframework.security.access.AccessDeniedException e) {
+        } catch (AccessDeniedException e) {
             return ResponseEntity.status(401).body(ApiResponse.error(401, "Not authenticated"));
         }
     }
 
     @PostMapping("/follows")
     public ResponseEntity<ApiResponse<Follow>> toggleFollow(
-            @RequestBody Map<String, String> payload,
-            org.springframework.security.core.Authentication authentication) {
-        
+            @Valid @RequestBody ToggleFollowRequest payload,
+            Authentication authentication) {
         try {
-            UUID userId = getUserId(authentication);
-            UUID targetId = UUID.fromString(payload.get("targetId"));
-            String targetType = payload.get("targetType");
-
-            Follow follow = interactionService.toggleFollow(targetId, targetType, userId);
+            User user = getUser(authentication);
+            Follow follow = interactionService.toggleFollow(
+                payload.targetId(), payload.targetType(), user.getId());
             return ResponseEntity.ok(ApiResponse.success(follow, "Follow toggled successfully."));
-        } catch (org.springframework.security.access.AccessDeniedException e) {
+        } catch (AccessDeniedException e) {
             return ResponseEntity.status(401).body(ApiResponse.error(401, "Not authenticated"));
         }
     }

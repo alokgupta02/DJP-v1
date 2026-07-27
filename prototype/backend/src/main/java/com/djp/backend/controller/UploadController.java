@@ -1,48 +1,34 @@
 package com.djp.backend.controller;
 
 import com.djp.backend.dto.ApiResponse;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
+import com.djp.backend.service.UploadService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.MediaTypeFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/djp/api/v1/uploads")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
 public class UploadController {
 
-    private final Path uploadDir = Path.of("uploads");
+    private final UploadService uploadService;
 
-    public UploadController() throws IOException {
-        Files.createDirectories(uploadDir);
+    public UploadController(UploadService uploadService) {
+        this.uploadService = uploadService;
     }
 
     @PostMapping
     public ResponseEntity<ApiResponse<String>> uploadFile(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
-            return ResponseEntity.badRequest()
-                    .body(ApiResponse.error(HttpStatus.BAD_REQUEST.value(), "File is empty"));
-        }
         try {
-            String ext = "";
-            String original = file.getOriginalFilename();
-            if (original != null && original.contains(".")) {
-                ext = original.substring(original.lastIndexOf("."));
-            }
-            String filename = UUID.randomUUID() + ext;
-            Path dest = uploadDir.resolve(filename);
-            Files.copy(file.getInputStream(), dest);
-            String url = "/djp/api/v1/uploads/" + filename;
+            String url = uploadService.uploadFile(file);
             return ResponseEntity.ok(ApiResponse.success(url, "File uploaded."));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest()
+                    .body(ApiResponse.error(HttpStatus.BAD_REQUEST.value(), e.getMessage()));
         } catch (IOException e) {
             return ResponseEntity.internalServerError()
                     .body(ApiResponse.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Upload failed: " + e.getMessage()));
@@ -50,14 +36,12 @@ public class UploadController {
     }
 
     @GetMapping("/{filename}")
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-        Path file = uploadDir.resolve(filename);
-        if (!Files.exists(file)) {
+    public ResponseEntity<org.springframework.core.io.Resource> serveFile(@PathVariable String filename) {
+        if (!uploadService.fileExists(filename)) {
             return ResponseEntity.notFound().build();
         }
-        FileSystemResource resource = new FileSystemResource(file);
-        MediaType mediaType = MediaTypeFactory.getMediaType(resource)
-                .orElse(MediaType.APPLICATION_OCTET_STREAM);
+        var resource = uploadService.serveFile(filename);
+        MediaType mediaType = uploadService.getMediaType(resource);
         return ResponseEntity.ok().contentType(mediaType).body(resource);
     }
 }

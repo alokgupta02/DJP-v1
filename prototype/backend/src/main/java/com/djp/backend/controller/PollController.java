@@ -1,8 +1,6 @@
 package com.djp.backend.controller;
 
-import com.djp.backend.dto.ApiResponse;
-import com.djp.backend.dto.PollCreateRequestDto;
-import com.djp.backend.dto.PollResponseDto;
+import com.djp.backend.dto.*;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.UserRepository;
 import com.djp.backend.service.PollService;
@@ -14,7 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -46,7 +43,7 @@ public class PollController {
     @PostMapping("/{id}/vote")
     public ResponseEntity<ApiResponse<PollResponseDto>> castVote(
             @PathVariable UUID id,
-            @RequestBody Map<String, Integer> payload,
+            @Valid @RequestBody CastVoteRequest payload,
             Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
@@ -57,13 +54,8 @@ public class PollController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
         }
-        int optionIndex = payload.getOrDefault("optionIndex", -1);
-        if (optionIndex < 0) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(ApiResponse.error(HttpStatus.BAD_REQUEST.value(), "Invalid option index."));
-        }
         try {
-            PollResponseDto result = pollService.castVote(id, optionIndex, user);
+            PollResponseDto result = pollService.castVote(id, payload.optionIndex(), user);
             return ResponseEntity.ok(ApiResponse.success(result, "Vote cast successfully."));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT)

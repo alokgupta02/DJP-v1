@@ -21,6 +21,12 @@ public class UserService {
         this.sqlFilePersistenceService = sqlFilePersistenceService;
     }
 
+    @Transactional(readOnly = true)
+    public User getUserById(UUID userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
+    }
+
     @Transactional
     public User completeOnboarding(UUID userId, OnboardingUpdateRequestDto dto) {
         User user = userRepository.findById(userId)
