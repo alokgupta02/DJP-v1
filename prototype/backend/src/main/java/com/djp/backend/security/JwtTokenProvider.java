@@ -21,10 +21,12 @@ public class JwtTokenProvider {
 
     private final SecretKey key;
     private final long tokenValidityInMilliseconds;
+    private final long refreshTokenValidityInMilliseconds;
 
     public JwtTokenProvider(
             @Value("${app.jwt.secret:defaultSecretKeyThatIsAtLeast256BitsLongAndSecure}") String jwtSecret,
-            @Value("${app.jwt.expiration-ms:86400000}") long tokenValidityInMilliseconds) {
+            @Value("${app.jwt.expiration-ms:86400000}") long tokenValidityInMilliseconds,
+            @Value("${app.jwt.refresh-expiration-ms:604800000}") long refreshTokenValidityInMilliseconds) {
         
         if (jwtSecret.length() < 32) {
             log.error("JWT secret is less than 256 bits (32 characters). This is insecure.");
@@ -33,6 +35,7 @@ public class JwtTokenProvider {
         byte[] keyBytes = jwtSecret.getBytes(StandardCharsets.UTF_8);
         this.key = Keys.hmacShaKeyFor(keyBytes);
         this.tokenValidityInMilliseconds = tokenValidityInMilliseconds;
+        this.refreshTokenValidityInMilliseconds = refreshTokenValidityInMilliseconds;
     }
 
     public String createToken(UUID userId, String email, String role) {
@@ -43,10 +46,28 @@ public class JwtTokenProvider {
                 .subject(userId.toString())
                 .claim("email", email)
                 .claim("role", role)
+                .claim("type", "access")
                 .issuedAt(now)
                 .expiration(validity)
                 .signWith(key)
                 .compact();
+    }
+
+    public String createRefreshToken(UUID userId) {
+        Date now = new Date();
+        Date validity = new Date(now.getTime() + this.refreshTokenValidityInMilliseconds);
+
+        return Jwts.builder()
+                .subject(userId.toString())
+                .claim("type", "refresh")
+                .issuedAt(now)
+                .expiration(validity)
+                .signWith(key)
+                .compact();
+    }
+
+    public long getRefreshTokenValidityInMilliseconds() {
+        return refreshTokenValidityInMilliseconds;
     }
 
     public boolean validateToken(String authToken) {

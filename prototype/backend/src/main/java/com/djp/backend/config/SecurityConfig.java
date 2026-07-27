@@ -49,6 +49,7 @@ public class SecurityConfig {
                     "/djp/api/v1/auth/google",
                     "/djp/api/v1/auth/github",
                     "/djp/api/v1/auth/dev-login",
+                    "/djp/api/v1/auth/refresh",
                     "/login/**",
                     "/oauth2/**",
                     "/h2-console/**",

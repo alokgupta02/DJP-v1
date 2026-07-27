@@ -1,15 +1,24 @@
 package com.djp.backend.controller;
 
 import com.djp.backend.dto.ApiResponse;
+import com.djp.backend.dto.AuthResponseDto;
+import com.djp.backend.dto.RefreshTokenRequestDto;
 import com.djp.backend.dto.UserDto;
+import com.djp.backend.model.RefreshToken;
+import com.djp.backend.model.User;
+import com.djp.backend.repository.RefreshTokenRepository;
 import com.djp.backend.repository.UserRepository;
+import com.djp.backend.security.JwtTokenProvider;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/djp/api/v1/auth")
@@ -17,10 +26,12 @@ import java.util.Map;
 public class AuthController {
 
     private final UserRepository userRepository;
-    private final com.djp.backend.security.JwtTokenProvider jwtTokenProvider;
+    private final RefreshTokenRepository refreshTokenRepository;
+    private final JwtTokenProvider jwtTokenProvider;
 
-    public AuthController(UserRepository userRepository, com.djp.backend.security.JwtTokenProvider jwtTokenProvider) {
+    public AuthController(UserRepository userRepository, RefreshTokenRepository refreshTokenRepository, JwtTokenProvider jwtTokenProvider) {
         this.userRepository = userRepository;
+        this.refreshTokenRepository = refreshTokenRepository;
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
@@ -41,16 +52,32 @@ public class AuthController {
     }
 
     @PostMapping("/dev-login")
-    public ResponseEntity<ApiResponse<Map<String, Object>>> devLogin(@RequestParam(defaultValue = "citizen@djp.org") String email) {
+    public ResponseEntity<ApiResponse<AuthResponseDto>> devLogin(@RequestParam(defaultValue = "citizen@djp.org") String email) {
         return userRepository.findByEmail(email)
                 .map(user -> {
-                    Map<String, Object> response = new HashMap<>();
-                    response.put("token", jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole()));
-                    response.put("user", UserDto.fromEntity(user));
-                    return ResponseEntity.ok(ApiResponse.success(response, "Login successful."));
+                    AuthResponseDto authResponse = createAuthResponse(user);
+                    return ResponseEntity.ok(ApiResponse.success(authResponse, "Login successful."));
                 })
                 .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                         .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Invalid credentials.")));
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<ApiResponse<AuthResponseDto>> refreshToken(@Valid @RequestBody RefreshTokenRequestDto request) {
+        return refreshTokenRepository.findByToken(request.refreshToken())
+                .filter(refreshToken -> !refreshToken.isRevoked())
+                .filter(refreshToken -> refreshToken.getExpiresAt().isAfter(OffsetDateTime.now()))
+                .map(refreshToken -> {
+                    User user = refreshToken.getUser();
+                    // Revoke old refresh token (rotation)
+                    refreshToken.setRevoked(true);
+                    refreshTokenRepository.save(refreshToken);
+                    // Issue new tokens
+                    AuthResponseDto authResponse = createAuthResponse(user);
+                    return ResponseEntity.ok(ApiResponse.success(authResponse, "Token refreshed successfully."));
+                })
+                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Invalid or expired refresh token.")));
     }
 
     @GetMapping("/me")
@@ -66,4 +93,17 @@ public class AuthController {
                         .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found.")));
     }
 
+    private AuthResponseDto createAuthResponse(User user) {
+        String accessToken = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());
+        String refreshTokenValue = jwtTokenProvider.createRefreshToken(user.getId());
+
+        RefreshToken refreshToken = new RefreshToken(
+                refreshTokenValue,
+                user,
+                OffsetDateTime.now().plusSeconds(jwtTokenProvider.getRefreshTokenValidityInMilliseconds() / 1000)
+        );
+        refreshTokenRepository.save(refreshToken);
+
+        return new AuthResponseDto(accessToken, refreshTokenValue, UserDto.fromEntity(user));
+    }
 }

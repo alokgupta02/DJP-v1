@@ -1,7 +1,7 @@
 package com.djp.backend.dto;
 
 import jakarta.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 public record PollUpdateRequestDto(
@@ -16,7 +16,7 @@ public record PollUpdateRequestDto(
         
         List<String> options,
         
-        LocalDateTime expiresAt,
+        OffsetDateTime expiresAt,
         
         @Size(max = 150, message = "Location must not exceed 150 characters")
         String location,

@@ -101,15 +101,15 @@ P3	Standardize date types to OffsetDateTime
 5. Add MapStruct dependency to pom.xml
 
 # Todos
-[•] Fix test failures - configure H2 for test profile
-[ ] Stop SqlFilePersistenceService writing to src/main/resources
-[ ] Fix CORS security issue (allowedOriginPatterns = [*])
-[ ] Add Service layer + MapStruct for Issues/Discussions/Polls
-[ ] Add pagination + filtering to all list endpoints
-[ ] Add Flyway migrations
-[ ] Implement UPDATE/DELETE endpoints
+[x] Fix test failures - configure H2 for test profile
+[x] Stop SqlFilePersistenceService writing to src/main/resources
+[x] Fix CORS security issue (allowedOriginPatterns = [*])
+[x] Add Service layer + MapStruct for Issues/Discussions/Polls
+[x] Add pagination + filtering to all list endpoints
+[x] Add Flyway migrations
+[x] Implement UPDATE/DELETE endpoints
 [ ] Add comprehensive integration tests (all controllers)
-[ ] Implement refresh token + OAuth2 completion
-[ ] Migrate DTOs to record + add MapStruct
+[x] Implement refresh token + OAuth2 completion
+[x] Migrate DTOs to record + add MapStruct
 [ ] Add WebSocket for real-time notifications
-[ ] Standardize date types to OffsetDateTime
+[x] Standardize date types to OffsetDateTime

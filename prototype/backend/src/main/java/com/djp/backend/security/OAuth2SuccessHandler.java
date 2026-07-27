@@ -1,6 +1,8 @@
 package com.djp.backend.security;
 
+import com.djp.backend.model.RefreshToken;
 import com.djp.backend.model.User;
+import com.djp.backend.repository.RefreshTokenRepository;
 import com.djp.backend.repository.UserRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Optional;
 
 @Component
@@ -24,14 +27,17 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     private static final Logger log = LoggerFactory.getLogger(OAuth2SuccessHandler.class);
 
     private final UserRepository userRepository;
+    private final RefreshTokenRepository refreshTokenRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final String frontendRedirectUrl;
 
     public OAuth2SuccessHandler(
             UserRepository userRepository,
+            RefreshTokenRepository refreshTokenRepository,
             JwtTokenProvider jwtTokenProvider,
             @Value("${app.oauth2.frontend-redirect-url:http://localhost:5173/oauth2/redirect}") String frontendRedirectUrl) {
         this.userRepository = userRepository;
+        this.refreshTokenRepository = refreshTokenRepository;
         this.jwtTokenProvider = jwtTokenProvider;
         this.frontendRedirectUrl = frontendRedirectUrl;
     }
@@ -55,21 +61,26 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
             String name = getName(oAuth2User);
 
             if (email == null) {
-                // Defensive fallback: map to provider id if email is not public
                 email = providerId + "@" + provider.toLowerCase() + ".com";
             }
 
             log.info("Successfully authenticated user via OAuth2 provider: {} [email: {}]", provider, email);
 
-            // Sync user with local database
             User user = syncUserInDatabase(email, name, provider, providerId);
 
-            // Generate JWT Token for stateless sessions
             String token = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());
+            String refreshTokenValue = jwtTokenProvider.createRefreshToken(user.getId());
 
-            // Build target redirect URL with token
+            RefreshToken refreshToken = new RefreshToken(
+                    refreshTokenValue,
+                    user,
+                    OffsetDateTime.now().plusSeconds(jwtTokenProvider.getRefreshTokenValidityInMilliseconds() / 1000)
+            );
+            refreshTokenRepository.save(refreshToken);
+
             String targetUrl = UriComponentsBuilder.fromUriString(frontendRedirectUrl)
                     .queryParam("token", token)
+                    .queryParam("refreshToken", refreshTokenValue)
                     .build().toUriString();
 
             getRedirectStrategy().sendRedirect(request, response, targetUrl);
