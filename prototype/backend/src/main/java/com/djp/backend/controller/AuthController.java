@@ -34,6 +34,24 @@ public class AuthController {
         return ResponseEntity.ok(ApiResponse.success(authService.initiateGithubLogin(), "Github login initiated."));
     }
 
+    @PostMapping("/register")
+    public ResponseEntity<ApiResponse<AuthResponseDto>> register(@RequestBody Map<String, String> payload) {
+        try {
+            String email = payload.get("email");
+            String name = payload.get("name");
+            if (email == null || email.isBlank()) {
+                return ResponseEntity.badRequest()
+                        .body(ApiResponse.error(400, "Email is required"));
+            }
+            AuthResponseDto result = authService.register(email, name);
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(ApiResponse.success(result, "Registration successful."));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body(ApiResponse.error(HttpStatus.CONFLICT.value(), e.getMessage()));
+        }
+    }
+
     @PostMapping("/dev-login")
     public ResponseEntity<ApiResponse<AuthResponseDto>> devLogin(@RequestParam(defaultValue = "citizen@djp.org") String email) {
         try {

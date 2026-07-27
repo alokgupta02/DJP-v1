@@ -28,6 +28,22 @@ public class AuthService {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
+    public AuthResponseDto register(String email, String name) {
+        if (userRepository.findByEmail(email).isPresent()) {
+            throw new IllegalArgumentException("Email already registered");
+        }
+        User user = new User();
+        user.setEmail(email);
+        user.setName(name != null ? name : email.split("@")[0]);
+        user.setProvider("DEV");
+        user.setProviderId("dev-" + email);
+        user.setRole("CITIZEN");
+        user.setOnboardingCompleted(false);
+        user.setSubscriptionStatus("ACTIVE");
+        User saved = userRepository.save(user);
+        return createAuthResponse(saved);
+    }
+
     public AuthResponseDto devLogin(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found: " + email));
