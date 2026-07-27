@@ -1,5 +1,6 @@
 package com.djp.backend.service;
 
+import com.djp.backend.dto.PetitionCreateRequestDto;
 import com.djp.backend.dto.PetitionResponseDto;
 import com.djp.backend.model.Petition;
 import com.djp.backend.model.User;
@@ -25,13 +26,13 @@ public class PetitionService {
         return petitionRepository.findAll().stream().map(PetitionResponseDto::fromEntity).toList();
     }
 
-    public PetitionResponseDto createPetition(String title, String description, String category, int signatureGoal, String targetAuthority, User author) {
+    public PetitionResponseDto createPetition(PetitionCreateRequestDto dto, User author) {
         Petition p = new Petition();
-        p.setTitle(title);
-        p.setDescription(description);
-        p.setCategory(category);
-        p.setSignatureGoal(signatureGoal);
-        p.setTargetAuthority(targetAuthority);
+        p.setTitle(dto.title());
+        p.setDescription(dto.description());
+        p.setCategory(dto.category() != null ? dto.category() : "General");
+        p.setSignatureGoal(dto.signatureGoal() > 0 ? dto.signatureGoal() : 100);
+        p.setTargetAuthority(dto.targetAuthority());
         p.setAuthor(author);
         return PetitionResponseDto.fromEntity(petitionRepository.save(p));
     }

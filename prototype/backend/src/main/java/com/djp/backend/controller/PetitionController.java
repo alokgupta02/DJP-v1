@@ -1,17 +1,18 @@
 package com.djp.backend.controller;
 
 import com.djp.backend.dto.ApiResponse;
+import com.djp.backend.dto.PetitionCreateRequestDto;
 import com.djp.backend.dto.PetitionResponseDto;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.UserRepository;
 import com.djp.backend.service.PetitionService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -34,7 +35,7 @@ public class PetitionController {
 
     @PostMapping
     public ResponseEntity<ApiResponse<PetitionResponseDto>> createPetition(
-            @RequestBody Map<String, String> payload,
+            @Valid @RequestBody PetitionCreateRequestDto payload,
             Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
@@ -45,12 +46,7 @@ public class PetitionController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
         }
-        String title = payload.get("title");
-        String description = payload.get("description");
-        String category = payload.getOrDefault("category", "General");
-        int goal = Integer.parseInt(payload.getOrDefault("signatureGoal", "100"));
-        String target = payload.get("targetAuthority");
-        PetitionResponseDto result = petitionService.createPetition(title, description, category, goal, target, author);
+        PetitionResponseDto result = petitionService.createPetition(payload, author);
         return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.success(result, "Petition created."));
     }
 
