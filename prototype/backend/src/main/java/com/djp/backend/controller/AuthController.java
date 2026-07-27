@@ -2,6 +2,7 @@ package com.djp.backend.controller;
 
 import com.djp.backend.dto.ApiResponse;
 import com.djp.backend.dto.AuthResponseDto;
+import com.djp.backend.dto.RegisterRequest;
 import com.djp.backend.dto.RefreshTokenRequestDto;
 import com.djp.backend.dto.UserDto;
 import com.djp.backend.service.AuthService;
@@ -35,15 +36,9 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse<AuthResponseDto>> register(@RequestBody Map<String, String> payload) {
+    public ResponseEntity<ApiResponse<AuthResponseDto>> register(@Valid @RequestBody RegisterRequest payload) {
         try {
-            String email = payload.get("email");
-            String name = payload.get("name");
-            if (email == null || email.isBlank()) {
-                return ResponseEntity.badRequest()
-                        .body(ApiResponse.error(400, "Email is required"));
-            }
-            AuthResponseDto result = authService.register(email, name);
+            AuthResponseDto result = authService.register(payload.email(), payload.name());
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(ApiResponse.success(result, "Registration successful."));
         } catch (IllegalArgumentException e) {

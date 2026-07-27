@@ -29,6 +29,9 @@ public class AuthService {
     }
 
     public AuthResponseDto register(String email, String name) {
+        if (email == null || email.isBlank()) {
+            throw new IllegalArgumentException("Email is required");
+        }
         if (userRepository.findByEmail(email).isPresent()) {
             throw new IllegalArgumentException("Email already registered");
         }

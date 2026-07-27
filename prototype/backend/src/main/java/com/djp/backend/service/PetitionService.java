@@ -2,14 +2,15 @@ package com.djp.backend.service;
 
 import com.djp.backend.dto.PetitionCreateRequestDto;
 import com.djp.backend.dto.PetitionResponseDto;
+import com.djp.backend.dto.PetitionUpdateRequestDto;
 import com.djp.backend.model.Petition;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.PetitionRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 import java.util.UUID;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
@@ -22,8 +23,8 @@ public class PetitionService {
     }
 
     @Transactional(readOnly = true)
-    public List<PetitionResponseDto> getPetitions() {
-        return petitionRepository.findAll().stream().map(PetitionResponseDto::fromEntity).toList();
+    public Page<PetitionResponseDto> getPetitions(Pageable pageable) {
+        return petitionRepository.findAll(pageable).map(PetitionResponseDto::fromEntity);
     }
 
     public PetitionResponseDto createPetition(PetitionCreateRequestDto dto, User author) {
@@ -37,7 +38,30 @@ public class PetitionService {
         return PetitionResponseDto.fromEntity(petitionRepository.save(p));
     }
 
-    public PetitionResponseDto signPetition(UUID petitionId) {
+    public PetitionResponseDto updatePetition(UUID id, PetitionUpdateRequestDto request, User author) {
+        Petition p = petitionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
+        if (!p.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
+            throw new org.springframework.security.access.AccessDeniedException("Not authorized");
+        }
+        if (request.title() != null) p.setTitle(request.title());
+        if (request.description() != null) p.setDescription(request.description());
+        if (request.category() != null) p.setCategory(request.category());
+        if (request.targetAuthority() != null) p.setTargetAuthority(request.targetAuthority());
+        if (request.signatureGoal() != null) p.setSignatureGoal(request.signatureGoal());
+        return PetitionResponseDto.fromEntity(petitionRepository.save(p));
+    }
+
+    public void deletePetition(UUID id, User author) {
+        Petition p = petitionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
+        if (!p.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
+            throw new org.springframework.security.access.AccessDeniedException("Not authorized");
+        }
+        petitionRepository.delete(p);
+    }
+
+    public PetitionResponseDto signPetition(UUID petitionId, User user) {
         Petition p = petitionRepository.findById(petitionId)
                 .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
         p.setSignatureCount(p.getSignatureCount() + 1);

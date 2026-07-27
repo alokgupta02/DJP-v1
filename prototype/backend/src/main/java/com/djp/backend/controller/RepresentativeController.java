@@ -3,10 +3,11 @@ package com.djp.backend.controller;
 import com.djp.backend.dto.ApiResponse;
 import com.djp.backend.dto.RepresentativeResponseDto;
 import com.djp.backend.service.RepresentativeService;
+import org.springframework.data.domain.Page;
+import java.util.List;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/djp/api/v1/representatives")
@@ -20,8 +21,8 @@ public class RepresentativeController {
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<RepresentativeResponseDto>>> getAllRepresentatives() {
+    public ResponseEntity<ApiResponse<List<RepresentativeResponseDto>>> getAllRepresentatives(Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.success(
-                representativeService.getRepresentatives(), "Representatives retrieved."));
+                representativeService.getRepresentatives(pageable), "Representatives retrieved."));
     }
 }

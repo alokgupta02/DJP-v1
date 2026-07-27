@@ -2,10 +2,10 @@ package com.djp.backend.service;
 
 import com.djp.backend.dto.RepresentativeResponseDto;
 import com.djp.backend.repository.RepresentativeRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional
@@ -18,8 +18,7 @@ public class RepresentativeService {
     }
 
     @Transactional(readOnly = true)
-    public List<RepresentativeResponseDto> getRepresentatives() {
-        return representativeRepository.findAll().stream()
-                .map(RepresentativeResponseDto::fromEntity).toList();
+    public Page<RepresentativeResponseDto> getRepresentatives(Pageable pageable) {
+        return representativeRepository.findAll(pageable).map(RepresentativeResponseDto::fromEntity);
     }
 }
