@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
   ThumbsUp, MessageSquare, Users,
   AlertTriangle, Trash2,
-  Lightbulb, Vote, X, Share2, FileText, Clock, Loader2
+  Lightbulb, Vote, X, Share2, FileText, Clock, Loader2, Flame
 } from "lucide-react";
 import clsx from "clsx";
 import { toggleFollow } from "../interactions/interactionsApi";

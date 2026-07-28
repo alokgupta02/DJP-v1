@@ -68,14 +68,16 @@ function mapPoll(item: { id: string; question: string; description: string; expi
 export async function fetchIssues(): Promise<FeedIssue[]> {
   const res = await fetch("/djp/api/v1/issues");
   if (!res.ok) throw new Error("Failed to fetch issues");
-  const data = await res.json();
+  const json = await res.json();
+  const data = json.data ?? json;
   return Array.isArray(data) ? data.map(mapIssue) : [];
 }
 
 export async function fetchDiscussions(): Promise<FeedDiscussion[]> {
   const res = await fetch("/djp/api/v1/discussions");
   if (!res.ok) throw new Error("Failed to fetch discussions");
-  const data = await res.json();
+  const json = await res.json();
+  const data = json.data ?? json;
   return Array.isArray(data) ? data.map(mapDiscussion) : [];
 }
 
@@ -112,6 +114,7 @@ export async function fetchPetitions(): Promise<FeedPetition[]> {
 export async function fetchPolls(): Promise<FeedPoll[]> {
   const res = await fetch("/djp/api/v1/polls");
   if (!res.ok) throw new Error("Failed to fetch polls");
-  const data = await res.json();
+  const json = await res.json();
+  const data = json.data ?? json;
   return Array.isArray(data) ? data.map(mapPoll) : [];
 }

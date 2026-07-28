@@ -28,6 +28,8 @@ export interface UserStats {
   discussionsCreated: number;
   pollsCreated: number;
 }
+
+export interface ProfileUpdatePayload {
   name?: string;
   dob?: string;
   gender?: string;
