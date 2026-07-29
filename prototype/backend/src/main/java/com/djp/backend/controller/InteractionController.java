@@ -1,6 +1,10 @@
 package com.djp.backend.controller;
 
 import com.djp.backend.dto.*;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.model.Comment;
 import com.djp.backend.model.Follow;
 import com.djp.backend.model.User;
@@ -17,6 +21,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@Tag(name = "8. Interactions", description = "User Interactions Management")
 @RequestMapping("/djp/api/v1/interactions")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
 public class InteractionController {
@@ -37,6 +42,7 @@ public class InteractionController {
             .orElseThrow(() -> new IllegalArgumentException("User not found"));
     }
 
+    @Operation(summary = "Add Comment", description = "Executes the addComment operation")
     @PostMapping("/comments")
     public ResponseEntity<ApiResponse<Comment>> addComment(
             @Valid @RequestBody AddCommentRequest payload,
@@ -54,6 +60,7 @@ public class InteractionController {
         }
     }
 
+    @Operation(summary = "Get Comments", description = "Executes the getComments operation")
     @GetMapping("/comments")
     public ResponseEntity<ApiResponse<List<Comment>>> getComments(
             @RequestParam UUID entityId,
@@ -62,6 +69,7 @@ public class InteractionController {
             interactionService.getComments(entityId, entityType), "Comments retrieved successfully."));
     }
 
+    @Operation(summary = "Toggle Vote", description = "Executes the toggleVote operation")
     @PostMapping("/votes")
     public ResponseEntity<ApiResponse<Vote>> toggleVote(
             @Valid @RequestBody ToggleVoteRequest payload,
@@ -76,6 +84,7 @@ public class InteractionController {
         }
     }
 
+    @Operation(summary = "Toggle Follow", description = "Executes the toggleFollow operation")
     @PostMapping("/follows")
     public ResponseEntity<ApiResponse<Follow>> toggleFollow(
             @Valid @RequestBody ToggleFollowRequest payload,

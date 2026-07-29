@@ -1,6 +1,10 @@
 package com.djp.backend.controller;
 
 import com.djp.backend.dto.*;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.UserRepository;
 import com.djp.backend.service.PollService;
@@ -15,6 +19,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@Tag(name = "4. Polls & Voting", description = "Polls and Voting Management")
 @RequestMapping("/djp/api/v1/polls")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
 public class PollController {
@@ -27,11 +32,13 @@ public class PollController {
         this.userRepository = userRepository;
     }
 
+    @Operation(summary = "Get All Polls", description = "Executes the getAllPolls operation")
     @GetMapping
-    public ResponseEntity<ApiResponse<List<PollResponseDto>>> getAllPolls(Pageable pageable) {
+    public ResponseEntity<ApiResponse<List<PollResponseDto>>> getAllPolls(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.success(pollService.getPolls(pageable), "Polls retrieved successfully."));
     }
 
+    @Operation(summary = "Get Poll By Id", description = "Executes the getPollById operation")
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<PollResponseDto>> getPollById(@PathVariable UUID id) {
         return pollService.getPollById(id)
@@ -40,6 +47,7 @@ public class PollController {
                         .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Poll not found.")));
     }
 
+    @Operation(summary = "Cast Vote", description = "Executes the castVote operation")
     @PostMapping("/{id}/vote")
     public ResponseEntity<ApiResponse<PollResponseDto>> castVote(
             @PathVariable UUID id,
@@ -63,6 +71,7 @@ public class PollController {
         }
     }
 
+    @Operation(summary = "Create Poll", description = "Executes the createPoll operation")
     @PostMapping
     public ResponseEntity<ApiResponse<PollResponseDto>> createPoll(
             @Valid @RequestBody PollCreateRequestDto request,
@@ -86,6 +95,7 @@ public class PollController {
                 .body(ApiResponse.success(saved, "Poll created successfully."));
     }
 
+    @Operation(summary = "Update Poll", description = "Executes the updatePoll operation")
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<PollResponseDto>> updatePoll(
             @PathVariable UUID id,
@@ -114,6 +124,7 @@ public class PollController {
         }
     }
 
+    @Operation(summary = "Delete Poll", description = "Executes the deletePoll operation")
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deletePoll(@PathVariable UUID id, Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {

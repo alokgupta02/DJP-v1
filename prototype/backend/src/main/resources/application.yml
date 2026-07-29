@@ -72,3 +72,9 @@ resilience4j:
     instances:
       authServiceRetry:
         baseConfig: default
+
+springdoc:
+  swagger-ui:
+    operationsSorter: alpha
+    tagsSorter: alpha
+    docExpansion: none

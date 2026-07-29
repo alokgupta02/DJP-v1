@@ -1,6 +1,10 @@
 package com.djp.backend.controller;
 
 import com.djp.backend.dto.ApiResponse;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.dto.DiscussionCreateRequestDto;
 import com.djp.backend.dto.DiscussionResponseDto;
 import com.djp.backend.model.User;
@@ -17,6 +21,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@Tag(name = "3. Discussions", description = "Discussion Forums Management")
 @RequestMapping("/djp/api/v1/discussions")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
 public class DiscussionController {
@@ -29,11 +34,13 @@ public class DiscussionController {
         this.userRepository = userRepository;
     }
 
+    @Operation(summary = "Get All Discussions", description = "Executes the getAllDiscussions operation")
     @GetMapping
-    public ResponseEntity<ApiResponse<List<DiscussionResponseDto>>> getAllDiscussions(Pageable pageable) {
+    public ResponseEntity<ApiResponse<List<DiscussionResponseDto>>> getAllDiscussions(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.success(discussionService.getDiscussions(pageable), "Discussions retrieved successfully."));
     }
 
+    @Operation(summary = "Get Discussion By Id", description = "Executes the getDiscussionById operation")
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<DiscussionResponseDto>> getDiscussionById(@PathVariable UUID id) {
         return discussionService.getDiscussionById(id)
@@ -42,6 +49,7 @@ public class DiscussionController {
                         .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Discussion not found.")));
     }
 
+    @Operation(summary = "Create Discussion", description = "Executes the createDiscussion operation")
     @PostMapping
     public ResponseEntity<ApiResponse<DiscussionResponseDto>> createDiscussion(
             @Valid @RequestBody DiscussionCreateRequestDto request,
@@ -65,6 +73,7 @@ public class DiscussionController {
                 .body(ApiResponse.success(saved, "Discussion created successfully."));
     }
 
+    @Operation(summary = "Update Discussion", description = "Executes the updateDiscussion operation")
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<DiscussionResponseDto>> updateDiscussion(
             @PathVariable UUID id,
@@ -93,6 +102,7 @@ public class DiscussionController {
         }
     }
 
+    @Operation(summary = "Delete Discussion", description = "Executes the deleteDiscussion operation")
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deleteDiscussion(@PathVariable UUID id, Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {

@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/djp/api/v1/profiles")
-@Tag(name = "Profiles", description = "Operations related to user profiles")
+@Tag(name = "6. Profiles", description = "User Profile Management")
 public class ProfileController {
 
     private final ProfileService profileService;
