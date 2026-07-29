@@ -6,17 +6,23 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/djpdbv1?currentSchema=djp
-    driver-class-name: org.postgresql.Driver
-    username: djpuser
-    password: "DJ@1234$$"
+    url: jdbc:h2:mem:djpdbv1;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.H2Dialect
     properties:
       hibernate:
-        default_schema: djp
+        default_schema: PUBLIC
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     show-sql: true
     defer-datasource-initialization: false
   servlet:
@@ -31,7 +37,7 @@ spring:
 
 app:
   cors:
-    allowed-origins: "http://localhost:5173"
+    allowed-origins: "http://localhost:5173,http://localhost:5174"
   persistence:
     sql-file:
       enabled: false

@@ -7,9 +7,11 @@ import com.djp.backend.model.User;
 import com.djp.backend.service.ProfileService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
 
 import java.util.UUID;
 
@@ -25,7 +27,6 @@ public class ProfileController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("#id.toString() == authentication.principal or hasRole('ADMIN')")
     @Operation(summary = "Get a user profile by ID")
     public ResponseEntity<ApiResponse<ProfileDto>> getProfile(@PathVariable UUID id) {
         User user = profileService.getProfile(id);
@@ -33,9 +34,12 @@ public class ProfileController {
     }
 
     @PatchMapping("/{id}")
-    @PreAuthorize("#id.toString() == authentication.principal or hasRole('ADMIN')")
     @Operation(summary = "Update a user profile")
-    public ResponseEntity<ApiResponse<ProfileDto>> updateProfile(@PathVariable UUID id, @RequestBody ProfileUpdateRequestDto request) {
+    public ResponseEntity<ApiResponse<ProfileDto>> updateProfile(@PathVariable UUID id, @RequestBody ProfileUpdateRequestDto request, Authentication authentication) {
+        User user = profileService.getProfile(id);
+        if (authentication == null || (!user.getEmail().equals(authentication.getName()) && !authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN")))) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
         User updatedUser = profileService.updateProfile(id, request);
         return ResponseEntity.ok(ApiResponse.success(ProfileDto.fromEntity(updatedUser), "Profile updated successfully."));
     }

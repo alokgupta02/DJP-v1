@@ -1,16 +1,16 @@
-# Graph Report - DJP-v1  (2026-07-26)
+# Graph Report - DJP-v1  (2026-07-29)
 
 ## Corpus Check
-- 974 files · ~836,737 words
+- 1061 files · ~858,024 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 11163 nodes · 26761 edges · 762 communities (569 shown, 193 thin omitted)
-- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 3163 edges (avg confidence: 0.58)
+- 11791 nodes · 27984 edges · 783 communities (585 shown, 198 thin omitted)
+- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 3314 edges (avg confidence: 0.59)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `61a338ff`
+- Built from commit: `05124990`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -319,6 +319,7 @@
 - SKILL.md
 - server-serialization.md
 - _template.md
+- console_logging.py
 - NotificationsPage.tsx
 - SKILL.md
 - 📋 DJP-v1 Technical Debt Register
@@ -637,7 +638,8 @@
 - Input.js
 - Topbar.js
 - Sidebar.js
-- SidebarFooter.js
+- inline-ignores.mjs
+- Persona 6: Arjun Patil — *"The Aspiring Ward Leader"*
 - SidebarFooter.tsx
 - CreatePostPage.tsx
 - SidebarHeader.tsx
@@ -645,6 +647,7 @@
 - SidebarNav.tsx
 - SidebarNavItem.js
 - EmptyState.js
+- checkElementDesignSystemDOM
 - com.djp:backend
 - com.djp:backend
 - String?
@@ -653,26 +656,44 @@
 - index.ts
 - main.js
 - main.tsx
-- aF
+- UserRepository
 - DiscussionsPage.tsx
+- OAuth2SuccessHandler
 - NotFoundPage.tsx
 - PollsPage.js
 - PollsPage.tsx
 - ProfilePage.js
+- AuthIntegrationTest
 - index.js
 - AuthIntegrationTest
 - index.js
+- MessageHandler
+- FE ↔ BE Contract Testing
 - SecurityConfig.java
 - InteractionIntegrationTest
 - MessageHandler
+- collectVisualContrastCandidates
+- ResourceNotFoundException
+- normalizeGitHubEvent
 - Persona 3: Priya Deshmukh — *"The Community Organizer"*
+- main.tsx
+- Change Map
+- copyProperties
 - test_core.py
 - j8
+- Research Map
+- package.json
+- Project Analysis Summary
+- PollsPage.js
+- AuditLog.java
+- AuthLayout.tsx
+- setup.ts
+- RISKS.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `a()` - 583 edges
 2. `b()` - 524 edges
-3. `i()` - 458 edges
+3. `i()` - 459 edges
 4. `c()` - 419 edges
 5. `j()` - 410 edges
 6. `q()` - 332 edges
@@ -696,15 +717,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (762 total, 193 thin omitted)
+## Communities (783 total, 198 thin omitted)
 
 ### Community 0 - "Test-Driven Development (TDD)"
 Cohesion: 0.05
 Nodes (38): Common Rationalizations, Debugging Integration, Example: Bug Fix, Final Rule, Good Tests, GREEN - Minimal Code, Overview, Red Flags - STOP and Start Over (+30 more)
 
 ### Community 1 - "Skill Creator"
-Cohesion: 0.05
-Nodes (46): a35(), a3C(), a3M(), a4f(), a5p(), a6i(), a6l(), a9K() (+38 more)
+Cohesion: 0.11
+Nodes (24): a3M(), a5p(), a6i(), a_5(), aFn(), atz(), CR(), cW() (+16 more)
 
 ### Community 2 - "devDependencies"
 Cohesion: 0.06
@@ -712,7 +733,7 @@ Nodes (33): dependencies, clsx, @hookform/resolvers, lucide-react, react, react-
 
 ### Community 3 - "run_loop"
 Cohesion: 0.03
-Nodes (133): addManualContextText(), applyGlobalBarLabelState(), applyPlaceholderSizingStyles(), applySvelteComponentVariantStyle(), averageRgb01(), bindEditBadgeProxy(), bufferToBase64(), buildColorModels() (+125 more)
+Nodes (135): addManualContextText(), applyGlobalBarLabelState(), applyPlaceholderSizingStyles(), applySvelteComponentVariantStyle(), averageRgb01(), bindEditBadgeProxy(), bufferToBase64(), buildColorModels() (+127 more)
 
 ### Community 4 - "analyze_project.py"
 Cohesion: 0.19
@@ -724,11 +745,11 @@ Nodes (17): AppLayout(), Topbar(), TopbarProps, createAction, sidebarItems, Side
 
 ### Community 6 - "index.ts"
 Cohesion: 0.07
-Nodes (27): ARCH-003: Contradictory Directory Structure Across Docs, ARCH-005: Missing API Gateway Implementation, ARCH-006: Undocumented Async Event Bus & pgvector Semantic Store Pipelines, DATA-001: Missing Database Migration Engine (Flyway/Liquibase) vs Unsafe `ddl-auto: update`, DATA-003: Missing Database Indexes & Performance Optimizations in Schema, DEVOPS-002: Missing Multi-Stage Dockerfile for Frontend & Local `docker-compose.yml`, DOC-005: Missing Operational Runbooks & Backend Deployment Guide, DOC-006: AI Service Lacks Architecture & API Documentation (+19 more)
+Nodes (29): ARCH-003: Contradictory Directory Structure Across Docs, ARCH-005: Missing API Gateway Implementation, ARCH-006: Undocumented Async Event Bus & pgvector Semantic Store Pipelines, DATA-001: Missing Database Migration Engine (Flyway/Liquibase) vs Unsafe `ddl-auto: update`, DATA-003: Missing Database Indexes & Performance Optimizations in Schema, DEVOPS-002: Missing Multi-Stage Dockerfile for Frontend & Local `docker-compose.yml`, DOC-005: Missing Operational Runbooks & Backend Deployment Guide, DOC-006: AI Service Lacks Architecture & API Documentation (+21 more)
 
 ### Community 7 - "Process"
 Cohesion: 0.04
-Nodes (130): ANIMATION_VALUE_KEYWORDS, borderColorsFromStyle(), borderWidthsFromStyle(), checkBorders(), checkClippedOverflow(), checkColors(), checkCreamPalette(), checkEdgeFlushCardsDOM() (+122 more)
+Nodes (105): borderColorsFromStyle(), borderWidthsFromStyle(), checkClippedOverflow(), checkEdgeFlushCardsDOM(), checkElementBlinkingCursorDOM(), checkElementClippedOverflow(), checkElementClippedOverflowDOM(), checkElementGptBorderShadow() (+97 more)
 
 ### Community 8 - "💻 **Frontend Engineering Guide**"
 Cohesion: 0.08
@@ -747,20 +768,20 @@ Cohesion: 0.09
 Nodes (21): 1. In-process, 2. Local-substitutable, 3. Remote but owned (Ports & Adapters), 4. True external (Mock), Deepening, Dependency categories, Seam discipline, Testing strategy: replace, don't layer (+13 more)
 
 ### Community 12 - "generate_review.py"
-Cohesion: 0.04
-Nodes (21): AuditLogService, Authentication, CrossOrigin, GetMapping, PostMapping, RequestMapping, ResponseEntity, RestController (+13 more)
+Cohesion: 0.06
+Nodes (6): Entity, PrePersist, PreUpdate, Table, User, Poll
 
 ### Community 13 - "✅ **Production-Ready Spring Boot Web App Checklist**"
 Cohesion: 0.12
 Nodes (16): 1️⃣ Core Font Stack, 1️⃣ Primary & Neutral Palette, 1️⃣ Shadow Hierarchy, 1️⃣ Spacing Scale Table, 2️⃣ Animation Timing, 2️⃣ Border Radius Tokens, 2️⃣ Status Indicator Colors, 2️⃣ Type Scale & Line Heights (+8 more)
 
 ### Community 14 - "Visual Companion Guide"
-Cohesion: 0.05
-Nodes (92): appendAutonomyCounterDirective(), appendDetectorFallback(), appendImageGenDirective(), appendStalenessDirective(), appendSubagentAuthorizationDirective(), appendSurfaceBriefContext(), automaticHookMode(), buildMissingTargetDirective() (+84 more)
+Cohesion: 0.04
+Nodes (99): appendAutonomyCounterDirective(), appendDetectorFallback(), appendImageGenDirective(), appendStalenessDirective(), appendSubagentAuthorizationDirective(), appendSurfaceBriefContext(), automaticHookMode(), buildMissingTargetDirective() (+91 more)
 
 ### Community 15 - "HTML Report Format"
 Cohesion: 0.07
-Nodes (70): applyParamDefaults(), applyParamValue(), applyPlaceholderDimensions(), applySavedSessionMeta(), buildInsertPlaceholderSnapshotFromDom(), buildParamsPanel(), checkpointPayload(), clampVariantIndex() (+62 more)
+Nodes (66): applyParamDefaults(), applyParamValue(), applySavedSessionMeta(), buildParamsPanel(), checkpointPayload(), clampVariantIndex(), clearHandled(), closedClipPath() (+58 more)
 
 ### Community 16 - "Design Audit"
 Cohesion: 0.10
@@ -780,7 +801,7 @@ Nodes (18): compilerOptions, allowArbitraryExtensions, allowImportingTsExtension
 
 ### Community 20 - "Grader Agent"
 Cohesion: 0.04
-Nodes (19): DiscussionController, AuditLogService, Authentication, CrossOrigin, Discussion, GetMapping, PostMapping, RequestMapping (+11 more)
+Nodes (12): Discussion, Entity, PrePersist, PreUpdate, Table, User, Discussion, Issue (+4 more)
 
 ### Community 21 - "Supabase"
 Cohesion: 0.12
@@ -840,15 +861,15 @@ Nodes (14): compilerOptions, allowJs, esModuleInterop, forceConsistentCasingInFi
 
 ### Community 35 - "Find Skills"
 Cohesion: 0.02
-Nodes (198): q(), A2(), a27(), a2a(), a2H(), a3I(), a3L(), a4o() (+190 more)
+Nodes (157): q(), A2(), a2a(), a2t(), a3I(), a3L(), a4f(), a5J() (+149 more)
 
 ### Community 36 - "aggregate_benchmark.py"
-Cohesion: 0.07
-Nodes (41): a2U(), A3(), a5E(), a5F(), aAS(), AC(), aHe(), aI4() (+33 more)
+Cohesion: 0.05
+Nodes (66): a3S(), a6h(), a6k(), a7q(), a9p(), a9Q(), aBg(), aBu() (+58 more)
 
 ### Community 37 - "Test-Driven Development"
 Cohesion: 0.05
-Nodes (62): browserColorsClose(), browserDesignSystemConfig(), browserHasDirectText(), browserPrimaryFont(), browserRadiusTokens(), browserSampleText(), buildSelectorSegment(), checkBrowserDesignSystemSources() (+54 more)
+Nodes (62): addBrowserFindings(), addVisualContrastFindings(), addVisualContrastResult(), analyzeVisualContrast(), browserColorsClose(), browserHasDirectText(), browserRadiusTokens(), browserSampleText() (+54 more)
 
 ### Community 38 - "Project Task Tracker"
 Cohesion: 0.20
@@ -911,12 +932,12 @@ Cohesion: 0.18
 Nodes (6): OnboardingLayoutProps, StepInfo, STEPS, GENDERS, Step3About(), TOPICS
 
 ### Community 53 - "JSON Schemas"
-Cohesion: 0.06
-Nodes (63): assembleLiveBrowserScript(), assertLiveBrowserScriptParts(), LIVE_BROWSER_SCRIPT_PARTS, readLiveBrowserScriptParts(), resolveLiveBrowserScriptParts(), eventPriority(), selectAvailablePendingEvent(), acknowledgePendingEvent() (+55 more)
+Cohesion: 0.07
+Nodes (61): assembleLiveBrowserScript(), assertLiveBrowserScriptParts(), LIVE_BROWSER_SCRIPT_PARTS, readLiveBrowserScriptParts(), resolveLiveBrowserScriptParts(), eventPriority(), selectAvailablePendingEvent(), acknowledgePendingEvent() (+53 more)
 
 ### Community 54 - "package_skill"
 Cohesion: 0.07
-Nodes (64): addClampEndpoints(), addColorObject(), addDesignColor(), addFontSizeStep(), addRoundedScale(), addRoundedToken(), addSidecarColors(), addSidecarRadii() (+56 more)
+Nodes (63): addClampEndpoints(), addColorObject(), addDesignColor(), addFontSizeStep(), addRoundedScale(), addRoundedToken(), addSidecarColors(), addSidecarRadii() (+55 more)
 
 ### Community 55 - "Section Definitions"
 Cohesion: 0.20
@@ -952,7 +973,7 @@ Nodes (9): 0. Mandatory Session Initialization Protocol, 1. Team Roles & Skills,
 
 ### Community 63 - "Brainstorming Ideas Into Designs"
 Cohesion: 0.10
-Nodes (64): abortSvelteComponentInjection(), applyEditing(), buildCyclingRow(), buildPickedAnchorSnapshot(), cancelEditing(), cancelEditingToPicking(), cancelInsertConfigure(), cleanup() (+56 more)
+Nodes (63): abortSvelteComponentInjection(), applyEditing(), buildCyclingRow(), cancelEditing(), cancelEditingToPicking(), cancelInsertConfigure(), captureAndEmit(), cleanup() (+55 more)
 
 ### Community 64 - "✍️ **Prompt Refiner Agent Role (`prompt-refiner`)**"
 Cohesion: 0.05
@@ -992,7 +1013,7 @@ Nodes (5): categoryIcons, FILTER_TABS, Issue, ISSUES, priorityColors
 
 ### Community 73 - "Button.tsx"
 Cohesion: 0.00
-Nodes (421): $1$allowPlatformDefault(), a1W(), a1Z(), a21(), a22(), a25(), a2C(), a2F() (+413 more)
+Nodes (336): a1W(), a1Z(), a21(), a22(), a25(), a26(), a2C(), a2F() (+328 more)
 
 ### Community 75 - "analyze-project"
 Cohesion: 0.29
@@ -1023,8 +1044,8 @@ Cohesion: 0.29
 Nodes (6): 1. Executive Summary & Big Picture, 2. Identified Architectural Areas & Domain Boundaries, 3. Agentic Workflow Guardrails & Responsibilities, 4. Key Takeaways & Memory Aid, Strict Agent Enforcement Rules:, 🏛️ System Boundaries & Agentic Guardrails Matrix
 
 ### Community 82 - "GlobalExceptionHandler.java"
-Cohesion: 0.30
-Nodes (11): GlobalExceptionHandler, ErrorResponse, ExceptionHandler, HttpServletRequest, HttpStatus, Logger, MethodArgumentNotValidException, ResourceNotFoundException (+3 more)
+Cohesion: 0.07
+Nodes (20): PollCreateRequestDto, PollResponseDto, Mapper, Mapping, Poll, PollMapper, Entity, Poll (+12 more)
 
 ### Community 83 - "index.ts"
 Cohesion: 0.38
@@ -1055,8 +1076,8 @@ Cohesion: 0.31
 Nodes (8): apply_v3_mode(), create_files_in(), gen_nonce(), init-session.sh script, write_analytics_progress(), write_default_findings(), write_default_progress(), write_default_task_plan()
 
 ### Community 90 - "User"
-Cohesion: 0.05
-Nodes (22): AuthController, ApiResponse, ApiResponses, Authentication, CrossOrigin, GetMapping, JwtTokenProvider, Operation (+14 more)
+Cohesion: 0.03
+Nodes (37): AuthController, ApiResponses, Authentication, CrossOrigin, GetMapping, JwtTokenProvider, Operation, PostMapping (+29 more)
 
 ### Community 91 - "design-principles.md"
 Cohesion: 0.22
@@ -1100,10 +1121,10 @@ Nodes (3): Expanding the ESLint configuration, React Compiler, React + TypeScrip
 
 ### Community 101 - "DiscussionDetailPage.tsx"
 Cohesion: 0.01
-Nodes (320): compareScreenshotContrast(), a26(), a2e(), a2G(), a44(), a45(), a6D(), a6e() (+312 more)
+Nodes (295): _e(), a2e(), a2G(), a45(), a4i(), a4s(), a4t(), a6D() (+287 more)
 
 ### Community 102 - "NotificationsPage.tsx"
-Cohesion: 0.13
+Cohesion: 0.12
 Nodes (6): Entity, Table, User, Notification, Transactional, User
 
 ### Community 103 - "PetitionsPage.tsx"
@@ -1119,8 +1140,8 @@ Cohesion: 0.18
 Nodes (10): Configuration, Data Layer (Repositories), Dependency Injection & Components, Logging, Project Setup & Structure, Security, Service Layer, Spring Boot Best Practices (+2 more)
 
 ### Community 107 - "start-server.sh"
-Cohesion: 0.21
-Nodes (10): AuthController, Authentication, CrossOrigin, GetMapping, JwtTokenProvider, RequestMapping, ResponseEntity, RestController (+2 more)
+Cohesion: 0.10
+Nodes (44): checkBorders(), checkColors(), checkCreamPalette(), checkElementAIPaletteDOM(), checkElementBorders(), checkElementBordersDOM(), checkElementColors(), checkElementColorsDOM() (+36 more)
 
 ### Community 110 - "InsightsPage.tsx"
 Cohesion: 0.31
@@ -1128,7 +1149,7 @@ Nodes (6): ActuatorIntegrationTest, AutoConfigureMockMvc, MockMvc, SpringBootTes
 
 ### Community 111 - "RepresentativesPage.tsx"
 Cohesion: 0.03
-Nodes (71): aN_(), gOt(), sagI(), sagL(), sagM(), sagN(), sah1(), sah2() (+63 more)
+Nodes (83): aF(), aN_(), gMJ(), gOt(), N6(), sagI(), sagL(), sagM() (+75 more)
 
 ### Community 118 - "ponytail.md"
 Cohesion: 0.29
@@ -1219,16 +1240,16 @@ Cohesion: 0.50
 Nodes (3): 🚀 Active Sprint & Executing Tasks, DJP Prototype Backend Task Tracker (`prototype/backend/be-todo.md`), 📋 Task Backlog & Archive Reference
 
 ### Community 188 - "rendering-hydration-no-flicker.md"
-Cohesion: 0.50
-Nodes (3): 🚀 Active Sprint & Executing Tasks, DJP Prototype Frontend Task Tracker (`prototype/frontend/fe-todo.md`), 📋 Task Backlog & Archive Reference
+Cohesion: 0.04
+Nodes (42): CreatePostPage, CreatePostPageWithSuspense, DiscussionDetailPage, DiscussionDetailPageWithSuspense, DiscussionsPage, DiscussionsPageWithSuspense, FeedPage, FeedPageWithSuspense (+34 more)
 
 ### Community 189 - "rendering-hydration-suppress-warning.md"
 Cohesion: 0.50
 Nodes (3): 🚀 Active Sprint & Executing Tasks, DJP Prototype QA & Test Suite Task Tracker (`prototype/tests/test-todo.md`), 📋 Task Backlog & Archive Reference
 
 ### Community 190 - "JwtTokenProvider"
-Cohesion: 0.09
-Nodes (20): Component, FilterChain, HttpServletRequest, HttpServletResponse, JwtTokenProvider, Override, JwtAuthenticationFilter, Component (+12 more)
+Cohesion: 0.03
+Nodes (104): a2l(), a4A(), a6n(), a76(), a8v(), a9I(), aAP(), ac0() (+96 more)
 
 ### Community 191 - "rendering-script-defer-async.md"
 Cohesion: 0.40
@@ -1259,16 +1280,16 @@ Cohesion: 0.50
 Nodes (3): 2026-07-15 Session (Prototype Agent Workspace Initialization), DJP Prototype Completed Tasks Archive (`prototype/archive/archive-todo.md`), Session Delta Logs
 
 ### Community 202 - "rerender-move-effect-to-event.md"
-Cohesion: 0.40
-Nodes (4): DJP Prototype User Request Intake Portal (`web-app = prototype`), 🟢 Phase 1: Bare-Minimum Prototype Setup (COMPLETED), 🚀 Phase 2: Progressive Microservice Expansion Backlog, ✍️ User Input (Add your 1–2 line prototype task items below)
+Cohesion: 0.33
+Nodes (5): ✅ Completed Tasks, DJP Prototype User Request Intake Portal (`web-app = prototype`), Phase 1: Bare-Minimum Prototype Setup, Phase 2: Progressive Microservice Expansion, 🚀 Remaining Backlog
 
 ### Community 222 - "__init__.py"
 Cohesion: 0.08
-Nodes (47): mergeDesignSystemFindings(), blankCssComments(), CSS_IN_JS_EXTENSIONS, detectText(), extFromFilePath(), extractCSSinJS(), extractStyleBlocks(), hexChannels() (+39 more)
+Nodes (51): mergeDesignSystemFindings(), detectUrl(), measureContentHiddenAfterReveal(), runVisualContrastFallback(), serializeDesignSystemForBrowser(), blankCssComments(), CSS_IN_JS_EXTENSIONS, detectText() (+43 more)
 
 ### Community 223 - "Issue"
 Cohesion: 0.05
-Nodes (23): IssueController, ApiResponse, ApiResponses, AuditLogService, Authentication, CrossOrigin, GetMapping, Issue (+15 more)
+Nodes (22): IssueController, ApiResponses, AuditLogService, Authentication, CrossOrigin, GetMapping, Issue, IssueCreateRequestDto (+14 more)
 
 ### Community 224 - "🤖 Instructions for the Agent"
 Cohesion: 0.22
@@ -1284,19 +1305,19 @@ Nodes (6): 1. What DJP Is, 2. Repository Layout & Core DJPv1 Files, 3. How to Ru
 
 ### Community 240 - "IssueDetailPage.tsx"
 Cohesion: 0.02
-Nodes (231): $1(), $2$alignmentPolicy(), a2D(), a2N(), a46(), a65(), a6b(), a6c() (+223 more)
+Nodes (314): $2(), a0(), a1(), a1X(), a27(), a2N(), a36(), a41() (+306 more)
 
 ### Community 241 - "AuthController"
-Cohesion: 0.19
-Nodes (19): args, cwd, pageUrlFilter, remaining, compactManualLogText(), summarizeManualApplyFailures(), summarizeManualDiagnostics(), summarizeManualLogFile() (+11 more)
+Cohesion: 0.06
+Nodes (23): Authentication, CrossOrigin, GetMapping, PostMapping, PutMapping, RequestMapping, ResponseEntity, RestController (+15 more)
 
 ### Community 243 - "DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy"
 Cohesion: 0.25
 Nodes (7): 1. Team Hierarchy & Roles, 2. Visual Task Flow Across Todos, 3. Spec-Driven & Test-Driven Development (TDD) Flow, 4. Master Folder & Todo Architecture Structure, 5. Agent Commander Cheat Sheet, DJP Master Guide: Production-Grade Agentic Workflow & Team Hierarchy, Summary Role Table
 
 ### Community 244 - "UserRepository"
-Cohesion: 0.09
-Nodes (33): AuditLogRepository, AuditLog, Repository, IssueRepository, Issue, Repository, AuditLogRepository, AuditLog (+25 more)
+Cohesion: 0.06
+Nodes (45): AuditLogRepository, AuditLog, Repository, IssueRepository, Issue, Repository, AuditLogRepository, AuditLog (+37 more)
 
 ### Community 245 - "DJP Documentation Sitemap & Organization Rules"
 Cohesion: 0.40
@@ -1319,8 +1340,8 @@ Cohesion: 0.25
 Nodes (7): 1. Goal, 2. User Stories, 3. Acceptance Criteria, 4. Security & Session Rules, 👤 Citizen Authentication, 🧭 Onboarding Redirection, 🔑 **Product Requirements Document (PRD): OAuth Login & Onboarding**
 
 ### Community 251 - "com.djp:backend"
-Cohesion: 0.07
-Nodes (63): a1X(), a3A(), a3B(), a3V(), a3w(), a3z(), a5K(), a5L() (+55 more)
+Cohesion: 0.05
+Nodes (93): a1V(), a3A(), a3B(), a3V(), a3w(), a3x(), a3z(), a5K() (+85 more)
 
 ### Community 256 - "Spring Boot Best Practices"
 Cohesion: 0.18
@@ -1403,8 +1424,8 @@ Cohesion: 0.33
 Nodes (5): Feature Execution SSOT (`docs/execution/<feature>/todo.md`), Phase 1: Product & Architecture Planning, Phase 2: Specs & Test-Driven QA (TDD Red Phase), Phase 3: Lean Implementation (TDD Green Phase), Phase 4: Post-Task Review & PR
 
 ### Community 318 - "# Technical Debt"
-Cohesion: 0.09
-Nodes (21): BackendApplicationTests, Test, BaseIntegrationTest, ActiveProfiles, SpringBootTest, AutoConfigureMockMvc, MockMvc, Test (+13 more)
+Cohesion: 0.07
+Nodes (3): Entity, Table, Representative
 
 ### Community 320 - "DJP Citizen App — Todo"
 Cohesion: 0.33
@@ -1428,7 +1449,7 @@ Nodes (5): 1. Role Overview & Boundary, 2. Mandatory Inputs & Outputs, 3. Requir
 
 ### Community 334 - "SKILL.md"
 Cohesion: 0.07
-Nodes (56): ADVISORY_RULES, applyConfigSource(), applyDetectorConfigSource(), applyPatchText(), clampByte(), cleanIgnoreValueDisplay(), cloneDefaultConfig(), CO_SCAN_STYLE_NAMES (+48 more)
+Nodes (55): ADVISORY_RULES, applyConfigSource(), applyDetectorConfigSource(), clampByte(), cleanIgnoreValueDisplay(), cloneDefaultConfig(), CO_SCAN_STYLE_NAMES, coLocatedStylesheets() (+47 more)
 
 ### Community 335 - "📋 DJP-v1 Technical Debt Register"
 Cohesion: 0.25
@@ -1436,7 +1457,7 @@ Nodes (7): 📊 DJP Platform Audit & Technical Debt Management System, 🔄 Dual
 
 ### Community 336 - "IssueCreateRequestDto"
 Cohesion: 0.09
-Nodes (53): ae(), be(), bt(), Ce(), Ct(), de(), dt(), _e() (+45 more)
+Nodes (51): ae(), be(), bt(), Ce(), Ct(), de(), dt(), Ee() (+43 more)
 
 ### Community 337 - "vision-core-draft.md"
 Cohesion: 0.19
@@ -1451,8 +1472,8 @@ Cohesion: 0.25
 Nodes (8): Autonomous and Gated Modes (v3), Gate decision table, Host capability tiers, Ledger contract summary, Runaway guards, The legacy invariant (promise), Trying it, What each mode does
 
 ### Community 340 - "OAuth2SuccessHandler"
-Cohesion: 0.09
-Nodes (23): Appendix: Icon Consistency Reference (from DJ Decision Docx), 🧠 Behavioral Patterns, 🧠 Behavioral Patterns, Cross-Persona Feature Priority Matrix, 💡 Design Implications for Ananya, 💡 Design Implications for Rajan, 👤 Digital Janta Platform — User Personas, 😤 Frustrations & Pain Points (+15 more)
+Cohesion: 0.07
+Nodes (38): a3Y(), A4(), a40(), a8o(), acF(), acG(), adf(), aw_() (+30 more)
 
 ### Community 341 - "MaskingMessageConverter"
 Cohesion: 0.11
@@ -1463,8 +1484,8 @@ Cohesion: 0.29
 Nodes (7): Claude Code Turn-Loop Integration (v2.38.0+), Install scope: plugin vs skill-only (v2.42.0 clarification), `loop.md` template, Manual fallback when `/plan-goal` / `/plan-loop` are unavailable (v2.42.0), `/plan-goal` slash command, `/plan-loop` slash command, PreCompact hook (auto)
 
 ### Community 343 - "a"
-Cohesion: 0.10
-Nodes (47): getLiveAnnotationsDir(), getLiveDir(), isLiveServerPidReachable(), acceptCli(), acceptReceiptPath(), argVal(), buildAcceptedWrappedSource(), buildCarbonizeReplacement() (+39 more)
+Cohesion: 0.08
+Nodes (51): isLiveServerPidReachable(), matchesTemplateExtension(), acceptCli(), acceptReceiptPath(), argVal(), buildAcceptedWrappedSource(), buildCarbonizeReplacement(), decodeHtmlAttr() (+43 more)
 
 ### Community 344 - "$2"
 Cohesion: 0.20
@@ -1476,63 +1497,63 @@ Nodes (11): 🔴 1. Critical Backend Debt (Active Blockers), 🟠 2. High Priori
 
 ### Community 346 - "t"
 Cohesion: 0.02
-Nodes (318): CreatePollPage(), $3(), a(), a20(), a2l(), a3e(), a3J(), a3K() (+310 more)
+Nodes (325): CreatePollPage(), a(), a20(), a2U(), a3e(), a3J(), a3K(), a3O() (+317 more)
 
 ### Community 347 - "i"
 Cohesion: 0.28
 Nodes (9): Bean, Configuration, CorsConfigurationSource, EnableWebSecurity, HttpSecurity, JwtAuthenticationFilter, OAuth2SuccessHandler, SecurityFilterChain (+1 more)
 
 ### Community 348 - "$1"
-Cohesion: 0.16
-Nodes (26): analyzeSourceHint(), buildCandidatesForOp(), buildContextHintsByRef(), buildManualEditEvidence(), collectSearchFiles(), countOps(), decodeBasicHtml(), escapeRegExp() (+18 more)
+Cohesion: 0.09
+Nodes (46): args, cwd, pageUrlFilter, remaining, compactManualLogText(), summarizeManualApplyFailures(), summarizeManualDiagnostics(), summarizeManualLogFile() (+38 more)
 
 ### Community 349 - ".$1"
-Cohesion: 0.02
-Nodes (103): a3S(), a52(), a5q(), a6h(), a6k(), a6p(), a6W(), a7e() (+95 more)
+Cohesion: 0.03
+Nodes (94): a35(), a3C(), a52(), a6p(), a6W(), a7e(), a7g(), a7l() (+86 more)
 
 ### Community 350 - "$0"
-Cohesion: 0.15
-Nodes (11): List, GetMapping, PostMapping, RequestMapping, ResponseEntity, RestController, NotificationController, Repository (+3 more)
+Cohesion: 0.03
+Nodes (119): $0(), $1(), $1$allowPlatformDefault(), $2$alignmentPolicy(), a42(), a4r(), a5i(), a5M() (+111 more)
 
 ### Community 351 - "User"
 Cohesion: 0.06
-Nodes (11): PostMapping, User, User, UserDto, Entity, JsonIgnoreProperties, Table, User (+3 more)
+Nodes (7): User, User, Entity, JsonIgnoreProperties, Table, User, User
 
 ### Community 352 - "Y"
-Cohesion: 0.11
-Nodes (21): checkElementOversizedH1(), checkElementOversizedH1DOM(), checkElementQuality(), checkElementQualityDOM(), checkOversizedH1(), checkQuality(), clippedByInset(), clippedByRect() (+13 more)
+Cohesion: 0.06
+Nodes (31): Addcommentrequest, Authresponsedto, Castvoterequest, Categorybreakdown, Comment, Departmentefficiency, Discussioncreaterequestdto, Discussionresponsedto (+23 more)
 
 ### Community 353 - "axZ"
-Cohesion: 0.06
-Nodes (60): axZ(), dk(), eY(), gHw(), gJB(), hK(), sam9(), sama() (+52 more)
+Cohesion: 0.05
+Nodes (63): axZ(), dk(), eY(), gBb(), gHw(), gJB(), hK(), sam9() (+55 more)
 
 ### Community 354 - "uV"
 Cohesion: 0.10
-Nodes (51): allEntryIds(), argVal(), buildRepairBatch(), candidatesForEntry(), changedFilesSinceSnapshot(), clearAppliedEntries(), collectApplyOwnedFiles(), collectRollbackFiles() (+43 more)
+Nodes (50): allEntryIds(), argVal(), buildRepairBatch(), candidatesForEntry(), changedFilesSinceSnapshot(), clearAppliedEntries(), collectApplyOwnedFiles(), collectRollbackFiles() (+42 more)
 
 ### Community 355 - "gbv"
 Cohesion: 0.20
 Nodes (10): 1. Executive Summary, 2. Legal Entity Evolution & ECI Compliance Pathway, 3. Key Regulatory & Compliance Guardrails, 4. Verification & Audit Checklist, A. Electoral Finance & Treasury Governance (`GOV-003` Alignment), B. Internal Democracy & Algorithm Auditing, ECI Registration & Legal Compliance Roadmap, Phase 1: Foundation as a Section 8 Company / Public Charitable Trust (Current) (+2 more)
 
 ### Community 356 - "User"
-Cohesion: 0.08
-Nodes (5): Entity, JsonIgnoreProperties, Table, User, User
+Cohesion: 0.07
+Nodes (6): PostMapping, Entity, JsonIgnoreProperties, Table, User, User
 
 ### Community 357 - "v"
-Cohesion: 0.06
-Nodes (68): addBrowserFindings(), addVisualContrastFindings(), addVisualContrastResult(), analyzeVisualContrast(), analyzeVisualContrastCandidate(), blendRgba(), browserColorsClose(), browserDesignSystemConfig() (+60 more)
+Cohesion: 0.09
+Nodes (44): addBrowserFindings(), addVisualContrastFindings(), addVisualContrastResult(), browserColorsClose(), browserDesignSystemConfig(), browserFindingsFromMap(), browserHasDirectText(), browserPrimaryFont() (+36 more)
 
 ### Community 358 - "AppDelegate"
 Cohesion: 0.18
 Nodes (9): Cocoa, FlutterMacOS, FlutterPluginRegistry, FlutterViewController, Foundation, RegisterGeneratedPlugins(), MainFlutterWindow, NSWindow (+1 more)
 
 ### Community 359 - "bn"
-Cohesion: 0.03
-Nodes (182): $2(), a0(), a1(), a1V(), a36(), a3Y(), A4(), a40() (+174 more)
+Cohesion: 0.09
+Nodes (5): IssueCreateRequestDto, IssueCreateRequestDto, IssueUpdateRequestDto, PollUpdateRequestDto, Size
 
 ### Community 360 - "aJ_"
-Cohesion: 0.03
-Nodes (98): a1P(), a1R(), a1Y(), a28(), a2I(), a2P(), a2S(), a4w() (+90 more)
+Cohesion: 0.13
+Nodes (21): checkElementHeroEyebrow(), checkElementHeroEyebrowDOM(), checkElementQualityDOM(), checkHeroEyebrow(), checkNumberedSectionLabels(), checkNumberedSectionLabelsDOM(), checkNumberedSectionLabelsFromDoc(), checkRepeatedSectionKickers() (+13 more)
 
 ### Community 361 - "cT"
 Cohesion: 0.25
@@ -1547,56 +1568,56 @@ Cohesion: 0.06
 Nodes (35): dependencies, clsx, @hookform/resolvers, lucide-react, react, react-dom, react-hook-form, react-router-dom (+27 more)
 
 ### Community 364 - ".$0"
-Cohesion: 0.03
-Nodes (93): a29(), a2K(), a2x(), a3D(), a3n(), a4n(), a4q(), a5_() (+85 more)
+Cohesion: 0.14
+Nodes (20): FeedPetition, fetchDiscussions(), fetchIssues(), fetchPetitions(), fetchPolls(), mapDiscussion(), mapIssue(), mapPoll() (+12 more)
 
 ### Community 365 - "Issue"
-Cohesion: 0.05
+Cohesion: 0.06
 Nodes (6): Issue, Entity, PrePersist, PreUpdate, Table, User
 
 ### Community 366 - "devDependencies"
-Cohesion: 0.06
-Nodes (35): dependencies, clsx, @hookform/resolvers, lucide-react, react, react-dom, react-hook-form, react-router-dom (+27 more)
+Cohesion: 0.09
+Nodes (23): devDependencies, eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, jsdom, @playwright/test (+15 more)
 
 ### Community 367 - ".$2"
 Cohesion: 0.08
-Nodes (47): actionLabel(), applyConfigureBarChrome(), bindConfigureCountPillTooltip(), bindConfigureInlineControlHover(), bindConfigureModifierPillHover(), buildConfigureActionControl(), buildConfigureCountControl(), buildConfigureRow() (+39 more)
+Nodes (48): actionLabel(), applyConfigureBarChrome(), bindConfigureCountPillTooltip(), bindConfigureInlineControlHover(), bindConfigureModifierPillHover(), buildConfigureActionControl(), buildConfigureCountControl(), buildConfigureRow() (+40 more)
 
 ### Community 368 - "AuditLog"
 Cohesion: 0.10
 Nodes (4): AuditLog, Entity, PrePersist, Table
 
 ### Community 369 - "gbj"
-Cohesion: 0.08
-Nodes (43): resolveProjectRoot(), firstExisting(), getDesignSidecarCandidates(), getDesignSidecarPath(), getImpeccableDir(), getLegacyLiveAnnotationsDir(), getLegacyLiveConfigPath(), getLegacyLiveServerPath() (+35 more)
+Cohesion: 0.12
+Nodes (27): getLegacyLiveSessionsDir(), readLiveServerInfo(), safeSessionId(), completeCli(), completeThroughServer(), parseArgs(), readServerInfo(), collectManualApplyFiles() (+19 more)
 
 ### Community 370 - "L"
 Cohesion: 0.05
 Nodes (41): Adaptation Strategies, Assess Adaptation Challenge, Implement & Verify, Orientation & foldables, Phone → Tablet (iPad / large screens), Platform → platform (iOS ↔ Android), Web → native (porting a website or web app), 1. Accessibility (VoiceOver / TalkBack) (+33 more)
 
 ### Community 371 - "gK"
-Cohesion: 0.03
-Nodes (108): $0(), a23(), a2b(), a2t(), a30(), a5B(), a5t(), a5x() (+100 more)
+Cohesion: 0.05
+Nodes (74): a23(), a2b(), A3(), a5B(), a5v(), a5x(), a8b(), a8M() (+66 more)
 
 ### Community 372 - "pv"
 Cohesion: 0.10
 Nodes (47): applyDetectionConfigSource(), clampByte(), cleanIgnoreValueDisplay(), cloneDetectionConfig(), cloneRawDetectionConfig(), colorIgnoreKey(), DEFAULT_DETECTION_CONFIG, DETECTOR_CONFIG_KEYS (+39 more)
 
 ### Community 373 - "AuditLog"
-Cohesion: 0.07
-Nodes (32): email, fromJson, id, name, reputationScore, role, toJson, User (+24 more)
+Cohesion: 0.04
+Nodes (49): BackendApplicationTests, Test, BaseIntegrationTest, ActiveProfiles, SpringBootTest, BackendApplicationTests, Test, BackendApplicationTests (+41 more)
 
 ### Community 374 - "index.ts"
 Cohesion: 0.08
 Nodes (14): AvatarProps, AvatarSize, sizeClasses, BadgeProps, BadgeSize, BadgeVariant, sizeClasses, variantClasses (+6 more)
 
 ### Community 375 - "index.ts"
-Cohesion: 0.10
-Nodes (17): Avatar(), AvatarProps, AvatarSize, sizeClasses, BadgeProps, BadgeSize, BadgeVariant, sizeClasses (+9 more)
+Cohesion: 0.05
+Nodes (33): INPUTS, OTPPage(), Button, ButtonProps, ButtonSize, ButtonVariant, sizeClasses, variantClasses (+25 more)
 
 ### Community 376 - "warn"
-Cohesion: 0.15
-Nodes (11): Component, FilterChain, HttpServletRequest, HttpServletResponse, JwtTokenProvider, Override, JwtAuthenticationFilter, Component (+3 more)
+Cohesion: 0.14
+Nodes (12): Component, FilterChain, HttpServletRequest, HttpServletResponse, JwtTokenProvider, Override, JwtAuthenticationFilter, Component (+4 more)
 
 ### Community 377 - "index.ts"
 Cohesion: 0.10
@@ -1612,19 +1633,19 @@ Nodes (22): FlPluginRegistry, FlView, GApplication, gboolean, gchar, GObject, Gt
 
 ### Community 380 - "is"
 Cohesion: 0.08
-Nodes (50): armPageChatForTyping(), attachSteerFocusDebug(), attachSteerFocusGuard(), clearSteerAwaitTimer(), clearSteerFocusRecoverTimer(), collapsePageChat(), expandPageChat(), finishVoiceSession() (+42 more)
+Nodes (48): armPageChatForTyping(), attachSteerFocusDebug(), attachSteerFocusGuard(), clearSteerAwaitTimer(), clearSteerFocusRecoverTimer(), collapsePageChat(), expandPageChat(), finishVoiceSession() (+40 more)
 
 ### Community 381 - "IssueController"
-Cohesion: 0.08
-Nodes (25): AuditLogService, AuditLog, AuditLogRepository, Logger, Service, Transactional, IssueController, AuditLogService (+17 more)
+Cohesion: 0.15
+Nodes (12): CommentRepository, Comment, Repository, FollowRepository, Follow, Repository, InteractionService, Comment (+4 more)
 
 ### Community 382 - "d1"
 Cohesion: 0.33
 Nodes (4): GeneratedPluginRegistrant, +registerWithRegistry, NSObject, shared_preferences_foundation
 
 ### Community 383 - ".doFilter"
-Cohesion: 0.13
-Nodes (13): Component, FilterChain, Override, ServletRequest, ServletResponse, MdcFilter, Filter, Component (+5 more)
+Cohesion: 0.09
+Nodes (19): Component, FilterChain, Override, ServletRequest, ServletResponse, MdcFilter, Component, FilterChain (+11 more)
 
 ### Community 384 - "compilerOptions"
 Cohesion: 0.08
@@ -1635,12 +1656,12 @@ Cohesion: 0.08
 Nodes (25): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, esModuleInterop, forceConsistentCasingInFileNames, isolatedModules, jsx (+17 more)
 
 ### Community 386 - "gaH"
-Cohesion: 0.14
-Nodes (16): checkElementOversizedH1(), checkElementOversizedH1DOM(), checkElementQuality(), checkElementQualityDOM(), checkOversizedH1(), checkQuality(), colorsNearlyMatch(), cssColorAlpha() (+8 more)
+Cohesion: 0.10
+Nodes (4): AuditLog, Entity, PrePersist, Table
 
 ### Community 387 - ".doFilterInternal"
-Cohesion: 0.16
-Nodes (11): Component, FilterChain, HttpServletRequest, HttpServletResponse, JwtTokenProvider, Override, JwtAuthenticationFilter, Component (+3 more)
+Cohesion: 0.07
+Nodes (25): Component, FilterChain, HttpServletRequest, HttpServletResponse, JwtTokenProvider, Override, JwtAuthenticationFilter, Component (+17 more)
 
 ### Community 388 - "api_service.dart"
 Cohesion: 0.10
@@ -1655,28 +1676,28 @@ Cohesion: 0.09
 Nodes (29): applyStaticDeclaration(), buildBorderOverrideMap(), buildStaticStyleMap(), buildStaticWindow(), collectStaticCssRules(), compareStaticPriority(), cssPropToCamel(), expandStaticBoxValues() (+21 more)
 
 ### Community 391 - "gbi"
-Cohesion: 0.25
-Nodes (8): 🧠 Behavioral Patterns, 💡 Design Implications for Arjun, 😤 Frustrations & Pain Points, 🎯 Goals & Motivations, 📊 Key Metrics to Track for This Persona, Persona 6: Arjun Patil — *"The Aspiring Ward Leader"*, 📋 Profile Summary, 📱 User Journey (Typical Session — Campaign Day)
+Cohesion: 0.09
+Nodes (23): Appendix: Icon Consistency Reference (from DJ Decision Docx), 🧠 Behavioral Patterns, 🧠 Behavioral Patterns, Cross-Persona Feature Priority Matrix, 💡 Design Implications for Ananya, 💡 Design Implications for Sunita, 👤 Digital Janta Platform — User Personas, 😤 Frustrations & Pain Points (+15 more)
 
 ### Community 392 - "GlobalExceptionHandler.java"
-Cohesion: 0.24
-Nodes (13): ErrorResponse, Schema, GlobalExceptionHandler, ErrorResponse, ExceptionHandler, HttpServletRequest, HttpStatus, Logger (+5 more)
+Cohesion: 0.13
+Nodes (24): ErrorResponse, Schema, GlobalExceptionHandler, ErrorResponse, ExceptionHandler, HttpServletRequest, HttpStatus, Logger (+16 more)
 
 ### Community 393 - "IssueController"
-Cohesion: 0.10
-Nodes (21): IssueCreateRequestDto, Schema, IssueController, AuditLogService, Authentication, CrossOrigin, GetMapping, Issue (+13 more)
+Cohesion: 0.11
+Nodes (19): IssueController, AuditLogService, Authentication, CrossOrigin, GetMapping, Issue, IssueCreateRequestDto, IssueRepository (+11 more)
 
 ### Community 394 - "lA"
-Cohesion: 0.11
-Nodes (43): appendCssToSvelteStyle(), appendSanitizedCssRule(), applyDeferredSvelteComponentAccepts(), bakeParamValuesInCss(), buildInsertVariantStub(), buildPropContract(), buildPropsScript(), buildVariantStub() (+35 more)
+Cohesion: 0.10
+Nodes (44): applyLegacyDeferredAcceptsOnStartup(), appendCssToSvelteStyle(), appendSanitizedCssRule(), applyDeferredSvelteComponentAccepts(), bakeParamValuesInCss(), buildInsertVariantStub(), buildPropContract(), buildPropsScript() (+36 more)
 
 ### Community 395 - "HI"
-Cohesion: 0.10
-Nodes (44): hasGeneratedHeader(), HEADER_MARKERS, isGeneratedFile(), isGitIgnored(), matchesTemplateExtension(), resolveLiveTemplateExtensions(), findSessionFile(), argVal() (+36 more)
+Cohesion: 0.12
+Nodes (38): hasGeneratedHeader(), HEADER_MARKERS, isGeneratedFile(), isGitIgnored(), resolveLiveTemplateExtensions(), argVal(), buildInsertWrapperLines(), computeInsertLine() (+30 more)
 
 ### Community 396 - "FlutterWindow"
-Cohesion: 0.26
-Nodes (8): InteractionController, Authentication, GetMapping, PostMapping, RequestMapping, ResponseEntity, RestController, UserRepository
+Cohesion: 0.10
+Nodes (4): Comment, Entity, Table, User
 
 ### Community 397 - "compilerOptions"
 Cohesion: 0.12
@@ -1687,16 +1708,16 @@ Cohesion: 0.29
 Nodes (4): 1. Branch Topology & Hierarchy (`SSOT`), 2. Mandatory Branch Rules & Destinations, 3. Core Architectural Safeguards, 🌿 DJP-v1 Canonical Git Branching & Integration Strategy
 
 ### Community 399 - "eQ"
-Cohesion: 0.12
-Nodes (43): ACTIONS, addIgnoreFile(), addIgnoreRule(), addIgnoreValue(), DETECTOR_CONFIG_KEYS, detectorSection(), fileHasImpeccableHookMarker(), HOOK_MANIFEST_TARGETS (+35 more)
+Cohesion: 0.13
+Nodes (39): ACTIONS, addIgnoreFile(), addIgnoreRule(), addIgnoreValue(), DETECTOR_CONFIG_KEYS, detectorSection(), fileHasImpeccableHookMarker(), HOOK_MANIFEST_TARGETS (+31 more)
 
 ### Community 400 - "win32_window.cpp"
 Cohesion: 0.17
 Nodes (14): wchar_t, Scale(), Create, Destroy, GetHandle, SetQuitOnClose, Win32Window::Win32Window(), WindowClassRegistrar (+6 more)
 
 ### Community 401 - "GlobalExceptionHandler.java"
-Cohesion: 0.30
-Nodes (11): GlobalExceptionHandler, ErrorResponse, ExceptionHandler, HttpServletRequest, HttpStatus, Logger, MethodArgumentNotValidException, ResourceNotFoundException (+3 more)
+Cohesion: 0.03
+Nodes (87): JsonInclude, List, AuthController, Authentication, CrossOrigin, GetMapping, PostMapping, RequestMapping (+79 more)
 
 ### Community 402 - "OAuth2SuccessHandler"
 Cohesion: 0.23
@@ -1707,8 +1728,8 @@ Cohesion: 0.12
 Nodes (16): compilerOptions, allowImportingTsExtensions, erasableSyntaxOnly, lib, module, moduleDetection, noEmit, noFallthroughCasesInSwitch (+8 more)
 
 ### Community 404 - "IssueCreateRequestDto"
-Cohesion: 0.06
-Nodes (3): IssueCreateRequestDto, IssueCreateRequestDto, Size
+Cohesion: 0.07
+Nodes (33): authorId, category, commentsCount, description, fromJson, id, Issue, location (+25 more)
 
 ### Community 405 - "OAuth2SuccessHandler"
 Cohesion: 0.10
@@ -1743,16 +1764,16 @@ Cohesion: 0.15
 Nodes (13): create_issue_dialog.dart, Future, login_screen.dart, build, createState, _getCategoryColor, _handleLogout, initState (+5 more)
 
 ### Community 413 - "hA"
-Cohesion: 0.19
-Nodes (14): checkElementIconTile(), checkElementIconTileDOM(), checkIconTile(), checkNumberedSectionLabels(), checkNumberedSectionLabelsDOM(), checkRepeatedSectionKickers(), checkRepeatedSectionKickersDOM(), cleanInlineText() (+6 more)
+Cohesion: 0.15
+Nodes (25): ANIMATION_VALUE_KEYWORDS, checkHtmlPatterns(), collectCssCustomProps(), collectMarqueeKeyframes(), collectPulseKeyframes(), cssLengthToPx(), cssTextHasDarkRootBg(), extractShadowLengths() (+17 more)
 
 ### Community 414 - "issue.dart"
 Cohesion: 0.14
-Nodes (13): authorId, category, commentsCount, description, fromJson, id, Issue, location (+5 more)
+Nodes (5): Entity, Table, User, Vote, Vote
 
 ### Community 415 - "SecurityConfig.java"
-Cohesion: 0.11
-Nodes (21): Authentication, Component, HttpServletRequest, HttpServletResponse, JwtTokenProvider, Logger, OAuth2User, Override (+13 more)
+Cohesion: 0.06
+Nodes (26): AuthResponseDto, UserDto, Entity, Table, User, RefreshToken, Repository, RefreshTokenRepository (+18 more)
 
 ### Community 416 - "SecurityConfig.java"
 Cohesion: 0.28
@@ -1763,8 +1784,8 @@ Cohesion: 0.15
 Nodes (33): buildColor(), CANONICAL_SECTIONS, collectBullets(), collectColorValues(), collectParagraphs(), detectFormat(), extractColors(), extractComponents() (+25 more)
 
 ### Community 418 - "uR"
-Cohesion: 0.23
-Nodes (9): AuthController, Authentication, CrossOrigin, GetMapping, JwtTokenProvider, RequestMapping, ResponseEntity, RestController (+1 more)
+Cohesion: 0.21
+Nodes (10): AuthController, Authentication, CrossOrigin, GetMapping, JwtTokenProvider, RequestMapping, ResponseEntity, RestController (+2 more)
 
 ### Community 419 - "SecurityConfig.java"
 Cohesion: 0.06
@@ -1779,12 +1800,12 @@ Cohesion: 0.17
 Nodes (11): build, _categories, _category, createState, _descController, _isSubmitting, _locationController, _priorities (+3 more)
 
 ### Community 422 - "Win32Window"
-Cohesion: 0.10
-Nodes (26): DartProject, HWND, LPARAM, LRESULT, UINT, WPARAM, FlutterWindow, flutter_controller_ (+18 more)
+Cohesion: 0.13
+Nodes (20): DartProject, FlutterWindow, flutter_controller_, FlutterWindow::FlutterWindow(), OnCreate, OnDestroy, project_, DartProject (+12 more)
 
 ### Community 423 - "IssueCreateRequestDto"
-Cohesion: 0.13
-Nodes (34): checkColors(), checkElementAIPaletteDOM(), checkElementColors(), checkElementColorsDOM(), checkElementGlow(), checkElementGlowDOM(), checkElementHoverContrast(), checkElementIconTile() (+26 more)
+Cohesion: 0.12
+Nodes (35): checkBorders(), checkElementBorders(), checkElementBordersDOM(), checkElementColors(), checkElementColorsDOM(), checkElementGlowDOM(), checkElementHoverContrast(), checkElementIconTile() (+27 more)
 
 ### Community 424 - "AuthIntegrationTest"
 Cohesion: 0.70
@@ -1800,23 +1821,23 @@ Nodes (6): ActuatorIntegrationTest, AutoConfigureMockMvc, MockMvc, SpringBootTes
 
 ### Community 427 - "cW"
 Cohesion: 0.09
-Nodes (50): applyFixes(), cli(), collect(), parseArgs(), readProjectRootPatterns(), renderText(), safeRead(), SCRIPTS_DIR (+42 more)
+Nodes (52): applyFixes(), cli(), collect(), parseArgs(), readProjectRootPatterns(), rel(), renderText(), safeRead() (+44 more)
 
 ### Community 428 - "manifest.json"
 Cohesion: 0.18
 Nodes (10): background_color, description, display, icons, name, orientation, prefer_related_applications, short_name (+2 more)
 
 ### Community 429 - "ActuatorIntegrationTest"
-Cohesion: 0.31
-Nodes (6): ActuatorIntegrationTest, AutoConfigureMockMvc, MockMvc, SpringBootTest, Test, WithMockUser
+Cohesion: 0.33
+Nodes (5): ActuatorIntegrationTest, AutoConfigureMockMvc, MockMvc, Test, WithMockUser
 
 ### Community 430 - "main.dart"
 Cohesion: 0.20
 Nodes (9): dart:async, dart:ui_web, bootstrapEngine, main, _NullaryFunction, _UnaryFunction, package:bmad_mobile/main.dart, typedef (+1 more)
 
 ### Community 431 - "eH"
-Cohesion: 0.21
-Nodes (3): PostMapping, UserDto, Test
+Cohesion: 0.17
+Nodes (18): getAuthToken(), fetchNotifications(), getUnreadCount(), markAsRead(), NotificationDto, BG_MAP, COLOR_MAP, FILTERS (+10 more)
 
 ### Community 432 - "main.dart"
 Cohesion: 0.20
@@ -1835,8 +1856,8 @@ Cohesion: 0.28
 Nodes (7): registerPlugins, registrar, registerPlugins, registrar, package:flutter_web_plugins/flutter_web_plugins.dart, package:shared_preferences_web/shared_preferences_web.dart, Registrar
 
 ### Community 436 - "H"
-Cohesion: 0.18
-Nodes (26): clearStoredManualApplyState(), fetchPendingCount(), handleManualEditActivity(), hidePendingApplyDock(), manualApplyLoadingText(), manualApplyStateKey(), manualEditEventForCurrentPage(), numberOrNull() (+18 more)
+Cohesion: 0.19
+Nodes (24): clearStoredManualApplyState(), fetchPendingCount(), handleManualEditActivity(), hidePendingApplyDock(), manualApplyLoadingText(), manualApplyStateKey(), manualEditEventForCurrentPage(), numberOrNull() (+16 more)
 
 ### Community 437 - "adA"
 Cohesion: 0.09
@@ -1847,8 +1868,8 @@ Cohesion: 0.12
 Nodes (36): allow(), bumpCursorDenial(), deny(), detectProposedHtml(), done(), escapeRegExp(), findingSignature(), firstMatch() (+28 more)
 
 ### Community 439 - "Pn"
-Cohesion: 0.13
-Nodes (28): cursorBlockMessage(), ALLOWED_EXTS, bumpEditCount(), clampGroupedToBudget(), clampToBudget(), dedupeAgainstCache(), depthIsSet(), ensureFile() (+20 more)
+Cohesion: 0.14
+Nodes (26): isStopEvent(), appendDesignSystemNote(), bumpEditCount(), dedupeAgainstCache(), depthIsSet(), designSystemOptions(), ensureFile(), ensureSession() (+18 more)
 
 ### Community 440 - "user.dart"
 Cohesion: 0.16
@@ -1871,16 +1892,16 @@ Cohesion: 0.26
 Nodes (7): AuthIntegrationTest, AfterEach, AutoConfigureMockMvc, JwtTokenProvider, MockMvc, Test, UserRepository
 
 ### Community 445 - "gaO"
-Cohesion: 0.11
-Nodes (17): INPUTS, OTPPage(), SignupPage(), Button, ButtonProps, ButtonSize, ButtonVariant, sizeClasses (+9 more)
+Cohesion: 0.15
+Nodes (4): Follow, Entity, Table, User
 
 ### Community 446 - "o1"
 Cohesion: 0.33
 Nodes (5): build_end, build_start, code_assets, data_assets, dependencies
 
 ### Community 447 - "IssuesPage.tsx"
-Cohesion: 0.12
-Nodes (22): BackendDiscussionDto, CreateDiscussionPayload, fetchDiscussions(), badgeVariantStyles, Discussion, DISCUSSIONS, DiscussionsPage(), BackendIssueDto (+14 more)
+Cohesion: 0.13
+Nodes (14): BackendIssueDto, CreateIssuePayload, fetchIssues(), categoryIcons, FILTER_TABS, Issue, ISSUES, IssuesPage() (+6 more)
 
 ### Community 448 - "Button.tsx"
 Cohesion: 0.22
@@ -1904,7 +1925,7 @@ Nodes (7): 📔 DJP Platform Technical Debt Resolution & Audit Log (Historical L
 
 ### Community 453 - "Qy"
 Cohesion: 0.13
-Nodes (29): appendOriginToDirective(), applyNuxtLiveAdapter(), buildLiveScriptSrc(), buildNuxtPlugin(), buildTagBlock(), commentClose(), commentOpen(), CONFIG_PATH (+21 more)
+Nodes (27): appendOriginToDirective(), applyNuxtLiveAdapter(), buildNuxtPlugin(), buildTagBlock(), commentClose(), commentOpen(), CONFIG_PATH, detectLineEnding() (+19 more)
 
 ### Community 454 - "Xs"
 Cohesion: 0.18
@@ -1935,24 +1956,24 @@ Cohesion: 0.33
 Nodes (5): DJP Prototype Synchronization, DJP Prototype Test Suites & Automated QA, Key Files & Scripts, Overview, Running Verification Tests
 
 ### Community 462 - "📐 Engineering Principles"
-Cohesion: 0.06
-Nodes (56): a3R(), a42(), a4m(), a6m(), a9G(), aAh(), acS(), aED() (+48 more)
+Cohesion: 0.08
+Nodes (45): a3R(), a6m(), a9G(), aAh(), acS(), ad(), aED(), ajd() (+37 more)
 
 ### Community 463 - "dart_build_result.json"
 Cohesion: 0.33
 Nodes (5): build_end, build_start, code_assets, data_assets, dependencies
 
 ### Community 464 - "oS"
-Cohesion: 0.15
-Nodes (25): checkHtmlPatterns(), collectCssCustomProps(), collectMarqueeKeyframes(), collectPulseKeyframes(), cssLengthToPx(), cssTextHasDarkRootBg(), extractShadowLengths(), findShadowColor() (+17 more)
+Cohesion: 0.10
+Nodes (36): checkColors(), checkElementAIPaletteDOM(), checkElementGlow(), checkGlow(), checkHoverContrast(), checkHtmlPatterns(), collectCssCustomProps(), collectMarqueeKeyframes() (+28 more)
 
 ### Community 465 - "copyProperties"
 Cohesion: 0.25
 Nodes (9): ACK_EXTS, shouldEmitAckForFile(), extensionCache, LIVE_TEMPLATE_EXTENSIONS, matchConfiguredExtension(), mergeExtensions(), normalizeExtensionEntries(), readLiveTemplateExtensions() (+1 more)
 
 ### Community 466 - "a4l"
-Cohesion: 0.22
-Nodes (11): checkElementMotion(), checkElementMotionDOM(), checkLayout(), checkMotion(), isCardLike(), isCardLikeDOM(), isCardLikeFromProps(), LAYOUT_TRANSITION_PROPS (+3 more)
+Cohesion: 0.36
+Nodes (8): checkElementMotion(), checkElementMotionDOM(), checkMotion(), checkElementMotion(), checkElementMotionDOM(), checkMotion(), LAYOUT_TRANSITION_PROPS, SAFE_TAGS
 
 ### Community 467 - "handle_new_rx_page"
 Cohesion: 0.33
@@ -1963,12 +1984,12 @@ Cohesion: 0.33
 Nodes (5): 2026-07-19 Session, Current Sprint, DJP PROTOTYPE BACKEND ACTIVE STATE, Session Delta Logs, Task Breakdown
 
 ### Community 469 - "DJP PROTOTYPE FRONTEND ACTIVE STATE"
-Cohesion: 0.33
-Nodes (5): 2026-07-19 Session, Current Sprint, DJP PROTOTYPE FRONTEND ACTIVE STATE, Session Delta Logs, Task Breakdown
+Cohesion: 0.05
+Nodes (41): Active Backlog — Next Phase, Completed Phases (Archived), Current Sprint, DJP PROTOTYPE FRONTEND ACTIVE STATE, Future (Low Priority), Phase 5 — Fix Broken Flows, 10. FeedPage "Petitions" Filter — No Data, 11. No Loading/Error States for TanStack Query (+33 more)
 
 ### Community 470 - "Card.tsx"
-Cohesion: 0.12
-Nodes (22): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_master_md(), format_page_override_md(), _generate_intelligent_overrides(), hex_to_ansi(), persist_design_system() (+14 more)
+Cohesion: 0.13
+Nodes (20): ansi_ljust(), format_ascii_box(), format_markdown(), format_master_md(), format_page_override_md(), generate_design_system(), hex_to_ansi(), persist_design_system() (+12 more)
 
 ### Community 471 - "DJP PROTOTYPE QA & TESTS ACTIVE STATE"
 Cohesion: 0.33
@@ -2008,11 +2029,11 @@ Nodes (3): FlutterEngine, Keep, GeneratedPluginRegistrant
 
 ### Community 480 - "a4j"
 Cohesion: 0.12
-Nodes (26): browserFindingsFromMap(), checkBorders(), checkCreamPalette(), checkEdgeFlushCardsDOM(), checkElementBlinkingCursorDOM(), checkElementBorders(), checkElementBordersDOM(), checkElementPseudoStripeDOM() (+18 more)
+Nodes (24): browserDesignSystemConfig(), browserFindingsFromMap(), browserPrimaryFont(), checkBrowserDesignSystemSources(), checkCreamPalette(), checkEdgeFlushCardsDOM(), checkElementBlinkingCursorDOM(), checkElementTextOverflowDOM() (+16 more)
 
 ### Community 481 - "installInstanceTearOff"
-Cohesion: 0.40
-Nodes (5): installInstanceTearOff(), installStaticTearOff(), instanceTearOffGetter(), staticTearOffGetter(), tearOffParameters()
+Cohesion: 0.11
+Nodes (19): gaeW(), gaeZ(), gaf7(), gaf8(), gt5(), sapF(), sAZ(), sbH() (+11 more)
 
 ### Community 482 - "DJP Mobile Task & Execution Tracker (`mobile = android/flutter`)"
 Cohesion: 0.40
@@ -2027,8 +2048,8 @@ Cohesion: 0.60
 Nodes (3): BackendApplication, EnableJpaAuditing, SpringBootApplication
 
 ### Community 485 - "OnboardingLayout.tsx"
-Cohesion: 0.06
-Nodes (25): AuthLayout(), router, completeUserOnboarding(), OnboardingUpdateRequest, DEFAULT_DATA, OnboardingContext, OnboardingContextType, OnboardingData (+17 more)
+Cohesion: 0.11
+Nodes (16): completeUserOnboarding(), OnboardingResponse, OnboardingUpdateRequest, OnboardingContext, OnboardingLayoutProps, StepInfo, STEPS, DEFAULT_DATA (+8 more)
 
 ### Community 486 - "DiscussionsPage.tsx"
 Cohesion: 0.09
@@ -2039,8 +2060,8 @@ Cohesion: 0.15
 Nodes (23): acceptedDomAlreadyClean(), applyOriginalAttrsToSvelteAnchor(), commitAcceptedSvelteComponentToDom(), elementMatchesOriginalMarkup(), ensureAcceptedDomClean(), findAcceptedRuntimeWrappers(), findLiveElementForOriginalMarkup(), findLiveElementForSvelteManifest() (+15 more)
 
 ### Community 488 - "ResourceNotFoundException"
-Cohesion: 0.08
-Nodes (27): Schema, UserDto, ResponseStatus, ResourceNotFoundException, ObjectMapper, CrossOrigin, GetMapping, PatchMapping (+19 more)
+Cohesion: 0.07
+Nodes (27): Schema, UserDto, ObjectMapper, CrossOrigin, GetMapping, PatchMapping, RequestMapping, ResponseEntity (+19 more)
 
 ### Community 490 - "DJP BMAD Completed Task Archive (`bmad/archive/archive-todo.md`)"
 Cohesion: 0.50
@@ -2059,8 +2080,8 @@ Cohesion: 0.50
 Nodes (3): Code Quality Standards, Context Allocation, DJP PROTOTYPE BACKEND OPERATIONAL RULES
 
 ### Community 494 - "ResourceNotFoundException"
-Cohesion: 0.29
-Nodes (6): Component, FilterChain, Override, ServletRequest, ServletResponse, MdcFilter
+Cohesion: 0.08
+Nodes (25): CrossOrigin, GetMapping, RequestMapping, ResponseEntity, RestController, RepresentativeController, DiscussionUpdateRequestDto, RepresentativeResponseDto (+17 more)
 
 ### Community 496 - "BaseIntegrationTest.java"
 Cohesion: 0.83
@@ -2095,8 +2116,8 @@ Cohesion: 0.50
 Nodes (3): badgeVariantStyles, DISCUSSIONS, DiscussionsPage()
 
 ### Community 509 - "PollsPage.js"
-Cohesion: 0.12
-Nodes (9): FILTER_TABS, POLLS, PollsPage(), Entity, Table, User, Vote, Repository (+1 more)
+Cohesion: 0.14
+Nodes (17): InsightsController, CrossOrigin, RequestMapping, ResponseEntity, RestController, CategoryBreakdown, DepartmentEfficiency, InsightsResponseDto (+9 more)
 
 ### Community 511 - "ProfilePage.js"
 Cohesion: 0.83
@@ -2107,8 +2128,8 @@ Cohesion: 0.50
 Nodes (3): Button, sizeClasses, variantClasses
 
 ### Community 515 - "SidebarContext.js"
-Cohesion: 0.09
-Nodes (6): Comment, Entity, Table, User, CommentRepository, Repository
+Cohesion: 0.16
+Nodes (14): checkElementOversizedH1(), checkElementOversizedH1DOM(), checkElementQuality(), checkOversizedH1(), checkQuality(), colorsNearlyMatch(), cssColorIsTransparent(), getComputedStyleFor() (+6 more)
 
 ### Community 517 - "Loader.js"
 Cohesion: 0.67
@@ -2131,24 +2152,28 @@ Cohesion: 0.67
 Nodes (4): $2$priority$scheduler(), a31(), aKc(), w0()
 
 ### Community 522 - "a2H"
-Cohesion: 0.04
-Nodes (95): a4A(), a5w(), aAO(), aBb(), aBm(), ac0(), ac2(), ac4() (+87 more)
+Cohesion: 0.02
+Nodes (141): $3(), a30(), a38(), a3g(), a3n(), a44(), a53(), a5w() (+133 more)
 
 ### Community 523 - "QU"
-Cohesion: 0.11
-Nodes (34): agentHasWorkInFlight(), agentStatusText(), barPaletteForTheme(), brandMarkSvg(), buildSteerProcessingDots(), cursorForInsertAxis(), designPanelCss(), detectPageTheme() (+26 more)
+Cohesion: 0.10
+Nodes (36): agentHasWorkInFlight(), agentStatusText(), barPaletteForTheme(), brandMarkSvg(), buildSteerProcessingDots(), cursorForInsertAxis(), designPanelCss(), detectPageTheme() (+28 more)
 
 ### Community 524 - "a7l"
-Cohesion: 0.14
-Nodes (10): DesignSystemGenerator, Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords., Extract results list from search result dict., Generate complete design system recommendation.          variance/motion/density, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV. (+2 more)
+Cohesion: 0.11
+Nodes (13): DesignSystemGenerator, Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords., Extract results list from search result dict., Generate complete design system recommendation.          variance/motion/density, Bucket a 1-10 dial value into its tier config. Returns None if value is None., Generates design system recommendations from aggregated searches. (+5 more)
+
+### Community 525 - "aKX"
+Cohesion: 0.24
+Nodes (6): Notification, Repository, NotificationRepository, Notification, Service, NotificationService
 
 ### Community 526 - "j8"
 Cohesion: 0.10
 Nodes (20): Animate complex properties, Assess What "Extraordinary" Means Here, For data-heavy interfaces, For functional UI, For performance-critical UI, For visual/marketing surfaces, Implement with Discipline, Interact with the device (+12 more)
 
 ### Community 527 - "getTag"
-Cohesion: 0.15
-Nodes (19): checkElementHeroEyebrow(), checkElementHeroEyebrowDOM(), checkHeroEyebrow(), checkNumberedSectionLabels(), checkNumberedSectionLabelsDOM(), checkNumberedSectionLabelsFromDoc(), checkRepeatedSectionKickers(), checkRepeatedSectionKickersDOM() (+11 more)
+Cohesion: 0.24
+Nodes (8): AuthIntegrationTest, AuditLogRepository, AutoConfigureMockMvc, IssueRepository, JwtTokenProvider, MockMvc, Test, UserRepository
 
 ### Community 528 - "DJP Native Mobile Client (`mobile = android/flutter`)"
 Cohesion: 0.50
@@ -2163,12 +2188,12 @@ Cohesion: 0.50
 Nodes (3): Code Quality Standards, Context Allocation, DJP PROTOTYPE BACKEND OPERATIONAL RULES
 
 ### Community 532 - "ResourceNotFoundException"
-Cohesion: 0.25
-Nodes (8): 🧠 Behavioral Patterns, 💡 Design Implications for Sunita, 😤 Frustrations & Pain Points, 🎯 Goals & Motivations, 📊 Key Metrics to Track for This Persona, Persona 5: Sunita Devi — *"The First-Time Digital User"*, 📋 Profile Summary, 📱 User Journey (Typical Session)
+Cohesion: 0.22
+Nodes (14): firstCssUrl(), getLayerValue(), loadVisualContrastImage(), parseObjectPosition(), parsePositionPair(), parsePositionToken(), pickWorstContrastColor(), pointToImageSource() (+6 more)
 
 ### Community 534 - "BaseIntegrationTest.java"
-Cohesion: 0.43
-Nodes (6): JdbcTemplate, BaseIntegrationTest, ActiveProfiles, AfterEach, SpringBootTest, TestPropertySource
+Cohesion: 0.48
+Nodes (5): JdbcTemplate, BaseIntegrationTest, ActiveProfiles, AfterEach, SpringBootTest
 
 ### Community 535 - "DJP PROTOTYPE FRONTEND IDENTITY"
 Cohesion: 0.50
@@ -2183,24 +2208,24 @@ Cohesion: 0.50
 Nodes (3): Expanding the ESLint configuration, React Compiler, React + TypeScript + Vite
 
 ### Community 538 - "DiscussionDetailPage.js"
-Cohesion: 0.20
-Nodes (17): beginEditPin(), buildAnnotationsForCapture(), buildPinElement(), cancelEditingPin(), clampPlaceholderSize(), finalizeEditingPin(), initAnnotOverlay(), localCoords() (+9 more)
+Cohesion: 0.15
+Nodes (21): applyPlaceholderDimensions(), beginEditPin(), buildAnnotationsForCapture(), buildPinElement(), cancelEditingPin(), clampPlaceholderSize(), finalizeEditingPin(), initAnnotOverlay() (+13 more)
 
 ### Community 539 - "DiscussionDetailPage.tsx"
-Cohesion: 0.21
-Nodes (14): resolveTargetSelection(), parseTargetOptions(), parseTargetPath(), TargetArgError, __dirname, ensureServerRunning(), globToRegex(), resolveFiles() (+6 more)
+Cohesion: 0.10
+Nodes (31): resolveProjectRoot(), firstExisting(), getDesignSidecarCandidates(), getDesignSidecarPath(), getImpeccableDir(), getLegacyLiveAnnotationsDir(), getLegacyLiveConfigPath(), getLegacyLiveServerPath() (+23 more)
 
 ### Community 540 - "DiscussionsPage.js"
-Cohesion: 0.13
-Nodes (19): addBrowserFindings(), addVisualContrastFindings(), addVisualContrastResult(), analyzeVisualContrast(), analyzeVisualContrastCandidate(), blendRgba(), clampByte(), collectVisualContrastCandidates() (+11 more)
+Cohesion: 0.22
+Nodes (11): Authentication, Component, HttpServletRequest, HttpServletResponse, JwtTokenProvider, Logger, OAuth2User, Override (+3 more)
 
 ### Community 541 - "NotificationsPage.js"
-Cohesion: 0.24
-Nodes (16): detectUrl(), measureContentHiddenAfterReveal(), runVisualContrastFallback(), serializeDesignSystemForBrowser(), captureVisualContrastCandidate(), sanitizeScreenshotClip(), createDetectorProfile(), extractFindingIds() (+8 more)
+Cohesion: 0.14
+Nodes (14): scripts, build, contract:refresh, contract:types, contract:validate, dev, e2e, e2e:ui (+6 more)
 
 ### Community 542 - "NotificationsPage.tsx"
-Cohesion: 0.22
-Nodes (15): applyTanStackLiveAdapter(), buildTanStackLiveRootComponent(), detectTanStackStartProject(), escapeRegExp(), findRootRouteFile(), insertAfterLastImport(), isManagedComponent(), packageHasTanStackStart() (+7 more)
+Cohesion: 0.21
+Nodes (16): buildLiveScriptSrc(), applyTanStackLiveAdapter(), buildTanStackLiveRootComponent(), detectTanStackStartProject(), escapeRegExp(), findRootRouteFile(), insertAfterLastImport(), isManagedComponent() (+8 more)
 
 ### Community 543 - "PetitionsPage.js"
 Cohesion: 0.12
@@ -2219,8 +2244,8 @@ Cohesion: 0.33
 Nodes (5): 1. Overview & File Locations, 2. Quickstart & Import Instructions, 3. Endpoints Covered, 4. Mandatory Maintenance Rule (For AI Agents & Developers), Canonical Postman Collection Guide & API Maintenance Protocol
 
 ### Community 547 - "ProfilePage.js"
-Cohesion: 0.29
-Nodes (8): ae5(), ae6(), gGx(), glL(), gmy(), slL(), sxN(), t2()
+Cohesion: 0.02
+Nodes (136): a1P(), a1R(), a1Y(), a28(), a29(), a2D(), a2I(), a2K() (+128 more)
 
 ### Community 548 - "ProfilePage.tsx"
 Cohesion: 0.19
@@ -2235,16 +2260,16 @@ Cohesion: 0.13
 Nodes (14): 1. Accessibility (A11y), 2. Performance, 3. Theming, 4. Responsive Design, 5. Implementation Integrity (CRITICAL), Audit Health Score, Detailed Findings by Severity, Diagnostic Scan (+6 more)
 
 ### Community 551 - "SidebarContext.js"
-Cohesion: 0.23
-Nodes (14): extractPlatform(), loadContext(), cli(), COMMON_DEV_PORTS, devServerSignals(), gatherSignals(), gitSignals(), hasCode() (+6 more)
+Cohesion: 0.25
+Nodes (13): extractPlatform(), loadContext(), cli(), COMMON_DEV_PORTS, devServerSignals(), gatherSignals(), gitSignals(), hasCode() (+5 more)
 
 ### Community 552 - "Badge.js"
 Cohesion: 0.26
 Nodes (14): applySvelteKitLiveAdapter(), buildSvelteLiveRootComponent(), defaultSvelteLayout(), detectSvelteKitProject(), ensureSvelteLiveRootComponent(), escapeRegExp(), fileIncludes(), findSvelteKitAppHtml() (+6 more)
 
 ### Community 553 - "Loader.js"
-Cohesion: 0.22
-Nodes (6): BM25, BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, TestTokenizer
+Cohesion: 0.16
+Nodes (9): BM25, BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes., Nearest known vocabulary terms for a query that returned 0 hits,     so the call, _suggest_terms() (+1 more)
 
 ### Community 554 - "DJP PROTOTYPE QA & TESTS IDENTITY"
 Cohesion: 0.50
@@ -2255,28 +2280,28 @@ Cohesion: 0.50
 Nodes (3): Code Quality Standards, Context Allocation, DJP PROTOTYPE QA & TESTS OPERATIONAL RULES
 
 ### Community 579 - "a22"
-Cohesion: 0.17
-Nodes (9): All indexed terms, for suggestion/typo-recovery purposes., Nearest known vocabulary terms for a query that returned 0 hits,     so the call, Main search function with auto-domain detection, Search stack-specific guidelines, search(), search_stack(), _suggest_terms(), Known query -> expected top-domain sanity checks (not exact-row pinning,     sin (+1 more)
+Cohesion: 0.21
+Nodes (8): Main search function with auto-domain detection, search(), _detect_page_type(), _generate_intelligent_overrides(), Generate intelligent overrides based on page type using layered search., Detect page type from context and search results., Known query -> expected top-domain sanity checks (not exact-row pinning,     sin, TestSearchDomains
 
 ### Community 580 - "iJ"
-Cohesion: 0.38
-Nodes (7): borderColorsFromStyle(), borderWidthsFromStyle(), checkElementGptBorderShadow(), checkElementGptBorderShadowDOM(), checkGptThinBorderWideShadow(), shadowLayerAlpha(), shadowMaxBlurPx()
+Cohesion: 0.32
+Nodes (8): borderColorsFromStyle(), borderWidthsFromStyle(), checkElementGptBorderShadow(), checkElementGptBorderShadowDOM(), checkGptThinBorderWideShadow(), cssColorAlpha(), shadowLayerAlpha(), shadowMaxBlurPx()
 
 ### Community 581 - "a9W"
 Cohesion: 0.14
 Nodes (13): Animation Performance, Assess Performance Issues, Core Web Vitals Optimization, Cumulative Layout Shift (CLS < 0.1), First Input Delay (FID < 100ms) / INP (< 200ms), Largest Contentful Paint (LCP < 2.5s), Loading Performance, Network Optimization (+5 more)
 
 ### Community 582 - "kD"
-Cohesion: 0.53
-Nodes (3): Repository, User, UserRepository
+Cohesion: 0.24
+Nodes (9): IssueIntegrationTest, AfterEach, AuditLogRepository, AutoConfigureMockMvc, IssueRepository, JwtTokenProvider, MockMvc, Test (+1 more)
 
 ### Community 583 - "ac9"
 Cohesion: 0.12
-Nodes (17): checkPageTypography(), firstOverusedGoogleFont(), checkElementItalicSerif(), checkElementItalicSerifDOM(), checkItalicSerif(), checkPageTypography(), checkTypography(), resolveSerif() (+9 more)
+Nodes (21): checkPageTypography(), checkTypography(), isBrandFontOnOwnDomain(), firstOverusedGoogleFont(), checkStaticPageTypography(), checkElementItalicSerif(), checkElementItalicSerifDOM(), checkItalicSerif() (+13 more)
 
 ### Community 588 - "a9Z"
-Cohesion: 0.22
-Nodes (14): firstCssUrl(), getLayerValue(), loadVisualContrastImage(), parseObjectPosition(), parsePositionPair(), parsePositionToken(), pickWorstContrastColor(), pointToImageSource() (+6 more)
+Cohesion: 0.18
+Nodes (17): analyzeVisualContrastCandidate(), blendRgba(), clampByte(), firstCssUrl(), getLayerValue(), loadVisualContrastImage(), parseObjectPosition(), parsePositionPair() (+9 more)
 
 ### Community 589 - "Oq"
 Cohesion: 0.15
@@ -2315,16 +2340,16 @@ Cohesion: 0.17
 Nodes (11): Accessibility Resilience, Assess Hardening Needs, Edge Cases & Boundary Conditions, Error Handling, Hardening Dimensions, Input Validation & Sanitization, Internationalization (i18n), Performance Resilience (+3 more)
 
 ### Community 604 - "IssueDetailPage.tsx"
-Cohesion: 0.27
-Nodes (10): coLocatedStylesheets(), expandScanTargets(), hasPathTraversal(), isInsideProject(), looksLikeProjectRoot(), normalizeScanTargets(), parseStaticStyleImports(), resolveCacheCwd() (+2 more)
+Cohesion: 0.18
+Nodes (10): DJP Archived Tasks, Migration Sprint — Completed 2026-07 (100% — 35/35 tasks), Notes, Phase 0 — Foundation, Phase 1 — Core Pages (P1), Phase 2 — Supporting Pages (P2), Phase 3 — Detail & Creation Pages (P3), Phase 4 — Auth & Onboarding (+2 more)
 
 ### Community 605 - "RepresentativesPage.js"
 Cohesion: 0.23
 Nodes (10): createLiveBrowserDomHelpers(), activeElementDeep(), appendStyleToLiveUiRoot(), appendToLiveUiRoot(), escapeCssIdent(), getLiveUiElementById(), LIVE_CHROME_MOUNT_CONTRACT, LIVE_UI_COMPONENT_IDS (+2 more)
 
 ### Community 606 - "RepresentativesPage.tsx"
-Cohesion: 0.19
-Nodes (12): _domain_keywords(), _get_bm25(), _load_csv(), _load_product_keywords(), _normalize(), Apply synonym substitution before tokenizing., Load CSV and return list of dicts, with mtime-based caching., Fitted BM25 index for this file+columns, with mtime-based caching. (+4 more)
+Cohesion: 0.15
+Nodes (14): _domain_keywords(), _get_bm25(), _load_csv(), _load_product_keywords(), _normalize(), Apply synonym substitution before tokenizing., Load CSV and return list of dicts, with mtime-based caching., Fitted BM25 index for this file+columns, with mtime-based caching. (+6 more)
 
 ### Community 607 - "Card.js"
 Cohesion: 0.17
@@ -2351,8 +2376,8 @@ Cohesion: 0.18
 Nodes (11): 1. Decide what is already true, 2. Ask what will change the work, 3. Choose the right amount of invention, 4. Commit the world, 5. Record the decision, 6. Build with full commitment, 7. Inspect and finish, Create a whole surface inside an established world (+3 more)
 
 ### Community 614 - "USER.md"
-Cohesion: 0.07
-Nodes (27): a33(), a9R(), aB(), dW(), Gj(), gP0(), saha(), sajK() (+19 more)
+Cohesion: 0.08
+Nodes (26): a33(), a9R(), aB(), dW(), Gj(), gP0(), saha(), sajK() (+18 more)
 
 ### Community 651 - "JL"
 Cohesion: 0.18
@@ -2367,36 +2392,36 @@ Cohesion: 0.35
 Nodes (10): detectCsp(), INLINE_HEADER_SIGNALS, LAYOUT_EXTS, MONOREPO_HELPER_SIGNALS, NUXT_ROUTE_RULES_SIGNALS, NUXT_SECURITY_SIGNALS, SCAN_EXTS, SKIP_DIRS (+2 more)
 
 ### Community 661 - "router.js"
-Cohesion: 0.35
-Nodes (9): buildGenerationPreflight(), compactError(), execFileAsync, insertTarget(), normalizeTarget(), replaceTarget(), runGenerationPreflight(), sourceResolutionCache (+1 more)
+Cohesion: 0.30
+Nodes (10): buildGenerationPreflight(), compactError(), execFileAsync, insertTarget(), normalizeTarget(), replaceTarget(), runGenerationPreflight(), sourceResolutionCache (+2 more)
 
 ### Community 662 - "router.tsx"
 Cohesion: 0.24
 Nodes (7): args, buildWeights(), hashUnit(), pickSeed(), seed, SEEDS, weightedPick()
 
 ### Community 663 - "DiscussionDetailPage.tsx"
-Cohesion: 0.12
-Nodes (26): DiscussionDetailPage(), DISCUSSIONS_DATA, tagVariantMap, UUID_TO_MOCK_KEY, CATEGORIES, CONTENT_TYPES, DiscussionCard(), FeedPage() (+18 more)
+Cohesion: 0.11
+Nodes (35): DiscussionDetailPage(), DISCUSSIONS_DATA, tagVariantMap, UUID_TO_MOCK_KEY, DiscussionData, DiscussionMeta, DiscussionPoll, DiscussionRelated (+27 more)
 
 ### Community 664 - "LoginPage.tsx"
-Cohesion: 0.36
-Nodes (6): BackendPollDto, CreatePollPayload, fetchPolls(), FILTER_TABS, POLLS, PollsPage()
+Cohesion: 0.27
+Nodes (8): BackendPollDto, CreatePollPayload, fetchPolls(), FILTER_TABS, Poll, PollOption, POLLS, PollsPage()
 
 ### Community 665 - "Step2Location.js"
 Cohesion: 0.21
-Nodes (10): EditProfileModal(), ProfilePage(), fetchUser(), getAuthToken(), ProfileUpdatePayload, updateProfile(), UserDto, AppLayout() (+2 more)
+Nodes (12): EditProfileModal(), ProfilePage(), fetchUser(), fetchUserStats(), getAuthToken(), ProfileUpdatePayload, updateProfile(), UserDto (+4 more)
 
 ### Community 666 - "Step2Location.tsx"
 Cohesion: 0.20
 Nodes (10): Completion gate, Init flow, Step 1: Load current state, Step 2: Explore the project, Step 3: Interview for product truth, Step 4: Write PRODUCT.md, Step 5: Configure live mode when useful, Step 6: Wrap up or resume (+2 more)
 
 ### Community 667 - "SignupPage.js"
-Cohesion: 0.46
-Nodes (7): cachePath(), filterFreshFindings(), pruneCache(), readCache(), readJson(), stalenessCheckDisabled(), writeCache()
+Cohesion: 0.18
+Nodes (11): dependencies, clsx, @hookform/resolvers, lucide-react, react, react-dom, react-hook-form, react-router-dom (+3 more)
 
 ### Community 668 - "Follow"
-Cohesion: 0.11
-Nodes (10): Follow, Entity, Table, User, FollowRepository, Repository, InteractionService, Service (+2 more)
+Cohesion: 0.40
+Nodes (5): installInstanceTearOff(), installStaticTearOff(), instanceTearOffGetter(), staticTearOffGetter(), tearOffParameters()
 
 ### Community 669 - "CreateIssuePage.js"
 Cohesion: 0.22
@@ -2407,8 +2432,8 @@ Cohesion: 0.22
 Nodes (9): Color, Components, Layout, Motion, Operate mode depth (and Read notes), Product constraints, Product permissions, The product slop test (+1 more)
 
 ### Community 671 - "NotFoundPage.js"
-Cohesion: 0.06
-Nodes (20): AuditLog, Entity, PrePersist, Table, AuthIntegrationTest, AfterEach, AutoConfigureMockMvc, JwtTokenProvider (+12 more)
+Cohesion: 0.09
+Nodes (21): AfterReturning, Aspect, AuditLogService, AuditLog, AuditLogRepository, Logger, Service, Transactional (+13 more)
 
 ### Community 672 - "NotFoundPage.tsx"
 Cohesion: 0.25
@@ -2431,20 +2456,24 @@ Cohesion: 0.32
 Nodes (8): checkElementRadialSpotlight(), checkElementRadialSpotlightDOM(), checkRadialSpotlight(), elementGradientValue(), parseColorMix(), parseRadialGradientStops(), splitTopLevelCommas(), spotlightLabel()
 
 ### Community 679 - "Sidebar.js"
-Cohesion: 0.83
-Nodes (3): isStopEvent(), main(), readStdin()
+Cohesion: 0.29
+Nodes (10): extract_fetch_calls(), get_fe_endpoints(), load_spec(), main(), normalize_path_param_names(), Extract all FE fetch() endpoints grouped by file., Normalize all path parameter names to {id} for comparison., Extract (method, url_template) pairs from a source file. (+2 more)
 
-### Community 681 - "SidebarFooter.js"
-Cohesion: 0.10
-Nodes (4): AuditLog, Entity, PrePersist, Table
+### Community 680 - "inline-ignores.mjs"
+Cohesion: 0.40
+Nodes (9): addRules(), applyInlineIgnores(), getSet(), hasDirectives(), isInlineIgnored(), normalizeRule(), parseInlineIgnores(), parseRuleList() (+1 more)
+
+### Community 681 - "Persona 6: Arjun Patil — *"The Aspiring Ward Leader"*"
+Cohesion: 0.25
+Nodes (8): 🧠 Behavioral Patterns, 💡 Design Implications for Arjun, 😤 Frustrations & Pain Points, 🎯 Goals & Motivations, 📊 Key Metrics to Track for This Persona, Persona 6: Arjun Patil — *"The Aspiring Ward Leader"*, 📋 Profile Summary, 📱 User Journey (Typical Session — Campaign Day)
 
 ### Community 682 - "SidebarFooter.tsx"
-Cohesion: 0.29
-Nodes (8): ga3j(), Mr(), Rv(), saoa(), sof(), spI(), sUk(), yw()
+Cohesion: 0.28
+Nodes (9): es(), ga3j(), Mr(), Rv(), saoa(), sof(), spI(), sUk() (+1 more)
 
 ### Community 683 - "CreatePostPage.tsx"
-Cohesion: 0.13
-Nodes (17): CreateDiscussionForm(), CreateDiscussionFormProps, CreateIssueForm(), CreateIssueFormProps, CreatePetitionFormProps, CreatePollForm(), CreatePollFormProps, CreatePostPage() (+9 more)
+Cohesion: 0.12
+Nodes (20): CreateDiscussionForm(), CreateDiscussionFormProps, CreateIssueForm(), CreateIssueFormProps, CreatePetitionForm(), CreatePollForm(), CreatePollFormProps, CreatePostPage() (+12 more)
 
 ### Community 684 - "SidebarHeader.tsx"
 Cohesion: 0.29
@@ -2463,8 +2492,12 @@ Cohesion: 0.43
 Nodes (3): detect_domain(), Auto-detect the most relevant domain from query.      Matches are weighted by ke, TestDomainDetection
 
 ### Community 688 - "EmptyState.js"
-Cohesion: 0.38
-Nodes (3): gradlew script, die(), warn()
+Cohesion: 0.31
+Nodes (9): cursorBlockMessage(), clampGroupedToBudget(), clampToBudget(), directiveFooter(), formatFindingIgnoreCommand(), formatFindingLine(), quoteCommandArg(), renderGroupedTemplate() (+1 more)
+
+### Community 689 - "checkElementDesignSystemDOM"
+Cohesion: 0.22
+Nodes (8): email, fromJson, id, name, reputationScore, role, toJson, User
 
 ### Community 730 - "index.js"
 Cohesion: 0.20
@@ -2482,13 +2515,17 @@ Nodes (6): Constraints, Failure modes, Flow, $impeccable hooks, Intentional find
 Cohesion: 0.33
 Nodes (5): Generate three compositional options, Inventory implementation fidelity, One approval point, Produce only the assets the build needs, Visualize: Direction Comps & Asset Production
 
-### Community 734 - "aF"
-Cohesion: 0.13
-Nodes (15): aF(), gMJ(), N6(), sda(), shj(), sJA(), sJz(), sSz() (+7 more)
+### Community 734 - "UserRepository"
+Cohesion: 0.53
+Nodes (3): Repository, User, UserRepository
 
 ### Community 735 - "DiscussionsPage.tsx"
 Cohesion: 0.33
 Nodes (5): 1. Overview & File Locations, 2. Quickstart & Import Instructions, 3. Endpoints Covered, 4. Mandatory Maintenance Rule (For AI Agents & Developers), Canonical Postman Collection Guide & API Maintenance Protocol
+
+### Community 736 - "OAuth2SuccessHandler"
+Cohesion: 0.39
+Nodes (8): generate(), Resolve $ref to schema name., Render a TS interface body., render_type(), resolve_ref(), resolve_ts_type(), to_camel(), to_pascal()
 
 ### Community 737 - "NotFoundPage.tsx"
 Cohesion: 0.40
@@ -2506,57 +2543,105 @@ Nodes (4): Heuristics Scoring Guide, Issue Severity (P0–P3), Reference Materia
 Cohesion: 0.50
 Nodes (3): candidates, detectorPath, __dirname
 
+### Community 741 - "AuthIntegrationTest"
+Cohesion: 0.31
+Nodes (7): BackendDiscussionDto, CreateDiscussionPayload, fetchDiscussions(), badgeVariantStyles, Discussion, DISCUSSIONS, DiscussionsPage()
+
 ### Community 742 - "index.js"
 Cohesion: 0.83
 Nodes (3): _check_file(), main(), _read_rows()
 
 ### Community 743 - "AuthIntegrationTest"
-Cohesion: 0.24
-Nodes (8): AuthIntegrationTest, AuditLogRepository, AutoConfigureMockMvc, IssueRepository, JwtTokenProvider, MockMvc, Test, UserRepository
+Cohesion: 0.25
+Nodes (8): 🧠 Behavioral Patterns, 💡 Design Implications for Rajan, 😤 Frustrations & Pain Points, 🎯 Goals & Motivations, 📊 Key Metrics to Track for This Persona, Persona 2: Rajan Malhotra — *"The Civic Watchdog"*, 📋 Profile Summary, 📱 User Journey (Typical Session)
+
+### Community 745 - "MessageHandler"
+Cohesion: 0.33
+Nodes (6): HWND, LPARAM, LRESULT, UINT, WPARAM, MessageHandler
+
+### Community 747 - "FE ↔ BE Contract Testing"
+Cohesion: 0.25
+Nodes (7): FE ↔ BE Contract Testing, Files, Generate TypeScript types, Refresh the spec (after backend changes), Validate frontend matches the spec, When to run, Workflow
 
 ### Community 758 - "SecurityConfig.java"
 Cohesion: 0.28
 Nodes (9): Bean, Configuration, CorsConfigurationSource, EnableWebSecurity, HttpSecurity, JwtAuthenticationFilter, OAuth2SuccessHandler, SecurityFilterChain (+1 more)
 
 ### Community 759 - "InteractionIntegrationTest"
-Cohesion: 0.29
-Nodes (8): InteractionIntegrationTest, ActiveProfiles, AutoConfigureMockMvc, JwtTokenProvider, MockMvc, SpringBootTest, Test, UserRepository
+Cohesion: 0.07
+Nodes (24): AuthIntegrationTest, AfterEach, AutoConfigureMockMvc, JwtTokenProvider, MockMvc, Test, UserRepository, AutoConfigureMockMvc (+16 more)
 
 ### Community 760 - "MessageHandler"
 Cohesion: 0.38
 Nodes (10): HWND, LPARAM, LRESULT, UINT, WPARAM, EnableFullDpiSupportIfAvailable(), GetThisFromHandle, MessageHandler (+2 more)
 
+### Community 761 - "collectVisualContrastCandidates"
+Cohesion: 0.24
+Nodes (10): analyzeVisualContrast(), analyzeVisualContrastCandidate(), blendRgba(), clampByte(), collectVisualContrastCandidates(), collectVisualContrastReasons(), getDirectText(), getDirectTextRect() (+2 more)
+
+### Community 763 - "normalizeGitHubEvent"
+Cohesion: 0.38
+Nodes (7): applyPatchText(), envProjectDir(), looksLikeApplyPatch(), normalizeGitHubEvent(), normalizeHookEvent(), parseGitHubToolArgs(), resolveProjectCwd()
+
 ### Community 764 - "Persona 3: Priya Deshmukh — *"The Community Organizer"*"
 Cohesion: 0.25
 Nodes (8): 🧠 Behavioral Patterns, 💡 Design Implications for Priya, 😤 Frustrations & Pain Points, 🎯 Goals & Motivations, 📊 Key Metrics to Track for This Persona, Persona 3: Priya Deshmukh — *"The Community Organizer"*, 📋 Profile Summary, 📱 User Journey (Typical Session)
 
+### Community 765 - "main.tsx"
+Cohesion: 0.43
+Nodes (3): router, queryClient, QueryProvider()
+
+### Community 766 - "Change Map"
+Cohesion: 0.33
+Nodes (5): Allowed Change Zones, Change Map, Data Interface Zones, Protected Eval Zones, Single-Variable High-Risk Zones
+
+### Community 767 - "copyProperties"
+Cohesion: 0.33
+Nodes (6): copyProperties(), inherit(), inheritMany(), setOrUpdateInterceptorsByTag(), setOrUpdateLeafTags(), updateHolder()
+
 ### Community 768 - "test_core.py"
-Cohesion: 0.29
-Nodes (5): format_markdown(), generate_design_system(), Format design system as markdown., Main entry point for design system generation.      Args:         query: Search, TestPersistence
+Cohesion: 0.40
+Nodes (5): ensureHookGitExcludes(), escapeRegExp(), persistCache(), resolveGitDir(), resolveHookGitExcludeTarget()
 
 ### Community 769 - "j8"
+Cohesion: 0.40
+Nodes (4): Eval Contract, Evaluation Source, Expected Artifacts, Notes
+
+### Community 770 - "Research Map"
+Cohesion: 0.40
+Nodes (4): Entrypoints, Output Hints, Research Map, Task-Relevant Files
+
+### Community 771 - "package.json"
+Cohesion: 0.40
+Nodes (4): name, private, type, version
+
+### Community 772 - "Project Analysis Summary"
 Cohesion: 0.50
-Nodes (4): gan9(), gaok(), gVP(), j8()
+Nodes (3): Additional Documents, Conservative Suggestions, Project Analysis Summary
+
+### Community 774 - "AuditLog.java"
+Cohesion: 0.83
+Nodes (3): AuditLog, Retention, Target
 
 ## Knowledge Gaps
-- **2407 isolated node(s):** `here`, `API_BASE`, `API_TIMEOUT_MS`, `localStates`, `COMMON_DEV_PORTS` (+2402 more)
+- **2566 isolated node(s):** `here`, `API_BASE`, `API_TIMEOUT_MS`, `localStates`, `COMMON_DEV_PORTS` (+2561 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **193 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **198 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `c()` connect `DiscussionDetailPage.tsx` to `Skill Creator`, `Process`, `a2H`, `HI`, `DiscussionDetailPage.js`, `Process`, `HY`, `Find Skills`, `aggregate_benchmark.py`, `Test-Driven Development`, `IssueCreateRequestDto`, `JSON Schemas`, `Pn`, `Button.tsx`, `📐 Engineering Principles`, `IssueCreateRequestDto`, `t`, `.$1`, `axZ`, `installInstanceTearOff`, `v`, `SidebarContext.tsx`, `bn`, `aJ_`, `.$0`, `RepresentativesPage.tsx`, `IssueDetailPage.tsx`, `gK`, `com.djp:backend`?**
-  _High betweenness centrality (0.077) - this node is a cross-community bridge._
-- **Why does `i()` connect `t` to `Skill Creator`, `a2H`, `Find Skills`, `aggregate_benchmark.py`, `index.ts`, `gaO`, `Qd`, `vK`, `aAS`, `aJZ`, `Button.tsx`, `📐 Engineering Principles`, `IssueCreateRequestDto`, `.$1`, `aF`, `axZ`, `DiscussionDetailPage.tsx`, `USER.md`, `bn`, `aJ_`, `.$0`, `RepresentativesPage.tsx`, `IssueDetailPage.tsx`, `gK`, `DiscussionDetailPage.js`, `DiscussionsPage.js`, `com.djp:backend`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
-- **Why does `b()` connect `DiscussionDetailPage.tsx` to `Skill Creator`, `Process`, `a2H`, `Visual Companion Guide`, `HTML Report Format`, `FeedPage.tsx`, `HY`, `Find Skills`, `aggregate_benchmark.py`, `IssueCreateRequestDto`, `SidebarContext.js`, `SidebarFooter.tsx`, `Button.tsx`, `📐 Engineering Principles`, `IssueCreateRequestDto`, `t`, `.$1`, `aF`, `axZ`, `USER.md`, `bn`, `aJ_`, `.$0`, `IssueDetailPage.tsx`, `gK`, `com.djp:backend`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+- **Why does `c()` connect `DiscussionDetailPage.tsx` to `Skill Creator`, `a2H`, `HI`, `DiscussionDetailPage.js`, `Follow`, `Process`, `HY`, `Find Skills`, `ProfilePage.js`, `Test-Driven Development`, `aggregate_benchmark.py`, `IssueCreateRequestDto`, `JSON Schemas`, `vP`, `JwtTokenProvider`, `Button.tsx`, `📐 Engineering Principles`, `oS`, `IssueCreateRequestDto`, `OAuth2SuccessHandler`, `t`, `.$1`, `$0`, `axZ`, `v`, `SidebarContext.tsx`, `start-server.sh`, `RepresentativesPage.tsx`, `IssueDetailPage.tsx`, `gK`, `com.djp:backend`?**
+  _High betweenness centrality (0.144) - this node is a cross-community bridge._
+- **Why does `createRequestHandler()` connect `JSON Schemas` to `HY`, `ProfilePage.tsx`, `DiscussionDetailPage.tsx`, `AC`, `cW`, `GlobalExceptionHandler.java`, `FeedPage.js`, `DiscussionDetailPage.tsx`?**
+  _High betweenness centrality (0.108) - this node is a cross-community bridge._
+- **Why does `i()` connect `t` to `Skill Creator`, `a2H`, `DiscussionDetailPage.tsx`, `Find Skills`, `ProfilePage.js`, `aggregate_benchmark.py`, `index.ts`, `SidebarFooter.tsx`, `JwtTokenProvider`, `Qd`, `vK`, `aAS`, `aJZ`, `Button.tsx`, `📐 Engineering Principles`, `IssueCreateRequestDto`, `OAuth2SuccessHandler`, `.$1`, `$0`, `axZ`, `installInstanceTearOff`, `DiscussionDetailPage.tsx`, `USER.md`, `RepresentativesPage.tsx`, `IssueDetailPage.tsx`, `gK`, `DiscussionDetailPage.js`, `index.ts`, `DiscussionsPage.js`, `com.djp:backend`?**
+  _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Are the 218 inferred relationships involving `a()` (e.g. with `parseRadialGradientStops()` and `scanCssTextForRadialHalo()`) actually correct?**
   _`a()` has 218 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 418 inferred relationships involving `b()` (e.g. with `discoverTargetCandidates()` and `gitSignals()`) actually correct?**
   _`b()` has 418 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 135 inferred relationships involving `i()` (e.g. with `fe()` and `jt()`) actually correct?**
-  _`i()` has 135 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 136 inferred relationships involving `i()` (e.g. with `fe()` and `jt()`) actually correct?**
+  _`i()` has 136 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 408 inferred relationships involving `c()` (e.g. with `buildSelectorSegment()` and `buildSelectorSegment()`) actually correct?**
   _`c()` has 408 INFERRED edges - model-reasoned connections that need verification._

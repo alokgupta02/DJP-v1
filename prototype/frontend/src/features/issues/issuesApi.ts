@@ -43,12 +43,12 @@ export async function getAuthToken(): Promise<string> {
     });
     if (res.ok) {
       const responseJson = await res.json();
-      if (responseJson.data?.token) {
-        localStorage.setItem("djp_token", responseJson.data.token);
+      if (responseJson.data?.accessToken) {
+        localStorage.setItem("djp_token", responseJson.data.accessToken);
         if (responseJson.data.user) {
           localStorage.setItem("djp_user", JSON.stringify(responseJson.data.user));
         }
-        return responseJson.data.token;
+        return responseJson.data.accessToken;
       }
     }
   } catch (err) {
