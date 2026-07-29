@@ -774,6 +774,7 @@
   "772": "Project Analysis Summary",
   "773": "PollsPage.js",
   "774": "AuditLog.java",
+  "775": "BORDER_SAFE_TAGS",
   "776": "AuthLayout.tsx",
   "777": "setup.ts",
   "778": "RISKS.md",
@@ -781,5 +782,12 @@
   "780": "be-audit.md",
   "781": "auth.spec.ts",
   "782": "playwright.config.ts",
-  "783": "vitest.config.ts"
+  "783": "vitest.config.ts",
+  "784": "CommentRepository",
+  "785": "warn",
+  "786": "OpenApiConfig.java",
+  "787": "test_core.py",
+  "788": "ResourceNotFoundException",
+  "789": "ErrorResponse",
+  "790": "CreatePollPage"
 }

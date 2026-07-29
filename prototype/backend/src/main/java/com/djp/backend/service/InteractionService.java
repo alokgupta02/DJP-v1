@@ -1,7 +1,10 @@
 package com.djp.backend.service;
 
+import com.djp.backend.exception.UnauthorizedException;
 import com.djp.backend.model.*;
 import com.djp.backend.repository.*;
+import org.springframework.security.core.Authentication;
+import com.djp.backend.util.AuthUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,23 +20,25 @@ public class InteractionService {
     private final FollowRepository followRepository;
     private final UserRepository userRepository;
     private final NotificationService notificationService;
+    private final AuthUtils authUtils;
 
     public InteractionService(CommentRepository commentRepository,
                               VoteRepository voteRepository,
                               FollowRepository followRepository,
                               UserRepository userRepository,
-                              NotificationService notificationService) {
+                              NotificationService notificationService, AuthUtils authUtils) {
         this.commentRepository = commentRepository;
         this.voteRepository = voteRepository;
         this.followRepository = followRepository;
         this.userRepository = userRepository;
         this.notificationService = notificationService;
+        this.authUtils = authUtils;
     }
 
+
     @Transactional
-    public Comment addComment(String content, UUID entityId, String entityType, UUID parentId, UUID authorId) {
-        User author = userRepository.findById(authorId)
-                .orElseThrow(() -> new IllegalArgumentException("Author not found"));
+    public Comment addComment(String content, UUID entityId, String entityType, UUID parentId, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
 
         Comment comment = new Comment();
         comment.setContent(content);
@@ -65,9 +70,9 @@ public class InteractionService {
     }
 
     @Transactional
-    public Vote toggleVote(UUID entityId, String entityType, int voteValue, UUID userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+    public Vote toggleVote(UUID entityId, String entityType, int voteValue, Authentication authentication) {
+        User user = authUtils.getAuthenticatedUser(authentication);
+        UUID userId = user.getId();
 
         Optional<Vote> existing = voteRepository.findByUserIdAndEntityIdAndEntityType(userId, entityId, entityType);
         if (existing.isPresent()) {
@@ -93,9 +98,9 @@ public class InteractionService {
     }
 
     @Transactional
-    public Follow toggleFollow(UUID targetId, String targetType, UUID followerId) {
-        User follower = userRepository.findById(followerId)
-                .orElseThrow(() -> new IllegalArgumentException("Follower not found"));
+    public Follow toggleFollow(UUID targetId, String targetType, Authentication authentication) {
+        User follower = authUtils.getAuthenticatedUser(authentication);
+        UUID followerId = follower.getId();
 
         Optional<Follow> existing = followRepository.findByFollowerIdAndTargetIdAndTargetType(followerId, targetId, targetType);
         

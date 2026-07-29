@@ -7,8 +7,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.dto.IssueCreateRequestDto;
 import com.djp.backend.dto.IssueResponseDto;
-import com.djp.backend.model.User;
-import com.djp.backend.repository.UserRepository;
 import com.djp.backend.service.IssueService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
@@ -27,11 +25,9 @@ import java.util.UUID;
 public class IssueController {
 
     private final IssueService issueService;
-    private final UserRepository userRepository;
 
-    public IssueController(IssueService issueService, UserRepository userRepository) {
+    public IssueController(IssueService issueService) {
         this.issueService = issueService;
-        this.userRepository = userRepository;
     }
 
     @Operation(summary = "Get All Issues", description = "Executes the getAllIssues operation")
@@ -55,20 +51,7 @@ public class IssueController {
             @Valid @RequestBody IssueCreateRequestDto request,
             Authentication authentication) {
 
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
-        }
-
-        String email = authentication.getName();
-        User author = userRepository.findByEmail(email).orElse(null);
-
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-
-        IssueResponseDto saved = issueService.createIssue(request, author);
+        IssueResponseDto saved = issueService.createIssue(request, authentication);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success(saved, "Issue created successfully."));
     }
@@ -80,51 +63,13 @@ public class IssueController {
             @Valid @RequestBody com.djp.backend.dto.IssueUpdateRequestDto request,
             Authentication authentication) {
             
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
-        }
-        
-        User author = userRepository.findByEmail(authentication.getName()).orElse(null);
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-        
-        try {
-            return ResponseEntity.ok(ApiResponse.success(issueService.updateIssue(id, request, author), "Issue updated successfully."));
-        } catch (org.springframework.security.access.AccessDeniedException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                    .body(ApiResponse.error(HttpStatus.FORBIDDEN.value(), "Not authorized to update this issue."));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Issue not found."));
-        }
+        return ResponseEntity.ok(ApiResponse.success(issueService.updateIssue(id, request, authentication), "Issue updated successfully."));
     }
 
     @Operation(summary = "Delete Issue", description = "Executes the deleteIssue operation")
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deleteIssue(@PathVariable UUID id, Authentication authentication) {
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
-        }
-        
-        User author = userRepository.findByEmail(authentication.getName()).orElse(null);
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-        
-        try {
-            issueService.deleteIssue(id, author);
-            return ResponseEntity.ok(ApiResponse.success((Void) null, "Issue deleted successfully."));
-        } catch (org.springframework.security.access.AccessDeniedException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                    .body(ApiResponse.error(HttpStatus.FORBIDDEN.value(), "Not authorized to delete this issue."));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Issue not found."));
-        }
+        issueService.deleteIssue(id, authentication);
+        return ResponseEntity.ok(ApiResponse.success((Void) null, "Issue deleted successfully."));
     }
 }

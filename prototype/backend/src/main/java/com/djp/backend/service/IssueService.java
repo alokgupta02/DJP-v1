@@ -3,9 +3,13 @@ package com.djp.backend.service;
 import com.djp.backend.dto.IssueCreateRequestDto;
 import com.djp.backend.dto.IssueResponseDto;
 import com.djp.backend.mapper.IssueMapper;
+import com.djp.backend.exception.UnauthorizedException;
 import com.djp.backend.model.Issue;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.IssueRepository;
+import com.djp.backend.repository.UserRepository;
+import com.djp.backend.util.AuthUtils;
+import org.springframework.security.core.Authentication;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,17 +23,22 @@ import java.util.UUID;
 public class IssueService {
 
     private final IssueRepository issueRepository;
+    private final UserRepository userRepository;
     private final IssueMapper issueMapper;
     private final AuditLogService auditLogService;
     private final SqlFilePersistenceService sqlFilePersistenceService;
+    private final AuthUtils authUtils;
 
-    public IssueService(IssueRepository issueRepository, IssueMapper issueMapper, 
-                        AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService) {
+    public IssueService(IssueRepository issueRepository, UserRepository userRepository, IssueMapper issueMapper, 
+                        AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService, AuthUtils authUtils) {
         this.issueRepository = issueRepository;
+        this.userRepository = userRepository;
         this.issueMapper = issueMapper;
         this.auditLogService = auditLogService;
         this.sqlFilePersistenceService = sqlFilePersistenceService;
+        this.authUtils = authUtils;
     }
+
 
     @Transactional(readOnly = true)
     public Page<IssueResponseDto> getIssues(Pageable pageable) {
@@ -42,7 +51,8 @@ public class IssueService {
     }
 
     @com.djp.backend.aspect.AuditLog(action = "CREATE_ISSUE", entityType = "Issue")
-    public IssueResponseDto createIssue(IssueCreateRequestDto request, User author) {
+    public IssueResponseDto createIssue(IssueCreateRequestDto request, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Issue issue = new Issue(
                 author,
                 request.title(),
@@ -61,7 +71,8 @@ public class IssueService {
     }
 
     @com.djp.backend.aspect.AuditLog(action = "UPDATE_ISSUE", entityType = "Issue")
-    public IssueResponseDto updateIssue(UUID id, com.djp.backend.dto.IssueUpdateRequestDto request, User author) {
+    public IssueResponseDto updateIssue(UUID id, com.djp.backend.dto.IssueUpdateRequestDto request, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Issue issue = issueRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Issue not found"));
         
@@ -82,7 +93,8 @@ public class IssueService {
     }
 
     @com.djp.backend.aspect.AuditLog(action = "DELETE_ISSUE", entityType = "Issue")
-    public void deleteIssue(UUID id, User author) {
+    public void deleteIssue(UUID id, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Issue issue = issueRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Issue not found"));
         

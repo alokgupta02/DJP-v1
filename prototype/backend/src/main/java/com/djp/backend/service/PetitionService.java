@@ -3,10 +3,14 @@ package com.djp.backend.service;
 import com.djp.backend.dto.PetitionCreateRequestDto;
 import com.djp.backend.dto.PetitionResponseDto;
 import com.djp.backend.dto.PetitionUpdateRequestDto;
+import com.djp.backend.exception.UnauthorizedException;
 import com.djp.backend.model.Petition;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.PetitionRepository;
+import com.djp.backend.repository.UserRepository;
+import com.djp.backend.util.AuthUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
@@ -17,17 +21,23 @@ import org.springframework.transaction.annotation.Transactional;
 public class PetitionService {
 
     private final PetitionRepository petitionRepository;
+    private final UserRepository userRepository;
+    private final AuthUtils authUtils;
 
-    public PetitionService(PetitionRepository petitionRepository) {
+    public PetitionService(PetitionRepository petitionRepository, UserRepository userRepository, AuthUtils authUtils) {
         this.petitionRepository = petitionRepository;
+        this.userRepository = userRepository;
+        this.authUtils = authUtils;
     }
+
 
     @Transactional(readOnly = true)
     public Page<PetitionResponseDto> getPetitions(Pageable pageable) {
         return petitionRepository.findAll(pageable).map(PetitionResponseDto::fromEntity);
     }
 
-    public PetitionResponseDto createPetition(PetitionCreateRequestDto dto, User author) {
+    public PetitionResponseDto createPetition(PetitionCreateRequestDto dto, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Petition p = new Petition();
         p.setTitle(dto.title());
         p.setDescription(dto.description());
@@ -38,7 +48,8 @@ public class PetitionService {
         return PetitionResponseDto.fromEntity(petitionRepository.save(p));
     }
 
-    public PetitionResponseDto updatePetition(UUID id, PetitionUpdateRequestDto request, User author) {
+    public PetitionResponseDto updatePetition(UUID id, PetitionUpdateRequestDto request, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
         if (!p.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
@@ -52,7 +63,8 @@ public class PetitionService {
         return PetitionResponseDto.fromEntity(petitionRepository.save(p));
     }
 
-    public void deletePetition(UUID id, User author) {
+    public void deletePetition(UUID id, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
         if (!p.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
@@ -61,7 +73,8 @@ public class PetitionService {
         petitionRepository.delete(p);
     }
 
-    public PetitionResponseDto signPetition(UUID petitionId, User user) {
+    public PetitionResponseDto signPetition(UUID petitionId, Authentication authentication) {
+        User user = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(petitionId)
                 .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
         p.setSignatureCount(p.getSignatureCount() + 1);

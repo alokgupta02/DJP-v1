@@ -3345,18 +3345,18 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/config/SecurityConfig.java": {
-    "mtime": 1785320384.5075736,
-    "ast_hash": "769da4cc1b90bdcb4d31e8df242bb2cd",
+    "mtime": 1785321645.920694,
+    "ast_hash": "486f813bba6a46140e00d349f2213117",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/AuthController.java": {
-    "mtime": 1785173746.245575,
-    "ast_hash": "c02984e651425c3966068efd94572a07",
+    "mtime": 1785349929.0311594,
+    "ast_hash": "a0d5fc6488429807271b2cdd33794805",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/IssueController.java": {
-    "mtime": 1785093521.6599493,
-    "ast_hash": "db8889057ce389b0605d869578de6aaf",
+    "mtime": 1785351080.935268,
+    "ast_hash": "11977853feb6203104de2a56c250dfd3",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/dto/ErrorResponse.java": {
@@ -4020,8 +4020,8 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/main/resources/application-local.yml": {
-    "mtime": 1785168424.7272623,
-    "ast_hash": "4c5fd5623a4112cf19c3cf8e15c17be2",
+    "mtime": 1785321338.2289197,
+    "ast_hash": "930a0476e99a39d6a66f64c733dc0f9b",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/resources/application-prod.yml": {
@@ -4030,8 +4030,8 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/main/resources/application.yml": {
-    "mtime": 1784982883.582194,
-    "ast_hash": "b575d1cf192f4f4e0fee20b01cda15d9",
+    "mtime": 1785350719.8343973,
+    "ast_hash": "45589dd83f74caf24c35166238ab4325",
     "semantic_hash": ""
   },
   "prototype/frontend/.djp_identity.md": {
@@ -4330,18 +4330,18 @@
     "semantic_hash": ""
   },
   "prototype/frontend/src/features/issues/issuesApi.ts": {
-    "mtime": 1785093594.494524,
-    "ast_hash": "e1c3d1f0fb1642ac4508c2cbcd9bbf8f",
+    "mtime": 1785343526.4458988,
+    "ast_hash": "132b918a65d27e0a21ad667eb05461cd",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/DiscussionController.java": {
-    "mtime": 1785093520.7719688,
-    "ast_hash": "fc29497047211d943fd75e7eb61de854",
+    "mtime": 1785351086.1513047,
+    "ast_hash": "4e94408a1c24afe211966f0b4d2fa2ec",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/PollController.java": {
-    "mtime": 1785170698.0196378,
-    "ast_hash": "a881d684138ad7e5776ff8a4b6f0d50d",
+    "mtime": 1785351091.3203423,
+    "ast_hash": "9cf0a619a4606aa7c343de5a99ef8399",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/dto/DiscussionCreateRequestDto.java": {
@@ -4920,13 +4920,13 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/ProfileController.java": {
-    "mtime": 1785093433.149969,
-    "ast_hash": "fdc0f35deffac1a032d098d1c255d0c0",
+    "mtime": 1785350697.2742894,
+    "ast_hash": "38b7c3046a0da47c75077998bf4f01f0",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/UserController.java": {
-    "mtime": 1785170685.5755508,
-    "ast_hash": "485a1a9020d6f5609a65d9e8b206f128",
+    "mtime": 1785349954.3762894,
+    "ast_hash": "db5cac4a27c05dc881318094d566431d",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/dto/OnboardingUpdateRequestDto.java": {
@@ -4980,8 +4980,8 @@
     "semantic_hash": ""
   },
   "prototype/frontend/src/features/profile/usersApi.ts": {
-    "mtime": 1785261591.5806751,
-    "ast_hash": "d8eb6f28d3eeb7d161c07423752a214a",
+    "mtime": 1785343613.5900807,
+    "ast_hash": "b6ca8408a6790a2ccc2063509e16b6d5",
     "semantic_hash": ""
   },
   "prototype/frontend/src/shared/components/navigation/TopicFilterBar.tsx": {
@@ -5410,13 +5410,13 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/InteractionController.java": {
-    "mtime": 1785170704.898687,
-    "ast_hash": "9e331874d83e2d72028d400a75f82ed9",
+    "mtime": 1785349954.8481307,
+    "ast_hash": "7017bf7abbccad1d948dd7e0ecd861cc",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/NotificationController.java": {
-    "mtime": 1785170712.4227414,
-    "ast_hash": "ef8dce121d0d83f179552c898c3f2f6f",
+    "mtime": 1785349954.913592,
+    "ast_hash": "20a847e26e818c7dc4868d4e5ed100ba",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/model/Comment.java": {
@@ -5585,28 +5585,28 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/InsightsController.java": {
-    "mtime": 1785167976.4440572,
-    "ast_hash": "c263110bd57ddedd882db936368f794b",
+    "mtime": 1785349955.024623,
+    "ast_hash": "69a7082de927d2873a88e0df81075a35",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/PetitionController.java": {
-    "mtime": 1785175594.9905481,
-    "ast_hash": "f82a8702751f2bdccaf4ceb193af304f",
+    "mtime": 1785351096.5793812,
+    "ast_hash": "f56fe52609aa4220c4be073018b9ba22",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/RepresentativeController.java": {
-    "mtime": 1785175621.44858,
-    "ast_hash": "131d805a3a772769c4295d43216b48ac",
+    "mtime": 1785351101.6254196,
+    "ast_hash": "1dba4862e0bc15c94082c4768a62c9ff",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/UploadController.java": {
-    "mtime": 1785170681.380522,
-    "ast_hash": "7d9de1c784d8213abf4401e56f941d80",
+    "mtime": 1785349954.61515,
+    "ast_hash": "6246de7ed67f065e837b7c0d6974f181",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/controller/UserStatsController.java": {
-    "mtime": 1785170676.6604898,
-    "ast_hash": "037466ae90807d079f4948f0be1ec717",
+    "mtime": 1785349954.7215536,
+    "ast_hash": "eb54f099192d2d38bbdbec89a7503400",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/java/com/djp/backend/dto/AddCommentRequest.java": {
@@ -5815,8 +5815,8 @@
     "semantic_hash": ""
   },
   "prototype/backend/src/main/resources/db/migration/V2__seed_data.sql": {
-    "mtime": 1785084968.5647986,
-    "ast_hash": "839d1e09882b71840bb27d85a4e77814",
+    "mtime": 1785321448.5203383,
+    "ast_hash": "72abb0f2708ec4a6bd5e72074d24fad1",
     "semantic_hash": ""
   },
   "prototype/backend/src/main/resources/db/migration/V3__add_refresh_tokens.sql": {
@@ -6047,6 +6047,16 @@
   "prototype/frontend/fe-audit.md": {
     "mtime": 1785167053.2180297,
     "ast_hash": "03d0ba1684a7831d0e038958b551cb9e",
+    "semantic_hash": ""
+  },
+  "prototype/backend/data/djp-prototype-postman-collection.json": {
+    "mtime": 1785349254.1628618,
+    "ast_hash": "62c7bef429982b6f7243982f690042b6",
+    "semantic_hash": ""
+  },
+  "prototype/backend/src/main/java/com/djp/backend/config/OpenApiConfig.java": {
+    "mtime": 1785349854.3216934,
+    "ast_hash": "8a7257c20ecd6e3133c1d8d43c7291f6",
     "semantic_hash": ""
   }
 }

@@ -3,9 +3,13 @@ package com.djp.backend.service;
 import com.djp.backend.dto.DiscussionCreateRequestDto;
 import com.djp.backend.dto.DiscussionResponseDto;
 import com.djp.backend.mapper.DiscussionMapper;
+import com.djp.backend.exception.UnauthorizedException;
 import com.djp.backend.model.Discussion;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.DiscussionRepository;
+import com.djp.backend.repository.UserRepository;
+import com.djp.backend.util.AuthUtils;
+import org.springframework.security.core.Authentication;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,17 +23,22 @@ import java.util.UUID;
 public class DiscussionService {
 
     private final DiscussionRepository discussionRepository;
+    private final UserRepository userRepository;
     private final DiscussionMapper discussionMapper;
     private final AuditLogService auditLogService;
     private final SqlFilePersistenceService sqlFilePersistenceService;
+    private final AuthUtils authUtils;
 
-    public DiscussionService(DiscussionRepository discussionRepository, DiscussionMapper discussionMapper, 
-                             AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService) {
+    public DiscussionService(DiscussionRepository discussionRepository, UserRepository userRepository, DiscussionMapper discussionMapper, 
+                             AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService, AuthUtils authUtils) {
         this.discussionRepository = discussionRepository;
+        this.userRepository = userRepository;
         this.discussionMapper = discussionMapper;
         this.auditLogService = auditLogService;
         this.sqlFilePersistenceService = sqlFilePersistenceService;
+        this.authUtils = authUtils;
     }
+
 
     @Transactional(readOnly = true)
     public Page<DiscussionResponseDto> getDiscussions(Pageable pageable) {
@@ -42,7 +51,8 @@ public class DiscussionService {
     }
 
     @com.djp.backend.aspect.AuditLog(action = "CREATE_DISCUSSION", entityType = "Discussion")
-    public DiscussionResponseDto createDiscussion(DiscussionCreateRequestDto request, User author) {
+    public DiscussionResponseDto createDiscussion(DiscussionCreateRequestDto request, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Discussion discussion = new Discussion();
         discussion.setAuthor(author);
         discussion.setTitle(request.title());
@@ -61,7 +71,8 @@ public class DiscussionService {
     }
 
     @com.djp.backend.aspect.AuditLog(action = "UPDATE_DISCUSSION", entityType = "Discussion")
-    public DiscussionResponseDto updateDiscussion(UUID id, com.djp.backend.dto.DiscussionUpdateRequestDto request, User author) {
+    public DiscussionResponseDto updateDiscussion(UUID id, com.djp.backend.dto.DiscussionUpdateRequestDto request, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Discussion discussion = discussionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Discussion not found"));
         
@@ -81,7 +92,8 @@ public class DiscussionService {
     }
 
     @com.djp.backend.aspect.AuditLog(action = "DELETE_DISCUSSION", entityType = "Discussion")
-    public void deleteDiscussion(UUID id, User author) {
+    public void deleteDiscussion(UUID id, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Discussion discussion = discussionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Discussion not found"));
         

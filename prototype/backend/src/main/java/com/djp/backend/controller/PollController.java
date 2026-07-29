@@ -5,8 +5,6 @@ import com.djp.backend.dto.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import com.djp.backend.model.User;
-import com.djp.backend.repository.UserRepository;
 import com.djp.backend.service.PollService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
@@ -25,11 +23,9 @@ import java.util.UUID;
 public class PollController {
 
     private final PollService pollService;
-    private final UserRepository userRepository;
 
-    public PollController(PollService pollService, UserRepository userRepository) {
+    public PollController(PollService pollService) {
         this.pollService = pollService;
-        this.userRepository = userRepository;
     }
 
     @Operation(summary = "Get All Polls", description = "Executes the getAllPolls operation")
@@ -53,22 +49,8 @@ public class PollController {
             @PathVariable UUID id,
             @Valid @RequestBody CastVoteRequest payload,
             Authentication authentication) {
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
-        }
-        User user = userRepository.findByEmail(authentication.getName()).orElse(null);
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-        try {
-            PollResponseDto result = pollService.castVote(id, payload.optionIndex(), user);
-            return ResponseEntity.ok(ApiResponse.success(result, "Vote cast successfully."));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body(ApiResponse.error(HttpStatus.CONFLICT.value(), e.getMessage()));
-        }
+        PollResponseDto result = pollService.castVote(id, payload.optionIndex(), authentication);
+        return ResponseEntity.ok(ApiResponse.success(result, "Vote cast successfully."));
     }
 
     @Operation(summary = "Create Poll", description = "Executes the createPoll operation")
@@ -77,20 +59,7 @@ public class PollController {
             @Valid @RequestBody PollCreateRequestDto request,
             Authentication authentication) {
 
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
-        }
-
-        String email = authentication.getName();
-        User author = userRepository.findByEmail(email).orElse(null);
-
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-
-        PollResponseDto saved = pollService.createPoll(request, author);
+        PollResponseDto saved = pollService.createPoll(request, authentication);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success(saved, "Poll created successfully."));
     }
@@ -101,52 +70,13 @@ public class PollController {
             @PathVariable UUID id,
             @Valid @RequestBody com.djp.backend.dto.PollUpdateRequestDto request,
             Authentication authentication) {
-            
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
-        }
-        
-        User author = userRepository.findByEmail(authentication.getName()).orElse(null);
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-        
-        try {
-            return ResponseEntity.ok(ApiResponse.success(pollService.updatePoll(id, request, author), "Poll updated successfully."));
-        } catch (org.springframework.security.access.AccessDeniedException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                    .body(ApiResponse.error(HttpStatus.FORBIDDEN.value(), "Not authorized to update this poll."));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Poll not found."));
-        }
+        return ResponseEntity.ok(ApiResponse.success(pollService.updatePoll(id, request, authentication), "Poll updated successfully."));
     }
 
     @Operation(summary = "Delete Poll", description = "Executes the deletePoll operation")
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deletePoll(@PathVariable UUID id, Authentication authentication) {
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
-        }
-        
-        User author = userRepository.findByEmail(authentication.getName()).orElse(null);
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-        
-        try {
-            pollService.deletePoll(id, author);
-            return ResponseEntity.ok(ApiResponse.success((Void) null, "Poll deleted successfully."));
-        } catch (org.springframework.security.access.AccessDeniedException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                    .body(ApiResponse.error(HttpStatus.FORBIDDEN.value(), "Not authorized to delete this poll."));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Poll not found."));
-        }
+        pollService.deletePoll(id, authentication);
+        return ResponseEntity.ok(ApiResponse.success((Void) null, "Poll deleted successfully."));
     }
 }

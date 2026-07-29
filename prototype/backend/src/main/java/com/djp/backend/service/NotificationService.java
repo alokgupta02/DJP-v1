@@ -1,8 +1,12 @@
 package com.djp.backend.service;
 
 import com.djp.backend.model.Notification;
+import com.djp.backend.exception.UnauthorizedException;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.NotificationRepository;
+import com.djp.backend.repository.UserRepository;
+import com.djp.backend.util.AuthUtils;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,10 +17,15 @@ import java.util.UUID;
 public class NotificationService {
 
     private final NotificationRepository notificationRepository;
+    private final UserRepository userRepository;
+    private final AuthUtils authUtils;
 
-    public NotificationService(NotificationRepository notificationRepository) {
+    public NotificationService(NotificationRepository notificationRepository, UserRepository userRepository, AuthUtils authUtils) {
         this.notificationRepository = notificationRepository;
+        this.userRepository = userRepository;
+        this.authUtils = authUtils;
     }
+
 
     @Transactional
     public void createNotification(User recipient, User actor, String type, UUID entityId) {
@@ -35,21 +44,27 @@ public class NotificationService {
         notificationRepository.save(notification);
     }
 
-    public List<Notification> getNotificationsForUser(UUID userId) {
-        return notificationRepository.findByRecipientIdOrderByCreatedAtDesc(userId);
+    public List<Notification> getNotificationsForUser(Authentication authentication) {
+        User user = authUtils.getAuthenticatedUser(authentication);
+        return notificationRepository.findByRecipientIdOrderByCreatedAtDesc(user.getId());
     }
 
-    public long getUnreadCount(UUID userId) {
-        return notificationRepository.countByRecipientIdAndIsReadFalse(userId);
+    public long getUnreadCount(Authentication authentication) {
+        User user = authUtils.getAuthenticatedUser(authentication);
+        return notificationRepository.countByRecipientIdAndIsReadFalse(user.getId());
     }
 
     @Transactional
-    public void markAsRead(UUID notificationId, UUID userId) {
-        notificationRepository.findById(notificationId).ifPresent(notification -> {
-            if (notification.getRecipient().getId().equals(userId)) {
-                notification.setRead(true);
-                notificationRepository.save(notification);
-            }
-        });
+    public void markAsRead(UUID notificationId, Authentication authentication) {
+        User user = authUtils.getAuthenticatedUser(authentication);
+        Notification notification = notificationRepository.findById(notificationId)
+                .orElseThrow(() -> new IllegalArgumentException("Notification not found."));
+
+        if (!notification.getRecipient().getId().equals(user.getId())) {
+            throw new UnauthorizedException("User not authorized to update this notification.");
+        }
+
+        notification.setRead(true);
+        notificationRepository.save(notification);
     }
 }

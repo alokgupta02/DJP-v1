@@ -6,8 +6,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.model.Notification;
-import com.djp.backend.model.User;
-import com.djp.backend.repository.UserRepository;
 import com.djp.backend.service.NotificationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -24,37 +22,29 @@ import java.util.UUID;
 public class NotificationController {
 
     private final NotificationService notificationService;
-    private final UserRepository userRepository;
 
-    public NotificationController(NotificationService notificationService, UserRepository userRepository) {
+    public NotificationController(NotificationService notificationService) {
         this.notificationService = notificationService;
-        this.userRepository = userRepository;
     }
 
     @Operation(summary = "Get Notifications", description = "Executes the getNotifications operation")
     @GetMapping
     public ResponseEntity<ApiResponse<List<Notification>>> getNotifications(Authentication authentication) {
-        User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new RuntimeException("User not found"));
         return ResponseEntity.ok(ApiResponse.success(
-                notificationService.getNotificationsForUser(user.getId()), "Notifications retrieved successfully."));
+                notificationService.getNotificationsForUser(authentication), "Notifications retrieved successfully."));
     }
 
     @Operation(summary = "Get Unread Count", description = "Executes the getUnreadCount operation")
     @GetMapping("/unread-count")
     public ResponseEntity<ApiResponse<Map<String, Long>>> getUnreadCount(Authentication authentication) {
-        User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        long count = notificationService.getUnreadCount(user.getId());
+        long count = notificationService.getUnreadCount(authentication);
         return ResponseEntity.ok(ApiResponse.success(Map.of("count", count), "Unread count retrieved successfully."));
     }
 
     @Operation(summary = "Mark As Read", description = "Executes the markAsRead operation")
     @PostMapping("/{id}/read")
     public ResponseEntity<ApiResponse<Void>> markAsRead(@PathVariable UUID id, Authentication authentication) {
-        User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        notificationService.markAsRead(id, user.getId());
+        notificationService.markAsRead(id, authentication);
         return ResponseEntity.ok(ApiResponse.success((Void) null, "Notification marked as read."));
     }
 }

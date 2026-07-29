@@ -1,8 +1,7 @@
 package com.djp.backend;
 
 import com.djp.backend.model.User;
-import com.djp.backend.repository.IssueRepository;
-import com.djp.backend.repository.UserRepository;
+import com.djp.backend.repository.*;
 import com.djp.backend.security.JwtTokenProvider;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -31,13 +30,13 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
     private JwtTokenProvider jwtTokenProvider;
 
     @Autowired
-    private com.djp.backend.repository.AuditLogRepository auditLogRepository;
+    private AuditLogRepository auditLogRepository;
 
     @Autowired
-    private com.djp.backend.repository.DiscussionRepository discussionRepository;
+    private DiscussionRepository discussionRepository;
 
     @Autowired
-    private com.djp.backend.repository.PollRepository pollRepository;
+    private PollRepository pollRepository;
 
     @Autowired
     private com.djp.backend.service.SqlFilePersistenceService sqlFilePersistenceService;

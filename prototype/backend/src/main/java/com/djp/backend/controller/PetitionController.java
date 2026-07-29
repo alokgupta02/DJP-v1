@@ -8,8 +8,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.dto.PetitionCreateRequestDto;
 import com.djp.backend.dto.PetitionResponseDto;
 import com.djp.backend.dto.PetitionUpdateRequestDto;
-import com.djp.backend.model.User;
-import com.djp.backend.repository.UserRepository;
 import com.djp.backend.service.PetitionService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
@@ -28,11 +26,9 @@ import java.util.UUID;
 public class PetitionController {
 
     private final PetitionService petitionService;
-    private final UserRepository userRepository;
 
-    public PetitionController(PetitionService petitionService, UserRepository userRepository) {
+    public PetitionController(PetitionService petitionService) {
         this.petitionService = petitionService;
-        this.userRepository = userRepository;
     }
 
     @Operation(summary = "Get All Petitions", description = "Executes the getAllPetitions operation")
@@ -46,16 +42,7 @@ public class PetitionController {
     public ResponseEntity<ApiResponse<PetitionResponseDto>> createPetition(
             @Valid @RequestBody PetitionCreateRequestDto payload,
             Authentication authentication) {
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Auth required."));
-        }
-        User author = userRepository.findByEmail(authentication.getName()).orElse(null);
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-        PetitionResponseDto result = petitionService.createPetition(payload, author);
+        PetitionResponseDto result = petitionService.createPetition(payload, authentication);
         return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.success(result, "Petition created."));
     }
 
@@ -65,67 +52,19 @@ public class PetitionController {
             @PathVariable UUID id,
             @Valid @RequestBody PetitionUpdateRequestDto request,
             Authentication authentication) {
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Auth required."));
-        }
-        User author = userRepository.findByEmail(authentication.getName()).orElse(null);
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-        try {
-            return ResponseEntity.ok(ApiResponse.success(petitionService.updatePetition(id, request, author), "Petition updated."));
-        } catch (org.springframework.security.access.AccessDeniedException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                    .body(ApiResponse.error(HttpStatus.FORBIDDEN.value(), "Not authorized."));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Petition not found."));
-        }
+        return ResponseEntity.ok(ApiResponse.success(petitionService.updatePetition(id, request, authentication), "Petition updated."));
     }
 
     @Operation(summary = "Delete Petition", description = "Executes the deletePetition operation")
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deletePetition(@PathVariable UUID id, Authentication authentication) {
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Auth required."));
-        }
-        User author = userRepository.findByEmail(authentication.getName()).orElse(null);
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-        try {
-            petitionService.deletePetition(id, author);
-            return ResponseEntity.ok(ApiResponse.success((Void) null, "Petition deleted."));
-        } catch (org.springframework.security.access.AccessDeniedException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                    .body(ApiResponse.error(HttpStatus.FORBIDDEN.value(), "Not authorized."));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Petition not found."));
-        }
+        petitionService.deletePetition(id, authentication);
+        return ResponseEntity.ok(ApiResponse.success((Void) null, "Petition deleted."));
     }
 
     @Operation(summary = "Sign Petition", description = "Executes the signPetition operation")
     @PostMapping("/{id}/sign")
     public ResponseEntity<ApiResponse<PetitionResponseDto>> signPetition(@PathVariable UUID id, Authentication authentication) {
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Auth required."));
-        }
-        User user = userRepository.findByEmail(authentication.getName()).orElse(null);
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-        try {
-            return ResponseEntity.ok(ApiResponse.success(petitionService.signPetition(id, user), "Petition signed."));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), e.getMessage()));
-        }
+        return ResponseEntity.ok(ApiResponse.success(petitionService.signPetition(id, authentication), "Petition signed."));
     }
 }

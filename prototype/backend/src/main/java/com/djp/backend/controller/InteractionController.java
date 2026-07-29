@@ -7,9 +7,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.model.Comment;
 import com.djp.backend.model.Follow;
-import com.djp.backend.model.User;
 import com.djp.backend.model.Vote;
-import com.djp.backend.repository.UserRepository;
 import com.djp.backend.service.InteractionService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -27,19 +25,9 @@ import java.util.UUID;
 public class InteractionController {
 
     private final InteractionService interactionService;
-    private final UserRepository userRepository;
 
-    public InteractionController(InteractionService interactionService, UserRepository userRepository) {
+    public InteractionController(InteractionService interactionService) {
         this.interactionService = interactionService;
-        this.userRepository = userRepository;
-    }
-
-    private User getUser(Authentication authentication) {
-        if (authentication == null || authentication.getName() == null) {
-            throw new AccessDeniedException("Not authenticated");
-        }
-        return userRepository.findByEmail(authentication.getName())
-            .orElseThrow(() -> new IllegalArgumentException("User not found"));
     }
 
     @Operation(summary = "Add Comment", description = "Executes the addComment operation")
@@ -47,17 +35,10 @@ public class InteractionController {
     public ResponseEntity<ApiResponse<Comment>> addComment(
             @Valid @RequestBody AddCommentRequest payload,
             Authentication authentication) {
-        try {
-            User user = getUser(authentication);
-            Comment comment = interactionService.addComment(
-                payload.content(), payload.entityId(), payload.entityType(),
-                payload.parentId(), user.getId());
-            return ResponseEntity.ok(ApiResponse.success(comment, "Comment added successfully."));
-        } catch (AccessDeniedException e) {
-            return ResponseEntity.status(401).body(ApiResponse.error(401, "Not authenticated"));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(ApiResponse.error(400, e.getMessage()));
-        }
+        Comment comment = interactionService.addComment(
+            payload.content(), payload.entityId(), payload.entityType(),
+            payload.parentId(), authentication);
+        return ResponseEntity.ok(ApiResponse.success(comment, "Comment added successfully."));
     }
 
     @Operation(summary = "Get Comments", description = "Executes the getComments operation")
@@ -74,14 +55,9 @@ public class InteractionController {
     public ResponseEntity<ApiResponse<Vote>> toggleVote(
             @Valid @RequestBody ToggleVoteRequest payload,
             Authentication authentication) {
-        try {
-            User user = getUser(authentication);
-            Vote vote = interactionService.toggleVote(
-                payload.entityId(), payload.entityType(), payload.value(), user.getId());
-            return ResponseEntity.ok(ApiResponse.success(vote, "Vote toggled successfully."));
-        } catch (AccessDeniedException e) {
-            return ResponseEntity.status(401).body(ApiResponse.error(401, "Not authenticated"));
-        }
+        Vote vote = interactionService.toggleVote(
+            payload.entityId(), payload.entityType(), payload.value(), authentication);
+        return ResponseEntity.ok(ApiResponse.success(vote, "Vote toggled successfully."));
     }
 
     @Operation(summary = "Toggle Follow", description = "Executes the toggleFollow operation")
@@ -89,13 +65,8 @@ public class InteractionController {
     public ResponseEntity<ApiResponse<Follow>> toggleFollow(
             @Valid @RequestBody ToggleFollowRequest payload,
             Authentication authentication) {
-        try {
-            User user = getUser(authentication);
-            Follow follow = interactionService.toggleFollow(
-                payload.targetId(), payload.targetType(), user.getId());
-            return ResponseEntity.ok(ApiResponse.success(follow, "Follow toggled successfully."));
-        } catch (AccessDeniedException e) {
-            return ResponseEntity.status(401).body(ApiResponse.error(401, "Not authenticated"));
-        }
+        Follow follow = interactionService.toggleFollow(
+            payload.targetId(), payload.targetType(), authentication);
+        return ResponseEntity.ok(ApiResponse.success(follow, "Follow toggled successfully."));
     }
 }

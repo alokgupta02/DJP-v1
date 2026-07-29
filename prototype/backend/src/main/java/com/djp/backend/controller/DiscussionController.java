@@ -7,8 +7,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.dto.DiscussionCreateRequestDto;
 import com.djp.backend.dto.DiscussionResponseDto;
-import com.djp.backend.model.User;
-import com.djp.backend.repository.UserRepository;
 import com.djp.backend.service.DiscussionService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
@@ -27,11 +25,9 @@ import java.util.UUID;
 public class DiscussionController {
 
     private final DiscussionService discussionService;
-    private final UserRepository userRepository;
 
-    public DiscussionController(DiscussionService discussionService, UserRepository userRepository) {
+    public DiscussionController(DiscussionService discussionService) {
         this.discussionService = discussionService;
-        this.userRepository = userRepository;
     }
 
     @Operation(summary = "Get All Discussions", description = "Executes the getAllDiscussions operation")
@@ -55,20 +51,7 @@ public class DiscussionController {
             @Valid @RequestBody DiscussionCreateRequestDto request,
             Authentication authentication) {
 
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
-        }
-
-        String email = authentication.getName();
-        User author = userRepository.findByEmail(email).orElse(null);
-
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-
-        DiscussionResponseDto saved = discussionService.createDiscussion(request, author);
+        DiscussionResponseDto saved = discussionService.createDiscussion(request, authentication);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success(saved, "Discussion created successfully."));
     }
@@ -80,51 +63,13 @@ public class DiscussionController {
             @Valid @RequestBody com.djp.backend.dto.DiscussionUpdateRequestDto request,
             Authentication authentication) {
             
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
-        }
-        
-        User author = userRepository.findByEmail(authentication.getName()).orElse(null);
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-        
-        try {
-            return ResponseEntity.ok(ApiResponse.success(discussionService.updateDiscussion(id, request, author), "Discussion updated successfully."));
-        } catch (org.springframework.security.access.AccessDeniedException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                    .body(ApiResponse.error(HttpStatus.FORBIDDEN.value(), "Not authorized to update this discussion."));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Discussion not found."));
-        }
+        return ResponseEntity.ok(ApiResponse.success(discussionService.updateDiscussion(id, request, authentication), "Discussion updated successfully."));
     }
 
     @Operation(summary = "Delete Discussion", description = "Executes the deleteDiscussion operation")
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deleteDiscussion(@PathVariable UUID id, Authentication authentication) {
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "Authentication required."));
-        }
-        
-        User author = userRepository.findByEmail(authentication.getName()).orElse(null);
-        if (author == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "User not found."));
-        }
-        
-        try {
-            discussionService.deleteDiscussion(id, author);
-            return ResponseEntity.ok(ApiResponse.success((Void) null, "Discussion deleted successfully."));
-        } catch (org.springframework.security.access.AccessDeniedException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                    .body(ApiResponse.error(HttpStatus.FORBIDDEN.value(), "Not authorized to delete this discussion."));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Discussion not found."));
-        }
+        discussionService.deleteDiscussion(id, authentication);
+        return ResponseEntity.ok(ApiResponse.success((Void) null, "Discussion deleted successfully."));
     }
 }

@@ -3,11 +3,15 @@ package com.djp.backend.service;
 import com.djp.backend.dto.PollCreateRequestDto;
 import com.djp.backend.dto.PollResponseDto;
 import com.djp.backend.mapper.PollMapper;
+import com.djp.backend.exception.UnauthorizedException;
 import com.djp.backend.model.Poll;
 import com.djp.backend.model.User;
 import com.djp.backend.model.PollVote;
 import com.djp.backend.repository.PollRepository;
 import com.djp.backend.repository.PollVoteRepository;
+import com.djp.backend.repository.UserRepository;
+import com.djp.backend.util.AuthUtils;
+import org.springframework.security.core.Authentication;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -22,19 +26,24 @@ public class PollService {
 
     private final PollRepository pollRepository;
     private final PollVoteRepository pollVoteRepository;
+    private final UserRepository userRepository;
     private final PollMapper pollMapper;
     private final AuditLogService auditLogService;
     private final SqlFilePersistenceService sqlFilePersistenceService;
+    private final AuthUtils authUtils;
 
-    public PollService(PollRepository pollRepository, PollVoteRepository pollVoteRepository,
+    public PollService(PollRepository pollRepository, PollVoteRepository pollVoteRepository, UserRepository userRepository,
                        PollMapper pollMapper, 
-                       AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService) {
+                       AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService, AuthUtils authUtils) {
         this.pollRepository = pollRepository;
         this.pollVoteRepository = pollVoteRepository;
+        this.userRepository = userRepository;
         this.pollMapper = pollMapper;
         this.auditLogService = auditLogService;
         this.sqlFilePersistenceService = sqlFilePersistenceService;
+        this.authUtils = authUtils;
     }
+
 
     @Transactional(readOnly = true)
     public Page<PollResponseDto> getPolls(Pageable pageable) {
@@ -47,7 +56,8 @@ public class PollService {
     }
 
     @com.djp.backend.aspect.AuditLog(action = "CREATE_POLL", entityType = "Poll")
-    public PollResponseDto createPoll(PollCreateRequestDto request, User author) {
+    public PollResponseDto createPoll(PollCreateRequestDto request, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Poll poll = new Poll();
         poll.setQuestion(request.question());
         poll.setDescription(request.description());
@@ -65,7 +75,8 @@ public class PollService {
     }
 
     @com.djp.backend.aspect.AuditLog(action = "UPDATE_POLL", entityType = "Poll")
-    public PollResponseDto updatePoll(UUID id, com.djp.backend.dto.PollUpdateRequestDto request, User author) {
+    public PollResponseDto updatePoll(UUID id, com.djp.backend.dto.PollUpdateRequestDto request, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Poll poll = pollRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
         
@@ -92,7 +103,8 @@ public class PollService {
     }
 
     @Transactional
-    public PollResponseDto castVote(UUID pollId, int optionIndex, User user) {
+    public PollResponseDto castVote(UUID pollId, int optionIndex, Authentication authentication) {
+        User user = authUtils.getAuthenticatedUser(authentication);
         if (pollVoteRepository.existsByUserIdAndPollId(user.getId(), pollId)) {
             throw new IllegalArgumentException("User has already voted on this poll");
         }
@@ -104,7 +116,8 @@ public class PollService {
     }
 
     @com.djp.backend.aspect.AuditLog(action = "DELETE_POLL", entityType = "Poll")
-    public void deletePoll(UUID id, User author) {
+    public void deletePoll(UUID id, Authentication authentication) {
+        User author = authUtils.getAuthenticatedUser(authentication);
         Poll poll = pollRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
         

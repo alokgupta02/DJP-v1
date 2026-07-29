@@ -28,17 +28,9 @@ public class UploadController {
 
     @Operation(summary = "Upload File", description = "Executes the uploadFile operation")
     @PostMapping
-    public ResponseEntity<ApiResponse<String>> uploadFile(@RequestParam("file") MultipartFile file) {
-        try {
-            String url = uploadService.uploadFile(file);
-            return ResponseEntity.ok(ApiResponse.success(url, "File uploaded."));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest()
-                    .body(ApiResponse.error(HttpStatus.BAD_REQUEST.value(), e.getMessage()));
-        } catch (IOException e) {
-            return ResponseEntity.internalServerError()
-                    .body(ApiResponse.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Upload failed: " + e.getMessage()));
-        }
+    public ResponseEntity<ApiResponse<String>> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+        String url = uploadService.uploadFile(file);
+        return ResponseEntity.ok(ApiResponse.success(url, "File uploaded."));
     }
 
     @Operation(summary = "Serve File", description = "Executes the serveFile operation")

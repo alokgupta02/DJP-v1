@@ -6,6 +6,8 @@ import com.djp.backend.model.User;
 import com.djp.backend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.core.Authentication;
+import com.djp.backend.exception.UnauthorizedException;
 
 import java.util.UUID;
 
@@ -27,9 +29,18 @@ public class ProfileService {
     }
 
     @Transactional
-    public User updateProfile(UUID userId, ProfileUpdateRequestDto dto) {
+    public User updateProfile(UUID userId, ProfileUpdateRequestDto dto, Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new UnauthorizedException("Authentication required.");
+        }
+        
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
+
+        if (!user.getEmail().equals(authentication.getName()) && 
+            !authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+            throw new UnauthorizedException("Not authorized to update this profile.");
+        }
 
         if (dto.name() != null && !dto.name().isBlank()) user.setName(dto.name().trim());
         if (dto.dob() != null) user.setDob(dto.dob().trim());
