@@ -17,6 +17,10 @@ public class RepresentativeService {
         this.representativeRepository = representativeRepository;
     }
 
+    /**
+     * Retrieves representatives from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional(readOnly = true)
     public Page<RepresentativeResponseDto> getRepresentatives(Pageable pageable) {
         return representativeRepository.findAll(pageable).map(RepresentativeResponseDto::fromEntity);

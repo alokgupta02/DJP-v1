@@ -41,16 +41,28 @@ public class IssueService {
     }
 
 
+    /**
+     * Retrieves issues from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional(readOnly = true)
     public Page<IssueResponseDto> getIssues(Pageable pageable) {
         return issueRepository.findAll(pageable).map(issueMapper::toDto);
     }
 
+    /**
+     * Retrieves issue by id from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional(readOnly = true)
     public Optional<IssueResponseDto> getIssueById(UUID id) {
         return issueRepository.findById(id).map(issueMapper::toDto);
     }
 
+    /**
+     * Creates and persists new issue.
+     * Returns the appropriate response or status based on the operation.
+     */
     @com.djp.backend.aspect.AuditLog(action = "CREATE_ISSUE", entityType = "Issue")
     public IssueResponseDto createIssue(IssueCreateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
@@ -71,6 +83,10 @@ public class IssueService {
         return issueMapper.toDto(saved);
     }
 
+    /**
+     * Updates existing issue records.
+     * Returns the appropriate response or status based on the operation.
+     */
     @com.djp.backend.aspect.AuditLog(action = "UPDATE_ISSUE", entityType = "Issue")
     public IssueResponseDto updateIssue(UUID id, com.djp.backend.dto.IssueUpdateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
@@ -93,6 +109,10 @@ public class IssueService {
         return issueMapper.toDto(issueRepository.save(issue));
     }
 
+    /**
+     * Deletes issue from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @com.djp.backend.aspect.AuditLog(action = "DELETE_ISSUE", entityType = "Issue")
     public void deleteIssue(UUID id, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);

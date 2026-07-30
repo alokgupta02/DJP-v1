@@ -31,6 +31,10 @@ public class AuthService {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
+    /**
+     * Executes the register operation for data.
+     * Returns the appropriate response or status based on the operation.
+     */
     public AuthResponseDto register(String email, String name) {
         if (email == null || email.isBlank()) {
             throw new IllegalArgumentException(DjpConstant.MSG_EMAIL_IS_REQUIRED);
@@ -50,12 +54,20 @@ public class AuthService {
         return createAuthResponse(saved);
     }
 
+    /**
+     * Executes the dev operation for login.
+     * Returns the appropriate response or status based on the operation.
+     */
     public AuthResponseDto devLogin(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found: " + email));
         return createAuthResponse(user);
     }
 
+    /**
+     * Executes the refresh operation for token.
+     * Returns the appropriate response or status based on the operation.
+     */
     public AuthResponseDto refreshToken(String refreshTokenValue) {
         RefreshToken stored = refreshTokenRepository.findByToken(refreshTokenValue)
                 .filter(t -> !t.isRevoked())
@@ -68,6 +80,10 @@ public class AuthService {
         return createAuthResponse(stored.getUser());
     }
 
+    /**
+     * Retrieves me from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     public UserDto getMe(Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
             throw new UnauthorizedException("Authentication required.");
@@ -77,6 +93,10 @@ public class AuthService {
                 .orElseThrow(() -> new UnauthorizedException("User not found"));
     }
 
+    /**
+     * Executes the verify operation for otp.
+     * Returns the appropriate response or status based on the operation.
+     */
     public Map<String, String> verifyOtp(String otp, String email) {
         if (otp == null || otp.length() != 6) {
             throw new IllegalArgumentException(DjpConstant.MSG_INVALID_OTP_FORMAT);
@@ -84,14 +104,26 @@ public class AuthService {
         return Map.of("status", "verified", "email", email != null ? email : "");
     }
 
+    /**
+     * Executes the initiate operation for google login.
+     * Returns the appropriate response or status based on the operation.
+     */
     public Map<String, String> initiateGoogleLogin() {
         return Map.of("provider", "google", "redirectUrl", "/oauth2/authorization/google");
     }
 
+    /**
+     * Executes the initiate operation for github login.
+     * Returns the appropriate response or status based on the operation.
+     */
     public Map<String, String> initiateGithubLogin() {
         return Map.of("provider", "github", "redirectUrl", "/oauth2/authorization/github");
     }
 
+    /**
+     * Creates and persists new auth response.
+     * Returns the appropriate response or status based on the operation.
+     */
     public AuthResponseDto createAuthResponse(User user) {
         String accessToken = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());
         String refreshTokenValue = jwtTokenProvider.createRefreshToken(user.getId());

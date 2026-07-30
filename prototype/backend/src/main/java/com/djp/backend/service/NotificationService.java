@@ -28,6 +28,10 @@ public class NotificationService {
     }
 
 
+    /**
+     * Creates and persists new notification.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional
     public void createNotification(User recipient, User actor, String type, UUID entityId) {
         if (recipient.getId().equals(actor.getId())) {
@@ -45,16 +49,28 @@ public class NotificationService {
         notificationRepository.save(notification);
     }
 
+    /**
+     * Retrieves notifications for user from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     public List<Notification> getNotificationsForUser(Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);
         return notificationRepository.findByRecipientIdOrderByCreatedAtDesc(user.getId());
     }
 
+    /**
+     * Retrieves unread count from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     public long getUnreadCount(Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);
         return notificationRepository.countByRecipientIdAndIsReadFalse(user.getId());
     }
 
+    /**
+     * Executes the mark operation for as read.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional
     public void markAsRead(UUID notificationId, Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);

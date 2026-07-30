@@ -41,16 +41,28 @@ public class DiscussionService {
     }
 
 
+    /**
+     * Retrieves discussions from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional(readOnly = true)
     public Page<DiscussionResponseDto> getDiscussions(Pageable pageable) {
         return discussionRepository.findAll(pageable).map(discussionMapper::toDto);
     }
 
+    /**
+     * Retrieves discussion by id from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional(readOnly = true)
     public Optional<DiscussionResponseDto> getDiscussionById(UUID id) {
         return discussionRepository.findById(id).map(discussionMapper::toDto);
     }
 
+    /**
+     * Creates and persists new discussion.
+     * Returns the appropriate response or status based on the operation.
+     */
     @com.djp.backend.aspect.AuditLog(action = "CREATE_DISCUSSION", entityType = "Discussion")
     public DiscussionResponseDto createDiscussion(DiscussionCreateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
@@ -71,6 +83,10 @@ public class DiscussionService {
         return discussionMapper.toDto(saved);
     }
 
+    /**
+     * Updates existing discussion records.
+     * Returns the appropriate response or status based on the operation.
+     */
     @com.djp.backend.aspect.AuditLog(action = "UPDATE_DISCUSSION", entityType = "Discussion")
     public DiscussionResponseDto updateDiscussion(UUID id, com.djp.backend.dto.DiscussionUpdateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
@@ -92,6 +108,10 @@ public class DiscussionService {
         return discussionMapper.toDto(discussionRepository.save(discussion));
     }
 
+    /**
+     * Deletes discussion from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @com.djp.backend.aspect.AuditLog(action = "DELETE_DISCUSSION", entityType = "Discussion")
     public void deleteDiscussion(UUID id, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);

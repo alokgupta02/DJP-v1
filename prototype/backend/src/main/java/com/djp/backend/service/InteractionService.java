@@ -37,6 +37,10 @@ public class InteractionService {
     }
 
 
+    /**
+     * Creates and persists new comment.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional
     public Comment addComment(String content, UUID entityId, String entityType, UUID parentId, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
@@ -66,10 +70,18 @@ public class InteractionService {
         return saved;
     }
 
+    /**
+     * Retrieves comments from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     public List<Comment> getComments(UUID entityId, String entityType) {
         return commentRepository.findByEntityIdAndEntityTypeOrderByCreatedAtAsc(entityId, entityType);
     }
 
+    /**
+     * Executes the toggle operation for vote.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional
     public Vote toggleVote(UUID entityId, String entityType, int voteValue, Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);
@@ -98,6 +110,10 @@ public class InteractionService {
         }
     }
 
+    /**
+     * Executes the toggle operation for follow.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional
     public Follow toggleFollow(UUID targetId, String targetType, Authentication authentication) {
         User follower = authUtils.getAuthenticatedUser(authentication);

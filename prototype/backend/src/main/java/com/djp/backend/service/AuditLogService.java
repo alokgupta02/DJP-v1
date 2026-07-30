@@ -18,6 +18,9 @@ public class AuditLogService {
         this.auditLogRepository = auditLogRepository;
     }
 
+    /**
+     * Executes the log operation for action.
+     */
     @Transactional
     public AuditLog logAction(String userId, String action, String targetType, String targetId, String details) {
         log.info("AUDIT_LOG - User: {}, Action: {}, TargetType: {}, TargetId: {}, Details: {}",

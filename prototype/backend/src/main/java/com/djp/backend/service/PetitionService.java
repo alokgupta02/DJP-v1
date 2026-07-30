@@ -32,11 +32,19 @@ public class PetitionService {
     }
 
 
+    /**
+     * Retrieves petitions from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional(readOnly = true)
     public Page<PetitionResponseDto> getPetitions(Pageable pageable) {
         return petitionRepository.findAll(pageable).map(PetitionResponseDto::fromEntity);
     }
 
+    /**
+     * Creates and persists new petition.
+     * Returns the appropriate response or status based on the operation.
+     */
     public PetitionResponseDto createPetition(PetitionCreateRequestDto dto, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Petition p = new Petition();
@@ -49,6 +57,10 @@ public class PetitionService {
         return PetitionResponseDto.fromEntity(petitionRepository.save(p));
     }
 
+    /**
+     * Updates existing petition records.
+     * Returns the appropriate response or status based on the operation.
+     */
     public PetitionResponseDto updatePetition(UUID id, PetitionUpdateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(id)
@@ -64,6 +76,10 @@ public class PetitionService {
         return PetitionResponseDto.fromEntity(petitionRepository.save(p));
     }
 
+    /**
+     * Deletes petition from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     public void deletePetition(UUID id, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(id)
@@ -74,6 +90,10 @@ public class PetitionService {
         petitionRepository.delete(p);
     }
 
+    /**
+     * Executes the sign operation for petition.
+     * Returns the appropriate response or status based on the operation.
+     */
     public PetitionResponseDto signPetition(UUID petitionId, Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(petitionId)

@@ -22,12 +22,20 @@ public class ProfileService {
         this.sqlFilePersistenceService = sqlFilePersistenceService;
     }
 
+    /**
+     * Retrieves profile from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional(readOnly = true)
     public User getProfile(UUID userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User profile not found with id: " + userId));
     }
 
+    /**
+     * Updates existing profile records.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional
     public User updateProfile(UUID userId, ProfileUpdateRequestDto dto, Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {

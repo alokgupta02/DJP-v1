@@ -22,6 +22,10 @@ public class UploadService {
         Files.createDirectories(uploadDir);
     }
 
+    /**
+     * Executes the upload operation for file.
+     * Returns the appropriate response or status based on the operation.
+     */
     public String uploadFile(MultipartFile file) throws IOException {
         if (file.isEmpty()) {
             throw new IllegalArgumentException(DjpConstant.MSG_FILE_IS_EMPTY);
@@ -37,15 +41,27 @@ public class UploadService {
         return "/djp/api/v1/uploads/" + filename;
     }
 
+    /**
+     * Executes the file operation for exists.
+     * Returns the appropriate response or status based on the operation.
+     */
     public boolean fileExists(String filename) {
         return Files.exists(uploadDir.resolve(filename));
     }
 
+    /**
+     * Executes the serve operation for file.
+     * Returns the appropriate response or status based on the operation.
+     */
     public Resource serveFile(String filename) {
         Path file = uploadDir.resolve(filename);
         return new FileSystemResource(file);
     }
 
+    /**
+     * Retrieves media type from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     public MediaType getMediaType(Resource resource) {
         return MediaTypeFactory.getMediaType(resource)
                 .orElse(MediaType.APPLICATION_OCTET_STREAM);

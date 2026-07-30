@@ -21,10 +21,18 @@ public class SqlFilePersistenceService {
     @Value("${app.persistence.sql-file.enabled:true}")
     private boolean enabled = true;
 
+    /**
+     * Checks if enabled satisfies the condition.
+     * Returns the appropriate response or status based on the operation.
+     */
     public boolean isEnabled() {
         return enabled;
     }
 
+    /**
+     * Sets the enabled.
+     * Returns the appropriate response or status based on the operation.
+     */
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
@@ -60,6 +68,10 @@ public class SqlFilePersistenceService {
         return "'" + input.replace("'", "''") + "'";
     }
 
+    /**
+     * Executes the append operation for user.
+     * Returns the appropriate response or status based on the operation.
+     */
     public void appendUser(User user) {
         if (!enabled || user == null || user.getId() == null) return;
         String sql = String.format(
@@ -96,6 +108,10 @@ public class SqlFilePersistenceService {
     }
 
 
+    /**
+     * Executes the append operation for issue.
+     * Returns the appropriate response or status based on the operation.
+     */
     public void appendIssue(Issue issue) {
         if (!enabled || issue == null || issue.getId() == null) return;
         if (issue.getAuthor() != null) {
@@ -122,6 +138,10 @@ public class SqlFilePersistenceService {
         appendToFiles("issues.sql", sql);
     }
 
+    /**
+     * Executes the append operation for discussion.
+     * Returns the appropriate response or status based on the operation.
+     */
     public void appendDiscussion(Discussion discussion) {
         if (!enabled || discussion == null || discussion.getId() == null) return;
         if (discussion.getAuthor() != null) {
@@ -149,6 +169,10 @@ public class SqlFilePersistenceService {
         appendToFiles("discussions.sql", sql);
     }
 
+    /**
+     * Executes the append operation for poll.
+     * Returns the appropriate response or status based on the operation.
+     */
     public void appendPoll(Poll poll) {
         if (!enabled || poll == null || poll.getId() == null) return;
         if (poll.getAuthor() != null) {

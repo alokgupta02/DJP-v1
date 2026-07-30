@@ -46,16 +46,28 @@ public class PollService {
     }
 
 
+    /**
+     * Retrieves polls from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional(readOnly = true)
     public Page<PollResponseDto> getPolls(Pageable pageable) {
         return pollRepository.findAll(pageable).map(pollMapper::toDto);
     }
 
+    /**
+     * Retrieves poll by id from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional(readOnly = true)
     public Optional<PollResponseDto> getPollById(UUID id) {
         return pollRepository.findById(id).map(pollMapper::toDto);
     }
 
+    /**
+     * Creates and persists new poll.
+     * Returns the appropriate response or status based on the operation.
+     */
     @com.djp.backend.aspect.AuditLog(action = "CREATE_POLL", entityType = "Poll")
     public PollResponseDto createPoll(PollCreateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
@@ -75,6 +87,10 @@ public class PollService {
         return pollMapper.toDto(saved);
     }
 
+    /**
+     * Updates existing poll records.
+     * Returns the appropriate response or status based on the operation.
+     */
     @com.djp.backend.aspect.AuditLog(action = "UPDATE_POLL", entityType = "Poll")
     public PollResponseDto updatePoll(UUID id, com.djp.backend.dto.PollUpdateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
@@ -103,6 +119,10 @@ public class PollService {
         return pollMapper.toDto(pollRepository.save(poll));
     }
 
+    /**
+     * Executes the cast operation for vote.
+     * Returns the appropriate response or status based on the operation.
+     */
     @Transactional
     public PollResponseDto castVote(UUID pollId, int optionIndex, Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);
@@ -116,6 +136,10 @@ public class PollService {
         return pollMapper.toDto(pollRepository.save(poll));
     }
 
+    /**
+     * Deletes poll from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     @com.djp.backend.aspect.AuditLog(action = "DELETE_POLL", entityType = "Poll")
     public void deletePoll(UUID id, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);

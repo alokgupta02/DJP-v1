@@ -25,6 +25,10 @@ public class UserStatsService {
         this.pollRepository = pollRepository;
     }
 
+    /**
+     * Retrieves user stats from the system.
+     * Returns the appropriate response or status based on the operation.
+     */
     public Map<String, Long> getUserStats(UUID userId) {
         long issuesCount = issueRepository.findAll().stream()
                 .filter(i -> i.getAuthor() != null && userId.equals(i.getAuthor().getId())).count();
