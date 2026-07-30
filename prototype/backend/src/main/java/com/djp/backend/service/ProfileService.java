@@ -16,10 +16,12 @@ public class ProfileService {
 
     private final UserRepository userRepository;
     private final SqlFilePersistenceService sqlFilePersistenceService;
+    private final com.djp.backend.mapper.UserMapper userMapper;
 
-    public ProfileService(UserRepository userRepository, SqlFilePersistenceService sqlFilePersistenceService) {
+    public ProfileService(UserRepository userRepository, SqlFilePersistenceService sqlFilePersistenceService, com.djp.backend.mapper.UserMapper userMapper) {
         this.userRepository = userRepository;
         this.sqlFilePersistenceService = sqlFilePersistenceService;
+        this.userMapper = userMapper;
     }
 
     /**
@@ -48,21 +50,9 @@ public class ProfileService {
             throw new UnauthorizedException("Not authorized to update this profile.");
         }
 
+        userMapper.updateProfileFromDto(dto, user);
+        
         if (dto.name() != null && !dto.name().isBlank()) user.setName(dto.name().trim());
-        if (dto.dob() != null) user.setDob(dto.dob().trim());
-        if (dto.gender() != null) user.setGender(dto.gender().trim());
-        if (dto.phoneNumber() != null) user.setPhoneNumber(dto.phoneNumber().trim());
-        if (dto.location() != null) user.setLocation(dto.location().trim());
-        if (dto.pincode() != null) user.setPincode(dto.pincode().trim());
-        if (dto.country() != null) user.setCountry(dto.country().trim());
-        if (dto.state() != null) user.setState(dto.state().trim());
-        if (dto.district() != null) user.setDistrict(dto.district().trim());
-        if (dto.city() != null) user.setCity(dto.city().trim());
-        if (dto.locality() != null) user.setLocality(dto.locality().trim());
-        if (dto.ward() != null) user.setWard(dto.ward().trim());
-        if (dto.constituency() != null) user.setConstituency(dto.constituency().trim());
-        if (dto.occupation() != null) user.setOccupation(dto.occupation().trim());
-        if (dto.bio() != null) user.setBio(dto.bio().trim());
         if (dto.topics() != null) {
             user.setTopics(String.join(", ", dto.topics()));
         }

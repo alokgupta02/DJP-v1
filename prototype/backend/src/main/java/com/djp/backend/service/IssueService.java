@@ -63,17 +63,8 @@ public class IssueService {
     @com.djp.backend.aspect.AuditLog(action = "CREATE_ISSUE", entityType = "Issue")
     public IssueResponseDto createIssue(IssueCreateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
-        Issue issue = new Issue(
-                author,
-                request.title(),
-                request.description(),
-                request.category(),
-                request.priority()
-        );
-        issue.setLocation(request.location());
-        issue.setLatitude(request.latitude());
-        issue.setLongitude(request.longitude());
-        issue.setGovLevel(request.govLevel());
+        Issue issue = issueMapper.toEntity(request);
+        issue.setAuthor(author);
 
         Issue saved = issueRepository.save(issue);
         sqlFilePersistenceService.appendIssue(saved);
@@ -93,14 +84,7 @@ public class IssueService {
             throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED_TO_UPDATE_THIS_ISSUE);
         }
 
-        if (request.title() != null) issue.setTitle(request.title());
-        if (request.description() != null) issue.setDescription(request.description());
-        if (request.category() != null) issue.setCategory(request.category());
-        if (request.priority() != null) issue.setPriority(request.priority());
-        if (request.location() != null) issue.setLocation(request.location());
-        if (request.latitude() != null) issue.setLatitude(request.latitude());
-        if (request.longitude() != null) issue.setLongitude(request.longitude());
-        if (request.govLevel() != null) issue.setGovLevel(request.govLevel());
+        issueMapper.updateIssueFromDto(request, issue);
 
         return issueMapper.toDto(issueRepository.save(issue));
     }

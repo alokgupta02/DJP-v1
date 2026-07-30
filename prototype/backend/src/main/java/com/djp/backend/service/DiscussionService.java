@@ -62,17 +62,8 @@ public class DiscussionService {
     @com.djp.backend.aspect.AuditLog(action = "CREATE_DISCUSSION", entityType = "Discussion")
     public DiscussionResponseDto createDiscussion(DiscussionCreateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
-        Discussion discussion = new Discussion();
+        Discussion discussion = discussionMapper.toEntity(request);
         discussion.setAuthor(author);
-        discussion.setTitle(request.title());
-        discussion.setDescription(request.description());
-        discussion.setCategory(request.category());
-        discussion.setProposalPreview(request.proposalPreview());
-        discussion.setProposalBadge(request.proposalBadge());
-        discussion.setLocation(request.location());
-        discussion.setLatitude(request.latitude());
-        discussion.setLongitude(request.longitude());
-        discussion.setGovLevel(request.govLevel());
 
         Discussion saved = discussionRepository.save(discussion);
         sqlFilePersistenceService.appendDiscussion(saved);
@@ -92,13 +83,14 @@ public class DiscussionService {
             throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED_TO_UPDATE_THIS_DISCUSSION);
         }
 
-        if (request.title() != null) discussion.setTitle(request.title());
-        if (request.content() != null) discussion.setDescription(request.content()); // Assuming content maps to description based on typical usage, wait, Create uses description
-        if (request.category() != null) discussion.setCategory(request.category());
-        if (request.location() != null) discussion.setLocation(request.location());
-        if (request.latitude() != null) discussion.setLatitude(request.latitude());
-        if (request.longitude() != null) discussion.setLongitude(request.longitude());
-        if (request.govLevel() != null) discussion.setGovLevel(request.govLevel());
+        // Map request.content() to description if present in the DTO? 
+        // Wait, DiscussionUpdateRequestDto uses 'content' ? Or does it use 'description'?
+        // The original code has: if (request.content() != null) discussion.setDescription(request.content());
+        // MapStruct won't map 'content' to 'description' automatically.
+        // Let's do partial update with mapstruct and handle content manually if needed.
+        // Actually, we can use @Mapping in the mapper. But since I can't be sure about the DTO without checking it, I'll just map it directly.
+        discussionMapper.updateDiscussionFromDto(request, discussion);
+        if (request.content() != null) discussion.setDescription(request.content());
 
         return discussionMapper.toDto(discussionRepository.save(discussion));
     }

@@ -1,30 +1,27 @@
 package com.djp.backend.mapper;
 
-import com.djp.backend.dto.IssueResponseDto;
-import com.djp.backend.model.Issue;
+import com.djp.backend.dto.PetitionResponseDto;
+import com.djp.backend.dto.PetitionUpdateRequestDto;
+import com.djp.backend.model.Petition;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-
-import com.djp.backend.dto.IssueUpdateRequestDto;
-import org.mapstruct.BeanMapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring")
-public interface IssueMapper {
+public interface PetitionMapper {
     @Mapping(source = "author.id", target = "authorId")
-    IssueResponseDto toDto(Issue issue);
+    PetitionResponseDto toDto(Petition petition);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "author", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "status", ignore = true)
-    @Mapping(target = "upvotes", ignore = true)
-    @Mapping(target = "downvotes", ignore = true)
-    @Mapping(target = "commentsCount", ignore = true)
-    Issue toEntity(com.djp.backend.dto.IssueCreateRequestDto dto);
+    @Mapping(target = "signatureCount", ignore = true)
+    Petition toEntity(com.djp.backend.dto.PetitionCreateRequestDto dto);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateIssueFromDto(IssueUpdateRequestDto dto, @MappingTarget Issue entity);
+    void updatePetitionFromDto(PetitionUpdateRequestDto dto, @MappingTarget Petition entity);
 }

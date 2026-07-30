@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import com.djp.backend.mapper.PetitionMapper;
 import java.util.UUID;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,13 +25,15 @@ public class PetitionService {
     private final PetitionRepository petitionRepository;
     private final UserRepository userRepository;
     private final AuthUtils authUtils;
+    private final PetitionMapper petitionMapper;
 
-    public PetitionService(PetitionRepository petitionRepository, UserRepository userRepository, AuthUtils authUtils) {
+    public PetitionService(PetitionRepository petitionRepository, UserRepository userRepository, AuthUtils authUtils,
+            PetitionMapper petitionMapper) {
         this.petitionRepository = petitionRepository;
         this.userRepository = userRepository;
         this.authUtils = authUtils;
+        this.petitionMapper = petitionMapper;
     }
-
 
     /**
      * Retrieves petitions from the system.
@@ -45,12 +48,9 @@ public class PetitionService {
      */
     public PetitionResponseDto createPetition(PetitionCreateRequestDto dto, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
-        Petition p = new Petition();
-        p.setTitle(dto.title());
-        p.setDescription(dto.description());
+        Petition p = petitionMapper.toEntity(dto);
         p.setCategory(dto.category() != null ? dto.category() : "General");
         p.setSignatureGoal(dto.signatureGoal() > 0 ? dto.signatureGoal() : 100);
-        p.setTargetAuthority(dto.targetAuthority());
         p.setAuthor(author);
         return PetitionResponseDto.fromEntity(petitionRepository.save(p));
     }
@@ -58,18 +58,15 @@ public class PetitionService {
     /**
      * Updates existing petition records.
      */
-    public PetitionResponseDto updatePetition(UUID id, PetitionUpdateRequestDto request, Authentication authentication) {
+    public PetitionResponseDto updatePetition(UUID id, PetitionUpdateRequestDto request,
+            Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_PETITION_NOT_FOUND));
         if (!p.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
             throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED);
         }
-        if (request.title() != null) p.setTitle(request.title());
-        if (request.description() != null) p.setDescription(request.description());
-        if (request.category() != null) p.setCategory(request.category());
-        if (request.targetAuthority() != null) p.setTargetAuthority(request.targetAuthority());
-        if (request.signatureGoal() != null) p.setSignatureGoal(request.signatureGoal());
+        petitionMapper.updatePetitionFromDto(request, p);
         return PetitionResponseDto.fromEntity(petitionRepository.save(p));
     }
 

@@ -68,16 +68,8 @@ public class PollService {
     @com.djp.backend.aspect.AuditLog(action = "CREATE_POLL", entityType = "Poll")
     public PollResponseDto createPoll(PollCreateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
-        Poll poll = new Poll();
-        poll.setQuestion(request.question());
-        poll.setDescription(request.description());
-        poll.setCategory(request.category());
-        poll.setOptionsJson(request.optionsJson());
+        Poll poll = pollMapper.toEntity(request);
         poll.setAuthor(author);
-        poll.setLocation(request.location());
-        poll.setLatitude(request.latitude());
-        poll.setLongitude(request.longitude());
-        poll.setGovLevel(request.govLevel());
 
         Poll saved = pollRepository.save(poll);
         sqlFilePersistenceService.appendPoll(saved);
@@ -97,13 +89,7 @@ public class PollService {
             throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED_TO_UPDATE_THIS_POLL);
         }
 
-        if (request.question() != null) poll.setQuestion(request.question());
-        if (request.description() != null) poll.setDescription(request.description());
-        if (request.category() != null) poll.setCategory(request.category());
-        if (request.location() != null) poll.setLocation(request.location());
-        if (request.latitude() != null) poll.setLatitude(request.latitude());
-        if (request.longitude() != null) poll.setLongitude(request.longitude());
-        if (request.govLevel() != null) poll.setGovLevel(request.govLevel());
+        pollMapper.updatePollFromDto(request, poll);
         if (request.options() != null) {
             try {
                 poll.setOptionsJson(new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(request.options()));
