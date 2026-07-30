@@ -1,0 +1,128 @@
+# 📜 **Architectural Decision Records (ADR)**
+
+---
+
+| Metadata | Value |
+| :--- | :--- |
+| **📅 Last Updated** | 2026-07-26 13:10 |
+| **📌 Status** | `Stable` |
+| **🏷️ Version** | `v1.0.0` |
+| **👥 Owner** | `Principal Technical Architect` |
+| **🔗 Dependencies** | None |
+
+---
+
+## 📑 Summary Table of Decisions
+
+| ADR # | Decision Title | Status | Primary Trade-Off |
+| :---: | :--- | :---: | :--- |
+| **ADR-001** | **Progressive Disclosure UX** | `Accepted` | Simplifies onboarding vs. requires multi-step state tracking |
+| **ADR-002** | **Chart.js for Visualizations** | `Accepted` | Lightweight CDN charts vs. manual canvas initialization |
+| **ADR-003** | **Mobile-First Responsive Design** | `Accepted` | Democratic mobile access vs. extra desktop desktop styling |
+| **ADR-004** | **Shared React 18 & Vite Foundation** | `Accepted` | Requires node build step for prototype vs. 100% code portability |
+| **ADR-005** | **Static File Deployment for Prototypes** | `Accepted` | Deploy anywhere cheaply vs. API backend required separately |
+| **ADR-006** | **Modular Microservices Backend** | `Superseded` | Scales domains independently vs. adds network complexity |
+| **ADR-007** | **Dynamic Ranks & Paid Leader Gate** | `Accepted` | Filters spam / locks inactive leaders vs. introduces billing gates |
+| **ADR-008** | **Modular Monolith for MVP** | `Accepted` | Reduces deployment & network overhead vs. limits independent scaling |
+| **ADR-009** | **Postgres-Maximalist Architecture** | `Accepted` | Single DB engine (JSONB+PostGIS) vs. limits extreme NoSQL horizontal scaling |
+
+---
+
+## 🔍 Detailed Decision Records
+
+### 📌 ADR-001: Progressive Disclosure Pattern
+* **Status:** `Accepted`
+* **Context:** Need to simplify user onboarding and reduce cognitive load for diverse citizens.
+* **Decision:** Implement progressive disclosure across onboarding and complex reporting flows.
+* **Consequences:**
+  * ✅ **Positive:** Reduced initial complexity, improved user completion rates.
+  * ⚠️ **Trade-off:** Requires explicit step tracking and session state retention.
+
+---
+
+### 📌 ADR-002: Chart.js for Visualizations
+* **Status:** `Accepted`
+* **Context:** Need interactive, responsive civic charts with minimal runtime overhead.
+* **Decision:** Use Chart.js library for data visual components.
+* **Consequences:**
+  * ✅ **Positive:** Responsive canvas rendering, extensive chart options, small footprint.
+  * ⚠️ **Trade-off:** Requires manual chart instance lifecycle cleanup.
+
+---
+
+### 📌 ADR-003: Mobile-First Design
+* **Status:** `Accepted`
+* **Context:** Majority of citizens access the platform via mobile devices on varying networks.
+* **Decision:** Design all UI components starting from mobile `<768px` breakpoints.
+* **Consequences:**
+  * ✅ **Positive:** Accessible, consistent mobile experience for all users.
+  * ⚠️ **Trade-off:** Desktop views require thoughtful multi-column expansion grids.
+
+---
+
+### 📌 ADR-004: Shared React 18 & Vite Foundation
+* **Status:** `Accepted`
+* **Context:** Need clear visual prototype reference (`/prototype`) along with scalable production React apps (`apps/citizen`, `apps/admin`).
+* **Decision:** Build both `/prototype` and production packages using React 18, Vite, and Tailwind CSS.
+* **Consequences:**
+  * ✅ **Positive:** Allows direct copy-paste code portability and component reuse between prototype and production.
+  * ⚠️ **Trade-off:** Prototype requires a Node.js build step, but this aligns with modern developer workflows.
+
+---
+
+### 📌 ADR-005: Static & CDN Edge Hosting
+* **Status:** `Accepted`
+* **Context:** High public traffic demands scalable, low-cost frontend distribution.
+* **Decision:** Serve static frontend assets via CDN / Edge networks.
+* **Consequences:**
+  * ✅ **Positive:** Extremely fast global latency and zero server-side rendering bottlenecks.
+
+---
+
+### 📌 ADR-006: Modular Microservices Backend
+* **Status:** `Accepted`
+* **Context:** Need resilience, clear domain separation, and distinct tech stacks (Java Spring Boot for Auth/Core, Python for AI/Embeddings).
+* **Decision:** Implement a modular microservices backend (Auth, Core, AI Service) communicating via JWT behind an API Gateway.
+* **Consequences:**
+  * ✅ **Positive:** Independent scaling, isolated deployments, and stack matching.
+  * ⚠️ **Trade-off:** Adds gateway maintenance and network/integration complexity.
+
+---
+
+### 📌 ADR-007: Dynamic Ranks & Paid Leader Gate
+* **Status:** `Accepted`
+* **Context:** The target demographic of party leaders/members is urban (cities), digitally active, and highly educated. To maintain trust, the hierarchy must reflect active, serious ground contributions rather than spam or historical accumulation.
+* **Decision:** Lock leadership status behind a paid monthly plan as a seriousness filter. Calculate ranking (Area → Locality → Ward) based on a rolling 6-month reputation score, while preserving lifetime reputation score as profile badges.
+* **Consequences:**
+  * ✅ **Positive:** Prevents inactive leaders from dominating active ranks; generates sustainable revenue; targets committed urban users.
+  * ⚠️ **Trade-off:** Paid gate may limit early adoption, but ensures high seriousness of active leaders.
+
+---
+
+### 📌 ADR-008: Modular Monolith for MVP
+* **Status:** `Accepted` (Supersedes ADR-006)
+* **Context:** The original microservice architecture documented in ADR-006 requires configuring and running multiple services, which adds operational complexity and setup friction for early phases.
+* **Decision:** Build the backend as a single Modular Monolith in `backend/springboot/` with strict package boundaries (`com.djp.auth`, `com.djp.core`, `com.djp.ai`) instead of separate services. 
+* **Consequences:**
+  * ✅ **Positive:** Simplifies deployment, logging, and database transactions for the MVP.
+  * ⚠️ **Trade-off:** Prevents independent scaling of individual domains, but remains easily decomposable if needed in future releases.
+
+---
+
+### 📌 ADR-009: Postgres-Maximalist Architecture
+* **Status:** `Accepted`
+* **Context:** The application handles a mix of highly relational data (Users, Votes) and unstructured/flexible data (Metadata, Settings). Evaluating whether to use Polyglot Persistence (e.g., Postgres + MongoDB).
+* **Decision:** Adopt a "Postgres-Maximalist" architecture. Use standard SQL tables for core relational data, native `JSONB` for schema-less document data, and `PostGIS` for geospatial features.
+* **Consequences:**
+  * ✅ **Positive:** Eliminates the operational complexity of managing multiple database engines; preserves transactional integrity across all data types.
+  * ⚠️ **Trade-off:** May not scale horizontally as effortlessly as specialized NoSQL databases for unstructured data, but sufficient for early-to-mid scale.
+
+---
+
+## 📚 Related Documentation
+
+* **[Vision](party-vision.md)** — Product vision driving these decisions
+* **[Roadmap](roadmap.md)** — Versioned plan for implementation
+* **[Architecture Overview](../architecture/overview.md)** — System context
+
+---

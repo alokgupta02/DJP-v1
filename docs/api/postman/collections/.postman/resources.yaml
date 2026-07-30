@@ -1,0 +1,9 @@
+# Use this workspace to collaborate
+workspace:
+  id: 10d3cd7b-8556-4fa4-8b4e-8b0f5c90fab0
+
+localResources:
+  collections: []
+cloudResources:
+  collections:
+    ../postman/collections/DJP Prototype & Spring Boot REST API Collection: 57a0e1ab-7e62-483b-b863-a60e2afdee6d

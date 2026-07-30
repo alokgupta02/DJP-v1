@@ -1,0 +1,4 @@
+$kind: collection
+description: Endpoints for community referendums, ward priority polls, and
+  structured options voting.
+order: 4000

@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/*
+ * DJP Design Token System
+ * ========================
+ * All visual values are defined here as CSS custom properties and
+ * Tailwind v4 @theme extensions. Never hardcode colors, spacing,
+ * or typography values in component files.
+ *
+ * Source of truth: docs/architecture/colors-typography.md
+ */
+
+@theme {
+  /* ─── Brand Colors ─────────────────────────────────────── */
+  --color-brand:           #A31621;
+  --color-brand-hover:     #8b1219;
+  --color-brand-light:     #FEF2F2;
+
+  /* ─── Text ──────────────────────────────────────────────── */
+  --color-text-primary:    #333333;
+  --color-text-secondary:  #999999;
+  --color-text-disabled:   #BBBBBB;
+  --color-text-inverse:    #FFFFFF;
+
+  /* ─── Backgrounds ───────────────────────────────────────── */
+  --color-bg-page:         #F8F9FA;
+  --color-bg-surface:      #FFFFFF;
+  --color-bg-subtle:       #F2F4F7;
+  --color-bg-muted:        #F5F6F8;
+
+  /* ─── Borders ───────────────────────────────────────────── */
+  --color-border:          #E8ECF1;
+  --color-border-focus:    #A31621;
+  --color-border-subtle:   #F0F0F0;
+
+  /* ─── Status ────────────────────────────────────────────── */
+  --color-success:         #52C41A;
+  --color-success-bg:      #F6FFED;
+  --color-error:           #F5222D;
+  --color-error-bg:        #FFF2F0;
+  --color-warning:         #FAAD14;
+  --color-warning-bg:      #FFFBE6;
+  --color-info:            #1890FF;
+  --color-info-bg:         #E6F7FF;
+
+  /* ─── Typography ────────────────────────────────────────── */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --text-tiny:       11px;
+  --text-xs:         12px;
+  --text-sm:         13px;
+  --text-base:       14px;
+  --text-md:         16px;
+  --text-subheading: 18px;
+  --text-heading:    20px;
+  --text-title:      24px;
+  --text-display:    32px;
+
+  /* ─── Border Radius ─────────────────────────────────────── */
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-2xl:  16px;
+  --radius-full: 9999px;
+
+  /* ─── Shadows ───────────────────────────────────────────── */
+  --shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md:    0 4px 12px rgba(0, 0, 0, 0.10);
+  --shadow-lg:    0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-focus: 0 0 0 2px rgba(163, 22, 33, 0.20);
+
+  /* ─── Motion ────────────────────────────────────────────── */
+  --duration-fast:   150ms;
+  --duration-normal: 200ms;
+  --duration-slow:   300ms;
+  --ease-default:    ease-in-out;
+  --ease-spring:     cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Base Styles ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-page);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── Scrollbar Utility ───────────────────────────────────── */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Global Base Styles & Accessibility ────────────────────── */
+@layer base {
+  /* Provide a global focus ring that respects border radius */
+  *:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+    transition: box-shadow var(--duration-fast) var(--ease-default);
+  }
+
+  /* Add smooth transitions to all interactive elements globally by default */
+  button, a {
+    transition: all var(--duration-fast) var(--ease-default);
+    cursor: pointer;
+  }
+}

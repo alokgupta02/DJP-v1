@@ -1,0 +1,5 @@
+$kind: http-request
+description: Returns redirect URL for GitHub OAuth2 authentication flow.
+url: "{{baseUrl}}/auth/github"
+method: GET
+order: 4000

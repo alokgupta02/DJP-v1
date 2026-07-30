@@ -1,0 +1,5 @@
+$kind: http-request
+description: Fetches detailed information for a specific discussion thread UUID.
+url: "{{baseUrl}}/discussions/0cf5ae96-9ca5-4887-b654-5612acdc649f"
+method: GET
+order: 2000

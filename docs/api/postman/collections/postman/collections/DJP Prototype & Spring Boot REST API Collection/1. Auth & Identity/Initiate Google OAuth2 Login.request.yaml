@@ -1,0 +1,5 @@
+$kind: http-request
+description: Returns redirect URL for Google OAuth2 authentication flow.
+url: "{{baseUrl}}/auth/google"
+method: GET
+order: 3000

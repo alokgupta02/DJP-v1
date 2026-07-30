@@ -1,0 +1,9 @@
+$kind: http-request
+description: Fetches a citizen's public profile.
+url: "{{baseUrl}}/profiles/1f4c2da8-eedd-4523-b541-7c818c237fff"
+method: GET
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwtToken}}"
+order: 1000

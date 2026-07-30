@@ -1,0 +1,1239 @@
+{
+  "info": {
+    "name": "DJP Prototype & Spring Boot REST API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Auth & Identity",
+      "item": [
+        {
+          "name": "POST /djp/api/v1/auth/verify-otp",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/auth/verify-otp",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "auth",
+                "verify-otp"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /djp/api/v1/auth/register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /djp/api/v1/auth/refresh",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/auth/refresh",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "auth",
+                "refresh"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /djp/api/v1/auth/dev-login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/auth/dev-login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "auth",
+                "dev-login"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /djp/api/v1/users/{userId}/onboarding",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/users/{userId}/onboarding",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "users",
+                "{userId}",
+                "onboarding"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/users/{userId}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/users/{userId}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "users",
+                "{userId}"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/auth/me",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "auth",
+                "me"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/auth/google",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/auth/google",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "auth",
+                "google"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/auth/github",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/auth/github",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "auth",
+                "github"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "10. Representatives",
+      "item": [
+        {
+          "name": "GET /djp/api/v1/representatives",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/representatives",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "representatives"
+              ],
+              "query": [
+                {
+                  "key": "pageable",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "11. Insights",
+      "item": [
+        {
+          "name": "GET /djp/api/v1/insights",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/insights",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "insights"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Civic Issues",
+      "item": [
+        {
+          "name": "GET /djp/api/v1/issues/{id}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/issues/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "issues",
+                "{id}"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /djp/api/v1/issues/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/issues/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "issues",
+                "{id}"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /djp/api/v1/issues/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/issues/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "issues",
+                "{id}"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/issues",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/issues",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "issues"
+              ],
+              "query": [
+                {
+                  "key": "pageable",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "POST /djp/api/v1/issues",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/issues",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "issues"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Discussions",
+      "item": [
+        {
+          "name": "GET /djp/api/v1/discussions/{id}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/discussions/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "discussions",
+                "{id}"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /djp/api/v1/discussions/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/discussions/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "discussions",
+                "{id}"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /djp/api/v1/discussions/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/discussions/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "discussions",
+                "{id}"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/discussions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/discussions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "discussions"
+              ],
+              "query": [
+                {
+                  "key": "pageable",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "POST /djp/api/v1/discussions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/discussions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "discussions"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4. Polls & Voting",
+      "item": [
+        {
+          "name": "GET /djp/api/v1/polls/{id}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/polls/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "polls",
+                "{id}"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /djp/api/v1/polls/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/polls/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "polls",
+                "{id}"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /djp/api/v1/polls/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/polls/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "polls",
+                "{id}"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/polls",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/polls",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "polls"
+              ],
+              "query": [
+                {
+                  "key": "pageable",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "POST /djp/api/v1/polls",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/polls",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "polls"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /djp/api/v1/polls/{id}/vote",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/polls/{id}/vote",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "polls",
+                "{id}",
+                "vote"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "5. System & Observability",
+      "item": [
+        {
+          "name": "POST /djp/api/v1/uploads",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/uploads",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "uploads"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/uploads/{filename}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/uploads/{filename}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "uploads",
+                "{filename}"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "6. Profiles",
+      "item": [
+        {
+          "name": "Get a user profile by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/profiles/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "profiles",
+                "{id}"
+              ]
+            },
+            "description": "Get a user profile by ID\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "Update a user profile",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/profiles/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "profiles",
+                "{id}"
+              ]
+            },
+            "description": "Update a user profile\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/users/{userId}/stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/users/{userId}/stats",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "users",
+                "{userId}",
+                "stats"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "7. Petitions",
+      "item": [
+        {
+          "name": "PUT /djp/api/v1/petitions/{id}",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/petitions/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "petitions",
+                "{id}"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /djp/api/v1/petitions/{id}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/petitions/{id}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "petitions",
+                "{id}"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/petitions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/petitions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "petitions"
+              ],
+              "query": [
+                {
+                  "key": "pageable",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "POST /djp/api/v1/petitions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/petitions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "petitions"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /djp/api/v1/petitions/{id}/sign",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/petitions/{id}/sign",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "petitions",
+                "{id}",
+                "sign"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "8. Interactions",
+      "item": [
+        {
+          "name": "POST /djp/api/v1/interactions/votes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/interactions/votes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "interactions",
+                "votes"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /djp/api/v1/interactions/follows",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/interactions/follows",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "interactions",
+                "follows"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/interactions/comments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/interactions/comments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "interactions",
+                "comments"
+              ],
+              "query": [
+                {
+                  "key": "entityId",
+                  "value": ""
+                },
+                {
+                  "key": "entityType",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "POST /djp/api/v1/interactions/comments",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/interactions/comments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "interactions",
+                "comments"
+              ]
+            },
+            "description": "\n\n",
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "9. Notifications",
+      "item": [
+        {
+          "name": "POST /djp/api/v1/notifications/{id}/read",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/notifications/{id}/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "notifications",
+                "{id}",
+                "read"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/notifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/notifications",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "notifications"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /djp/api/v1/notifications/unread-count",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/djp/api/v1/notifications/unread-count",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "djp",
+                "api",
+                "v1",
+                "notifications",
+                "unread-count"
+              ]
+            },
+            "description": "\n\n"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8081",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+$kind: http-request
+description: Retrieves public list of community discussion threads.
+url: "{{baseUrl}}/discussions"
+method: GET
+order: 1000

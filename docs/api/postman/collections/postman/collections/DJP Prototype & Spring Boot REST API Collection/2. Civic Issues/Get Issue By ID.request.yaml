@@ -1,0 +1,5 @@
+$kind: http-request
+description: Fetches detailed information for a specific civic issue UUID.
+url: "{{baseUrl}}/issues/990671fe-24d5-480f-9da5-76352b8cefd4"
+method: GET
+order: 2000

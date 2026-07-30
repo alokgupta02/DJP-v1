@@ -1,0 +1,4 @@
+$kind: collection
+description: Endpoints for reporting, listing, and inspecting civic issues
+  across municipal wards.
+order: 2000

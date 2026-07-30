@@ -1,0 +1,42 @@
+# Digital Janata Platform (DJP) - Global Architecture & Platform Constants
+# Single Source of Truth (SSOT) for reusable fields across documentation, specifications, and code generators.
+
+platform:
+  name: "Digital Janata Platform"
+  code: "DJP"
+  version: "v1.0.0-MVP"
+
+network:
+  base_url: "/djp/api/v1"
+  gateway:
+    port: 80
+  services:
+    auth_service:
+      name: "AuthService"
+      port: 8081
+      context_path: "/djp/api/v1/auth"
+      framework: "Spring Boot"
+    core_service:
+      name: "CoreService"
+      port: 8080
+      context_path: "/djp/api/v1/core"
+      framework: "Spring Boot"
+    ai_service:
+      name: "AIService"
+      port: 8000
+      context_path: "/djp/api/v1/ai"
+      framework: "Python FastAPI"
+
+security:
+  jwt:
+    header: "Authorization"
+    prefix: "Bearer "
+    expiration_hours: 24
+  oauth:
+    providers:
+      - "google"
+      - "linkedin"
+
+database:
+  local_dialect: "H2"
+  production_dialect: "Supabase PostgreSQL"

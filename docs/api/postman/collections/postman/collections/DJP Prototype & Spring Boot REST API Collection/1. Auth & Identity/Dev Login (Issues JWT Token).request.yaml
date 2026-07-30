@@ -1,0 +1,21 @@
+$kind: http-request
+description: Logs in via development authentication provider and automatically
+  extracts and sets `jwtToken` collection variable.
+url: "{{baseUrl}}/auth/dev-login?email=citizen@djp.org"
+method: POST
+queryParams:
+  - key: email
+    value: citizen@djp.org
+    description: Email to issue developer JWT for (e.g. citizen@djp.org or admin@djp.org)
+scripts:
+  - type: afterResponse
+    code: >-
+      if (pm.response.code === 200) {
+          var jsonResponse = pm.response.json();
+          if (jsonResponse.token) {
+              pm.collectionVariables.set('jwtToken', jsonResponse.token);
+              console.log('JWT token automatically stored in collection variable jwtToken');
+          }
+      }
+    language: text/javascript
+order: 1000

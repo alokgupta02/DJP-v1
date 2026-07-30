@@ -1,0 +1,18 @@
+$kind: http-request
+description: Updates a citizen's profile.
+url: "{{baseUrl}}/profiles/1f4c2da8-eedd-4523-b541-7c818c237fff"
+method: PATCH
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "bio": "Updated bio",
+      "occupation": "Software Engineer"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwtToken}}"
+order: 2000

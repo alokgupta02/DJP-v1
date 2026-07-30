@@ -1,0 +1,21 @@
+$kind: http-request
+description: Creates a new civic issue. Requires valid Bearer JWT token.
+url: "{{baseUrl}}/issues"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: >-
+    {
+      "title": "Broken Streetlight near Ward 12 Market",
+      "description": "Streetlight pillar #44 has been blinking and sparking at night, causing safety hazards for pedestrians.",
+      "category": "Electricity",
+      "priority": "HIGH",
+      "location": "Ward 12 Market Square"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwtToken}}"
+order: 3000

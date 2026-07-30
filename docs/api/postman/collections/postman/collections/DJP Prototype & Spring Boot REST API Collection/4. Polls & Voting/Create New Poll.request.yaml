@@ -1,0 +1,21 @@
+$kind: http-request
+description: Creates a new community poll with JSON-encoded voting options.
+  Requires valid Bearer JWT token.
+url: "{{baseUrl}}/polls"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: >-
+    {
+      "question": "Should Ward 12 allocate 30% of discretionary budget to green parks expansion?",
+      "description": "A referendum on re-routing local road maintenance reserves into establishing 4 urban pocket parks.",
+      "category": "High Priority",
+      "optionsJson": "[{\"label\":\"Yes, prioritize parks\",\"pct\":0,\"primary\":true},{\"label\":\"No, prioritize roads\",\"pct\":0,\"primary\":false}]"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwtToken}}"
+order: 3000

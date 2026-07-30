@@ -1,0 +1,46 @@
+import { useState } from "react";
+import { Flame, ChevronDown } from "lucide-react";
+import clsx from "clsx";
+import { DEFAULT_TOPICS } from "./TopicFilterBar.constants";
+
+interface TopicFilterBarProps {
+  topics?: string[];
+  children?: React.ReactNode;
+}
+
+export default function TopicFilterBar({ topics = DEFAULT_TOPICS, children }: TopicFilterBarProps) {
+  const [activeTopic, setActiveTopic] = useState(topics[0] || "All Topics");
+
+  return (
+    <div className="bg-[var(--color-bg-surface)] border border-[var(--color-border)] p-4 mb-6 rounded-xl relative">
+      <div className="flex items-center justify-end absolute top-4 right-4 z-10">
+        <button className="flex items-center gap-2 h-9 px-4 rounded-full border border-[var(--color-border)] hover:bg-[var(--color-bg-subtle)] transition-colors text-sm font-medium text-[var(--color-text-primary)]">
+          <Flame size={16} />
+          Trending
+          <ChevronDown size={14} className="text-[var(--color-text-secondary)]" />
+        </button>
+      </div>
+      <div className="flex flex-wrap gap-2 pr-40">
+        {topics.map((topic) => (
+          <button
+            key={topic}
+            onClick={() => setActiveTopic(topic)}
+            className={clsx(
+              "px-3 py-1.5 rounded-full text-sm transition-colors",
+              activeTopic === topic
+                ? "bg-[var(--color-brand)] text-[var(--color-text-inverse)] font-semibold shadow-sm"
+                : "border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-bg-subtle)]"
+            )}
+          >
+            {topic}
+          </button>
+        ))}
+      </div>
+      {children && (
+        <div className="mt-4 pt-4 border-t border-[var(--color-border)]">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
