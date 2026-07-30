@@ -23,7 +23,6 @@ public class UserService {
 
     /**
      * Retrieves user by id from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     @Transactional(readOnly = true)
     public User getUserById(UUID userId) {
@@ -33,7 +32,6 @@ public class UserService {
 
     /**
      * Executes the complete operation for onboarding.
-     * Returns the appropriate response or status based on the operation.
      */
     @Transactional
     public User completeOnboarding(UUID userId, OnboardingUpdateRequestDto dto) {

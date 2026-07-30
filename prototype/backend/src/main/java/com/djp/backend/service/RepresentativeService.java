@@ -19,7 +19,6 @@ public class RepresentativeService {
 
     /**
      * Retrieves representatives from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     @Transactional(readOnly = true)
     public Page<RepresentativeResponseDto> getRepresentatives(Pageable pageable) {

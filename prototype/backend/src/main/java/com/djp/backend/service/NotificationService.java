@@ -30,7 +30,6 @@ public class NotificationService {
 
     /**
      * Creates and persists new notification.
-     * Returns the appropriate response or status based on the operation.
      */
     @Transactional
     public void createNotification(User recipient, User actor, String type, UUID entityId) {
@@ -51,7 +50,6 @@ public class NotificationService {
 
     /**
      * Retrieves notifications for user from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     public List<Notification> getNotificationsForUser(Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);
@@ -60,7 +58,6 @@ public class NotificationService {
 
     /**
      * Retrieves unread count from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     public long getUnreadCount(Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);
@@ -69,7 +66,6 @@ public class NotificationService {
 
     /**
      * Executes the mark operation for as read.
-     * Returns the appropriate response or status based on the operation.
      */
     @Transactional
     public void markAsRead(UUID notificationId, Authentication authentication) {

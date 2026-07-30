@@ -24,7 +24,6 @@ public class UploadService {
 
     /**
      * Executes the upload operation for file.
-     * Returns the appropriate response or status based on the operation.
      */
     public String uploadFile(MultipartFile file) throws IOException {
         if (file.isEmpty()) {
@@ -43,7 +42,6 @@ public class UploadService {
 
     /**
      * Executes the file operation for exists.
-     * Returns the appropriate response or status based on the operation.
      */
     public boolean fileExists(String filename) {
         return Files.exists(uploadDir.resolve(filename));
@@ -51,7 +49,6 @@ public class UploadService {
 
     /**
      * Executes the serve operation for file.
-     * Returns the appropriate response or status based on the operation.
      */
     public Resource serveFile(String filename) {
         Path file = uploadDir.resolve(filename);
@@ -60,7 +57,6 @@ public class UploadService {
 
     /**
      * Retrieves media type from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     public MediaType getMediaType(Resource resource) {
         return MediaTypeFactory.getMediaType(resource)

@@ -23,7 +23,6 @@ public class SqlFilePersistenceService {
 
     /**
      * Checks if enabled satisfies the condition.
-     * Returns the appropriate response or status based on the operation.
      */
     public boolean isEnabled() {
         return enabled;
@@ -31,7 +30,6 @@ public class SqlFilePersistenceService {
 
     /**
      * Sets the enabled.
-     * Returns the appropriate response or status based on the operation.
      */
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
@@ -70,7 +68,6 @@ public class SqlFilePersistenceService {
 
     /**
      * Executes the append operation for user.
-     * Returns the appropriate response or status based on the operation.
      */
     public void appendUser(User user) {
         if (!enabled || user == null || user.getId() == null) return;
@@ -110,7 +107,6 @@ public class SqlFilePersistenceService {
 
     /**
      * Executes the append operation for issue.
-     * Returns the appropriate response or status based on the operation.
      */
     public void appendIssue(Issue issue) {
         if (!enabled || issue == null || issue.getId() == null) return;
@@ -140,7 +136,6 @@ public class SqlFilePersistenceService {
 
     /**
      * Executes the append operation for discussion.
-     * Returns the appropriate response or status based on the operation.
      */
     public void appendDiscussion(Discussion discussion) {
         if (!enabled || discussion == null || discussion.getId() == null) return;
@@ -171,7 +166,6 @@ public class SqlFilePersistenceService {
 
     /**
      * Executes the append operation for poll.
-     * Returns the appropriate response or status based on the operation.
      */
     public void appendPoll(Poll poll) {
         if (!enabled || poll == null || poll.getId() == null) return;

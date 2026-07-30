@@ -25,7 +25,6 @@ public class InsightsService {
 
     /**
      * Retrieves insights from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     @Transactional(readOnly = true)
     public InsightsResponseDto getInsights() {

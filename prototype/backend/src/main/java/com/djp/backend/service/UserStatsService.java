@@ -27,7 +27,6 @@ public class UserStatsService {
 
     /**
      * Retrieves user stats from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     public Map<String, Long> getUserStats(UUID userId) {
         long issuesCount = issueRepository.findAll().stream()

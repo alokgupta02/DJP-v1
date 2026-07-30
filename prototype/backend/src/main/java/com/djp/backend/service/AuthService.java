@@ -33,7 +33,6 @@ public class AuthService {
 
     /**
      * Executes the register operation for data.
-     * Returns the appropriate response or status based on the operation.
      */
     public AuthResponseDto register(String email, String name) {
         if (email == null || email.isBlank()) {
@@ -56,7 +55,6 @@ public class AuthService {
 
     /**
      * Executes the dev operation for login.
-     * Returns the appropriate response or status based on the operation.
      */
     public AuthResponseDto devLogin(String email) {
         User user = userRepository.findByEmail(email)
@@ -66,7 +64,6 @@ public class AuthService {
 
     /**
      * Executes the refresh operation for token.
-     * Returns the appropriate response or status based on the operation.
      */
     public AuthResponseDto refreshToken(String refreshTokenValue) {
         RefreshToken stored = refreshTokenRepository.findByToken(refreshTokenValue)
@@ -82,7 +79,6 @@ public class AuthService {
 
     /**
      * Retrieves me from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     public UserDto getMe(Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
@@ -95,7 +91,6 @@ public class AuthService {
 
     /**
      * Executes the verify operation for otp.
-     * Returns the appropriate response or status based on the operation.
      */
     public Map<String, String> verifyOtp(String otp, String email) {
         if (otp == null || otp.length() != 6) {
@@ -106,7 +101,6 @@ public class AuthService {
 
     /**
      * Executes the initiate operation for google login.
-     * Returns the appropriate response or status based on the operation.
      */
     public Map<String, String> initiateGoogleLogin() {
         return Map.of("provider", "google", "redirectUrl", "/oauth2/authorization/google");
@@ -114,7 +108,6 @@ public class AuthService {
 
     /**
      * Executes the initiate operation for github login.
-     * Returns the appropriate response or status based on the operation.
      */
     public Map<String, String> initiateGithubLogin() {
         return Map.of("provider", "github", "redirectUrl", "/oauth2/authorization/github");
@@ -122,7 +115,6 @@ public class AuthService {
 
     /**
      * Creates and persists new auth response.
-     * Returns the appropriate response or status based on the operation.
      */
     public AuthResponseDto createAuthResponse(User user) {
         String accessToken = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());

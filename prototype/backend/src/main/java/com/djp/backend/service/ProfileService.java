@@ -24,7 +24,6 @@ public class ProfileService {
 
     /**
      * Retrieves profile from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     @Transactional(readOnly = true)
     public User getProfile(UUID userId) {
@@ -34,7 +33,6 @@ public class ProfileService {
 
     /**
      * Updates existing profile records.
-     * Returns the appropriate response or status based on the operation.
      */
     @Transactional
     public User updateProfile(UUID userId, ProfileUpdateRequestDto dto, Authentication authentication) {

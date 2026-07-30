@@ -43,7 +43,6 @@ public class IssueService {
 
     /**
      * Retrieves issues from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     @Transactional(readOnly = true)
     public Page<IssueResponseDto> getIssues(Pageable pageable) {
@@ -52,7 +51,6 @@ public class IssueService {
 
     /**
      * Retrieves issue by id from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     @Transactional(readOnly = true)
     public Optional<IssueResponseDto> getIssueById(UUID id) {
@@ -61,7 +59,6 @@ public class IssueService {
 
     /**
      * Creates and persists new issue.
-     * Returns the appropriate response or status based on the operation.
      */
     @com.djp.backend.aspect.AuditLog(action = "CREATE_ISSUE", entityType = "Issue")
     public IssueResponseDto createIssue(IssueCreateRequestDto request, Authentication authentication) {
@@ -85,7 +82,6 @@ public class IssueService {
 
     /**
      * Updates existing issue records.
-     * Returns the appropriate response or status based on the operation.
      */
     @com.djp.backend.aspect.AuditLog(action = "UPDATE_ISSUE", entityType = "Issue")
     public IssueResponseDto updateIssue(UUID id, com.djp.backend.dto.IssueUpdateRequestDto request, Authentication authentication) {
@@ -111,7 +107,6 @@ public class IssueService {
 
     /**
      * Deletes issue from the system.
-     * Returns the appropriate response or status based on the operation.
      */
     @com.djp.backend.aspect.AuditLog(action = "DELETE_ISSUE", entityType = "Issue")
     public void deleteIssue(UUID id, Authentication authentication) {
