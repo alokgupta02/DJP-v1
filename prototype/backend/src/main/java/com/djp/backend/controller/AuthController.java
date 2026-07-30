@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,13 +34,13 @@ public class AuthController {
     @Operation(summary = "Initiate Google Login", description = "Executes the initiateGoogleLogin operation")
     @GetMapping("/google")
     public ResponseEntity<ApiResponse<Map<String, String>>> initiateGoogleLogin() {
-        return ResponseEntity.ok(ApiResponse.success(authService.initiateGoogleLogin(), "Google login initiated."));
+        return ResponseEntity.ok(ApiResponse.success(authService.initiateGoogleLogin(), DjpConstant.MSG_GOOGLE_LOGIN_INITIATED));
     }
 
     @Operation(summary = "Initiate Github Login", description = "Executes the initiateGithubLogin operation")
     @GetMapping("/github")
     public ResponseEntity<ApiResponse<Map<String, String>>> initiateGithubLogin() {
-        return ResponseEntity.ok(ApiResponse.success(authService.initiateGithubLogin(), "Github login initiated."));
+        return ResponseEntity.ok(ApiResponse.success(authService.initiateGithubLogin(), DjpConstant.MSG_GITHUB_LOGIN_INITIATED));
     }
 
     @Operation(summary = "Register", description = "Executes the register operation")
@@ -47,34 +48,34 @@ public class AuthController {
     public ResponseEntity<ApiResponse<AuthResponseDto>> register(@Valid @RequestBody RegisterRequest payload) {
         AuthResponseDto result = authService.register(payload.email(), payload.name());
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponse.success(result, "Registration successful."));
+                .body(ApiResponse.success(result, DjpConstant.MSG_REGISTRATION_SUCCESSFUL));
     }
 
     @Operation(summary = "Dev Login", description = "Executes the devLogin operation")
     @PostMapping("/dev-login")
     public ResponseEntity<ApiResponse<AuthResponseDto>> devLogin(@RequestParam(defaultValue = "citizen@djp.org") String email) {
         AuthResponseDto result = authService.devLogin(email);
-        return ResponseEntity.ok(ApiResponse.success(result, "Login successful."));
+        return ResponseEntity.ok(ApiResponse.success(result, DjpConstant.MSG_LOGIN_SUCCESSFUL));
     }
 
     @Operation(summary = "Refresh Token", description = "Executes the refreshToken operation")
     @PostMapping("/refresh")
     public ResponseEntity<ApiResponse<AuthResponseDto>> refreshToken(@Valid @RequestBody RefreshTokenRequestDto request) {
         AuthResponseDto result = authService.refreshToken(request.refreshToken());
-        return ResponseEntity.ok(ApiResponse.success(result, "Token refreshed successfully."));
+        return ResponseEntity.ok(ApiResponse.success(result, DjpConstant.MSG_TOKEN_REFRESHED_SUCCESSFULLY));
     }
 
     @Operation(summary = "Get Me", description = "Executes the getMe operation")
     @GetMapping("/me")
     public ResponseEntity<ApiResponse<UserDto>> getMe(Authentication authentication) {
         UserDto result = authService.getMe(authentication);
-        return ResponseEntity.ok(ApiResponse.success(result, "User fetched successfully."));
+        return ResponseEntity.ok(ApiResponse.success(result, DjpConstant.MSG_USER_FETCHED_SUCCESSFULLY));
     }
 
     @Operation(summary = "Verify Otp", description = "Executes the verifyOtp operation")
     @PostMapping("/verify-otp")
     public ResponseEntity<ApiResponse<Map<String, String>>> verifyOtp(@RequestBody Map<String, String> payload) {
         Map<String, String> result = authService.verifyOtp(payload.get("otp"), payload.getOrDefault("email", ""));
-        return ResponseEntity.ok(ApiResponse.success(result, "OTP verified."));
+        return ResponseEntity.ok(ApiResponse.success(result, DjpConstant.MSG_OTP_VERIFIED));
     }
 }

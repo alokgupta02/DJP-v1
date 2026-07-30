@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,16 +34,16 @@ public class IssueController {
     @Operation(summary = "Get All Issues", description = "Executes the getAllIssues operation")
     @GetMapping
     public ResponseEntity<ApiResponse<List<IssueResponseDto>>> getAllIssues(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        return ResponseEntity.ok(ApiResponse.success(issueService.getIssues(pageable), "Issues retrieved successfully."));
+        return ResponseEntity.ok(ApiResponse.success(issueService.getIssues(pageable), DjpConstant.MSG_ISSUES_RETRIEVED_SUCCESSFULLY));
     }
 
     @Operation(summary = "Get Issue By Id", description = "Executes the getIssueById operation")
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<IssueResponseDto>> getIssueById(@PathVariable UUID id) {
         return issueService.getIssueById(id)
-                .map(issue -> ResponseEntity.ok(ApiResponse.success(issue, "Issue fetched successfully.")))
+                .map(issue -> ResponseEntity.ok(ApiResponse.success(issue, DjpConstant.MSG_ISSUE_FETCHED_SUCCESSFULLY)))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Issue not found.")));
+                        .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), DjpConstant.MSG_ISSUE_NOT_FOUND)));
     }
 
     @Operation(summary = "Create Issue", description = "Executes the createIssue operation")
@@ -53,7 +54,7 @@ public class IssueController {
 
         IssueResponseDto saved = issueService.createIssue(request, authentication);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponse.success(saved, "Issue created successfully."));
+                .body(ApiResponse.success(saved, DjpConstant.MSG_ISSUE_CREATED_SUCCESSFULLY));
     }
 
     @Operation(summary = "Update Issue", description = "Executes the updateIssue operation")
@@ -70,6 +71,6 @@ public class IssueController {
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deleteIssue(@PathVariable UUID id, Authentication authentication) {
         issueService.deleteIssue(id, authentication);
-        return ResponseEntity.ok(ApiResponse.success((Void) null, "Issue deleted successfully."));
+        return ResponseEntity.ok(ApiResponse.success((Void) null, DjpConstant.MSG_ISSUE_DELETED_SUCCESSFULLY));
     }
 }

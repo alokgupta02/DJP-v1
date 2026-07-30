@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,6 +30,6 @@ public class RepresentativeController {
     @GetMapping
     public ResponseEntity<ApiResponse<List<RepresentativeResponseDto>>> getAllRepresentatives(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.success(
-                representativeService.getRepresentatives(pageable), "Representatives retrieved."));
+                representativeService.getRepresentatives(pageable), DjpConstant.MSG_REPRESENTATIVES_RETRIEVED));
     }
 }

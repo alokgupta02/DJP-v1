@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.*;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -38,7 +39,7 @@ public class InteractionController {
         Comment comment = interactionService.addComment(
             payload.content(), payload.entityId(), payload.entityType(),
             payload.parentId(), authentication);
-        return ResponseEntity.ok(ApiResponse.success(comment, "Comment added successfully."));
+        return ResponseEntity.ok(ApiResponse.success(comment, DjpConstant.MSG_COMMENT_ADDED_SUCCESSFULLY));
     }
 
     @Operation(summary = "Get Comments", description = "Executes the getComments operation")
@@ -57,7 +58,7 @@ public class InteractionController {
             Authentication authentication) {
         Vote vote = interactionService.toggleVote(
             payload.entityId(), payload.entityType(), payload.value(), authentication);
-        return ResponseEntity.ok(ApiResponse.success(vote, "Vote toggled successfully."));
+        return ResponseEntity.ok(ApiResponse.success(vote, DjpConstant.MSG_VOTE_TOGGLED_SUCCESSFULLY));
     }
 
     @Operation(summary = "Toggle Follow", description = "Executes the toggleFollow operation")
@@ -67,6 +68,6 @@ public class InteractionController {
             Authentication authentication) {
         Follow follow = interactionService.toggleFollow(
             payload.targetId(), payload.targetType(), authentication);
-        return ResponseEntity.ok(ApiResponse.success(follow, "Follow toggled successfully."));
+        return ResponseEntity.ok(ApiResponse.success(follow, DjpConstant.MSG_FOLLOW_TOGGLED_SUCCESSFULLY));
     }
 }

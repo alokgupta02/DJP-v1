@@ -1,5 +1,6 @@
 package com.djp.backend.service;
 
+import com.djp.backend.util.DjpConstant;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
@@ -23,7 +24,7 @@ public class UploadService {
 
     public String uploadFile(MultipartFile file) throws IOException {
         if (file.isEmpty()) {
-            throw new IllegalArgumentException("File is empty");
+            throw new IllegalArgumentException(DjpConstant.MSG_FILE_IS_EMPTY);
         }
         String ext = "";
         String original = file.getOriginalFilename();

@@ -1,5 +1,6 @@
 package com.djp.backend.exception;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -45,6 +46,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Void>> handleAllExceptions(Exception ex, HttpServletRequest request) {
         log.error("Unhandled internal server error occurred", ex);
-        return new ResponseEntity<>(ApiResponse.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), "An unexpected error occurred"), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(ApiResponse.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), DjpConstant.MSG_AN_UNEXPECTED_ERROR_OCCURRED), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

@@ -1,5 +1,6 @@
 package com.djp.backend.service;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.exception.UnauthorizedException;
 import com.djp.backend.model.*;
 import com.djp.backend.repository.*;
@@ -48,7 +49,7 @@ public class InteractionService {
 
         if (parentId != null) {
             Comment parent = commentRepository.findById(parentId)
-                    .orElseThrow(() -> new IllegalArgumentException("Parent comment not found"));
+                    .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_PARENT_COMMENT_NOT_FOUND));
             comment.setParentComment(parent);
         }
 

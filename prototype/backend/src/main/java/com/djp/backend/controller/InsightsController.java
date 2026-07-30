@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,6 +26,6 @@ public class InsightsController {
     @Operation(summary = "Get Insights", description = "Executes the getInsights operation")
     @GetMapping
     public ResponseEntity<ApiResponse<InsightsResponseDto>> getInsights() {
-        return ResponseEntity.ok(ApiResponse.success(insightsService.getInsights(), "Insights retrieved."));
+        return ResponseEntity.ok(ApiResponse.success(insightsService.getInsights(), DjpConstant.MSG_INSIGHTS_RETRIEVED));
     }
 }

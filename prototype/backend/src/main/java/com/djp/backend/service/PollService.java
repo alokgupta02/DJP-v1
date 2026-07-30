@@ -1,5 +1,6 @@
 package com.djp.backend.service;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.PollCreateRequestDto;
 import com.djp.backend.dto.PollResponseDto;
 import com.djp.backend.mapper.PollMapper;
@@ -78,10 +79,10 @@ public class PollService {
     public PollResponseDto updatePoll(UUID id, com.djp.backend.dto.PollUpdateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Poll poll = pollRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_POLL_NOT_FOUND));
         
         if (!poll.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
-            throw new org.springframework.security.access.AccessDeniedException("Not authorized to update this poll");
+            throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED_TO_UPDATE_THIS_POLL);
         }
 
         if (request.question() != null) poll.setQuestion(request.question());
@@ -106,10 +107,10 @@ public class PollService {
     public PollResponseDto castVote(UUID pollId, int optionIndex, Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);
         if (pollVoteRepository.existsByUserIdAndPollId(user.getId(), pollId)) {
-            throw new IllegalArgumentException("User has already voted on this poll");
+            throw new IllegalArgumentException(DjpConstant.MSG_USER_HAS_ALREADY_VOTED_ON_THIS_POLL);
         }
         Poll poll = pollRepository.findById(pollId)
-                .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_POLL_NOT_FOUND));
         pollVoteRepository.save(new PollVote(user, poll, optionIndex));
         poll.setVotesCount(poll.getVotesCount() + 1);
         return pollMapper.toDto(pollRepository.save(poll));
@@ -119,10 +120,10 @@ public class PollService {
     public void deletePoll(UUID id, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Poll poll = pollRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_POLL_NOT_FOUND));
         
         if (!poll.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
-            throw new org.springframework.security.access.AccessDeniedException("Not authorized to delete this poll");
+            throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED_TO_DELETE_THIS_POLL);
         }
         
         pollRepository.delete(poll);

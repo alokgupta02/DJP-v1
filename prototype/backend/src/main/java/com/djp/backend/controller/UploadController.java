@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,7 +31,7 @@ public class UploadController {
     @PostMapping
     public ResponseEntity<ApiResponse<String>> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
         String url = uploadService.uploadFile(file);
-        return ResponseEntity.ok(ApiResponse.success(url, "File uploaded."));
+        return ResponseEntity.ok(ApiResponse.success(url, DjpConstant.MSG_FILE_UPLOADED));
     }
 
     @Operation(summary = "Serve File", description = "Executes the serveFile operation")

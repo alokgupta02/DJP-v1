@@ -1,5 +1,6 @@
 package com.djp.backend.service;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.DiscussionCreateRequestDto;
 import com.djp.backend.dto.DiscussionResponseDto;
 import com.djp.backend.mapper.DiscussionMapper;
@@ -74,10 +75,10 @@ public class DiscussionService {
     public DiscussionResponseDto updateDiscussion(UUID id, com.djp.backend.dto.DiscussionUpdateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Discussion discussion = discussionRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Discussion not found"));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_DISCUSSION_NOT_FOUND));
         
         if (!discussion.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
-            throw new org.springframework.security.access.AccessDeniedException("Not authorized to update this discussion");
+            throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED_TO_UPDATE_THIS_DISCUSSION);
         }
 
         if (request.title() != null) discussion.setTitle(request.title());
@@ -95,10 +96,10 @@ public class DiscussionService {
     public void deleteDiscussion(UUID id, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Discussion discussion = discussionRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Discussion not found"));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_DISCUSSION_NOT_FOUND));
         
         if (!discussion.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
-            throw new org.springframework.security.access.AccessDeniedException("Not authorized to delete this discussion");
+            throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED_TO_DELETE_THIS_DISCUSSION);
         }
         
         discussionRepository.delete(discussion);

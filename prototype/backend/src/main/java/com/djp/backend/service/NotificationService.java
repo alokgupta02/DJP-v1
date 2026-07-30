@@ -1,5 +1,6 @@
 package com.djp.backend.service;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.model.Notification;
 import com.djp.backend.exception.UnauthorizedException;
 import com.djp.backend.model.User;
@@ -58,7 +59,7 @@ public class NotificationService {
     public void markAsRead(UUID notificationId, Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);
         Notification notification = notificationRepository.findById(notificationId)
-                .orElseThrow(() -> new IllegalArgumentException("Notification not found."));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_NOTIFICATION_NOT_FOUND));
 
         if (!notification.getRecipient().getId().equals(user.getId())) {
             throw new UnauthorizedException("User not authorized to update this notification.");

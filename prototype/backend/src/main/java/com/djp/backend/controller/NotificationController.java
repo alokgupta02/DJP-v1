@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,7 +32,7 @@ public class NotificationController {
     @GetMapping
     public ResponseEntity<ApiResponse<List<Notification>>> getNotifications(Authentication authentication) {
         return ResponseEntity.ok(ApiResponse.success(
-                notificationService.getNotificationsForUser(authentication), "Notifications retrieved successfully."));
+                notificationService.getNotificationsForUser(authentication), DjpConstant.MSG_NOTIFICATIONS_RETRIEVED_SUCCESSFULLY));
     }
 
     @Operation(summary = "Get Unread Count", description = "Executes the getUnreadCount operation")
@@ -45,6 +46,6 @@ public class NotificationController {
     @PostMapping("/{id}/read")
     public ResponseEntity<ApiResponse<Void>> markAsRead(@PathVariable UUID id, Authentication authentication) {
         notificationService.markAsRead(id, authentication);
-        return ResponseEntity.ok(ApiResponse.success((Void) null, "Notification marked as read."));
+        return ResponseEntity.ok(ApiResponse.success((Void) null, DjpConstant.MSG_NOTIFICATION_MARKED_AS_READ));
     }
 }

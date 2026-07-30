@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -27,6 +28,6 @@ public class UserStatsController {
     @Operation(summary = "Get User Stats", description = "Executes the getUserStats operation")
     @GetMapping("/users/{userId}/stats")
     public ResponseEntity<ApiResponse<Map<String, Long>>> getUserStats(@PathVariable UUID userId) {
-        return ResponseEntity.ok(ApiResponse.success(userStatsService.getUserStats(userId), "User stats retrieved."));
+        return ResponseEntity.ok(ApiResponse.success(userStatsService.getUserStats(userId), DjpConstant.MSG_USER_STATS_RETRIEVED));
     }
 }

@@ -1,5 +1,6 @@
 package com.djp.backend.service;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.PetitionCreateRequestDto;
 import com.djp.backend.dto.PetitionResponseDto;
 import com.djp.backend.dto.PetitionUpdateRequestDto;
@@ -51,9 +52,9 @@ public class PetitionService {
     public PetitionResponseDto updatePetition(UUID id, PetitionUpdateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_PETITION_NOT_FOUND));
         if (!p.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
-            throw new org.springframework.security.access.AccessDeniedException("Not authorized");
+            throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED);
         }
         if (request.title() != null) p.setTitle(request.title());
         if (request.description() != null) p.setDescription(request.description());
@@ -66,9 +67,9 @@ public class PetitionService {
     public void deletePetition(UUID id, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_PETITION_NOT_FOUND));
         if (!p.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
-            throw new org.springframework.security.access.AccessDeniedException("Not authorized");
+            throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED);
         }
         petitionRepository.delete(p);
     }
@@ -76,7 +77,7 @@ public class PetitionService {
     public PetitionResponseDto signPetition(UUID petitionId, Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(petitionId)
-                .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_PETITION_NOT_FOUND));
         p.setSignatureCount(p.getSignatureCount() + 1);
         return PetitionResponseDto.fromEntity(petitionRepository.save(p));
     }

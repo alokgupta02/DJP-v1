@@ -1,5 +1,6 @@
 package com.djp.backend.service;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.IssueCreateRequestDto;
 import com.djp.backend.dto.IssueResponseDto;
 import com.djp.backend.mapper.IssueMapper;
@@ -74,10 +75,10 @@ public class IssueService {
     public IssueResponseDto updateIssue(UUID id, com.djp.backend.dto.IssueUpdateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Issue issue = issueRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Issue not found"));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_ISSUE_NOT_FOUND));
         
         if (!issue.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
-            throw new org.springframework.security.access.AccessDeniedException("Not authorized to update this issue");
+            throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED_TO_UPDATE_THIS_ISSUE);
         }
 
         if (request.title() != null) issue.setTitle(request.title());
@@ -96,10 +97,10 @@ public class IssueService {
     public void deleteIssue(UUID id, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Issue issue = issueRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Issue not found"));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_ISSUE_NOT_FOUND));
         
         if (!issue.getAuthor().getId().equals(author.getId()) && !author.getRole().equals("ADMIN")) {
-            throw new org.springframework.security.access.AccessDeniedException("Not authorized to delete this issue");
+            throw new org.springframework.security.access.AccessDeniedException(DjpConstant.MSG_NOT_AUTHORIZED_TO_DELETE_THIS_ISSUE);
         }
         
         issueRepository.delete(issue);

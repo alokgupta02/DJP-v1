@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,7 +35,7 @@ public class PetitionController {
     @Operation(summary = "Get All Petitions", description = "Executes the getAllPetitions operation")
     @GetMapping
     public ResponseEntity<ApiResponse<List<PetitionResponseDto>>> getAllPetitions(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        return ResponseEntity.ok(ApiResponse.success(petitionService.getPetitions(pageable), "Petitions retrieved."));
+        return ResponseEntity.ok(ApiResponse.success(petitionService.getPetitions(pageable), DjpConstant.MSG_PETITIONS_RETRIEVED));
     }
 
     @Operation(summary = "Create Petition", description = "Executes the createPetition operation")
@@ -43,7 +44,7 @@ public class PetitionController {
             @Valid @RequestBody PetitionCreateRequestDto payload,
             Authentication authentication) {
         PetitionResponseDto result = petitionService.createPetition(payload, authentication);
-        return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.success(result, "Petition created."));
+        return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.success(result, DjpConstant.MSG_PETITION_CREATED));
     }
 
     @Operation(summary = "Update Petition", description = "Executes the updatePetition operation")
@@ -59,7 +60,7 @@ public class PetitionController {
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deletePetition(@PathVariable UUID id, Authentication authentication) {
         petitionService.deletePetition(id, authentication);
-        return ResponseEntity.ok(ApiResponse.success((Void) null, "Petition deleted."));
+        return ResponseEntity.ok(ApiResponse.success((Void) null, DjpConstant.MSG_PETITION_DELETED));
     }
 
     @Operation(summary = "Sign Petition", description = "Executes the signPetition operation")

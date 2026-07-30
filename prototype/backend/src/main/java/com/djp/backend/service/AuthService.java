@@ -1,5 +1,6 @@
 package com.djp.backend.service;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.AuthResponseDto;
 import com.djp.backend.dto.UserDto;
 import com.djp.backend.exception.ResourceNotFoundException;
@@ -32,10 +33,10 @@ public class AuthService {
 
     public AuthResponseDto register(String email, String name) {
         if (email == null || email.isBlank()) {
-            throw new IllegalArgumentException("Email is required");
+            throw new IllegalArgumentException(DjpConstant.MSG_EMAIL_IS_REQUIRED);
         }
         if (userRepository.findByEmail(email).isPresent()) {
-            throw new IllegalArgumentException("Email already registered");
+            throw new IllegalArgumentException(DjpConstant.MSG_EMAIL_ALREADY_REGISTERED);
         }
         User user = new User();
         user.setEmail(email);
@@ -59,7 +60,7 @@ public class AuthService {
         RefreshToken stored = refreshTokenRepository.findByToken(refreshTokenValue)
                 .filter(t -> !t.isRevoked())
                 .filter(t -> t.getExpiresAt().isAfter(OffsetDateTime.now()))
-                .orElseThrow(() -> new IllegalArgumentException("Invalid or expired refresh token"));
+                .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_INVALID_OR_EXPIRED_REFRESH_TOKEN));
 
         stored.setRevoked(true);
         refreshTokenRepository.save(stored);
@@ -78,7 +79,7 @@ public class AuthService {
 
     public Map<String, String> verifyOtp(String otp, String email) {
         if (otp == null || otp.length() != 6) {
-            throw new IllegalArgumentException("Invalid OTP format");
+            throw new IllegalArgumentException(DjpConstant.MSG_INVALID_OTP_FORMAT);
         }
         return Map.of("status", "verified", "email", email != null ? email : "");
     }

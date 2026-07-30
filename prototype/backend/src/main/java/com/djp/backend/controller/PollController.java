@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.*;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,16 +32,16 @@ public class PollController {
     @Operation(summary = "Get All Polls", description = "Executes the getAllPolls operation")
     @GetMapping
     public ResponseEntity<ApiResponse<List<PollResponseDto>>> getAllPolls(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
-        return ResponseEntity.ok(ApiResponse.success(pollService.getPolls(pageable), "Polls retrieved successfully."));
+        return ResponseEntity.ok(ApiResponse.success(pollService.getPolls(pageable), DjpConstant.MSG_POLLS_RETRIEVED_SUCCESSFULLY));
     }
 
     @Operation(summary = "Get Poll By Id", description = "Executes the getPollById operation")
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<PollResponseDto>> getPollById(@PathVariable UUID id) {
         return pollService.getPollById(id)
-                .map(poll -> ResponseEntity.ok(ApiResponse.success(poll, "Poll fetched successfully.")))
+                .map(poll -> ResponseEntity.ok(ApiResponse.success(poll, DjpConstant.MSG_POLL_FETCHED_SUCCESSFULLY)))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), "Poll not found.")));
+                        .body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), DjpConstant.MSG_POLL_NOT_FOUND)));
     }
 
     @Operation(summary = "Cast Vote", description = "Executes the castVote operation")
@@ -50,7 +51,7 @@ public class PollController {
             @Valid @RequestBody CastVoteRequest payload,
             Authentication authentication) {
         PollResponseDto result = pollService.castVote(id, payload.optionIndex(), authentication);
-        return ResponseEntity.ok(ApiResponse.success(result, "Vote cast successfully."));
+        return ResponseEntity.ok(ApiResponse.success(result, DjpConstant.MSG_VOTE_CAST_SUCCESSFULLY));
     }
 
     @Operation(summary = "Create Poll", description = "Executes the createPoll operation")
@@ -61,7 +62,7 @@ public class PollController {
 
         PollResponseDto saved = pollService.createPoll(request, authentication);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponse.success(saved, "Poll created successfully."));
+                .body(ApiResponse.success(saved, DjpConstant.MSG_POLL_CREATED_SUCCESSFULLY));
     }
 
     @Operation(summary = "Update Poll", description = "Executes the updatePoll operation")
@@ -77,6 +78,6 @@ public class PollController {
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deletePoll(@PathVariable UUID id, Authentication authentication) {
         pollService.deletePoll(id, authentication);
-        return ResponseEntity.ok(ApiResponse.success((Void) null, "Poll deleted successfully."));
+        return ResponseEntity.ok(ApiResponse.success((Void) null, DjpConstant.MSG_POLL_DELETED_SUCCESSFULLY));
     }
 }

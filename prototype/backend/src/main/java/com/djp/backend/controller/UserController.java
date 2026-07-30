@@ -1,5 +1,6 @@
 package com.djp.backend.controller;
 
+import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,7 +31,7 @@ public class UserController {
     @GetMapping("/{userId}")
     public ResponseEntity<ApiResponse<UserDto>> getUserById(@PathVariable UUID userId) {
         User user = userService.getUserById(userId);
-        return ResponseEntity.ok(ApiResponse.success(UserDto.fromEntity(user), "User fetched successfully."));
+        return ResponseEntity.ok(ApiResponse.success(UserDto.fromEntity(user), DjpConstant.MSG_USER_FETCHED_SUCCESSFULLY));
     }
 
     @Operation(summary = "Complete Onboarding", description = "Executes the completeOnboarding operation")
@@ -40,6 +41,6 @@ public class UserController {
             @RequestBody OnboardingUpdateRequestDto dto
     ) {
         User updatedUser = userService.completeOnboarding(userId, dto);
-        return ResponseEntity.ok(ApiResponse.success(UserDto.fromEntity(updatedUser), "Onboarding completed successfully."));
+        return ResponseEntity.ok(ApiResponse.success(UserDto.fromEntity(updatedUser), DjpConstant.MSG_ONBOARDING_COMPLETED_SUCCESSFULLY));
     }
 }
