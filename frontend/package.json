@@ -16,7 +16,7 @@
     "clean": "find . -name node_modules -type d -prune -exec rm -rf {} + && find . -name dist -type d -prune -exec rm -rf {} +"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.3.2",
+    "@tailwindcss/vite": "^4.3.3",
     "tailwindcss": "^4.3.2"
   }
 }
