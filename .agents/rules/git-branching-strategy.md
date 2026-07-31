@@ -1,5 +1,5 @@
 ---
-name: git-branching-strategy
+trigger: always_on
 description: Mandatory Git branching, naming, and integration topology for all AI agents and human developers across DJP-v1.
 ---
 

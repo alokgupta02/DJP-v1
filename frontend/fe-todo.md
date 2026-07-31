@@ -1,32 +1,37 @@
-# DJP Frontend Task Tracker (`frontend/fe-todo.md`)
-
-> **Domain Role:** ⭐ **SINGLE SOURCE OF TRUTH (SSOT)** for Frontend UI & React Execution
-> **Sprint Progress:** 100% `[████████████████████████████████]` 5/5 tasks completed
-> **Completed Tasks Archive:** All completed tasks are moved to [`archive/todo.md`](file:///home/ap/git-repo/DJP-v1/archive/todo.md) (SSOT for historical completed work).
+# DJP Prototype Frontend Task Tracker (`prototype/frontend/fe-todo.md`)
 
 ---
 
-## 🚀 Active Sprint & Executing Tasks
-
-| Phase / Sprint | Task Description | Assigned Agent | Status |
-| :--- | :--- | :--- | :--- |
-| **UI Fixes Sprint** | All 5 UI layout & visual polish tasks completed | **FE Agent** | ✅ Completed (Archived) |
-
----
-
-## 📋 Backlog & Planned Phases
-
-### Phase 6 — Live Backend Integration (Upcoming Sprint)
-- [ ] Connect TanStack Query hooks in `/issues` to live Spring Boot `/api/v1/issues` endpoints
-- [ ] Connect Feed & Discussions views to live Spring Boot `/api/v1/discussions` endpoints
-- [ ] Connect Polls voting UI to live `/api/v1/polls` endpoints
-- [ ] Replace mock JWT/OAuth stubs with live Spring Security JWT cookies/headers
+| Metadata | Value |
+| :--- | :--- |
+| **Purpose** | Single Source of Truth (SSOT) tracking UI execution tasks for `web-app = prototype` on port `5174`. |
+| **Last Updated** | 2026-07-27 |
+| **Status / Version** | Active SSOT / v5.0.0 |
+| **Owner / Worker** | `FE Agent` |
+| **Upstream** | [`prototype/frontend/.djp_state.md`](.djp_state.md), [`prototype/frontend/fe-audit.md`](fe-audit.md) |
 
 ---
 
-## 📝 Technical Notes & Architectural Reference
+## Completed Phases (Archived)
 
-- See [`archive/todo.md`](file:///home/ap/git-repo/DJP-v1/archive/todo.md) for all 45 previously completed migration tasks and post-migration audit fixes.
-- Stack: React 18, TypeScript, Vite, Tailwind CSS, TanStack Query, Zustand, React Hook Form, Zod
-- Styling rule: Prefer inline Tailwind classes over abstract CSS wrapper components
-- Prototype reference: Prototype files under `prototype/` must never be modified directly
+| Phase | Status | Description |
+| :--- | :--- | :--- |
+
+---
+
+## Phase 5 — Fix Broken Flows (Active Sprint)
+
+| # | Task | Priority | Effort | Status |
+| :--- | :--- | :--- | :--- | :--- |
+
+---
+
+## Future Backlog (Low Priority)
+
+| Task | Priority | Effort |
+| :--- | :--- | :--- |
+| Replace deprecated `document.execCommand` in RichEditor | P3 | 2-4 hrs |
+| Move auth from localStorage to httpOnly cookies / secure storage | P3 | 1-2 hrs |
+| Enable stricter TS config (`noUnusedLocals: true`, `noImplicitAny: true`) | P3 | 30 min |
+| Remove hardcoded dev user IDs (`ProfilePage.tsx:22`, `AppLayout.tsx:32`) | P3 | 30 min |
+| Resolve remaining useEffect dependency warnings (3 files) | P3 | 1 hr |

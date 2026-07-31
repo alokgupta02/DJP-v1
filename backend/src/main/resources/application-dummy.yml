@@ -1,0 +1,8 @@
+# Spring Boot Configuration: Dummy Data Profile (application-dummy.yml)
+# Active when running locally with dummy data: --spring.profiles.active=local,dummy
+
+server:
+  port: 8081
+
+spring:
+

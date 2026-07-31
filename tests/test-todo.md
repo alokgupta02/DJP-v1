@@ -1,8 +1,14 @@
-# DJP QA & Test Suite Task Tracker (`tests/test-todo.md`)
+# DJP Prototype QA & Test Suite Task Tracker (`prototype/tests/test-todo.md`)
 
-> **Domain Role:** ⭐ **SINGLE SOURCE OF TRUTH (SSOT)** for QA & Automated Testing Execution
-> **Sprint Progress:** 50% `[████████████████................]` 2/4 tasks completed
-> **Completed Tasks Archive:** All completed tasks are moved to [`archive/todo.md`](file:///home/ap/git-repo/DJP-v1/archive/todo.md) (SSOT for historical completed work).
+---
+
+| Metadata | Value |
+| :--- | :--- |
+| **📌 Purpose** | Single Source of Truth (SSOT) tracking verification checks for `web-app = prototype` (`port 5174/8081`). |
+| **📅 Last Updated** | 2026-07-19 |
+| **🏷️ Status / Version** | Active SSOT / v1.0.0 |
+| **👥 Owner / Worker** | `Worker/Who: [QA Agent | Antigravity (Gemini)]` |
+| **🔗 Upstream / Dependencies** | [`prototype/dashboard.md`](file:///home/ap/git-repo/DJP-v1/prototype/dashboard.md), [`prototype/todo.md`](file:///home/ap/git-repo/DJP-v1/prototype/todo.md) |
 
 ---
 
@@ -10,26 +16,13 @@
 
 | Phase / Sprint | Task Description | Assigned Agent | Status |
 | :--- | :--- | :--- | :--- |
-| **Phase 2 — Core E2E & API Test Automation** | Failing Playwright E2E & microservice API tests (TDD Red Phase) | **QA Agent** | 🟡 Active Sprint |
+| **Phase 2 — Multi-Route Verification** | Add verification tests for `Discussions` and `Polls` endpoints as they are introduced | **QA Agent** | 🟢 Aligned & Ready |
 
 ---
 
-## 📋 Backlog & Planned Phases
+## 📋 Task Backlog & Archive Reference
+- [x] Create automated API health check (`api-health.test.mjs`) verifying backend health and dev-login (`citizen@djp.org`) on port `8081`
+- [ ] Create progressive automated test scripts (`tests/`) whenever new routes or endpoints are added during Phase 2
 
-### Phase 2 — Core E2E & API Test Automation (TDD Red Phase)
-- [x] Write Playwright QA test for Profile Completion Banner & Edit Modal (`profile-completion.spec.js`)
-- [ ] Write failing Playwright E2E tests for core authentication flow (`login -> oauth -> feed`)
-- [ ] Write failing API integration tests for microservice `/api/v1` routes (`auth`, `issues`, `discussions`)
-- [ ] Verify TDD Red Phase failure state before handing off to FE/BE agents
-
-### Phase 3 — Continuous Regression & CI Pipeline
-- [ ] Set up GitHub Actions workflow executing Playwright and JUnit/PyTest test suites on Pull Request
-- [ ] Validate 0 regressions across completed sprint features
-
----
-
-## 📝 Technical Notes & Architectural Reference
-
-- See [`archive/todo.md`](file:///home/ap/git-repo/DJP-v1/archive/todo.md) for completed QA role and skill separation tasks.
-- Mandatory TDD: Automated tests must be written and fail (`Red`) before any application code is created.
-- Frameworks: Playwright for browser E2E (`frontend/`), JUnit 5 / PyTest for microservices (`backend/`).
+> [!NOTE]
+> **Verification Command:** Run `cd prototype/tests && node api-health.test.mjs` to execute our health check suite.
