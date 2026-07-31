@@ -4,7 +4,6 @@ import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.dto.DiscussionCreateRequestDto;
 import com.djp.backend.dto.DiscussionResponseDto;

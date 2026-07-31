@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
-import java.util.UUID;
 
 @Aspect
 @Component
@@ -18,9 +17,11 @@ public class AuditLoggingAspect {
 
     private static final Logger log = LoggerFactory.getLogger(AuditLoggingAspect.class);
     private final AuditLogService auditLogService;
+    private final com.djp.backend.util.AuthUtils authUtils;
 
-    public AuditLoggingAspect(AuditLogService auditLogService) {
+    public AuditLoggingAspect(AuditLogService auditLogService, com.djp.backend.util.AuthUtils authUtils) {
         this.auditLogService = auditLogService;
+        this.authUtils = authUtils;
     }
 
     @AfterReturning(pointcut = "@annotation(auditLog)", returning = "result")
@@ -34,7 +35,8 @@ public class AuditLoggingAspect {
 
             String entityId = extractId(result);
             if (entityId == null) {
-                log.warn("Could not extract ID from returned object {} for AuditLog", result.getClass().getSimpleName());
+                log.warn("Could not extract ID from returned object {} for AuditLog",
+                        result.getClass().getSimpleName());
                 return;
             }
 
@@ -43,8 +45,7 @@ public class AuditLoggingAspect {
                     auditLog.action(),
                     auditLog.entityType(),
                     entityId,
-                    "Executed " + joinPoint.getSignature().getName()
-            );
+                    "Executed " + joinPoint.getSignature().getName());
 
         } catch (Exception e) {
             log.error("Failed to execute audit logging aspect", e);
@@ -56,12 +57,20 @@ public class AuditLoggingAspect {
             if (arg instanceof User) {
                 return (User) arg;
             }
+            if (arg instanceof org.springframework.security.core.Authentication auth) {
+                try {
+                    return authUtils.getAuthenticatedUser(auth);
+                } catch (Exception e) {
+                    return null;
+                }
+            }
         }
         return null;
     }
 
     private String extractId(Object obj) {
-        if (obj == null) return null;
+        if (obj == null)
+            return null;
         try {
             Field idField = obj.getClass().getDeclaredField("id");
             idField.setAccessible(true);

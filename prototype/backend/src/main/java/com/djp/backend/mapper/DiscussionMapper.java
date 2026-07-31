@@ -11,7 +11,7 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = org.mapstruct.ReportingPolicy.IGNORE)
 public interface DiscussionMapper {
     @Mapping(source = "author.id", target = "authorId")
     DiscussionResponseDto toDto(Discussion discussion);
@@ -20,8 +20,6 @@ public interface DiscussionMapper {
     @Mapping(target = "author", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
-    @Mapping(target = "upvotes", ignore = true)
-    @Mapping(target = "downvotes", ignore = true)
     @Mapping(target = "commentsCount", ignore = true)
     Discussion toEntity(DiscussionCreateRequestDto dto);
 

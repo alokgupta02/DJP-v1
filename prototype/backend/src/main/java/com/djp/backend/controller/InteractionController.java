@@ -1,20 +1,27 @@
 package com.djp.backend.controller;
 
 import com.djp.backend.util.DjpConstant;
-import com.djp.backend.dto.*;
-
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
+import com.djp.backend.dto.AddCommentRequest;
+import com.djp.backend.dto.ApiResponse;
+import com.djp.backend.dto.ToggleFollowRequest;
+import com.djp.backend.dto.ToggleVoteRequest;
 import com.djp.backend.model.Comment;
 import com.djp.backend.model.Follow;
 import com.djp.backend.model.Vote;
 import com.djp.backend.service.InteractionService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.UUID;

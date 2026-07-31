@@ -10,7 +10,7 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = org.mapstruct.ReportingPolicy.IGNORE)
 public interface PollMapper {
     @Mapping(source = "author.id", target = "authorId")
     PollResponseDto toDto(Poll poll);
@@ -20,7 +20,6 @@ public interface PollMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     @Mapping(target = "votesCount", ignore = true)
-    @Mapping(target = "status", ignore = true)
     Poll toEntity(com.djp.backend.dto.PollCreateRequestDto dto);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

@@ -2,18 +2,14 @@ package com.djp.backend.controller;
 
 import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
-
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.service.UploadService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Tag(name = "5. System & Observability", description = "File Uploads and System Observability")

@@ -4,7 +4,6 @@ import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.PollCreateRequestDto;
 import com.djp.backend.dto.PollResponseDto;
 import com.djp.backend.mapper.PollMapper;
-import com.djp.backend.exception.UnauthorizedException;
 import com.djp.backend.model.Poll;
 import com.djp.backend.model.User;
 import com.djp.backend.model.PollVote;
@@ -17,7 +16,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Optional;
 import java.util.UUID;
 

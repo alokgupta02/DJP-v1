@@ -4,7 +4,6 @@ import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.PetitionCreateRequestDto;
 import com.djp.backend.dto.PetitionResponseDto;
 import com.djp.backend.dto.PetitionUpdateRequestDto;
-import com.djp.backend.exception.UnauthorizedException;
 import com.djp.backend.model.Petition;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.PetitionRepository;

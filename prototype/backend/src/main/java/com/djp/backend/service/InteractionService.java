@@ -1,14 +1,18 @@
 package com.djp.backend.service;
 
 import com.djp.backend.util.DjpConstant;
-import com.djp.backend.exception.UnauthorizedException;
-import com.djp.backend.model.*;
-import com.djp.backend.repository.*;
 import org.springframework.security.core.Authentication;
 import com.djp.backend.util.AuthUtils;
+import com.djp.backend.model.Comment;
+import com.djp.backend.model.Vote;
+import com.djp.backend.model.Follow;
+import com.djp.backend.model.User;
+import com.djp.backend.repository.CommentRepository;
+import com.djp.backend.repository.VoteRepository;
+import com.djp.backend.repository.FollowRepository;
+import com.djp.backend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

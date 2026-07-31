@@ -9,16 +9,14 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = org.mapstruct.ReportingPolicy.IGNORE)
 public interface PetitionMapper {
-    @Mapping(source = "author.id", target = "authorId")
+    @Mapping(source = "author.name", target = "author")
     PetitionResponseDto toDto(Petition petition);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "author", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
-    @Mapping(target = "status", ignore = true)
     @Mapping(target = "signatureCount", ignore = true)
     Petition toEntity(com.djp.backend.dto.PetitionCreateRequestDto dto);
 

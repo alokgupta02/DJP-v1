@@ -2,13 +2,10 @@ package com.djp.backend.controller;
 
 import com.djp.backend.util.DjpConstant;
 import com.djp.backend.dto.ApiResponse;
-
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.dto.RepresentativeResponseDto;
 import com.djp.backend.service.RepresentativeService;
-import org.springframework.data.domain.Page;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
