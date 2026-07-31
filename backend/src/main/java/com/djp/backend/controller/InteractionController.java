@@ -30,6 +30,7 @@ import java.util.UUID;
 @Tag(name = "8. Interactions", description = "User Interactions Management")
 @RequestMapping("/djp/api/v1/interactions")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
+@SuppressWarnings("null")
 public class InteractionController {
 
     private final InteractionService interactionService;

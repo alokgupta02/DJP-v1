@@ -5,12 +5,14 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.MediaTypeFactory;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -52,14 +54,14 @@ public class UploadService {
      */
     public Resource serveFile(String filename) {
         Path file = uploadDir.resolve(filename);
-        return new FileSystemResource(file);
+        return new FileSystemResource(Objects.requireNonNull(file));
     }
 
     /**
      * Retrieves media type from the system.
      */
-    public MediaType getMediaType(Resource resource) {
-        return MediaTypeFactory.getMediaType(resource)
-                .orElse(MediaType.APPLICATION_OCTET_STREAM);
+    public @NonNull MediaType getMediaType(Resource resource) {
+        return Objects.requireNonNull(MediaTypeFactory.getMediaType(resource)
+                .orElse(MediaType.APPLICATION_OCTET_STREAM));
     }
 }

@@ -5,11 +5,11 @@ import com.djp.backend.model.Notification;
 import com.djp.backend.exception.UnauthorizedException;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.NotificationRepository;
-import com.djp.backend.repository.UserRepository;
 import com.djp.backend.util.AuthUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,12 +18,10 @@ import java.util.UUID;
 public class NotificationService {
 
     private final NotificationRepository notificationRepository;
-    private final UserRepository userRepository;
     private final AuthUtils authUtils;
 
-    public NotificationService(NotificationRepository notificationRepository, UserRepository userRepository, AuthUtils authUtils) {
+    public NotificationService(NotificationRepository notificationRepository, AuthUtils authUtils) {
         this.notificationRepository = notificationRepository;
-        this.userRepository = userRepository;
         this.authUtils = authUtils;
     }
 
@@ -68,7 +66,7 @@ public class NotificationService {
      * Executes the mark operation for as read.
      */
     @Transactional
-    public void markAsRead(UUID notificationId, Authentication authentication) {
+    public void markAsRead(@NonNull UUID notificationId, Authentication authentication) {
         User user = authUtils.getAuthenticatedUser(authentication);
         Notification notification = notificationRepository.findById(notificationId)
                 .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_NOTIFICATION_NOT_FOUND));

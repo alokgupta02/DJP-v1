@@ -22,8 +22,9 @@ export default function PetitionsPage() {
     },
   });
 
+  const [now] = useState(() => Date.now());
   const daysLeft = (expiresAt: string) =>
-    Math.max(0, Math.ceil((new Date(expiresAt).getTime() - Date.now()) / 86400000));
+    Math.max(0, Math.ceil((new Date(expiresAt).getTime() - now) / 86400000));
 
   return (
     <div className="flex-1 overflow-y-auto">

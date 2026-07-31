@@ -22,6 +22,7 @@ import java.util.UUID;
 @Tag(name = "2. Civic Issues", description = "Civic Issues Management")
 @RequestMapping("/djp/api/v1/issues")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
+@SuppressWarnings("null")
 public class IssueController {
 
     private final IssueService issueService;

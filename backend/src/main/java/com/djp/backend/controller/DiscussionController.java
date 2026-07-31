@@ -22,6 +22,7 @@ import java.util.UUID;
 @Tag(name = "3. Discussions", description = "Discussion Forums Management")
 @RequestMapping("/djp/api/v1/discussions")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
+@SuppressWarnings("null")
 public class DiscussionController {
 
     private final DiscussionService discussionService;

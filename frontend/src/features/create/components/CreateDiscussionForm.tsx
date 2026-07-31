@@ -143,7 +143,7 @@ export default function CreateDiscussionForm({ community }: CreateDiscussionForm
         )}
       </div>
 
-      <ImageUpload onUpload={(url) => {}} onRemove={() => {}} />
+      <ImageUpload onUpload={() => {}} onRemove={() => {}} />
 
       <RichEditor 
         value={descriptionHtml}

@@ -19,6 +19,7 @@ import java.util.UUID;
 @Tag(name = "9. Notifications", description = "Notifications Management")
 @RequestMapping("/djp/api/v1/notifications")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
+@SuppressWarnings("null")
 public class NotificationController {
 
     private final NotificationService notificationService;

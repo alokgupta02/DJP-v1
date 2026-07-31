@@ -18,6 +18,7 @@ import java.util.UUID;
 @Tag(name = "1. Auth & Identity", description = "User Identity Management")
 @RequestMapping("/djp/api/v1/users")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
+@SuppressWarnings("null")
 public class UserController {
 
     private final UserService userService;

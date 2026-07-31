@@ -7,7 +7,6 @@ import com.djp.backend.dto.PetitionUpdateRequestDto;
 import com.djp.backend.model.Petition;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.PetitionRepository;
-import com.djp.backend.repository.UserRepository;
 import com.djp.backend.util.AuthUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
@@ -16,20 +15,19 @@ import org.springframework.stereotype.Service;
 import com.djp.backend.mapper.PetitionMapper;
 import java.util.UUID;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.lang.NonNull;
 
 @Service
 @Transactional
 public class PetitionService {
 
     private final PetitionRepository petitionRepository;
-    private final UserRepository userRepository;
     private final AuthUtils authUtils;
     private final PetitionMapper petitionMapper;
 
-    public PetitionService(PetitionRepository petitionRepository, UserRepository userRepository, AuthUtils authUtils,
+    public PetitionService(PetitionRepository petitionRepository, AuthUtils authUtils,
             PetitionMapper petitionMapper) {
         this.petitionRepository = petitionRepository;
-        this.userRepository = userRepository;
         this.authUtils = authUtils;
         this.petitionMapper = petitionMapper;
     }
@@ -38,7 +36,7 @@ public class PetitionService {
      * Retrieves petitions from the system.
      */
     @Transactional(readOnly = true)
-    public Page<PetitionResponseDto> getPetitions(Pageable pageable) {
+    public Page<PetitionResponseDto> getPetitions(@NonNull Pageable pageable) {
         return petitionRepository.findAll(pageable).map(PetitionResponseDto::fromEntity);
     }
 
@@ -57,7 +55,7 @@ public class PetitionService {
     /**
      * Updates existing petition records.
      */
-    public PetitionResponseDto updatePetition(UUID id, PetitionUpdateRequestDto request,
+    public PetitionResponseDto updatePetition(@NonNull UUID id, PetitionUpdateRequestDto request,
             Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(id)
@@ -72,7 +70,7 @@ public class PetitionService {
     /**
      * Deletes petition from the system.
      */
-    public void deletePetition(UUID id, Authentication authentication) {
+    public void deletePetition(@NonNull UUID id, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Petition p = petitionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_PETITION_NOT_FOUND));
@@ -85,8 +83,7 @@ public class PetitionService {
     /**
      * Executes the sign operation for petition.
      */
-    public PetitionResponseDto signPetition(UUID petitionId, Authentication authentication) {
-        User user = authUtils.getAuthenticatedUser(authentication);
+    public PetitionResponseDto signPetition(@NonNull UUID petitionId, Authentication authentication) {
         Petition p = petitionRepository.findById(petitionId)
                 .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_PETITION_NOT_FOUND));
         p.setSignatureCount(p.getSignatureCount() + 1);

@@ -20,6 +20,7 @@ import java.util.UUID;
 @Tag(name = "4. Polls & Voting", description = "Polls and Voting Management")
 @RequestMapping("/djp/api/v1/polls")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
+@SuppressWarnings("null")
 public class PollController {
 
     private final PollService pollService;

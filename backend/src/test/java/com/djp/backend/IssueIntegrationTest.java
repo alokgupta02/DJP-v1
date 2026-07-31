@@ -2,10 +2,7 @@ package com.djp.backend;
 
 import com.djp.backend.model.User;
 import com.djp.backend.repository.UserRepository;
-import com.djp.backend.repository.IssueRepository;
 import com.djp.backend.repository.AuditLogRepository;
-import com.djp.backend.repository.DiscussionRepository;
-import com.djp.backend.repository.PollRepository;
 import com.djp.backend.security.JwtTokenProvider;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
+@SuppressWarnings("null")
 public class IssueIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
@@ -26,19 +24,10 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
     private UserRepository userRepository;
 
     @Autowired
-    private IssueRepository issueRepository;
-
-    @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
     @Autowired
     private AuditLogRepository auditLogRepository;
-
-    @Autowired
-    private DiscussionRepository discussionRepository;
-
-    @Autowired
-    private PollRepository pollRepository;
 
     @Autowired
     private com.djp.backend.service.SqlFilePersistenceService sqlFilePersistenceService;

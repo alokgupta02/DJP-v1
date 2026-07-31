@@ -2,11 +2,10 @@ package com.djp.backend.service;
 
 import com.djp.backend.dto.InsightsResponseDto;
 import com.djp.backend.repository.IssueRepository;
-import com.djp.backend.repository.UserRepository;
-import com.djp.backend.repository.VoteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -14,13 +13,9 @@ import java.util.List;
 public class InsightsService {
 
     private final IssueRepository issueRepository;
-    private final UserRepository userRepository;
-    private final VoteRepository voteRepository;
 
-    public InsightsService(IssueRepository issueRepository, UserRepository userRepository, VoteRepository voteRepository) {
+    public InsightsService(IssueRepository issueRepository) {
         this.issueRepository = issueRepository;
-        this.userRepository = userRepository;
-        this.voteRepository = voteRepository;
     }
 
     /**
@@ -29,8 +24,6 @@ public class InsightsService {
     @Transactional(readOnly = true)
     public InsightsResponseDto getInsights() {
         long totalIssues = issueRepository.count();
-        long totalUsers = userRepository.count();
-        long totalVotes = voteRepository.count();
 
         var cats = issueRepository.findAll().stream()
                 .collect(java.util.stream.Collectors.groupingBy(
@@ -38,7 +31,7 @@ public class InsightsService {
                     java.util.stream.Collectors.counting()
                 ));
 
-        long maxCatCount = cats.values().stream().max(Long::compare).orElse(1L);
+        long maxCatCount = cats.values().stream().max(Comparator.naturalOrder()).orElse(1L);
         List<InsightsResponseDto.CategoryBreakdown> catBreakdown = cats.entrySet().stream()
                 .map(e -> new InsightsResponseDto.CategoryBreakdown(
                     e.getKey(),

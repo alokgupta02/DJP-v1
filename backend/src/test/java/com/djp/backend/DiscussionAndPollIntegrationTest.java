@@ -16,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
+@SuppressWarnings("null")
 public class DiscussionAndPollIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
@@ -23,18 +24,6 @@ public class DiscussionAndPollIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private IssueRepository issueRepository;
-
-    @Autowired
-    private DiscussionRepository discussionRepository;
-
-    @Autowired
-    private PollRepository pollRepository;
-
-    @Autowired
-    private AuditLogRepository auditLogRepository;
 
     @Autowired
     private JwtTokenProvider jwtTokenProvider;

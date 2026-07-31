@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.core.Authentication;
 import com.djp.backend.exception.UnauthorizedException;
 
+import org.springframework.lang.NonNull;
 import java.util.UUID;
 
 @Service
@@ -28,7 +29,7 @@ public class ProfileService {
      * Retrieves profile from the system.
      */
     @Transactional(readOnly = true)
-    public User getProfile(UUID userId) {
+    public User getProfile(@NonNull UUID userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User profile not found with id: " + userId));
     }
@@ -37,7 +38,7 @@ public class ProfileService {
      * Updates existing profile records.
      */
     @Transactional
-    public User updateProfile(UUID userId, ProfileUpdateRequestDto dto, Authentication authentication) {
+    public User updateProfile(@NonNull UUID userId, ProfileUpdateRequestDto dto, Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
             throw new UnauthorizedException("Authentication required.");
         }
