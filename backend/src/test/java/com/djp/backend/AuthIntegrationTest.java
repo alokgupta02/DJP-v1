@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import java.util.UUID;
+import java.util.Objects;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -25,23 +25,11 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
-    @Autowired
-    private com.djp.backend.repository.IssueRepository issueRepository;
-
-    @Autowired
-    private com.djp.backend.repository.AuditLogRepository auditLogRepository;
-
-    @Autowired
-    private com.djp.backend.repository.DiscussionRepository discussionRepository;
-
-    @Autowired
-    private com.djp.backend.repository.PollRepository pollRepository;
-
 
     @Test
     public void getMe_withoutToken_returns401() throws Exception {
         mockMvc.perform(get("/djp/api/v1/auth/me")
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(Objects.requireNonNull(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isUnauthorized());
     }
 
@@ -56,7 +44,7 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
 
         mockMvc.perform(get("/djp/api/v1/auth/me")
                 .header("Authorization", "Bearer " + token)
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(Objects.requireNonNull(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.id").value(user.getId().toString()))
                 .andExpect(jsonPath("$.data.email").value(email))
@@ -67,7 +55,7 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
     @Test
     public void initiateGoogleLogin_returnsRedirectDetails() throws Exception {
         mockMvc.perform(get("/djp/api/v1/auth/google")
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(Objects.requireNonNull(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.provider").value("google"))
                 .andExpect(jsonPath("$.data.redirectUrl").value("/oauth2/authorization/google"));
@@ -76,7 +64,7 @@ public class AuthIntegrationTest extends BaseIntegrationTest {
     @Test
     public void initiateGithubLogin_returnsRedirectDetails() throws Exception {
         mockMvc.perform(get("/djp/api/v1/auth/github")
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(Objects.requireNonNull(MediaType.APPLICATION_JSON)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.provider").value("github"))
                 .andExpect(jsonPath("$.data.redirectUrl").value("/oauth2/authorization/github"));

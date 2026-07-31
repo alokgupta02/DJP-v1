@@ -1,1 +1,0 @@
-import{y as e}from"./index-BlnvTZBe.js";var t=e();function n(){return(0,t.jsx)(`div`,{className:`flex h-full items-center justify-center`,children:(0,t.jsx)(`h1`,{className:`text-4xl font-bold`,children:`404`})})}export{n as default};

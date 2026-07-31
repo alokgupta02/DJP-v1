@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 import com.djp.backend.mapper.UserMapper;
+import org.springframework.lang.NonNull;
 
 @Service
 public class UserService {
@@ -28,7 +29,7 @@ public class UserService {
      * Retrieves user by id from the system.
      */
     @Transactional(readOnly = true)
-    public User getUserById(UUID userId) {
+    public User getUserById(@NonNull UUID userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
     }
@@ -37,7 +38,7 @@ public class UserService {
      * Executes the complete operation for onboarding.
      */
     @Transactional
-    public User completeOnboarding(UUID userId, OnboardingUpdateRequestDto dto) {
+    public User completeOnboarding(@NonNull UUID userId, OnboardingUpdateRequestDto dto) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
 

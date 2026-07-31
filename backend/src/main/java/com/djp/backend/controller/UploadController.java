@@ -5,7 +5,6 @@ import com.djp.backend.dto.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import com.djp.backend.service.UploadService;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
@@ -37,7 +36,8 @@ public class UploadController {
             return ResponseEntity.notFound().build();
         }
         var resource = uploadService.serveFile(filename);
-        MediaType mediaType = uploadService.getMediaType(resource);
-        return ResponseEntity.ok().contentType(mediaType).body(resource);
+        return ResponseEntity.ok()
+                .contentType(uploadService.getMediaType(resource))
+                .body(resource);
     }
 }

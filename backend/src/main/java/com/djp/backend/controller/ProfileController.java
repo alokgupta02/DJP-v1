@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/djp/api/v1/profiles")
 @Tag(name = "6. Profiles", description = "User Profile Management")
+@SuppressWarnings("null")
 public class ProfileController {
 
     private final ProfileService profileService;

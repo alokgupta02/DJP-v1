@@ -36,18 +36,17 @@ export default function NotificationsPage() {
   const [notifications, setNotifications] = useState<NotificationDto[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const loadNotifications = async () => {
-    try {
-      const data = await fetchNotifications();
-      setNotifications(data);
-    } catch (e) {
-      console.error("Failed to load notifications", e);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const loadNotifications = async () => {
+      try {
+        const data = await fetchNotifications();
+        setNotifications(data);
+      } catch (e) {
+        console.error("Failed to load notifications", e);
+      } finally {
+        setLoading(false);
+      }
+    };
     loadNotifications();
   }, []);
 

@@ -7,13 +7,13 @@ import com.djp.backend.mapper.DiscussionMapper;
 import com.djp.backend.model.Discussion;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.DiscussionRepository;
-import com.djp.backend.repository.UserRepository;
 import com.djp.backend.util.AuthUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.lang.NonNull;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -23,18 +23,14 @@ import java.util.UUID;
 public class DiscussionService {
 
     private final DiscussionRepository discussionRepository;
-    private final UserRepository userRepository;
     private final DiscussionMapper discussionMapper;
-    private final AuditLogService auditLogService;
     private final SqlFilePersistenceService sqlFilePersistenceService;
     private final AuthUtils authUtils;
 
-    public DiscussionService(DiscussionRepository discussionRepository, UserRepository userRepository, DiscussionMapper discussionMapper, 
-                             AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService, AuthUtils authUtils) {
+    public DiscussionService(DiscussionRepository discussionRepository, DiscussionMapper discussionMapper, 
+                             SqlFilePersistenceService sqlFilePersistenceService, AuthUtils authUtils) {
         this.discussionRepository = discussionRepository;
-        this.userRepository = userRepository;
         this.discussionMapper = discussionMapper;
-        this.auditLogService = auditLogService;
         this.sqlFilePersistenceService = sqlFilePersistenceService;
         this.authUtils = authUtils;
     }
@@ -44,7 +40,7 @@ public class DiscussionService {
      * Retrieves discussions from the system.
      */
     @Transactional(readOnly = true)
-    public Page<DiscussionResponseDto> getDiscussions(Pageable pageable) {
+    public Page<DiscussionResponseDto> getDiscussions(@NonNull Pageable pageable) {
         return discussionRepository.findAll(pageable).map(discussionMapper::toDto);
     }
 
@@ -52,7 +48,7 @@ public class DiscussionService {
      * Retrieves discussion by id from the system.
      */
     @Transactional(readOnly = true)
-    public Optional<DiscussionResponseDto> getDiscussionById(UUID id) {
+    public Optional<DiscussionResponseDto> getDiscussionById(@NonNull UUID id) {
         return discussionRepository.findById(id).map(discussionMapper::toDto);
     }
 
@@ -74,7 +70,7 @@ public class DiscussionService {
      * Updates existing discussion records.
      */
     @com.djp.backend.aspect.AuditLog(action = "UPDATE_DISCUSSION", entityType = "Discussion")
-    public DiscussionResponseDto updateDiscussion(UUID id, com.djp.backend.dto.DiscussionUpdateRequestDto request, Authentication authentication) {
+    public DiscussionResponseDto updateDiscussion(@NonNull UUID id, com.djp.backend.dto.DiscussionUpdateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Discussion discussion = discussionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_DISCUSSION_NOT_FOUND));
@@ -99,7 +95,7 @@ public class DiscussionService {
      * Deletes discussion from the system.
      */
     @com.djp.backend.aspect.AuditLog(action = "DELETE_DISCUSSION", entityType = "Discussion")
-    public void deleteDiscussion(UUID id, Authentication authentication) {
+    public void deleteDiscussion(@NonNull UUID id, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Discussion discussion = discussionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_DISCUSSION_NOT_FOUND));

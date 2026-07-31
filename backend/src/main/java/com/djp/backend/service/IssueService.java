@@ -7,13 +7,13 @@ import com.djp.backend.mapper.IssueMapper;
 import com.djp.backend.model.Issue;
 import com.djp.backend.model.User;
 import com.djp.backend.repository.IssueRepository;
-import com.djp.backend.repository.UserRepository;
 import com.djp.backend.util.AuthUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.lang.NonNull;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,18 +22,14 @@ import java.util.UUID;
 public class IssueService {
 
     private final IssueRepository issueRepository;
-    private final UserRepository userRepository;
     private final IssueMapper issueMapper;
-    private final AuditLogService auditLogService;
     private final SqlFilePersistenceService sqlFilePersistenceService;
     private final AuthUtils authUtils;
 
-    public IssueService(IssueRepository issueRepository, UserRepository userRepository, IssueMapper issueMapper, 
-                        AuditLogService auditLogService, SqlFilePersistenceService sqlFilePersistenceService, AuthUtils authUtils) {
+    public IssueService(IssueRepository issueRepository, IssueMapper issueMapper, 
+                        SqlFilePersistenceService sqlFilePersistenceService, AuthUtils authUtils) {
         this.issueRepository = issueRepository;
-        this.userRepository = userRepository;
         this.issueMapper = issueMapper;
-        this.auditLogService = auditLogService;
         this.sqlFilePersistenceService = sqlFilePersistenceService;
         this.authUtils = authUtils;
     }
@@ -43,7 +39,7 @@ public class IssueService {
      * Retrieves issues from the system.
      */
     @Transactional(readOnly = true)
-    public Page<IssueResponseDto> getIssues(Pageable pageable) {
+    public Page<IssueResponseDto> getIssues(@NonNull Pageable pageable) {
         return issueRepository.findAll(pageable).map(issueMapper::toDto);
     }
 
@@ -51,7 +47,7 @@ public class IssueService {
      * Retrieves issue by id from the system.
      */
     @Transactional(readOnly = true)
-    public Optional<IssueResponseDto> getIssueById(UUID id) {
+    public Optional<IssueResponseDto> getIssueById(@NonNull UUID id) {
         return issueRepository.findById(id).map(issueMapper::toDto);
     }
 
@@ -73,7 +69,7 @@ public class IssueService {
      * Updates existing issue records.
      */
     @com.djp.backend.aspect.AuditLog(action = "UPDATE_ISSUE", entityType = "Issue")
-    public IssueResponseDto updateIssue(UUID id, com.djp.backend.dto.IssueUpdateRequestDto request, Authentication authentication) {
+    public IssueResponseDto updateIssue(@NonNull UUID id, com.djp.backend.dto.IssueUpdateRequestDto request, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Issue issue = issueRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_ISSUE_NOT_FOUND));
@@ -91,7 +87,7 @@ public class IssueService {
      * Deletes issue from the system.
      */
     @com.djp.backend.aspect.AuditLog(action = "DELETE_ISSUE", entityType = "Issue")
-    public void deleteIssue(UUID id, Authentication authentication) {
+    public void deleteIssue(@NonNull UUID id, Authentication authentication) {
         User author = authUtils.getAuthenticatedUser(authentication);
         Issue issue = issueRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(DjpConstant.MSG_ISSUE_NOT_FOUND));

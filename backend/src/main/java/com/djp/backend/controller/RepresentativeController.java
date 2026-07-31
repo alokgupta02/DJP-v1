@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "10. Representatives", description = "Representatives Management")
 @RequestMapping("/djp/api/v1/representatives")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
+@SuppressWarnings("null")
 public class RepresentativeController {
 
     private final RepresentativeService representativeService;

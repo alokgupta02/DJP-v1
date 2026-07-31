@@ -98,9 +98,10 @@ export default function CreatePetitionForm() {
       <div className="pt-4 border-t border-[var(--color-border)] flex items-center justify-end">
         <button
           type="submit"
-          className="px-6 py-2 rounded-full bg-[var(--color-brand)] text-[var(--color-text-inverse)] font-bold text-sm hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
+          disabled={submitting}
+          className="px-6 py-2 rounded-full bg-[var(--color-brand)] text-[var(--color-text-inverse)] font-bold text-sm hover:opacity-90 transition-opacity shadow-sm cursor-pointer disabled:opacity-50"
         >
-          Start Petition
+          {submitting ? <Loader2 className="animate-spin inline" size={14} /> : "Start Petition"}
         </button>
       </div>
     </form>

@@ -2,10 +2,7 @@ package com.djp.backend;
 
 import com.djp.backend.model.User;
 import com.djp.backend.repository.UserRepository;
-import com.djp.backend.repository.IssueRepository;
 import com.djp.backend.repository.AuditLogRepository;
-import com.djp.backend.repository.DiscussionRepository;
-import com.djp.backend.repository.PollRepository;
 import com.djp.backend.security.JwtTokenProvider;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
+@SuppressWarnings("null")
 public class IssueIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
@@ -26,27 +24,18 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
     private UserRepository userRepository;
 
     @Autowired
-    private IssueRepository issueRepository;
-
-    @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
     @Autowired
     private AuditLogRepository auditLogRepository;
 
     @Autowired
-    private DiscussionRepository discussionRepository;
-
-    @Autowired
-    private PollRepository pollRepository;
-
-    @Autowired
     private com.djp.backend.service.SqlFilePersistenceService sqlFilePersistenceService;
-
 
     @Test
     public void createIssue_invalidInput_returns400() throws Exception {
-        User user = new User("jane.issue.invalid." + java.util.UUID.randomUUID() + "@example.com", "Jane Doe", "GOOGLE", java.util.UUID.randomUUID().toString());
+        User user = new User("jane.issue.invalid." + java.util.UUID.randomUUID() + "@example.com", "Jane Doe", "GOOGLE",
+                java.util.UUID.randomUUID().toString());
         user = userRepository.save(user);
         String token = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());
 
@@ -62,7 +51,8 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void createIssue_validInput_returns201() throws Exception {
-        User user = new User("jane.issue.valid." + java.util.UUID.randomUUID() + "@example.com", "Jane Doe", "GOOGLE", java.util.UUID.randomUUID().toString());
+        User user = new User("jane.issue.valid." + java.util.UUID.randomUUID() + "@example.com", "Jane Doe", "GOOGLE",
+                java.util.UUID.randomUUID().toString());
         user = userRepository.save(user);
         String token = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());
 
@@ -93,7 +83,8 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void createIssue_appendsToSqlFile() throws Exception {
-        User user = new User("sql.issue." + java.util.UUID.randomUUID() + "@example.com", "SQL Tester", "GOOGLE", java.util.UUID.randomUUID().toString());
+        User user = new User("sql.issue." + java.util.UUID.randomUUID() + "@example.com", "SQL Tester", "GOOGLE",
+                java.util.UUID.randomUUID().toString());
         user = userRepository.save(user);
         String token = jwtTokenProvider.createToken(user.getId(), user.getEmail(), user.getRole());
 
@@ -106,10 +97,12 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
                 "  \"location\": \"Ward 12\"\n" +
                 "}";
 
-        // SqlFilePersistenceService now only writes to target/classes/data/ (never src/)
+        // SqlFilePersistenceService now only writes to target/classes/data/ (never
+        // src/)
         java.nio.file.Path targetIssues = java.nio.file.Path.of("target/classes/data/issues.sql");
         java.nio.file.Path targetUsers = java.nio.file.Path.of("target/classes/data/users.sql");
-        String origIssues = java.nio.file.Files.exists(targetIssues) ? java.nio.file.Files.readString(targetIssues) : "";
+        String origIssues = java.nio.file.Files.exists(targetIssues) ? java.nio.file.Files.readString(targetIssues)
+                : "";
         String origUsers = java.nio.file.Files.exists(targetUsers) ? java.nio.file.Files.readString(targetUsers) : "";
 
         try {
@@ -121,7 +114,8 @@ public class IssueIntegrationTest extends BaseIntegrationTest {
                     .andExpect(status().isCreated());
 
             String updatedContent = java.nio.file.Files.readString(targetIssues);
-            org.junit.jupiter.api.Assertions.assertTrue(updatedContent.contains(uniqueTitle), "target/classes/data/issues.sql should contain the new issue title");
+            org.junit.jupiter.api.Assertions.assertTrue(updatedContent.contains(uniqueTitle),
+                    "target/classes/data/issues.sql should contain the new issue title");
         } finally {
             sqlFilePersistenceService.setEnabled(false);
             // Restore original target files to avoid polluting other tests

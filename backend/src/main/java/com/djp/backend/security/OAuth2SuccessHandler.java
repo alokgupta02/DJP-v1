@@ -1,12 +1,10 @@
 package com.djp.backend.security;
 
-import com.djp.backend.model.RefreshToken;
-import com.djp.backend.model.User;
-import com.djp.backend.repository.RefreshTokenRepository;
-import com.djp.backend.repository.UserRepository;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.time.OffsetDateTime;
+import java.util.Objects;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,9 +15,14 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.Optional;
+import com.djp.backend.model.RefreshToken;
+import com.djp.backend.model.User;
+import com.djp.backend.repository.RefreshTokenRepository;
+import com.djp.backend.repository.UserRepository;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
@@ -78,10 +81,10 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
             );
             refreshTokenRepository.save(refreshToken);
 
-            String targetUrl = UriComponentsBuilder.fromUriString(frontendRedirectUrl)
+            String targetUrl = Objects.requireNonNull(UriComponentsBuilder.fromUriString(Objects.requireNonNull(frontendRedirectUrl))
                     .queryParam("token", token)
                     .queryParam("refreshToken", refreshTokenValue)
-                    .build().toUriString();
+                    .build().toUriString());
 
             getRedirectStrategy().sendRedirect(request, response, targetUrl);
         } else {

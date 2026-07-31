@@ -17,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
+@SuppressWarnings("null")
 public class UserOnboardingIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
@@ -30,18 +31,6 @@ public class UserOnboardingIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
     private ObjectMapper objectMapper;
-
-    @Autowired
-    private com.djp.backend.repository.IssueRepository issueRepository;
-
-    @Autowired
-    private com.djp.backend.repository.AuditLogRepository auditLogRepository;
-
-    @Autowired
-    private com.djp.backend.repository.DiscussionRepository discussionRepository;
-
-    @Autowired
-    private com.djp.backend.repository.PollRepository pollRepository;
 
 
     @Test

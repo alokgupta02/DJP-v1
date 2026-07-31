@@ -13,6 +13,8 @@ import com.djp.backend.repository.FollowRepository;
 import com.djp.backend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.lang.NonNull;
+import java.util.Objects;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -115,14 +117,14 @@ public class InteractionService {
      * Executes the toggle operation for follow.
      */
     @Transactional
-    public Follow toggleFollow(UUID targetId, String targetType, Authentication authentication) {
+    public Follow toggleFollow(@NonNull UUID targetId, @NonNull String targetType, Authentication authentication) {
         User follower = authUtils.getAuthenticatedUser(authentication);
         UUID followerId = follower.getId();
 
         Optional<Follow> existing = followRepository.findByFollowerIdAndTargetIdAndTargetType(followerId, targetId, targetType);
         
         if (existing.isPresent()) {
-            followRepository.delete(existing.get());
+            followRepository.delete(Objects.requireNonNull(existing.get()));
             return null;
         } else {
             Follow follow = new Follow();
@@ -133,7 +135,7 @@ public class InteractionService {
             Follow saved = followRepository.save(follow);
             
             if ("USER".equals(targetType)) {
-                User targetUser = userRepository.findById(targetId).orElse(null);
+                User targetUser = userRepository.findById(Objects.requireNonNull(targetId)).orElse(null);
                 if (targetUser != null) {
                     notificationService.createNotification(targetUser, follower, "FOLLOW", saved.getId());
                 }

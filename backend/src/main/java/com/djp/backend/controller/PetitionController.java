@@ -23,6 +23,7 @@ import java.util.UUID;
 @Tag(name = "7. Petitions", description = "Petitions Management")
 @RequestMapping("/djp/api/v1/petitions")
 @CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:5173}")
+@SuppressWarnings("null")
 public class PetitionController {
 
     private final PetitionService petitionService;
