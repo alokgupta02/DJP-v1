@@ -1,5 +1,5 @@
 import { useState, useRef, type KeyboardEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { Card } from "../../shared/components/cards";
 import { Button } from "../../shared/components/buttons";
