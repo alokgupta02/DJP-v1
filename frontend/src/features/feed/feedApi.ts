@@ -98,7 +98,7 @@ export async function fetchPetitions(): Promise<FeedPetition[]> {
   if (!res.ok) throw new Error("Failed to fetch petitions");
   const responseJson = await res.json();
   const items = responseJson.data || responseJson;
-  return Array.isArray(items) ? items.map((item: FeedPetition) => ({
+  return Array.isArray(items) ? items.map((item: any) => ({
     id: item.id,
     title: item.title,
     description: item.description,
